@@ -1,12 +1,15 @@
 "use client"
 
-import { addToCart, PujaDetailsMetadata } from "@lib/data/cart"
+import { addToCart } from "@lib/data/cart"
 import { useIntersection } from "@lib/hooks/use-in-view"
 import { HttpTypes } from "@medusajs/types"
 import { Button } from "@medusajs/ui"
 import Divider from "@modules/common/components/divider"
 import OptionSelect from "@modules/products/components/product-actions/option-select"
-import PujaDetailsForm, { PujaDetails } from "@modules/puja/components/puja-details-form"
+import PujaDetailsForm, {
+  PujaDetails,
+  emptyDevotee,
+} from "@modules/puja/components/puja-details-form"
 import { isEqual } from "lodash"
 import { useParams, usePathname, useSearchParams } from "next/navigation"
 import { useEffect, useMemo, useRef, useState } from "react"
@@ -19,22 +22,25 @@ type ProductActionsProps = {
   region: HttpTypes.StoreRegion
   disabled?: boolean
   showPujaDetails?: boolean
+  showPrice?: boolean
+  buttonClassName?: string
+  buttonText?: string
 }
 
 const optionsAsKeymap = (
   variantOptions: HttpTypes.StoreProductVariant["options"]
 ) => {
-  return variantOptions?.reduce((acc: Record<string, string>, varopt: any) => {
-    acc[varopt.option_id] = varopt.value
-    return acc
-  }, {})
+  return variantOptions?.reduce(
+    (acc: Record<string, string>, varopt: any) => {
+      acc[varopt.option_id] = varopt.value
+      return acc
+    },
+    {}
+  )
 }
 
 const initialPujaDetails: PujaDetails = {
-  devotee_name: "",
-  nakshatram: "",
-  rasi: "",
-  gothram: "",
+  devotees: [{ ...emptyDevotee }],
   date_preference: "",
   sankalpam_notes: "",
 }
@@ -43,6 +49,9 @@ export default function ProductActions({
   product,
   disabled,
   showPujaDetails = true,
+  showPrice = true,
+  buttonClassName,
+  buttonText,
 }: ProductActionsProps) {
   const router = useRouter()
   const pathname = usePathname()
@@ -50,7 +59,8 @@ export default function ProductActions({
 
   const [options, setOptions] = useState<Record<string, string | undefined>>({})
   const [isAdding, setIsAdding] = useState(false)
-  const [pujaDetails, setPujaDetails] = useState<PujaDetails>(initialPujaDetails)
+  const [pujaDetails, setPujaDetails] =
+    useState<PujaDetails>(initialPujaDetails)
   const [showPujaForm, setShowPujaForm] = useState(false)
   const countryCode = useParams().countryCode as string
 
@@ -73,7 +83,6 @@ export default function ProductActions({
     })
   }, [product.variants, options])
 
-  // update the options when a variant is selected
   const setOptionValue = (optionId: string, value: string) => {
     setOptions((prev) => ({
       ...prev,
@@ -81,7 +90,6 @@ export default function ProductActions({
     }))
   }
 
-  //check if the selected options produce a valid variant
   const isValidVariant = useMemo(() => {
     return product.variants?.some((v) => {
       const variantOptions = optionsAsKeymap(v.options)
@@ -106,73 +114,89 @@ export default function ProductActions({
     router.replace(pathname + "?" + params.toString())
   }, [selectedVariant, isValidVariant])
 
-  // check if the selected variant is in stock
   const inStock = useMemo(() => {
-    // If we don't manage inventory, we can always add to cart
     if (selectedVariant && !selectedVariant.manage_inventory) {
       return true
     }
-
-    // If we allow back orders on the variant, we can add to cart
     if (selectedVariant?.allow_backorder) {
       return true
     }
-
-    // If there is inventory available, we can add to cart
     if (
       selectedVariant?.manage_inventory &&
       (selectedVariant?.inventory_quantity || 0) > 0
     ) {
       return true
     }
-
-    // Otherwise, we can't add to cart
     return false
   }, [selectedVariant])
 
   const actionsRef = useRef<HTMLDivElement>(null)
-
   const inView = useIntersection(actionsRef, "0px")
 
-  // Check if puja details are valid (devotee name is required)
-  const isPujaDetailsValid = !showPujaDetails || !showPujaForm || pujaDetails.devotee_name.trim() !== ""
+  // Check if puja details are valid (at least first devotee name required)
+  const isPujaDetailsValid =
+    !showPujaDetails ||
+    !showPujaForm ||
+    (pujaDetails.devotees.length > 0 &&
+      pujaDetails.devotees[0].name.trim() !== "")
 
-  // add the selected variant to the cart
+  const resolvedButtonText =
+    buttonText ||
+    (!selectedVariant && !options
+      ? "Select variant"
+      : !inStock || !isValidVariant
+        ? "Out of stock"
+        : showPujaDetails && !showPujaForm
+          ? "Add Puja Details & Book"
+          : "Add to Cart")
+
   const handleAddToCart = async () => {
     if (!selectedVariant?.id) return null
 
-    // If puja form is shown but devotee name is empty, show the form
+    // If puja form is shown but not yet visible, show it
     if (showPujaDetails && !showPujaForm) {
       setShowPujaForm(true)
       return
     }
 
     // Validate puja details if form is shown
-    if (showPujaDetails && showPujaForm && !pujaDetails.devotee_name.trim()) {
+    if (
+      showPujaDetails &&
+      showPujaForm &&
+      pujaDetails.devotees[0]?.name.trim() === ""
+    ) {
       return
     }
 
     setIsAdding(true)
 
-    // Prepare metadata for puja details
-    const metadata: PujaDetailsMetadata | undefined = showPujaDetails && showPujaForm ? {
-      devotee_name: pujaDetails.devotee_name,
-      nakshatram: pujaDetails.nakshatram || undefined,
-      rasi: pujaDetails.rasi || undefined,
-      gothram: pujaDetails.gothram || undefined,
-      date_preference: pujaDetails.date_preference || undefined,
-      sankalpam_notes: pujaDetails.sankalpam_notes || undefined,
-    } : undefined
+    // Prepare metadata for puja details (serialized for Medusa)
+    const metadata:
+      | Record<string, unknown>
+      | undefined =
+      showPujaDetails && showPujaForm
+        ? {
+            devotees: JSON.stringify(
+              pujaDetails.devotees.filter((d) => d.name.trim() !== "")
+            ),
+            devotee_name: pujaDetails.devotees
+              .filter((d) => d.name.trim() !== "")
+              .map((d) => d.name)
+              .join(", "),
+            date_preference: pujaDetails.date_preference || undefined,
+            sankalpam_notes: pujaDetails.sankalpam_notes || undefined,
+          }
+        : undefined
 
     await addToCart({
       variantId: selectedVariant.id,
       quantity: 1,
       countryCode,
-      metadata,
+      metadata: metadata as any,
     })
 
     // Reset form after adding to cart
-    setPujaDetails(initialPujaDetails)
+    setPujaDetails({ ...initialPujaDetails, devotees: [{ ...emptyDevotee }] })
     setShowPujaForm(false)
     setIsAdding(false)
   }
@@ -202,7 +226,7 @@ export default function ProductActions({
           )}
         </div>
 
-        <ProductPrice product={product} variant={selectedVariant} />
+        {showPrice && <ProductPrice product={product} variant={selectedVariant} />}
 
         {/* Puja Details Form */}
         {showPujaDetails && showPujaForm && (
@@ -226,17 +250,14 @@ export default function ProductActions({
             (showPujaForm && !isPujaDetailsValid)
           }
           variant="primary"
-          className="w-full h-10"
+          className={
+            buttonClassName ||
+            "h-12 w-full rounded-xl bg-brand-600 text-base font-semibold hover:bg-brand-700"
+          }
           isLoading={isAdding}
           data-testid="add-product-button"
         >
-          {!selectedVariant && !options
-            ? "Select variant"
-            : !inStock || !isValidVariant
-            ? "Out of stock"
-            : showPujaDetails && !showPujaForm
-            ? "Add Puja Details"
-            : "Add to cart"}
+          {resolvedButtonText}
         </Button>
 
         {showPujaDetails && showPujaForm && (

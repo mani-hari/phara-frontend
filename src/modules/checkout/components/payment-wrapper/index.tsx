@@ -28,6 +28,8 @@ const PaymentWrapper: React.FC<PaymentWrapperProps> = ({ cart, children }) => {
     (s) => s.status === "pending"
   )
 
+  // Only wrap with Stripe provider when using Stripe-like payment methods
+  // Razorpay and PayPal load their own SDKs dynamically and don't need a wrapper
   if (
     isStripeLike(paymentSession?.provider_id) &&
     paymentSession &&

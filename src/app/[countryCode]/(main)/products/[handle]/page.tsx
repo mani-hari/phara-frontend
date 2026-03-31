@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { listProducts } from "@lib/data/products"
 import { getRegion, listRegions } from "@lib/data/regions"
+import { getProductPrice } from "@lib/util/get-product-price"
 import ProductTemplate from "@modules/products/templates"
 import { HttpTypes } from "@medusajs/types"
 
@@ -88,11 +89,11 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${product.title} | Medusa Store`,
-    description: `${product.title}`,
+    title: `${product.title} | PariharaOnline`,
+    description: product.description || `${product.title} - Book authentic temple services at PariharaOnline`,
     openGraph: {
-      title: `${product.title} | Medusa Store`,
-      description: `${product.title}`,
+      title: `${product.title} | PariharaOnline`,
+      description: product.description || `${product.title} - Book authentic temple services at PariharaOnline`,
       images: product.thumbnail ? [product.thumbnail] : [],
     },
   }
@@ -120,12 +121,44 @@ export default async function ProductPage(props: Props) {
     notFound()
   }
 
+  const { cheapestPrice } = getProductPrice({ product: pricedProduct })
+
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: pricedProduct.title,
+    description: pricedProduct.description || pricedProduct.title,
+    image: pricedProduct.thumbnail || undefined,
+    brand: {
+      "@type": "Brand",
+      name: "PariharaOnline",
+    },
+    ...(cheapestPrice && {
+      offers: {
+        "@type": "Offer",
+        price: cheapestPrice.calculated_price_number / 100,
+        priceCurrency: cheapestPrice.currency_code?.toUpperCase(),
+        availability: "https://schema.org/InStock",
+        seller: {
+          "@type": "Organization",
+          name: "PariharaOnline",
+        },
+      },
+    }),
+  }
+
   return (
-    <ProductTemplate
-      product={pricedProduct}
-      region={region}
-      countryCode={params.countryCode}
-      images={images}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+      <ProductTemplate
+        product={pricedProduct}
+        region={region}
+        countryCode={params.countryCode}
+        images={images}
+      />
+    </>
   )
 }

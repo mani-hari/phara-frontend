@@ -22,7 +22,7 @@ import { getRegion } from "./regions"
  */
 export async function retrieveCart(cartId?: string, fields?: string) {
   const id = cartId || (await getCartId())
-  fields ??= "*items, *region, *items.product, *items.variant, *items.thumbnail, *items.metadata, +items.total, *promotions, +shipping_methods.name"
+  fields ??= "*items, *region, *items.product, *items.variant, *items.thumbnail, *items.metadata, +items.total, +items.product_title, +items.product_handle, +items.variant_title, *promotions, +shipping_methods.name"
 
   if (!id) {
     return null
@@ -120,6 +120,34 @@ export interface PujaDetailsMetadata {
   sankalpam_notes?: string
 }
 
+export async function updateCartPujaDetails(details: {
+  devotees: {
+    name: string
+    nakshatram?: string
+    rasi?: string
+    gothram?: string
+  }[]
+  date_preference?: string
+  sankalpam_notes?: string
+}) {
+  const devotees = details.devotees.filter((devotee) => devotee.name.trim() !== "")
+
+  return updateCart({
+    metadata: {
+      devotees: JSON.stringify(devotees),
+      devotee_name: devotees.map((devotee) => devotee.name).join(", "),
+      date_preference: details.date_preference || undefined,
+      sankalpam_notes: details.sankalpam_notes || undefined,
+      devotee_count: devotees.length,
+      puja_details: JSON.stringify({
+        devotees,
+        date_preference: details.date_preference || "",
+        sankalpam_notes: details.sankalpam_notes || "",
+      }),
+    },
+  })
+}
+
 export async function addToCart({
   variantId,
   quantity,
@@ -151,7 +179,7 @@ export async function addToCart({
       {
         variant_id: variantId,
         quantity,
-        metadata: metadata as Record<string, unknown>,
+        metadata: metadata as unknown as Record<string, unknown>,
       },
       {},
       headers

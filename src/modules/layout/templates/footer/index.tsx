@@ -1,155 +1,184 @@
-import { listCategories } from "@lib/data/categories"
 import { listCollections } from "@lib/data/collections"
-import { Text, clx } from "@medusajs/ui"
-
+import { Text } from "@medusajs/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import MedusaCTA from "@modules/layout/components/medusa-cta"
+import Image from "next/image"
+import { Phone, Mail, MessageCircle } from "lucide-react"
 
 export default async function Footer() {
-  const { collections } = await listCollections({
-    fields: "*products",
-  })
-  const productCategories = await listCategories()
+  const { collections } = await listCollections({ fields: "*products" })
 
   return (
-    <footer className="border-t border-ui-border-base w-full">
-      <div className="content-container flex flex-col w-full">
-        <div className="flex flex-col gap-y-6 xsmall:flex-row items-start justify-between py-40">
-          <div>
-            <LocalizedClientLink
-              href="/"
-              className="txt-compact-xlarge-plus text-ui-fg-subtle hover:text-ui-fg-base uppercase"
-            >
-              Medusa Store
-            </LocalizedClientLink>
-          </div>
-          <div className="text-small-regular gap-10 md:gap-x-16 grid grid-cols-2 sm:grid-cols-3">
-            {productCategories && productCategories?.length > 0 && (
-              <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
-                  Categories
-                </span>
-                <ul
-                  className="grid grid-cols-1 gap-2"
-                  data-testid="footer-categories"
-                >
-                  {productCategories?.slice(0, 6).map((c) => {
-                    if (c.parent_category) {
-                      return
-                    }
-
-                    const children =
-                      c.category_children?.map((child) => ({
-                        name: child.name,
-                        handle: child.handle,
-                        id: child.id,
-                      })) || null
-
-                    return (
-                      <li
-                        className="flex flex-col gap-2 text-ui-fg-subtle txt-small"
-                        key={c.id}
-                      >
-                        <LocalizedClientLink
-                          className={clx(
-                            "hover:text-ui-fg-base",
-                            children && "txt-small-plus"
-                          )}
-                          href={`/categories/${c.handle}`}
-                          data-testid="category-link"
-                        >
-                          {c.name}
-                        </LocalizedClientLink>
-                        {children && (
-                          <ul className="grid grid-cols-1 ml-3 gap-2">
-                            {children &&
-                              children.map((child) => (
-                                <li key={child.id}>
-                                  <LocalizedClientLink
-                                    className="hover:text-ui-fg-base"
-                                    href={`/categories/${child.handle}`}
-                                    data-testid="category-link"
-                                  >
-                                    {child.name}
-                                  </LocalizedClientLink>
-                                </li>
-                              ))}
-                          </ul>
-                        )}
-                      </li>
-                    )
-                  })}
-                </ul>
-              </div>
-            )}
-            {collections && collections.length > 0 && (
-              <div className="flex flex-col gap-y-2">
-                <span className="txt-small-plus txt-ui-fg-base">
-                  Collections
-                </span>
-                <ul
-                  className={clx(
-                    "grid grid-cols-1 gap-2 text-ui-fg-subtle txt-small",
-                    {
-                      "grid-cols-2": (collections?.length || 0) > 3,
-                    }
-                  )}
-                >
-                  {collections?.slice(0, 6).map((c) => (
-                    <li key={c.id}>
-                      <LocalizedClientLink
-                        className="hover:text-ui-fg-base"
-                        href={`/collections/${c.handle}`}
-                      >
-                        {c.title}
-                      </LocalizedClientLink>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            <div className="flex flex-col gap-y-2">
-              <span className="txt-small-plus txt-ui-fg-base">Medusa</span>
-              <ul className="grid grid-cols-1 gap-y-2 text-ui-fg-subtle txt-small">
-                <li>
-                  <a
-                    href="https://github.com/medusajs"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    GitHub
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://docs.medusajs.com"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    Documentation
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/medusajs/nextjs-starter-medusa"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="hover:text-ui-fg-base"
-                  >
-                    Source code
-                  </a>
-                </li>
-              </ul>
+    <footer className="w-full bg-[#1F2937] text-grey-20">
+      <div className="content-container">
+        {/* Main footer content */}
+        <div className="grid grid-cols-1 gap-10 px-20 py-16 sm:grid-cols-2 lg:grid-cols-4">
+          {/* Brand + Contact */}
+          <div className="col-span-1 sm:col-span-2 lg:col-span-1">
+            <Image
+              src="/mock-assets/logo.png"
+              alt="PariharaOnline"
+              width={250}
+              height={56}
+              className="h-auto w-[250px]"
+            />
+            <p className="mt-5 text-sm leading-7 text-grey-40">
+              Ancient rituals, modern convenience. Authentic Hindu spiritual
+              services by experienced Vedic scholars.
+            </p>
+            <div className="mt-6 flex flex-col gap-3">
+              <a
+                href="https://wa.me/919743244501"
+                target="_blank"
+                rel="noreferrer"
+                className="flex items-center gap-2 text-sm text-grey-30 hover:text-brand-400 transition-colors"
+              >
+                <MessageCircle className="w-4 h-4" />
+                <span>WhatsApp: +91 974-324-4501</span>
+              </a>
+              <a
+                href="tel:+919743244501"
+                className="flex items-center gap-2 text-sm text-grey-30 hover:text-brand-400 transition-colors"
+              >
+                <Phone className="w-4 h-4" />
+                <span>+91 974-324-4501</span>
+              </a>
+              <a
+                href="mailto:hello@pariharaonline.com"
+                className="flex items-center gap-2 text-sm text-grey-30 hover:text-brand-400 transition-colors"
+              >
+                <Mail className="w-4 h-4" />
+                <span>hello@pariharaonline.com</span>
+              </a>
             </div>
           </div>
+
+          {/* Services */}
+          <div>
+            <h3 className="text-sm font-semibold text-grey-0 mb-4 uppercase tracking-wider">
+              Services
+            </h3>
+            <ul className="flex flex-col gap-2.5">
+              {collections?.slice(0, 6).map((c) => (
+                <li key={c.id}>
+                  <LocalizedClientLink
+                    href={`/collections/${c.handle}`}
+                    className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
+                  >
+                    {c.title}
+                  </LocalizedClientLink>
+                </li>
+              ))}
+              <li>
+                <LocalizedClientLink
+                  href="/store"
+                  className="text-sm text-brand-400 hover:text-brand-300 transition-colors"
+                >
+                  View All Services &rarr;
+                </LocalizedClientLink>
+              </li>
+            </ul>
+          </div>
+
+          {/* Information */}
+          <div>
+            <h3 className="text-sm font-semibold text-grey-0 mb-4 uppercase tracking-wider">
+              Information
+            </h3>
+            <ul className="flex flex-col gap-2.5">
+              <li>
+                <LocalizedClientLink
+                  href="/how-it-works"
+                  className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
+                >
+                  How It Works
+                </LocalizedClientLink>
+              </li>
+              <li>
+                <LocalizedClientLink
+                  href="/about"
+                  className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
+                >
+                  About Us
+                </LocalizedClientLink>
+              </li>
+              <li>
+                <LocalizedClientLink
+                  href="/faq"
+                  className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
+                >
+                  FAQ
+                </LocalizedClientLink>
+              </li>
+              <li>
+                <LocalizedClientLink
+                  href="/astrology"
+                  className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
+                >
+                  Astrology Services
+                </LocalizedClientLink>
+              </li>
+              <li>
+                <LocalizedClientLink
+                  href="/contact"
+                  className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
+                >
+                  Contact Us
+                </LocalizedClientLink>
+              </li>
+              <li>
+                <LocalizedClientLink
+                  href="/blog"
+                  className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
+                >
+                  Blog
+                </LocalizedClientLink>
+              </li>
+            </ul>
+          </div>
+
+          {/* Policies */}
+          <div>
+            <h3 className="text-sm font-semibold text-grey-0 mb-4 uppercase tracking-wider">
+              Policies
+            </h3>
+            <ul className="flex flex-col gap-2.5">
+              <li>
+                <LocalizedClientLink
+                  href="/terms"
+                  className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
+                >
+                  Terms of Service
+                </LocalizedClientLink>
+              </li>
+              <li>
+                <LocalizedClientLink
+                  href="/privacy"
+                  className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
+                >
+                  Privacy Policy
+                </LocalizedClientLink>
+              </li>
+              <li>
+                <LocalizedClientLink
+                  href="/refund"
+                  className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
+                >
+                  Refund Policy
+                </LocalizedClientLink>
+              </li>
+            </ul>
+          </div>
         </div>
-        <div className="flex w-full mb-16 justify-between text-ui-fg-muted">
-          <Text className="txt-compact-small">
-            © {new Date().getFullYear()} Medusa Store. All rights reserved.
+
+        {/* Bottom bar */}
+        <div className="border-t border-grey-80 px-20 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <Text className="text-xs text-grey-50">
+            &copy; {new Date().getFullYear()} PariharaOnline (Harkarma
+            Enterprises LLP). All rights reserved.
           </Text>
-          <MedusaCTA />
+          <Text className="text-xs text-grey-50">
+            Coimbatore, Tamil Nadu, India
+          </Text>
         </div>
       </div>
     </footer>

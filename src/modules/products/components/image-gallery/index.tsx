@@ -8,32 +8,48 @@ type ImageGalleryProps = {
 
 const ImageGallery = ({ images }: ImageGalleryProps) => {
   return (
-    <div className="flex items-start relative">
-      <div className="flex flex-col flex-1 small:mx-16 gap-y-4">
-        {images.map((image, index) => {
-          return (
+    <div className="flex flex-col gap-y-4">
+      {/* Main image */}
+      {images[0] && (
+        <Container className="relative aspect-[4/3] w-full overflow-hidden bg-warm-50 rounded-xl">
+          {!!images[0].url && (
+            <Image
+              src={images[0].url}
+              priority
+              className="absolute inset-0 rounded-xl"
+              alt="Product image"
+              fill
+              sizes="(max-width: 576px) 100vw, (max-width: 992px) 50vw, 600px"
+              style={{ objectFit: "cover" }}
+            />
+          )}
+        </Container>
+      )}
+
+      {/* Thumbnail grid for additional images */}
+      {images.length > 1 && (
+        <div className="grid grid-cols-3 gap-3">
+          {images.slice(1, 4).map((image, index) => (
             <Container
               key={image.id}
-              className="relative aspect-[29/34] w-full overflow-hidden bg-ui-bg-subtle"
+              className="relative aspect-square w-full overflow-hidden bg-warm-50 rounded-lg"
               id={image.id}
             >
               {!!image.url && (
                 <Image
                   src={image.url}
-                  priority={index <= 2 ? true : false}
-                  className="absolute inset-0 rounded-rounded"
-                  alt={`Product image ${index + 1}`}
+                  priority={false}
+                  className="absolute inset-0 rounded-lg"
+                  alt={`Product image ${index + 2}`}
                   fill
-                  sizes="(max-width: 576px) 280px, (max-width: 768px) 360px, (max-width: 992px) 480px, 800px"
-                  style={{
-                    objectFit: "cover",
-                  }}
+                  sizes="(max-width: 576px) 120px, 180px"
+                  style={{ objectFit: "cover" }}
                 />
               )}
             </Container>
-          )
-        })}
-      </div>
+          ))}
+        </div>
+      )}
     </div>
   )
 }

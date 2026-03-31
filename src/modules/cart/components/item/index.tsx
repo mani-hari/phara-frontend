@@ -40,22 +40,48 @@ const Item = ({ item, type = "full", currencyCode }: ItemProps) => {
       })
   }
 
-  // TODO: Update this to grab the actual max inventory
   const maxQtyFromInventory = 10
   const maxQuantity = item.variant?.manage_inventory ? 10 : maxQtyFromInventory
+
+  // Fix: Get product title from multiple possible sources
+  const productTitle =
+    item.product_title ||
+    (item as any).product?.title ||
+    item.variant?.product?.title ||
+    item.title ||
+    "Service"
+
+  // Fix: Get product handle from multiple possible sources
+  const productHandle =
+    item.product_handle ||
+    (item as any).product?.handle ||
+    item.variant?.product?.handle ||
+    ""
+
+  // Fix: Get thumbnail from multiple possible sources
+  const thumbnailUrl =
+    item.thumbnail ||
+    (item as any).product?.thumbnail ||
+    item.variant?.product?.thumbnail ||
+    item.variant?.product?.images?.[0]?.url ||
+    null
+
+  // Extract puja details from metadata if present
+  const pujaMetadata = item.metadata as Record<string, any> | null
+  const devoteeInfo = pujaMetadata?.devotee_name || pujaMetadata?.devotees
 
   return (
     <Table.Row className="w-full" data-testid="product-row">
       <Table.Cell className="!pl-0 p-4 w-24">
         <LocalizedClientLink
-          href={`/products/${item.product_handle}`}
+          href={`/products/${productHandle}`}
           className={clx("flex", {
             "w-16": type === "preview",
             "small:w-24 w-12": type === "full",
           })}
         >
           <Thumbnail
-            thumbnail={item.thumbnail}
+            thumbnail={thumbnailUrl}
             images={item.variant?.product?.images}
             size="square"
           />
@@ -64,12 +90,22 @@ const Item = ({ item, type = "full", currencyCode }: ItemProps) => {
 
       <Table.Cell className="text-left">
         <Text
-          className="txt-medium-plus text-ui-fg-base"
+          className="txt-medium-plus text-ui-fg-base font-medium"
           data-testid="product-title"
         >
-          {item.product_title}
+          {productTitle}
         </Text>
         <LineItemOptions variant={item.variant} data-testid="product-variant" />
+        {/* Show puja devotee info if present */}
+        {devoteeInfo && (
+          <Text className="text-xs text-brand-600 mt-1">
+            {typeof devoteeInfo === "string"
+              ? `Devotee: ${devoteeInfo}`
+              : Array.isArray(devoteeInfo)
+                ? `${devoteeInfo.length} devotee(s)`
+                : null}
+          </Text>
+        )}
       </Table.Cell>
 
       {type === "full" && (
@@ -78,11 +114,12 @@ const Item = ({ item, type = "full", currencyCode }: ItemProps) => {
             <DeleteButton id={item.id} data-testid="product-delete-button" />
             <CartItemSelect
               value={item.quantity}
-              onChange={(value) => changeQuantity(parseInt(value.target.value))}
+              onChange={(value) =>
+                changeQuantity(parseInt(value.target.value))
+              }
               className="w-14 h-10 p-4"
               data-testid="product-select-button"
             >
-              {/* TODO: Update this with the v2 way of managing inventory */}
               {Array.from(
                 {
                   length: Math.min(maxQuantity, 10),
@@ -93,10 +130,6 @@ const Item = ({ item, type = "full", currencyCode }: ItemProps) => {
                   </option>
                 )
               )}
-
-              <option value={1} key={1}>
-                1
-              </option>
             </CartItemSelect>
             {updating && <Spinner />}
           </div>
