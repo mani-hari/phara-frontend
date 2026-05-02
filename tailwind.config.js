@@ -21,6 +21,32 @@ module.exports = {
         padding: "padding-top padding-right padding-bottom padding-left",
       },
       colors: {
+        paper: {
+          DEFAULT: "#faf6ee",
+          2: "#f3ecdc",
+          3: "#ebe3cf",
+        },
+        cream: "#fffdf7",
+        ink: {
+          DEFAULT: "#1a1410",
+          2: "#2c241d",
+          3: "#5a4f44",
+          4: "#8b8073",
+        },
+        sindoor: {
+          DEFAULT: "#b6442e",
+          2: "#9a3424",
+          soft: "#f4e3dc",
+        },
+        gold: {
+          DEFAULT: "#b88746",
+          2: "#8a5e26",
+          soft: "#f0e2c4",
+        },
+        sage: {
+          DEFAULT: "#6f7a5a",
+          soft: "#e3e6d8",
+        },
         grey: {
           0: "#FFFFFF",
           5: "#F9FAFB",
@@ -81,7 +107,8 @@ module.exports = {
         "3xl": "2rem",
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "sans-serif"],
+        sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
+        serif: ["var(--font-serif)", "Cormorant Garamond", "serif"],
         display: ["var(--font-display)", "serif"],
         playfair: ["var(--font-playfair)", "serif"],
       },

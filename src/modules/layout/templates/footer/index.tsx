@@ -1,184 +1,114 @@
-import { listCollections } from "@lib/data/collections"
-import { Text } from "@medusajs/ui"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-import Image from "next/image"
-import { Phone, Mail, MessageCircle } from "lucide-react"
+import { Logo } from "@modules/common/components/brand"
+
+type FooterColumn = {
+  title: string
+  links: { label: string; href: string }[]
+}
+
+const FOOTER_COLUMNS: FooterColumn[] = [
+  {
+    title: "Services",
+    links: [
+      { label: "Temple Poojas", href: "/collections/all-pujas" },
+      { label: "Homams", href: "/collections/all-pujas" },
+      { label: "Astrology", href: "/astrology" },
+      { label: "Prasadam", href: "/products/garbharakshambika-ghee" },
+      { label: "Annadanam", href: "/products/annadhanam-donate-food-to-homeless-children" },
+    ],
+  },
+  {
+    title: "Discover",
+    links: [
+      { label: "Blog", href: "/blog" },
+      { label: "Ask Parihara", href: "/ask-parihara" },
+      { label: "About", href: "/about" },
+      { label: "How It Works", href: "/how-it-works" },
+    ],
+  },
+  {
+    title: "Help",
+    links: [
+      { label: "FAQ", href: "/faq" },
+      { label: "Refunds", href: "/refund" },
+      { label: "Terms", href: "/terms" },
+      { label: "Privacy", href: "/privacy" },
+      { label: "Contact", href: "/contact" },
+    ],
+  },
+]
 
 export default async function Footer() {
-  const { collections } = await listCollections({ fields: "*products" })
+  const year = new Date().getFullYear()
 
   return (
-    <footer className="w-full bg-[#1F2937] text-grey-20">
+    <footer
+      style={{
+        background: "#1a1410",
+        color: "rgba(250, 246, 238, 0.75)",
+        padding: "48px 0 32px",
+      }}
+    >
       <div className="content-container">
-        {/* Main footer content */}
-        <div className="grid grid-cols-1 gap-10 px-20 py-16 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Brand + Contact */}
-          <div className="col-span-1 sm:col-span-2 lg:col-span-1">
-            <Image
-              src="/mock-assets/logo.png"
-              alt="PariharaOnline"
-              width={250}
-              height={56}
-              className="h-auto w-[250px]"
-            />
-            <p className="mt-5 text-sm leading-7 text-grey-40">
-              Ancient rituals, modern convenience. Authentic Hindu spiritual
-              services by experienced Vedic scholars.
+        <div
+          className="grid"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "1.4fr repeat(3, 1fr)",
+            gap: 40,
+          }}
+        >
+          <div className="col-span-full small:col-span-1" style={{ minWidth: 240 }}>
+            <Logo size={32} dark showTagline />
+            <p
+              className="ph-body-sm"
+              style={{ color: "rgba(250,246,238,0.6)", maxWidth: 320, marginTop: 16 }}
+            >
+              Sacred rituals, performed in your name. Trusted by 4,200+ devotees across 18
+              countries.
             </p>
-            <div className="mt-6 flex flex-col gap-3">
-              <a
-                href="https://wa.me/919743244501"
-                target="_blank"
-                rel="noreferrer"
-                className="flex items-center gap-2 text-sm text-grey-30 hover:text-brand-400 transition-colors"
+          </div>
+
+          {FOOTER_COLUMNS.map((col) => (
+            <div key={col.title}>
+              <div
+                className="ph-eyebrow ph-eyebrow-gold"
+                style={{ marginBottom: 12 }}
               >
-                <MessageCircle className="w-4 h-4" />
-                <span>WhatsApp: +91 974-324-4501</span>
-              </a>
-              <a
-                href="tel:+919743244501"
-                className="flex items-center gap-2 text-sm text-grey-30 hover:text-brand-400 transition-colors"
-              >
-                <Phone className="w-4 h-4" />
-                <span>+91 974-324-4501</span>
-              </a>
-              <a
-                href="mailto:hello@pariharaonline.com"
-                className="flex items-center gap-2 text-sm text-grey-30 hover:text-brand-400 transition-colors"
-              >
-                <Mail className="w-4 h-4" />
-                <span>hello@pariharaonline.com</span>
-              </a>
+                {col.title}
+              </div>
+              <ul style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    <LocalizedClientLink
+                      href={link.href}
+                      style={{
+                        fontSize: 13,
+                        color: "rgba(250,246,238,0.75)",
+                      }}
+                      className="hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </LocalizedClientLink>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
-
-          {/* Services */}
-          <div>
-            <h3 className="text-sm font-semibold text-grey-0 mb-4 uppercase tracking-wider">
-              Services
-            </h3>
-            <ul className="flex flex-col gap-2.5">
-              {collections?.slice(0, 6).map((c) => (
-                <li key={c.id}>
-                  <LocalizedClientLink
-                    href={`/collections/${c.handle}`}
-                    className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
-                  >
-                    {c.title}
-                  </LocalizedClientLink>
-                </li>
-              ))}
-              <li>
-                <LocalizedClientLink
-                  href="/store"
-                  className="text-sm text-brand-400 hover:text-brand-300 transition-colors"
-                >
-                  View All Services &rarr;
-                </LocalizedClientLink>
-              </li>
-            </ul>
-          </div>
-
-          {/* Information */}
-          <div>
-            <h3 className="text-sm font-semibold text-grey-0 mb-4 uppercase tracking-wider">
-              Information
-            </h3>
-            <ul className="flex flex-col gap-2.5">
-              <li>
-                <LocalizedClientLink
-                  href="/how-it-works"
-                  className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
-                >
-                  How It Works
-                </LocalizedClientLink>
-              </li>
-              <li>
-                <LocalizedClientLink
-                  href="/about"
-                  className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
-                >
-                  About Us
-                </LocalizedClientLink>
-              </li>
-              <li>
-                <LocalizedClientLink
-                  href="/faq"
-                  className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
-                >
-                  FAQ
-                </LocalizedClientLink>
-              </li>
-              <li>
-                <LocalizedClientLink
-                  href="/astrology"
-                  className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
-                >
-                  Astrology Services
-                </LocalizedClientLink>
-              </li>
-              <li>
-                <LocalizedClientLink
-                  href="/contact"
-                  className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
-                >
-                  Contact Us
-                </LocalizedClientLink>
-              </li>
-              <li>
-                <LocalizedClientLink
-                  href="/blog"
-                  className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
-                >
-                  Blog
-                </LocalizedClientLink>
-              </li>
-            </ul>
-          </div>
-
-          {/* Policies */}
-          <div>
-            <h3 className="text-sm font-semibold text-grey-0 mb-4 uppercase tracking-wider">
-              Policies
-            </h3>
-            <ul className="flex flex-col gap-2.5">
-              <li>
-                <LocalizedClientLink
-                  href="/terms"
-                  className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
-                >
-                  Terms of Service
-                </LocalizedClientLink>
-              </li>
-              <li>
-                <LocalizedClientLink
-                  href="/privacy"
-                  className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
-                >
-                  Privacy Policy
-                </LocalizedClientLink>
-              </li>
-              <li>
-                <LocalizedClientLink
-                  href="/refund"
-                  className="text-sm text-grey-40 hover:text-brand-400 transition-colors"
-                >
-                  Refund Policy
-                </LocalizedClientLink>
-              </li>
-            </ul>
-          </div>
+          ))}
         </div>
 
-        {/* Bottom bar */}
-        <div className="border-t border-grey-80 px-20 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <Text className="text-xs text-grey-50">
-            &copy; {new Date().getFullYear()} PariharaOnline (Harkarma
-            Enterprises LLP). All rights reserved.
-          </Text>
-          <Text className="text-xs text-grey-50">
-            Coimbatore, Tamil Nadu, India
-          </Text>
+        <div
+          className="flex flex-col small:flex-row items-start small:items-center justify-between gap-3"
+          style={{
+            borderTop: "1px solid rgba(250,246,238,0.1)",
+            paddingTop: 16,
+            marginTop: 32,
+            fontSize: 11,
+            color: "rgba(250,246,238,0.4)",
+          }}
+        >
+          <span>© {year} PariharaOnline · Coimbatore · Made with देवोत्त</span>
+          <span>Privacy · Terms · Cookies</span>
         </div>
       </div>
     </footer>

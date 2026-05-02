@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>PariharaOnline · Final designs</title>
+  <link rel="stylesheet" href="hifi/styles.css"/>
+  <style>
+    html, body, #root { height: 100%; margin: 0; }
+    body { background: #1a1410; color: #faf6ee; font-family: 'Inter', sans-serif; }
+  </style>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel" src="hifi/design-canvas.jsx"></script>
+  <script type="text/babel" src="hifi/brand.jsx"></script>
+  <script type="text/babel" src="hifi/home.jsx"></script>
+  <script type="text/babel" src="hifi/chat.jsx"></script>
+  <script type="text/babel" src="hifi/floating-chat.jsx"></script>
+  <script type="text/babel" src="hifi/faq-cart.jsx"></script>
+  <script type="text/babel" src="hifi/mobile-cart.jsx"></script>
+  <script type="text/babel" src="hifi/products.jsx"></script>
+  <script type="text/babel" src="hifi/design-system.jsx"></script>
+
+  <script type="text/babel" data-presets="env,react">
+    const App = () => (
+      <DesignCanvas
+        title="PariharaOnline — Final hi-fi designs"
+        subtitle="Ready for Claude Code handoff · 7 pages + design system"
+      >
+        <DCSection id="system" title="01 · Design system" subtitle="Tokens, type scale, components, engineering notes">
+          <DCArtboard id="ds" label="Design system" width={1280} height={3200}><DesignSystemPage/></DCArtboard>
+        </DCSection>
+
+        <DCSection id="home" title="02 · Home" subtitle="Chat-forward landing">
+          <DCArtboard id="home-page" label="Home" width={1280} height={2900}><HomeHiFi/></DCArtboard>
+        </DCSection>
+
+        <DCSection id="chat" title="03 · Ask Parihara — chat states" subtitle="Pill (idle) → mini panel (in-place) → immersive (full page)">
+          <DCArtboard id="state-pill" label="State 1 · Pill (sans-serif, bolder)" width={1280} height={780}><ChatStage state="pill" label="STATE 1 · PILL"/></DCArtboard>
+          <DCArtboard id="state-mini" label="State 2 · Mini panel (480×600 desktop)" width={1280} height={780}><ChatStage state="mini" label="STATE 2 · MINI · DESKTOP"/></DCArtboard>
+          <DCArtboard id="state-mobile" label="State 2 · Mobile bottom-sheet" width={420} height={780}>
+            <div style={{ position: 'relative', height: 780, background: 'var(--paper)', overflow: 'hidden' }}>
+              <div style={{ padding: 20 }}>
+                <Logo size={28}/>
+                <Img deep style={{ height: 200, borderRadius: 12, marginTop: 16 }}>HOMAM</Img>
+                <h2 className="h3 mt-14">Maha Mrityunjaya Homam</h2>
+                <Stars value={4.9} count={142} size={11}/>
+                <p className="body-sm mt-12">A 3-hour fire ritual invoking Lord Shiva's Mrityunjaya mantra.</p>
+              </div>
+              <MobileBottomSheet/>
+            </div>
+          </DCArtboard>
+          <DCArtboard id="state-immersive" label="State 3 · Full Ask Parihara page" width={1280} height={1100}><ImmersiveOverlay/></DCArtboard>
+        </DCSection>
+
+        <DCSection id="products" title="04 · Product pages" subtitle="Generic template + 3 specialized (top 3 = 86% of revenue) · all with FAQ + related products">
+          <DCArtboard id="generic" label="Generic — Mrityunjaya Homam" width={1280} height={2500}><PoojaProductPage/></DCArtboard>
+          <DCArtboard id="ghee" label="Garbarakshambigai Ghee" width={1280} height={3100}><GheePage/></DCArtboard>
+          <DCArtboard id="oil" label="Garbarakshambigai Oil" width={1280} height={2700}><OilPage/></DCArtboard>
+          <DCArtboard id="rk" label="Rahu Ketu Kalahasti" width={1280} height={3100}><RahuKetuPage/></DCArtboard>
+        </DCSection>
+
+        <DCSection id="cart" title="05 · Cart" subtitle="Optimized for conversion · star details made optional & friendly · mobile-first since 76% of buyers are on mobile">
+          <DCArtboard id="cart-page" label="Cart — desktop" width={1280} height={1500}><CartPage/></DCArtboard>
+          <DCArtboard id="cart-mobile-collapsed" label="Cart — mobile (star details collapsed · default)" width={460} height={880}>
+            <PhoneFrame><MobileCart/></PhoneFrame>
+          </DCArtboard>
+          <DCArtboard id="cart-mobile-expanded" label="Cart — mobile (star details expanded)" width={460} height={880}>
+            <PhoneFrame><MobileCartExpanded/></PhoneFrame>
+          </DCArtboard>
+        </DCSection>
+
+        <DCSection id="faq" title="06 · FAQ" subtitle="Categorized accordion · also embedded into every product page">
+          <DCArtboard id="faq-page" label="FAQ" width={1280} height={1400}><FAQPage/></DCArtboard>
+        </DCSection>
+      </DesignCanvas>
+    );
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

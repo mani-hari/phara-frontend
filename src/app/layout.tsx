@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import { getBaseURL } from "@lib/util/env"
 import Script from "next/script"
 import {
+  Cormorant_Garamond,
   DM_Serif_Display,
   Inter,
   Playfair_Display,
@@ -11,6 +12,13 @@ import "@styles/globals.css"
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
+})
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-serif",
 })
 
 const dmSerif = DM_Serif_Display({
@@ -129,7 +137,8 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${dmSerif.variable} ${playfair.variable} bg-white font-sans text-grey-90`}
+        className={`${inter.variable} ${cormorant.variable} ${dmSerif.variable} ${playfair.variable} font-sans`}
+        style={{ background: "var(--paper)", color: "var(--ink-2)" }}
       >
         <main className="relative">{children}</main>
       </body>

@@ -2,7 +2,7 @@ import { Metadata } from "next"
 
 import { listProducts } from "@lib/data/products"
 import { getRegion } from "@lib/data/regions"
-import MockHomepage from "@modules/home/templates/mock-homepage"
+import HomeV3 from "@modules/home/templates/home-v3"
 
 export const metadata: Metadata = {
   title: "PariharaOnline - Ancient Rituals, Modern Convenience",
@@ -44,7 +44,7 @@ export default async function Home(props: {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageJsonLd) }}
       />
-      <MockHomepage countryCode={countryCode} products={products} region={region} />
+      <HomeV3 countryCode={countryCode} products={products} region={region} />
     </>
   )
 }
