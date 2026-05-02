@@ -15,24 +15,29 @@ function checkEnvVariables() {
   })
 
   if (missingEnvs.length > 0) {
-    console.error(
-      c.red.bold("\n🚫 Error: Missing required environment variables\n")
-    )
-
-    missingEnvs.forEach(function (env) {
-      console.error(c.yellow(`  ${c.bold(env.key)}`))
-      if (env.description) {
-        console.error(c.dim(`    ${env.description}\n`))
-      }
-    })
-
-    console.error(
-      c.yellow(
-        "\nPlease set these variables in your .env file or environment before starting the application.\n"
+    // Don't hard-fail the build on missing env. Runtime code soft-fails
+    // when Medusa is unreachable (see src/middleware.ts and src/lib/data/*),
+    // so a deploy with a partially-configured Vercel project still ships
+    // a working shell instead of a red 500. Keep the warning loud so the
+    // miss is obvious in build logs.
+    console.warn(
+      c.yellow.bold(
+        "\n⚠ Warning: Missing recommended environment variables\n"
       )
     )
 
-    process.exit(1)
+    missingEnvs.forEach(function (env) {
+      console.warn(c.yellow(`  ${c.bold(env.key)}`))
+      if (env.description) {
+        console.warn(c.dim(`    ${env.description}\n`))
+      }
+    })
+
+    console.warn(
+      c.yellow(
+        "\nThe site will build but Medusa-backed pages will render empty until these are set.\n"
+      )
+    )
   }
 }
 
