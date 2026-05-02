@@ -14,15 +14,20 @@ export const metadata: Metadata = {
   metadataBase: new URL(getBaseURL()),
 }
 
+// Render at request time so the build doesn't depend on Medusa being
+// reachable from Vercel's build environment.
+export const dynamic = "force-dynamic"
+
 export default async function PageLayout(props: { children: React.ReactNode }) {
-  const customer = await retrieveCustomer()
-  const cart = await retrieveCart()
+  // Soft-fail every Medusa call so the chrome (nav + footer + chat pill)
+  // still renders if the backend is briefly unreachable.
+  const customer = await retrieveCustomer().catch(() => null)
+  const cart = await retrieveCart().catch(() => null)
   let shippingOptions: StoreCartShippingOption[] = []
 
   if (cart) {
-    const { shipping_options } = await listCartOptions()
-
-    shippingOptions = shipping_options
+    const opts = await listCartOptions().catch(() => null)
+    shippingOptions = opts?.shipping_options ?? []
   }
 
   return (

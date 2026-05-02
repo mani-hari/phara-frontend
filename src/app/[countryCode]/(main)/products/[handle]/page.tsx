@@ -11,6 +11,10 @@ type Props = {
   searchParams: Promise<{ v_id?: string }>
 }
 
+// Render at request time so the build doesn't depend on Medusa being
+// reachable from Vercel's build environment.
+export const dynamic = "force-dynamic"
+
 export async function generateStaticParams() {
   try {
     const countryCodes = await listRegions().then((regions) =>

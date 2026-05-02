@@ -10,24 +10,26 @@ export const metadata: Metadata = {
     "Book authentic Hindu temple pujas, homams, and astrology services online. Sacred prasad delivered worldwide from renowned temples across India.",
 }
 
+// Render at request time so the build doesn't depend on Medusa being
+// reachable from Vercel's build environment.
+export const dynamic = "force-dynamic"
+
 export default async function Home(props: {
   params: Promise<{ countryCode: string }>
 }) {
   const { countryCode } = await props.params
-  const region = await getRegion(countryCode)
 
-  if (!region) {
-    return null
-  }
+  // Soft-fail Medusa so the home renders even when the backend is briefly
+  // unreachable. Featured-product cards just show empty if the catalog
+  // can't be loaded.
+  const [region, productsResponse] = await Promise.all([
+    getRegion(countryCode).catch(() => null),
+    listProducts({ countryCode, queryParams: { limit: 100 } }).catch(() => ({
+      response: { products: [] as any[] },
+    })),
+  ])
 
-  const {
-    response: { products },
-  } = await listProducts({
-    countryCode,
-    queryParams: {
-      limit: 100,
-    },
-  })
+  const products = productsResponse?.response?.products ?? []
 
   const homepageJsonLd = {
     "@context": "https://schema.org",
@@ -44,7 +46,7 @@ export default async function Home(props: {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageJsonLd) }}
       />
-      <HomeV3 countryCode={countryCode} products={products} region={region} />
+      <HomeV3 countryCode={countryCode} products={products} region={region as any} />
     </>
   )
 }

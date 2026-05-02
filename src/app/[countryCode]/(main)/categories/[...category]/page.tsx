@@ -15,31 +15,37 @@ type Props = {
   }>
 }
 
-export async function generateStaticParams() {
-  const product_categories = await listCategories()
+// Render at request time so the build doesn't depend on Medusa being
+// reachable from Vercel's build environment.
+export const dynamic = "force-dynamic"
 
-  if (!product_categories) {
+export async function generateStaticParams() {
+  try {
+    const product_categories = await listCategories()
+    if (!product_categories) return []
+
+    const countryCodes = await listRegions().then((regions: StoreRegion[]) =>
+      regions?.map((r) => r.countries?.map((c) => c.iso_2)).flat()
+    )
+
+    const categoryHandles = product_categories.map(
+      (category: any) => category.handle
+    )
+
+    return (
+      countryCodes
+        ?.map((countryCode: string | undefined) =>
+          categoryHandles.map((handle: any) => ({
+            countryCode,
+            category: [handle],
+          }))
+        )
+        .flat() ?? []
+    )
+  } catch (error) {
+    console.warn("[categories] generateStaticParams failed; falling back to on-demand:", error)
     return []
   }
-
-  const countryCodes = await listRegions().then((regions: StoreRegion[]) =>
-    regions?.map((r) => r.countries?.map((c) => c.iso_2)).flat()
-  )
-
-  const categoryHandles = product_categories.map(
-    (category: any) => category.handle
-  )
-
-  const staticParams = countryCodes
-    ?.map((countryCode: string | undefined) =>
-      categoryHandles.map((handle: any) => ({
-        countryCode,
-        category: [handle],
-      }))
-    )
-    .flat()
-
-  return staticParams
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
