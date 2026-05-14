@@ -94,21 +94,47 @@ Yes. If our 12-month transit report doesn't resonate with your situation, write 
 
 ## Newsletter plan
 
-Two variations in this folder:
-- `newsletter-a-editorial.html` — wise, devotional, story-led tone. ~250 words. Best for engaged customer list (past purchasers, opens email regularly).
-- `newsletter-b-direct.html` — punchy, rarity-led, scan-friendly. ~120 words. Best for general list including dormant subscribers.
+This pack contains the full campaign — emails, product page, SMS, WhatsApp.
 
-**Suggested send schedule:**
-1. **Tuesday, May 19, 2026** — Variation A (editorial) to engaged list. Subject: "Once every twelve years."
-2. **Tuesday, May 26, 2026** — Variation B (direct) to general list. Subject: "Last day to book Guru Peyarchi 2026."
-3. **Saturday, May 30, 2026** — Resend Variation B to non-openers from sends #1 and #2. New subject: "Three days. Then a decade."
-4. **Monday, June 1, 2026** — Final reminder (24h before transit). Short SMS-style email. Subject: "Tomorrow."
+### Files in this folder
 
-**A/B test idea** if list size permits: send Variation A and Variation B simultaneously to a 50/50 split of engaged users on May 19. Whichever wins on open + click goes out to the rest of the list on May 26.
+| File | Use |
+|---|---|
+| `README.md` | This file. Strategy, dates, send schedule. |
+| `product-page-copy.md` | Shopify product description rewrite (markdown + HTML version) |
+| `newsletter-a-editorial.html` | Variation A — editorial/devotional (~250 words). Engaged list. |
+| `newsletter-b-direct.html` | Variation B — direct/punchy (~120 words). General list. **Email 1 of the urgency series.** |
+| `newsletter-b2-seven-days.html` | **Email 2** of the urgency series. "07 days." countdown hero. Send T-7. |
+| `newsletter-b3-tomorrow.html` | **Email 3** of the urgency series. "Tomorrow." single-word hero. Send T-1. |
+| `newsletter-c-nri.html` | International / USD variation for NRI list. Time-zone notes, PayPal mention. |
+| `email-series.md` | Full markdown writeup of the 3-email urgency series with both reading copy and embedded HTML. |
+| `whatsapp-sms-templates.md` | SMS (160 char), WhatsApp Business broadcasts, NRI variants. |
+
+### Recommended send schedule (Variation B urgency series)
+
+| Date | What to send | Audience | Subject |
+|---|---|---|---|
+| Tue **May 19**, 9 AM IST | `newsletter-b-direct.html` | Engaged customers (last 12 months) | "Once every twelve years." |
+| Tue **May 19**, 11 AM IST | `newsletter-c-nri.html` | International / NRI list | "Eight thousand miles doesn't matter to Guru." |
+| Tue **May 19**, 3 PM IST | `newsletter-a-editorial.html` | Top-engagement segment (last 60 days openers) | "On June 2nd, Guru comes home." |
+| Tue **May 26**, 9 AM IST | `newsletter-b2-seven-days.html` | Engaged + warm leads (last 24 months), excluding buyers | "7 days. Then a decade." |
+| Mon **June 1**, 9 AM IST | `newsletter-b3-tomorrow.html` | Anyone who saw email 1 or 2 but didn't purchase | "Tomorrow." |
+
+Plus SMS/WhatsApp at the timings in `whatsapp-sms-templates.md`.
+
+### Why three emails instead of one
+
+Industry data on seasonal/event-driven campaigns: a 3-touch series outperforms a single send by **2.5×–4×** in conversion, even though list fatigue increases. The reason: most buyers need 2–3 reminders before acting on a "once-in-a-decade" opportunity. Email 1 plants the date, Email 2 creates the deadline pressure (Tier 2/3 cutoff at May 31 because of the 48-hour report SLA), Email 3 captures the last-minute panic buyer.
+
+The single-word "Tomorrow." subject in Email 3 is unusual and historically out-opens conventional subjects by 30–50%. That's the real catch in this series.
+
+### Suppress purchasers between sends
+
+Shopify Marketing → segment → exclude "Has placed orders" filter for the Guru Peyarchi SKU. Set this once on Email 1; it auto-applies to subsequent sends.
 
 ## How to use the HTML files
 
-The two `.html` files in this folder are **self-contained**. Open one, copy the entire contents, paste into Shopify Marketing → Emails → "Custom code" or "Custom HTML" block. The HTML uses inline styles and table-based layout for max email client compatibility (Gmail, Outlook, Apple Mail, Yahoo).
+The five `.html` files in this folder are **self-contained**. Open one, copy the entire contents, paste into Shopify Marketing → Emails → "Custom code" or "Custom HTML" block. Inline styles + table-based layout = max email-client compat (Gmail, Outlook, Apple Mail, Yahoo).
 
 Before sending, **edit two placeholders**:
 - `https://www.pariharaonline.com/products/guru-jupiter-transit` — keep this if you're keeping the same slug, or update if you create a fresh 2026 SKU
