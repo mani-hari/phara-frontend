@@ -1,11 +1,59 @@
 # Plan v2 — WYSIWYG content editor for PariharaOnline
 
-**Status:** Plan only. v1 is preserved in git history (commit `2924f69`). Awaiting decisions on §11 before implementation.
+**Status:** ✅ All decisions locked. Implementation can begin.
+v1 preserved in git history (commit `2924f69`).
 
-**Changes since v1:**
-- Dropped the HTML editing view (was the fragile, custom-built piece)
-- Added a dedicated **HTML snippet field** per page — clean separation between body content (visual/markdown) and embed/widget code (raw HTML)
-- Phase 2 work reduced from 1 day to ½ day as a result
+## Locked decisions
+
+| # | Decision | Locked answer |
+|---|---|---|
+| 1 | Snippet slots | **Single slot** per page (`htmlSnippet`). Renders at fixed location: bottom of body, above footer. |
+| 2 | Sanitisation | **Allow everything, including `<script>` tags.** Admin-only field. Warning shown in admin UI: *"This HTML runs live. `<script>` tags execute."* |
+| 3 | Publishing flow | **Two-branch: commits to `claude/dev_1.1` then auto-merges to `main`.** Implementation: Keystatic commits to dev_1.1 as usual; a GitHub Actions workflow watches for content-only commits (paths matching `content/**` or `public/images/**`) and fast-forwards `main` if there are no conflicts. Code changes (any non-content path) still flow through the normal dev_1.1 → manual merge to main path. |
+| 4 | Auth path | Keystatic Cloud (default) — magic-link to `manihk@gmail.com` |
+| 5 | Image storage | Git (default) — migrate to Vercel Blob or Cloudinary if we exceed ~500 images |
+| 6 | Phasing | Phase 1–3 first, verify Mani's daily workflow, then Phase 4–6 |
+| 7 | Existing `/blog/editor` | Preserve until Phase 3 ships, then delete |
+
+## Auto-merge workflow detail (added for decision #3)
+
+New file in Phase 1: `.github/workflows/cms-auto-merge.yml`
+
+```yaml
+name: CMS auto-merge content to main
+on:
+  push:
+    branches: [claude/dev_1.1]
+    paths:
+      - 'content/**'
+      - 'public/images/**'
+jobs:
+  fast-forward-main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Fast-forward main to dev_1.1
+        run: |
+          git config user.name "Keystatic CMS"
+          git config user.email "cms@pariharaonline.com"
+          git fetch origin main:main
+          git checkout main
+          git merge --ff-only origin/claude/dev_1.1
+          git push origin main
+```
+
+- Triggers **only** when the push touches `content/**` or `public/images/**` paths (so pure code changes still need manual review before reaching main)
+- Uses `--ff-only` so any non-trivial divergence falls back to manual merge (safe by default)
+- Runs in ~30 seconds; Mani's content edits propagate to main automatically
+
+If the merge ever fails (e.g., main has commits dev_1.1 doesn't), the workflow exits non-zero and posts a notification — manual sync needed.
+
+---
+
+# Plan v2 — WYSIWYG content editor for PariharaOnline
 
 ---
 
