@@ -3,10 +3,11 @@ import { collection, config, fields, singleton } from "@keystatic/core"
 /* =====================================================================
    Keystatic config — PariharaOnline storefront CMS
 
-   Storage starts as "local" so dev (npm run dev) works without any
-   external setup. After Mani creates a Keystatic Cloud project and
-   links the GitHub repo, swap `storage` to `cloud` (see env switch
-   below) for production magic-link auth and git-backed publishing.
+   Production: storage uses Keystatic Cloud (magic-link auth, commits
+   via the Keystatic Cloud GitHub App to claude/dev_1.1).
+   Dev: set KEYSTATIC_STORAGE_KIND=local in .env.local to write to
+   the local filesystem without any auth — useful for testing schema
+   changes before pushing.
 
    Branch policy: edits commit to claude/dev_1.1 (current dev branch).
    A GitHub Actions workflow (.github/workflows/cms-auto-merge.yml)
@@ -14,6 +15,14 @@ import { collection, config, fields, singleton } from "@keystatic/core"
 
    See docs/plans/cms-editor-plan.md for full rationale.
    ===================================================================== */
+
+const KEYSTATIC_CLOUD_PROJECT =
+  process.env.KEYSTATIC_CLOUD_PROJECT || "phara-frontend/phara-frontend"
+
+// Default to cloud so production deploys "just work" once the env var
+// chain is in place. Override to "local" for dev with no auth.
+const storageKind =
+  process.env.KEYSTATIC_STORAGE_KIND === "local" ? "local" : "cloud"
 
 const seoFields = {
   seoTitle: fields.text({
@@ -44,20 +53,11 @@ const htmlSnippetField = fields.text({
   multiline: true,
 })
 
-const storageKind =
-  process.env.KEYSTATIC_STORAGE_KIND === "cloud" ? "cloud" : "local"
-
 export default config({
-  // @ts-expect-error — Keystatic's storage type narrows on `kind`
-  storage: storageKind === "cloud"
-    ? {
-        kind: "cloud",
-      }
-    : {
-        kind: "local",
-      },
+  storage:
+    storageKind === "cloud" ? { kind: "cloud" } : { kind: "local" },
   cloud: {
-    project: process.env.KEYSTATIC_CLOUD_PROJECT || "manihk/phara-frontend",
+    project: KEYSTATIC_CLOUD_PROJECT,
   },
   ui: {
     brand: {
