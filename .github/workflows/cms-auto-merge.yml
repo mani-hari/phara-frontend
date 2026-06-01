@@ -1,0 +1,51 @@
+name: CMS auto-merge content to main
+
+# When Keystatic (or anyone) pushes content-only changes to claude/dev_1.1,
+# fast-forward main so the production branch stays in sync. Pure code changes
+# (any path outside content/** or public/images/**) still need manual review
+# before reaching main.
+#
+# See docs/plans/cms-editor-plan.md for the rationale.
+
+on:
+  push:
+    branches:
+      - claude/dev_1.1
+    paths:
+      - "content/**"
+      - "public/images/**"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cms-auto-merge
+  cancel-in-progress: false
+
+jobs:
+  fast-forward-main:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure git
+        run: |
+          git config user.name "Keystatic CMS"
+          git config user.email "cms@pariharaonline.com"
+
+      - name: Fast-forward main to claude/dev_1.1
+        run: |
+          set -euo pipefail
+          git fetch origin main:main || git fetch origin main
+          git checkout main
+          if git merge --ff-only origin/claude/dev_1.1; then
+            git push origin main
+            echo "✅ main fast-forwarded to claude/dev_1.1"
+          else
+            echo "::warning::main and claude/dev_1.1 have diverged — manual merge required."
+            exit 1
+          fi

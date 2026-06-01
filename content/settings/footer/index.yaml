@@ -1,0 +1,37 @@
+tagline: Sacred rituals, performed in your name. Trusted by 4,200+ devotees across 18 countries.
+columns:
+  - title: Services
+    links:
+      - label: Temple Poojas
+        href: /collections/all-pujas
+      - label: Homams
+        href: /collections/all-pujas
+      - label: Astrology
+        href: /astrology
+      - label: Prasadam
+        href: /products/garbharakshambika-ghee
+      - label: Annadanam
+        href: /products/annadhanam-donate-food-to-homeless-children
+  - title: Discover
+    links:
+      - label: Blog
+        href: /blog
+      - label: Ask Parihara
+        href: /ask-parihara
+      - label: About
+        href: /about
+      - label: How It Works
+        href: /how-it-works
+  - title: Help
+    links:
+      - label: FAQ
+        href: /faq
+      - label: Refunds
+        href: /refund
+      - label: Terms
+        href: /terms
+      - label: Privacy
+        href: /privacy
+      - label: Contact
+        href: /contact
+bottomLine: © PariharaOnline · Coimbatore · Made with देवोत्त

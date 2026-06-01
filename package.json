@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
+    "@keystatic/core": "^0.5.50",
+    "@keystatic/next": "^5.0.4",
     "@medusajs/icons": "^2.3.0",
     "@medusajs/js-sdk": "^2.12.2",
     "@medusajs/ui": "^4.0.30",
