@@ -7,7 +7,11 @@
     "dev": "next dev -p 3000",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "medusa:unlock": "node scripts/medusa-toggle.mjs unlock",
+    "medusa:lock": "node scripts/medusa-toggle.mjs lock",
+    "medusa:status": "node scripts/medusa-toggle.mjs status",
+    "medusa:key:set": "bash scripts/medusa-admin-key-set.sh"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^1.2.12",

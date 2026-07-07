@@ -48,7 +48,7 @@ Full list with placeholders in [`.env.example`](../.env.example). Copy to `.env.
 (gitignored) and fill real values. **Never commit secrets.** Categories:
 
 - **Site:** `NEXT_PUBLIC_SITE_NAME`, `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_BASE_URL`, `NEXT_PUBLIC_DEFAULT_REGION` (`in`), `NEXT_PUBLIC_ADMIN_EMAILS`
-- **Medusa:** `MEDUSA_BACKEND_URL`, `NEXT_PUBLIC_MEDUSA_BACKEND_URL`, `NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY` (public), `MEDUSA_ADMIN_API_KEY` (🔒 secret, admin scripts), `MEDUSA_CLOUD_S3_HOSTNAME`, `MEDUSA_CLOUD_S3_PATHNAME`
+- **Medusa:** `MEDUSA_BACKEND_URL`, `NEXT_PUBLIC_MEDUSA_BACKEND_URL`, `NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY` (public), `MEDUSA_CLOUD_S3_HOSTNAME`, `MEDUSA_CLOUD_S3_PATHNAME`. **The admin key is NOT here** — see "Admin backend access" below.
 - **Payments:** `NEXT_PUBLIC_PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET` (🔒), `NEXT_PUBLIC_PAYPAL_SANDBOX`, `NEXT_PUBLIC_RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET` (🔒), `NEXT_PUBLIC_STRIPE_KEY`, `NEXT_PUBLIC_MEDUSA_PAYMENTS_*`
 - **AI:** `ANTHROPIC_API_KEY` (🔒)
 - **Auth:** `NEXTAUTH_SECRET` (🔒), `NEXTAUTH_URL`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` (🔒), `FACEBOOK_CLIENT_ID`, `FACEBOOK_CLIENT_SECRET` (🔒)
@@ -57,6 +57,36 @@ Full list with placeholders in [`.env.example`](../.env.example). Copy to `.env.
 
 Secrets live in: local `.env.local` (dev) and **Vercel → Project → Settings → Environment
 Variables** (preview/prod). Keep the two in sync.
+
+## Admin backend access (gated)
+
+Occasional Medusa **Admin API** work (renaming handles, uploading media, etc.) uses a gated
+wrapper instead of putting the admin key in `.env.local` (no app code needs it, and `.env.local`
+is loaded into the running server — an unused god-key there is pure blast radius).
+
+**How it works:**
+- The admin secret key lives **only in the macOS Keychain** (`service: parihara-medusa-admin`),
+  read into memory only for the duration of one call — never in the repo, `.env.local`, or app env.
+- Access is **default-DENY + time-boxed**: `scripts/medusa-admin.sh` refuses unless an unexpired
+  "armed" marker exists. Arm a **30-min** window; it auto-locks after.
+- Every call is appended to `.medusa-admin/audit.log` (gitignored).
+
+**Workflow** (the intended per-use approval loop):
+```bash
+npm run medusa:status                       # 🔒 LOCKED / 🔓 ARMED — N min left
+npm run medusa:unlock                        # arm a 30-min window (auto-locks)
+scripts/medusa-admin.sh GET  "/admin/products?limit=1&fields=id,handle"
+scripts/medusa-admin.sh POST "/admin/products/prod_123" '{"handle":"new-slug"}'
+npm run medusa:lock                          # disarm early
+```
+Claude will ask in chat before any admin action; you grant a window with `medusa:unlock`
+(and Claude Code also prompts per wrapper run). Nothing admin runs while LOCKED.
+
+**Set / rotate the key:** `npm run medusa:key:set` (paste key, hidden input → Keychain).
+Rotate by creating a fresh secret key in Medusa Admin → Settings → Secret API Keys, running
+`medusa:key:set`, then revoking the old one. Medusa v2 secret keys are full-admin (no per-key
+scoping) — mitigations are the dedicated revocable key, the armed toggle, per-use approval, and
+the audit log.
 
 ## Repo conventions
 

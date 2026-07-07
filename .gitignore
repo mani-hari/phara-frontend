@@ -50,3 +50,7 @@ SESSION_HANDOFF.md
 
 # slug migration working files
 .slug-migration/
+
+# Medusa admin toggle state + audit (local only)
+.medusa-admin.armed
+.medusa-admin/
