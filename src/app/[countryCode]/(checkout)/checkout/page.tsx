@@ -46,6 +46,18 @@ export default async function Checkout({
         {/* Centered, comfortable max-width so the two columns sit centered with
             generous side margins instead of spanning the full 1440px container. */}
         <div style={{ maxWidth: 1040, margin: "0 auto" }}>
+          <h1
+            style={{
+              fontFamily: "var(--serif)",
+              fontWeight: 700,
+              fontSize: "clamp(30px, 4vw, 40px)",
+              color: "var(--ink)",
+              lineHeight: 1.1,
+              marginBottom: 24,
+            }}
+          >
+            Quick Checkout
+          </h1>
           <OnePageCheckout
             cart={cart}
             customer={customer}
