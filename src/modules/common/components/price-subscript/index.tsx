@@ -17,7 +17,7 @@ export default function PriceSubscript({
 }) {
   const { currency, rate } = useLocalCurrency()
 
-  if (typeof amount !== "number" || !currency || !rate) return null
+  if (typeof amount !== "number" || !Number.isFinite(amount) || !currency || !rate) return null
   if ((currencyCode || "").toUpperCase() !== "USD") return null
   if (currency === "USD") return null
 

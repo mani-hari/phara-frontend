@@ -90,7 +90,11 @@ export default function ProductPrice({
           </>
         )}
         <PriceSubscript
-          amount={selectedPrice.calculated_price_number}
+          amount={
+            typeof selectedPrice.calculated_price_number === "number"
+              ? selectedPrice.calculated_price_number / 100 // stored in minor units (cents)
+              : undefined
+          }
           currencyCode={(selectedPrice as any).currency_code}
         />
       </div>

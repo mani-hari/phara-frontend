@@ -14,7 +14,11 @@ import { execSync } from "node:child_process"
 const HOST = "https://pariharaonline.medusajs.app"
 const KEY = execSync(`security find-generic-password -s parihara-medusa-admin -a medusa-admin -w`).toString().trim()
 const BASIC = Buffer.from(`${KEY}:`).toString("base64")
-const INTL_RATE = Number(process.env.INTL_RATE || 32) // USD, major units
+// USD rate in dollars. NOTE: this store's Medusa returns prices in MINOR units
+// (cents) — e.g. an item priced $130 has calculated_amount 13000 — so shipping
+// prices must be set in cents too. We store INTL_RATE in dollars and ×100 below.
+const INTL_RATE = Number(process.env.INTL_RATE || 32) // USD dollars
+const INTL_RATE_MINOR = Math.round(INTL_RATE * 100)
 
 // Canonical option names (used to reconcile — anything else in these zones is removed).
 const OPT = {
@@ -109,7 +113,7 @@ async function main() {
 
   // 3. International zone options
   console.log("International zone:")
-  await ensureOption({ name: OPT.intlPaid, zoneId: intlZone.id, prices: [{ currency_code: "usd", amount: INTL_RATE }] })
+  await ensureOption({ name: OPT.intlPaid, zoneId: intlZone.id, prices: [{ currency_code: "usd", amount: INTL_RATE_MINOR }] })
   await ensureOption({ name: OPT.donate, zoneId: intlZone.id, prices: [{ currency_code: "usd", amount: 0 }] })
 
   // 4. Reconcile — delete legacy/renamed options so only the canonical set remains.

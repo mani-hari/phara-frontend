@@ -1,6 +1,7 @@
 "use client"
 
-import { useState, useTransition, useCallback } from "react"
+import { useState, useTransition, useCallback, useEffect, useRef } from "react"
+import { useRouter } from "next/navigation"
 import { HttpTypes } from "@medusajs/types"
 import {
   saveAddressesForCheckout,
@@ -65,10 +66,22 @@ function getBaseUrl() {
 
 // ─── mobile order summary (top accordion) ────────────────────────────────────
 
-function MobileOrderSummary({ cart }: { cart: HttpTypes.StoreCart }) {
+function MobileOrderSummary({
+  cart,
+  currency,
+  subtotal,
+  shipping,
+  hasShipping,
+  total,
+}: {
+  cart: HttpTypes.StoreCart
+  currency: string
+  subtotal: number
+  shipping: number
+  hasShipping: boolean
+  total: number
+}) {
   const [expanded, setExpanded] = useState(false)
-  const currency = cart.currency_code || "inr"
-  const total = cart.total || cart.subtotal || 0
 
   return (
     <div className="co-mobile-summary">
@@ -103,11 +116,23 @@ function MobileOrderSummary({ cart }: { cart: HttpTypes.StoreCart }) {
               </div>
             )
           })}
-          <div style={{ borderTop: "1px solid var(--ink-line)", paddingTop: 8, marginTop: 4, display: "flex", justifyContent: "space-between" }}>
-            <span className="ph-body-sm" style={{ fontWeight: 700 }}>Total</span>
-            <span className="ph-body-sm ph-num" style={{ fontWeight: 700 }}>
-              {convertToLocale({ amount: total, currency_code: currency })}
-            </span>
+          <div style={{ borderTop: "1px solid var(--ink-line)", paddingTop: 8, marginTop: 4 }}>
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
+              <span className="ph-body-sm" style={{ color: "var(--ink-4)" }}>Subtotal</span>
+              <span className="ph-body-sm ph-num" style={{ color: "var(--ink-3)" }}>{convertToLocale({ amount: subtotal, currency_code: currency })}</span>
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+              <span className="ph-body-sm" style={{ color: "var(--ink-4)" }}>Shipping</span>
+              <span className="ph-body-sm ph-num" style={{ color: shipping === 0 ? "#2d6a4f" : "var(--ink-3)" }}>
+                {!hasShipping ? "—" : shipping === 0 ? "Free" : convertToLocale({ amount: shipping, currency_code: currency })}
+              </span>
+            </div>
+            <div style={{ display: "flex", justifyContent: "space-between" }}>
+              <span className="ph-body-sm" style={{ fontWeight: 700 }}>Total</span>
+              <span className="ph-body-sm ph-num" style={{ fontWeight: 700 }}>
+                {convertToLocale({ amount: total, currency_code: currency })}
+              </span>
+            </div>
           </div>
         </div>
       )}
@@ -357,9 +382,22 @@ function ShippingCards({
 
 // ─── desktop order summary sidebar ───────────────────────────────────────────
 
-function OrderSummary({ cart }: { cart: HttpTypes.StoreCart }) {
-  const currency = cart.currency_code || "inr"
-  const total = cart.total || cart.subtotal || 0
+function OrderSummary({
+  cart,
+  currency,
+  subtotal,
+  shipping,
+  hasShipping,
+  total,
+}: {
+  cart: HttpTypes.StoreCart
+  currency: string
+  subtotal: number
+  shipping: number
+  hasShipping: boolean
+  total: number
+}) {
+  const hasShippingMethod = hasShipping
 
   return (
     <div style={{ border: "1px solid var(--ink-line)", borderRadius: 14, overflow: "hidden" }}>
@@ -384,9 +422,21 @@ function OrderSummary({ cart }: { cart: HttpTypes.StoreCart }) {
         })}
       </div>
       <div style={{ padding: "12px 20px", borderTop: "1px solid var(--ink-line)" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+          <span className="ph-body-sm" style={{ color: "var(--ink-4)" }}>Subtotal</span>
+          <span className="ph-body-sm ph-num" style={{ color: "var(--ink-3)" }}>
+            {convertToLocale({ amount: subtotal, currency_code: currency })}
+          </span>
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 10 }}>
+          <span className="ph-body-sm" style={{ color: "var(--ink-4)" }}>Shipping</span>
+          <span className="ph-body-sm ph-num" style={{ color: shipping === 0 ? "#2d6a4f" : "var(--ink-3)" }}>
+            {!hasShippingMethod ? "—" : shipping === 0 ? "Free" : convertToLocale({ amount: shipping, currency_code: currency })}
+          </span>
+        </div>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", borderTop: "1px solid var(--ink-line)", paddingTop: 10 }}>
           <span className="ph-body" style={{ fontWeight: 700 }}>Total</span>
-          <span className="ph-body ph-num" style={{ fontWeight: 700, fontSize: 18 }}>
+          <span className="ph-body ph-num" style={{ fontWeight: 700, fontSize: 18 }} data-testid="summary-total">
             {convertToLocale({ amount: total, currency_code: currency })}
           </span>
         </div>
@@ -448,9 +498,12 @@ export default function OnePageCheckout({
     sameAsBilling: true,
   })
 
-  const [selectedShipping, setSelectedShipping] = useState<string>(
-    availableShippingMethods[0]?.id || ""
-  )
+  // Default to the actual delivery option (Free shipping / International Speed
+  // Post), not the "donate / do not send" option.
+  const defaultShippingId =
+    (availableShippingMethods.find((m) => !/donate|do not send/i.test(m.name || "")) ||
+      availableShippingMethods[0])?.id || ""
+  const [selectedShipping, setSelectedShipping] = useState<string>(defaultShippingId)
 
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | null>(null)
@@ -475,6 +528,50 @@ export default function OnePageCheckout({
     setBilling((prev) => ({ ...prev, ...p }))
     setFieldErrors({})
   }, [])
+
+  const router = useRouter()
+
+  // Apply the chosen shipping method to the cart and refresh, so the order
+  // summary total (which includes shipping) updates immediately. This is the
+  // standard one-page-checkout behavior — selection must move the total.
+  const chooseShipping = useCallback(
+    (id: string) => {
+      setSelectedShipping(id)
+      if (!id) return
+      startTransition(async () => {
+        try {
+          await setShippingMethod({ cartId: cart.id, shippingMethodId: id })
+          router.refresh()
+        } catch (e) {
+          logCheckoutError("set_shipping", e, { cartId: cart.id, shippingMethodId: id })
+        }
+      })
+    },
+    [cart.id, router]
+  )
+
+  // On load, if no shipping method is set yet, apply the default option so the
+  // total reflects shipping from the start (e.g. international $32).
+  const didInitShipping = useRef(false)
+  useEffect(() => {
+    if (didInitShipping.current) return
+    const hasMethod = ((cart as any).shipping_methods?.length ?? 0) > 0
+    if (!hasMethod && defaultShippingId) {
+      didInitShipping.current = true
+      chooseShipping(defaultShippingId)
+    }
+  }, [cart, availableShippingMethods, chooseShipping])
+
+  // Client-optimistic order totals: reflect the selected shipping amount
+  // immediately. retrieveCart() is force-cached, so the summary can't wait on a
+  // server refresh — and these ALSO drive the charged amount, so what the
+  // customer sees is exactly what they pay.
+  const itemSubtotal = (cart as any).item_subtotal ?? cart.subtotal ?? 0
+  const taxTotal = (cart as any).tax_total ?? 0
+  const shippingAmount =
+    availableShippingMethods.find((m) => m.id === selectedShipping)?.amount ?? 0
+  const hasShippingSelected = !!selectedShipping
+  const displayTotal = itemSubtotal + shippingAmount + taxTotal
 
   // Try to set shipping method — silently skips if the option has no price configured
   const trySetShipping = async () => {
@@ -540,7 +637,7 @@ export default function OnePageCheckout({
 
         const order = await createRazorpayOrder({
           id: cart.id,
-          total: cart.total ?? 0,
+          total: displayTotal,
           currency_code: currency,
         } as any)
         if (!order) throw new Error("Could not create payment order.")
@@ -573,7 +670,7 @@ export default function OnePageCheckout({
               if (!verifyRes.ok) throw new Error("Payment verification failed.")
               await placeOrder()
             } catch (err: any) {
-              logCheckoutError("razorpay_verify", err, { cartId: cart.id, currency, total })
+              logCheckoutError("razorpay_verify", err, { cartId: cart.id, currency, total: displayTotal })
               window.location.href = `/checkout/payment-error?reason=${encodeURIComponent(err.message || "verification_failed")}`
             }
           },
@@ -581,7 +678,7 @@ export default function OnePageCheckout({
         })
         rzp.open()
       } catch (err: any) {
-        logCheckoutError("razorpay_init", err, { cartId: cart.id, currency, total })
+        logCheckoutError("razorpay_init", err, { cartId: cart.id, currency, total: displayTotal })
         setError(err.message || "Payment failed. Please try again.")
       }
     })
@@ -609,7 +706,7 @@ export default function OnePageCheckout({
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            amount: cart.total ?? 0,
+            amount: displayTotal,
             currency: "USD",
             description: "PariharaOnline - Temple Services",
             return_url: returnUrl,
@@ -628,20 +725,26 @@ export default function OnePageCheckout({
           throw new Error("No PayPal approval URL returned.")
         }
       } catch (err: any) {
-        logCheckoutError("paypal_init", err, { cartId: cart.id, currency, total })
+        logCheckoutError("paypal_init", err, { cartId: cart.id, currency, total: displayTotal })
         setError(err.message || "PayPal setup failed. Please try again.")
       }
     })
   }
 
   const isDigitalOnly = availableShippingMethods.length === 0
-  const total = cart.total || cart.subtotal || 0
 
   return (
     <div className="checkout-layout">
       {/* Mobile order summary accordion — hidden on desktop */}
       <div className="co-mobile-only">
-        <MobileOrderSummary cart={cart} />
+        <MobileOrderSummary
+          cart={cart}
+          currency={currency}
+          subtotal={itemSubtotal}
+          shipping={shippingAmount}
+          hasShipping={hasShippingSelected}
+          total={displayTotal}
+        />
       </div>
 
       {/* ── Left — form ──────────────────────────────────────────── */}
@@ -667,7 +770,7 @@ export default function OnePageCheckout({
             <ShippingCards
               methods={availableShippingMethods}
               selected={selectedShipping}
-              onSelect={setSelectedShipping}
+              onSelect={chooseShipping}
               currency={currency}
               isIndia={isIndia}
             />
@@ -701,31 +804,26 @@ export default function OnePageCheckout({
           <SectionLabel>Payment</SectionLabel>
 
           {/* Payment method logos + button */}
-          {isIndia ? (
-            <IndiaPayment
-              currency={currency}
-              total={total}
-              isPending={isPending}
-              error={error}
-              onPay={handleRazorpay}
-            />
-          ) : (
-            <IntlPayment
-              currency={currency}
-              total={total}
-              isPending={isPending}
-              error={error}
-              onPaypal={handlePaypal}
-              onRazorpay={handleRazorpay}
-            />
-          )}
+          <PaymentSection
+            isIndia={isIndia}
+            isPending={isPending}
+            error={error}
+            onPay={(provider) => (provider === "paypal" ? handlePaypal() : handleRazorpay())}
+          />
         </section>
       </div>
 
       {/* ── Right — desktop summary ───────────────────────────────── */}
       <div className="checkout-summary-col">
         <div style={{ position: "sticky", top: 80 }}>
-          <OrderSummary cart={cart} />
+          <OrderSummary
+            cart={cart}
+            currency={currency}
+            subtotal={itemSubtotal}
+            shipping={shippingAmount}
+            hasShipping={hasShippingSelected}
+            total={displayTotal}
+          />
         </div>
       </div>
 
@@ -864,29 +962,85 @@ function BillingCheckbox({
 
 // ─── India payment section ────────────────────────────────────────────────────
 
-function IndiaPayment({
-  total,
+function PaymentRadio({
+  selected,
+  onSelect,
+  title,
+  subtitle,
+}: {
+  selected: boolean
+  onSelect: () => void
+  title: string
+  subtitle: string
+}) {
+  return (
+    <button
+      type="button"
+      role="radio"
+      aria-checked={selected}
+      onClick={onSelect}
+      style={{
+        display: "flex", alignItems: "flex-start", gap: 12, width: "100%",
+        padding: "14px 16px", textAlign: "left",
+        border: `2px solid ${selected ? "var(--sindoor)" : "var(--ink-line)"}`,
+        borderRadius: 10, background: selected ? "var(--sindoor-soft)" : "var(--paper)",
+        cursor: "pointer", marginBottom: 10, transition: "border-color 0.15s",
+      }}
+    >
+      <span style={{
+        width: 18, height: 18, borderRadius: "50%", flexShrink: 0, marginTop: 2,
+        border: `2px solid ${selected ? "var(--sindoor)" : "var(--ink-line)"}`,
+        background: selected ? "var(--sindoor)" : "transparent",
+        display: "inline-flex", alignItems: "center", justifyContent: "center",
+      }}>
+        {selected && <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#fff" }} />}
+      </span>
+      <span style={{ display: "inline-flex", flexDirection: "column", gap: 3 }}>
+        <span className="ph-body" style={{ fontWeight: 600 }}>{title}</span>
+        <span className="ph-body-sm" style={{ color: "var(--ink-4)", lineHeight: 1.5 }}>{subtitle}</span>
+      </span>
+    </button>
+  )
+}
+
+// ─── payment section: radio choice + compact "Pay online" button ──────────────
+
+function PaymentSection({
+  isIndia,
   isPending,
   error,
   onPay,
 }: {
-  currency: string
-  total: number
+  isIndia: boolean
   isPending: boolean
   error: string | null
-  onPay: () => void
+  onPay: (provider: "razorpay" | "paypal") => void
 }) {
+  const [provider, setProvider] = useState<"razorpay" | "paypal">("razorpay")
+  // India: Razorpay only — PayPal is not offered, keep the selection on Razorpay.
+  useEffect(() => {
+    if (isIndia && provider !== "razorpay") setProvider("razorpay")
+  }, [isIndia, provider])
+
   return (
     <div>
-      {/* Accepted logos */}
-      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-        {["UPI", "Visa", "Mastercard"].map((l) => (
-          <span key={l} className="ph-label ph-num" style={{ fontSize: 9, fontWeight: 700, padding: "3px 8px", border: "1px solid var(--ink-line)", borderRadius: 4, color: "var(--ink-3)", background: "var(--paper)" }}>{l}</span>
-        ))}
-        <span className="ph-body-sm" style={{ color: "var(--ink-4)", marginLeft: 4 }}>Secured by Razorpay</span>
+      <div role="radiogroup" aria-label="Payment method">
+        <PaymentRadio
+          selected={provider === "razorpay"}
+          onSelect={() => setProvider("razorpay")}
+          title="UPI / Credit & debit cards / Net banking"
+          subtitle="Powered by Razorpay · accepts international cards (except AMEX)"
+        />
+        {!isIndia && (
+          <PaymentRadio
+            selected={provider === "paypal"}
+            onSelect={() => setProvider("paypal")}
+            title="PayPal"
+            subtitle="All international cards, including AMEX"
+          />
+        )}
       </div>
 
-      {/* Sticky pay bar */}
       <div className="co-pay-bar">
         {error && (
           <div style={{ padding: "10px 14px", background: "#fef2f0", border: "1px solid #fbc6be", borderRadius: 8, marginBottom: 12 }}>
@@ -895,95 +1049,19 @@ function IndiaPayment({
         )}
         <button
           type="button"
-          onClick={onPay}
+          onClick={() => onPay(provider)}
           disabled={isPending}
           className="ph-btn ph-btn-sindoor"
-          style={{ width: "100%", padding: "16px 24px", fontSize: 16, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, opacity: isPending ? 0.7 : 1 }}
-        >
-          {isPending ? "Processing…" : "Pay with Razorpay →"}
-        </button>
-        <p className="ph-body-sm" style={{ color: "var(--ink-4)", textAlign: "center", marginTop: 10, display: "flex", alignItems: "center", justifyContent: "center", gap: 5 }}>
-          <span>🔒</span> Encrypted and secure
-        </p>
-      </div>
-    </div>
-  )
-}
-
-// ─── International payment section ───────────────────────────────────────────
-
-function IntlPayment({
-  currency,
-  total,
-  isPending,
-  error,
-  onPaypal,
-  onRazorpay,
-}: {
-  currency: string
-  total: number
-  isPending: boolean
-  error: string | null
-  onPaypal: () => void
-  onRazorpay: () => void
-}) {
-  return (
-    <div>
-      {/* Logos */}
-      <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 16 }}>
-        {["PayPal", "Visa", "Mastercard", "UPI"].map((l) => (
-          <span key={l} className="ph-label ph-num" style={{ fontSize: 9, fontWeight: 700, padding: "3px 8px", border: "1px solid var(--ink-line)", borderRadius: 4, color: "var(--ink-3)", background: "var(--paper)" }}>{l}</span>
-        ))}
-      </div>
-
-      {/* Sticky pay bar */}
-      <div className="co-pay-bar">
-        {error && (
-          <div style={{ padding: "10px 14px", background: "#fef2f0", border: "1px solid #fbc6be", borderRadius: 8, marginBottom: 12 }}>
-            <p className="ph-body-sm" style={{ color: "var(--sindoor)", margin: 0 }}>{error}</p>
-          </div>
-        )}
-
-        {/* Razorpay primary (default for international) */}
-        <button
-          type="button"
-          onClick={onRazorpay}
-          disabled={isPending}
-          className="ph-btn ph-btn-sindoor"
-          style={{ width: "100%", padding: "16px 24px", fontSize: 16, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, opacity: isPending ? 0.7 : 1, marginBottom: 6 }}
-        >
-          {isPending ? "Processing…" : "Pay with Razorpay →"}
-        </button>
-        <p className="ph-body-sm" style={{ color: "var(--ink-4)", textAlign: "center", marginBottom: 14 }}>
-          Cards, UPI &amp; wallets · charged in {(currency || "usd").toUpperCase()}
-        </p>
-
-        <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
-          <div style={{ flex: 1, height: 1, background: "var(--ink-line)" }} />
-          <span className="ph-label" style={{ color: "var(--ink-4)", fontSize: 11 }}>or</span>
-          <div style={{ flex: 1, height: 1, background: "var(--ink-line)" }} />
-        </div>
-
-        {/* PayPal secondary */}
-        <button
-          type="button"
-          onClick={onPaypal}
-          disabled={isPending}
+          data-testid="pay-online"
           style={{
-            width: "100%", padding: "13px 24px", fontSize: 15, fontWeight: 700,
-            background: "#fff", color: "#0070ba", border: "1.5px solid #0070ba", borderRadius: 10,
-            cursor: isPending ? "not-allowed" : "pointer", opacity: isPending ? 0.7 : 1,
-            display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-            fontFamily: "var(--sans)",
+            display: "inline-flex", alignItems: "center", gap: 8,
+            width: "auto", padding: "13px 30px", fontSize: 16, fontWeight: 700,
+            opacity: isPending ? 0.7 : 1,
           }}
         >
-          {isPending ? "Processing…" : "Continue with PayPal →"}
+          {isPending ? "Processing…" : "Pay online →"}
         </button>
-        <p className="ph-body-sm" style={{ color: "var(--ink-4)", textAlign: "center", marginTop: 6 }}>
-          PayPal charges in USD · {convertToLocale({ amount: total, currency_code: "usd" })}
-        </p>
-
-        <p className="ph-body-sm" style={{ color: "var(--ink-4)", textAlign: "center", marginTop: 12, display: "flex", alignItems: "center", justifyContent: "center", gap: 5 }}>
+        <p className="ph-body-sm" style={{ color: "var(--ink-4)", marginTop: 10, display: "flex", alignItems: "center", gap: 5 }}>
           <span>🔒</span> Encrypted and secure
         </p>
       </div>
