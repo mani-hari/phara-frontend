@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PariharaOnline — Storefront (V4)
 
-## Getting Started
+Production storefront for **pariharaonline.com** — a Next.js App Router frontend backed by a
+Medusa v2 commerce backend, deployed on Vercel. Includes the "Ask Parihara" AI chat, blog,
+astrology services, and multi-region (India-default) checkout with PayPal/Razorpay.
 
-First, run the development server:
+> **Read [`docs/PROJECT.md`](docs/PROJECT.md) first** — it documents the full tech stack,
+> where everything is hosted, and the environment-variable reference. Start there before
+> making infrastructure or deployment changes.
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Requires Node 20+ and the environment variables listed in [`.env.example`](.env.example)
+(copy to `.env.local` and fill in real values — never commit secrets).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Scripts
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Command | Purpose |
+|---|---|
+| `npm run dev` | Local dev server on :3000 |
+| `npm run build` | Production build |
+| `npm run start` | Serve the production build |
+| `npm run lint` | ESLint (also see `next.config.js` → `eslint.ignoreDuringBuilds`) |
 
-## Learn More
+## Documentation
 
-To learn more about Next.js, take a look at the following resources:
+All project docs live in [`docs/`](docs/):
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [`docs/PROJECT.md`](docs/PROJECT.md) — **stack, hosting, and env-var reference** (start here)
+- [`docs/parihara-features.md`](docs/parihara-features.md) — feature notes
+- [`docs/frontend-dependency.md`](docs/frontend-dependency.md) — dependency notes
+- [`docs/design/`](docs/design/) — design source (Parihara-Final.html, hi-fi refs)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Internal working notes `docs/PLAN.md` and `docs/SESSION_HANDOFF.md` are **gitignored**
+(local-only, contain internal details) and are not part of the repo.
 
-## Deploy on Vercel
+> Note: some `.md` files are **runtime source, not docs** — `src/lib/parihara-soul.md` and
+> `src/lib/order-knowledge.md` are read by the Ask Parihara chat, and `content/blog/*.md` are
+> blog posts. Do not move these into `docs/`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Package manager
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+This repo standardizes on **npm** (`package-lock.json`, pinned via `packageManager`). Do not
+add a `yarn.lock` or `pnpm-lock.yaml` — a single lockfile keeps Vercel builds reproducible.

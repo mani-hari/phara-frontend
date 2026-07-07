@@ -47,3 +47,6 @@ PLAN.md
 *.tsbuildinfo
 next-env.d.ts
 SESSION_HANDOFF.md
+
+# slug migration working files
+.slug-migration/
