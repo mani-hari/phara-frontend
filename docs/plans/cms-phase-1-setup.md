@@ -16,31 +16,34 @@
 - `.github/workflows/cms-auto-merge.yml` — auto-merge content commits dev_1.1 → main
 - `src/middleware.ts` — Keystatic admin path excluded from country-code routing
 
+## How to enable production CMS auth (status: project linked)
+
+✅ **Mani has registered the Keystatic Cloud project as `phara-frontend/phara-frontend`** and the project slug is now baked into `keystatic.config.ts` as the default.
+
+Remaining steps to finish wiring on Vercel:
+
+1. ✅ Keystatic Cloud project created
+2. ✅ GitHub App installed on the repo (granted when project was linked)
+3. ✅ Project slug `phara-frontend/phara-frontend` set as the default in `keystatic.config.ts` — no Vercel env var needed for this
+4. **Add the allowed editor email** in the Keystatic Cloud dashboard:
+   - Open the project at https://keystatic.cloud/
+   - Settings → Team → Invite `manihk@gmail.com`
+5. **Redeploy** the Vercel project — it will now serve the cloud-backed admin
+6. **Open** `https://your-vercel-url.vercel.app/keystatic` → sign in with the magic link
+
+Optional: set `KEYSTATIC_STORAGE_KIND=local` in `.env.local` if you want to test schema changes locally without auth or git commits.
+
 ## How to use it locally right now
 
 ```bash
-npm run dev
+# Test with local storage (no auth, writes directly to filesystem)
+KEYSTATIC_STORAGE_KIND=local npm run dev
 # open http://localhost:8000/keystatic
+
+# Or test with cloud auth pointing at the real project:
+npm run dev
+# open http://localhost:8000/keystatic — will prompt for Keystatic Cloud login
 ```
-
-In local mode (no Keystatic Cloud configured), edits write directly to your local filesystem — no auth required, no commits. Use this to verify the editor UI works and to test the schema before going live.
-
-## How to enable production CMS auth (Mani's action required)
-
-This is the only thing blocking real production use. Takes ~5 minutes.
-
-1. **Sign up at https://keystatic.cloud** with the same email as your GitHub account (`manihk@gmail.com`)
-2. **Create a new project** in the Keystatic Cloud dashboard:
-   - Name: `phara-frontend`
-   - Link to GitHub repo: `mani-hari/phara-frontend`
-   - Branch: `claude/dev_1.1`
-   - Install the Keystatic Cloud GitHub App when prompted (grants commit access to the repo)
-3. **Copy the project slug** shown in the dashboard (looks like `mani-hari/phara-frontend`)
-4. **Set two env vars in Vercel** (Production + Preview scopes):
-   - `KEYSTATIC_STORAGE_KIND=cloud`
-   - `KEYSTATIC_CLOUD_PROJECT=<the slug from step 3>`
-5. **Redeploy** — Keystatic admin at `https://your-vercel-url.vercel.app/keystatic` now shows a "Sign in" button using Keystatic Cloud magic-link auth
-6. **Add allowed emails** in the Keystatic Cloud dashboard — only `manihk@gmail.com` for now
 
 ## What works today (without Cloud, locally)
 
