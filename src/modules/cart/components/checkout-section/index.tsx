@@ -95,7 +95,7 @@ export default function CartCheckoutSection({ countryCode, subtotal, currency }:
     <div>
       {/* Section header */}
       <div style={{ marginBottom: 20 }}>
-        <h2 className="ph-h3" style={{ margin: 0, marginBottom: 4 }}>
+        <h2 style={{ margin: 0, marginBottom: 4, fontFamily: "var(--sans)", fontSize: 22, fontWeight: 700, color: "var(--ink)", lineHeight: 1.2 }}>
           Who is it for?{" "}
           <span className="ph-body" style={{ color: "var(--ink-4)", fontFamily: "var(--sans)", fontSize: 14, fontWeight: 400 }}>
             (sankalpam)
@@ -134,12 +134,12 @@ export default function CartCheckoutSection({ countryCode, subtotal, currency }:
 
             {/* Prayer */}
             <div style={{ marginBottom: 12 }}>
-              <label className="ph-label" style={{ display: "block", marginBottom: 5, color: "var(--ink-3)" }}>
+              <label className="ph-label" style={{ display: "block", marginBottom: 6, color: "var(--ink-2)", fontSize: 14, fontWeight: 600 }}>
                 What is your prayer?
               </label>
               <input
                 className="ph-input"
-                style={{ width: "100%", boxSizing: "border-box" }}
+                style={{ width: "100%", boxSizing: "border-box", fontSize: 16 }}
                 placeholder="e.g. For my father's full recovery"
                 value={d.prayer}
                 onChange={(e) => update(i, "prayer", e.target.value)}
@@ -148,12 +148,12 @@ export default function CartCheckoutSection({ countryCode, subtotal, currency }:
 
             {/* Name */}
             <div style={{ marginBottom: 14 }}>
-              <label className="ph-label" style={{ display: "block", marginBottom: 5, color: "var(--ink-3)" }}>
+              <label className="ph-label" style={{ display: "block", marginBottom: 6, color: "var(--ink-2)", fontSize: 14, fontWeight: 600 }}>
                 Who is it for? (name)
               </label>
               <input
                 className="ph-input"
-                style={{ width: "100%", boxSizing: "border-box" }}
+                style={{ width: "100%", boxSizing: "border-box", fontSize: 16 }}
                 placeholder="e.g. Lakshmi Venkat"
                 value={d.name}
                 onChange={(e) => update(i, "name", e.target.value)}

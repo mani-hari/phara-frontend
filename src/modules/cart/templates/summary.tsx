@@ -166,7 +166,7 @@ const CartSummary = ({ cart }: SummaryProps) => {
           color: "var(--ink-4)",
           textAlign: "center",
           marginTop: 10,
-          fontFamily: "var(--serif)",
+          fontFamily: "var(--sans)",
         }}
       >
         Your pooja will be booked immediately on payment

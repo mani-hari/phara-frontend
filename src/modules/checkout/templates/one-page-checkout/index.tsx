@@ -338,10 +338,10 @@ function ShippingCards({
               display: "flex",
               alignItems: "center",
               gap: 14,
-              padding: "14px 16px",
-              border: `2px solid ${isSelected ? "var(--sindoor)" : "var(--ink-line)"}`,
+              padding: "16px 18px",
+              border: `1.5px solid ${isSelected ? "var(--sindoor)" : "var(--ink-line)"}`,
               borderRadius: 10,
-              background: isSelected ? "var(--sindoor-soft)" : "var(--paper)",
+              background: isSelected ? "#f7f4f1" : "var(--paper)",
               cursor: "pointer",
               textAlign: "left",
               transition: "border-color 0.15s",
@@ -912,9 +912,9 @@ export default function OnePageCheckout({
         @media (min-width: 1024px) {
           .co-pay-bar {
             position: static;
-            border-top: none;
-            padding: 0;
-            margin-top: 0;
+            border-top: 1px solid var(--ink-line);
+            padding: 24px 0 0;
+            margin-top: 28px;
             background: transparent;
           }
         }
@@ -981,10 +981,10 @@ function PaymentRadio({
       onClick={onSelect}
       style={{
         display: "flex", alignItems: "flex-start", gap: 12, width: "100%",
-        padding: "14px 16px", textAlign: "left",
-        border: `2px solid ${selected ? "var(--sindoor)" : "var(--ink-line)"}`,
-        borderRadius: 10, background: selected ? "var(--sindoor-soft)" : "var(--paper)",
-        cursor: "pointer", marginBottom: 10, transition: "border-color 0.15s",
+        padding: "16px 18px", textAlign: "left",
+        border: `1.5px solid ${selected ? "var(--sindoor)" : "var(--ink-line)"}`,
+        borderRadius: 10, background: selected ? "#f7f4f1" : "var(--paper)",
+        cursor: "pointer", marginBottom: 12, transition: "border-color 0.15s",
       }}
     >
       <span style={{
@@ -1028,8 +1028,8 @@ function PaymentSection({
         <PaymentRadio
           selected={provider === "razorpay"}
           onSelect={() => setProvider("razorpay")}
-          title="UPI / Credit & debit cards / Net banking"
-          subtitle="Powered by Razorpay · accepts international cards (except AMEX)"
+          title="Pay by Credit / Debit / UPI (powered by Razorpay)"
+          subtitle="UPI payments, Wallets, VISA and Mastercard (International cards accepted except AMEX)"
         />
         {!isIndia && (
           <PaymentRadio
@@ -1059,7 +1059,7 @@ function PaymentSection({
             opacity: isPending ? 0.7 : 1,
           }}
         >
-          {isPending ? "Processing…" : "Pay online →"}
+          {isPending ? "Processing…" : "Proceed to Payment →"}
         </button>
         <p className="ph-body-sm" style={{ color: "var(--ink-4)", marginTop: 10, display: "flex", alignItems: "center", gap: 5 }}>
           <span>🔒</span> Encrypted and secure

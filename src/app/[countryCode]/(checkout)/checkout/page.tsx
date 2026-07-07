@@ -43,14 +43,18 @@ export default async function Checkout({
       style={{ background: "var(--paper)", minHeight: "calc(100vh - 64px)", paddingTop: 32, paddingBottom: 80 }}
     >
       <div className="content-container" data-testid="checkout-container">
-        <OnePageCheckout
-          cart={cart}
-          customer={customer}
-          availableShippingMethods={availableShippingMethods}
-          countryCode={countryCode}
-          isIndia={isIndia}
-          ipCountry={ipCountry}
-        />
+        {/* Centered, comfortable max-width so the two columns sit centered with
+            generous side margins instead of spanning the full 1440px container. */}
+        <div style={{ maxWidth: 1040, margin: "0 auto" }}>
+          <OnePageCheckout
+            cart={cart}
+            customer={customer}
+            availableShippingMethods={availableShippingMethods}
+            countryCode={countryCode}
+            isIndia={isIndia}
+            ipCountry={ipCountry}
+          />
+        </div>
       </div>
     </div>
   )

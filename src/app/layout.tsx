@@ -10,6 +10,7 @@ import {
 import "@styles/globals.css"
 import Providers from "@/components/providers"
 import AdminBar from "@/components/admin/admin-bar"
+import { GA4_ID, CLARITY_ID } from "@lib/analytics"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -75,8 +76,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const ga4Id = process.env.NEXT_PUBLIC_GA4_ID
-  const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID
+  const ga4Id = GA4_ID
+  const clarityId = CLARITY_ID
 
   return (
     <html lang="en" data-mode="light">

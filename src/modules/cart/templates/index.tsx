@@ -38,7 +38,7 @@ const CartTemplate = ({
       <div className="content-container" data-testid="cart-container">
 
         {/* Page title */}
-        <h1 className="ph-h2" style={{ marginBottom: 28 }}>
+        <h1 style={{ marginBottom: 28, fontFamily: "var(--sans)", fontSize: 28, fontWeight: 700, color: "var(--ink)", lineHeight: 1.15 }}>
           Complete your order
         </h1>
 
