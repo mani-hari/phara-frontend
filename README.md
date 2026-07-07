@@ -32,6 +32,7 @@ Requires Node 20+ and the environment variables listed in [`.env.example`](.env.
 All project docs live in [`docs/`](docs/):
 
 - [`docs/PROJECT.md`](docs/PROJECT.md) — **stack, hosting, and env-var reference** (start here)
+- [`docs/CHECKOUT.md`](docs/CHECKOUT.md) — cart → checkout → payment → fulfillment flow, region/currency, shipping, sankalpam, tests
 - [`docs/parihara-features.md`](docs/parihara-features.md) — feature notes
 - [`docs/frontend-dependency.md`](docs/frontend-dependency.md) — dependency notes
 - [`docs/design/`](docs/design/) — design source (Parihara-Final.html, hi-fi refs)
