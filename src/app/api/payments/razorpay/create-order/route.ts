@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
-import crypto from "crypto"
+import { logCheckoutError } from "@lib/util/checkout-log"
 
 export async function POST(req: NextRequest) {
   try {
@@ -34,6 +34,12 @@ export async function POST(req: NextRequest) {
     const order = await response.json()
 
     if (!response.ok) {
+      logCheckoutError("razorpay_create_order_rejected", order.error?.description || "razorpay rejected", {
+        status: response.status,
+        currency,
+        amount,
+        code: order.error?.code,
+      })
       return NextResponse.json(
         { error: order.error?.description || "Failed to create order" },
         { status: response.status }
@@ -42,6 +48,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(order)
   } catch (error: any) {
+    logCheckoutError("razorpay_create_order_exception", error)
     return NextResponse.json(
       { error: error.message || "Internal server error" },
       { status: 500 }

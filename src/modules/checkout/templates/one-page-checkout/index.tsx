@@ -12,6 +12,7 @@ import {
   createRazorpayOrder,
 } from "@lib/payments/razorpay"
 import { convertToLocale } from "@lib/util/money"
+import { logCheckoutError } from "@lib/util/checkout-log"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 // ─── types ────────────────────────────────────────────────────────────────────
@@ -598,6 +599,7 @@ export default function OnePageCheckout({
               if (!verifyRes.ok) throw new Error("Payment verification failed.")
               await placeOrder()
             } catch (err: any) {
+              logCheckoutError("razorpay_verify", err, { cartId: cart.id, currency, total })
               window.location.href = `/checkout/payment-error?reason=${encodeURIComponent(err.message || "verification_failed")}`
             }
           },
@@ -605,6 +607,7 @@ export default function OnePageCheckout({
         })
         rzp.open()
       } catch (err: any) {
+        logCheckoutError("razorpay_init", err, { cartId: cart.id, currency, total })
         setError(err.message || "Payment failed. Please try again.")
       }
     })
@@ -651,6 +654,7 @@ export default function OnePageCheckout({
           throw new Error("No PayPal approval URL returned.")
         }
       } catch (err: any) {
+        logCheckoutError("paypal_init", err, { cartId: cart.id, currency, total })
         setError(err.message || "PayPal setup failed. Please try again.")
       }
     })

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
+import { logCheckoutError } from "@lib/util/checkout-log"
 
 export async function POST(req: NextRequest) {
   try {
@@ -33,6 +34,10 @@ export async function POST(req: NextRequest) {
 
     const tokenData = await tokenResponse.json()
     if (!tokenResponse.ok) {
+      logCheckoutError("paypal_auth_failed", tokenData?.error_description || "paypal oauth failed", {
+        status: tokenResponse.status,
+        sandbox: isSandbox,
+      })
       return NextResponse.json(
         { error: "Failed to authenticate with PayPal" },
         { status: 500 }
@@ -76,6 +81,11 @@ export async function POST(req: NextRequest) {
     const order = await orderResponse.json()
 
     if (!orderResponse.ok) {
+      logCheckoutError("paypal_create_order_rejected", order.message || "paypal rejected", {
+        status: orderResponse.status,
+        currency,
+        name: order.name,
+      })
       return NextResponse.json(
         { error: order.message || "Failed to create PayPal order" },
         { status: orderResponse.status }
@@ -84,6 +94,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(order)
   } catch (error: any) {
+    logCheckoutError("paypal_create_order_exception", error)
     return NextResponse.json(
       { error: error.message || "Internal server error" },
       { status: 500 }
