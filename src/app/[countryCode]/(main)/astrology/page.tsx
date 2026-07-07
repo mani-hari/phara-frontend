@@ -33,7 +33,7 @@ const serviceCopy: Record<
       "48-hour delivery",
     ],
   },
-  "astrology-health-report": {
+  "astrology-health": {
     description:
       "Focused reading on health concerns, planetary influences, and remedial support for recovery periods.",
     features: [
@@ -43,7 +43,7 @@ const serviceCopy: Record<
       "Lifestyle guidance",
     ],
   },
-  "career-astrology-analysis": {
+  "career-astrology": {
     description:
       "Comprehensive guidance on job moves, business growth, promotions, obstacles, and supportive remedies.",
     features: [

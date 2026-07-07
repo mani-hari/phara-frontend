@@ -24,16 +24,16 @@ type HomeV3Props = {
    ===================================================================== */
 
 const FEATURED_HANDLES = [
-  "garbarakshambigai-ghee",
-  "garbarakshambigai-oil",
-  "rahu-ketu-dosha-parihara",
+  "garbharakshambika-ghee",
+  "garbharakshambika-oil",
+  "rahu-ketu-dosha-parihara-pooja-sarpa-dosha-parihara-pooja-at-sri-kalahasti-temple",
 ] as const
 
 const FEATURED_OVERLAY: Record<
   string,
   { tag: string; deity: string; img: string; stars: number; reviews: number; sub: string }
 > = {
-  "garbarakshambigai-ghee": {
+  "garbharakshambika-ghee": {
     tag: "For Conceiving",
     deity: "Garbarakshambigai · Tirukkarukavur",
     img: "GHEE · LAMP IN COPPER VESSEL",
@@ -41,7 +41,7 @@ const FEATURED_OVERLAY: Record<
     reviews: 281,
     sub: "Temple-blessed prasadham · sealed glass jar",
   },
-  "garbarakshambigai-oil": {
+  "garbharakshambika-oil": {
     tag: "For Safe Delivery",
     deity: "Garbarakshambigai · Tirukkarukavur",
     img: "OIL · BRONZE LAMP",
@@ -49,7 +49,7 @@ const FEATURED_OVERLAY: Record<
     reviews: 333,
     sub: "For 3rd-trimester abhyangam",
   },
-  "rahu-ketu-dosha-parihara": {
+  "rahu-ketu-dosha-parihara-pooja-sarpa-dosha-parihara-pooja-at-sri-kalahasti-temple": {
     tag: "For Sarpa Dosha",
     deity: "Sri Kalahasti · Andhra Pradesh",
     img: "KALAHASTI TEMPLE GOPURAM",
@@ -70,13 +70,13 @@ const INTENT_TILES: { title: string; sub: string; count: string; href: string }[
     title: "Family & children",
     sub: "Garbarakshambigai · Putra Kameshti · Annaprasana",
     count: "24 rituals",
-    href: "/products/garbarakshambigai-ghee",
+    href: "/products/garbharakshambika-ghee",
   },
   {
     title: "Career & wealth",
     sub: "Sudarshana · Lakshmi · Kubera",
     count: "18 rituals",
-    href: "/products/sudarshana-homam",
+    href: "/products/sudarsana-homam",
   },
   {
     title: "Marriage",
@@ -94,7 +94,7 @@ const INTENT_TILES: { title: string; sub: string; count: string; href: string }[
     title: "For ancestors",
     sub: "Tila Homam · Tarpanam · Pitru Paksha",
     count: "9 rituals",
-    href: "/products/thila-homam-rameswaram",
+    href: "/products/tila-homam-at-rameswaram",
   },
 ]
 

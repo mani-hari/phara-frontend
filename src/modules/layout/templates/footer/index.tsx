@@ -13,8 +13,8 @@ const FOOTER_COLUMNS: FooterColumn[] = [
       { label: "Temple Poojas", href: "/collections/pujas-and-homams" },
       { label: "Homams", href: "/collections/pujas-and-homams" },
       { label: "Astrology", href: "/astrology" },
-      { label: "Prasadam", href: "/products/garbarakshambigai-ghee" },
-      { label: "Annadanam", href: "/products/annadhanam-food-donation" },
+      { label: "Prasadam", href: "/products/garbharakshambika-ghee" },
+      { label: "Annadanam", href: "/products/annadhanam-donate-food-to-homeless-children" },
     ],
   },
   {

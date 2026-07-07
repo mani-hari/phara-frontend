@@ -91,12 +91,12 @@ export const astrologyCardCopy: Record<string, AstrologyCardCopy> = {
       "A practical consultation for timing, family matters, travel, and general clarity.",
     feature: "2-page guidance report",
   },
-  "astrology-health-report": {
+  "astrology-health": {
     description:
       "Focused reading on chronic concerns, planetary influences, and remedial support.",
     feature: "Health-focused analysis",
   },
-  "career-astrology-analysis": {
+  "career-astrology": {
     description:
       "Detailed forecast for career moves, promotions, business growth, and obstacles.",
     feature: "Career direction and timing",
@@ -395,10 +395,10 @@ export const getMockProductDetailContent = (product: HttpTypes.StoreProduct) => 
   if (title.includes("navagraha")) {
     return productSpecificContent.navagraha
   }
-  if (handle.includes("garbarakshambigai-ghee") || (title.includes("garbarakshambigai") && title.includes("ghee"))) {
+  if (handle.includes("garbharakshambika-ghee") || (title.includes("garbarakshambigai") && title.includes("ghee"))) {
     return productSpecificContent.garbarakshambigai_ghee
   }
-  if (handle.includes("garbarakshambigai-oil") || (title.includes("garbarakshambigai") && title.includes("oil"))) {
+  if (handle.includes("garbharakshambika-oil") || (title.includes("garbarakshambigai") && title.includes("oil"))) {
     return productSpecificContent.garbarakshambigai_oil
   }
   if (handle.includes("rahu-ketu") || title.includes("rahu") || title.includes("sarpa dosha") || title.includes("kalahasti")) {

@@ -1,14 +1,33 @@
 import { HttpTypes } from "@medusajs/types"
 import { NextRequest, NextResponse } from "next/server"
 
-// Ghost-URL redirect map: old slug → new slug (path relative to country prefix)
+// Ghost-URL redirect map: old slug → canonical slug (path relative to country prefix).
+// Canonical product slugs now match the pariharaonline.com Shopify slugs exactly
+// (Medusa product handles were renamed to match — see .slug-migration/). These
+// entries are a safety net that 301s any lingering *old* internal-handle links to
+// the canonical slug; the canonical slugs themselves resolve directly (no redirect).
 const GHOST_REDIRECTS: Record<string, string> = {
-  "/products/garbharakshambika-ghee": "/products/garbarakshambigai-ghee",
-  "/products/garbharakshambika-oil": "/products/garbarakshambigai-oil",
-  "/products/annadhanam-donate-food-to-homeless-children": "/products/annadhanam-food-donation",
-  "/products/sudarsana-homam": "/products/sudarshana-homam",
-  "/products/tila-homam-at-rameswaram": "/products/thila-homam-rameswaram",
-  "/products/rahu-ketu-dosha-parihara-pooja": "/products/rahu-ketu-dosha-parihara",
+  "/products/maha-ganapathi-homam": "/products/maha-ganapathy-homam",
+  "/products/sudarshana-homam": "/products/sudarsana-homam",
+  "/products/durga-saptashati-chanting": "/products/mantra-chanting-of-700-verses-of-durga-saptashati",
+  "/products/astrology-health-report": "/products/astrology-health",
+  "/products/career-astrology-analysis": "/products/career-astrology",
+  "/products/kamakshi-amman-temple": "/products/kanchi-kamakshi",
+  "/products/murugan-temple-palani": "/products/palani",
+  "/products/abhishekam-ganesha": "/products/brahmavidyaganapati",
+  "/products/rahu-ketu-dosha-parihara": "/products/rahu-ketu-dosha-parihara-pooja-sarpa-dosha-parihara-pooja-at-sri-kalahasti-temple",
+  "/products/thila-homam-rameswaram": "/products/tila-homam-at-rameswaram",
+  "/products/shirdi-sai-baba-udi": "/products/shirdi-sai-baba-udi-prasadham",
+  "/products/garbarakshambigai-ghee": "/products/garbharakshambika-ghee",
+  "/products/garbarakshambigai-oil": "/products/garbharakshambika-oil",
+  "/products/shakti-samriddhi": "/products/shakti-samriddhi-pooja-for-feminine-prosperity-family-well-being",
+  "/products/coconut-breaking-ritual": "/products/temple-coconut-breaking-online",
+  "/products/annadhanam-food-donation": "/products/annadhanam-donate-food-to-homeless-children",
+  "/products/ganesha-hanuman-kavach": "/products/ganesha-hanuman-shakti-kavach-the-shield-of-protection-and-victory",
+  "/products/maha-shivaratri-2026": "/products/maha-shivaratri",
+  "/products/navratri-special-package": "/products/navratri-poojas-online",
+  "/products/diwali-lakshmi-homam": "/products/diwali-puja",
+  "/products/jupiter-transit-guru-peyarchi": "/products/guru-jupiter-transit",
 }
 
 const BACKEND_URL =
@@ -114,16 +133,6 @@ export async function middleware(request: NextRequest) {
         effectiveCC === DEFAULT_COUNTRY
           ? ghostTarget
           : `/${effectiveCC}${ghostTarget}`
-      return NextResponse.redirect(new URL(target, request.url), 301)
-    }
-    if (
-      cleanPath.startsWith("/products/rahu-ketu-dosha-parihara-") ||
-      cleanPath.includes("sarpa-dosha")
-    ) {
-      const target =
-        effectiveCC === DEFAULT_COUNTRY
-          ? "/products/rahu-ketu-dosha-parihara"
-          : `/${effectiveCC}/products/rahu-ketu-dosha-parihara`
       return NextResponse.redirect(new URL(target, request.url), 301)
     }
 
