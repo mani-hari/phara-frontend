@@ -84,7 +84,7 @@ async function fetchProduct(handle: string) {
       thumbnail: p.thumbnail,
       collectionTitle: p.collection?.title,
       variantId,
-      priceInr: price ? Math.round(price / 100) : null,
+      priceInr: price ? Math.round(price) : null,
     }
   } catch {
     return null

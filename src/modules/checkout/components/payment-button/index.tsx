@@ -217,7 +217,7 @@ const PayPalPaymentButton = ({
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           cart_id: cart.id,
-          amount: (cart.total ?? 0) / 100,
+          amount: (cart.total ?? 0),
           currency: (cart.currency_code ?? "usd").toUpperCase(),
         }),
       })

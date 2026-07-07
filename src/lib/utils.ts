@@ -17,7 +17,7 @@ export function formatPrice(
     maximumFractionDigits: currencyCode === 'JPY' ? 0 : 2,
   });
 
-  return formatter.format(amount / 100);
+  return formatter.format(amount);
 }
 
 export function formatDate(date: string | Date): string {

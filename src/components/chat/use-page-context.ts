@@ -50,7 +50,7 @@ async function fetchCartItems(): Promise<CartItem[]> {
     return (cart?.items || []).map((item: any) => ({
       title: item.product_title || item.title || "Service",
       quantity: item.quantity,
-      priceInr: Math.round((item.unit_price || 0) / 100),
+      priceInr: Math.round(item.unit_price || 0),
     }))
   } catch {
     return []

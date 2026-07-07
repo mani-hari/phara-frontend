@@ -142,7 +142,7 @@ export default async function ProductPage(props: Props) {
     ...(cheapestPrice && {
       offers: {
         "@type": "Offer",
-        price: cheapestPrice.calculated_price_number / 100,
+        price: cheapestPrice.calculated_price_number,
         priceCurrency: cheapestPrice.currency_code?.toUpperCase(),
         availability: "https://schema.org/InStock",
         seller: {

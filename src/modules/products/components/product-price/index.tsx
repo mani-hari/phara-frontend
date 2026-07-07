@@ -92,7 +92,7 @@ export default function ProductPrice({
         <PriceSubscript
           amount={
             typeof selectedPrice.calculated_price_number === "number"
-              ? selectedPrice.calculated_price_number / 100 // stored in minor units (cents)
+              ? selectedPrice.calculated_price_number // major units (Medusa v2 native)
               : undefined
           }
           currencyCode={(selectedPrice as any).currency_code}

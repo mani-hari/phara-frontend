@@ -54,7 +54,7 @@ export async function POST(req: NextRequest) {
   }
   if (typeof amount !== "number" || amount <= 0) {
     return NextResponse.json(
-      { error: "amount must be a positive number (in paise/cents)" },
+      { error: "amount must be a positive number (in major currency units)" },
       { status: 400 }
     )
   }
@@ -99,7 +99,7 @@ export async function POST(req: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        amount: Math.round(amount),
+        amount: Math.round(amount * 100), // major units → paise (Razorpay requires the smallest currency unit)
         currency,
         receipt,
         notes,

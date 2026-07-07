@@ -17,7 +17,7 @@ export async function createPayPalOrder(cart: Cart): Promise<string | null> {
       },
       body: JSON.stringify({
         cart_id: cart.id,
-        amount: cart.total / 100, // Convert from smallest unit
+        amount: cart.total, // major units (PayPal expects the major currency unit)
         currency: cart.currency_code.toUpperCase(),
       }),
     });

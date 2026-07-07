@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
             {
               amount: {
                 currency_code: currency,
-                value: typeof amount === "number" ? (amount / 100).toFixed(2) : amount,
+                value: typeof amount === "number" ? amount.toFixed(2) : amount,
               },
               description: description || "PariharaOnline - Temple Services",
             },

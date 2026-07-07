@@ -24,7 +24,7 @@ export async function POST(req: NextRequest) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        amount: Math.round(amount), // amount in paise
+        amount: Math.round(amount * 100), // major units → paise (Razorpay requires the smallest currency unit)
         currency,
         receipt: receipt || `order_${Date.now()}`,
         notes: notes || {},

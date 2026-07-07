@@ -9,7 +9,7 @@ function formatPrice(amount: number, currency: string) {
     style: "currency",
     currency: currency.toUpperCase(),
     maximumFractionDigits: 0,
-  }).format(amount / 100)
+  }).format(amount)
 }
 
 const CartTemplate = ({

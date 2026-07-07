@@ -133,7 +133,7 @@ export default function ChatInterface({
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          amount: amountInr * 100, // paise
+          amount: amountInr, // major units; the route converts to paise for Razorpay
           currency: "INR",
           bookingDetails: formData,
           customerName: formData.poojaPersonName,
