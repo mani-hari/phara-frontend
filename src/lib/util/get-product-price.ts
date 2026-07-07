@@ -43,8 +43,13 @@ export function getProductPrice({
       return null
     }
 
-    const cheapestVariant: any = product.variants
-      .filter((v: any) => !!v.calculated_price)
+    // Only consider variants with a real (> 0) price. Some products carry a
+    // placeholder "None / None" option-combo variant priced 0, which would
+    // otherwise sort to the front and blank out the whole "From" price.
+    const priced = product.variants.filter(
+      (v: any) => !!v.calculated_price && (v.calculated_price.calculated_amount ?? 0) > 0
+    )
+    const cheapestVariant: any = (priced.length ? priced : product.variants.filter((v: any) => !!v.calculated_price))
       .sort((a: any, b: any) => {
         return (
           a.calculated_price.calculated_amount -
