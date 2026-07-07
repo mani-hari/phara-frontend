@@ -14,7 +14,16 @@ import { execSync } from "node:child_process"
 const HOST = "https://pariharaonline.medusajs.app"
 const KEY = execSync(`security find-generic-password -s parihara-medusa-admin -a medusa-admin -w`).toString().trim()
 const BASIC = Buffer.from(`${KEY}:`).toString("base64")
-const INTL_RATE = Number(process.env.INTL_RATE || 25) // USD, major units — CONFIRM THIS
+const INTL_RATE = Number(process.env.INTL_RATE || 32) // USD, major units
+
+// Canonical option names (used to reconcile — anything else in these zones is removed).
+const OPT = {
+  indiaFree: "Free shipping (India)",
+  intlPaid: "International Shipping (Speedpost/FedEx)",
+  donate: "Do not send prasadham, donate at temple",
+}
+// Legacy names from earlier runs to delete on reconcile.
+const LEGACY_NAMES = ["India", "International Speed Post / FedEx", "Donate prasadam at temple"]
 
 // Known IDs (from admin inspection)
 const STOCK_LOCATION = "sloc_01KCFV8EM0P3SK25ZRHNV1VVZ4"
@@ -95,20 +104,22 @@ async function main() {
 
   // 2. India zone options
   console.log("India zone:")
-  await ensureOption({ name: "Free shipping (India)", zoneId: INDIA_ZONE, prices: [{ currency_code: "inr", amount: 0 }] })
-  await ensureOption({ name: "Donate prasadam at temple", zoneId: INDIA_ZONE, prices: [{ currency_code: "inr", amount: 0 }] })
-
-  // Retire the legacy free option named "India" if present (had a stray USD price that leaked to intl carts)
-  const legacy = (await getShippingOptions()).find((o) => o.name === "India")
-  if (legacy) {
-    await api("DELETE", `/admin/shipping-options/${legacy.id}`)
-    console.log(`  - deleted legacy "India" option (${legacy.id})`)
-  }
+  await ensureOption({ name: OPT.indiaFree, zoneId: INDIA_ZONE, prices: [{ currency_code: "inr", amount: 0 }] })
+  await ensureOption({ name: OPT.donate, zoneId: INDIA_ZONE, prices: [{ currency_code: "inr", amount: 0 }] })
 
   // 3. International zone options
   console.log("International zone:")
-  await ensureOption({ name: "International Speed Post / FedEx", zoneId: intlZone.id, prices: [{ currency_code: "usd", amount: INTL_RATE }] })
-  await ensureOption({ name: "Donate prasadam at temple", zoneId: intlZone.id, prices: [{ currency_code: "usd", amount: 0 }] })
+  await ensureOption({ name: OPT.intlPaid, zoneId: intlZone.id, prices: [{ currency_code: "usd", amount: INTL_RATE }] })
+  await ensureOption({ name: OPT.donate, zoneId: intlZone.id, prices: [{ currency_code: "usd", amount: 0 }] })
+
+  // 4. Reconcile — delete legacy/renamed options so only the canonical set remains.
+  const keep = new Set([OPT.indiaFree, OPT.intlPaid, OPT.donate])
+  for (const o of await getShippingOptions()) {
+    if (LEGACY_NAMES.includes(o.name) && !keep.has(o.name)) {
+      await api("DELETE", `/admin/shipping-options/${o.id}`)
+      console.log(`  - deleted legacy option "${o.name}" (${o.id})`)
+    }
+  }
 
   // 4. Verify
   console.log("\n=== final shipping options ===")

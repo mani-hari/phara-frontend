@@ -335,7 +335,7 @@ function ShippingCards({
             <span style={{ flex: 1, display: "inline-flex", flexDirection: "column", gap: 2 }}>
               <span style={{ display: "inline-flex", justifyContent: "space-between", alignItems: "center", width: "100%" }}>
                 <span className="ph-body" style={{ fontWeight: 600 }}>
-                  {isIndia && isFree ? "Ship prasad to me" : m.name}
+                  {m.name}
                 </span>
                 <span className="ph-label ph-num" style={{
                   color: isFree ? "#2d6a4f" : "var(--ink)",
@@ -344,39 +344,13 @@ function ShippingCards({
                   padding: isFree ? "2px 8px" : "0",
                   borderRadius: isFree ? 20 : 0,
                 }}>
-                  {isIndia && isFree ? "FREE" : price}
+                  {isFree ? "Free" : price}
                 </span>
               </span>
-              {isIndia && isFree && (
-                <span className="ph-body-sm" style={{ color: "var(--ink-4)", display: "block" }}>
-                  Prasad dispatched within 2–3 days of the ceremony
-                </span>
-              )}
             </span>
           </button>
         )
       })}
-
-      {!isIndia && methods.length === 1 && (
-        <button
-          type="button"
-          onClick={() => onSelect("")}
-          style={{
-            display: "flex", alignItems: "center", gap: 14,
-            padding: "14px 16px",
-            border: `2px solid ${"" === selected ? "var(--sindoor)" : "var(--ink-line)"}`,
-            borderRadius: 10, background: "var(--paper)", cursor: "pointer", textAlign: "left",
-          }}
-        >
-          <span style={{
-            width: 18, height: 18, borderRadius: "50%",
-            border: `2px solid ${"" === selected ? "var(--sindoor)" : "var(--ink-line)"}`,
-            background: "" === selected ? "var(--sindoor)" : "transparent",
-            flexShrink: 0,
-          }} />
-          <span className="ph-body" style={{ fontWeight: 600 }}>Donate prasad at the temple</span>
-        </button>
-      )}
     </div>
   )
 }
