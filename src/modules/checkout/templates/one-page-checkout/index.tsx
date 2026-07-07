@@ -35,6 +35,7 @@ type Props = {
   availableShippingMethods: HttpTypes.StoreCartShippingOption[]
   countryCode: string
   isIndia: boolean
+  ipCountry?: string | null
 }
 
 // ─── helpers ──────────────────────────────────────────────────────────────────
@@ -378,6 +379,7 @@ export default function OnePageCheckout({
   availableShippingMethods,
   countryCode,
   isIndia,
+  ipCountry,
 }: Props) {
   const currency = cart.currency_code || "inr"
 
@@ -389,8 +391,16 @@ export default function OnePageCheckout({
     ? regionCountries
     : [{ iso_2: countryCode, name: countryCode.toUpperCase() }]
 
+  const inRegion = (cc?: string | null) =>
+    !!cc && countries.some((c) => c.iso_2.toLowerCase() === cc.toLowerCase())
+
+  // Pre-select the visitor's actual country: saved cart address → IP country →
+  // URL country → region's first country (last resort). Avoids defaulting to
+  // an arbitrary alphabetical first entry (e.g. Afghanistan).
   const defaultCountry =
     cart.shipping_address?.country_code ||
+    (inRegion(ipCountry) ? (ipCountry as string) : undefined) ||
+    (inRegion(countryCode) ? countryCode : undefined) ||
     (countries[0]?.iso_2 ?? countryCode)
 
   const [form, setForm] = useState<AddrForm>({
@@ -637,6 +647,11 @@ export default function OnePageCheckout({
           gap: 0;
         }
         .checkout-summary-col { display: none; }
+        /* Base (mobile) — declared BEFORE the media query so the desktop
+           overrides below win on ≥1024px. (Previously this was after the
+           media query and leaked into desktop, keeping the mobile summary in
+           the grid and pushing the form into the 320px column.) */
+        .co-mobile-only { display: block; }
         @media (min-width: 1024px) {
           .checkout-layout {
             display: grid;
@@ -649,7 +664,6 @@ export default function OnePageCheckout({
         }
 
         /* Mobile order summary */
-        .co-mobile-only { display: block; }
         .co-mobile-summary {
           border: 1px solid var(--ink-line);
           border-radius: 10px;

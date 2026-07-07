@@ -159,14 +159,19 @@ export async function middleware(request: NextRequest) {
     }
 
     // ── No country prefix — determine which country this visitor is in ──────
-    // Admin override takes highest priority.
+    // Admin override (a preview toggle) is honored ONLY for a logged-in
+    // session. This prevents a stale/leaked admin_region_override cookie from
+    // forcing the wrong region — e.g. INR for a logged-out US customer, which
+    // would silently mis-price the whole catalog. Logged-out visitors always
+    // get IP-based detection.
+    const isAuthed = !!request.cookies.get("_medusa_jwt")?.value
     const adminOverride = request.cookies
       .get("admin_region_override")
       ?.value?.toLowerCase()
 
     let targetCountry = DEFAULT_COUNTRY
 
-    if (adminOverride && isCountryCode(adminOverride, regionMap)) {
+    if (adminOverride && isAuthed && isCountryCode(adminOverride, regionMap)) {
       targetCountry = adminOverride
     } else {
       const vercelCC = request.headers
