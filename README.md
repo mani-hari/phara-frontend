@@ -26,6 +26,22 @@ Requires Node 20+ and the environment variables listed in [`.env.example`](.env.
 | `npm run build` | Production build |
 | `npm run start` | Serve the production build |
 | `npm run lint` | ESLint (also see `next.config.js` → `eslint.ignoreDuringBuilds`) |
+| `npm run test:e2e` | Playwright checkout E2E suite (reuses dev server locally) |
+| `npm run medusa:unlock` / `:lock` / `:status` | Arm/disarm the gated Medusa admin window (Keychain) |
+
+## Checkout & commerce
+
+The cart → checkout → payment → fulfillment flow is production-hardened and E2E-tested. Highlights
+(full detail in [`docs/CHECKOUT.md`](docs/CHECKOUT.md)):
+
+- **Region & currency** by visitor IP — India → INR, elsewhere → USD, with a local-currency hint
+  (subscript) on international prices for reference.
+- **One-page checkout** — delivery address (IP-populated country), country-based **Medusa shipping**
+  (India: Free / donate; International: $32 Speedpost-FedEx / donate), billing-address toggle, and
+  payment (India → Razorpay; International → Razorpay default + PayPal).
+- **Sankalpam** (devotee/nakshatram/rasi/gothram) is stored on **order line items** for temple staff.
+- **Completion screens** — thank-you with per-item sankalpam; graceful error screen with WhatsApp +
+  `hello@pariharaonline.com`. All payment failures are logged (`area:"checkout"`).
 
 ## Documentation
 

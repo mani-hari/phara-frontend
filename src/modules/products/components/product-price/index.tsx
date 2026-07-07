@@ -1,5 +1,6 @@
 import { getProductPrice } from "@lib/util/get-product-price"
 import { HttpTypes } from "@medusajs/types"
+import PriceSubscript from "@modules/common/components/price-subscript"
 
 export default function ProductPrice({
   product,
@@ -88,6 +89,10 @@ export default function ProductPrice({
             </span>
           </>
         )}
+        <PriceSubscript
+          amount={selectedPrice.calculated_price_number}
+          currencyCode={(selectedPrice as any).currency_code}
+        />
       </div>
     </div>
   )

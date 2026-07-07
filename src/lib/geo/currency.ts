@@ -103,6 +103,21 @@ export function getCurrencySymbol(currency: SupportedCurrency): string {
   return CURRENCY_CONFIG[currency].symbol;
 }
 
+// Map an ISO country code → a supported display currency (for the local-price hint).
+// Countries not listed return null (no hint shown).
+const COUNTRY_CURRENCY: Record<string, SupportedCurrency> = {
+  IN: 'INR', US: 'USD', GB: 'GBP', JP: 'JPY', CA: 'CAD', AU: 'AUD',
+  // Eurozone
+  DE: 'EUR', FR: 'EUR', IT: 'EUR', ES: 'EUR', NL: 'EUR', IE: 'EUR', BE: 'EUR',
+  AT: 'EUR', PT: 'EUR', FI: 'EUR', GR: 'EUR', LU: 'EUR', SK: 'EUR', SI: 'EUR',
+  EE: 'EUR', LV: 'EUR', LT: 'EUR', CY: 'EUR', MT: 'EUR', HR: 'EUR',
+};
+
+export function localCurrencyForCountry(cc?: string | null): SupportedCurrency | null {
+  if (!cc) return null;
+  return COUNTRY_CURRENCY[cc.toUpperCase()] ?? null;
+}
+
 // Convert price from smallest unit (cents/paise) to display amount
 export function fromSmallestUnit(amount: number, currency: SupportedCurrency): number {
   const config = CURRENCY_CONFIG[currency];
