@@ -133,20 +133,51 @@ export async function updateCartPujaDetails(details: {
 }) {
   const devotees = details.devotees.filter((devotee) => devotee.name.trim() !== "")
 
-  return updateCart({
-    metadata: {
-      devotees: JSON.stringify(devotees),
-      devotee_name: devotees.map((devotee) => devotee.name).join(", "),
-      date_preference: details.date_preference || undefined,
-      sankalpam_notes: details.sankalpam_notes || undefined,
-      devotee_count: devotees.length,
-      puja_details: JSON.stringify({
-        devotees,
-        date_preference: details.date_preference || "",
-        sankalpam_notes: details.sankalpam_notes || "",
-      }),
-    },
-  })
+  const meta = {
+    devotees: JSON.stringify(devotees),
+    devotee_name: devotees.map((devotee) => devotee.name).join(", "),
+    date_preference: details.date_preference || undefined,
+    sankalpam_notes: details.sankalpam_notes || undefined,
+    devotee_count: devotees.length,
+    puja_details: JSON.stringify({
+      devotees,
+      date_preference: details.date_preference || "",
+      sankalpam_notes: details.sankalpam_notes || "",
+    }),
+  }
+
+  // 1) Cart-level metadata (kept as a backup / for order.metadata).
+  await updateCart({ metadata: meta })
+
+  // 2) ALSO write the sankalpam onto every line item's metadata. Line-item
+  //    metadata reliably carries into the Medusa order's line items on
+  //    completion, so temple staff see who each puja is for on the order —
+  //    cart-level metadata carry is not guaranteed. The cart form is
+  //    cart-level today, so we mirror the details onto each item.
+  const cartId = await getCartId()
+  if (cartId) {
+    const headers = { ...(await getAuthHeaders()) }
+    const cart = await retrieveCart()
+    if (cart?.items?.length) {
+      await Promise.all(
+        cart.items.map((item) =>
+          sdk.store.cart
+            .updateLineItem(
+              cartId,
+              item.id,
+              { metadata: meta } as unknown as HttpTypes.StoreUpdateLineItem,
+              {},
+              headers
+            )
+            .catch(() => {
+              // don't fail the whole save if one line item rejects metadata
+            })
+        )
+      )
+      const cartCacheTag = await getCacheTag("carts")
+      revalidateTag(cartCacheTag)
+    }
+  }
 }
 
 export async function addToCart({
