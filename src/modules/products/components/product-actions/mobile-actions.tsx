@@ -21,6 +21,7 @@ type MobileActionsProps = {
   isAdding?: boolean
   show: boolean
   optionsDisabled: boolean
+  buttonText?: string
 }
 
 const MobileActions: React.FC<MobileActionsProps> = ({
@@ -33,6 +34,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
   isAdding,
   show,
   optionsDisabled,
+  buttonText,
 }) => {
   const { state, open, close } = useToggleState()
 
@@ -70,7 +72,8 @@ const MobileActions: React.FC<MobileActionsProps> = ({
           leaveTo="opacity-0"
         >
           <div
-            className="bg-white flex flex-col gap-y-3 justify-center items-center text-large-regular p-4 h-full w-full border-t border-gray-200"
+            className="flex flex-col gap-y-3 justify-center items-center text-large-regular p-4 h-full w-full border-t"
+            style={{ background: "var(--paper)", borderColor: "var(--ink-line)" }}
             data-testid="mobile-actions"
           >
             <div className="flex items-center gap-x-2">
@@ -127,7 +130,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                   ? "Select variant"
                   : !inStock
                   ? "Out of stock"
-                  : "Add to cart"}
+                  : buttonText || "Add to cart"}
               </Button>
             </div>
           </div>
@@ -165,13 +168,14 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                   <div className="w-full flex justify-end pr-6">
                     <button
                       onClick={close}
-                      className="bg-white w-12 h-12 rounded-full text-ui-fg-base flex justify-center items-center"
+                      className="w-12 h-12 rounded-full flex justify-center items-center"
+                      style={{ background: "var(--paper)", color: "var(--ink)" }}
                       data-testid="close-modal-button"
                     >
                       <X />
                     </button>
                   </div>
-                  <div className="bg-white px-6 py-12">
+                  <div className="px-6 py-12" style={{ background: "var(--paper)" }}>
                     {(product.variants?.length ?? 0) > 1 && (
                       <div className="flex flex-col gap-y-6">
                         {(product.options || []).map((option) => {

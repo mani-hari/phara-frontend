@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server"
 
 export async function POST(req: NextRequest) {
   try {
-    const { amount, currency = "USD", description } = await req.json()
+    const { amount, currency = "USD", description, return_url, cancel_url } = await req.json()
 
     const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID
     const clientSecret = process.env.PAYPAL_CLIENT_SECRET
@@ -16,8 +16,11 @@ export async function POST(req: NextRequest) {
 
     // Get access token
     const auth = Buffer.from(`${clientId}:${clientSecret}`).toString("base64")
+    const isSandbox = process.env.NEXT_PUBLIC_PAYPAL_SANDBOX === "true"
+    const paypalBase = isSandbox ? "https://api-m.sandbox.paypal.com" : "https://api-m.paypal.com"
+
     const tokenResponse = await fetch(
-      "https://api-m.paypal.com/v1/oauth2/token",
+      `${paypalBase}/v1/oauth2/token`,
       {
         method: "POST",
         headers: {
@@ -38,7 +41,7 @@ export async function POST(req: NextRequest) {
 
     // Create order
     const orderResponse = await fetch(
-      "https://api-m.paypal.com/v2/checkout/orders",
+      `${paypalBase}/v2/checkout/orders`,
       {
         method: "POST",
         headers: {
@@ -51,11 +54,21 @@ export async function POST(req: NextRequest) {
             {
               amount: {
                 currency_code: currency,
-                value: (amount / 100).toFixed(2), // Convert from cents to dollars
+                value: typeof amount === "number" ? (amount / 100).toFixed(2) : amount,
               },
               description: description || "PariharaOnline - Temple Services",
             },
           ],
+          ...(return_url || cancel_url
+            ? {
+                application_context: {
+                  return_url: return_url || undefined,
+                  cancel_url: cancel_url || undefined,
+                  brand_name: "PariharaOnline",
+                  user_action: "PAY_NOW",
+                },
+              }
+            : {}),
         }),
       }
     )

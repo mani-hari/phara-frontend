@@ -11,6 +11,7 @@ import Package from "@modules/common/icons/package"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { HttpTypes } from "@medusajs/types"
 import { signout } from "@lib/data/customer"
+import { localizeHref } from "@lib/util/localize-href"
 
 const AccountNav = ({
   customer,
@@ -27,7 +28,7 @@ const AccountNav = ({
   return (
     <div>
       <div className="small:hidden" data-testid="mobile-account-nav">
-        {route !== `/${countryCode}/account` ? (
+        {route !== localizeHref(countryCode, "/account") ? (
           <LocalizedClientLink
             href="/account"
             className="flex items-center gap-x-2 text-small-regular py-2"
@@ -182,7 +183,7 @@ const AccountNavLink = ({
 }: AccountNavLinkProps) => {
   const { countryCode }: { countryCode: string } = useParams()
 
-  const active = route.split(countryCode)[1] === href
+  const active = route === localizeHref(countryCode, href)
   return (
     <LocalizedClientLink
       href={href}

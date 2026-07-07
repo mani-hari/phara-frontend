@@ -10,11 +10,11 @@ const FOOTER_COLUMNS: FooterColumn[] = [
   {
     title: "Services",
     links: [
-      { label: "Temple Poojas", href: "/collections/all-pujas" },
-      { label: "Homams", href: "/collections/all-pujas" },
+      { label: "Temple Poojas", href: "/collections/pujas-and-homams" },
+      { label: "Homams", href: "/collections/pujas-and-homams" },
       { label: "Astrology", href: "/astrology" },
-      { label: "Prasadam", href: "/products/garbharakshambika-ghee" },
-      { label: "Annadanam", href: "/products/annadhanam-donate-food-to-homeless-children" },
+      { label: "Prasadam", href: "/products/garbarakshambigai-ghee" },
+      { label: "Annadanam", href: "/products/annadhanam-food-donation" },
     ],
   },
   {
@@ -59,7 +59,7 @@ export default async function Footer() {
           }}
         >
           <div className="col-span-full small:col-span-1" style={{ minWidth: 240 }}>
-            <Logo size={32} dark showTagline />
+            <Logo size={44} dark showTagline />
             <p
               className="ph-body-sm"
               style={{ color: "rgba(250,246,238,0.6)", maxWidth: 320, marginTop: 16 }}

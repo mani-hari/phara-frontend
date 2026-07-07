@@ -2,6 +2,7 @@ import Link from "next/link"
 
 import { BlogPost } from "@lib/data/blog"
 import PostCard from "@modules/blog/components/post-card"
+import { localizeHref } from "@lib/util/localize-href"
 import { ArrowRight, BookOpenText } from "lucide-react"
 
 type LearnExploreProps = {
@@ -38,7 +39,7 @@ export default function LearnExplore({
           </div>
 
           <Link
-            href={`/${countryCode}/blog`}
+            href={localizeHref(countryCode, "/blog")}
             className="inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800"
           >
             View all articles

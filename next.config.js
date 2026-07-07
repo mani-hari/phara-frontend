@@ -13,6 +13,25 @@ const S3_PATHNAME = process.env.MEDUSA_CLOUD_S3_PATHNAME
  */
 const nextConfig = {
   reactStrictMode: true,
+  transpilePackages: [
+    "react-markdown",
+    "remark-gfm",
+    "remark-parse",
+    "unified",
+    "bail",
+    "is-plain-obj",
+    "trough",
+    "vfile",
+    "vfile-message",
+    "unist-util-stringify-position",
+    "mdast-util-from-markdown",
+    "mdast-util-to-string",
+    "mdast-util-gfm",
+    "micromark",
+    "micromark-extension-gfm",
+    "decode-named-character-reference",
+    "character-entities",
+  ],
   logging: {
     fetches: {
       fullUrl: true,
@@ -49,6 +68,14 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "s3.us-east-1.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.shopify.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.cloudfront.net",
       },
       ...(S3_HOSTNAME && S3_PATHNAME
         ? [

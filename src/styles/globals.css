@@ -31,9 +31,8 @@
   --sage: #6f7a5a;
   --sage-soft: #e3e6d8;
 
-  /* Typography */
-  --serif: var(--font-serif), 'Cormorant Garamond', 'Times New Roman', serif;
-  --sans: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
+  /* Typography — NOTE: --serif and --sans moved to body (see below) so that
+     var(--font-serif) / var(--font-inter) Next.js variables resolve correctly */
   --mono: 'JetBrains Mono', ui-monospace, monospace;
 
   /* Shadows */
@@ -50,6 +49,10 @@
 
 @layer base {
   body {
+    /* Define font stacks here so var(--font-serif) / var(--font-inter) injected
+       by Next.js onto <body> are in scope when these variables are evaluated */
+    --serif: var(--font-serif), 'Cormorant Garamond', 'Times New Roman', serif;
+    --sans: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
     background: var(--paper);
     color: var(--ink-2);
     font-family: var(--sans);
@@ -141,7 +144,6 @@
   }
   .ph-italic-script {
     font-family: var(--serif);
-    font-style: italic;
     font-weight: 400;
     color: var(--ink-2);
   }

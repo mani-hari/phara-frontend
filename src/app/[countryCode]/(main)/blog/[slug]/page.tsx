@@ -4,6 +4,7 @@ import { notFound } from "next/navigation"
 
 import { getBlogPostBySlug, getBlogPostSlugs } from "@lib/data/blog"
 import { markdownToHtml } from "@lib/util/markdown"
+import { localizeHref } from "@lib/util/localize-href"
 import { ArrowLeft, Clock3 } from "lucide-react"
 
 export async function generateStaticParams() {
@@ -63,7 +64,7 @@ export default async function BlogPostPage(props: {
       <section className="bg-gradient-to-br from-brand-50 via-white to-warm-50 py-12">
         <div className="content-container max-w-4xl">
           <Link
-            href={`/${countryCode}/blog`}
+            href={localizeHref(countryCode, "/blog")}
             className="inline-flex items-center gap-2 text-sm font-medium text-brand-700 hover:text-brand-800"
           >
             <ArrowLeft className="h-4 w-4" />

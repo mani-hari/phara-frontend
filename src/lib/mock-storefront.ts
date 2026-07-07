@@ -177,6 +177,87 @@ export const popularQuestions = [
 ]
 
 const productSpecificContent: Record<string, MockProductDetailContent> = {
+  garbarakshambigai_ghee: {
+    heroTags: [
+      { label: "Conception Blessings", color: "#7C3AED", bg: "#EDE9FE" },
+      { label: "Fertility", color: "#065F46", bg: "#D1FAE5" },
+      { label: "Garba Rakshambigai", color: "#92400E", bg: "#FEF3C7" },
+    ],
+    effectiveFor: [
+      "Couples trying to conceive",
+      "Delayed pregnancy",
+      "Pregnancy complications",
+      "Newborn blessings",
+    ],
+    intensity: "Gentle",
+    review: {
+      text: '"We had been trying for four years. After this abhishekam in the name of both of us, we conceived within two months. I can\'t explain it rationally — I just know it worked."',
+      author: "Priya S., London",
+    },
+    description:
+      "Garbarakshambigai Devi at Tiru Kkarugavur is worshipped as the divine protector of the womb. The Ghee Abhishekam — anointing the Devi with pure ghee — is the most traditional and potent form of worship offered here.\n\nThis ritual is specifically sought by couples longing for a child, those experiencing repeated pregnancy loss, or mothers seeking divine protection for a current pregnancy. The vibration of pure ghee offered to Devi with sincere prayers is believed to invoke her direct blessings upon the devotee's wish.\n\nPriest-performed with full sankalpam, the ritual takes approximately 45 minutes at the main sanctum.",
+    included: [
+      "Ghee Abhishekam at Garbarakshambigai temple",
+      "Personalized sankalpam with devotee's name & nakshatram",
+      "Ritual completion photos sent via WhatsApp",
+      "Temple prasadam dispatched by Speed Post",
+      "Kumkuma prasad for the couple",
+    ],
+  },
+  garbarakshambigai_oil: {
+    heroTags: [
+      { label: "Safe Delivery", color: "#DB2777", bg: "#FCE7F3" },
+      { label: "Pregnancy Protection", color: "#065F46", bg: "#D1FAE5" },
+      { label: "Garba Rakshambigai", color: "#92400E", bg: "#FEF3C7" },
+    ],
+    effectiveFor: [
+      "Safe and smooth delivery",
+      "High-risk pregnancies",
+      "Protection during pregnancy",
+      "New mother blessings",
+    ],
+    intensity: "Gentle",
+    review: {
+      text: '"My pregnancy was high-risk and my family was very anxious. We booked the oil abhishekam in week 32. My delivery was smooth and my daughter is perfectly healthy. The temple team kept us informed throughout."',
+      author: "Kavitha R., Singapore",
+    },
+    description:
+      "The Tailabhishekam (oil abhishekam) at Garbarakshambigai temple is traditionally performed for the protection of mother and child during pregnancy and childbirth.\n\nGarbarakshambigai — literally 'She who protects the womb' — is approached by expectant families to seek a complication-free delivery and the good health of both mother and newborn. The anointing with medicated oil is considered deeply protective and nurturing.\n\nThis service is booked by families on behalf of a pregnant devotee and is performed with full sankalpam and prayers naming both the mother and the expected child.",
+    included: [
+      "Tailabhishekam (oil abhishekam) at Garbarakshambigai temple",
+      "Full sankalpam with mother's name & nakshatram",
+      "Ritual photos and completion confirmation via WhatsApp",
+      "Blessed oil and temple prasadam dispatched",
+      "Priest's blessings prayer for mother and child",
+    ],
+  },
+  rahu_ketu: {
+    heroTags: [
+      { label: "Sarpa Dosha Relief", color: "#1E40AF", bg: "#DBEAFE" },
+      { label: "Kalahasti Temple", color: "#92400E", bg: "#FEF3C7" },
+      { label: "Rahu-Ketu Parihara", color: "#7C3AED", bg: "#EDE9FE" },
+    ],
+    effectiveFor: [
+      "Sarpa Dosha (Naga Dosha) relief",
+      "Delayed marriage",
+      "Childlessness issues",
+      "Recurring family problems",
+    ],
+    intensity: "High",
+    review: {
+      text: '"Our astrologer had told us our eldest son had severe Sarpa Dosha. After the Rahu-Ketu Parihara at Kalahasti, his delayed marriage situation resolved within 8 months. We did the full-day parihara — absolutely worth it."',
+      author: "Venkataraman N., Chennai",
+    },
+    description:
+      "Sri Kalahasti in Andhra Pradesh is one of the most sacred Pancha Bhuta Sthalam temples and the foremost centre in India for Rahu-Ketu Dosha parihara. The Rahu-Ketu Dosha — often called Sarpa Dosha or Naga Dosha — manifests as persistent obstacles in marriage, childbearing, career, and family harmony.\n\nThis parihara involves special abhishekam, archana, and homa performed in the name of the affected devotee by temple-authorized priests at the main sanctum. The ritual specifically addresses malefic effects of Rahu and Ketu in the natal chart.\n\nBased on the severity of the dosha, we offer half-day and full-day parihara packages. Our team will review your requirements and coordinate with the temple for the appropriate ritual.",
+    included: [
+      "Rahu-Ketu Dosha parihara at Sri Kalahasteeswara temple",
+      "Personalized sankalpam with name, nakshatram & gothram",
+      "Archana, abhishekam and ritual homa as applicable",
+      "Ritual completion photos & video sent via WhatsApp",
+      "Sacred prasadam dispatched from the temple",
+    ],
+  },
   navagraha: {
     heroTags: [
       { label: "Planetary Relief", color: "#92400E", bg: "#FEF3C7" },
@@ -309,9 +390,19 @@ export const findFeaturedProducts = (
 
 export const getMockProductDetailContent = (product: HttpTypes.StoreProduct) => {
   const title = product.title.toLowerCase()
+  const handle = product.handle?.toLowerCase() || ""
 
   if (title.includes("navagraha")) {
     return productSpecificContent.navagraha
+  }
+  if (handle.includes("garbarakshambigai-ghee") || (title.includes("garbarakshambigai") && title.includes("ghee"))) {
+    return productSpecificContent.garbarakshambigai_ghee
+  }
+  if (handle.includes("garbarakshambigai-oil") || (title.includes("garbarakshambigai") && title.includes("oil"))) {
+    return productSpecificContent.garbarakshambigai_oil
+  }
+  if (handle.includes("rahu-ketu") || title.includes("rahu") || title.includes("sarpa dosha") || title.includes("kalahasti")) {
+    return productSpecificContent.rahu_ketu
   }
 
   return {

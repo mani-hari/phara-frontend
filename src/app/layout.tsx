@@ -8,6 +8,8 @@ import {
   Playfair_Display,
 } from "next/font/google"
 import "@styles/globals.css"
+import Providers from "@/components/providers"
+import AdminBar from "@/components/admin/admin-bar"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,7 +19,7 @@ const inter = Inter({
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
-  style: ["normal", "italic"],
+  style: ["normal"],
   variable: "--font-serif",
 })
 
@@ -140,7 +142,10 @@ export default function RootLayout({
         className={`${inter.variable} ${cormorant.variable} ${dmSerif.variable} ${playfair.variable} font-sans`}
         style={{ background: "var(--paper)", color: "var(--ink-2)" }}
       >
-        <main className="relative">{children}</main>
+        <Providers>
+          <main className="relative">{children}</main>
+          <AdminBar />
+        </Providers>
       </body>
     </html>
   )

@@ -1,10 +1,7 @@
-import { Text } from "@medusajs/ui"
-import { listProducts } from "@lib/data/products"
 import { getProductPrice } from "@lib/util/get-product-price"
 import { HttpTypes } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import Thumbnail from "../thumbnail"
-import PreviewPrice from "./price"
 
 export default async function ProductPreview({
   product,
@@ -15,35 +12,63 @@ export default async function ProductPreview({
   isFeatured?: boolean
   region: HttpTypes.StoreRegion
 }) {
-  // const pricedProduct = await listProducts({
-  //   regionId: region.id,
-  //   queryParams: { id: [product.id!] },
-  // }).then(({ response }) => response.products[0])
-
-  // if (!pricedProduct) {
-  //   return null
-  // }
-
-  const { cheapestPrice } = getProductPrice({
-    product,
-  })
+  const { cheapestPrice } = getProductPrice({ product })
 
   return (
-    <LocalizedClientLink href={`/products/${product.handle}`} className="group">
-      <div data-testid="product-wrapper" className="rounded-2xl border border-grey-10 overflow-hidden hover:shadow-md hover:border-brand-200 transition-all duration-200">
-        <Thumbnail
-          thumbnail={product.thumbnail}
-          images={product.images}
-          size="full"
-          isFeatured={isFeatured}
-        />
-        <div className="p-4">
-          <Text className="text-grey-90 font-medium text-sm leading-snug" data-testid="product-title">
+    <LocalizedClientLink
+      href={`/products/${product.handle}`}
+      style={{ textDecoration: "none", display: "block" }}
+    >
+      <div
+        className="ph-card ph-lift"
+        data-testid="product-wrapper"
+        style={{ cursor: "pointer", overflow: "hidden" }}
+      >
+        <div
+          style={{
+            position: "relative",
+            height: 200,
+            background:
+              "radial-gradient(circle at 50% 30%, rgba(255,200,120,0.3), transparent 60%), var(--paper-2)",
+            overflow: "hidden",
+          }}
+        >
+          <Thumbnail
+            thumbnail={product.thumbnail}
+            images={product.images}
+            size="full"
+            isFeatured={isFeatured}
+          />
+        </div>
+        <div style={{ padding: "14px 16px 16px" }}>
+          <p
+            className="ph-body"
+            data-testid="product-title"
+            style={{
+              fontWeight: 600,
+              marginBottom: 6,
+              color: "var(--ink)",
+              overflow: "hidden",
+              display: "-webkit-box",
+              WebkitLineClamp: 2,
+              WebkitBoxOrient: "vertical",
+            }}
+          >
             {product.title}
-          </Text>
-          <div className="flex items-center gap-x-2 mt-2">
-            {cheapestPrice && <PreviewPrice price={cheapestPrice} />}
-          </div>
+          </p>
+          {cheapestPrice ? (
+            <span
+              className="ph-body-sm ph-num"
+              style={{ color: "var(--sindoor)", fontWeight: 700 }}
+              data-testid="price"
+            >
+              {cheapestPrice.calculated_price}
+            </span>
+          ) : (
+            <span className="ph-body-sm" style={{ color: "var(--ink-4)" }}>
+              Price on request
+            </span>
+          )}
         </div>
       </div>
     </LocalizedClientLink>

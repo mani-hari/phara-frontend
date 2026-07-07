@@ -19,7 +19,7 @@ const Review = ({ cart }: { cart: any }) => {
     (cart.payment_collection || paidByGiftcard)
 
   return (
-    <div className="bg-white">
+    <div>
       <div className="flex flex-row items-center justify-between mb-6">
         <Heading
           level="h2"
@@ -39,9 +39,11 @@ const Review = ({ cart }: { cart: any }) => {
             <div className="w-full">
               <Text className="txt-medium-plus text-ui-fg-base mb-1">
                 By clicking the Place Order button, you confirm that you have
-                read, understand and accept our Terms of Use, Terms of Sale and
-                Returns Policy and acknowledge that you have read Medusa
-                Store&apos;s Privacy Policy.
+                read, understand and accept our{" "}
+                <a href="/terms" className="underline">Terms of Use</a>,{" "}
+                <a href="/refund" className="underline">Refund Policy</a> and
+                acknowledge that you have read PariharaOnline&apos;s{" "}
+                <a href="/privacy" className="underline">Privacy Policy</a>.
               </Text>
             </div>
           </div>

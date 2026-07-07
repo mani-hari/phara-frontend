@@ -1,22 +1,13 @@
 export default function medusaError(error: any): never {
-  if (error.response) {
-    // The request was made and the server responded with a status code
-    // that falls out of the range of 2xx
-    const u = new URL(error.config.url, error.config.baseURL)
-    console.error("Resource:", u.toString())
-    console.error("Response data:", error.response.data)
-    console.error("Status code:", error.response.status)
-    console.error("Headers:", error.response.headers)
-
-    // Extracting the error message from the response data
-    const message = error.response.data.message || error.response.data
-
-    throw new Error(message.charAt(0).toUpperCase() + message.slice(1) + ".")
-  } else if (error.request) {
-    // The request was made but no response was received
-    throw new Error("No response received: " + error.request)
-  } else {
-    // Something happened in setting up the request that triggered an Error
-    throw new Error("Error setting up the request: " + error.message)
+  // Medusa JS SDK v2 throws FetchError (has .status, no .response/.request)
+  if (typeof error?.status === "number") {
+    throw new Error(error.message || `Request failed with status ${error.status}`)
   }
+  // Legacy axios-style errors
+  if (error.response) {
+    const message = error.response.data?.message || error.response.data || error.message
+    throw new Error(String(message))
+  }
+  // Generic JS error
+  throw new Error(error.message || "An unexpected error occurred")
 }

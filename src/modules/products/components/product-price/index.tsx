@@ -1,5 +1,3 @@
-import { clx } from "@medusajs/ui"
-
 import { getProductPrice } from "@lib/util/get-product-price"
 import { HttpTypes } from "@medusajs/types"
 
@@ -22,37 +20,75 @@ export default function ProductPrice({
   }
 
   return (
-    <div className="flex flex-col text-ui-fg-base">
-      <span
-        className={clx("text-2xl font-bold text-brand-700", {
-          "text-brand-600": selectedPrice.price_type === "sale",
-        })}
+    <div style={{ marginBottom: 16 }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "baseline",
+          gap: 10,
+          flexWrap: "wrap",
+        }}
       >
-        {!variant && "From "}
+        {!variant && (
+          <span
+            style={{
+              fontFamily: "var(--sans)",
+              fontSize: 12,
+              fontWeight: 600,
+              color: "var(--ink-4)",
+              textTransform: "uppercase",
+              letterSpacing: "0.06em",
+            }}
+          >
+            From
+          </span>
+        )}
         <span
+          style={{
+            fontFamily: "var(--sans)",
+            fontSize: 30,
+            fontWeight: 700,
+            color: "var(--ink)",
+            letterSpacing: "-0.02em",
+            fontFeatureSettings: "'tnum' 1",
+            lineHeight: 1,
+          }}
           data-testid="product-price"
           data-value={selectedPrice.calculated_price_number}
         >
           {selectedPrice.calculated_price}
         </span>
-      </span>
-      {selectedPrice.price_type === "sale" && (
-        <>
-          <p>
-            <span className="text-ui-fg-subtle">Original: </span>
+        {selectedPrice.price_type === "sale" && (
+          <>
             <span
-              className="line-through"
+              style={{
+                fontFamily: "var(--sans)",
+                fontSize: 16,
+                color: "var(--ink-4)",
+                textDecoration: "line-through",
+                fontFeatureSettings: "'tnum' 1",
+              }}
               data-testid="original-product-price"
               data-value={selectedPrice.original_price_number}
             >
               {selectedPrice.original_price}
             </span>
-          </p>
-          <span className="text-ui-fg-interactive">
-            -{selectedPrice.percentage_diff}%
-          </span>
-        </>
-      )}
+            <span
+              style={{
+                fontFamily: "var(--sans)",
+                fontSize: 12,
+                fontWeight: 700,
+                color: "var(--sindoor)",
+                background: "rgba(182,68,46,0.08)",
+                padding: "2px 8px",
+                borderRadius: 999,
+              }}
+            >
+              -{selectedPrice.percentage_diff}%
+            </span>
+          </>
+        )}
+      </div>
     </div>
   )
 }

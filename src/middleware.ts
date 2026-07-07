@@ -1,11 +1,28 @@
 import { HttpTypes } from "@medusajs/types"
 import { NextRequest, NextResponse } from "next/server"
 
+// Ghost-URL redirect map: old slug → new slug (path relative to country prefix)
+const GHOST_REDIRECTS: Record<string, string> = {
+  "/products/garbharakshambika-ghee": "/products/garbarakshambigai-ghee",
+  "/products/garbharakshambika-oil": "/products/garbarakshambigai-oil",
+  "/products/annadhanam-donate-food-to-homeless-children": "/products/annadhanam-food-donation",
+  "/products/sudarsana-homam": "/products/sudarshana-homam",
+  "/products/tila-homam-at-rameswaram": "/products/thila-homam-rameswaram",
+  "/products/rahu-ketu-dosha-parihara-pooja": "/products/rahu-ketu-dosha-parihara",
+}
+
 const BACKEND_URL =
   process.env.MEDUSA_BACKEND_URL ||
   process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
 const PUBLISHABLE_API_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY
-const DEFAULT_REGION = process.env.NEXT_PUBLIC_DEFAULT_REGION || "us"
+
+// India is the default — its pages are served at clean URLs (no prefix).
+// All other regions get a /{countryCode}/ prefix (e.g. /us/).
+const DEFAULT_COUNTRY = (process.env.NEXT_PUBLIC_DEFAULT_REGION || "in").toLowerCase()
+
+// Fallback set of known country codes used when Medusa is unreachable so that
+// /{cc}/... paths are still recognised and not accidentally rewritten.
+const KNOWN_COUNTRY_CODES = new Set(["in", "us"])
 
 const regionMapCache = {
   regionMap: new Map<string, HttpTypes.StoreRegion>(),
@@ -15,7 +32,6 @@ const regionMapCache = {
 async function getRegionMap(cacheId: string) {
   const { regionMap, regionMapUpdated } = regionMapCache
 
-  // Soft-fail config so a missing env var doesn't 500 the whole site.
   if (!BACKEND_URL || !PUBLISHABLE_API_KEY) {
     console.warn(
       "[middleware] Missing MEDUSA_BACKEND_URL or NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY — skipping region fetch."
@@ -28,22 +44,13 @@ async function getRegionMap(cacheId: string) {
     regionMapUpdated < Date.now() - 3600 * 1000
   ) {
     try {
-      // Fetch regions from Medusa. We can't use the JS client here because
-      // middleware runs on Edge and the client needs a Node environment.
       const { regions } = await fetch(`${BACKEND_URL}/store/regions`, {
-        headers: {
-          "x-publishable-api-key": PUBLISHABLE_API_KEY,
-        },
-        next: {
-          revalidate: 3600,
-          tags: [`regions-${cacheId}`],
-        },
+        headers: { "x-publishable-api-key": PUBLISHABLE_API_KEY },
+        next: { revalidate: 3600, tags: [`regions-${cacheId}`] },
         cache: "force-cache",
       }).then(async (response) => {
         const json = await response.json()
-        if (!response.ok) {
-          throw new Error(json.message ?? `regions ${response.status}`)
-        }
+        if (!response.ok) throw new Error(json.message ?? `regions ${response.status}`)
         return json
       })
 
@@ -61,7 +68,6 @@ async function getRegionMap(cacheId: string) {
       regionMapCache.regionMapUpdated = Date.now()
     } catch (err) {
       console.warn("[middleware] Region fetch failed:", err)
-      // Fall through with whatever we already have (possibly empty).
     }
   }
 
@@ -69,91 +75,115 @@ async function getRegionMap(cacheId: string) {
 }
 
 /**
- * Fetches regions from Medusa and sets the region cookie.
- * @param request
- * @param response
+ * Returns true if the given URL segment is a recognised country code.
+ * Falls back to KNOWN_COUNTRY_CODES when Medusa is unreachable.
  */
-async function getCountryCode(
-  request: NextRequest,
-  regionMap: Map<string, HttpTypes.StoreRegion | number>
-) {
-  try {
-    let countryCode
-
-    const vercelCountryCode = request.headers
-      .get("x-vercel-ip-country")
-      ?.toLowerCase()
-
-    const urlCountryCode = request.nextUrl.pathname.split("/")[1]?.toLowerCase()
-
-    if (urlCountryCode && regionMap.has(urlCountryCode)) {
-      countryCode = urlCountryCode
-    } else if (vercelCountryCode && regionMap.has(vercelCountryCode)) {
-      countryCode = vercelCountryCode
-    } else if (regionMap.has(DEFAULT_REGION)) {
-      countryCode = DEFAULT_REGION
-    } else if (regionMap.keys().next().value) {
-      countryCode = regionMap.keys().next().value
-    }
-
-    return countryCode
-  } catch (error) {
-    if (process.env.NODE_ENV === "development") {
-      console.error(
-        "Middleware.ts: Error getting the country code. Did you set up regions in your Medusa Admin and define a MEDUSA_BACKEND_URL environment variable? Note that the variable is no longer named NEXT_PUBLIC_MEDUSA_BACKEND_URL."
-      )
-    }
-  }
+function isCountryCode(
+  segment: string | undefined,
+  regionMap: Map<string, HttpTypes.StoreRegion>
+): boolean {
+  if (!segment) return false
+  return regionMap.has(segment) || KNOWN_COUNTRY_CODES.has(segment)
 }
 
-/**
- * Middleware to handle region selection. Wrapped in a top-level try/catch so
- * that any unexpected failure falls through to NextResponse.next() instead of
- * surfacing as MIDDLEWARE_INVOCATION_FAILED across the whole site.
- */
 export async function middleware(request: NextRequest) {
   try {
+    const { pathname, search } = request.nextUrl
+    const segments = pathname.split("/") // ["", firstSeg, ...]
+    const firstSegment = segments[1]?.toLowerCase()
+
     const cacheIdCookie = request.cookies.get("_medusa_cache_id")
     const cacheId = cacheIdCookie?.value || crypto.randomUUID()
 
     const regionMap = await getRegionMap(cacheId)
-    const countryCode =
-      regionMap && (await getCountryCode(request, regionMap))
 
-    const urlHasCountryCode =
-      countryCode &&
-      request.nextUrl.pathname.split("/")[1].includes(countryCode)
+    // Whether the URL already carries a country-code prefix
+    const hasPrefix = isCountryCode(firstSegment, regionMap)
 
-    if (urlHasCountryCode && cacheIdCookie) {
-      return NextResponse.next()
+    // The path without the country prefix (used for ghost-redirect lookup)
+    const cleanPath = hasPrefix
+      ? "/" + segments.slice(2).join("/") || "/"
+      : pathname
+
+    // ── Ghost URL redirects ────────────────────────────────────────────────
+    // Always redirect to the canonical clean-URL form for the current country.
+    const effectiveCC = hasPrefix ? firstSegment : DEFAULT_COUNTRY
+    const ghostTarget = GHOST_REDIRECTS[cleanPath]
+    if (ghostTarget) {
+      const target =
+        effectiveCC === DEFAULT_COUNTRY
+          ? ghostTarget
+          : `/${effectiveCC}${ghostTarget}`
+      return NextResponse.redirect(new URL(target, request.url), 301)
+    }
+    if (
+      cleanPath.startsWith("/products/rahu-ketu-dosha-parihara-") ||
+      cleanPath.includes("sarpa-dosha")
+    ) {
+      const target =
+        effectiveCC === DEFAULT_COUNTRY
+          ? "/products/rahu-ketu-dosha-parihara"
+          : `/${effectiveCC}/products/rahu-ketu-dosha-parihara`
+      return NextResponse.redirect(new URL(target, request.url), 301)
     }
 
-    if (urlHasCountryCode && !cacheIdCookie) {
+    // ── Static asset pass-through ──────────────────────────────────────────
+    if (pathname.includes(".")) return NextResponse.next()
+
+    // ── URL has the DEFAULT country prefix → redirect to clean URL ─────────
+    // e.g. /in/products/... → /products/...  (canonical)
+    if (hasPrefix && firstSegment === DEFAULT_COUNTRY) {
+      return NextResponse.redirect(
+        new URL(cleanPath + search, request.url),
+        301
+      )
+    }
+
+    // ── URL has a non-default country prefix → pass through ────────────────
+    // e.g. /us/products/... is fine as-is
+    if (hasPrefix) {
       const response = NextResponse.next()
-      response.cookies.set("_medusa_cache_id", cacheId, {
-        maxAge: 60 * 60 * 24,
-      })
+      if (!cacheIdCookie) {
+        response.cookies.set("_medusa_cache_id", cacheId, { maxAge: 60 * 60 * 24 })
+      }
       return response
     }
 
-    if (request.nextUrl.pathname.includes(".")) {
-      return NextResponse.next()
+    // ── No country prefix — determine which country this visitor is in ──────
+    // Admin override takes highest priority.
+    const adminOverride = request.cookies
+      .get("admin_region_override")
+      ?.value?.toLowerCase()
+
+    let targetCountry = DEFAULT_COUNTRY
+
+    if (adminOverride && isCountryCode(adminOverride, regionMap)) {
+      targetCountry = adminOverride
+    } else {
+      const vercelCC = request.headers
+        .get("x-vercel-ip-country")
+        ?.toLowerCase()
+      if (vercelCC && regionMap.has(vercelCC)) {
+        targetCountry = vercelCC
+      }
     }
 
-    const redirectPath =
-      request.nextUrl.pathname === "/" ? "" : request.nextUrl.pathname
-    const queryString = request.nextUrl.search ? request.nextUrl.search : ""
-
-    if (!urlHasCountryCode && countryCode) {
-      const redirectUrl = `${request.nextUrl.origin}/${countryCode}${redirectPath}${queryString}`
-      return NextResponse.redirect(redirectUrl, 307)
+    if (targetCountry === DEFAULT_COUNTRY) {
+      // India (default): rewrite to /in/... internally — URL stays clean
+      const rewriteUrl = request.nextUrl.clone()
+      rewriteUrl.pathname = `/${DEFAULT_COUNTRY}${pathname}`
+      const response = NextResponse.rewrite(rewriteUrl)
+      if (!cacheIdCookie) {
+        response.cookies.set("_medusa_cache_id", cacheId, { maxAge: 60 * 60 * 24 })
+      }
+      return response
     }
 
-    // No region info available — fall back to the configured default so the
-    // site remains usable even when Medusa hasn't been wired up yet.
-    const fallback = DEFAULT_REGION
-    const redirectUrl = `${request.nextUrl.origin}/${fallback}${redirectPath}${queryString}`
-    return NextResponse.redirect(redirectUrl, 307)
+    // Non-default country (e.g. US): redirect to /{cc}/...
+    return NextResponse.redirect(
+      new URL(`/${targetCountry}${pathname}${search}`, request.url),
+      307
+    )
   } catch (err) {
     console.warn("[middleware] Unexpected failure, passing request through:", err)
     return NextResponse.next()

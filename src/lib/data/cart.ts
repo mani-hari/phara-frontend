@@ -5,6 +5,7 @@ import medusaError from "@lib/util/medusa-error"
 import { HttpTypes } from "@medusajs/types"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
+import { localizeHref } from "@lib/util/localize-href"
 import {
   getAuthHeaders,
   getCacheOptions,
@@ -376,7 +377,7 @@ export async function setAddresses(currentState: unknown, formData: FormData) {
     if (!formData) {
       throw new Error("No form data found when setting addresses")
     }
-    const cartId = getCartId()
+    const cartId = await getCartId()
     if (!cartId) {
       throw new Error("No existing cart found when setting addresses")
     }
@@ -423,6 +424,37 @@ export async function setAddresses(currentState: unknown, formData: FormData) {
   )
 }
 
+export async function saveAddressesForCheckout(data: {
+  firstName: string
+  lastName: string
+  email: string
+  phone: string
+  address1: string
+  city: string
+  postalCode: string
+  province?: string
+  countryCode: string
+  sameAsBilling?: boolean
+}) {
+  const addr = {
+    first_name: data.firstName,
+    last_name: data.lastName,
+    address_1: data.address1,
+    address_2: "",
+    city: data.city,
+    postal_code: data.postalCode,
+    country_code: data.countryCode.toLowerCase(),
+    province: data.province || "",
+    phone: data.phone,
+  }
+
+  return updateCart({
+    shipping_address: addr,
+    billing_address: data.sameAsBilling !== false ? addr : undefined,
+    email: data.email,
+  } as any)
+}
+
 /**
  * Places an order for a cart. If no cart ID is provided, it will use the cart ID from the cookies.
  * @param cartId - optional - The ID of the cart to place an order for.
@@ -456,7 +488,7 @@ export async function placeOrder(cartId?: string) {
     revalidateTag(orderCacheTag)
 
     removeCartId()
-    redirect(`/${countryCode}/order/${cartRes?.order.id}/confirmed`)
+    redirect(localizeHref(countryCode, `/order/${cartRes?.order.id}/confirmed`))
   }
 
   return cartRes.cart
@@ -487,7 +519,7 @@ export async function updateRegion(countryCode: string, currentPath: string) {
   const productsCacheTag = await getCacheTag("products")
   revalidateTag(productsCacheTag)
 
-  redirect(`/${countryCode}${currentPath}`)
+  redirect(localizeHref(countryCode, currentPath))
 }
 
 export async function listCartOptions() {

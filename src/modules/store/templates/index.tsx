@@ -19,32 +19,57 @@ const StoreTemplate = ({
   const sort = sortBy || "created_at"
 
   return (
-    <div className="bg-[#fffdf9]" data-testid="category-container">
-      <section className="border-t border-brand-200 bg-gradient-to-r from-[#2f241d] via-brand-900 to-[#6b3d1e] text-white">
-        <div className="content-container px-20 py-14">
-          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-200">
+    <div style={{ background: "var(--paper)" }} data-testid="category-container">
+      {/* Hero banner */}
+      <section
+        style={{
+          borderTop: "1px solid var(--ink-line)",
+          background: "linear-gradient(135deg, #2f241d 0%, #5a3a1a 50%, #6b3d1e 100%)",
+          color: "#fff",
+        }}
+      >
+        <div className="content-container" style={{ padding: "56px 0" }}>
+          <p className="ph-eyebrow" style={{ color: "rgba(250,246,238,0.55)", marginBottom: 12 }}>
             Complete Catalog
           </p>
-          <h1 className="mt-4 font-display text-[42px] leading-tight">
-            Explore every puja, temple service, astrology reading, and sacred
-            item
+          <h1
+            className="ph-h1"
+            style={{ color: "var(--paper)", margin: 0, maxWidth: 600 }}
+          >
+            Sacred rituals for every prayer.
           </h1>
-          <p className="mt-4 max-w-3xl text-sm leading-7 text-brand-100/90">
-            This page is driven directly by the Medusa backend catalog. Prices
-            are region-aware, and product cards use the actual backend images
-            whenever they are available.
+          <p
+            className="ph-body"
+            style={{
+              color: "rgba(250,246,238,0.75)",
+              marginTop: 16,
+              maxWidth: 540,
+              marginBottom: 0,
+            }}
+          >
+            Poojas, homams, astrology readings, and prasadam — performed at
+            temples across India, in your name.
           </p>
         </div>
       </section>
 
-      <section className="content-container px-20 py-12">
-        <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+      <section className="content-container" style={{ padding: "40px 0 64px" }}>
+        <div
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "space-between",
+            gap: 16,
+            marginBottom: 32,
+          }}
+        >
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-600">
-              Live Products
-            </p>
-            <h2 className="mt-2 font-display text-[32px] text-grey-90">
+            <p className="ph-eyebrow ph-eyebrow-gold" style={{ marginBottom: 6 }}>
               All services
+            </p>
+            <h2 className="ph-h3" style={{ margin: 0 }}>
+              Browse everything
             </h2>
           </div>
           <RefinementList sortBy={sort} />

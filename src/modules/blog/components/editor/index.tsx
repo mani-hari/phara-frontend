@@ -4,6 +4,7 @@ import { useEffect, useMemo, useState, useTransition } from "react"
 import { useRouter } from "next/navigation"
 
 import { markdownToHtml } from "@lib/util/markdown"
+import { localizeHref } from "@lib/util/localize-href"
 
 type BlogEditorProps = {
   countryCode: string
@@ -87,7 +88,7 @@ Write the detailed content here.`)
         }
 
         setMessage(`Saved ${data.slug}.md to content/blog.`)
-        router.push(`/${countryCode}/blog/${data.slug}`)
+        router.push(localizeHref(countryCode, `/blog/${data.slug}`))
         router.refresh()
       } catch (saveError) {
         setError(

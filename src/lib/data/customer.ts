@@ -5,6 +5,7 @@ import medusaError from "@lib/util/medusa-error"
 import { HttpTypes } from "@medusajs/types"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
+import { localizeHref } from "@lib/util/localize-href"
 import {
   getAuthHeaders,
   getCacheOptions,
@@ -140,7 +141,7 @@ export async function signout(countryCode: string) {
   const cartCacheTag = await getCacheTag("carts")
   revalidateTag(cartCacheTag)
 
-  redirect(`/${countryCode}/account`)
+  redirect(localizeHref(countryCode, "/account"))
 }
 
 export async function transferCart() {

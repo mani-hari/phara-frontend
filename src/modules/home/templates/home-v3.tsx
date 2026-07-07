@@ -1,4 +1,5 @@
 import { HttpTypes } from "@medusajs/types"
+import Image from "next/image"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import {
   CenterSigil,
@@ -9,11 +10,12 @@ import {
   Stars,
 } from "@modules/common/components/brand"
 import { getProductPrice } from "@lib/util/get-product-price"
+import HeroChatInput from "@modules/home/components/hero-chat-input"
 
 type HomeV3Props = {
   countryCode: string
   products: HttpTypes.StoreProduct[]
-  region: HttpTypes.StoreRegion
+  region?: HttpTypes.StoreRegion
 }
 
 /* =====================================================================
@@ -22,16 +24,16 @@ type HomeV3Props = {
    ===================================================================== */
 
 const FEATURED_HANDLES = [
-  "garbharakshambika-ghee",
-  "garbharakshambika-oil",
-  "rahu-ketu-dosha-parihara-pooja-sarpa-dosha-parihara-pooja-at-sri-kalahasti-temple",
+  "garbarakshambigai-ghee",
+  "garbarakshambigai-oil",
+  "rahu-ketu-dosha-parihara",
 ] as const
 
 const FEATURED_OVERLAY: Record<
   string,
   { tag: string; deity: string; img: string; stars: number; reviews: number; sub: string }
 > = {
-  "garbharakshambika-ghee": {
+  "garbarakshambigai-ghee": {
     tag: "For Conceiving",
     deity: "Garbarakshambigai · Tirukkarukavur",
     img: "GHEE · LAMP IN COPPER VESSEL",
@@ -39,7 +41,7 @@ const FEATURED_OVERLAY: Record<
     reviews: 281,
     sub: "Temple-blessed prasadham · sealed glass jar",
   },
-  "garbharakshambika-oil": {
+  "garbarakshambigai-oil": {
     tag: "For Safe Delivery",
     deity: "Garbarakshambigai · Tirukkarukavur",
     img: "OIL · BRONZE LAMP",
@@ -47,7 +49,7 @@ const FEATURED_OVERLAY: Record<
     reviews: 333,
     sub: "For 3rd-trimester abhyangam",
   },
-  "rahu-ketu-dosha-parihara-pooja-sarpa-dosha-parihara-pooja-at-sri-kalahasti-temple": {
+  "rahu-ketu-dosha-parihara": {
     tag: "For Sarpa Dosha",
     deity: "Sri Kalahasti · Andhra Pradesh",
     img: "KALAHASTI TEMPLE GOPURAM",
@@ -68,13 +70,13 @@ const INTENT_TILES: { title: string; sub: string; count: string; href: string }[
     title: "Family & children",
     sub: "Garbarakshambigai · Putra Kameshti · Annaprasana",
     count: "24 rituals",
-    href: "/products/garbharakshambika-ghee",
+    href: "/products/garbarakshambigai-ghee",
   },
   {
     title: "Career & wealth",
     sub: "Sudarshana · Lakshmi · Kubera",
     count: "18 rituals",
-    href: "/products/sudarsana-homam",
+    href: "/products/sudarshana-homam",
   },
   {
     title: "Marriage",
@@ -92,7 +94,7 @@ const INTENT_TILES: { title: string; sub: string; count: string; href: string }[
     title: "For ancestors",
     sub: "Tila Homam · Tarpanam · Pitru Paksha",
     count: "9 rituals",
-    href: "/products/tila-homam-at-rameswaram",
+    href: "/products/thila-homam-rameswaram",
   },
 ]
 
@@ -133,7 +135,7 @@ const formatPrice = (product: HttpTypes.StoreProduct) => {
   }
 }
 
-export default function HomeV3({ products }: HomeV3Props) {
+export default function HomeV3({ products, countryCode }: HomeV3Props) {
   const byHandle = new Map(products.map((p) => [p.handle, p]))
   const featured = FEATURED_HANDLES.map((h) => byHandle.get(h)).filter(
     (p): p is HttpTypes.StoreProduct => !!p
@@ -168,67 +170,40 @@ export default function HomeV3({ products }: HomeV3Props) {
             </span>
             <CenterSigil size={14} />
           </div>
-          <h1 className="ph-h1-display" style={{ marginBottom: 18 }}>
+          <h1
+            style={{
+              fontFamily: "var(--font-display)",
+              fontSize: "clamp(32px, 5vw, 52px)",
+              fontWeight: 400,
+              lineHeight: 1.15,
+              color: "var(--ink)",
+              marginBottom: 18,
+              letterSpacing: "-0.01em",
+            }}
+          >
             What would you like a{" "}
-            <em style={{ fontStyle: "italic", color: "var(--sindoor)" }}>pooja</em> for?
+            <span style={{ color: "var(--sindoor)" }}>pooja</span> for?
           </h1>
           <p
-            className="ph-body-lg"
-            style={{ color: "var(--ink-3)", maxWidth: 560, margin: "0 auto 28px" }}
+            style={{
+              fontFamily: "var(--sans)",
+              fontSize: "clamp(15px, 1.8vw, 17px)",
+              fontWeight: 400,
+              lineHeight: 1.6,
+              color: "var(--ink-3)",
+              maxWidth: 680,
+              margin: "0 auto 28px",
+            }}
           >
             Tell us what&apos;s on your mind — a worry, a wish, a moment in the family.
-            We&apos;ll suggest the right ritual, performed at the temple in your name.
+            We&apos;ll suggest the right prayer or spiritual remedy that facilitates your wish.
           </p>
 
-          {/* Chat input */}
-          <div
-            className="ph-card text-left"
-            style={{ padding: 18, boxShadow: "var(--shadow-md)" }}
-          >
-            <div className="flex items-center gap-3 mb-3">
-              <span
-                style={{
-                  width: 28,
-                  height: 28,
-                  borderRadius: "50%",
-                  background: "var(--sindoor)",
-                  color: "#fff",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: 14,
-                }}
-              >
-                ✦
-              </span>
-              <span className="ph-body" style={{ color: "var(--ink-4)" }}>
-                Ask Parihara anything — what pooja, why, where...
-              </span>
-              <span className="ph-caret" />
-            </div>
-            <div
-              className="flex items-center justify-between"
-              style={{ paddingTop: 12, borderTop: "1px solid var(--ink-line)" }}
-            >
-              <span className="ph-label ph-mono" style={{ fontSize: 11 }} />
-              <button type="button" className="ph-btn ph-btn-sindoor">
-                Ask →
-              </button>
-            </div>
-          </div>
-
-          {/* Suggestion chips */}
-          <div
-            className="flex flex-wrap items-center justify-center gap-2"
-            style={{ marginTop: 20, maxWidth: 700, marginInline: "auto" }}
-          >
-            {SUGGESTION_CHIPS.map((chip) => (
-              <span key={chip} className="ph-chip ph-lift cursor-pointer">
-                &ldquo;{chip}&rdquo;
-              </span>
-            ))}
-          </div>
+          {/* Interactive chat input */}
+          <HeroChatInput countryCode={countryCode} />
         </div>
+        {/* Sentinel: overlay watches this to know when hero has scrolled out */}
+        <div id="ask-hero-sentinel" style={{ height: 0 }} aria-hidden />
       </section>
 
       {/* FEATURED PRODUCTS --------------------------------------------- */}
@@ -268,9 +243,28 @@ export default function HomeV3({ products }: HomeV3Props) {
                   href={`/products/${product.handle}`}
                   className="ph-card ph-lift block"
                 >
-                  <Img style={{ height: 220 }} deep>
-                    {overlay?.img ?? product.title?.toUpperCase()}
-                  </Img>
+                  {product.thumbnail ? (
+                    <div
+                      style={{
+                        position: "relative",
+                        height: 220,
+                        overflow: "hidden",
+                        background: "var(--ink)",
+                      }}
+                    >
+                      <Image
+                        src={product.thumbnail}
+                        alt={product.title ?? ""}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 400px"
+                      />
+                    </div>
+                  ) : (
+                    <Img style={{ height: 220 }} deep>
+                      {overlay?.img ?? product.title?.toUpperCase()}
+                    </Img>
+                  )}
                   <div style={{ padding: 22 }}>
                     <div className="flex items-center justify-between mb-2">
                       {overlay && <span className="ph-chip ph-chip-sindoor">{overlay.tag}</span>}
@@ -284,11 +278,9 @@ export default function HomeV3({ products }: HomeV3Props) {
                     </div>
                     {overlay && (
                       <div
-                        className="ph-label"
                         style={{
-                          fontFamily: "var(--font-serif), serif",
-                          fontStyle: "italic",
-                          fontSize: 14,
+                          fontFamily: "var(--serif)",
+                          fontSize: 13,
                           color: "var(--ink-4)",
                           marginTop: 12,
                         }}
@@ -347,11 +339,11 @@ export default function HomeV3({ products }: HomeV3Props) {
                   {tile.title}
                 </div>
                 <div
-                  className="ph-body-sm"
                   style={{
-                    fontFamily: "var(--font-serif), serif",
-                    fontStyle: "italic",
+                    fontFamily: "var(--serif)",
+                    fontSize: 13,
                     color: "var(--ink-3)",
+                    lineHeight: 1.5,
                   }}
                 >
                   {tile.sub}
@@ -521,7 +513,7 @@ export default function HomeV3({ products }: HomeV3Props) {
           <div className="ph-card" style={{ padding: 36, background: "var(--paper-2)" }}>
             <span className="ph-eyebrow ph-eyebrow-sindoor">Devotees say</span>
             <p
-              className="ph-h3 ph-italic-script"
+              className="ph-h3"
               style={{ color: "var(--ink)", lineHeight: 1.3, marginTop: 14 }}
             >
               &ldquo;After the Mrityunjaya Homam, my father came home from the hospital. We

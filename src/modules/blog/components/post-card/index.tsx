@@ -1,6 +1,7 @@
 import Link from "next/link"
 
 import { BlogPost } from "@lib/data/blog"
+import { localizeHref } from "@lib/util/localize-href"
 import { ArrowRight, Clock3 } from "lucide-react"
 
 type PostCardProps = {
@@ -48,7 +49,7 @@ export default function PostCard({
       )}
 
       <Link
-        href={`/${countryCode}/blog/${post.slug}`}
+        href={localizeHref(countryCode, `/blog/${post.slug}`)}
         className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-700 transition-colors hover:text-brand-800"
       >
         Read article

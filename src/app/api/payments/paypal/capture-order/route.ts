@@ -16,8 +16,11 @@ export async function POST(req: NextRequest) {
 
     // Get access token
     const auth = Buffer.from(`${clientId}:${clientSecret}`).toString("base64")
+    const isSandbox = process.env.NEXT_PUBLIC_PAYPAL_SANDBOX === "true"
+    const paypalBase = isSandbox ? "https://api-m.sandbox.paypal.com" : "https://api-m.paypal.com"
+
     const tokenResponse = await fetch(
-      "https://api-m.paypal.com/v1/oauth2/token",
+      `${paypalBase}/v1/oauth2/token`,
       {
         method: "POST",
         headers: {
@@ -38,7 +41,7 @@ export async function POST(req: NextRequest) {
 
     // Capture order
     const captureResponse = await fetch(
-      `https://api-m.paypal.com/v2/checkout/orders/${orderId}/capture`,
+      `${paypalBase}/v2/checkout/orders/${orderId}/capture`,
       {
         method: "POST",
         headers: {

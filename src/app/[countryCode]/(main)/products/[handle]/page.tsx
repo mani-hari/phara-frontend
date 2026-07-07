@@ -60,18 +60,20 @@ export async function generateStaticParams() {
 function getImagesForVariant(
   product: HttpTypes.StoreProduct,
   selectedVariantId?: string
-) {
-  if (!selectedVariantId || !product.variants) {
-    return product.images
+): HttpTypes.StoreProductImage[] {
+  const allImages = product?.images ?? []
+
+  if (!selectedVariantId || !product?.variants) {
+    return allImages
   }
 
-  const variant = product.variants!.find((v) => v.id === selectedVariantId)
-  if (!variant || !variant.images.length) {
-    return product.images
+  const variant = product.variants.find((v) => v.id === selectedVariantId)
+  if (!variant || !variant.images?.length) {
+    return allImages
   }
 
   const imageIdsMap = new Map(variant.images.map((i) => [i.id, true]))
-  return product.images!.filter((i) => imageIdsMap.has(i.id))
+  return allImages.filter((i) => imageIdsMap.has(i.id))
 }
 
 export async function generateMetadata(props: Props): Promise<Metadata> {
@@ -93,7 +95,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   }
 
   return {
-    title: `${product.title} | PariharaOnline`,
+    title: product.title,
     description: product.description || `${product.title} - Book authentic temple services at PariharaOnline`,
     openGraph: {
       title: `${product.title} | PariharaOnline`,
@@ -119,11 +121,11 @@ export default async function ProductPage(props: Props) {
     queryParams: { handle: params.handle },
   }).then(({ response }) => response.products[0])
 
-  const images = getImagesForVariant(pricedProduct, selectedVariantId)
-
   if (!pricedProduct) {
     notFound()
   }
+
+  const images = getImagesForVariant(pricedProduct, selectedVariantId)
 
   const { cheapestPrice } = getProductPrice({ product: pricedProduct })
 

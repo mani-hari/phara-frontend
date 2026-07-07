@@ -3,6 +3,7 @@ import Link from "next/link"
 
 import { HttpTypes } from "@medusajs/types"
 import { getProductPrice } from "@lib/util/get-product-price"
+import { localizeHref } from "@lib/util/localize-href"
 import {
   astrologyCardCopy,
   findFeaturedProducts,
@@ -47,10 +48,10 @@ const intensityLabel = (intensity: "Gentle" | "Medium" | "High") => (
 )
 
 const productHref = (countryCode: string, handle?: string) =>
-  `/${countryCode}/products/${handle || ""}`
+  localizeHref(countryCode, `/products/${handle || ""}`)
 
 const pujasHref = (countryCode: string) =>
-  `/${countryCode}/collections/pujas-and-homams`
+  localizeHref(countryCode, "/collections/pujas-and-homams")
 
 const ProductArtwork = ({
   src,
@@ -338,7 +339,7 @@ export default function MockHomepage({
               Learn & Explore
             </h2>
             <Link
-              href={`/${countryCode}/blog`}
+              href={localizeHref(countryCode, "/blog")}
               className="text-sm font-medium text-brand-600"
             >
               Read the Blog →

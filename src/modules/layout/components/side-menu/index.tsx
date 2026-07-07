@@ -81,7 +81,8 @@ const SideMenu = ({ regions }: { regions: HttpTypes.StoreRegion[] | null }) => {
                 <PopoverPanel className="flex flex-col absolute w-[85vw] sm:w-80 h-[calc(100vh-1rem)] z-[51] inset-y-0 left-0 text-sm m-2">
                   <div
                     data-testid="nav-menu-popup"
-                    className="flex flex-col h-full bg-white rounded-xl shadow-2xl border border-brand-100 justify-between p-6 overflow-y-auto"
+                    className="flex flex-col h-full rounded-xl shadow-2xl border border-brand-100 justify-between p-6 overflow-y-auto"
+                    style={{ background: "var(--paper)" }}
                   >
                     <div>
                       {/* Header */}

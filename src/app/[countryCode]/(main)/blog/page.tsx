@@ -3,6 +3,7 @@ import Link from "next/link"
 
 import { getPublishedBlogPosts } from "@lib/data/blog"
 import PostCard from "@modules/blog/components/post-card"
+import { localizeHref } from "@lib/util/localize-href"
 import { ArrowRight, BookOpenText, PencilLine } from "lucide-react"
 
 export const metadata: Metadata = {
@@ -36,14 +37,14 @@ export default async function BlogIndexPage(props: {
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
-              href={`/${countryCode}/blog/editor`}
+              href={localizeHref(countryCode, "/blog/editor")}
               className="inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white px-5 py-3 text-sm font-semibold text-brand-700 hover:border-brand-300"
             >
               <PencilLine className="h-4 w-4" />
               Open markdown editor
             </Link>
             <Link
-              href={`/${countryCode}/store`}
+              href={localizeHref(countryCode, "/store")}
               className="inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-700"
             >
               Browse services
@@ -77,7 +78,7 @@ export default async function BlogIndexPage(props: {
                 ))}
               </div>
               <Link
-                href={`/${countryCode}/blog/${featuredPost.slug}`}
+                href={localizeHref(countryCode, `/blog/${featuredPost.slug}`)}
                 className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-600 px-5 py-3 text-sm font-semibold text-white hover:bg-brand-700"
               >
                 Read article
