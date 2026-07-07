@@ -424,6 +424,29 @@ export async function setAddresses(currentState: unknown, formData: FormData) {
   )
 }
 
+type CheckoutAddress = {
+  firstName: string
+  lastName: string
+  phone?: string
+  address1: string
+  city: string
+  postalCode: string
+  province?: string
+  countryCode: string
+}
+
+const toMedusaAddress = (a: CheckoutAddress) => ({
+  first_name: a.firstName,
+  last_name: a.lastName,
+  address_1: a.address1,
+  address_2: "",
+  city: a.city,
+  postal_code: a.postalCode,
+  country_code: a.countryCode.toLowerCase(),
+  province: a.province || "",
+  phone: a.phone || "",
+})
+
 export async function saveAddressesForCheckout(data: {
   firstName: string
   lastName: string
@@ -435,22 +458,22 @@ export async function saveAddressesForCheckout(data: {
   province?: string
   countryCode: string
   sameAsBilling?: boolean
+  /** Separate billing address, used only when sameAsBilling === false. */
+  billing?: CheckoutAddress
 }) {
-  const addr = {
-    first_name: data.firstName,
-    last_name: data.lastName,
-    address_1: data.address1,
-    address_2: "",
-    city: data.city,
-    postal_code: data.postalCode,
-    country_code: data.countryCode.toLowerCase(),
-    province: data.province || "",
-    phone: data.phone,
-  }
+  const shipping = toMedusaAddress(data)
+
+  // When billing differs, use the provided billing address; otherwise mirror
+  // shipping. Never send `undefined` — an order must always carry a billing
+  // address (previously unchecking the box dropped it entirely).
+  const billing =
+    data.sameAsBilling === false && data.billing
+      ? toMedusaAddress(data.billing)
+      : shipping
 
   return updateCart({
-    shipping_address: addr,
-    billing_address: data.sameAsBilling !== false ? addr : undefined,
+    shipping_address: shipping,
+    billing_address: billing,
     email: data.email,
   } as any)
 }

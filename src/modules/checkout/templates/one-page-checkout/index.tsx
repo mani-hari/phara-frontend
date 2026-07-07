@@ -29,6 +29,18 @@ type AddrForm = {
   sameAsBilling: boolean
 }
 
+// Billing address (no email — that's the account/contact field on shipping).
+type BillingAddr = {
+  firstName: string
+  lastName: string
+  phone: string
+  address1: string
+  city: string
+  postalCode: string
+  province: string
+  countryCode: string
+}
+
 type Props = {
   cart: HttpTypes.StoreCart
   customer: HttpTypes.StoreCustomer | null
@@ -216,6 +228,51 @@ function FieldWrap({
   )
 }
 
+// ─── billing address form (shown when billing ≠ delivery) ─────────────────────
+
+function BillingForm({
+  form,
+  onChange,
+  countries,
+  fieldErrors,
+}: {
+  form: BillingAddr
+  onChange: (patch: Partial<BillingAddr>) => void
+  countries: { iso_2: string; name: string }[]
+  fieldErrors: Record<string, string>
+}) {
+  const f = (field: keyof BillingAddr) => (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => onChange({ [field]: e.target.value })
+
+  return (
+    <div style={{ marginTop: 14, paddingTop: 14, borderTop: "1px dashed var(--ink-line)" }}>
+      <div className="co-2col" style={{ marginBottom: 10 }}>
+        <FieldWrap label="First name" required error={fieldErrors.b_firstName}>
+          <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing given-name" value={form.firstName} onChange={f("firstName")} required />
+        </FieldWrap>
+        <FieldWrap label="Last name" required error={fieldErrors.b_lastName}>
+          <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing family-name" value={form.lastName} onChange={f("lastName")} required />
+        </FieldWrap>
+      </div>
+      <FieldWrap label="Address" required error={fieldErrors.b_address1} style={{ marginBottom: 10 }}>
+        <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing address-line1" value={form.address1} onChange={f("address1")} required />
+      </FieldWrap>
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 10 }}>
+        <FieldWrap label="City" required error={fieldErrors.b_city}>
+          <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing address-level2" value={form.city} onChange={f("city")} required />
+        </FieldWrap>
+        <FieldWrap label="Postcode">
+          <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing postal-code" inputMode="numeric" value={form.postalCode} onChange={f("postalCode")} />
+        </FieldWrap>
+      </div>
+      <FieldWrap label="Country" required style={{ marginBottom: 0 }}>
+        <CountrySelect countries={countries} value={form.countryCode} onChange={(v) => onChange({ countryCode: v })} />
+      </FieldWrap>
+    </div>
+  )
+}
+
 // ─── shipping option cards ────────────────────────────────────────────────────
 
 function ShippingCards({
@@ -392,7 +449,7 @@ export default function OnePageCheckout({
     : [{ iso_2: countryCode, name: countryCode.toUpperCase() }]
 
   const inRegion = (cc?: string | null) =>
-    !!cc && countries.some((c) => c.iso_2.toLowerCase() === cc.toLowerCase())
+    !!cc && countries.some((c: { iso_2: string }) => c.iso_2.toLowerCase() === cc.toLowerCase())
 
   // Pre-select the visitor's actual country: saved cart address → IP country →
   // URL country → region's first country (last resort). Avoids defaulting to
@@ -429,6 +486,21 @@ export default function OnePageCheckout({
     setFieldErrors({})
   }, [])
 
+  const [billing, setBilling] = useState<BillingAddr>({
+    firstName: cart.billing_address?.first_name || "",
+    lastName: cart.billing_address?.last_name || "",
+    phone: cart.billing_address?.phone || "",
+    address1: cart.billing_address?.address_1 || "",
+    city: cart.billing_address?.city || "",
+    postalCode: cart.billing_address?.postal_code || "",
+    province: cart.billing_address?.province || "",
+    countryCode: cart.billing_address?.country_code || defaultCountry,
+  })
+  const patchBilling = useCallback((p: Partial<BillingAddr>) => {
+    setBilling((prev) => ({ ...prev, ...p }))
+    setFieldErrors({})
+  }, [])
+
   // Try to set shipping method — silently skips if the option has no price configured
   const trySetShipping = async () => {
     if (!selectedShipping) return
@@ -443,11 +515,27 @@ export default function OnePageCheckout({
 
   const validate = () => {
     const errs: Record<string, string> = {}
+    const emailOk = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email.trim())
     if (!form.firstName.trim()) errs.firstName = "Required"
     if (!form.lastName.trim()) errs.lastName = "Required"
     if (!form.email.trim()) errs.email = "Required"
+    else if (!emailOk) errs.email = "Enter a valid email"
     if (!form.address1.trim()) errs.address1 = "Required"
     if (!form.city.trim()) errs.city = "Required"
+
+    // A shipping method must be chosen when physical delivery applies.
+    if (availableShippingMethods.length > 0 && !selectedShipping) {
+      errs.shipping = "Please choose a delivery option"
+    }
+
+    // Billing address is required when it differs from delivery.
+    if (!form.sameAsBilling) {
+      if (!billing.firstName.trim()) errs.b_firstName = "Required"
+      if (!billing.lastName.trim()) errs.b_lastName = "Required"
+      if (!billing.address1.trim()) errs.b_address1 = "Required"
+      if (!billing.city.trim()) errs.b_city = "Required"
+    }
+
     setFieldErrors(errs)
     return Object.keys(errs).length === 0
   }
@@ -466,7 +554,10 @@ export default function OnePageCheckout({
 
     startTransition(async () => {
       try {
-        await saveAddressesForCheckout({ ...form })
+        await saveAddressesForCheckout({
+          ...form,
+          billing: form.sameAsBilling ? undefined : billing,
+        })
         await trySetShipping()
 
         const loaded = await loadRazorpayScript()
@@ -527,7 +618,10 @@ export default function OnePageCheckout({
 
     startTransition(async () => {
       try {
-        await saveAddressesForCheckout({ ...form })
+        await saveAddressesForCheckout({
+          ...form,
+          billing: form.sameAsBilling ? undefined : billing,
+        })
         await trySetShipping()
 
         const base = getBaseUrl()
@@ -599,8 +693,30 @@ export default function OnePageCheckout({
               currency={currency}
               isIndia={isIndia}
             />
+            {fieldErrors.shipping && (
+              <p style={{ fontSize: 12, color: "var(--sindoor)", marginTop: 8, marginBottom: 0 }}>
+                {fieldErrors.shipping}
+              </p>
+            )}
           </section>
         )}
+
+        {/* Billing address */}
+        <section className="co-section">
+          <SectionLabel>Billing address</SectionLabel>
+          <BillingCheckbox
+            checked={form.sameAsBilling}
+            onChange={(v) => patch({ sameAsBilling: v })}
+          />
+          {!form.sameAsBilling && (
+            <BillingForm
+              form={billing}
+              onChange={patchBilling}
+              countries={countries}
+              fieldErrors={fieldErrors}
+            />
+          )}
+        </section>
 
         {/* Payment */}
         <section className="co-section co-section-last">
@@ -614,8 +730,6 @@ export default function OnePageCheckout({
               isPending={isPending}
               error={error}
               onPay={handleRazorpay}
-              sameAsBilling={form.sameAsBilling}
-              onSameAsBillingChange={(v) => patch({ sameAsBilling: v })}
             />
           ) : (
             <IntlPayment
@@ -625,8 +739,6 @@ export default function OnePageCheckout({
               error={error}
               onPaypal={handlePaypal}
               onRazorpay={handleRazorpay}
-              sameAsBilling={form.sameAsBilling}
-              onSameAsBillingChange={(v) => patch({ sameAsBilling: v })}
             />
           )}
         </section>
@@ -779,16 +891,12 @@ function IndiaPayment({
   isPending,
   error,
   onPay,
-  sameAsBilling,
-  onSameAsBillingChange,
 }: {
   currency: string
   total: number
   isPending: boolean
   error: string | null
   onPay: () => void
-  sameAsBilling: boolean
-  onSameAsBillingChange: (v: boolean) => void
 }) {
   return (
     <div>
@@ -799,9 +907,6 @@ function IndiaPayment({
         ))}
         <span className="ph-body-sm" style={{ color: "var(--ink-4)", marginLeft: 4 }}>Secured by Razorpay</span>
       </div>
-
-      {/* Billing checkbox just above Pay */}
-      <BillingCheckbox checked={sameAsBilling} onChange={onSameAsBillingChange} />
 
       {/* Sticky pay bar */}
       <div className="co-pay-bar">
@@ -835,8 +940,6 @@ function IntlPayment({
   error,
   onPaypal,
   onRazorpay,
-  sameAsBilling,
-  onSameAsBillingChange,
 }: {
   currency: string
   total: number
@@ -844,8 +947,6 @@ function IntlPayment({
   error: string | null
   onPaypal: () => void
   onRazorpay: () => void
-  sameAsBilling: boolean
-  onSameAsBillingChange: (v: boolean) => void
 }) {
   return (
     <div>
@@ -855,9 +956,6 @@ function IntlPayment({
           <span key={l} className="ph-label ph-num" style={{ fontSize: 9, fontWeight: 700, padding: "3px 8px", border: "1px solid var(--ink-line)", borderRadius: 4, color: "var(--ink-3)", background: "var(--paper)" }}>{l}</span>
         ))}
       </div>
-
-      {/* Billing checkbox just above Pay */}
-      <BillingCheckbox checked={sameAsBilling} onChange={onSameAsBillingChange} />
 
       {/* Sticky pay bar */}
       <div className="co-pay-bar">
