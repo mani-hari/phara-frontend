@@ -8,6 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
     "medusa:unlock": "node scripts/medusa-toggle.mjs unlock",
     "medusa:lock": "node scripts/medusa-toggle.mjs lock",
     "medusa:status": "node scripts/medusa-toggle.mjs status",
@@ -40,6 +42,7 @@
   },
   "devDependencies": {
     "@medusajs/ui-preset": "^2.1.2",
+    "@playwright/test": "^1.61.1",
     "@types/lodash": "^4.17.16",
     "@types/node": "^20",
     "@types/react": "^18",

@@ -54,3 +54,8 @@ SESSION_HANDOFF.md
 # Medusa admin toggle state + audit (local only)
 .medusa-admin.armed
 .medusa-admin/
+
+# playwright
+test-results/
+playwright-report/
+playwright/.cache/
