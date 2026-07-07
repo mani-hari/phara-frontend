@@ -935,6 +935,7 @@ function IndiaPayment({
 // ─── International payment section ───────────────────────────────────────────
 
 function IntlPayment({
+  currency,
   total,
   isPending,
   error,
@@ -965,23 +966,18 @@ function IntlPayment({
           </div>
         )}
 
-        {/* PayPal primary */}
+        {/* Razorpay primary (default for international) */}
         <button
           type="button"
-          onClick={onPaypal}
+          onClick={onRazorpay}
           disabled={isPending}
-          style={{
-            width: "100%", padding: "16px 24px", fontSize: 16, fontWeight: 700,
-            background: "#0070ba", color: "#fff", border: "none", borderRadius: 10,
-            cursor: isPending ? "not-allowed" : "pointer", opacity: isPending ? 0.7 : 1,
-            display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
-            fontFamily: "var(--sans)", marginBottom: 6,
-          }}
+          className="ph-btn ph-btn-sindoor"
+          style={{ width: "100%", padding: "16px 24px", fontSize: 16, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center", gap: 8, opacity: isPending ? 0.7 : 1, marginBottom: 6 }}
         >
-          {isPending ? "Processing…" : "Continue with PayPal →"}
+          {isPending ? "Processing…" : "Pay with Razorpay →"}
         </button>
         <p className="ph-body-sm" style={{ color: "var(--ink-4)", textAlign: "center", marginBottom: 14 }}>
-          PayPal charges in USD · {convertToLocale({ amount: total, currency_code: "usd" })}
+          Cards, UPI &amp; wallets · charged in {(currency || "usd").toUpperCase()}
         </p>
 
         <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 14 }}>
@@ -990,17 +986,23 @@ function IntlPayment({
           <div style={{ flex: 1, height: 1, background: "var(--ink-line)" }} />
         </div>
 
+        {/* PayPal secondary */}
         <button
           type="button"
-          onClick={onRazorpay}
+          onClick={onPaypal}
           disabled={isPending}
-          className="ph-btn ph-btn-ghost"
-          style={{ width: "100%", padding: "12px 24px", fontSize: 14, fontWeight: 600, opacity: isPending ? 0.7 : 1, marginBottom: 5 }}
+          style={{
+            width: "100%", padding: "13px 24px", fontSize: 15, fontWeight: 700,
+            background: "#fff", color: "#0070ba", border: "1.5px solid #0070ba", borderRadius: 10,
+            cursor: isPending ? "not-allowed" : "pointer", opacity: isPending ? 0.7 : 1,
+            display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+            fontFamily: "var(--sans)",
+          }}
         >
-          Pay with Razorpay (cards / UPI)
+          {isPending ? "Processing…" : "Continue with PayPal →"}
         </button>
-        <p className="ph-body-sm" style={{ color: "var(--ink-4)", textAlign: "center" }}>
-          Razorpay international is in beta
+        <p className="ph-body-sm" style={{ color: "var(--ink-4)", textAlign: "center", marginTop: 6 }}>
+          PayPal charges in USD · {convertToLocale({ amount: total, currency_code: "usd" })}
         </p>
 
         <p className="ph-body-sm" style={{ color: "var(--ink-4)", textAlign: "center", marginTop: 12, display: "flex", alignItems: "center", justifyContent: "center", gap: 5 }}>
