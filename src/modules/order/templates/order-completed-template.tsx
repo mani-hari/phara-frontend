@@ -2,6 +2,7 @@ import { HttpTypes } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { convertToLocale } from "@lib/util/money"
 import { retrieveCustomer } from "@lib/data/customer"
+import { CONTACT, waLink } from "@lib/contact"
 
 type Props = { order: HttpTypes.StoreOrder }
 
@@ -317,6 +318,23 @@ export default async function OrderCompletedTemplate({ order }: Props) {
             </div>
           </div>
         )}
+
+        {/* Support */}
+        <p className="ph-body-sm" style={{ color: "var(--ink-4)", textAlign: "center", marginBottom: 24, lineHeight: 1.7 }}>
+          Questions about your order? WhatsApp{" "}
+          <a
+            href={waLink(`Hi, I have a question about my order #${order.display_id}.`)}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "var(--sindoor)", fontWeight: 600 }}
+          >
+            {CONTACT.whatsappDisplay}
+          </a>{" "}
+          or email{" "}
+          <a href={`mailto:${CONTACT.email}`} style={{ color: "var(--sindoor)", fontWeight: 600 }}>
+            {CONTACT.email}
+          </a>
+        </p>
 
         {/* CTAs */}
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>

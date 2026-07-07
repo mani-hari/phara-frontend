@@ -2,8 +2,7 @@
 
 import { useSearchParams } from "next/navigation"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
-
-const WHATSAPP_NUMBER = "919999999999"
+import { CONTACT, waLink, mailLink } from "@lib/contact"
 
 const TIPS = [
   {
@@ -42,7 +41,11 @@ export default function PaymentErrorContent() {
   const reason = params.get("reason") || "default"
   const message = REASON_MESSAGES[reason] || REASON_MESSAGES.default
 
-  const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi, I had a payment issue on PariharaOnline. Order not completed.")}`
+  const whatsappHref = waLink("Hi, I had a payment issue on PariharaOnline. Order not completed.")
+  const emailHref = mailLink(
+    "Payment issue on PariharaOnline",
+    "Hi team, I ran into a problem completing my payment. Details:"
+  )
 
   return (
     <div style={{ background: "var(--paper)", minHeight: "calc(100vh - 64px)", paddingTop: 48, paddingBottom: 80 }}>
@@ -99,7 +102,7 @@ export default function PaymentErrorContent() {
             Our team is available on WhatsApp to assist you in completing your booking. We respond within minutes.
           </p>
           <a
-            href={waLink}
+            href={whatsappHref}
             target="_blank"
             rel="noopener noreferrer"
             className="ph-btn ph-btn-sindoor"
@@ -108,7 +111,12 @@ export default function PaymentErrorContent() {
             <span>💬</span> Chat on WhatsApp
           </a>
           <p className="ph-body-sm" style={{ color: "var(--ink-4)", marginTop: 10 }}>
-            or call / text +91 99999 99999
+            or WhatsApp / call <strong>{CONTACT.whatsappDisplay}</strong> · email{" "}
+            <a href={emailHref} style={{ color: "var(--sindoor)", fontWeight: 600 }}>
+              {CONTACT.email}
+            </a>
+            <br />
+            <span style={{ color: "var(--ink-4)" }}>{CONTACT.hours}</span>
           </p>
         </div>
 
