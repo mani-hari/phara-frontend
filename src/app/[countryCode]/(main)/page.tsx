@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   title: "PariharaOnline - Ancient Rituals, Modern Convenience",
   description:
     "Book authentic Hindu temple pujas, homams, and astrology services online. Sacred prasad delivered worldwide from renowned temples across India.",
+  alternates: { canonical: "/" },
+  openGraph: { url: "/" },
 }
 
 // Render at request time so the build doesn't depend on Medusa being

@@ -16,6 +16,8 @@ export const metadata: Metadata = {
   title: "How It Works - Book Online Pujas",
   description:
     "Learn how to book authentic Hindu temple pujas and homams online at PariharaOnline. Simple 4-step process from selection to prasad delivery.",
+  alternates: { canonical: "/how-it-works" },
+  openGraph: { url: "/how-it-works" },
 }
 
 export default function HowItWorksPage() {

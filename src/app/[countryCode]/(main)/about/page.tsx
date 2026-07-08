@@ -5,6 +5,8 @@ export const metadata: Metadata = {
   title: "About Us - PariharaOnline",
   description:
     "Learn about PariharaOnline - connecting devotees worldwide with authentic Hindu temple services since 2009. Operated by Harkarma Enterprises LLP.",
+  alternates: { canonical: "/about" },
+  openGraph: { url: "/about" },
 }
 
 export default function AboutPage() {

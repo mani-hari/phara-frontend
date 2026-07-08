@@ -61,8 +61,9 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
       title: `${title} | Medusa Store`,
       description,
       alternates: {
-        canonical: `${params.category.join("/")}`,
+        canonical: `/categories/${params.category.join("/")}`,
       },
+      openGraph: { url: `/categories/${params.category.join("/")}` },
     }
   } catch (error) {
     notFound()

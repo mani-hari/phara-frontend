@@ -33,6 +33,8 @@ export const metadata: Metadata = {
   title: "FAQ - Frequently Asked Questions",
   description:
     "Find answers to common questions about Hindu pujas, homams, Vedic astrology, nakshatram, temple services, prasad delivery, and more at PariharaOnline.",
+  alternates: { canonical: "/faq" },
+  openGraph: { url: "/faq" },
 }
 
 export default function FAQIndexPage() {

@@ -5,6 +5,8 @@ export const metadata: Metadata = {
   title: "Contact Us",
   description:
     "Contact PariharaOnline for temple services, puja bookings, and spiritual guidance. WhatsApp, phone, and email support available.",
+  alternates: { canonical: "/contact" },
+  openGraph: { url: "/contact" },
 }
 
 export default function ContactPage() {

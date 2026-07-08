@@ -25,6 +25,8 @@ export async function generateMetadata(props: {
   return {
     title: `${post.title} | PariharaOnline Blog`,
     description: post.excerpt,
+    alternates: { canonical: `/blog/${slug}` },
+    openGraph: { url: `/blog/${slug}` },
   }
 }
 

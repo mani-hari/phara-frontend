@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   title: "Vedic Astrology Services - Expert Consultations",
   description:
     "Get personalized Vedic astrology consultations from experienced Kerala-Salem tradition astrologers. Career, health, marriage, and life guidance. Reports delivered within 48 hours.",
+  alternates: { canonical: "/astrology" },
+  openGraph: { url: "/astrology" },
 }
 
 const TESTIMONIALS = [

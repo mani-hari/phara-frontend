@@ -97,9 +97,13 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   return {
     title: product.title,
     description: product.description || `${product.title} - Book authentic temple services at PariharaOnline`,
+    // Canonical is the prefix-free URL so regional variants (/us, /fr, …)
+    // all consolidate to https://www.pariharaonline.com/products/<handle>.
+    alternates: { canonical: `/products/${handle}` },
     openGraph: {
       title: `${product.title} | PariharaOnline`,
       description: product.description || `${product.title} - Book authentic temple services at PariharaOnline`,
+      url: `/products/${handle}`,
       images: product.thumbnail ? [product.thumbnail] : [],
     },
   }

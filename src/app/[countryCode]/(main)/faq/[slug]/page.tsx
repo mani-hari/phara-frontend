@@ -44,6 +44,8 @@ export async function generateMetadata(props: {
   return {
     title: `${category.title} - FAQ`,
     description: category.description,
+    alternates: { canonical: `/faq/${slug}` },
+    openGraph: { url: `/faq/${slug}` },
   }
 }
 

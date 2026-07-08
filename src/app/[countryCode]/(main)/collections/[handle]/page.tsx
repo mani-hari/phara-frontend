@@ -68,6 +68,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
   const metadata = {
     title: `${collection.title} | PariharaOnline`,
     description: `${collection.title} available to book through PariharaOnline`,
+    alternates: { canonical: `/collections/${params.handle}` },
+    openGraph: { url: `/collections/${params.handle}` },
   } as Metadata
 
   return metadata

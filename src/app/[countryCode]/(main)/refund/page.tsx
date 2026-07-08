@@ -3,6 +3,8 @@ import { Metadata } from "next"
 export const metadata: Metadata = {
   title: "Refund & Cancellation Policy",
   description: "Refund and cancellation policy for PariharaOnline temple services, puja bookings, and prasad delivery.",
+  alternates: { canonical: "/refund" },
+  openGraph: { url: "/refund" },
 }
 
 export default function RefundPage() {

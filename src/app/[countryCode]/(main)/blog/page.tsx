@@ -10,6 +10,8 @@ export const metadata: Metadata = {
   title: "PariharaOnline Blog",
   description:
     "Guides on pujas, astrology, prasad delivery, and how to choose the right spiritual remedy for life events.",
+  alternates: { canonical: "/blog" },
+  openGraph: { url: "/blog" },
 }
 
 const BLOG_FAQS = [

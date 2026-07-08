@@ -6,6 +6,8 @@ import StoreTemplate from "@modules/store/templates"
 export const metadata: Metadata = {
   title: "All Services",
   description: "Explore the full PariharaOnline catalog.",
+  alternates: { canonical: "/store" },
+  openGraph: { url: "/store" },
 }
 
 type Params = {
