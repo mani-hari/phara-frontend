@@ -80,11 +80,6 @@ const INTENT_TILES: { title: string; sub: string; prompt: string }[] = [
     prompt: "A pooja to help with marriage",
   },
   {
-    title: "Astrology remedies",
-    sub: "Rahu Ketu · Navagraha · Sani Peyarchi",
-    prompt: "I need astrology remedies",
-  },
-  {
     title: "For ancestors",
     sub: "Tila Homam · Tarpanam · Pitru Paksha",
     prompt: "Poojas for my ancestors (pitru)",
@@ -101,8 +96,8 @@ const SUGGESTION_CHIPS = [
 // `title` is used only for the iframe's accessibility label; the visible title
 // is YouTube's own overlay. Add more entries here as more clips are published.
 const RECENT_VIDEOS: { title: string; youtubeId: string }[] = [
-  { title: "Homam performed at PariharaOnline", youtubeId: "1Ycn82X6VP4" },
-  { title: "Homam performed at PariharaOnline", youtubeId: "iEsN8ftTU_o" },
+  { title: "How homams performed in pariharaOnline", youtubeId: "1Ycn82X6VP4" },
+  { title: "Shivaratri Special homam", youtubeId: "iEsN8ftTU_o" },
 ]
 
 const FAQS: { q: string; a: string }[] = [
@@ -412,6 +407,9 @@ export default function HomeV3({ products, countryCode }: HomeV3Props) {
                     </div>
                   )}
                 </div>
+                <div style={{ padding: 16 }}>
+                  <div className="ph-h4">{v.title}</div>
+                </div>
               </div>
             ))}
           </div>
@@ -472,12 +470,6 @@ export default function HomeV3({ products, countryCode }: HomeV3Props) {
               >
                 Ask our astrologer
               </LocalizedClientLink>
-              <span
-                className="ph-body-sm"
-                style={{ color: "rgba(250,246,238,0.55)" }}
-              >
-                Available in 6 languages
-              </span>
             </div>
           </div>
 

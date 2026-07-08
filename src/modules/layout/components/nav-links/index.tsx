@@ -3,9 +3,9 @@
 import { usePathname } from "next/navigation"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
-// Ask Parihara is first — rendered as a black pill so it draws the eye.
+// Ask Parihara lives next to the logo (see nav template) — these are the
+// centered items.
 const NAV_ITEMS: { label: string; href: string }[] = [
-  { label: "Ask Parihara", href: "/ask-parihara" },
   { label: "Home", href: "/" },
   { label: "Poojas & Homams", href: "/collections/pujas-and-homams" },
   { label: "Astrology", href: "/astrology" },
@@ -32,26 +32,6 @@ export default function NavLinks() {
       style={{ gap: 26, fontSize: 14, fontWeight: 500 }}
     >
       {NAV_ITEMS.map((item) => {
-        if (item.href === "/ask-parihara") {
-          return (
-            <LocalizedClientLink
-              key={item.label}
-              href={item.href}
-              className="inline-flex items-center transition-colors"
-              style={{
-                background: "#1a1410",
-                color: "#fff",
-                borderRadius: 999,
-                padding: "8px 18px",
-                fontWeight: 600,
-                whiteSpace: "nowrap",
-              }}
-            >
-              {item.label}
-            </LocalizedClientLink>
-          )
-        }
-
         const isActive = isActiveHref(item.href)
         return (
           <LocalizedClientLink
