@@ -119,6 +119,9 @@ type SectionHeaderProps = {
   sub?: ReactNode
   align?: "left" | "center"
   children?: ReactNode
+  /** Inline style override for the title (e.g. a different font family),
+   *  applied on top of .ph-h2 so size/weight are preserved. */
+  titleStyle?: CSSProperties
 }
 
 export const SectionHeader = ({
@@ -127,6 +130,7 @@ export const SectionHeader = ({
   sub,
   align = "left",
   children,
+  titleStyle,
 }: SectionHeaderProps) => (
   <div style={{ textAlign: align }}>
     {eyebrow && (
@@ -142,7 +146,7 @@ export const SectionHeader = ({
         <CenterSigil size={14} />
       </div>
     )}
-    <div className="ph-h2">{title}</div>
+    <div className="ph-h2" style={titleStyle}>{title}</div>
     {sub && (
       <div
         className="ph-body-lg"

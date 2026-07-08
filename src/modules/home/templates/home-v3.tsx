@@ -213,6 +213,7 @@ export default function HomeV3({ products, countryCode }: HomeV3Props) {
             <SectionHeader
               eyebrow="Most-loved this season"
               title="Begin where most devotees do."
+              titleStyle={{ fontFamily: "var(--font-display)" }}
             />
             <LocalizedClientLink
               href="/store"
