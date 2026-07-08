@@ -675,16 +675,17 @@ export default function OnePageCheckout({
   const hasShippingSelected = !!selectedShipping
   const displayTotal = itemSubtotal + shippingAmount + taxTotal
 
-  // Try to set shipping method — silently skips if the option has no price configured
-  const trySetShipping = async () => {
-    if (!selectedShipping) return
-    const method = availableShippingMethods.find((m) => m.id === selectedShipping)
-    if (!method || method.amount == null) return
-    try {
-      await setShippingMethod({ cartId: cart.id, shippingMethodId: selectedShipping })
-    } catch {
-      // shipping method has no price in this region — skip
-    }
+  // Apply the selected shipping method and return the cart's AUTHORITATIVE total
+  // (server-computed, incl. that method). Used as the charged amount so the
+  // charge always equals the final order total. Throws on failure — we must not
+  // charge with the wrong/stale shipping method applied.
+  const applyShippingAndGetTotal = async (): Promise<number | null> => {
+    if (!selectedShipping) return null
+    const updated: any = await setShippingMethod({
+      cartId: cart.id,
+      shippingMethodId: selectedShipping,
+    })
+    return typeof updated?.total === "number" ? updated.total : null
   }
 
   const validate = () => {
@@ -732,14 +733,17 @@ export default function OnePageCheckout({
           ...form,
           billing: form.sameAsBilling ? undefined : billing,
         })
-        await trySetShipping()
+        // Authoritative total = cart total AFTER the selected shipping method is
+        // applied. Charging this guarantees charge === final order total.
+        const cartTotal = await applyShippingAndGetTotal()
+        const chargeTotal = cartTotal ?? displayTotal
 
         const loaded = await loadRazorpayScript()
         if (!loaded) throw new Error("Failed to load payment gateway.")
 
         const order = await createRazorpayOrder({
           id: cart.id,
-          total: displayTotal,
+          total: chargeTotal,
           currency_code: currency,
         } as any)
         if (!order) throw new Error("Could not create payment order.")
@@ -802,7 +806,8 @@ export default function OnePageCheckout({
           ...form,
           billing: form.sameAsBilling ? undefined : billing,
         })
-        await trySetShipping()
+        const cartTotal = await applyShippingAndGetTotal()
+        const chargeTotal = cartTotal ?? displayTotal
 
         const base = getBaseUrl()
         const returnUrl = `${base}/checkout/paypal-return?cartId=${cart.id}`
@@ -812,7 +817,7 @@ export default function OnePageCheckout({
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            amount: displayTotal,
+            amount: chargeTotal,
             currency: "USD",
             description: "PariharaOnline - Temple Services",
             return_url: returnUrl,
