@@ -525,14 +525,34 @@ export async function placeOrder(cartId?: string) {
     ...(await getAuthHeaders()),
   }
 
-  const cartRes = await sdk.store.cart
-    .complete(id, {}, headers)
-    .then(async (cartRes) => {
-      const cartCacheTag = await getCacheTag("carts")
-      revalidateTag(cartCacheTag)
-      return cartRes
-    })
-    .catch(medusaError)
+  // Medusa Cloud's cart.complete() can return a 409 idempotency conflict even
+  // when the completion succeeded / is still finishing. The workflow is
+  // idempotent per cart, so retrying returns the created order. Without this a
+  // real (already-charged) payment shows as failed and no order is surfaced.
+  let cartRes: any
+  let lastErr: any
+  for (let attempt = 0; attempt < 6; attempt++) {
+    try {
+      cartRes = await sdk.store.cart.complete(id, {}, headers)
+      break
+    } catch (e: any) {
+      lastErr = e
+      const status = e?.status ?? e?.response?.status
+      const conflict =
+        status === 409 || /conflict|idempoten/i.test(e?.message || "")
+      if (conflict && attempt < 5) {
+        await new Promise((r) => setTimeout(r, 1500))
+        continue
+      }
+      return medusaError(e)
+    }
+  }
+  if (!cartRes) {
+    return medusaError(lastErr)
+  }
+
+  const cartCacheTag = await getCacheTag("carts")
+  revalidateTag(cartCacheTag)
 
   if (cartRes?.type === "order") {
     const countryCode =
