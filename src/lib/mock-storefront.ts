@@ -144,9 +144,9 @@ export const howItWorksSteps = [
       "Pay via UPI, cards, or net banking. International via PayPal.",
   },
   {
-    title: "Watch & Receive",
+    title: "Performed & Prasadham",
     description:
-      "Watch the puja via live video. Prasad delivered to your doorstep.",
+      "Get your pooja performed through Parihara staff, and receive prasadham at your doorstep.",
   },
 ]
 

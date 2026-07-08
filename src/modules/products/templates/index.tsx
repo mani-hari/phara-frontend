@@ -32,11 +32,12 @@ export default function ProductTemplate({
     ? gallery
     : images.slice(0, 6).map((img) => img.url).filter(Boolean)
 
-  // Split on double-newline so each paragraph renders cleanly
-  const descriptionParagraphs = content.description
-    .split(/\n\n+/)
+  // Real Medusa description → non-empty lines (bullets detected in About)
+  const descriptionLines = (product.description ?? "")
+    .split(/\r?\n/)
     .map((s) => s.trim())
     .filter(Boolean)
+  const hasDescription = descriptionLines.length > 0
 
   const primaryImg = displayGallery[0] ?? null
   const secondImg = displayGallery[1] ?? null
@@ -204,102 +205,47 @@ export default function ProductTemplate({
           {/* ── RIGHT: product info ───────────────────────────── */}
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
 
-            {/* Category chips */}
-            {content.heroTags.length > 0 && (
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-                {content.heroTags.map((tag) => (
-                  <span
-                    key={tag.label}
-                    className="ph-chip"
-                    style={{
-                      background: tag.bg,
-                      color: tag.color,
-                      borderColor: "transparent",
-                      fontSize: 11,
-                      fontWeight: 600,
-                    }}
-                  >
-                    {tag.label}
-                  </span>
-                ))}
-              </div>
-            )}
-
             {/* Title */}
             <h1 className="ph-h1" style={{ margin: 0 }} data-testid="product-title">
               {product.title}
             </h1>
 
-            <div style={{ height: 1, background: "var(--ink-line)" }} />
+            {hasDescription && (
+              <>
+                <div style={{ height: 1, background: "var(--ink-line)" }} />
 
-            {/* Effective For — ordered list */}
-            <div>
-              <p
-                style={{
-                  fontFamily: "var(--sans)",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  color: "var(--ink-4)",
-                  marginBottom: 12,
-                  margin: "0 0 12px",
-                }}
-              >
-                This pooja is for
-              </p>
-              <ol
-                style={{
-                  margin: 0,
-                  padding: 0,
-                  listStyle: "none",
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 8,
-                }}
-              >
-                {content.effectiveFor.map((item, idx) => (
-                  <li
-                    key={item}
+                {/* Short description snippet (real product.description) + read more */}
+                <div>
+                  <p
+                    className="ph-body"
                     style={{
-                      display: "flex",
-                      alignItems: "flex-start",
-                      gap: 10,
+                      margin: 0,
+                      lineHeight: 1.7,
+                      color: "var(--ink-2)",
+                      display: "-webkit-box",
+                      WebkitLineClamp: 5,
+                      WebkitBoxOrient: "vertical",
+                      overflow: "hidden",
                     }}
                   >
-                    <span
-                      style={{
-                        flexShrink: 0,
-                        width: 20,
-                        height: 20,
-                        borderRadius: "50%",
-                        background: "rgba(182,68,46,0.10)",
-                        color: "var(--sindoor)",
-                        fontFamily: "var(--sans)",
-                        fontSize: 11,
-                        fontWeight: 700,
-                        display: "inline-flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        marginTop: 1,
-                      }}
-                    >
-                      {idx + 1}
-                    </span>
-                    <span
-                      style={{
-                        fontFamily: "var(--sans)",
-                        fontSize: 14,
-                        color: "var(--ink-2)",
-                        lineHeight: 1.45,
-                      }}
-                    >
-                      {item}
-                    </span>
-                  </li>
-                ))}
-              </ol>
-            </div>
+                    {product.description}
+                  </p>
+                  <a
+                    href="#about-ritual"
+                    className="ph-body-sm"
+                    style={{
+                      display: "inline-block",
+                      marginTop: 10,
+                      color: "var(--sindoor)",
+                      fontWeight: 600,
+                      textDecoration: "none",
+                    }}
+                  >
+                    Read more ↓
+                  </a>
+                </div>
+              </>
+            )}
 
             <div style={{ height: 1, background: "var(--ink-line)" }} />
 
@@ -426,79 +372,44 @@ export default function ProductTemplate({
           </div>
         </div>
 
-        {/* ── About section — full width ─────────────────────── */}
-        <div
-          style={{
-            marginTop: 56,
-            paddingTop: 40,
-            borderTop: "1px solid var(--ink-line)",
-          }}
-        >
-          <style>{`
-            @media (min-width: 1024px) {
-              .product-about-grid { grid-template-columns: 1.2fr 1fr !important; }
-            }
-          `}</style>
+        {/* ── About this ritual — full width, real product.description ── */}
+        {hasDescription && (
           <div
-            className="product-about-grid"
-            style={{ display: "grid", gridTemplateColumns: "1fr", gap: 48 }}
+            id="about-ritual"
+            style={{
+              marginTop: 56,
+              paddingTop: 40,
+              borderTop: "1px solid var(--ink-line)",
+              scrollMarginTop: 80,
+            }}
           >
-            {/* About */}
-            <div>
-              <h2 className="ph-h3" style={{ marginBottom: 20 }}>
-                About This Ritual
-              </h2>
-              <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-                {descriptionParagraphs.map((para, i) => (
-                  <p
-                    key={i}
-                    className="ph-body"
-                    style={{ margin: 0, lineHeight: 1.75, color: "var(--ink-2)" }}
-                  >
-                    {para}
-                  </p>
-                ))}
-              </div>
-            </div>
-
-            {/* What's Included */}
-            <div>
-              <h2 className="ph-h3" style={{ marginBottom: 20 }}>
-                What&apos;s Included
-              </h2>
-              <ul
-                style={{
-                  listStyle: "none",
-                  margin: 0,
-                  padding: 0,
-                  display: "flex",
-                  flexDirection: "column",
-                  gap: 12,
-                }}
-              >
-                {content.included.map((item) => (
-                  <li
-                    key={item}
-                    style={{ display: "flex", gap: 10, alignItems: "flex-start" }}
-                  >
-                    <span
-                      style={{
-                        color: "var(--sindoor)",
-                        fontWeight: 700,
-                        marginTop: 2,
-                        flexShrink: 0,
-                        fontSize: 13,
-                      }}
-                    >
-                      ✓
+            <h2 className="ph-h3" style={{ marginBottom: 20 }}>
+              About This Ritual
+            </h2>
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 820 }}
+            >
+              {descriptionLines.map((line, i) => {
+                const isBullet = /^[-–•*]\s*/.test(line)
+                const text = line.replace(/^[-–•*]\s*/, "")
+                return isBullet ? (
+                  <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+                    <span style={{ color: "var(--sindoor)", marginTop: 9, flexShrink: 0, fontSize: 9 }}>
+                      ●
                     </span>
-                    <span className="ph-body-sm" style={{ lineHeight: 1.6 }}>{item}</span>
-                  </li>
-                ))}
-              </ul>
+                    <p className="ph-body" style={{ margin: 0, lineHeight: 1.75, color: "var(--ink-2)" }}>
+                      {text}
+                    </p>
+                  </div>
+                ) : (
+                  <p key={i} className="ph-body" style={{ margin: 0, lineHeight: 1.75, color: "var(--ink-2)" }}>
+                    {text}
+                  </p>
+                )
+              })}
             </div>
           </div>
-        </div>
+        )}
       </section>
 
       {/* ── How It Works — dark section ──────────────────────── */}
@@ -585,7 +496,7 @@ export default function ProductTemplate({
               },
               {
                 q: "Will I receive proof that the puja was done?",
-                a: "Yes — we send ritual completion photos and, for homams, a video recording. All via WhatsApp or email after the ceremony.",
+                a: "Yes — we send ritual completion photos, and for homams a short video clip, via WhatsApp or email after the ceremony.",
               },
               {
                 q: "How do I provide my devotee details (sankalpam)?",

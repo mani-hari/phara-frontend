@@ -48,6 +48,9 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     /* Define font stacks here so var(--font-serif) / var(--font-inter) injected
        by Next.js onto <body> are in scope when these variables are evaluated */
