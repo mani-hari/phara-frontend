@@ -1,5 +1,6 @@
 import { retrieveCart, listCartOptions } from "@lib/data/cart"
 import { retrieveCustomer } from "@lib/data/customer"
+import { listRegions } from "@lib/data/regions"
 import OnePageCheckout from "@modules/checkout/templates/one-page-checkout"
 import { Metadata } from "next"
 import { headers } from "next/headers"
@@ -38,6 +39,19 @@ export default async function Checkout({
   const ipCountry =
     headers().get("x-vercel-ip-country")?.toLowerCase() || null
 
+  // Every served country across all regions (India→INR, rest→USD), so the
+  // checkout country autosuggest can offer any country and switch region.
+  const regions = await listRegions().catch(() => [])
+  const allCountries = (regions || [])
+    .flatMap((r: any) =>
+      (r.countries || []).map((c: any) => ({
+        iso_2: c.iso_2 || "",
+        name: c.display_name || c.name || (c.iso_2 || "").toUpperCase(),
+        region_id: r.id,
+      }))
+    )
+    .filter((c: any) => c.iso_2)
+
   return (
     <div
       style={{ background: "var(--paper)", minHeight: "calc(100vh - 64px)", paddingTop: 32, paddingBottom: 80 }}
@@ -65,6 +79,7 @@ export default async function Checkout({
             countryCode={countryCode}
             isIndia={isIndia}
             ipCountry={ipCountry}
+            allCountries={allCountries}
           />
         </div>
       </div>

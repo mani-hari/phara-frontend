@@ -7,6 +7,7 @@ import {
   saveAddressesForCheckout,
   setShippingMethod,
   placeOrder,
+  updateCart,
 } from "@lib/data/cart"
 import {
   loadRazorpayScript,
@@ -50,6 +51,9 @@ type Props = {
   countryCode: string
   isIndia: boolean
   ipCountry?: string | null
+  // Every country the store serves, each tagged with its region (India→INR,
+  // rest→USD). Powers the country autosuggest + region auto-switch.
+  allCountries?: { iso_2: string; name: string; region_id: string }[]
 }
 
 // ─── helpers ──────────────────────────────────────────────────────────────────
@@ -140,31 +144,95 @@ function MobileOrderSummary({
   )
 }
 
-// ─── country select ───────────────────────────────────────────────────────────
+// ─── country autosuggest (typeahead) ───────────────────────────────────────────
+// Replaces the dropdown: users type any country name and pick a match. Works
+// across all served countries so no valid country is ever unreachable.
 
-function CountrySelect({
+function CountryAutosuggest({
   countries,
   value,
   onChange,
+  testId,
 }: {
   countries: { iso_2: string; name: string }[]
   value: string
   onChange: (v: string) => void
+  testId?: string
 }) {
+  const find = (v: string) =>
+    countries.find((c) => c.iso_2.toLowerCase() === (v || "").toLowerCase())
+  const [query, setQuery] = useState(find(value)?.name || "")
+  const [open, setOpen] = useState(false)
+  const [hi, setHi] = useState(0)
+
+  // Keep the visible text in sync when the value changes externally
+  // (e.g. region auto-switch resets the country).
+  useEffect(() => {
+    setQuery(find(value)?.name || "")
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value])
+
+  const ql = query.trim().toLowerCase()
   const sorted = [...countries].sort((a, b) => a.name.localeCompare(b.name))
+  const matches = (
+    ql
+      ? sorted.filter(
+          (c) => c.name.toLowerCase().includes(ql) || c.iso_2.toLowerCase() === ql
+        )
+      : sorted
+  ).slice(0, 8)
+
+  const pick = (c: { iso_2: string; name: string }) => {
+    onChange(c.iso_2)
+    setQuery(c.name)
+    setOpen(false)
+  }
+
   return (
-    <select
-      className="ph-input co-input"
-      style={{ width: "100%" }}
-      value={value}
-      onChange={(e) => onChange(e.target.value)}
-    >
-      {sorted.map((c) => (
-        <option key={c.iso_2} value={c.iso_2}>
-          {c.name}
-        </option>
-      ))}
-    </select>
+    <div style={{ position: "relative" }}>
+      <input
+        className="ph-input co-input"
+        style={{ width: "100%" }}
+        value={query}
+        placeholder="Start typing your country…"
+        autoComplete="off"
+        data-testid={testId}
+        onFocus={() => { setOpen(true); setHi(0) }}
+        onChange={(e) => { setQuery(e.target.value); setOpen(true); setHi(0) }}
+        onBlur={() => setTimeout(() => setOpen(false), 150)}
+        onKeyDown={(e) => {
+          if (!open) return
+          if (e.key === "ArrowDown") { e.preventDefault(); setHi((h) => Math.min(h + 1, matches.length - 1)) }
+          else if (e.key === "ArrowUp") { e.preventDefault(); setHi((h) => Math.max(h - 1, 0)) }
+          else if (e.key === "Enter" && matches[hi]) { e.preventDefault(); pick(matches[hi]) }
+          else if (e.key === "Escape") setOpen(false)
+        }}
+      />
+      {open && matches.length > 0 && (
+        <ul
+          style={{
+            position: "absolute", top: "calc(100% + 4px)", left: 0, right: 0, zIndex: 30,
+            background: "var(--paper)", border: "1px solid var(--ink-line-2)", borderRadius: 8,
+            maxHeight: 240, overflowY: "auto", margin: 0, padding: 4, listStyle: "none",
+            boxShadow: "0 8px 24px rgba(26,20,16,0.12)",
+          }}
+        >
+          {matches.map((c, i) => (
+            <li
+              key={c.iso_2}
+              onMouseDown={() => pick(c)}
+              onMouseEnter={() => setHi(i)}
+              style={{
+                padding: "8px 10px", borderRadius: 6, cursor: "pointer", fontSize: 14,
+                background: i === hi ? "rgba(139,90,43,0.10)" : "transparent",
+              }}
+            >
+              {c.name}
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   )
 }
 
@@ -175,11 +243,13 @@ function AddressForm({
   onChange,
   countries,
   fieldErrors,
+  onCountryChange,
 }: {
   form: AddrForm
   onChange: (patch: Partial<AddrForm>) => void
   countries: { iso_2: string; name: string }[]
   fieldErrors: Record<string, string>
+  onCountryChange?: (v: string) => void
 }) {
   const f = (field: keyof AddrForm) => (
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
@@ -224,7 +294,12 @@ function AddressForm({
 
       {/* Country */}
       <FieldWrap label="Country" required style={{ marginBottom: 0 }}>
-        <CountrySelect countries={countries} value={form.countryCode} onChange={(v) => onChange({ countryCode: v })} />
+        <CountryAutosuggest
+          countries={countries}
+          value={form.countryCode}
+          onChange={onCountryChange || ((v) => onChange({ countryCode: v }))}
+          testId="country-select"
+        />
       </FieldWrap>
     </div>
   )
@@ -293,7 +368,7 @@ function BillingForm({
         </FieldWrap>
       </div>
       <FieldWrap label="Country" required style={{ marginBottom: 0 }}>
-        <CountrySelect countries={countries} value={form.countryCode} onChange={(v) => onChange({ countryCode: v })} />
+        <CountryAutosuggest countries={countries} value={form.countryCode} onChange={(v) => onChange({ countryCode: v })} />
       </FieldWrap>
     </div>
   )
@@ -462,6 +537,7 @@ export default function OnePageCheckout({
   countryCode,
   isIndia,
   ipCountry,
+  allCountries = [],
 }: Props) {
   const currency = cart.currency_code || "inr"
 
@@ -472,6 +548,10 @@ export default function OnePageCheckout({
   const countries = regionCountries.length > 0
     ? regionCountries
     : [{ iso_2: countryCode, name: countryCode.toUpperCase() }]
+
+  // The autosuggest offers EVERY served country (India + international) so no
+  // valid country is ever unreachable regardless of which region the cart is in.
+  const selectableCountries = allCountries.length ? allCountries : countries
 
   const inRegion = (cc?: string | null) =>
     !!cc && countries.some((c: { iso_2: string }) => c.iso_2.toLowerCase() === cc.toLowerCase())
@@ -530,6 +610,27 @@ export default function OnePageCheckout({
   }, [])
 
   const router = useRouter()
+
+  // Delivery country change: set it, and if the picked country belongs to a
+  // different region (India→INR vs rest→USD), switch the cart's region so
+  // currency + shipping stay correct. Prevents the "India not selectable"
+  // block when a visitor landed on the wrong regional storefront.
+  const chooseCountry = (iso: string) => {
+    patch({ countryCode: iso })
+    const target = selectableCountries.find(
+      (c: any) => c.iso_2.toLowerCase() === iso.toLowerCase()
+    ) as { region_id?: string } | undefined
+    if (target?.region_id && target.region_id !== cart.region_id) {
+      startTransition(async () => {
+        try {
+          await updateCart({ region_id: target.region_id! })
+          router.refresh()
+        } catch (err) {
+          logCheckoutError("region_switch", err, { cartId: cart.id, to: target.region_id })
+        }
+      })
+    }
+  }
 
   // Apply the chosen shipping method to the cart and refresh, so the order
   // summary total (which includes shipping) updates immediately. This is the
@@ -759,7 +860,7 @@ export default function OnePageCheckout({
               </p>
             </div>
           ) : (
-            <AddressForm form={form} onChange={patch} countries={countries} fieldErrors={fieldErrors} />
+            <AddressForm form={form} onChange={patch} countries={selectableCountries} fieldErrors={fieldErrors} onCountryChange={chooseCountry} />
           )}
         </section>
 
@@ -793,7 +894,7 @@ export default function OnePageCheckout({
             <BillingForm
               form={billing}
               onChange={patchBilling}
-              countries={countries}
+              countries={selectableCountries}
               fieldErrors={fieldErrors}
             />
           )}
