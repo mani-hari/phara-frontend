@@ -492,6 +492,10 @@ export async function saveAddressesForCheckout(data: {
   sameAsBilling?: boolean
   /** Separate billing address, used only when sameAsBilling === false. */
   billing?: CheckoutAddress
+  /** Extra cart metadata persisted alongside the addresses — e.g. the
+   *  "ship prasadham to India" recipient address for international (USD)
+   *  orders, which can't live in the region-locked Medusa shipping address. */
+  metadata?: Record<string, any>
 }) {
   const shipping = toMedusaAddress(data)
 
@@ -507,6 +511,7 @@ export async function saveAddressesForCheckout(data: {
     shipping_address: shipping,
     billing_address: billing,
     email: data.email,
+    ...(data.metadata ? { metadata: data.metadata } : {}),
   } as any)
 }
 

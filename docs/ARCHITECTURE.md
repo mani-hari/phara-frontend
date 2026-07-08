@@ -113,10 +113,25 @@ region's own countries** (`selectableCountries = countries`) and `chooseCountry`
 can only be in one region, so that would strip India from the INR region and
 charge Indian visitors in USD. That destroys the pricing strategy.
 
-### Follow-up option (not built) — Option 2: buyer-currency + recipient-anywhere
-To let an international (USD) buyer physically send prasad to India while still
-paying USD: keep the cart in the buyer's region, add a "send to a different
-recipient (incl. India)" block, store that recipient address as **order metadata**
-(same pattern as sankalpam), add a USD "international prasad to India" shipping
-option, and surface the recipient address in the admin. Medusa's own
-`shipping_address` stays region-valid. Green-light this if intl→India gifting is common.
+### "Ship prasadam to India" escape hatch (built 2026-07-08)
+International (USD) buyers can send prasadam to an address in India without
+leaking INR pricing. Implemented as a metadata escape hatch, NOT a region change:
+- **Checkout:** a "Ship prasadam to an address in India?" checkbox at the top of
+  the delivery-address section (non-India carts only). When ticked, the form
+  fields become the buyer's **billing** address (region-valid → cart stays USD)
+  and a free-text **India delivery address** is captured and written to cart/order
+  metadata: `ship_to_india: true`, `india_delivery_address: "<text>"`.
+- **Shipping:** a **$0 "Prasadham delivery to India (free)"** option lives in the
+  International service zone (`so_01KX1YADK1ER…`). It's hidden from the normal
+  shipping cards (an intl buyer could otherwise pick it to dodge postage) and
+  auto-applied only when the checkbox is on. India delivery is always free.
+- **Backend (phara-backend-medusa):** a loud "🚚 SHIP PRASADAM TO INDIA" banner
+  widget at `order.details.before`, and the address is included in the
+  `order-placed` confirmation email (`order-placed.ts` now fetches order
+  `metadata`; `shipToIndiaFor()` in `resend/templates.ts`).
+- **Verified** via store API: USD cart + India metadata + $0 option →
+  total == item_total (no shipping added), metadata persisted.
+
+Note: Medusa admin has no per-row list-badge injection zone, so the "badge" is
+the top-of-order banner (impossible to miss on the detail page) rather than a
+chip in the orders list.

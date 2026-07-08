@@ -580,12 +580,31 @@ export default function OnePageCheckout({
     sameAsBilling: true,
   })
 
+  // The "Prasadham delivery to India (free)" option is an escape hatch applied
+  // ONLY when the visitor ticks "Ship to India?" — it must never appear as a
+  // normal shipping card (an intl customer could otherwise pick it to dodge
+  // real postage).
+  const indiaShippingOption = availableShippingMethods.find((m) =>
+    /prasadham delivery to india/i.test(m.name || "")
+  )
+  const visibleShippingMethods = availableShippingMethods.filter(
+    (m) => m.id !== indiaShippingOption?.id
+  )
+
   // Default to the actual delivery option (Free shipping / International Speed
-  // Post), not the "donate / do not send" option.
+  // Post), not the "donate / do not send" option or the hidden India option.
   const defaultShippingId =
-    (availableShippingMethods.find((m) => !/donate|do not send/i.test(m.name || "")) ||
-      availableShippingMethods[0])?.id || ""
+    (visibleShippingMethods.find((m) => !/donate|do not send/i.test(m.name || "")) ||
+      visibleShippingMethods[0])?.id || ""
   const [selectedShipping, setSelectedShipping] = useState<string>(defaultShippingId)
+
+  // "Ship prasadham to an address in India" — the escape hatch for international
+  // buyers sending prasadham to family in India. When on, the form fields below
+  // are the buyer's BILLING address (region-valid, keeps the cart in USD) and
+  // the real India delivery address is captured free-text into order metadata;
+  // the $0 India shipping option is auto-applied. Only offered on non-India carts.
+  const [shipToIndia, setShipToIndia] = useState(false)
+  const [indiaAddress, setIndiaAddress] = useState("")
 
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | null>(null)
@@ -641,6 +660,15 @@ export default function OnePageCheckout({
     [cart.id, router]
   )
 
+  // Toggle the "Ship to India?" escape hatch: apply the $0 India option (or
+  // revert to the default option) so the summary total updates immediately.
+  const toggleShipToIndia = (checked: boolean) => {
+    setShipToIndia(checked)
+    setFieldErrors({})
+    const targetId = checked ? indiaShippingOption?.id : defaultShippingId
+    if (targetId) chooseShipping(targetId)
+  }
+
   // On load, if no shipping method is set yet, apply the default option so the
   // total reflects shipping from the start (e.g. international $32).
   const didInitShipping = useRef(false)
@@ -687,8 +715,13 @@ export default function OnePageCheckout({
     if (!form.address1.trim()) errs.address1 = "Required"
     if (!form.city.trim()) errs.city = "Required"
 
-    // A shipping method must be chosen when physical delivery applies.
-    if (availableShippingMethods.length > 0 && !selectedShipping) {
+    // A shipping method must be chosen when physical delivery applies. When
+    // shipping to India, the $0 option is auto-applied — instead require the
+    // free-text India delivery address.
+    if (shipToIndia) {
+      if (!indiaAddress.trim())
+        errs.indiaAddress = "Please enter the delivery address in India"
+    } else if (visibleShippingMethods.length > 0 && !selectedShipping) {
       errs.shipping = "Please choose a delivery option"
     }
 
@@ -721,6 +754,10 @@ export default function OnePageCheckout({
         await saveAddressesForCheckout({
           ...form,
           billing: form.sameAsBilling ? undefined : billing,
+          metadata: {
+            ship_to_india: shipToIndia,
+            india_delivery_address: shipToIndia ? indiaAddress.trim() : "",
+          },
         })
         // Authoritative total = cart total AFTER the selected shipping method is
         // applied. Charging this guarantees charge === final order total.
@@ -794,6 +831,10 @@ export default function OnePageCheckout({
         await saveAddressesForCheckout({
           ...form,
           billing: form.sameAsBilling ? undefined : billing,
+          metadata: {
+            ship_to_india: shipToIndia,
+            india_delivery_address: shipToIndia ? indiaAddress.trim() : "",
+          },
         })
         const cartTotal = await applyShippingAndGetTotal()
         const chargeTotal = cartTotal ?? displayTotal
@@ -851,7 +892,7 @@ export default function OnePageCheckout({
       <div>
         {/* Address */}
         <section className="co-section">
-          <SectionLabel>Delivery address</SectionLabel>
+          <SectionLabel>{shipToIndia ? "Billing address" : "Delivery address"}</SectionLabel>
           {isDigitalOnly ? (
             <div style={{ padding: "10px 14px", background: "#e8f5ee", borderRadius: 8 }}>
               <p className="ph-body-sm" style={{ color: "#2d6a4f", margin: 0 }}>
@@ -859,16 +900,61 @@ export default function OnePageCheckout({
               </p>
             </div>
           ) : (
-            <AddressForm form={form} onChange={patch} countries={selectableCountries} fieldErrors={fieldErrors} onCountryChange={chooseCountry} />
+            <>
+              {/* Escape hatch (international carts only): ship prasadham to India.
+                  Placed at the very top so ticking it reframes the fields below
+                  as the billing address. */}
+              {!isIndia && (
+                <label
+                  style={{
+                    display: "flex", alignItems: "flex-start", gap: 10, cursor: "pointer",
+                    marginBottom: 16, padding: "12px 14px", borderRadius: 10,
+                    border: `1.5px solid ${shipToIndia ? "var(--sindoor)" : "var(--ink-line)"}`,
+                    background: shipToIndia ? "#f7f4f1" : "var(--paper)",
+                  }}
+                >
+                  <input
+                    type="checkbox"
+                    checked={shipToIndia}
+                    onChange={(e) => toggleShipToIndia(e.target.checked)}
+                    style={{ width: 18, height: 18, accentColor: "var(--sindoor)", flexShrink: 0, marginTop: 1 }}
+                    data-testid="ship-to-india"
+                  />
+                  <span className="ph-body-sm" style={{ color: "var(--ink-2)" }}>
+                    Ship prasadham to an address in{" "}
+                    <span style={{ color: "var(--sindoor)", fontWeight: 600 }}>India</span>? (e.g. to
+                    family) — free delivery, and you still pay in your local currency.
+                  </span>
+                </label>
+              )}
+              {shipToIndia && (
+                <div style={{ marginBottom: 16 }}>
+                  <FieldWrap label="Prasadham delivery address in India" required error={fieldErrors.indiaAddress}>
+                    <textarea
+                      className="ph-input co-input"
+                      style={{ width: "100%", minHeight: 92, resize: "vertical", lineHeight: 1.5 }}
+                      value={indiaAddress}
+                      onChange={(e) => { setIndiaAddress(e.target.value); setFieldErrors({}) }}
+                      placeholder="Recipient name, full address, city, state, PIN code, contact phone"
+                    />
+                  </FieldWrap>
+                  <p className="ph-body-sm" style={{ color: "var(--ink-4)", marginTop: 6, marginBottom: 0 }}>
+                    Prasadham ships free to this India address. Your details below are used for billing only.
+                  </p>
+                </div>
+              )}
+              <AddressForm form={form} onChange={patch} countries={selectableCountries} fieldErrors={fieldErrors} onCountryChange={chooseCountry} />
+            </>
           )}
         </section>
 
-        {/* Shipping */}
-        {!isDigitalOnly && (
+        {/* Shipping — hidden when shipping to India (the free India option is
+            auto-applied and there's nothing to choose). */}
+        {!isDigitalOnly && !shipToIndia && (
           <section className="co-section">
             <SectionLabel>Prasad delivery</SectionLabel>
             <ShippingCards
-              methods={availableShippingMethods}
+              methods={visibleShippingMethods}
               selected={selectedShipping}
               onSelect={chooseShipping}
               currency={currency}
@@ -882,22 +968,25 @@ export default function OnePageCheckout({
           </section>
         )}
 
-        {/* Billing address */}
-        <section className="co-section">
-          <SectionLabel>Billing address</SectionLabel>
-          <BillingCheckbox
-            checked={form.sameAsBilling}
-            onChange={(v) => patch({ sameAsBilling: v })}
-          />
-          {!form.sameAsBilling && (
-            <BillingForm
-              form={billing}
-              onChange={patchBilling}
-              countries={selectableCountries}
-              fieldErrors={fieldErrors}
+        {/* Billing address — hidden when shipping to India, because the section
+            above is already the billing address in that flow. */}
+        {!shipToIndia && (
+          <section className="co-section">
+            <SectionLabel>Billing address</SectionLabel>
+            <BillingCheckbox
+              checked={form.sameAsBilling}
+              onChange={(v) => patch({ sameAsBilling: v })}
             />
-          )}
-        </section>
+            {!form.sameAsBilling && (
+              <BillingForm
+                form={billing}
+                onChange={patchBilling}
+                countries={selectableCountries}
+                fieldErrors={fieldErrors}
+              />
+            )}
+          </section>
+        )}
 
         {/* Payment */}
         <section className="co-section co-section-last">
