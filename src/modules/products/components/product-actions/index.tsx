@@ -192,6 +192,11 @@ export default function ProductActions({
       metadata: metadata as any,
     })
 
+    // Tell the nav cart dropdown to pop open so the user sees the item landed.
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new Event("cart:updated"))
+    }
+
     // Reset form after adding to cart
     setPujaDetails({ ...initialPujaDetails, devotees: [{ ...emptyDevotee }] })
     setShowPujaForm(false)

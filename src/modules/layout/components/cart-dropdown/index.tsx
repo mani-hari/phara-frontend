@@ -70,8 +70,20 @@ const CartDropdown = ({
     if (itemRef.current !== totalItems && !pathname.includes("/cart")) {
       timedOpen()
     }
+    itemRef.current = totalItems
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [totalItems, itemRef.current])
+  }, [totalItems])
+
+  // Also open on an explicit "cart:updated" event fired right after add-to-cart,
+  // so the popup reliably expands even before the nav re-renders with new props.
+  useEffect(() => {
+    const handler = () => {
+      if (!pathname.includes("/cart")) timedOpen()
+    }
+    window.addEventListener("cart:updated", handler)
+    return () => window.removeEventListener("cart:updated", handler)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [pathname])
 
   return (
     <div
@@ -99,8 +111,12 @@ const CartDropdown = ({
         >
           <PopoverPanel
             static
-            className="hidden small:block absolute top-[calc(100%+1px)] right-0 border-x border-b border-[var(--ink-line)] w-[420px]"
-            style={{ background: "var(--paper)" }}
+            className="hidden small:block absolute top-[calc(100%+8px)] right-0 w-[420px] overflow-hidden rounded-xl"
+            style={{
+              background: "var(--paper)",
+              border: "1.5px solid #8b5a2b",
+              boxShadow: "0 18px 50px rgba(26,20,16,0.18)",
+            }}
             data-testid="nav-cart-dropdown"
           >
             <div className="p-4 flex items-center justify-center">

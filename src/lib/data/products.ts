@@ -49,13 +49,18 @@ export const listProducts = async ({
     ...(await getAuthHeaders()),
   }
 
+  const cacheOptions = await getCacheOptions("products")
   const next = {
-    ...(await getCacheOptions("products")),
-    // Time-based revalidation so edits in Medusa (descriptions, prices,
-    // images) appear on the deployed site within a few minutes. Without this
-    // the fetch was force-cached indefinitely and Vercel's persistent Data
-    // Cache served stale content across deploys.
-    revalidate: 300,
+    ...cacheOptions,
+    // Stable tag shared by EVERY product fetch, in addition to the per-visitor
+    // tag. A single revalidateTag("products") — fired by the "Refresh
+    // storefront cache" button in Medusa admin (/api/revalidate) — then
+    // refreshes product content on demand for all visitors. No time-based
+    // timer: cache is held until manually refreshed.
+    tags: [
+      "products",
+      ...("tags" in cacheOptions ? (cacheOptions as { tags: string[] }).tags : []),
+    ],
   }
 
   return sdk.client
@@ -73,6 +78,7 @@ export const listProducts = async ({
         },
         headers,
         next,
+        cache: "force-cache",
       }
     )
     .then(({ products, count }) => {

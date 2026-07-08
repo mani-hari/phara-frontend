@@ -5,8 +5,10 @@ import { HttpTypes } from "@medusajs/types"
 import { getCacheOptions } from "./cookies"
 
 export const retrieveCollection = async (id: string) => {
+  const _co = await getCacheOptions("collections")
   const next = {
-    ...(await getCacheOptions("collections")),
+    ..._co,
+    tags: ["collections", ...("tags" in _co ? (_co as { tags: string[] }).tags : [])],
   }
 
   return sdk.client
@@ -23,8 +25,10 @@ export const retrieveCollection = async (id: string) => {
 export const listCollections = async (
   queryParams: Record<string, string> = {}
 ): Promise<{ collections: HttpTypes.StoreCollection[]; count: number }> => {
+  const _co = await getCacheOptions("collections")
   const next = {
-    ...(await getCacheOptions("collections")),
+    ..._co,
+    tags: ["collections", ...("tags" in _co ? (_co as { tags: string[] }).tags : [])],
   }
 
   queryParams.limit = queryParams.limit || "100"
@@ -45,8 +49,10 @@ export const listCollections = async (
 export const getCollectionByHandle = async (
   handle: string
 ): Promise<HttpTypes.StoreCollection> => {
+  const _co = await getCacheOptions("collections")
   const next = {
-    ...(await getCacheOptions("collections")),
+    ..._co,
+    tags: ["collections", ...("tags" in _co ? (_co as { tags: string[] }).tags : [])],
   }
 
   return sdk.client
