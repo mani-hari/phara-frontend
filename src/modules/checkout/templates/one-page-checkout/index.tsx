@@ -7,7 +7,6 @@ import {
   saveAddressesForCheckout,
   setShippingMethod,
   placeOrder,
-  updateCart,
   initiatePaymentSession,
 } from "@lib/data/cart"
 import {
@@ -52,9 +51,6 @@ type Props = {
   countryCode: string
   isIndia: boolean
   ipCountry?: string | null
-  // Every country the store serves, each tagged with its region (India→INR,
-  // rest→USD). Powers the country autosuggest + region auto-switch.
-  allCountries?: { iso_2: string; name: string; region_id: string }[]
 }
 
 // ─── helpers ──────────────────────────────────────────────────────────────────
@@ -538,7 +534,6 @@ export default function OnePageCheckout({
   countryCode,
   isIndia,
   ipCountry,
-  allCountries = [],
 }: Props) {
   const currency = cart.currency_code || "inr"
 
@@ -550,9 +545,15 @@ export default function OnePageCheckout({
     ? regionCountries
     : [{ iso_2: countryCode, name: countryCode.toUpperCase() }]
 
-  // The autosuggest offers EVERY served country (India + international) so no
-  // valid country is ever unreachable regardless of which region the cart is in.
-  const selectableCountries = allCountries.length ? allCountries : countries
+  // Currency is fixed by the region the visitor is BROWSING (set by IP at cart
+  // creation) — it must NEVER change based on the delivery address, or an
+  // international visitor could see the lower INR price. So the country selector
+  // is limited to the current region's countries: a USD visitor can ship to any
+  // of the 243 international countries (not India, which is the INR region), an
+  // INR visitor ships within India. This also guarantees every selectable
+  // country is valid for the cart's region — Medusa rejects an out-of-region
+  // shipping address (e.g. an Indian address on a USD cart). See docs/ARCHITECTURE.md.
+  const selectableCountries = countries
 
   const inRegion = (cc?: string | null) =>
     !!cc && countries.some((c: { iso_2: string }) => c.iso_2.toLowerCase() === cc.toLowerCase())
@@ -612,25 +613,13 @@ export default function OnePageCheckout({
 
   const router = useRouter()
 
-  // Delivery country change: set it, and if the picked country belongs to a
-  // different region (India→INR vs rest→USD), switch the cart's region so
-  // currency + shipping stay correct. Prevents the "India not selectable"
-  // block when a visitor landed on the wrong regional storefront.
+  // Delivery country change: set the address country ONLY. We deliberately do
+  // NOT switch the cart's region/currency here — currency is anchored to where
+  // the visitor is browsing, never to the delivery address (see comment on
+  // selectableCountries and docs/ARCHITECTURE.md). All selectable countries
+  // already belong to the cart's region, so no region switch is ever needed.
   const chooseCountry = (iso: string) => {
     patch({ countryCode: iso })
-    const target = selectableCountries.find(
-      (c: any) => c.iso_2.toLowerCase() === iso.toLowerCase()
-    ) as { region_id?: string } | undefined
-    if (target?.region_id && target.region_id !== cart.region_id) {
-      startTransition(async () => {
-        try {
-          await updateCart({ region_id: target.region_id! })
-          router.refresh()
-        } catch (err) {
-          logCheckoutError("region_switch", err, { cartId: cart.id, to: target.region_id })
-        }
-      })
-    }
   }
 
   // Apply the chosen shipping method to the cart and refresh, so the order

@@ -58,7 +58,14 @@ export default async function Nav() {
             >
               <CartButton />
             </Suspense>
-            {/* Sign in hidden for now — accounts to be enabled later. */}
+            <LocalizedClientLink
+              className="inline-flex items-center"
+              href="/account/signin"
+              data-testid="nav-account-link"
+              style={{ color: "var(--ink)", fontSize: 13 }}
+            >
+              Sign in
+            </LocalizedClientLink>
           </div>
         </nav>
       </header>

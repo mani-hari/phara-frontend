@@ -24,23 +24,11 @@ export default async function Checkout({
 
   const customer = await retrieveCustomer()
 
-  // Every served country across all regions (India→INR, rest→USD), so the
-  // checkout country autosuggest can offer any country and switch region.
-  const regions = await listRegions().catch(() => [])
-  const allCountries = (regions || [])
-    .flatMap((r: any) =>
-      (r.countries || []).map((c: any) => ({
-        iso_2: c.iso_2 || "",
-        name: c.display_name || c.name || (c.iso_2 || "").toUpperCase(),
-        region_id: r.id,
-      }))
-    )
-    .filter((c: any) => c.iso_2)
-
   // Countries served by the cart's current region. Medusa returns EVERY zone's
   // shipping options when the cart has no shipping address yet, so keep only
   // those whose service zone serves a country in this region (India-only
   // options don't show on a USD cart and vice-versa).
+  const regions = await listRegions().catch(() => [])
   const regionCountries = new Set(
     (
       (regions || []).find((r: any) => r.id === cart.region_id)?.countries || []
@@ -95,7 +83,6 @@ export default async function Checkout({
             countryCode={countryCode}
             isIndia={isIndia}
             ipCountry={ipCountry}
-            allCountries={allCountries}
           />
         </div>
       </div>

@@ -95,6 +95,14 @@ export default function ProductActions({
   }, [product.variants, options])
 
   useEffect(() => {
+    // Single-variant products have nothing to pick, so keep their URL clean —
+    // never append ?v_id. The param only earns its place on multi-variant
+    // products, where it drives variant-specific images (server-rendered) and
+    // makes the selected variant shareable / refresh-safe.
+    if ((product.variants?.length ?? 0) <= 1) {
+      return
+    }
+
     const params = new URLSearchParams(searchParams.toString())
     const value = isValidVariant ? selectedVariant?.id : null
 
