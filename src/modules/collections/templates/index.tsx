@@ -1,12 +1,7 @@
-import { Suspense } from "react"
-
 import { listProducts } from "@lib/data/products"
 import { getRegion } from "@lib/data/regions"
 import ProductPreview from "@modules/products/components/product-preview"
-import SkeletonProductGrid from "@modules/skeletons/templates/skeleton-product-grid"
-import RefinementList from "@modules/store/components/refinement-list"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
-import PaginatedProducts from "@modules/store/templates/paginated-products"
 import { HttpTypes } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
@@ -46,9 +41,7 @@ const needGroups = [
 ]
 
 export default async function CollectionTemplate({
-  sortBy,
   collection,
-  page,
   countryCode,
 }: {
   sortBy?: SortOptions
@@ -56,21 +49,20 @@ export default async function CollectionTemplate({
   page?: string
   countryCode: string
 }) {
-  const pageNumber = page ? parseInt(page) : 1
-  const sort = sortBy || "created_at"
   const region = await getRegion(countryCode)
 
   if (!region) {
     return null
   }
 
+  // Flat page — fetch the whole collection (no pagination).
   const {
     response: { products: collectionProducts },
   } = await listProducts({
     countryCode,
     queryParams: {
       collection_id: [collection.id],
-      limit: 24,
+      limit: 100,
     },
   })
 
@@ -142,7 +134,7 @@ export default async function CollectionTemplate({
         <ul className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
           {popularProducts.map((product) => (
             <li key={product.id}>
-              <ProductPreview product={product} region={region} />
+              <ProductPreview product={product} region={region} imageHeight={320} />
             </li>
           ))}
         </ul>
@@ -180,30 +172,25 @@ export default async function CollectionTemplate({
       )}
 
       <section className="content-container px-20 py-12">
-        <div className="mb-8 flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-600">
-              Full Collection
-            </p>
-            <h2 className="mt-2 font-serif text-[32px] text-grey-90">
-              Explore every service in {collection.title}
-            </h2>
-          </div>
-          <RefinementList sortBy={sort} data-testid="sort-by-container" />
+        <div className="mb-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-600">
+            Full Collection
+          </p>
+          <h2 className="mt-2 font-serif text-[32px] text-grey-90">
+            Explore every service in {collection.title}
+          </h2>
         </div>
 
-        <Suspense
-          fallback={
-            <SkeletonProductGrid numberOfProducts={collection.products?.length} />
-          }
+        <ul
+          className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          data-testid="products-list"
         >
-          <PaginatedProducts
-            sortBy={sort}
-            page={pageNumber}
-            collectionId={collection.id}
-            countryCode={countryCode}
-          />
-        </Suspense>
+          {collectionProducts.map((product) => (
+            <li key={product.id}>
+              <ProductPreview product={product} region={region} />
+            </li>
+          ))}
+        </ul>
       </section>
     </div>
   )

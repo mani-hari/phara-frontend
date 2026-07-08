@@ -7,10 +7,12 @@ export default async function ProductPreview({
   product,
   isFeatured,
   region,
+  imageHeight = 200,
 }: {
   product: HttpTypes.StoreProduct
   isFeatured?: boolean
   region: HttpTypes.StoreRegion
+  imageHeight?: number
 }) {
   const { cheapestPrice } = getProductPrice({ product })
 
@@ -27,7 +29,7 @@ export default async function ProductPreview({
         <div
           style={{
             position: "relative",
-            height: 200,
+            height: imageHeight,
             background:
               "radial-gradient(circle at 50% 30%, rgba(255,200,120,0.3), transparent 60%), var(--paper-2)",
             overflow: "hidden",
