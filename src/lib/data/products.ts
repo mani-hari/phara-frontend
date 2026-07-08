@@ -51,6 +51,11 @@ export const listProducts = async ({
 
   const next = {
     ...(await getCacheOptions("products")),
+    // Time-based revalidation so edits in Medusa (descriptions, prices,
+    // images) appear on the deployed site within a few minutes. Without this
+    // the fetch was force-cached indefinitely and Vercel's persistent Data
+    // Cache served stale content across deploys.
+    revalidate: 300,
   }
 
   return sdk.client
@@ -68,7 +73,6 @@ export const listProducts = async ({
         },
         headers,
         next,
-        cache: "force-cache",
       }
     )
     .then(({ products, count }) => {
