@@ -98,12 +98,11 @@ const SUGGESTION_CHIPS = [
   "My daughter's marriage is delayed",
 ]
 
-// TODO: replace youtubeId with the real YouTube video IDs (the part after
-// watch?v=). Empty IDs render a "add video" placeholder so nothing wrong ships.
-const RECENT_VIDEOS: { title: string; meta: string; youtubeId: string }[] = [
-  { title: "Sudarshana Homam", meta: "Performed in our yagasala", youtubeId: "1Ycn82X6VP4" },
-  { title: "Ganapati Homam", meta: "Performed in our yagasala", youtubeId: "iEsN8ftTU_o" },
-  { title: "Mrityunjaya Homam", meta: "Performed in our yagasala", youtubeId: "" },
+// `title` is used only for the iframe's accessibility label; the visible title
+// is YouTube's own overlay. Add more entries here as more clips are published.
+const RECENT_VIDEOS: { title: string; youtubeId: string }[] = [
+  { title: "Homam performed at PariharaOnline", youtubeId: "1Ycn82X6VP4" },
+  { title: "Homam performed at PariharaOnline", youtubeId: "iEsN8ftTU_o" },
 ]
 
 const FAQS: { q: string; a: string }[] = [
@@ -412,10 +411,6 @@ export default function HomeV3({ products, countryCode }: HomeV3Props) {
                       YouTube video coming soon
                     </div>
                   )}
-                </div>
-                <div style={{ padding: 16 }}>
-                  <div className="ph-h4" style={{ marginBottom: 2 }}>{v.title}</div>
-                  <div className="ph-body-sm">{v.meta}</div>
                 </div>
               </div>
             ))}
