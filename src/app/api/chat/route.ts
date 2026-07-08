@@ -2,8 +2,7 @@ import { createDataStreamResponse, streamText, tool } from "ai"
 import { anthropic } from "@ai-sdk/anthropic"
 import { z } from "zod"
 import { NextRequest } from "next/server"
-import { getServerSession } from "next-auth"
-import { authOptions } from "@lib/auth"
+import { retrieveCustomer } from "@lib/data/customer"
 import { upsertSession, saveMessage } from "@lib/chat-store"
 import {
   getMedusaCustomerContext,
@@ -115,9 +114,10 @@ export async function POST(req: NextRequest) {
       conversationCount?: number
     } = body
 
-    // Authenticated user (if any)
-    const session = await getServerSession(authOptions)
-    const userEmail = session?.user?.email?.toLowerCase() ?? null
+    // Authenticated user (if any) — identity comes from the Medusa customer
+    // session (httpOnly cookie), keyed by email.
+    const customer = await retrieveCustomer().catch(() => null)
+    const userEmail = customer?.email?.toLowerCase() ?? null
 
     // Build system prompt
     let systemWithContext = SYSTEM

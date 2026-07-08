@@ -1,7 +1,6 @@
 import { Metadata } from "next"
 import { redirect } from "next/navigation"
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "@lib/auth"
+import { retrieveCustomer } from "@lib/data/customer"
 import { localizeHref } from "@lib/util/localize-href"
 
 export const metadata: Metadata = {
@@ -11,18 +10,31 @@ export const metadata: Metadata = {
 
 export const dynamic = "force-dynamic"
 
+// Admin = a signed-in Medusa customer whose email is in ADMIN_EMAILS.
+const ADMIN_EMAILS = (
+  process.env.ADMIN_EMAILS ||
+  process.env.NEXT_PUBLIC_ADMIN_EMAILS ||
+  ""
+)
+  .split(",")
+  .map((e) => e.trim().toLowerCase())
+  .filter(Boolean)
+
 export default async function AdminPage(props: {
   params: Promise<{ countryCode: string }>
 }) {
   const { countryCode } = await props.params
-  const session = await getServerSession(authOptions)
+  const customer = await retrieveCustomer().catch(() => null)
+  const email = customer?.email?.toLowerCase() ?? ""
+  const isAdmin = !!email && ADMIN_EMAILS.includes(email)
 
-  if (!session) {
-    // Redirect to Google sign-in, then return here
-    redirect(`/api/auth/signin?callbackUrl=${localizeHref(countryCode, "/admin")}`)
+  if (!isAdmin) {
+    // Not a signed-in admin — send to sign-in.
+    redirect(localizeHref(countryCode, "/account/signin"))
   }
 
-  return <AdminDashboard email={session.user?.email ?? ""} name={session.user?.name ?? ""} countryCode={countryCode} />
+  const name = [customer?.first_name, customer?.last_name].filter(Boolean).join(" ")
+  return <AdminDashboard email={customer?.email ?? ""} name={name} countryCode={countryCode} />
 }
 
 function Row({ label, value }: { label: string; value: string | number | null | undefined }) {
@@ -62,8 +74,7 @@ function AdminDashboard({
     { label: "PayPal secret", value: process.env.PAYPAL_CLIENT_SECRET ? "✓ set" : "✗ missing" },
     { label: "PayPal sandbox", value: process.env.NEXT_PUBLIC_PAYPAL_SANDBOX },
     { label: "Anthropic API key", value: process.env.ANTHROPIC_API_KEY ? "✓ set" : "✗ missing" },
-    { label: "Google OAuth", value: process.env.GOOGLE_CLIENT_ID ? "✓ set" : "✗ missing" },
-    { label: "NextAuth secret", value: process.env.NEXTAUTH_SECRET ? "✓ set" : "✗ missing" },
+    { label: "Admin emails", value: process.env.ADMIN_EMAILS ? "✓ set" : "✗ missing" },
     { label: "GA4 ID", value: process.env.NEXT_PUBLIC_GA4_ID || "not set" },
     { label: "Clarity ID", value: process.env.NEXT_PUBLIC_CLARITY_ID || "not set" },
   ]

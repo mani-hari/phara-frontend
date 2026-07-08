@@ -1,20 +1,23 @@
 import { NextRequest, NextResponse } from "next/server"
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "@lib/auth"
+import { retrieveCustomer } from "@lib/data/customer"
 import { getUserSessions, linkSessionToUser } from "@lib/chat-store"
+
+// Identity comes from the Medusa customer session (httpOnly cookie), keyed by
+// email — same key the chat route uses, so history stays matched.
 
 // ---------------------------------------------------------------------------
 // GET /api/chat/history — list conversations for the logged-in user
 // ---------------------------------------------------------------------------
 
 export async function GET(_req: NextRequest) {
-  const session = await getServerSession(authOptions)
-  if (!session?.user?.email) {
+  const customer = await retrieveCustomer().catch(() => null)
+  const email = customer?.email?.toLowerCase()
+  if (!email) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   }
 
   try {
-    const conversations = await getUserSessions(session.user.email)
+    const conversations = await getUserSessions(email)
     return NextResponse.json({ conversations })
   } catch (err: any) {
     console.error("[/api/chat/history GET]", err?.message ?? err)
@@ -30,8 +33,9 @@ export async function GET(_req: NextRequest) {
 // ---------------------------------------------------------------------------
 
 export async function POST(req: NextRequest) {
-  const session = await getServerSession(authOptions)
-  if (!session?.user?.email) {
+  const customer = await retrieveCustomer().catch(() => null)
+  const email = customer?.email?.toLowerCase()
+  if (!email) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   }
 
@@ -52,9 +56,7 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    await Promise.all(
-      sessionIds.map((id) => linkSessionToUser(id, session.user!.email!))
-    )
+    await Promise.all(sessionIds.map((id) => linkSessionToUser(id, email)))
     return NextResponse.json({ ok: true })
   } catch (err: any) {
     console.error("[/api/chat/history POST]", err?.message ?? err)

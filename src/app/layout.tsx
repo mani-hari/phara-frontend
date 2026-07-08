@@ -3,9 +3,19 @@ import { getBaseURL } from "@lib/util/env"
 import Script from "next/script"
 import { DM_Serif_Display, DM_Serif_Text, Inter } from "next/font/google"
 import "@styles/globals.css"
-import Providers from "@/components/providers"
+import { cookies } from "next/headers"
 import AdminBar from "@/components/admin/admin-bar"
+import { retrieveCustomer } from "@lib/data/customer"
 import { GA4_ID, CLARITY_ID } from "@lib/analytics"
+
+const ADMIN_EMAILS = (
+  process.env.ADMIN_EMAILS ||
+  process.env.NEXT_PUBLIC_ADMIN_EMAILS ||
+  ""
+)
+  .split(",")
+  .map((e) => e.trim().toLowerCase())
+  .filter(Boolean)
 
 const inter = Inter({
   subsets: ["latin"],
@@ -66,13 +76,27 @@ export const metadata: Metadata = {
   },
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
   const ga4Id = GA4_ID
   const clarityId = CLARITY_ID
+
+  // Admin toolbar visibility: only fetch the customer when a session cookie is
+  // present (avoids an auth call for every anonymous visitor), then gate on
+  // ADMIN_EMAILS.
+  const hasSession = !!(await cookies()).get("_medusa_jwt")?.value
+  const customer = hasSession ? await retrieveCustomer().catch(() => null) : null
+  const adminEmail = customer?.email?.toLowerCase() ?? ""
+  const admin =
+    adminEmail && ADMIN_EMAILS.includes(adminEmail)
+      ? {
+          email: customer?.email,
+          name: [customer?.first_name, customer?.last_name].filter(Boolean).join(" ") || null,
+        }
+      : null
 
   return (
     <html lang="en" data-mode="light">
@@ -138,10 +162,8 @@ export default function RootLayout({
         className={`${inter.variable} ${dmDisplay.variable} ${dmText.variable} font-sans`}
         style={{ background: "var(--paper)", color: "var(--ink-2)" }}
       >
-        <Providers>
-          <main className="relative">{children}</main>
-          <AdminBar />
-        </Providers>
+        <main className="relative">{children}</main>
+        <AdminBar admin={admin} />
       </body>
     </html>
   )

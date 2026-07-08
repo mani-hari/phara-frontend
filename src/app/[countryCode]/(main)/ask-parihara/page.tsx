@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useState, useCallback } from "react"
-import { useSession } from "next-auth/react"
 import { useSearchParams } from "next/navigation"
 import { type Message } from "ai/react"
 import ChatInterface from "@/components/chat/chat-interface"
@@ -17,11 +16,22 @@ import {
 } from "@lib/chat-history"
 
 export default function AskPariharaPage() {
-  const { data: session } = useSession()
-  const isLoggedIn = !!session?.user
+  // Auth state via the Medusa session (httpOnly cookie) — probed through /api/me.
+  const [auth, setAuth] = useState<{ loggedIn: boolean; email?: string | null }>({
+    loggedIn: false,
+  })
+  const isLoggedIn = auth.loggedIn
+  const userEmail = auth.email ?? undefined
   const pageContext = usePageContext()
   const searchParams = useSearchParams()
   const autoQ = searchParams.get("q") ?? undefined
+
+  useEffect(() => {
+    fetch("/api/me")
+      .then((r) => r.json())
+      .then((d) => setAuth({ loggedIn: !!d.loggedIn, email: d.email }))
+      .catch(() => {})
+  }, [])
 
   const [conversations, setConversations] = useState<StoredConversation[]>([])
   const [activeId, setActiveId] = useState<string>("")
@@ -71,7 +81,7 @@ export default function AskPariharaPage() {
           createdAt: c.createdAt,
           updatedAt: c.updatedAt,
           messages: [],
-          userId: session?.user?.email ?? undefined,
+          userId: userEmail,
         }))
         // Add any local-only conversations that aren't in DB
         for (const lc of local) {
@@ -87,7 +97,7 @@ export default function AskPariharaPage() {
       })
       .catch(() => {})
       .finally(() => setIsLoadingHistory(false))
-  }, [isLoggedIn, session?.user?.email])
+  }, [isLoggedIn, userEmail])
 
   const handleNew = useCallback(() => {
     const newId = createConversationId()
@@ -162,7 +172,7 @@ export default function AskPariharaPage() {
           content: m.content,
           createdAt: now,
         })),
-        userId: session?.user?.email ?? undefined,
+        userId: userEmail,
       }
 
       saveConversation(conv)
@@ -212,7 +222,7 @@ export default function AskPariharaPage() {
           .catch(() => {})
       }
     },
-    [activeId, conversations, session?.user?.email, isLoggedIn]
+    [activeId, conversations, userEmail, isLoggedIn]
   )
 
   return (

@@ -1,10 +1,9 @@
 "use client"
 
 import { useState } from "react"
-import { signIn } from "next-auth/react"
 import Link from "next/link"
-
-const FACEBOOK_ENABLED = !!(process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_ID || false)
+import { sdk } from "@lib/config"
+import { signup, persistAuthToken } from "@lib/data/customer"
 
 export default function RegisterPage() {
   const [firstName, setFirstName] = useState("")
@@ -44,43 +43,51 @@ export default function RegisterPage() {
 
     setLoading(true)
     try {
-      const res = await fetch("/api/auth/register", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          firstName,
-          lastName,
-          email,
-          password,
-          phone: phone || undefined,
-        }),
-      })
+      // signup() registers + creates the customer + logs in + sets the session
+      // cookie in one Medusa server action; returns the customer on success or
+      // an error string on failure.
+      const fd = new FormData()
+      fd.set("first_name", firstName)
+      fd.set("last_name", lastName)
+      fd.set("email", email)
+      fd.set("password", password)
+      if (phone) fd.set("phone", phone)
 
-      const data = await res.json()
+      const result = await signup(null, fd)
 
-      if (!res.ok) {
-        setError(data.error ?? "Registration failed. Please try again.")
+      if (typeof result === "string") {
+        setError(
+          /exist/i.test(result)
+            ? "An account with this email already exists."
+            : "Registration failed. Please try again."
+        )
         setLoading(false)
         return
       }
 
-      // Auto sign-in after successful registration
-      const result = await signIn("credentials", {
-        email,
-        password,
-        callbackUrl: "/",
-        redirect: false,
-      })
-
-      if (result?.url) {
-        window.location.href = result.url
-      } else {
-        window.location.href = "/"
-      }
+      window.location.href = "/account"
     } catch {
       setError("An unexpected error occurred. Please try again.")
     } finally {
       setLoading(false)
+    }
+  }
+
+  // Google via Medusa (same as sign-in).
+  async function handleGoogle() {
+    setError("")
+    try {
+      const result: any = await sdk.auth.login("customer", "google", {})
+      if (result && typeof result === "object" && result.location) {
+        window.location.href = result.location
+        return
+      }
+      if (typeof result === "string") {
+        await persistAuthToken(result)
+        window.location.href = "/account"
+      }
+    } catch {
+      setError("Could not start Google sign-in. Please try again.")
     }
   }
 
@@ -134,7 +141,7 @@ export default function RegisterPage() {
             <button
               type="button"
               className="ph-btn ph-btn-ghost ph-btn-block"
-              onClick={() => signIn("google", { callbackUrl: "/" })}
+              onClick={handleGoogle}
               style={{ justifyContent: "center", gap: "10px" }}
             >
               <svg
@@ -163,32 +170,6 @@ export default function RegisterPage() {
               </svg>
               Continue with Google
             </button>
-
-            {FACEBOOK_ENABLED && (
-              <button
-                type="button"
-                className="ph-btn ph-btn-block"
-                onClick={() => signIn("facebook", { callbackUrl: "/" })}
-                style={{
-                  background: "#1877F2",
-                  color: "#fff",
-                  border: "none",
-                  justifyContent: "center",
-                  gap: "10px",
-                }}
-              >
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  aria-hidden="true"
-                >
-                  <path d="M24 12.073C24 5.404 18.627 0 12 0S0 5.404 0 12.073C0 18.1 4.388 23.095 10.125 24v-8.437H7.078v-3.49h3.047V9.428c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.49h-2.796V24C19.612 23.095 24 18.1 24 12.073Z" />
-                </svg>
-                Continue with Facebook
-              </button>
-            )}
           </div>
 
           {/* Divider */}

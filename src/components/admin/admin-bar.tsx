@@ -1,7 +1,9 @@
 "use client"
 
-import { useSession, signOut } from "next-auth/react"
 import { useState, useEffect, useCallback } from "react"
+import { logoutCustomer } from "@lib/data/customer"
+
+type AdminInfo = { name?: string | null; email?: string | null }
 
 // Cookie helpers (client-side only)
 const getCookie = (name: string) =>
@@ -126,8 +128,7 @@ function QuickLink({ href, label, external }: { href: string; label: string; ext
   )
 }
 
-export default function AdminBar() {
-  const { data: session } = useSession()
+export default function AdminBar({ admin }: { admin: AdminInfo | null }) {
   const [open, setOpen] = useState(false)
   const [region, setRegion] = useState("us")
   const [showHandles, setShowHandles] = useState(false)
@@ -179,14 +180,15 @@ export default function AdminBar() {
     document.body.classList.toggle("admin-show-borders", next)
   }
 
-  const clearAdminSession = () => {
+  const clearAdminSession = async () => {
     setCookie("admin_region_override", "", 0)
     setCookie("admin_show_handles", "", 0)
     setCookie("admin_show_price_raw", "", 0)
-    signOut({ callbackUrl: "/" })
+    await logoutCustomer()
+    window.location.href = "/"
   }
 
-  if (!session) return null
+  if (!admin) return null
 
   return (
     <>
@@ -272,10 +274,10 @@ export default function AdminBar() {
               ✦ Admin Mode
             </div>
             <div style={{ fontSize: 12, color: "rgba(250,246,238,0.5)" }}>
-              {session.user?.name}
+              {admin.name}
             </div>
             <div style={{ fontSize: 11, color: "rgba(250,246,238,0.35)" }}>
-              {session.user?.email}
+              {admin.email}
             </div>
           </div>
           <button

@@ -1,8 +1,13 @@
 import { NextRequest, NextResponse } from "next/server"
-import { getServerSession } from "next-auth/next"
-import { authOptions } from "@lib/auth"
+import { retrieveCustomer } from "@lib/data/customer"
 import { getSessionMessages, updateSessionTitle } from "@lib/chat-store"
 import { neon } from "@neondatabase/serverless"
+
+// Identity from the Medusa customer session (httpOnly cookie), keyed by email.
+async function currentUserEmail(): Promise<string | null> {
+  const customer = await retrieveCustomer().catch(() => null)
+  return customer?.email?.toLowerCase() ?? null
+}
 
 // ---------------------------------------------------------------------------
 // Internal helper — fetch the session record to check ownership
@@ -44,11 +49,11 @@ export async function GET(req: NextRequest, { params }: RouteContext) {
 
   // If the session is linked to a user, require matching authentication
   if (sessionRecord.userId !== null) {
-    const authSession = await getServerSession(authOptions)
-    if (!authSession?.user?.email) {
+    const email = await currentUserEmail()
+    if (!email) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
     }
-    if (authSession.user.email !== sessionRecord.userId) {
+    if (email !== sessionRecord.userId) {
       return NextResponse.json({ error: "Forbidden" }, { status: 403 })
     }
   }
@@ -74,8 +79,8 @@ export async function GET(req: NextRequest, { params }: RouteContext) {
 export async function PATCH(req: NextRequest, { params }: RouteContext) {
   const { sessionId } = params
 
-  const authSession = await getServerSession(authOptions)
-  if (!authSession?.user?.email) {
+  const email = await currentUserEmail()
+  if (!email) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   }
 
@@ -98,10 +103,7 @@ export async function PATCH(req: NextRequest, { params }: RouteContext) {
   if (!sessionRecord) {
     return NextResponse.json({ error: "Session not found" }, { status: 404 })
   }
-  if (
-    sessionRecord.userId !== null &&
-    sessionRecord.userId !== authSession.user.email
-  ) {
+  if (sessionRecord.userId !== null && sessionRecord.userId !== email) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 })
   }
 

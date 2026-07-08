@@ -128,6 +128,34 @@ export async function login(_currentState: unknown, formData: FormData) {
   }
 }
 
+// Persist an auth token as the Medusa session cookie. Used by the Google
+// sign-in callback: the token is obtained client-side (via sdk.auth.callback),
+// then handed here so it lands in the httpOnly _medusa_jwt cookie the rest of
+// the app reads server-side. Also links any guest cart to the customer.
+export async function persistAuthToken(token: string) {
+  await setAuthToken(token)
+  const customerCacheTag = await getCacheTag("customers")
+  revalidateTag(customerCacheTag)
+  try {
+    await transferCart()
+  } catch {
+    // non-fatal
+  }
+}
+
+// Client-callable logout that clears the session without redirecting (the
+// caller decides where to navigate). Used by the admin bar's "sign out".
+export async function logoutCustomer() {
+  try {
+    await sdk.auth.logout()
+  } catch {
+    // ignore
+  }
+  await removeAuthToken()
+  const customerCacheTag = await getCacheTag("customers")
+  revalidateTag(customerCacheTag)
+}
+
 export async function signout(countryCode: string) {
   await sdk.auth.logout()
 
