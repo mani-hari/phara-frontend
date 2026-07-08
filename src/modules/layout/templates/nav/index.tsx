@@ -36,24 +36,6 @@ export default async function Nav() {
             >
               <Logo size={24} />
             </LocalizedClientLink>
-            {/* Ask Parihara — outline pill, sits next to the logo */}
-            <LocalizedClientLink
-              href="/ask-parihara"
-              className="hidden small:inline-flex items-center"
-              style={{
-                border: "1.5px solid var(--ink)",
-                color: "var(--ink)",
-                background: "transparent",
-                borderRadius: 999,
-                padding: "6px 16px",
-                fontWeight: 600,
-                fontSize: 14,
-                whiteSpace: "nowrap",
-                marginLeft: 4,
-              }}
-            >
-              Ask Parihara
-            </LocalizedClientLink>
           </div>
 
           {/* Center: nav links with active state (client component) */}

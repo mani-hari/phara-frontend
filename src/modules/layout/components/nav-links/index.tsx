@@ -3,10 +3,9 @@
 import { usePathname } from "next/navigation"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
-// Ask Parihara lives next to the logo (see nav template) — these are the
-// centered items.
 const NAV_ITEMS: { label: string; href: string }[] = [
   { label: "Home", href: "/" },
+  { label: "Ask Parihara", href: "/ask-parihara" },
   { label: "Poojas & Homams", href: "/collections/pujas-and-homams" },
   { label: "Astrology", href: "/astrology" },
   { label: "Blog", href: "/blog" },
