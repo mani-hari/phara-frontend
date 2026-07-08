@@ -101,7 +101,7 @@ const SUGGESTION_CHIPS = [
 // TODO: replace youtubeId with the real YouTube video IDs (the part after
 // watch?v=). Empty IDs render a "add video" placeholder so nothing wrong ships.
 const RECENT_VIDEOS: { title: string; meta: string; youtubeId: string }[] = [
-  { title: "Sudarshana Homam", meta: "Performed in our yagasala", youtubeId: "" },
+  { title: "Sudarshana Homam", meta: "Performed in our yagasala", youtubeId: "1Ycn82X6VP4" },
   { title: "Ganapati Homam", meta: "Performed in our yagasala", youtubeId: "" },
   { title: "Mrityunjaya Homam", meta: "Performed in our yagasala", youtubeId: "" },
 ]
