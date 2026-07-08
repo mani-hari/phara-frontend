@@ -45,7 +45,7 @@ export default function AskPariharaPill() {
       </span>
       <span
         style={{
-          fontFamily: "var(--font-serif), 'Cormorant Garamond', serif",
+          fontFamily: "var(--font-serif), 'DM Serif Text', serif",
           fontSize: 18,
           fontWeight: 500,
         }}

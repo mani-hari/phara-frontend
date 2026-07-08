@@ -48,8 +48,8 @@ export default async function Checkout({
         <div style={{ maxWidth: 1040, margin: "0 auto" }}>
           <h1
             style={{
-              fontFamily: "var(--serif)",
-              fontWeight: 700,
+              fontFamily: "var(--font-display)",
+              fontWeight: 400,
               fontSize: "clamp(30px, 4vw, 40px)",
               color: "var(--ink)",
               lineHeight: 1.1,

@@ -119,7 +119,7 @@ export default async function AstrologyPage(props: AstrologyPageProps) {
 
       <section className="py-16">
         <div className="content-container px-20">
-          <h2 className="text-center font-display text-[34px] text-grey-90">
+          <h2 className="text-center font-serif text-[34px] text-grey-90">
             Astrology services
           </h2>
           <div className="mx-auto mt-10 grid max-w-6xl grid-cols-1 gap-6 md:grid-cols-3">
@@ -182,7 +182,7 @@ export default async function AstrologyPage(props: AstrologyPageProps) {
 
       <section className="bg-[#f8efe5] py-16">
         <div className="content-container max-w-4xl px-20">
-          <h2 className="text-center font-display text-[34px] text-grey-90">
+          <h2 className="text-center font-serif text-[34px] text-grey-90">
             How astrology consultation works
           </h2>
           <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
@@ -231,7 +231,7 @@ export default async function AstrologyPage(props: AstrologyPageProps) {
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-600">
               Sample Reports
             </p>
-            <h2 className="mt-3 font-display text-[34px] text-grey-90">
+            <h2 className="mt-3 font-serif text-[34px] text-grey-90">
               Download sample astrology reports
             </h2>
             <p className="mt-4 text-sm leading-7 text-grey-50">
@@ -247,7 +247,7 @@ export default async function AstrologyPage(props: AstrologyPageProps) {
 
       <section className="bg-brand-900 py-16">
         <div className="content-container px-20 text-center">
-          <h2 className="font-display text-[36px] text-white">
+          <h2 className="font-serif text-[36px] text-white">
             Need a recommendation before you book?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-brand-100/90">

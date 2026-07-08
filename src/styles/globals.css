@@ -4,7 +4,7 @@
 
 /* =====================================================================
    Parihara V3 — Hi-fi design system tokens
-   Type: Cormorant Garamond (titles), Inter (body + numbers)
+   Type: DM Serif (Display for page titles/hero, Text for other headings), Inter (body + numbers)
    Palette: warm cream / deep ink / sindoor red / gold leaf / sage
    ===================================================================== */
 
@@ -51,7 +51,7 @@
   body {
     /* Define font stacks here so var(--font-serif) / var(--font-inter) injected
        by Next.js onto <body> are in scope when these variables are evaluated */
-    --serif: var(--font-serif), 'Cormorant Garamond', 'Times New Roman', serif;
+    --serif: var(--font-serif), 'DM Serif Text', Georgia, serif;
     --sans: var(--font-inter), 'Inter', system-ui, -apple-system, sans-serif;
     background: var(--paper);
     color: var(--ink-2);
@@ -79,16 +79,16 @@
   .ph-eyebrow-sindoor { color: var(--sindoor); }
 
   .ph-h1-display {
-    font-family: var(--serif);
-    font-weight: 500;
+    font-family: var(--font-display), 'DM Serif Display', Georgia, serif;
+    font-weight: 400;
     font-size: clamp(40px, 6vw, 64px);
     line-height: 1.04;
     letter-spacing: -0.01em;
     color: var(--ink);
   }
   .ph-h1 {
-    font-family: var(--serif);
-    font-weight: 500;
+    font-family: var(--font-display), 'DM Serif Display', Georgia, serif;
+    font-weight: 400;
     font-size: clamp(34px, 4.5vw, 48px);
     line-height: 1.06;
     letter-spacing: -0.005em;

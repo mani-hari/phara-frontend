@@ -133,7 +133,7 @@ export default async function CollectionTemplate({
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-600">
               Curated Picks
             </p>
-            <h2 className="mt-2 font-display text-[32px] text-grey-90">
+            <h2 className="mt-2 font-serif text-[32px] text-grey-90">
               {copy.popularLabel}
             </h2>
           </div>
@@ -151,7 +151,7 @@ export default async function CollectionTemplate({
       {groupedProducts.length > 0 && (
         <section className="content-container px-20 pb-8">
           <div className="rounded-[28px] border border-brand-100 bg-white p-8">
-            <h2 className="font-display text-[30px] text-grey-90">
+            <h2 className="font-serif text-[30px] text-grey-90">
               Browse pujas based on your need
             </h2>
             <div className="mt-8 grid gap-8 lg:grid-cols-3">
@@ -185,7 +185,7 @@ export default async function CollectionTemplate({
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-600">
               Full Collection
             </p>
-            <h2 className="mt-2 font-display text-[32px] text-grey-90">
+            <h2 className="mt-2 font-serif text-[32px] text-grey-90">
               Explore every service in {collection.title}
             </h2>
           </div>

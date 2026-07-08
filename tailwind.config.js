@@ -108,9 +108,8 @@ module.exports = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
-        serif: ["var(--font-serif)", "Cormorant Garamond", "serif"],
-        display: ["var(--font-display)", "serif"],
-        playfair: ["var(--font-playfair)", "serif"],
+        serif: ["var(--font-serif)", "DM Serif Text", "serif"],
+        display: ["var(--font-display)", "DM Serif Display", "serif"],
       },
       keyframes: {
         ring: {

@@ -1,12 +1,7 @@
 import { Metadata } from "next"
 import { getBaseURL } from "@lib/util/env"
 import Script from "next/script"
-import {
-  Cormorant_Garamond,
-  DM_Serif_Display,
-  Inter,
-  Playfair_Display,
-} from "next/font/google"
+import { DM_Serif_Display, DM_Serif_Text, Inter } from "next/font/google"
 import "@styles/globals.css"
 import Providers from "@/components/providers"
 import AdminBar from "@/components/admin/admin-bar"
@@ -17,23 +12,23 @@ const inter = Inter({
   variable: "--font-inter",
 })
 
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-  style: ["normal"],
-  variable: "--font-serif",
-})
-
-const dmSerif = DM_Serif_Display({
+// Single serif superfamily — DM Serif.
+// Display: hero banners + page titles / top-level H1s.
+// Text: section headers and every other serif spot (varied by size).
+// Only the regular (400) style is loaded — no bold exists in DM Serif, and
+// italics are unused site-wide by design.
+const dmDisplay = DM_Serif_Display({
   subsets: ["latin"],
   weight: "400",
+  style: ["normal"],
   variable: "--font-display",
 })
 
-const playfair = Playfair_Display({
+const dmText = DM_Serif_Text({
   subsets: ["latin"],
-  weight: ["700"],
-  variable: "--font-playfair",
+  weight: "400",
+  style: ["normal"],
+  variable: "--font-serif",
 })
 
 export const metadata: Metadata = {
@@ -140,7 +135,7 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${cormorant.variable} ${dmSerif.variable} ${playfair.variable} font-sans`}
+        className={`${inter.variable} ${dmDisplay.variable} ${dmText.variable} font-sans`}
         style={{ background: "var(--paper)", color: "var(--ink-2)" }}
       >
         <Providers>
