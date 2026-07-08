@@ -62,3 +62,6 @@ playwright/.cache/
 
 # one-time price migration backups (local rollback artifacts)
 price-backup-*.json
+
+# Shopify customer/order exports — PII, never commit
+customer_data/

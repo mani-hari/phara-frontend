@@ -30,7 +30,15 @@ async function shoot(tag, viewport, cartId, paths) {
   const page = await ctx.newPage()
   for (const [name, url] of paths) {
     await page.goto(base + url, { waitUntil: "networkidle" }).catch(() => {})
-    await page.waitForTimeout(1200)
+    // Wait for Tailwind's dev CSS to settle: the cart thumbnail must be small.
+    await page
+      .waitForFunction(() => {
+        const img = document.querySelector('[data-testid="cart-container"] img')
+        if (!img) return true // not the cart page
+        return img.clientWidth > 0 && img.clientWidth < 200
+      }, { timeout: 8000 })
+      .catch(() => {})
+    await page.waitForTimeout(1500)
     await page.screenshot({ path: `/tmp/${name}-${tag}.png`, fullPage: true })
     console.log(`shot /tmp/${name}-${tag}.png`)
   }
