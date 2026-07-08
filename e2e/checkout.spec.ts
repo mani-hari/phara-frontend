@@ -68,6 +68,60 @@ async function gotoCheckoutWithCart(
 
 test.skip(!PUB, "NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY not set — cannot seed carts")
 
+// Regression test for the "payment succeeded but order failed" bug: a cart can
+// only become an order if it has an authorized payment session. The checkout
+// charges Razorpay/PayPal externally, then initiates a `pp_system_default`
+// session before completing — this verifies that completion path end-to-end.
+//
+// ⚠️ SKIPPED BY DEFAULT: it completes a REAL cart into a REAL Medusa order
+// (consumes an order number + shows in admin). Remove `.skip` to run it
+// deliberately, then cancel the created order in the admin.
+test.skip("cart completes into an order once a system payment session exists", async () => {
+  const ctx = await api()
+  const cartId = await seedCart("in", REGION_INDIA)
+
+  // Billing (complete needs a billing address too)
+  await ctx.post(`${MEDUSA}/store/carts/${cartId}`, {
+    data: {
+      billing_address: {
+        first_name: "E2E",
+        last_name: "Test",
+        address_1: "1 Test St",
+        city: "Bengaluru",
+        country_code: "in",
+        postal_code: "560001",
+      },
+    },
+  })
+
+  // A shipping method is required to complete.
+  const opts = await (
+    await ctx.get(`${MEDUSA}/store/shipping-options?cart_id=${cartId}`)
+  ).json()
+  const optionId = opts.shipping_options?.[0]?.id
+  expect(optionId, "a shipping option should be available").toBeTruthy()
+  await ctx.post(`${MEDUSA}/store/carts/${cartId}/shipping-methods`, {
+    data: { option_id: optionId },
+  })
+
+  // The fix: create a payment collection + a system payment session.
+  const pc = await (
+    await ctx.post(`${MEDUSA}/store/payment-collections`, { data: { cart_id: cartId } })
+  ).json()
+  await ctx.post(
+    `${MEDUSA}/store/payment-collections/${pc.payment_collection.id}/payment-sessions`,
+    { data: { provider_id: "pp_system_default" } }
+  )
+
+  // Complete → should return a real order (would fail without the session above).
+  const res = await ctx.post(`${MEDUSA}/store/carts/${cartId}/complete`)
+  const body = await res.json()
+  expect(body.type, "cart.complete should return an order").toBe("order")
+  expect(body.order?.id).toBeTruthy()
+  expect(Number(body.order?.display_id)).toBeGreaterThan(0)
+  await ctx.dispose()
+})
+
 // ── Tests ──────────────────────────────────────────────────────────────────────
 
 test("checkout form renders in the main column, not the narrow summary column", async ({ page, context }) => {

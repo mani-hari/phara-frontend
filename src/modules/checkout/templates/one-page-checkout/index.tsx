@@ -8,6 +8,7 @@ import {
   setShippingMethod,
   placeOrder,
   updateCart,
+  initiatePaymentSession,
 } from "@lib/data/cart"
 import {
   loadRazorpayScript,
@@ -769,6 +770,10 @@ export default function OnePageCheckout({
                 }),
               })
               if (!verifyRes.ok) throw new Error("Payment verification failed.")
+              // The real charge is Razorpay's (already verified). Give Medusa
+              // an authorized payment session via the system provider so
+              // cart.complete() can turn the cart into an order.
+              await initiatePaymentSession(cart, { provider_id: "pp_system_default" })
               await placeOrder()
             } catch (err: any) {
               logCheckoutError("razorpay_verify", err, { cartId: cart.id, currency, total: displayTotal })

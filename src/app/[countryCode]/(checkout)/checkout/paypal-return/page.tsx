@@ -1,4 +1,4 @@
-import { retrieveCart, placeOrder } from "@lib/data/cart"
+import { retrieveCart, placeOrder, initiatePaymentSession } from "@lib/data/cart"
 import { redirect } from "next/navigation"
 import { localizeHref } from "@lib/util/localize-href"
 
@@ -34,7 +34,12 @@ export default async function PaypalReturnPage({
       redirect(localizeHref(countryCode, "/checkout/payment-error?reason=not_completed"))
     }
 
-    // Place the Medusa order
+    // The PayPal charge is captured above. Give Medusa an authorized payment
+    // session via the system provider so cart.complete() can create the order.
+    const cart = await retrieveCart()
+    if (cart) {
+      await initiatePaymentSession(cart, { provider_id: "pp_system_default" })
+    }
     await placeOrder()
   } catch (err: any) {
     // placeOrder calls redirect() on success — if we get here it's a real error
