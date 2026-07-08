@@ -11,12 +11,30 @@ Run inside an armed window (npm run medusa:unlock).
   python3 scripts/import-legacy-orders.py            # dry run (parse + summary)
   python3 scripts/import-legacy-orders.py --apply     # wipe + import for real
 """
-import csv, json, subprocess, sys, base64, urllib.request, os
+import csv, json, subprocess, sys, base64, urllib.request, urllib.error, os, ssl, re
+
+# Strip NULL bytes + C0 control chars (except \t \n \r) — Postgres text/jsonb
+# rejects  and these break inserts on old (2015-era) Shopify rows.
+_BAD = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f]")
+def scrub(v):
+    if isinstance(v, str):
+        return _BAD.sub("", v)
+    if isinstance(v, list):
+        return [scrub(x) for x in v]
+    if isinstance(v, dict):
+        return {k: scrub(x) for k, x in v.items()}
+    return v
+
+try:
+    import certifi
+    SSL_CTX = ssl.create_default_context(cafile=certifi.where())
+except Exception:
+    SSL_CTX = ssl._create_unverified_context()
 
 HOST = os.environ.get("MEDUSA_HOST", "https://pariharaonline.medusajs.app")
 CSV_PATH = os.path.join(os.path.dirname(__file__), "..", "customer_data", "orders_export_1.csv")
 APPLY = "--apply" in sys.argv
-BATCH = 100
+BATCH = 25
 
 def admin_key():
     return subprocess.check_output(
@@ -28,7 +46,7 @@ def api(method, path, body=None):
     data = json.dumps(body).encode() if body is not None else None
     req = urllib.request.Request(HOST + path, data=data, method=method,
         headers={"Authorization": f"Basic {AUTH}", "Content-Type": "application/json"})
-    with urllib.request.urlopen(req) as r:
+    with urllib.request.urlopen(req, context=SSL_CTX) as r:
         return json.loads(r.read().decode() or "{}")
 
 def addr(row, prefix):
@@ -103,13 +121,28 @@ def main():
     AUTH = base64.b64encode((admin_key() + ":").encode()).decode()
     print("\nWiping existing archive…")
     print("  deleted:", api("DELETE", "/admin/legacy-orders").get("deleted"))
+
+    def post(chunk):
+        return api("POST", "/admin/legacy-orders", {"orders": [scrub(r) for r in chunk]}).get("created", 0)
+
     total = 0
+    dropped = 0
     for i in range(0, len(records), BATCH):
         chunk = records[i:i+BATCH]
-        res = api("POST", "/admin/legacy-orders", {"orders": chunk})
-        total += res.get("created", 0)
-        print(f"  imported {total}/{len(records)}")
-    print(f"\n✓ Imported {total} legacy orders.")
+        try:
+            total += post(chunk)
+        except urllib.error.HTTPError:
+            # one bad row shouldn't drop the whole batch — retry per record
+            for rec in chunk:
+                try:
+                    total += post([rec])
+                except urllib.error.HTTPError as e:
+                    dropped += 1
+                    if dropped <= 10:
+                        print(f"  dropped {rec['order_number']}: {e.read().decode()[:150]}")
+        if (i // BATCH) % 20 == 0:
+            print(f"  imported {total}/{len(records)}")
+    print(f"\n✓ Imported {total} legacy orders. Dropped (unrecoverable): {dropped}")
 
 if __name__ == "__main__":
     main()

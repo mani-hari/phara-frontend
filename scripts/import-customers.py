@@ -8,7 +8,25 @@ Reads the admin key from macOS Keychain; run inside an armed window.
   python3 scripts/import-customers.py            # dry run
   python3 scripts/import-customers.py --apply     # create + group for real
 """
-import csv, json, subprocess, sys, base64, urllib.request, urllib.error, os, statistics
+import csv, json, subprocess, sys, base64, urllib.request, urllib.error, os, statistics, ssl
+
+import re
+try:
+    import certifi
+    SSL_CTX = ssl.create_default_context(cafile=certifi.where())
+except Exception:
+    SSL_CTX = ssl._create_unverified_context()
+
+# Postgres rejects NULL bytes / C0 control chars in text/jsonb.
+_BAD = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f]")
+def scrub(v):
+    if isinstance(v, str):
+        return _BAD.sub("", v)
+    if isinstance(v, list):
+        return [scrub(x) for x in v]
+    if isinstance(v, dict):
+        return {k: scrub(x) for k, x in v.items()}
+    return v
 
 HOST = os.environ.get("MEDUSA_HOST", "https://pariharaonline.medusajs.app")
 CSV_PATH = os.path.join(os.path.dirname(__file__), "..", "customer_data", "customers_export.csv")
@@ -26,7 +44,7 @@ def api(method, path, body=None):
     req = urllib.request.Request(HOST + path, data=data, method=method,
         headers={"Authorization": f"Basic {AUTH}", "Content-Type": "application/json"})
     try:
-        with urllib.request.urlopen(req) as r:
+        with urllib.request.urlopen(req, context=SSL_CTX) as r:
             return json.loads(r.read().decode() or "{}"), None
     except urllib.error.HTTPError as e:
         return None, (e.code, e.read().decode()[:200])
@@ -108,7 +126,7 @@ def main():
                 "shopify_raw": r["raw"],
             },
         }
-        res, err = api("POST", "/admin/customers", {k: v for k, v in body.items() if v is not None})
+        res, err = api("POST", "/admin/customers", scrub({k: v for k, v in body.items() if v is not None}))
         if err:
             failed += 1
             if failed <= 5:
