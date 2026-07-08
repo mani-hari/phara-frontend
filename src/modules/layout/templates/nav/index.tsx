@@ -4,7 +4,6 @@ import { Logo } from "@modules/common/components/brand"
 import CartButton from "@modules/layout/components/cart-button"
 import SideMenu from "@modules/layout/components/side-menu"
 import NavLinks from "@modules/layout/components/nav-links"
-import SignInButton from "@modules/layout/components/sign-in-button"
 import NavSearch from "@modules/layout/components/nav-search"
 import { listRegions } from "@lib/data/regions"
 import { StoreRegion } from "@medusajs/types"
@@ -59,7 +58,7 @@ export default async function Nav() {
             >
               <CartButton />
             </Suspense>
-            <SignInButton />
+            {/* Sign in hidden for now — accounts to be enabled later. */}
           </div>
         </nav>
       </header>

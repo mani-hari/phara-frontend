@@ -5,10 +5,10 @@ import { useRouter } from "next/navigation"
 import { localizeHref } from "@lib/util/localize-href"
 
 const CHIPS = [
-  "For my father's recovery from a stroke",
-  "We've been trying to conceive",
-  "Saturn return remedies",
   "My daughter's marriage is delayed",
+  "We've been trying to conceive",
+  "For my father's recovery from a stroke",
+  "Saturn return remedies",
 ]
 
 export default function HeroChatInput({ countryCode = "in" }: { countryCode?: string }) {
@@ -89,6 +89,21 @@ export default function HeroChatInput({ countryCode = "in" }: { countryCode?: st
       </div>
 
       {/* Suggestion chips */}
+      <p
+        style={{
+          textAlign: "center",
+          marginTop: 18,
+          marginBottom: 0,
+          fontSize: 12,
+          fontWeight: 600,
+          letterSpacing: "0.06em",
+          textTransform: "uppercase",
+          color: "var(--ink-4)",
+          fontFamily: "var(--sans)",
+        }}
+      >
+        Suggested questions
+      </p>
       <div
         style={{
           display: "flex",
@@ -96,7 +111,7 @@ export default function HeroChatInput({ countryCode = "in" }: { countryCode?: st
           alignItems: "center",
           justifyContent: "center",
           gap: 8,
-          marginTop: 18,
+          marginTop: 10,
         }}
       >
         {CHIPS.map((chip) => (
@@ -122,7 +137,7 @@ export default function HeroChatInput({ countryCode = "in" }: { countryCode?: st
               (e.currentTarget.style.background = "rgba(139, 90, 43, 0.08)")
             }
           >
-            &ldquo;{chip}&rdquo;
+            {chip}
           </button>
         ))}
       </div>

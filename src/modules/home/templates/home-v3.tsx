@@ -5,7 +5,6 @@ import {
   CenterSigil,
   Img,
   KolamCorner,
-  Logo,
   SectionHeader,
   Stars,
 } from "@modules/common/components/brand"
@@ -59,42 +58,36 @@ const FEATURED_OVERLAY: Record<
   },
 }
 
-const INTENT_TILES: { title: string; sub: string; count: string; href: string }[] = [
+const INTENT_TILES: { title: string; sub: string; prompt: string }[] = [
   {
     title: "Health & healing",
     sub: "Mrityunjaya · Dhanvantri · Ayushya",
-    count: "32 rituals",
-    href: "/products/mrityunjaya-homam",
+    prompt: "I'm looking for a pooja for health and healing",
   },
   {
     title: "Family & children",
     sub: "Garbarakshambigai · Putra Kameshti · Annaprasana",
-    count: "24 rituals",
-    href: "/products/garbharakshambika-ghee",
+    prompt: "I want a pooja for family and children",
   },
   {
     title: "Career & wealth",
     sub: "Sudarshana · Lakshmi · Kubera",
-    count: "18 rituals",
-    href: "/products/sudarsana-homam",
+    prompt: "Which pooja helps with career and wealth?",
   },
   {
     title: "Marriage",
     sub: "Swayamvara Parvathi · Kanchi Kamakshi",
-    count: "12 rituals",
-    href: "/products/swayamvara-parvathi-homam",
+    prompt: "A pooja to help with marriage",
   },
   {
     title: "Astrology remedies",
     sub: "Rahu Ketu · Navagraha · Sani Peyarchi",
-    count: "40 rituals",
-    href: "/products/navagraha-homam",
+    prompt: "I need astrology remedies",
   },
   {
     title: "For ancestors",
     sub: "Tila Homam · Tarpanam · Pitru Paksha",
-    count: "9 rituals",
-    href: "/products/tila-homam-at-rameswaram",
+    prompt: "Poojas for my ancestors (pitru)",
   },
 ]
 
@@ -105,24 +98,34 @@ const SUGGESTION_CHIPS = [
   "My daughter's marriage is delayed",
 ]
 
-const RECENT_VIDEOS = [
+// TODO: replace youtubeId with the real YouTube video IDs (the part after
+// watch?v=). Empty IDs render a "add video" placeholder so nothing wrong ships.
+const RECENT_VIDEOS: { title: string; meta: string; youtubeId: string }[] = [
+  { title: "Sudarshana Homam", meta: "Performed in our yagasala", youtubeId: "" },
+  { title: "Ganapati Homam", meta: "Performed in our yagasala", youtubeId: "" },
+  { title: "Mrityunjaya Homam", meta: "Performed in our yagasala", youtubeId: "" },
+]
+
+const FAQS: { q: string; a: string }[] = [
   {
-    title: "Sudarshana Homam for the Iyer family",
-    meta: "Featured · 14 min",
-    placeholder: "SUDARSHANA HOMAM · APRIL 28",
-    featured: true,
+    q: "How does an online pooja work?",
+    a: "You book the pooja and share the sankalpam details (name, nakshatra, gothram). Our priests perform the ritual in your name at the temple or in our yagasala, and you receive the prasadam along with an HD video clip.",
   },
   {
-    title: "Ganapati Homam",
-    meta: "April 24 · 11 min",
-    placeholder: "GANAPATI HOMAM",
-    featured: false,
+    q: "Will I receive prasadam?",
+    a: "Yes — temple-blessed prasadam is couriered to you worldwide. If you prefer, you can choose to have it donated at the temple instead of shipped.",
   },
   {
-    title: "Mrityunjaya Homam",
-    meta: "April 20 · 22 min",
-    placeholder: "MRITYUNJAYA HOMAM",
-    featured: false,
+    q: "When and how do I get the video?",
+    a: "HD video clips of your homam or pooja are sent within 24–48 hours of the ritual — as proof, blessing and a keepsake.",
+  },
+  {
+    q: "What payment methods can I use?",
+    a: "UPI, credit/debit cards and net banking via Razorpay, and PayPal for international devotees. You pay in INR within India and in USD internationally.",
+  },
+  {
+    q: "Can I get a refund?",
+    a: "If a pooja hasn't been scheduled yet, reach out and we'll help. Full details are on our refund policy page.",
   },
 ]
 
@@ -209,22 +212,8 @@ export default function HomeV3({ products, countryCode }: HomeV3Props) {
       {/* FEATURED PRODUCTS --------------------------------------------- */}
       <section style={{ padding: "64px 24px", background: "var(--paper-2)" }}>
         <div className="content-container" style={{ paddingInline: 0 }}>
-          <div className="flex flex-col small:flex-row small:items-end justify-between gap-4 mb-8">
-            <SectionHeader
-              eyebrow="Most-loved this season"
-              title="Begin where most devotees do."
-            />
-            <LocalizedClientLink
-              href="/store"
-              className="ph-body-sm self-start small:self-auto"
-              style={{
-                color: "var(--ink)",
-                borderBottom: "1px solid var(--ink-line-2)",
-                paddingBottom: 2,
-              }}
-            >
-              Browse all rituals →
-            </LocalizedClientLink>
+          <div className="mb-8">
+            <SectionHeader title="Most popular poojas" />
           </div>
           <div
             className="grid"
@@ -256,7 +245,7 @@ export default function HomeV3({ products, countryCode }: HomeV3Props) {
                         src={product.thumbnail}
                         alt={product.title ?? ""}
                         fill
-                        className="object-cover"
+                        className="object-cover object-top"
                         sizes="(max-width: 768px) 100vw, 400px"
                       />
                     </div>
@@ -266,9 +255,8 @@ export default function HomeV3({ products, countryCode }: HomeV3Props) {
                     </Img>
                   )}
                   <div style={{ padding: 22 }}>
-                    <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center mb-2">
                       {overlay && <span className="ph-chip ph-chip-sindoor">{overlay.tag}</span>}
-                      <Stars value={overlay?.stars ?? 4.9} size={12} />
                     </div>
                     <h3 className="ph-h3" style={{ marginBottom: 6 }}>
                       {product.title}
@@ -307,6 +295,15 @@ export default function HomeV3({ products, countryCode }: HomeV3Props) {
               )
             })}
           </div>
+          <div style={{ textAlign: "center", marginTop: 32 }}>
+            <LocalizedClientLink
+              href="/collections/pujas-and-homams"
+              className="ph-body-sm"
+              style={{ color: "var(--ink)", borderBottom: "1px solid var(--ink-line-2)", paddingBottom: 2 }}
+            >
+              Browse all poojas →
+            </LocalizedClientLink>
+          </div>
         </div>
       </section>
 
@@ -331,7 +328,7 @@ export default function HomeV3({ products, countryCode }: HomeV3Props) {
             {INTENT_TILES.map((tile) => (
               <LocalizedClientLink
                 key={tile.title}
-                href={tile.href}
+                href={`/ask-parihara?q=${encodeURIComponent(tile.prompt)}`}
                 className="ph-card-flat ph-lift relative block"
                 style={{ padding: 24 }}
               >
@@ -349,10 +346,9 @@ export default function HomeV3({ products, countryCode }: HomeV3Props) {
                   {tile.sub}
                 </div>
                 <div
-                  className="flex items-center justify-between"
+                  className="flex items-center justify-end"
                   style={{ marginTop: 16 }}
                 >
-                  <span className="ph-label ph-num">{tile.count}</span>
                   <span style={{ color: "var(--sindoor)" }}>→</span>
                 </div>
               </LocalizedClientLink>
@@ -364,82 +360,62 @@ export default function HomeV3({ products, countryCode }: HomeV3Props) {
       {/* RECENT HOMAM VIDEOS ------------------------------------------- */}
       <section style={{ padding: "64px 24px", background: "var(--paper-3)" }}>
         <div className="content-container" style={{ paddingInline: 0 }}>
-          <div className="flex flex-col small:flex-row small:items-end justify-between gap-4 mb-8">
+          <div className="mb-8">
             <SectionHeader
               eyebrow="From our yagasala"
-              title="Live recordings, sent to every devotee."
-              sub="Every homam is performed by our priests in our own yagasala. The HD video is sent within 24 hours — proof, blessing and keepsake."
+              title="Video snippets of your Homams / Yagnas"
+              sub="Every homam is performed by our priests in our own yagasala. The HD video clips are sent within 24 hours — proof, blessing and keepsake."
             />
-            <button type="button" className="ph-btn ph-btn-ghost self-start small:self-auto">
-              All recordings →
-            </button>
           </div>
           <div
             className="grid"
             style={{
               display: "grid",
-              gridTemplateColumns: "minmax(280px, 2fr) repeat(2, minmax(220px, 1fr))",
+              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
               gap: 16,
             }}
           >
             {RECENT_VIDEOS.map((v) => (
-              <div
-                key={v.title}
-                className="ph-card relative"
-                style={v.featured ? { gridColumn: "1 / 2" } : undefined}
-              >
-                <Img style={{ height: 280 }} deep>
-                  {v.placeholder}
-                </Img>
+              <div key={v.title} className="ph-card" style={{ overflow: "hidden" }}>
                 <div
                   style={{
-                    position: "absolute",
-                    inset: 0,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    pointerEvents: "none",
+                    position: "relative",
+                    width: "100%",
+                    aspectRatio: "16 / 9",
+                    background: "var(--ink)",
                   }}
                 >
-                  <span
-                    aria-hidden
-                    style={{
-                      width: v.featured ? 64 : 44,
-                      height: v.featured ? 64 : 44,
-                      borderRadius: "50%",
-                      background: "rgba(255,255,255,0.95)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      fontSize: v.featured ? 22 : 16,
-                      color: "var(--sindoor)",
-                      paddingLeft: 4,
-                    }}
-                  >
-                    ▶
-                  </span>
+                  {v.youtubeId ? (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${v.youtubeId}`}
+                      title={v.title}
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
+                    />
+                  ) : (
+                    <div
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "rgba(250,246,238,0.6)",
+                        fontSize: 13,
+                        fontFamily: "var(--sans)",
+                        textAlign: "center",
+                        padding: 16,
+                      }}
+                    >
+                      YouTube video coming soon
+                    </div>
+                  )}
                 </div>
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: 14,
-                    left: 14,
-                    right: 14,
-                    color: "#faf6ee",
-                  }}
-                >
-                  <div
-                    className="ph-eyebrow"
-                    style={{ color: "var(--gold)", fontSize: v.featured ? 11 : 9 }}
-                  >
-                    {v.meta}
-                  </div>
-                  <div
-                    className={v.featured ? "ph-h3" : "ph-h4"}
-                    style={{ color: "#faf6ee", marginTop: 3 }}
-                  >
-                    {v.title}
-                  </div>
+                <div style={{ padding: 16 }}>
+                  <div className="ph-h4" style={{ marginBottom: 2 }}>{v.title}</div>
+                  <div className="ph-body-sm">{v.meta}</div>
                 </div>
               </div>
             ))}
@@ -499,13 +475,13 @@ export default function HomeV3({ products, countryCode }: HomeV3Props) {
                 href="/astrology"
                 className="ph-btn ph-btn-sindoor ph-btn-lg"
               >
-                Book a 30-min reading
+                Ask our astrologer
               </LocalizedClientLink>
               <span
-                className="ph-num ph-body-sm"
+                className="ph-body-sm"
                 style={{ color: "rgba(250,246,238,0.55)" }}
               >
-                From ₹2,650 · in 6 languages
+                Available in 6 languages
               </span>
             </div>
           </div>
@@ -550,80 +526,41 @@ export default function HomeV3({ products, countryCode }: HomeV3Props) {
         </div>
       </section>
 
-      {/* WHATSAPP / FAQ TEASER ----------------------------------------- */}
-      <section style={{ padding: "48px 24px", background: "var(--paper-2)" }}>
-        <div
-          className="content-container"
-          style={{
-            paddingInline: 0,
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: 24,
-          }}
-        >
-          <div className="ph-card" style={{ padding: 28 }}>
-            <div className="flex items-center gap-4">
-              <span
-                style={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: 12,
-                  background: "var(--sage-soft)",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: 22,
-                  color: "var(--sage)",
-                }}
-              >
-                ♉
-              </span>
-              <span className="flex-1">
-                <span className="ph-h4 block">Muhurat reminders on WhatsApp</span>
-                <span className="ph-body-sm">
-                  Auspicious dates · ekadasi · pradosha · your nakshatra
-                </span>
-              </span>
-              <button type="button" className="ph-btn ph-btn-primary">
-                Subscribe
-              </button>
-            </div>
+      {/* FAQ ------------------------------------------------------------ */}
+      <section style={{ padding: "64px 24px", background: "var(--paper-2)" }}>
+        <div className="content-container" style={{ paddingInline: 0, maxWidth: 820 }}>
+          <SectionHeader
+            align="center"
+            eyebrow="Good to know"
+            title="Frequently asked questions"
+          />
+          <div style={{ marginTop: 32, display: "flex", flexDirection: "column", gap: 12 }}>
+            {FAQS.map((f) => (
+              <details key={f.q} className="ph-card" style={{ padding: "18px 22px" }}>
+                <summary
+                  style={{
+                    cursor: "pointer",
+                    fontFamily: "var(--sans)",
+                    fontSize: 16,
+                    fontWeight: 600,
+                    color: "var(--ink)",
+                  }}
+                >
+                  {f.q}
+                </summary>
+                <p className="ph-body" style={{ marginTop: 10, color: "var(--ink-2)" }}>
+                  {f.a}
+                </p>
+              </details>
+            ))}
           </div>
-          <div className="ph-card" style={{ padding: 28 }}>
-            <div className="flex items-center gap-4">
-              <span
-                style={{
-                  width: 48,
-                  height: 48,
-                  borderRadius: 12,
-                  background: "var(--gold-soft)",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  fontSize: 20,
-                  color: "var(--gold-2)",
-                }}
-              >
-                ?
-              </span>
-              <span className="flex-1">
-                <span className="ph-h4 block">63 questions, answered.</span>
-                <span className="ph-body-sm">
-                  How poojas work · payments · refunds · prasadam
-                </span>
-              </span>
-              <LocalizedClientLink href="/faq" className="ph-btn ph-btn-ghost">
-                Read FAQ
-              </LocalizedClientLink>
-            </div>
+          <div style={{ textAlign: "center", marginTop: 28 }}>
+            <LocalizedClientLink href="/faq" className="ph-btn ph-btn-ghost">
+              Read all FAQs →
+            </LocalizedClientLink>
           </div>
         </div>
       </section>
-
-      {/* Footer signature ---------------------------------------------- */}
-      <div style={{ padding: "32px 24px", textAlign: "center" }}>
-        <Logo size={28} />
-      </div>
     </div>
   )
 }
