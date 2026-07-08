@@ -608,7 +608,12 @@ export async function listCartOptions() {
   return await sdk.client.fetch<{
     shipping_options: HttpTypes.StoreCartShippingOption[]
   }>("/store/shipping-options", {
-    query: { cart_id: cartId },
+    query: {
+      cart_id: cartId,
+      // geo_zones lets the checkout keep only options that serve the cart's region
+      fields:
+        "id,name,amount,price_type,provider_id,service_zone.geo_zones.country_code",
+    },
     next,
     headers,
     cache: "force-cache",

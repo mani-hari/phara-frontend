@@ -24,21 +24,6 @@ export default async function Checkout({
 
   const customer = await retrieveCustomer()
 
-  let availableShippingMethods: any[] = []
-  try {
-    const { shipping_options } = await listCartOptions()
-    availableShippingMethods = shipping_options || []
-  } catch {
-    // no shipping options
-  }
-
-  const isIndia = countryCode === "in"
-
-  // IP-based country (set by Vercel in prod; absent locally). Used to
-  // pre-select the delivery country instead of the region's first country.
-  const ipCountry =
-    headers().get("x-vercel-ip-country")?.toLowerCase() || null
-
   // Every served country across all regions (India→INR, rest→USD), so the
   // checkout country autosuggest can offer any country and switch region.
   const regions = await listRegions().catch(() => [])
@@ -51,6 +36,37 @@ export default async function Checkout({
       }))
     )
     .filter((c: any) => c.iso_2)
+
+  // Countries served by the cart's current region. Medusa returns EVERY zone's
+  // shipping options when the cart has no shipping address yet, so keep only
+  // those whose service zone serves a country in this region (India-only
+  // options don't show on a USD cart and vice-versa).
+  const regionCountries = new Set(
+    (
+      (regions || []).find((r: any) => r.id === cart.region_id)?.countries || []
+    ).map((c: any) => c.iso_2)
+  )
+
+  let availableShippingMethods: any[] = []
+  try {
+    const { shipping_options } = await listCartOptions()
+    availableShippingMethods = (shipping_options || []).filter((o: any) => {
+      const geos = o.service_zone?.geo_zones || []
+      return (
+        geos.length === 0 ||
+        geos.some((g: any) => regionCountries.has(g.country_code))
+      )
+    })
+  } catch {
+    // no shipping options
+  }
+
+  const isIndia = countryCode === "in"
+
+  // IP-based country (set by Vercel in prod; absent locally). Used to
+  // pre-select the delivery country instead of the region's first country.
+  const ipCountry =
+    headers().get("x-vercel-ip-country")?.toLowerCase() || null
 
   return (
     <div
