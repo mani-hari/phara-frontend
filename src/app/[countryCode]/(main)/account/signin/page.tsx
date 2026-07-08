@@ -46,8 +46,16 @@ export default function SignInPage() {
         await persistAuthToken(result)
         window.location.href = "/account"
       }
-    } catch {
-      setFormError("Could not start Google sign-in. Please try again.")
+    } catch (e: any) {
+      // Surface the underlying error to aid diagnosis (usually a CORS/network
+      // failure reaching the Medusa backend's /auth route, or the Google
+      // provider not being configured on the backend).
+      console.error("Google sign-in init failed:", e)
+      setFormError(
+        e?.message
+          ? `Could not start Google sign-in: ${e.message}`
+          : "Could not start Google sign-in. Please try again."
+      )
     }
   }
 

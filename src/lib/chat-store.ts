@@ -73,17 +73,23 @@ export async function upsertSession(
   id: string,
   country: string,
   pageUrl: string,
-  pageTitle: string
+  pageTitle: string,
+  userId?: string | null
 ) {
   const db = await getDb()
   if (!db) return
   try {
+    // Attribute to the logged-in user at write time (userId). COALESCE keeps an
+    // already-linked user_id and never clobbers it back to null, so a guest
+    // session that later gets linked stays linked. Guests write user_id = null.
     await db`
-      INSERT INTO chat_sessions (id, country, page_url, page_title)
-      VALUES (${id}, ${country}, ${pageUrl}, ${pageTitle})
+      INSERT INTO chat_sessions (id, country, page_url, page_title, user_id, updated_at)
+      VALUES (${id}, ${country}, ${pageUrl}, ${pageTitle}, ${userId ?? null}, NOW())
       ON CONFLICT (id) DO UPDATE SET
         page_url   = EXCLUDED.page_url,
-        page_title = EXCLUDED.page_title
+        page_title = EXCLUDED.page_title,
+        user_id    = COALESCE(chat_sessions.user_id, EXCLUDED.user_id),
+        updated_at = NOW()
     `
   } catch (err) {
     console.warn("[chat-store] upsertSession:", err)

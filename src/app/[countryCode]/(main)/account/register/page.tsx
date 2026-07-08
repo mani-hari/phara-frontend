@@ -86,8 +86,13 @@ export default function RegisterPage() {
         await persistAuthToken(result)
         window.location.href = "/account"
       }
-    } catch {
-      setError("Could not start Google sign-in. Please try again.")
+    } catch (e: any) {
+      console.error("Google sign-in init failed:", e)
+      setError(
+        e?.message
+          ? `Could not start Google sign-in: ${e.message}`
+          : "Could not start Google sign-in. Please try again."
+      )
     }
   }
 

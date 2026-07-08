@@ -162,7 +162,13 @@ export async function POST(req: NextRequest) {
     if (sessionId) {
       const lastUser = [...messages].reverse().find((m) => m.role === "user")
       Promise.all([
-        upsertSession(sessionId, "in", pageContext?.currentUrl ?? "", pageContext?.currentTitle ?? ""),
+        upsertSession(
+          sessionId,
+          "in",
+          pageContext?.currentUrl ?? "",
+          pageContext?.currentTitle ?? "",
+          userEmail
+        ),
         lastUser ? saveMessage(sessionId, "user", lastUser.content) : Promise.resolve(),
       ]).catch(() => {})
     }

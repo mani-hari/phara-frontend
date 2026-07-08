@@ -313,7 +313,7 @@ export default function ConversationSidebar({
               Sign in to save your history across devices
             </p>
             <a
-              href="/api/auth/signin"
+              href="/account/signin"
               className="ph-btn ph-btn-ghost"
               style={{
                 display: "block",
