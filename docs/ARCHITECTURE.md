@@ -5,55 +5,43 @@ aren't re-litigated from scratch. Last verified: 2026-07-08.
 
 ---
 
-## 1. Authentication / Sign-in
+## 1. Authentication / Sign-in — Medusa only (NextAuth removed 2026-07-08)
 
-There are **two independent auth systems** in the codebase. This is important —
-they are not the same thing.
+There is now **one** auth system: Medusa's own customer auth. NextAuth was fully
+removed (`src/lib/auth.ts`, the `[...nextauth]` route, `SessionProvider`).
 
-### A. NextAuth (social + credentials) — `src/lib/auth.ts`, route `src/app/api/auth/[...nextauth]/route.ts`
-- **Google OAuth** — wired via `next-auth/providers/google`, using
-  `GOOGLE_CLIENT_ID` / `GOOGLE_CLIENT_SECRET`. The current client ID belongs to
-  **GCP project number `414962747830`** (`…-c718cah7….apps.googleusercontent.com`).
-  *Which Google account owns that project must be checked in the Google Cloud
-  Console — it cannot be derived from the code.*
-- **Credentials** — email/password, which internally POSTs to Medusa's
-  `/auth/customer/emailpass`.
-- **Facebook** — only loads if `FACEBOOK_CLIENT_ID`/`SECRET` are set (currently not).
-- The NextAuth **session (`session.user.email`) is what the Ask-Parihara chat
-  uses as identity** for saving/retrieving history.
+### How it works
+- **Email/password** — `login()` / `signup()` server actions in
+  `src/lib/data/customer.ts` use Medusa's `emailpass` provider and set the
+  **httpOnly `_medusa_jwt` cookie** (read server-side via `getAuthHeaders`).
+- **Google** — the sign-in/register pages call `sdk.auth.login("customer",
+  "google")` and redirect to Google. Google returns to
+  **`/account/google-callback`** (client page) which calls
+  `sdk.auth.callback(...)`, creates the customer on first login
+  (`sdk.store.customer.create`), refreshes the token, and hands it to the
+  `persistAuthToken` server action to set the cookie. Provider is configured on
+  the **backend** (`phara-backend-medusa` `medusa-config`, `@medusajs/medusa/auth-google`).
+- **Identity is unified:** the same Medusa customer backs orders, addresses, AND
+  the Ask-Parihara chat. Chat is keyed by **customer email** (chat routes call
+  `retrieveCustomer`); client components read auth state via **`/api/me`**.
+- **Admin gate:** `/admin` page + the floating `AdminBar` = a signed-in Medusa
+  customer whose email is in **`ADMIN_EMAILS`**. `AdminBar` gets admin state as a
+  prop from the server `layout.tsx` (no client-side session).
 
-### B. Medusa customer auth — `src/lib/data/customer.ts`
-- `signup()` / `login()` server actions using Medusa's `emailpass` provider; sets
-  a Medusa JWT cookie. This is what backs the account pages, orders, addresses.
+### Required config (all on the BACKEND env + Google Cloud)
+- Backend env: `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`,
+  `GOOGLE_CALLBACK_URL=https://www.pariharaonline.com/account/google-callback`.
+- Google Cloud **Authorized redirect URI** = that exact callback URL (+
+  `http://localhost:3000/account/google-callback` for dev). NOT the backend URL.
+- Frontend env: `ADMIN_EMAILS` (comma-separated) for the admin gate.
+- The three strings (Google Cloud redirect URI, backend `GOOGLE_CALLBACK_URL`,
+  the storefront page path) must be **identical** or Google returns
+  `redirect_uri_mismatch`.
 
-### Known gap (verify before enabling accounts broadly)
-A **Google sign-in creates a NextAuth session but does NOT automatically create a
-Medusa customer record.** So a Google user gets chat identity, but order/address
-history tied to a Medusa customer may not be linked. If accounts are enabled for
-commerce (not just chat), this linkage needs wiring.
-
-### Current UI state
-- Sign-in is **hidden from the top nav** — `src/modules/layout/templates/nav/index.tsx:61`
-  (`{/* Sign in hidden for now — accounts to be enabled later. */}`).
-- Sign-in still surfaces in:
-  - **Ask-Parihara chat** — `src/components/chat/chat-interface.tsx` (a
-    `suggestSignIn` nudge card + booking-form "Sign in to auto-fill" →
-    `/account/signin`).
-  - **Cart** — `src/modules/cart/components/sign-in-prompt/index.tsx` exists but
-    is **not currently imported** anywhere.
-- Full sign-in page lives at `/[countryCode]/account/signin`.
-
-### Google Cloud Console config required for live Google sign-in
-- **Authorized JavaScript origins:** `https://www.pariharaonline.com`,
-  `https://pariharaonline.com`, `http://localhost:3000`
-- **Authorized redirect URIs:**
-  `https://www.pariharaonline.com/api/auth/callback/google`,
-  `https://pariharaonline.com/api/auth/callback/google`,
-  `http://localhost:3000/api/auth/callback/google`
-- **OAuth consent screen:** publish to *Production* (else only test users can sign
-  in), authorized domain `pariharaonline.com`, scopes `openid email profile`.
-- **Vercel env:** `NEXTAUTH_URL=https://www.pariharaonline.com`, `NEXTAUTH_SECRET`,
-  `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`.
+### Sign-in entry points
+- Top nav "Sign in" → `/account/signin`. Ask-Parihara chat shows a sign-in nudge.
+- `src/modules/cart/components/sign-in-prompt/index.tsx` exists but is unused.
+- `next-auth` is still in `package.json` (unused) — safe to drop later.
 
 ---
 
