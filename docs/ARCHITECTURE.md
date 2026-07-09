@@ -38,6 +38,21 @@ removed (`src/lib/auth.ts`, the `[...nextauth]` route, `SessionProvider`).
   the storefront page path) must be **identical** or Google returns
   `redirect_uri_mismatch`.
 
+### Google OAuth gotchas (both hit + fixed 2026-07)
+1. **Shared cache is REQUIRED.** Medusa stores the OAuth `state` in the CACHE
+   module (`cache.set(stateKey,…,1200s)`). The default in-memory cache isn't
+   shared across backend instances → start and callback land on different
+   instances → "No state provided, or session expired". The Develop ($29) Cloud
+   plan does NOT include managed Redis (that's Launch+), so we point the CACHE
+   module at an external **Upstash Redis** via `CACHE_REDIS_URL` on the backend
+   (`medusa-config` wires ONLY cache-redis — event-bus/workflow are Cloud-managed
+   on higher plans and must not be double-configured).
+2. **`/api/auth/google/start` must be `force-dynamic`.** As a plain GET route
+   handler it was statically cached and served ONE stale state to everyone →
+   also "No state provided". Marked `dynamic = "force-dynamic"` + `no-store`.
+3. The whole exchange is same-origin/server-side (`/api/auth/google/start` +
+   `/api/auth/google/callback`) to avoid browser→backend CORS ("Failed to fetch").
+
 ### Sign-in entry points
 - Top nav "Sign in" → `/account/signin`. Ask-Parihara chat shows a sign-in nudge.
 - `src/modules/cart/components/sign-in-prompt/index.tsx` exists but is unused.
