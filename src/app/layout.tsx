@@ -5,6 +5,7 @@ import { DM_Serif_Display, DM_Serif_Text, Inter } from "next/font/google"
 import "@styles/globals.css"
 import { cookies } from "next/headers"
 import AdminBar from "@/components/admin/admin-bar"
+import TopBanner from "@/components/top-banner"
 import { retrieveCustomer } from "@lib/data/customer"
 import { GA4_ID, CLARITY_ID } from "@lib/analytics"
 
@@ -145,14 +146,6 @@ export default async function RootLayout({
                 contactType: "customer service",
                 availableLanguage: ["English", "Tamil", "Hindi"],
               },
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: "1F Narayana Avenue, Krishna Colony, Trichy Road",
-                addressLocality: "Coimbatore",
-                addressRegion: "Tamil Nadu",
-                postalCode: "641005",
-                addressCountry: "IN",
-              },
               sameAs: [],
             }),
           }}
@@ -162,6 +155,7 @@ export default async function RootLayout({
         className={`${inter.variable} ${dmDisplay.variable} ${dmText.variable} font-sans`}
         style={{ background: "var(--paper)", color: "var(--ink-2)" }}
       >
+        <TopBanner />
         <main className="relative">{children}</main>
         <AdminBar admin={admin} />
       </body>

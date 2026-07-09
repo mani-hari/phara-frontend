@@ -107,7 +107,7 @@ export default async function Footer() {
             color: "rgba(250,246,238,0.4)",
           }}
         >
-          <span>© {year} PariharaOnline · Coimbatore · Made with देवोत्त</span>
+          <span>© {year} PariharaOnline · Made with देवोत्त</span>
           <span>Privacy · Terms · Cookies</span>
         </div>
       </div>

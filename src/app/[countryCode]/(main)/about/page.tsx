@@ -1,5 +1,5 @@
 import { Metadata } from "next"
-import { Clock, Globe, Flame, CheckCircle2, Phone, Mail, MapPin } from "lucide-react"
+import { Clock, Globe, Flame, CheckCircle2, Phone, Mail } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "About Us - PariharaOnline",
@@ -132,25 +132,14 @@ export default function AboutPage() {
                 </p>
               </div>
             </a>
-            <div className="flex items-center gap-3 p-4 rounded-xl border border-grey-10 bg-white">
-              <MapPin className="w-5 h-5 text-brand-500" />
-              <div>
-                <p className="text-sm font-medium text-grey-80">Office</p>
-                <p className="text-xs text-grey-50">Coimbatore, Tamil Nadu</p>
-              </div>
-            </div>
           </div>
 
           <div className="mt-8 p-6 rounded-xl bg-white border border-grey-10">
             <h3 className="font-semibold text-grey-80 mb-2">
-              Registered Office
+              Business Entity
             </h3>
             <p className="text-sm text-grey-60">
               Harkarma Enterprises LLP (LLP ID: AAM-1863)
-              <br />
-              1F SairajKrish, Narayana Avenue, Krishna Colony, Trichy Road
-              <br />
-              Coimbatore - 641 005, Tamil Nadu, India
             </p>
           </div>
         </div>

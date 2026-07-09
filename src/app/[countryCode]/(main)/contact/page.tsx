@@ -1,5 +1,5 @@
 import { Metadata } from "next"
-import { Phone, Mail, MapPin, MessageCircle, Clock } from "lucide-react"
+import { Phone, Mail, MessageCircle, Clock } from "lucide-react"
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -85,27 +85,6 @@ export default function ContactPage() {
             </div>
           </div>
 
-          <div className="mt-10 p-6 rounded-2xl border border-grey-10 bg-grey-5">
-            <div className="flex items-start gap-4">
-              <MapPin className="w-6 h-6 text-brand-500 flex-shrink-0 mt-1" />
-              <div>
-                <h2 className="font-semibold text-grey-90 mb-2">
-                  Registered Office
-                </h2>
-                <p className="text-grey-60 text-sm leading-relaxed">
-                  Harkarma Enterprises LLP
-                  <br />
-                  1F SairajKrish, Narayana Avenue
-                  <br />
-                  Krishna Colony, Trichy Road
-                  <br />
-                  Coimbatore - 641 005
-                  <br />
-                  Tamil Nadu, India
-                </p>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
     </div>
