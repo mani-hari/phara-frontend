@@ -1,6 +1,12 @@
 import { NextResponse } from "next/server"
 import { sdk } from "@lib/config"
 
+// Never cache — each call must mint a FRESH OAuth state. Without this, Next
+// statically caches the GET response and serves one stale (expired) state to
+// everyone, which the callback then rejects with "No state provided".
+export const dynamic = "force-dynamic"
+export const revalidate = 0
+
 // Same-origin proxy that starts Google sign-in. The browser calls THIS route
 // (same origin → no CORS); we call the Medusa backend server-to-server (also no
 // CORS) to get the Google consent URL, and hand it back for the client to
@@ -17,7 +23,10 @@ export async function GET() {
         { status: 500 }
       )
     }
-    return NextResponse.json({ location })
+    return NextResponse.json(
+      { location },
+      { headers: { "Cache-Control": "no-store, max-age=0" } }
+    )
   } catch (e: any) {
     return NextResponse.json(
       { error: e?.message || "Could not start Google sign-in." },
