@@ -5,23 +5,32 @@
  */
 
 let sql: any = null
+let schemaReady: Promise<void> | null = null
 
 async function getDb() {
-  if (sql) return sql
   const url = process.env.DATABASE_URL
   if (!url) return null
-  try {
-    const { neon } = await import("@neondatabase/serverless")
-    sql = neon(url)
-    return sql
-  } catch {
-    return null
+  if (!sql) {
+    try {
+      const { neon } = await import("@neondatabase/serverless")
+      sql = neon(url)
+    } catch {
+      return null
+    }
   }
+  // Create the tables on first use (once per process) so writes never hit a
+  // missing table — nothing else calls ensureSchema, so this is the guarantee.
+  if (!schemaReady) schemaReady = createSchema(sql)
+  await schemaReady
+  return sql
 }
 
+// Back-compat export; schema is now created lazily by getDb().
 export async function ensureSchema() {
-  const db = await getDb()
-  if (!db) return
+  await getDb()
+}
+
+async function createSchema(db: any) {
   try {
     // Core tables
     await db`
