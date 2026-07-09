@@ -2,8 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { sdk } from "@lib/config"
-import { login, persistAuthToken } from "@lib/data/customer"
+import { login } from "@lib/data/customer"
 
 export default function SignInPage() {
   const [email, setEmail] = useState("")
@@ -32,30 +31,21 @@ export default function SignInPage() {
     }
   }
 
-  // Google via Medusa: kick off the OAuth redirect; the backend sends the user
-  // to /account/google-callback afterwards.
+  // Google: start via our same-origin proxy (no browser→backend CORS). It
+  // returns the Google consent URL; the backend then redirects to
+  // /account/google-callback.
   async function handleGoogle() {
     setFormError("")
     try {
-      const result: any = await sdk.auth.login("customer", "google", {})
-      if (result && typeof result === "object" && result.location) {
-        window.location.href = result.location
+      const res = await fetch("/api/auth/google/start")
+      const data = await res.json()
+      if (data?.location) {
+        window.location.href = data.location
         return
       }
-      if (typeof result === "string") {
-        await persistAuthToken(result)
-        window.location.href = "/account"
-      }
+      setFormError(data?.error || "Could not start Google sign-in. Please try again.")
     } catch (e: any) {
-      // Surface the underlying error to aid diagnosis (usually a CORS/network
-      // failure reaching the Medusa backend's /auth route, or the Google
-      // provider not being configured on the backend).
-      console.error("Google sign-in init failed:", e)
-      setFormError(
-        e?.message
-          ? `Could not start Google sign-in: ${e.message}`
-          : "Could not start Google sign-in. Please try again."
-      )
+      setFormError(e?.message || "Could not start Google sign-in. Please try again.")
     }
   }
 

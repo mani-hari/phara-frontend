@@ -2,8 +2,7 @@
 
 import { useState } from "react"
 import Link from "next/link"
-import { sdk } from "@lib/config"
-import { signup, persistAuthToken } from "@lib/data/customer"
+import { signup } from "@lib/data/customer"
 
 export default function RegisterPage() {
   const [firstName, setFirstName] = useState("")
@@ -73,26 +72,19 @@ export default function RegisterPage() {
     }
   }
 
-  // Google via Medusa (same as sign-in).
+  // Google: start via our same-origin proxy (no browser→backend CORS).
   async function handleGoogle() {
     setError("")
     try {
-      const result: any = await sdk.auth.login("customer", "google", {})
-      if (result && typeof result === "object" && result.location) {
-        window.location.href = result.location
+      const res = await fetch("/api/auth/google/start")
+      const data = await res.json()
+      if (data?.location) {
+        window.location.href = data.location
         return
       }
-      if (typeof result === "string") {
-        await persistAuthToken(result)
-        window.location.href = "/account"
-      }
+      setError(data?.error || "Could not start Google sign-in. Please try again.")
     } catch (e: any) {
-      console.error("Google sign-in init failed:", e)
-      setError(
-        e?.message
-          ? `Could not start Google sign-in: ${e.message}`
-          : "Could not start Google sign-in. Please try again."
-      )
+      setError(e?.message || "Could not start Google sign-in. Please try again.")
     }
   }
 

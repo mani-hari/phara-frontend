@@ -1,49 +1,30 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { sdk } from "@lib/config"
-import { persistAuthToken } from "@lib/data/customer"
 
-// Google redirects here after consent (this exact path is the OAuth redirect
-// URI + the backend's GOOGLE_CALLBACK_URL). We validate the callback with the
-// Medusa backend, create the customer on first login, then persist the session
-// token into the httpOnly cookie the rest of the app reads.
-function decode(token: string): any {
-  try {
-    return JSON.parse(atob((token.split(".")[1] || "").replace(/-/g, "+").replace(/_/g, "/")))
-  } catch {
-    return {}
-  }
-}
-
+// Google redirects the browser here after consent. We hand the OAuth query
+// params to our own same-origin API route, which completes the exchange with
+// the Medusa backend server-side (no browser→backend CORS) and sets the session
+// cookie. Then we land the user on their account.
 export default function GoogleCallbackPage() {
   const [error, setError] = useState("")
 
   useEffect(() => {
-    ;(async () => {
-      const query = Object.fromEntries(new URLSearchParams(window.location.search))
-      try {
-        let token = (await sdk.auth.callback("customer", "google", query)) as string
-        if (!token) throw new Error("No session returned from Google.")
-
-        // First-time login has no linked customer yet (empty actor_id) — create
-        // one, then refresh the token so it carries the new customer id.
-        if (!decode(token).actor_id) {
-          const email = decode(token).email
-          await sdk.store.customer.create(
-            email ? { email } : ({} as any),
-            {},
-            { authorization: `Bearer ${token}` }
-          )
-          token = (await sdk.auth.refresh()) as string
+    const query = Object.fromEntries(new URLSearchParams(window.location.search))
+    fetch("/api/auth/google/callback", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(query),
+    })
+      .then((r) => r.json())
+      .then((d) => {
+        if (d.ok) {
+          window.location.href = "/account"
+        } else {
+          setError(d.error || "Google sign-in could not be completed.")
         }
-
-        await persistAuthToken(token)
-        window.location.href = "/account"
-      } catch (e: any) {
-        setError(e?.message || "Google sign-in failed. Please try again.")
-      }
-    })()
+      })
+      .catch((e) => setError(e?.message || "Google sign-in could not be completed."))
   }, [])
 
   return (
