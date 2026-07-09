@@ -43,7 +43,7 @@ export default function TermsPage() {
           <p className="text-grey-60 mb-4 leading-relaxed">These terms are governed by the laws of India. Any disputes shall be subject to the jurisdiction of courts in Tamil Nadu, India.</p>
 
           <h2 className="text-xl font-bold text-grey-90 mt-8 mb-3">9. Contact</h2>
-          <p className="text-grey-60 mb-4 leading-relaxed">For questions about these terms, contact us at hello@pariharaonline.com or WhatsApp +91 974-324-4501.</p>
+          <p className="text-grey-60 mb-4 leading-relaxed">For questions about these terms, contact us at hello@pariharaonline.com or WhatsApp +91-97432 44501.</p>
         </div>
       </section>
     </div>

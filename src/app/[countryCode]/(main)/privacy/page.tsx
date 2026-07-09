@@ -43,7 +43,7 @@ export default function PrivacyPage() {
           <p className="text-grey-60 mb-4 leading-relaxed">Users must be of legal age in their jurisdiction to use our services. If you are ordering on behalf of a minor, you accept responsibility for the transaction.</p>
 
           <h2 className="text-xl font-bold text-grey-90 mt-8 mb-3">9. Contact</h2>
-          <p className="text-grey-60 mb-4 leading-relaxed">For privacy-related questions: hello@pariharaonline.com | WhatsApp: +91 974-324-4501 | Harkarma Enterprises LLP, India.</p>
+          <p className="text-grey-60 mb-4 leading-relaxed">For privacy-related questions: hello@pariharaonline.com | WhatsApp: +91-97432 44501 | Harkarma Enterprises LLP, India.</p>
         </div>
       </section>
     </div>

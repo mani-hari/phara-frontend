@@ -60,7 +60,7 @@ You detect mode from context, shift seamlessly, and never announce the shift.
 - All poojas are conducted by qualified priests at designated temples
 - Booking is immediate upon payment
 - Devotees can participate remotely — the sankalpa is performed on their behalf
-- WhatsApp support: +91 97432 44501
+- WhatsApp support: +91-97432 44501
 
 ---
 

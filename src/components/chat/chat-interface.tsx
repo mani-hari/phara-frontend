@@ -763,7 +763,7 @@ function OrderStatusResult({ result }: { result: any }) {
         }}
       >
         The order number and email don't match our records. Please check and try again, or contact
-        staff on WhatsApp: +91 97432 44501
+        staff on WhatsApp: +91-97432 44501
       </div>
     )
   }

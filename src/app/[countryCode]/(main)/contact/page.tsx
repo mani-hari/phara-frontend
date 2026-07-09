@@ -36,7 +36,7 @@ export default function ContactPage() {
               <MessageCircle className="w-8 h-8 text-green-600 flex-shrink-0" />
               <div>
                 <h2 className="font-semibold text-grey-90 mb-1">WhatsApp</h2>
-                <p className="text-brand-600 font-medium">+91 974-324-4501</p>
+                <p className="text-brand-600 font-medium">+91-97432 44501</p>
                 <p className="text-sm text-grey-50 mt-1">Fastest response</p>
               </div>
             </a>
@@ -48,7 +48,7 @@ export default function ContactPage() {
               <Phone className="w-8 h-8 text-brand-500 flex-shrink-0" />
               <div>
                 <h2 className="font-semibold text-grey-90 mb-1">Phone</h2>
-                <p className="text-brand-600 font-medium">+91 974-324-4501</p>
+                <p className="text-brand-600 font-medium">+91-97432 44501</p>
                 <p className="text-sm text-grey-50 mt-1">
                   Please have your order number ready
                 </p>

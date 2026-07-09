@@ -117,7 +117,7 @@ export default function AboutPage() {
               <Phone className="w-5 h-5 text-brand-500" />
               <div>
                 <p className="text-sm font-medium text-grey-80">WhatsApp</p>
-                <p className="text-xs text-grey-50">+91 974-324-4501</p>
+                <p className="text-xs text-grey-50">+91-97432 44501</p>
               </div>
             </a>
             <a

@@ -39,7 +39,7 @@ ORDER & SHIPPING KNOWLEDGE
 - Prasadam dispatch: 7–14 days after pooja date
 - Transit times: India Post EMS 10–14 business days internationally; FedEx 5–7 business days
 - Delays during Navratri, Karthigai Deepam, Shivaratri are normal — temple schedule comes first
-- Staff WhatsApp: +91 97432 44501 (Mon–Sat 9 AM–6 PM IST)
+- Staff WhatsApp: +91-97432 44501 (Mon–Sat 9 AM–6 PM IST)
 - SECURITY: Never reveal order details without identity verification. Logged-in users: freely share their orders. Guests: require BOTH order number AND exact email address that matches the record.
 
 TOOL RULES — follow strictly:
@@ -271,7 +271,7 @@ export async function POST(req: NextRequest) {
                 if (!adminJwt) {
                   return {
                     error:
-                      "Order lookup is unavailable right now. Please contact staff on WhatsApp: +91 97432 44501",
+                      "Order lookup is unavailable right now. Please contact staff on WhatsApp: +91-97432 44501",
                   }
                 }
 

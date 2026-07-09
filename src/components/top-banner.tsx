@@ -1,6 +1,9 @@
+import { CONTACT, waLink } from "@lib/contact"
+
 // Temporary launch banner shown on every page (mounted in the root layout,
 // above the sticky header). Remove this component + its usage in
-// src/app/layout.tsx once the migration settles.
+// src/app/layout.tsx once the migration settles. Uses the shared CONTACT config
+// so the support number stays correct in one place.
 export default function TopBanner() {
   return (
     <div
@@ -17,10 +20,12 @@ export default function TopBanner() {
         🙏 We&rsquo;ve just moved to a brand-new website. If anything looks off or
         you need a hand,{" "}
         <a
-          href="tel:+919743244502"
+          href={waLink("Hi, I need help with the new PariharaOnline website.")}
+          target="_blank"
+          rel="noreferrer"
           style={{ color: "#fff", fontWeight: 700, textDecoration: "underline", whiteSpace: "nowrap" }}
         >
-          call or WhatsApp us at +91&nbsp;97432&nbsp;44502
+          message us on WhatsApp at {CONTACT.whatsappDisplay}
         </a>
         .
       </span>

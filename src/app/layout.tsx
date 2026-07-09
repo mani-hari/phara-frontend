@@ -142,7 +142,7 @@ export default async function RootLayout({
                 "Authentic Hindu temple services, pujas, homams, and sacred prasad delivered worldwide since 2009.",
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+91-974-324-4501",
+                telephone: "+91-97432 44501",
                 contactType: "customer service",
                 availableLanguage: ["English", "Tamil", "Hindi"],
               },

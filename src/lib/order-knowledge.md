@@ -61,7 +61,7 @@ Use this guide to shape responses based on the current order status:
 - Pooja has been performed; prasadam is being prepared for dispatch
 - Tell the devotee their pooja has been completed and the video/photos will arrive or have arrived on WhatsApp
 - Prasadam will be dispatched within 7–10 days from the pooja date
-- Offer to connect them with temple staff for specific updates: WhatsApp **+91 97432 44501**
+- Offer to connect them with temple staff for specific updates: WhatsApp **+91-97432 44501**
 
 ### Status: `shipped` or `partially_shipped`
 - Prasadam is on its way
@@ -76,7 +76,7 @@ Use this guide to shape responses based on the current order status:
 
 ### Status: `canceled` or `refund_requested`
 - Acknowledge the cancellation with warmth and no judgment
-- Direct them to staff: WhatsApp **+91 97432 44501** for refund processing
+- Direct them to staff: WhatsApp **+91-97432 44501** for refund processing
 
 ---
 
@@ -102,7 +102,7 @@ If verification fails:
 
 For urgent queries, complex issues, or anything requiring human attention:
 
-**WhatsApp**: +91 97432 44501
+**WhatsApp**: +91-97432 44501
 - Available Monday–Saturday, 9 AM–6 PM IST
 - Fastest response channel
 - Used for sharing pooja videos and prasadam dispatch notifications
