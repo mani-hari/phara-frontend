@@ -58,7 +58,14 @@ export async function getOrSetCart(countryCode: string) {
     throw new Error(`Region not found for country code: ${countryCode}`)
   }
 
-  let cart = await retrieveCart(undefined, 'id,region_id')
+  let cart = await retrieveCart(undefined, 'id,region_id,completed_at')
+
+  // A completed cart (an order was already placed from it) can linger in the
+  // _medusa_cart_id cookie. Adding a line item to it throws "cart is already
+  // completed" — so treat it as no cart and create a fresh one below.
+  if ((cart as any)?.completed_at) {
+    cart = null
+  }
 
   const headers = {
     ...(await getAuthHeaders()),

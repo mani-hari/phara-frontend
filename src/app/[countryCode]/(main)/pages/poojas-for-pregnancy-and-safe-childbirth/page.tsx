@@ -13,9 +13,9 @@ import BuyButtons from "./buy-buttons"
 export const dynamic = "force-dynamic"
 
 export const metadata: Metadata = {
-  title: "Poojas for Pregnancy & Safe Childbirth — Garbarakshambigai",
+  title: "Prasadam for Pregnancy & Safe Childbirth — Garbarakshambigai",
   description:
-    "Sacred Garbarakshambigai abhishekams performed at the temple on your behalf — the Ghee Abhishekam to invoke the blessing of a child, and the Oil Abhishekam to protect the pregnancy through to a safe delivery.",
+    "Blessed ghee prasadam (for conceiving) and oil prasadam (for safe childbirth) from the Garbarakshambigai Temple, Thirukkarugavur — sent to you in air-sealed, no-spill packaging with detailed instructions.",
   alternates: { canonical: "/pages/poojas-for-pregnancy-and-safe-childbirth" },
   openGraph: { url: "/pages/poojas-for-pregnancy-and-safe-childbirth" },
 }
@@ -34,13 +34,13 @@ async function fetchProduct(handle: string, countryCode: string) {
   if (!product) return null
 
   const { cheapestPrice } = getProductPrice({ product })
-  // Prefer a real priced variant over any $0 placeholder variant.
   const variant =
     product.variants?.find((v: any) => (v.calculated_price?.calculated_amount ?? 0) > 0) ||
     product.variants?.[0]
 
   return {
     product,
+    // Price is pulled live from Medusa (region-calculated) — never hardcoded.
     priceLabel: cheapestPrice?.calculated_price ?? null,
     priceNumber: cheapestPrice?.calculated_price_number ?? null,
     currency: cheapestPrice?.currency_code ?? null,
@@ -62,33 +62,45 @@ export default async function PregnancyPoojasPage(props: Props) {
   const stages = [
     {
       key: "ghee",
-      tag: "Stage 1 · Praying for a child",
-      heading: "Garbarakshambigai Ghee Abhishekam",
+      tag: "Stage 1 · Trying to conceive",
+      heading: "Garbarakshambigai Ghee Prasadam",
       body:
-        "If you are trying to conceive, begin here. Ghee — the purest of offerings — is poured over the Goddess as the priests invoke her grace for conception. Ghee carries warmth and nourishment; this is the invocation that opens the door.",
+        "Blessed ghee prasadam from the Garbarakshambigai Temple, for women trying to conceive and couples facing fertility challenges. Devotees believe it helps remove obstacles on the path to conception and invites the goddess's blessings for a healthy pregnancy.",
+      howToUse:
+        "Mix with your regular ghee and take before bedtime for 48 days (skip during your menstrual cycle). Most devotees need 2 bottles for the full period. No dietary restrictions.",
       data: ghee,
     },
     {
       key: "oil",
-      tag: "Stage 2 · Once you are expecting",
-      heading: "Garbarakshambigai Oil Abhishekam",
+      tag: "Stage 2 · Expecting a child",
+      heading: "Garbarakshambigai Oil Prasadam",
       body:
-        "Once your pregnancy is confirmed, this abhishekam safeguards the months ahead. Sacred oil bathes the Goddess to invoke protection, strength, and a safe delivery. Oil is cooling and grounding — the blessing that steadies and protects.",
+        "Blessed, energised prasadam oil for expectant mothers — traditionally used to support a safe and complication-free delivery for both mother and child.",
+      howToUse:
+        "Gently apply on the lower abdomen of the expectant mother. Most devotees need 2 bottles for the full period. No dietary restrictions.",
       data: oil,
     },
   ].filter((s) => s.data)
 
+  // Gallery pulled from the product images (includes the packaging shots).
+  const galleryImages = Array.from(
+    new Set([
+      ...((ghee?.product.images as { url: string }[]) ?? []).map((i) => i.url),
+      ...((oil?.product.images as { url: string }[]) ?? []).map((i) => i.url),
+    ])
+  ).filter(Boolean)
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Poojas for Pregnancy & Safe Childbirth",
+    name: "Prasadam for Pregnancy & Safe Childbirth",
     itemListElement: stages.map((s, i) => ({
       "@type": "ListItem",
       position: i + 1,
       item: {
         "@type": "Product",
         name: s.data!.product.title,
-        description: s.data!.product.description || s.heading,
+        description: s.data!.product.description || s.body,
         image: s.data!.product.thumbnail || undefined,
         brand: { "@type": "Brand", name: "PariharaOnline" },
         ...(s.data!.priceNumber && {
@@ -114,16 +126,16 @@ export default async function PregnancyPoojasPage(props: Props) {
       <section className="bg-gradient-to-br from-brand-50 via-white to-warm-50 py-16 sm:py-20">
         <div className="content-container max-w-3xl mx-auto text-center">
           <p className="mb-3 text-xs font-semibold uppercase tracking-widest text-brand-600">
-            Garbarakshambigai · Thirukarugavur
+            Garbarakshambigai Temple · Thirukkarugavur
           </p>
           <h1 className="mb-4 text-4xl font-bold text-grey-90 sm:text-5xl">
-            Poojas for Pregnancy &amp; Safe Childbirth
+            Prasadam for Pregnancy &amp; Safe Childbirth
           </h1>
           <p className="text-xl leading-relaxed text-grey-50">
-            Goddess Garbarakshambigai — the divine protector of the womb — has blessed
-            couples for generations. We perform her sacred abhishekam at the temple on your
-            behalf, in two stages: one to invoke the blessing of a child, and one to protect
-            the pregnancy through to a safe delivery.
+            The Garbarakshambigai Temple is revered for its blessings for conception and safe
+            childbirth. We are devotees — not the temple: for every order, our representative
+            visits the temple, offers the pooja on your behalf, and sends you the blessed
+            prasadam. Two prasadams, for two stages of the journey.
           </p>
         </div>
       </section>
@@ -164,12 +176,17 @@ export default async function PregnancyPoojasPage(props: Props) {
                   <h2 className="mb-3 text-2xl font-bold text-grey-90 sm:text-3xl">
                     {s.heading}
                   </h2>
-                  <p className="mb-5 leading-relaxed text-grey-60">{s.body}</p>
+                  <p className="mb-4 leading-relaxed text-grey-60">{s.body}</p>
 
-                  <p className="mb-5 text-sm text-grey-50">
-                    You&apos;ll receive a video and photos of the abhishekam performed in your
-                    name, and the blessed {s.key === "ghee" ? "ghee" : "oil"} prasadam
-                    delivered to your home.
+                  <p className="mb-2 text-sm font-semibold text-grey-90">How to use</p>
+                  <p className="mb-4 text-sm leading-relaxed text-grey-60">{s.howToUse}</p>
+
+                  <p className="mb-5 rounded-lg bg-warm-50 p-3 text-sm leading-relaxed text-grey-60">
+                    <span className="font-semibold text-grey-90">What you receive:</span> the
+                    blessed {s.key === "ghee" ? "ghee" : "oil"} prasadam and kumkum from the
+                    temple, with detailed usage instructions and mantras — delivered in
+                    air-sealed, no-spill packaging. Free shipping within India; safe
+                    international shipping with tracking (at additional cost).
                   </p>
 
                   {d.priceLabel && (
@@ -193,16 +210,76 @@ export default async function PregnancyPoojasPage(props: Props) {
         </div>
       </section>
 
-      {/* Reassurance / close */}
+      {/* Packaging gallery */}
+      {galleryImages.length > 0 && (
+        <section className="bg-warm-50 py-14">
+          <div className="content-container max-w-5xl">
+            <div className="mb-6 text-center">
+              <h2 className="mb-2 text-2xl font-bold text-grey-90">
+                Carefully packed, delivered to your door
+              </h2>
+              <p className="text-grey-60">
+                Every prasadam is sealed in air-tight, no-spill packaging and shipped with
+                tracking.
+              </p>
+            </div>
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
+              {galleryImages.map((url) => (
+                <div
+                  key={url}
+                  className="relative aspect-square overflow-hidden rounded-xl border border-grey-10 bg-white"
+                >
+                  <Image
+                    src={url}
+                    alt="Prasadam packaging"
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 640px) 50vw, 25vw"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Testimonials */}
+      <section className="py-14">
+        <div className="content-container max-w-4xl">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+            <figure className="rounded-2xl border border-grey-10 bg-white p-6 shadow-sm">
+              <blockquote className="leading-relaxed text-grey-70">
+                “The packaging was incredibly professional — vacuum-sealed, with no leaks at
+                all. Communication over WhatsApp was prompt, payment was effortless, and the
+                whole experience felt trustworthy from start to finish.”
+              </blockquote>
+              <figcaption className="mt-4 text-sm font-semibold text-grey-90">
+                Anjali R. <span className="font-normal text-grey-50">· New Jersey, USA</span>
+              </figcaption>
+            </figure>
+            <figure className="rounded-2xl border border-grey-10 bg-white p-6 shadow-sm">
+              <blockquote className="leading-relaxed text-grey-70">
+                “The team was so responsive to every question, and the ghee and oil reached me
+                beautifully packed. I've since recommended Parihara to all my relatives.”
+              </blockquote>
+              <figcaption className="mt-4 text-sm font-semibold text-grey-90">
+                Lakshmi N. <span className="font-normal text-grey-50">· Bengaluru, India</span>
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      {/* Close */}
       <section className="bg-warm-50 py-14">
         <div className="content-container max-w-2xl mx-auto text-center">
           <h2 className="mb-3 text-2xl font-bold text-grey-90">
-            Performed at the temple, on your behalf
+            A spiritual concierge you can trust
           </h2>
           <p className="mb-6 leading-relaxed text-grey-60">
-            Both poojas are performed by temple priests at the Garbarakshambigai temple.
-            Distance is no barrier — the blessing travels to you. Many couples begin with the
-            ghee abhishekam and return for the oil once their pregnancy is confirmed.
+            We are devotees who bring the temple's blessings to you, wherever you are — experts
+            in safe packaging and international shipping. Many families begin with the ghee
+            prasadam and return for the oil once their pregnancy is confirmed.
           </p>
           <p className="text-sm text-grey-50">
             Questions? WhatsApp{" "}
