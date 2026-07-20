@@ -2,6 +2,7 @@
 
 import { sdk } from "@lib/config"
 import medusaError from "@lib/util/medusa-error"
+import { logCheckoutError } from "@lib/util/checkout-log"
 import { HttpTypes } from "@medusajs/types"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
@@ -581,6 +582,32 @@ export async function placeOrder(cartId?: string) {
   }
 
   return cartRes.cart
+}
+
+/**
+ * Records a failed / abandoned payment attempt so no customer is ever lost.
+ * The cart (with the customer's email, phone, address and items) already lives
+ * in Medusa — this pings the backend to email staff the attempt + reason so
+ * they can follow up. Best-effort: never throws (must not mask the original
+ * payment error or block the error screen).
+ */
+export async function reportFailedCheckout(
+  cartId: string | undefined,
+  reason: string,
+  provider: string
+) {
+  try {
+    const id = cartId || (await getCartId())
+    if (!id) return
+    const headers = { ...(await getAuthHeaders()) }
+    await sdk.client.fetch(`/store/report-failed-checkout`, {
+      method: "POST",
+      headers,
+      body: { cart_id: id, reason, provider },
+    })
+  } catch (e) {
+    logCheckoutError("report_failed_checkout_error", e, { cartId, reason, provider })
+  }
 }
 
 /**

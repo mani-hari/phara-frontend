@@ -8,6 +8,7 @@ import {
   setShippingMethod,
   placeOrder,
   initiatePaymentSession,
+  reportFailedCheckout,
 } from "@lib/data/cart"
 import {
   loadRazorpayScript,
@@ -896,6 +897,9 @@ export default function OnePageCheckout({
               await placeOrder()
             } catch (err: any) {
               logCheckoutError("razorpay_verify", err, { cartId: cart.id, currency, total: displayTotal })
+              // Charged (or possibly charged) but order confirmation failed —
+              // capture the attempt so the customer is never lost.
+              await reportFailedCheckout(cart.id, `razorpay_verify_or_complete:${err?.message || "error"}`, "razorpay")
               window.location.href = `/checkout/payment-error?reason=${encodeURIComponent(err.message || "verification_failed")}`
             }
           },
@@ -904,6 +908,7 @@ export default function OnePageCheckout({
         rzp.open()
       } catch (err: any) {
         logCheckoutError("razorpay_init", err, { cartId: cart.id, currency, total: displayTotal })
+        await reportFailedCheckout(cart.id, `razorpay_init:${err?.message || "error"}`, "razorpay")
         setError(err.message || "Payment failed. Please try again.")
       }
     })
@@ -959,6 +964,7 @@ export default function OnePageCheckout({
         window.location.href = approveLink.href
       } catch (err: any) {
         logCheckoutError("paypal_init", err, { cartId: cart.id, currency, total: displayTotal })
+        await reportFailedCheckout(cart.id, `paypal_init:${err?.message || "error"}`, "paypal")
         setError(err.message || "PayPal setup failed. Please try again.")
       }
     })
@@ -1306,12 +1312,10 @@ function PaymentSection({
   error: string | null
   onPay: (provider: "razorpay" | "paypal") => void
 }) {
-  // International carts default to PayPal (Razorpay's international card
-  // payments have a higher failure rate) — Razorpay stays selectable. India
-  // carts are Razorpay-only.
-  const [provider, setProvider] = useState<"razorpay" | "paypal">(
-    isIndia ? "razorpay" : "paypal"
-  )
+  // Razorpay is the default everywhere (safeguard while the PayPal flow is being
+  // stabilised). PayPal stays selectable on international carts. India is
+  // Razorpay-only.
+  const [provider, setProvider] = useState<"razorpay" | "paypal">("razorpay")
   // India: Razorpay only — PayPal is not offered, keep the selection on Razorpay.
   useEffect(() => {
     if (isIndia && provider !== "razorpay") setProvider("razorpay")
@@ -1320,7 +1324,12 @@ function PaymentSection({
   return (
     <div>
       <div role="radiogroup" aria-label="Payment method">
-        {/* International carts: PayPal listed first as the default option. */}
+        <PaymentRadio
+          selected={provider === "razorpay"}
+          onSelect={() => setProvider("razorpay")}
+          title="Pay by Credit / Debit / UPI (powered by Razorpay)"
+          subtitle="UPI payments, Wallets, VISA and Mastercard (International cards accepted except AMEX)"
+        />
         {!isIndia && (
           <PaymentRadio
             selected={provider === "paypal"}
@@ -1329,12 +1338,6 @@ function PaymentSection({
             subtitle="All international cards, including AMEX"
           />
         )}
-        <PaymentRadio
-          selected={provider === "razorpay"}
-          onSelect={() => setProvider("razorpay")}
-          title="Pay by Credit / Debit / UPI (powered by Razorpay)"
-          subtitle="UPI payments, Wallets, VISA and Mastercard (International cards accepted except AMEX)"
-        />
       </div>
 
       <div className="co-pay-bar">
