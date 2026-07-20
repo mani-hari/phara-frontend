@@ -585,6 +585,62 @@ export async function placeOrder(cartId?: string) {
 }
 
 /**
+ * Completes a cart and RETURNS the resulting order id + country (instead of
+ * redirecting like placeOrder). Use this when completion is driven from a
+ * CLIENT component (PayPal return, Razorpay handler): a server action's
+ * redirect() does not reliably drive client navigation when awaited inside a
+ * client try/catch, which caused successful orders to show a false error. The
+ * client navigates explicitly on { ok: true }. Idempotent 409 retries as in
+ * placeOrder.
+ */
+export async function completeCartAndGetOrder(
+  cartId?: string
+): Promise<
+  | { ok: true; orderId: string; countryCode: string }
+  | { ok: false; reason: string }
+> {
+  const id = cartId || (await getCartId())
+  if (!id) return { ok: false, reason: "no_cart" }
+
+  const headers = { ...(await getAuthHeaders()) }
+
+  let cartRes: any
+  let lastErr: any
+  for (let attempt = 0; attempt < 6; attempt++) {
+    try {
+      cartRes = await sdk.store.cart.complete(id, {}, headers)
+      break
+    } catch (e: any) {
+      lastErr = e
+      const status = e?.status ?? e?.response?.status
+      const conflict = status === 409 || /conflict|idempoten/i.test(e?.message || "")
+      if (conflict && attempt < 5) {
+        await new Promise((r) => setTimeout(r, 1500))
+        continue
+      }
+      logCheckoutError("complete_cart_error", e, { cartId: id })
+      return { ok: false, reason: e?.message || "complete_failed" }
+    }
+  }
+  if (!cartRes) return { ok: false, reason: lastErr?.message || "complete_failed" }
+
+  const cartCacheTag = await getCacheTag("carts")
+  revalidateTag(cartCacheTag)
+
+  if (cartRes?.type === "order") {
+    const orderCacheTag = await getCacheTag("orders")
+    revalidateTag(orderCacheTag)
+    await removeCartId()
+    return {
+      ok: true,
+      orderId: cartRes.order.id,
+      countryCode: (cartRes.order.shipping_address?.country_code || "").toLowerCase(),
+    }
+  }
+  return { ok: false, reason: "not_an_order" }
+}
+
+/**
  * Records a failed / abandoned payment attempt so no customer is ever lost.
  * The cart (with the customer's email, phone, address and items) already lives
  * in Medusa — this pings the backend to email staff the attempt + reason so

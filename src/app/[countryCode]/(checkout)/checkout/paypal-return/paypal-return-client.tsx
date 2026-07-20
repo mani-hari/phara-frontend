@@ -3,18 +3,21 @@
 import { useEffect, useRef, useState } from "react"
 import {
   retrieveCart,
-  placeOrder,
+  completeCartAndGetOrder,
   initiatePaymentSession,
   reportFailedCheckout,
 } from "@lib/data/cart"
 import { logCheckoutError } from "@lib/util/checkout-log"
+import { localizeHref } from "@lib/util/localize-href"
 
 // Completes a PayPal order AFTER the buyer approves. Runs client-side and calls
-// the server actions (retrieveCart / initiatePaymentSession / placeOrder) — the
-// SAME path Razorpay uses. This matters: those actions call revalidateTag/
-// redirect, which throw if run during a server-component render. The old
-// server-component version failed here AFTER the money was captured, so the
-// order was never created. Every failure is reported so staff can follow up.
+// the server actions (retrieveCart / initiatePaymentSession /
+// completeCartAndGetOrder) — the SAME path Razorpay uses. Those actions call
+// revalidateTag, which throws if run during a server-component render, so the
+// old server-component version failed AFTER the money was captured. Completion
+// RETURNS the order (no server-action redirect) and we navigate explicitly —
+// a redirect awaited inside a client try/catch swallowed successful orders
+// into a false error. Every real failure is reported so staff can follow up.
 export default function PaypalReturnClient({
   token,
   cartId,
@@ -65,11 +68,20 @@ export default function PaypalReturnClient({
           return toError("order_failed")
         }
         await initiatePaymentSession(cart, { provider_id: "pp_system_default" })
-        await placeOrder(cartId || cart.id) // redirects to the confirmation page on success
+        const result = await completeCartAndGetOrder(cartId || cart.id)
+        if (result.ok) {
+          // Navigate explicitly (don't rely on a server-action redirect from
+          // the client — that swallowed successful orders into a false error).
+          window.location.href = localizeHref(
+            result.countryCode || countryCode,
+            `/order/${result.orderId}/confirmed`
+          )
+          return
+        }
 
-        // If we're still here, completion did NOT produce an order (money is
-        // captured) — report it so staff can reconcile, then show the error.
-        await reportFailedCheckout(cartId, "paypal_complete_no_order", "paypal")
+        // Completion did NOT produce an order though the money was captured —
+        // report it so staff can reconcile, then show the error.
+        await reportFailedCheckout(cartId, `paypal_complete_no_order:${result.reason}`, "paypal")
         toError("order_failed")
       } catch (err: any) {
         logCheckoutError("paypal_return_client_failed", err, { token, cartId })

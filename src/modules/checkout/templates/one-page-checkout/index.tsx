@@ -6,10 +6,11 @@ import { HttpTypes } from "@medusajs/types"
 import {
   saveAddressesForCheckout,
   setShippingMethod,
-  placeOrder,
+  completeCartAndGetOrder,
   initiatePaymentSession,
   reportFailedCheckout,
 } from "@lib/data/cart"
+import { localizeHref } from "@lib/util/localize-href"
 import {
   loadRazorpayScript,
   createRazorpayOrder,
@@ -892,9 +893,16 @@ export default function OnePageCheckout({
               if (!verifyRes.ok) throw new Error("Payment verification failed.")
               // The real charge is Razorpay's (already verified). Give Medusa
               // an authorized payment session via the system provider so
-              // cart.complete() can turn the cart into an order.
+              // cart.complete() can turn the cart into an order, then navigate
+              // to the confirmation page explicitly (a server-action redirect
+              // from here doesn't reliably drive client navigation).
               await initiatePaymentSession(cart, { provider_id: "pp_system_default" })
-              await placeOrder()
+              const result = await completeCartAndGetOrder(cart.id)
+              if (!result.ok) throw new Error(result.reason || "order_not_created")
+              window.location.href = localizeHref(
+                result.countryCode || countryCode,
+                `/order/${result.orderId}/confirmed`
+              )
             } catch (err: any) {
               logCheckoutError("razorpay_verify", err, { cartId: cart.id, currency, total: displayTotal })
               // Charged (or possibly charged) but order confirmation failed —
