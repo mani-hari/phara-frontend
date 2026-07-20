@@ -25,6 +25,7 @@ type AddrForm = {
   email: string
   phone: string
   address1: string
+  address2: string
   city: string
   postalCode: string
   province: string
@@ -38,6 +39,7 @@ type BillingAddr = {
   lastName: string
   phone: string
   address1: string
+  address2: string
   city: string
   postalCode: string
   province: string
@@ -48,6 +50,9 @@ type Props = {
   cart: HttpTypes.StoreCart
   customer: HttpTypes.StoreCustomer | null
   availableShippingMethods: HttpTypes.StoreCartShippingOption[]
+  /** Union of every country across all regions — the delivery-country selector
+   *  shows this full list so a buyer can ship outside their billing region. */
+  allCountries: { iso_2: string; name: string }[]
   countryCode: string
   isIndia: boolean
   ipCountry?: string | null
@@ -275,8 +280,11 @@ function AddressForm({
       </div>
 
       {/* Address */}
-      <FieldWrap label="Address" required error={fieldErrors.address1} style={{ marginBottom: 10 }}>
+      <FieldWrap label="Address line 1" required error={fieldErrors.address1} style={{ marginBottom: 10 }}>
         <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="address-line1" value={form.address1} onChange={f("address1")} required />
+      </FieldWrap>
+      <FieldWrap label="Address line 2" style={{ marginBottom: 10 }}>
+        <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="address-line2" placeholder="Apartment, suite, landmark (optional)" value={form.address2} onChange={f("address2")} />
       </FieldWrap>
 
       {/* City + Postcode — keep 2-col even on mobile (both short) */}
@@ -353,8 +361,11 @@ function BillingForm({
           <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing family-name" value={form.lastName} onChange={f("lastName")} required />
         </FieldWrap>
       </div>
-      <FieldWrap label="Address" required error={fieldErrors.b_address1} style={{ marginBottom: 10 }}>
+      <FieldWrap label="Address line 1" required error={fieldErrors.b_address1} style={{ marginBottom: 10 }}>
         <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing address-line1" value={form.address1} onChange={f("address1")} required />
+      </FieldWrap>
+      <FieldWrap label="Address line 2" style={{ marginBottom: 10 }}>
+        <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing address-line2" placeholder="Apartment, suite, landmark (optional)" value={form.address2} onChange={f("address2")} />
       </FieldWrap>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 10 }}>
         <FieldWrap label="City" required error={fieldErrors.b_city}>
@@ -531,29 +542,37 @@ export default function OnePageCheckout({
   cart,
   customer,
   availableShippingMethods,
+  allCountries,
   countryCode,
   isIndia,
   ipCountry,
 }: Props) {
   const currency = cart.currency_code || "inr"
 
+  // Countries in the cart's OWN region (INR: India; USD: ~243 intl countries).
+  // Used to decide whether a chosen delivery country is native or out-of-region.
   const regionCountries = (cart.region?.countries || []).map((c: any) => ({
-    iso_2: c.iso_2 || "",
+    iso_2: (c.iso_2 || "").toLowerCase(),
     name: c.name || c.iso_2 || "",
   }))
   const countries = regionCountries.length > 0
     ? regionCountries
     : [{ iso_2: countryCode, name: countryCode.toUpperCase() }]
 
-  // Currency is fixed by the region the visitor is BROWSING (set by IP at cart
-  // creation) — it must NEVER change based on the delivery address, or an
-  // international visitor could see the lower INR price. So the country selector
-  // is limited to the current region's countries: a USD visitor can ship to any
-  // of the 243 international countries (not India, which is the INR region), an
-  // INR visitor ships within India. This also guarantees every selectable
-  // country is valid for the cart's region — Medusa rejects an out-of-region
-  // shipping address (e.g. an Indian address on a USD cart). See docs/ARCHITECTURE.md.
-  const selectableCountries = countries
+  // The delivery-country selector shows the FULL union of countries across all
+  // regions, so a buyer can ship anywhere (e.g. an INR visitor to the US, a USD
+  // visitor to India). Currency NEVER changes with the delivery address — it's
+  // fixed by the browsing region at cart creation. When the chosen delivery
+  // country is OUTSIDE the cart's region, Medusa can't store it as the shipping
+  // address (it rejects out-of-region countries), so we keep a region-valid
+  // billing address on the cart and carry the real destination in order
+  // metadata + apply the right cross-region shipping option. See docs/ARCHITECTURE.md.
+  const selectableCountries =
+    allCountries && allCountries.length > 0 ? allCountries : countries
+
+  const countryName = (cc?: string | null) =>
+    (!cc ? "" : selectableCountries.find((c) => c.iso_2.toLowerCase() === cc.toLowerCase())?.name) ||
+    (cc ? cc.toUpperCase() : "")
 
   const inRegion = (cc?: string | null) =>
     !!cc && countries.some((c: { iso_2: string }) => c.iso_2.toLowerCase() === cc.toLowerCase())
@@ -573,6 +592,7 @@ export default function OnePageCheckout({
     email: cart.email || customer?.email || "",
     phone: cart.shipping_address?.phone || "",
     address1: cart.shipping_address?.address_1 || "",
+    address2: cart.shipping_address?.address_2 || "",
     city: cart.shipping_address?.city || "",
     postalCode: cart.shipping_address?.postal_code || "",
     province: cart.shipping_address?.province || "",
@@ -580,31 +600,29 @@ export default function OnePageCheckout({
     sameAsBilling: true,
   })
 
-  // The "Prasadham delivery to India (free)" option is an escape hatch applied
-  // ONLY when the visitor ticks "Ship to India?" — it must never appear as a
-  // normal shipping card (an intl customer could otherwise pick it to dodge
-  // real postage).
-  const indiaShippingOption = availableShippingMethods.find((m) =>
-    /prasadham delivery to india/i.test(m.name || "")
-  )
+  // Is the chosen delivery country OUTSIDE the cart's own region? If so we use
+  // the cross-region escape hatch (structured delivery address in metadata + a
+  // region-valid billing address on the cart). Only ever true across the India
+  // boundary: an INR cart shipping abroad, or a USD cart shipping to India.
+  const deliveryInRegion = inRegion(form.countryCode)
+
+  // The cross-region shipping option — hidden from the normal cards and applied
+  // automatically when the delivery country is out-of-region:
+  //   • USD (Intl) cart → "Prasadham delivery to India (free)" ($0)
+  //   • INR (India) cart → "International Shipping (from India)" (₹2,800)
+  const crossRegionOption = isIndia
+    ? availableShippingMethods.find((m) => /from india/i.test(m.name || ""))
+    : availableShippingMethods.find((m) => /prasadham delivery to india/i.test(m.name || ""))
   const visibleShippingMethods = availableShippingMethods.filter(
-    (m) => m.id !== indiaShippingOption?.id
+    (m) => m.id !== crossRegionOption?.id
   )
 
   // Default to the actual delivery option (Free shipping / International Speed
-  // Post), not the "donate / do not send" option or the hidden India option.
+  // Post), not the "donate / do not send" option or the hidden cross-region one.
   const defaultShippingId =
     (visibleShippingMethods.find((m) => !/donate|do not send/i.test(m.name || "")) ||
       visibleShippingMethods[0])?.id || ""
   const [selectedShipping, setSelectedShipping] = useState<string>(defaultShippingId)
-
-  // "Ship prasadham to an address in India" — the escape hatch for international
-  // buyers sending prasadham to family in India. When on, the form fields below
-  // are the buyer's BILLING address (region-valid, keeps the cart in USD) and
-  // the real India delivery address is captured free-text into order metadata;
-  // the $0 India shipping option is auto-applied. Only offered on non-India carts.
-  const [shipToIndia, setShipToIndia] = useState(false)
-  const [indiaAddress, setIndiaAddress] = useState("")
 
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | null>(null)
@@ -620,6 +638,7 @@ export default function OnePageCheckout({
     lastName: cart.billing_address?.last_name || "",
     phone: cart.billing_address?.phone || "",
     address1: cart.billing_address?.address_1 || "",
+    address2: cart.billing_address?.address_2 || "",
     city: cart.billing_address?.city || "",
     postalCode: cart.billing_address?.postal_code || "",
     province: cart.billing_address?.province || "",
@@ -635,8 +654,10 @@ export default function OnePageCheckout({
   // Delivery country change: set the address country ONLY. We deliberately do
   // NOT switch the cart's region/currency here — currency is anchored to where
   // the visitor is browsing, never to the delivery address (see comment on
-  // selectableCountries and docs/ARCHITECTURE.md). All selectable countries
-  // already belong to the cart's region, so no region switch is ever needed.
+  // selectableCountries and docs/ARCHITECTURE.md). If the chosen country is
+  // outside the cart's region, `outOfRegion` flips and the escape-hatch flow
+  // (region-valid billing + structured delivery metadata) takes over — the
+  // cart region/currency still never changes.
   const chooseCountry = (iso: string) => {
     patch({ countryCode: iso })
   }
@@ -660,26 +681,27 @@ export default function OnePageCheckout({
     [cart.id, router]
   )
 
-  // Toggle the "Ship to India?" escape hatch: apply the $0 India option (or
-  // revert to the default option) so the summary total updates immediately.
-  const toggleShipToIndia = (checked: boolean) => {
-    setShipToIndia(checked)
-    setFieldErrors({})
-    const targetId = checked ? indiaShippingOption?.id : defaultShippingId
-    if (targetId) chooseShipping(targetId)
-  }
+  const isDigitalOnly = availableShippingMethods.length === 0
 
-  // On load, if no shipping method is set yet, apply the default option so the
-  // total reflects shipping from the start (e.g. international $32).
-  const didInitShipping = useRef(false)
+  // Delivery is to a country outside the cart's own region → use the escape
+  // hatch (structured delivery address → metadata; region-valid billing on the
+  // cart; auto-apply the cross-region shipping option).
+  const outOfRegion = !isDigitalOnly && !deliveryInRegion
+
+  // Whenever the delivery region-membership flips, apply the correct shipping
+  // option so the summary total is always right: out-of-region → the hidden
+  // cross-region option (free to India / ₹2,800 abroad); in-region → the normal
+  // default. Runs on mount too (initial default), and never fights a manual
+  // in-region card selection (that goes through chooseShipping directly and
+  // doesn't change outOfRegion).
+  const prevOutRef = useRef<boolean | null>(null)
   useEffect(() => {
-    if (didInitShipping.current) return
-    const hasMethod = ((cart as any).shipping_methods?.length ?? 0) > 0
-    if (!hasMethod && defaultShippingId) {
-      didInitShipping.current = true
-      chooseShipping(defaultShippingId)
-    }
-  }, [cart, availableShippingMethods, chooseShipping])
+    if (isDigitalOnly) return
+    if (prevOutRef.current === outOfRegion) return
+    prevOutRef.current = outOfRegion
+    const targetId = outOfRegion ? crossRegionOption?.id : defaultShippingId
+    if (targetId) chooseShipping(targetId)
+  }, [outOfRegion, isDigitalOnly, crossRegionOption?.id, defaultShippingId, chooseShipping])
 
   // Client-optimistic order totals: reflect the selected shipping amount
   // immediately. retrieveCart() is force-cached, so the summary can't wait on a
@@ -715,26 +737,100 @@ export default function OnePageCheckout({
     if (!form.address1.trim()) errs.address1 = "Required"
     if (!form.city.trim()) errs.city = "Required"
 
-    // A shipping method must be chosen when physical delivery applies. When
-    // shipping to India, the $0 option is auto-applied — instead require the
-    // free-text India delivery address.
-    if (shipToIndia) {
-      if (!indiaAddress.trim())
-        errs.indiaAddress = "Please enter the delivery address in India"
-    } else if (visibleShippingMethods.length > 0 && !selectedShipping) {
-      errs.shipping = "Please choose a delivery option"
-    }
-
-    // Billing address is required when it differs from delivery.
-    if (!form.sameAsBilling) {
+    if (outOfRegion) {
+      // The cross-region option is auto-applied; if the backend option is
+      // missing we must NOT let the order proceed with no valid shipping.
+      if (!crossRegionOption?.id) {
+        errs.shipping = `Shipping to ${countryName(form.countryCode)} isn't available yet — please contact support.`
+      }
+      // A region-valid billing address is mandatory (it becomes the cart's
+      // Medusa shipping/billing address; the delivery country can't).
       if (!billing.firstName.trim()) errs.b_firstName = "Required"
       if (!billing.lastName.trim()) errs.b_lastName = "Required"
       if (!billing.address1.trim()) errs.b_address1 = "Required"
       if (!billing.city.trim()) errs.b_city = "Required"
+    } else {
+      // In-region: a shipping method must be chosen when physical delivery
+      // applies, and billing is required only when it differs from delivery.
+      if (visibleShippingMethods.length > 0 && !selectedShipping) {
+        errs.shipping = "Please choose a delivery option"
+      }
+      if (!form.sameAsBilling) {
+        if (!billing.firstName.trim()) errs.b_firstName = "Required"
+        if (!billing.lastName.trim()) errs.b_lastName = "Required"
+        if (!billing.address1.trim()) errs.b_address1 = "Required"
+        if (!billing.city.trim()) errs.b_city = "Required"
+      }
     }
 
     setFieldErrors(errs)
     return Object.keys(errs).length === 0
+  }
+
+  // Build the address + metadata payload for saveAddressesForCheckout.
+  //  • In-region: the form IS the Medusa shipping address.
+  //  • Out-of-region: the form is the REAL delivery address, which can't be the
+  //    region-locked Medusa address — so a region-valid billing address goes on
+  //    the cart (keeping currency correct) and the destination rides in
+  //    structured order metadata (+ a human-readable string and the legacy
+  //    ship_to_india flag for backward-compatible rendering on the backend).
+  const buildCheckoutPayload = () => {
+    if (outOfRegion) {
+      const destIsIndia = form.countryCode.toLowerCase() === "in"
+      const structured = {
+        first_name: form.firstName,
+        last_name: form.lastName,
+        address_1: form.address1,
+        address_2: form.address2,
+        city: form.city,
+        province: form.province,
+        postal_code: form.postalCode,
+        country_code: form.countryCode.toLowerCase(),
+        phone: form.phone,
+        email: form.email,
+      }
+      const text = [
+        `${form.firstName} ${form.lastName}`.trim(),
+        form.address1,
+        form.address2,
+        [form.city, form.province, form.postalCode].filter(Boolean).join(", "),
+        countryName(form.countryCode),
+        form.phone && `Phone: ${form.phone}`,
+      ]
+        .filter(Boolean)
+        .join("\n")
+      return {
+        firstName: billing.firstName,
+        lastName: billing.lastName,
+        email: form.email,
+        phone: billing.phone,
+        address1: billing.address1,
+        address2: billing.address2,
+        city: billing.city,
+        postalCode: billing.postalCode,
+        province: billing.province,
+        countryCode: billing.countryCode,
+        sameAsBilling: true,
+        metadata: {
+          alt_delivery: true,
+          alt_delivery_country: form.countryCode.toLowerCase(),
+          alt_delivery_address: JSON.stringify(structured),
+          ship_to_india: destIsIndia,
+          india_delivery_address: text,
+        },
+      }
+    }
+    return {
+      ...form,
+      billing: form.sameAsBilling ? undefined : billing,
+      metadata: {
+        alt_delivery: false,
+        alt_delivery_country: "",
+        alt_delivery_address: "",
+        ship_to_india: false,
+        india_delivery_address: "",
+      },
+    }
   }
 
   // ── Razorpay ────────────────────────────────────────────────────────────────
@@ -751,14 +847,7 @@ export default function OnePageCheckout({
 
     startTransition(async () => {
       try {
-        await saveAddressesForCheckout({
-          ...form,
-          billing: form.sameAsBilling ? undefined : billing,
-          metadata: {
-            ship_to_india: shipToIndia,
-            india_delivery_address: shipToIndia ? indiaAddress.trim() : "",
-          },
-        })
+        await saveAddressesForCheckout(buildCheckoutPayload())
         // Authoritative total = cart total AFTER the selected shipping method is
         // applied. Charging this guarantees charge === final order total.
         const cartTotal = await applyShippingAndGetTotal()
@@ -828,14 +917,7 @@ export default function OnePageCheckout({
 
     startTransition(async () => {
       try {
-        await saveAddressesForCheckout({
-          ...form,
-          billing: form.sameAsBilling ? undefined : billing,
-          metadata: {
-            ship_to_india: shipToIndia,
-            india_delivery_address: shipToIndia ? indiaAddress.trim() : "",
-          },
-        })
+        await saveAddressesForCheckout(buildCheckoutPayload())
         const cartTotal = await applyShippingAndGetTotal()
         const chargeTotal = cartTotal ?? displayTotal
 
@@ -872,8 +954,6 @@ export default function OnePageCheckout({
     })
   }
 
-  const isDigitalOnly = availableShippingMethods.length === 0
-
   return (
     <div className="checkout-layout">
       {/* Mobile order summary accordion — hidden on desktop */}
@@ -890,9 +970,12 @@ export default function OnePageCheckout({
 
       {/* ── Left — form ──────────────────────────────────────────── */}
       <div>
-        {/* Address */}
+        {/* Delivery address — the country selector shows ALL countries. Picking
+            a country outside the cart's region flips into the cross-region flow
+            (structured address → metadata; a region-valid billing address is
+            collected below; currency never changes). */}
         <section className="co-section">
-          <SectionLabel>{shipToIndia ? "Billing address" : "Delivery address"}</SectionLabel>
+          <SectionLabel>Delivery address</SectionLabel>
           {isDigitalOnly ? (
             <div style={{ padding: "10px 14px", background: "#e8f5ee", borderRadius: 8 }}>
               <p className="ph-body-sm" style={{ color: "#2d6a4f", margin: 0 }}>
@@ -901,56 +984,32 @@ export default function OnePageCheckout({
             </div>
           ) : (
             <>
-              {/* Escape hatch (international carts only): ship prasadham to India.
-                  Placed at the very top so ticking it reframes the fields below
-                  as the billing address. */}
-              {!isIndia && (
-                <label
+              <AddressForm form={form} onChange={patch} countries={selectableCountries} fieldErrors={fieldErrors} onCountryChange={chooseCountry} />
+              {outOfRegion && (
+                <div
                   style={{
-                    display: "flex", alignItems: "flex-start", gap: 10, cursor: "pointer",
-                    marginBottom: 16, padding: "12px 14px", borderRadius: 10,
-                    border: `1.5px solid ${shipToIndia ? "var(--sindoor)" : "var(--ink-line)"}`,
-                    background: shipToIndia ? "#f7f4f1" : "var(--paper)",
+                    marginTop: 16, padding: "12px 14px", borderRadius: 10,
+                    border: "1.5px solid var(--sindoor)", background: "#f7f4f1",
                   }}
                 >
-                  <input
-                    type="checkbox"
-                    checked={shipToIndia}
-                    onChange={(e) => toggleShipToIndia(e.target.checked)}
-                    style={{ width: 18, height: 18, accentColor: "var(--sindoor)", flexShrink: 0, marginTop: 1 }}
-                    data-testid="ship-to-india"
-                  />
-                  <span className="ph-body-sm" style={{ color: "var(--ink-2)" }}>
-                    Ship prasadham to an address in{" "}
-                    <span style={{ color: "var(--sindoor)", fontWeight: 600 }}>India</span>? (e.g. to
-                    family) — free delivery, and you still pay in your local currency.
-                  </span>
-                </label>
-              )}
-              {shipToIndia && (
-                <div style={{ marginBottom: 16 }}>
-                  <FieldWrap label="Prasadham delivery address in India" required error={fieldErrors.indiaAddress}>
-                    <textarea
-                      className="ph-input co-input"
-                      style={{ width: "100%", minHeight: 92, resize: "vertical", lineHeight: 1.5 }}
-                      value={indiaAddress}
-                      onChange={(e) => { setIndiaAddress(e.target.value); setFieldErrors({}) }}
-                      placeholder="Recipient name, full address, city, state, PIN code, contact phone"
-                    />
-                  </FieldWrap>
-                  <p className="ph-body-sm" style={{ color: "var(--ink-4)", marginTop: 6, marginBottom: 0 }}>
-                    Prasadham ships free to this India address. Your details below are used for billing only.
+                  <p className="ph-body-sm" style={{ color: "var(--ink-2)", margin: 0 }}>
+                    Delivering to{" "}
+                    <span style={{ color: "var(--sindoor)", fontWeight: 600 }}>{countryName(form.countryCode)}</span>.{" "}
+                    {form.countryCode.toLowerCase() === "in"
+                      ? "Prasadham ships free to India."
+                      : "International shipping applies."}{" "}
+                    You’ll be charged in {currency.toUpperCase()} — enter your billing address (in your own country) below.
                   </p>
                 </div>
               )}
-              <AddressForm form={form} onChange={patch} countries={selectableCountries} fieldErrors={fieldErrors} onCountryChange={chooseCountry} />
             </>
           )}
         </section>
 
-        {/* Shipping — hidden when shipping to India (the free India option is
-            auto-applied and there's nothing to choose). */}
-        {!isDigitalOnly && !shipToIndia && (
+        {/* Shipping options — shown only for in-region delivery. Out-of-region
+            auto-applies the cross-region option (free to India / ₹2,800 abroad),
+            so there's nothing to choose; we surface it as a note instead. */}
+        {!isDigitalOnly && deliveryInRegion && (
           <section className="co-section">
             <SectionLabel>Prasad delivery</SectionLabel>
             <ShippingCards
@@ -967,10 +1026,42 @@ export default function OnePageCheckout({
             )}
           </section>
         )}
+        {!isDigitalOnly && outOfRegion && crossRegionOption && (
+          <section className="co-section">
+            <SectionLabel>Prasad delivery</SectionLabel>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12, padding: "16px 18px", border: "1.5px solid var(--ink-line)", borderRadius: 10, background: "#f7f4f1" }}>
+              <span className="ph-body" style={{ fontWeight: 600 }}>{crossRegionOption.name}</span>
+              <span className="ph-label ph-num" style={{ fontWeight: 700 }}>
+                {fmtPrice(crossRegionOption.amount ?? null, currency)}
+              </span>
+            </div>
+            {fieldErrors.shipping && (
+              <p style={{ fontSize: 12, color: "var(--sindoor)", marginTop: 8, marginBottom: 0 }}>
+                {fieldErrors.shipping}
+              </p>
+            )}
+          </section>
+        )}
 
-        {/* Billing address — hidden when shipping to India, because the section
-            above is already the billing address in that flow. */}
-        {!shipToIndia && (
+        {/* Billing address.
+            • In-region: optional (same-as-delivery checkbox, as before).
+            • Out-of-region: REQUIRED — this region-valid address becomes the
+              cart's Medusa shipping/billing address (the delivery country can't),
+              keeping the cart currency correct. */}
+        {!isDigitalOnly && outOfRegion ? (
+          <section className="co-section">
+            <SectionLabel>Billing address</SectionLabel>
+            <p className="ph-body-sm" style={{ color: "var(--ink-4)", marginTop: -6, marginBottom: 12 }}>
+              Your payment / card address (in {currency.toUpperCase()} region). The prasadham still ships to {countryName(form.countryCode)}.
+            </p>
+            <BillingForm
+              form={billing}
+              onChange={patchBilling}
+              countries={countries}
+              fieldErrors={fieldErrors}
+            />
+          </section>
+        ) : (
           <section className="co-section">
             <SectionLabel>Billing address</SectionLabel>
             <BillingCheckbox
@@ -981,7 +1072,7 @@ export default function OnePageCheckout({
               <BillingForm
                 form={billing}
                 onChange={patchBilling}
-                countries={selectableCountries}
+                countries={countries}
                 fieldErrors={fieldErrors}
               />
             )}
@@ -1205,7 +1296,12 @@ function PaymentSection({
   error: string | null
   onPay: (provider: "razorpay" | "paypal") => void
 }) {
-  const [provider, setProvider] = useState<"razorpay" | "paypal">("razorpay")
+  // International carts default to PayPal (Razorpay's international card
+  // payments have a higher failure rate) — Razorpay stays selectable. India
+  // carts are Razorpay-only.
+  const [provider, setProvider] = useState<"razorpay" | "paypal">(
+    isIndia ? "razorpay" : "paypal"
+  )
   // India: Razorpay only — PayPal is not offered, keep the selection on Razorpay.
   useEffect(() => {
     if (isIndia && provider !== "razorpay") setProvider("razorpay")
@@ -1214,12 +1310,7 @@ function PaymentSection({
   return (
     <div>
       <div role="radiogroup" aria-label="Payment method">
-        <PaymentRadio
-          selected={provider === "razorpay"}
-          onSelect={() => setProvider("razorpay")}
-          title="Pay by Credit / Debit / UPI (powered by Razorpay)"
-          subtitle="UPI payments, Wallets, VISA and Mastercard (International cards accepted except AMEX)"
-        />
+        {/* International carts: PayPal listed first as the default option. */}
         {!isIndia && (
           <PaymentRadio
             selected={provider === "paypal"}
@@ -1228,6 +1319,12 @@ function PaymentSection({
             subtitle="All international cards, including AMEX"
           />
         )}
+        <PaymentRadio
+          selected={provider === "razorpay"}
+          onSelect={() => setProvider("razorpay")}
+          title="Pay by Credit / Debit / UPI (powered by Razorpay)"
+          subtitle="UPI payments, Wallets, VISA and Mastercard (International cards accepted except AMEX)"
+        />
       </div>
 
       <div className="co-pay-bar">

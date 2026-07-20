@@ -39,14 +39,18 @@ Configured by [`scripts/setup-shipping.mjs`](../scripts/setup-shipping.mjs) (ide
 
 | Zone (geo) | Options |
 |---|---|
-| India (`in`) | **Free shipping (India)** ₹0 · **Donate prasadam at temple** ₹0 |
-| International (242 cc) | **International Speed Post / FedEx** $25 · **Donate prasadam at temple** $0 |
+| India (`in`) | **Free shipping (India)** ₹0 · **International Shipping (from India)** ₹2,800 (hidden; INR cart shipping abroad) · **Do not send prasadham, donate at temple** ₹0 |
+| International (243 cc) | **International Shipping (Speedpost/FedEx)** $32 · **Prasadham delivery to India (free)** $0 (hidden; USD cart shipping to India) · **Do not send prasadham, donate at temple** $0 |
 
 `GET /store/shipping-options?cart_id=...` returns only the options whose service-zone geo matches the
 cart's shipping-address country **and** have a price in the cart's currency — so options switch on
 country automatically. The checkout requires a shipping selection before payment.
 
-> **Change the international rate:** `INTL_RATE=30 node scripts/setup-shipping.mjs` (default $25).
+The two **hidden** options are the cross-region escape hatch (see ARCHITECTURE.md): applied
+automatically when the delivery country is outside the cart's region, never shown as a normal card.
+
+> **Change the rates:** `INTL_RATE=30 INR_INTL_RATE=2500 node scripts/setup-shipping.mjs`
+> (defaults: $32 USD intl, ₹2,800 INR intl-from-India).
 
 ## Sankalpam / puja details (fulfillment-critical)
 

@@ -116,24 +116,34 @@ region's own countries** (`selectableCountries = countries`) and `chooseCountry`
 can only be in one region, so that would strip India from the INR region and
 charge Indian visitors in USD. That destroys the pricing strategy.
 
-### "Ship prasadam to India" escape hatch (built 2026-07-08)
-International (USD) buyers can send prasadam to an address in India without
-leaking INR pricing. Implemented as a metadata escape hatch, NOT a region change:
-- **Checkout:** a "Ship prasadam to an address in India?" checkbox at the top of
-  the delivery-address section (non-India carts only). When ticked, the form
-  fields become the buyer's **billing** address (region-valid → cart stays USD)
-  and a free-text **India delivery address** is captured and written to cart/order
-  metadata: `ship_to_india: true`, `india_delivery_address: "<text>"`.
-- **Shipping:** a **$0 "Prasadham delivery to India (free)"** option lives in the
-  International service zone (`so_01KX1YADK1ER…`). It's hidden from the normal
-  shipping cards (an intl buyer could otherwise pick it to dodge postage) and
-  auto-applied only when the checkbox is on. India delivery is always free.
-- **Backend (phara-backend-medusa):** a loud "🚚 SHIP PRASADAM TO INDIA" banner
-  widget at `order.details.before`, and the address is included in the
-  `order-placed` confirmation email (`order-placed.ts` now fetches order
-  `metadata`; `shipToIndiaFor()` in `resend/templates.ts`).
-- **Verified** via store API: USD cart + India metadata + $0 option →
-  total == item_total (no shipping added), metadata persisted.
+### Cross-region delivery escape hatch (built 2026-07-08, generalized 2026-07-20)
+A buyer can ship prasadam to a country **outside their billing region** without
+changing the cart's currency. Both directions across the India boundary are
+supported (the only place a country is out-of-region): a USD buyer shipping to
+India, and an INR buyer shipping abroad. Implemented as a metadata escape hatch,
+NOT a region change:
+- **Checkout:** the delivery-country selector shows the **union of all regions'
+  countries** (`allCountries`, built in `checkout/page.tsx`). Picking a country
+  outside the cart's own region flips `outOfRegion`: the main form is treated as
+  the **structured delivery address** (name, address 1/2, city, state, postal,
+  phone) and a **region-valid billing address** is required below and becomes the
+  cart's Medusa shipping/billing address (keeps currency correct). No checkbox —
+  the country choice drives everything.
+- **Metadata** written to cart/order: `alt_delivery: true`,
+  `alt_delivery_country: "<iso>"`, `alt_delivery_address: "<JSON>"` (structured),
+  plus legacy-compatible `ship_to_india` (true only for India destinations) and a
+  human-readable `india_delivery_address` string.
+- **Shipping:** two **hidden** options, applied automatically by `outOfRegion`
+  and never shown as normal cards: **$0 "Prasadham delivery to India (free)"** in
+  the International zone (USD→India), and **₹2,800 "International Shipping (from
+  India)"** in the India zone (INR→abroad). Destination India is always free;
+  destination outside India pays the intl rate (warehouse is in India).
+- **Backend (phara-backend-medusa):** a loud "🚚 SHIP PRASADAM TO <COUNTRY>"
+  banner widget at `order.details.before` and the address in the `order-placed`
+  email (`shipToIndiaFor()` in `resend/templates.ts`) — both now read the
+  structured `alt_delivery_address` and fall back to the legacy free-text field.
+  The staff order-view (`routes/order-view/page.tsx`) shows the shipping method +
+  cost.
 
 Note: Medusa admin has no per-row list-badge injection zone, so the "badge" is
 the top-of-order banner (impossible to miss on the detail page) rather than a

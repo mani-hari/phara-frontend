@@ -468,6 +468,7 @@ type CheckoutAddress = {
   lastName: string
   phone?: string
   address1: string
+  address2?: string
   city: string
   postalCode: string
   province?: string
@@ -478,7 +479,7 @@ const toMedusaAddress = (a: CheckoutAddress) => ({
   first_name: a.firstName,
   last_name: a.lastName,
   address_1: a.address1,
-  address_2: "",
+  address_2: a.address2 || "",
   city: a.city,
   postal_code: a.postalCode,
   country_code: a.countryCode.toLowerCase(),
@@ -492,6 +493,7 @@ export async function saveAddressesForCheckout(data: {
   email: string
   phone: string
   address1: string
+  address2?: string
   city: string
   postalCode: string
   province?: string

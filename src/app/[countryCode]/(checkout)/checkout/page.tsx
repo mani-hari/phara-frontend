@@ -35,6 +35,23 @@ export default async function Checkout({
     ).map((c: any) => c.iso_2)
   )
 
+  // Every country served across ALL regions (India + International), de-duped.
+  // The checkout delivery-country selector shows this full union so a buyer can
+  // pick a destination outside their own billing region (e.g. an INR visitor
+  // shipping abroad, or a USD visitor shipping to India). Whether the picked
+  // country is in the cart's own region decides native vs escape-hatch handling
+  // in the checkout — currency is NEVER changed by it. See docs/ARCHITECTURE.md.
+  const allCountriesMap = new Map<string, { iso_2: string; name: string }>()
+  for (const r of regions || []) {
+    for (const c of (r as any).countries || []) {
+      const iso = (c.iso_2 || "").toLowerCase()
+      if (iso && !allCountriesMap.has(iso)) {
+        allCountriesMap.set(iso, { iso_2: iso, name: c.display_name || c.name || iso.toUpperCase() })
+      }
+    }
+  }
+  const allCountries = Array.from(allCountriesMap.values())
+
   let availableShippingMethods: any[] = []
   try {
     const { shipping_options } = await listCartOptions()
@@ -80,6 +97,7 @@ export default async function Checkout({
             cart={cart}
             customer={customer}
             availableShippingMethods={availableShippingMethods}
+            allCountries={allCountries}
             countryCode={countryCode}
             isIndia={isIndia}
             ipCountry={ipCountry}

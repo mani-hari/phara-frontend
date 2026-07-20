@@ -2,7 +2,13 @@
 //
 // Creates country-based shipping options on the live Medusa backend:
 //   India zone (geo: in)        → "Free shipping (India)" (₹0)  + "Donate prasadam at temple" (₹0)
+//                                 + "International Shipping (from India)" (₹INR_INTL_RATE)  ← for INR carts shipping abroad
 //   International zone (243 cc)  → "International Speed Post / FedEx" ($INTL_RATE) + "Donate prasadam at temple" ($0)
+//
+// NOTE: the "$0 Prasadham delivery to India (free)" escape-hatch option in the
+// International zone (used by USD carts shipping to India) is managed manually
+// in the backend — this script deliberately does NOT create it to avoid a
+// duplicate by-name.
 //
 // Reads the admin key from macOS Keychain (same source as scripts/medusa-admin.sh),
 // so run inside an armed window: `npm run medusa:unlock && node scripts/setup-shipping.mjs`.
@@ -17,10 +23,14 @@ const BASIC = Buffer.from(`${KEY}:`).toString("base64")
 // USD rate in dollars. Prices are stored in MAJOR units (Medusa v2 native) —
 // e.g. an item priced $130 has calculated_amount 130 — so $32 is stored as 32.
 const INTL_RATE = Number(process.env.INTL_RATE || 32) // USD dollars (major units)
+// INR rate for an India-region (INR) cart shipping ABROAD (destination outside
+// India). Warehouse is in India, so this mirrors the USD intl rate in rupees.
+const INR_INTL_RATE = Number(process.env.INR_INTL_RATE || 2800) // INR (major units)
 
 // Canonical option names (used to reconcile — anything else in these zones is removed).
 const OPT = {
   indiaFree: "Free shipping (India)",
+  intlFromIndia: "International Shipping (from India)",
   intlPaid: "International Shipping (Speedpost/FedEx)",
   donate: "Do not send prasadham, donate at temple",
 }
@@ -78,7 +88,7 @@ async function ensureOption({ name, zoneId, prices }) {
 }
 
 async function main() {
-  console.log(`INTL_RATE = $${INTL_RATE} (USD)`)
+  console.log(`INTL_RATE = $${INTL_RATE} (USD) | INR_INTL_RATE = ₹${INR_INTL_RATE} (INR)`)
 
   // 1. International service zone (all intl-region countries except India)
   const regions = await api("GET", "/admin/regions?fields=id,currency_code,countries.iso_2&limit=20")
@@ -107,6 +117,7 @@ async function main() {
   // 2. India zone options
   console.log("India zone:")
   await ensureOption({ name: OPT.indiaFree, zoneId: INDIA_ZONE, prices: [{ currency_code: "inr", amount: 0 }] })
+  await ensureOption({ name: OPT.intlFromIndia, zoneId: INDIA_ZONE, prices: [{ currency_code: "inr", amount: INR_INTL_RATE }] })
   await ensureOption({ name: OPT.donate, zoneId: INDIA_ZONE, prices: [{ currency_code: "inr", amount: 0 }] })
 
   // 3. International zone options
@@ -115,7 +126,7 @@ async function main() {
   await ensureOption({ name: OPT.donate, zoneId: intlZone.id, prices: [{ currency_code: "usd", amount: 0 }] })
 
   // 4. Reconcile — delete legacy/renamed options so only the canonical set remains.
-  const keep = new Set([OPT.indiaFree, OPT.intlPaid, OPT.donate])
+  const keep = new Set([OPT.indiaFree, OPT.intlFromIndia, OPT.intlPaid, OPT.donate])
   for (const o of await getShippingOptions()) {
     if (LEGACY_NAMES.includes(o.name) && !keep.has(o.name)) {
       await api("DELETE", `/admin/shipping-options/${o.id}`)
