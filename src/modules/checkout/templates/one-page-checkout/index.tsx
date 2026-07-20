@@ -1320,10 +1320,12 @@ function PaymentSection({
   error: string | null
   onPay: (provider: "razorpay" | "paypal") => void
 }) {
-  // Razorpay is the default everywhere (safeguard while the PayPal flow is being
-  // stabilised). PayPal stays selectable on international carts. India is
+  // International carts default to PayPal (Razorpay's international card payments
+  // have a higher failure rate); Razorpay stays selectable. India is
   // Razorpay-only.
-  const [provider, setProvider] = useState<"razorpay" | "paypal">("razorpay")
+  const [provider, setProvider] = useState<"razorpay" | "paypal">(
+    isIndia ? "razorpay" : "paypal"
+  )
   // India: Razorpay only — PayPal is not offered, keep the selection on Razorpay.
   useEffect(() => {
     if (isIndia && provider !== "razorpay") setProvider("razorpay")
@@ -1332,12 +1334,7 @@ function PaymentSection({
   return (
     <div>
       <div role="radiogroup" aria-label="Payment method">
-        <PaymentRadio
-          selected={provider === "razorpay"}
-          onSelect={() => setProvider("razorpay")}
-          title="Pay by Credit / Debit / UPI (powered by Razorpay)"
-          subtitle="UPI payments, Wallets, VISA and Mastercard (International cards accepted except AMEX)"
-        />
+        {/* International carts: PayPal listed first as the default option. */}
         {!isIndia && (
           <PaymentRadio
             selected={provider === "paypal"}
@@ -1346,6 +1343,12 @@ function PaymentSection({
             subtitle="All international cards, including AMEX"
           />
         )}
+        <PaymentRadio
+          selected={provider === "razorpay"}
+          onSelect={() => setProvider("razorpay")}
+          title="Pay by Credit / Debit / UPI (powered by Razorpay)"
+          subtitle="UPI payments, Wallets, VISA and Mastercard (International cards accepted except AMEX)"
+        />
       </div>
 
       <div className="co-pay-bar">

@@ -6,31 +6,13 @@ import { CONTACT, waLink } from "@lib/contact"
 
 type Props = { order: HttpTypes.StoreOrder }
 
-function formatDate(iso: string) {
+function formatDate(iso: string | Date) {
   return new Date(iso).toLocaleDateString("en-IN", {
     day: "numeric",
     month: "long",
     year: "numeric",
   })
 }
-
-const WHAT_NEXT = [
-  {
-    icon: "🙏",
-    title: "Pooja scheduled",
-    desc: "Our priests will perform your ritual on your preferred date.",
-  },
-  {
-    icon: "🎥",
-    title: "HD video within 24 h",
-    desc: "You'll receive a recording of the full pooja in your inbox.",
-  },
-  {
-    icon: "📦",
-    title: "Prasad dispatched",
-    desc: "Sanctified prasad is sent to your address after the ceremony.",
-  },
-]
 
 export default async function OrderCompletedTemplate({ order }: Props) {
   const customer = await retrieveCustomer().catch(() => null)
@@ -267,22 +249,16 @@ export default async function OrderCompletedTemplate({ order }: Props) {
           className="ph-card"
           style={{ border: "1px solid var(--ink-line)", padding: "20px 24px", marginBottom: 32 }}
         >
-          <h3 className="ph-h4" style={{ marginBottom: 20 }}>What happens next</h3>
-          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            {WHAT_NEXT.map((step) => (
-              <div key={step.title} style={{ display: "flex", gap: 14, alignItems: "flex-start" }}>
-                <span style={{ fontSize: 22, flexShrink: 0, marginTop: 1 }}>{step.icon}</span>
-                <div>
-                  <p className="ph-body" style={{ fontWeight: 600, marginBottom: 2 }}>
-                    {step.title}
-                  </p>
-                  <p className="ph-body-sm" style={{ color: "var(--ink-3)", lineHeight: 1.6 }}>
-                    {step.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <h3 className="ph-h4" style={{ marginBottom: 16 }}>What happens next</h3>
+          <p className="ph-body" style={{ color: "var(--ink-3)", lineHeight: 1.7, marginBottom: 12 }}>
+            Our staff will arrange the poojas / homams requested by you in the respective temple and
+            will share the pooja date with you. We will periodically inform you of the progress and
+            statuses.
+          </p>
+          <p className="ph-body" style={{ color: "var(--ink-3)", lineHeight: 1.7, margin: 0 }}>
+            For Astro consults, your question and chart are processed right away and sent to our
+            expert astrologer. Stay tuned.
+          </p>
         </div>
 
         {/* Account CTA for guests */}
