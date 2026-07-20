@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
+import { logCheckoutError } from "@lib/util/checkout-log"
 
 export async function POST(req: NextRequest) {
   try {
@@ -8,6 +9,7 @@ export async function POST(req: NextRequest) {
     const clientSecret = process.env.PAYPAL_CLIENT_SECRET
 
     if (!clientId || !clientSecret) {
+      logCheckoutError("paypal_capture_not_configured", "missing client id/secret", { orderId })
       return NextResponse.json(
         { error: "PayPal not configured" },
         { status: 500 }
@@ -33,6 +35,11 @@ export async function POST(req: NextRequest) {
 
     const tokenData = await tokenResponse.json()
     if (!tokenResponse.ok) {
+      logCheckoutError("paypal_capture_auth_failed", tokenData?.error_description || "oauth failed", {
+        status: tokenResponse.status,
+        sandbox: isSandbox,
+        orderId,
+      })
       return NextResponse.json(
         { error: "Failed to authenticate with PayPal" },
         { status: 500 }
@@ -54,6 +61,11 @@ export async function POST(req: NextRequest) {
     const captureData = await captureResponse.json()
 
     if (!captureResponse.ok) {
+      logCheckoutError("paypal_capture_rejected", captureData?.message || "capture rejected", {
+        status: captureResponse.status,
+        orderId,
+        name: captureData?.name,
+      })
       return NextResponse.json(
         { error: captureData.message || "Failed to capture PayPal order" },
         { status: captureResponse.status }
@@ -62,6 +74,7 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json(captureData)
   } catch (error: any) {
+    logCheckoutError("paypal_capture_exception", error)
     return NextResponse.json(
       { error: error.message || "Internal server error" },
       { status: 500 }

@@ -936,17 +936,27 @@ export default function OnePageCheckout({
             cancel_url: cancelUrl,
           }),
         })
-        if (!res.ok) throw new Error("Could not create PayPal order.")
-        const data = await res.json()
-
-        const approveLink = data.links?.find((l: any) => l.rel === "approve")
-        if (approveLink) {
-          window.location.href = approveLink.href
-        } else if (data.id) {
-          window.location.href = `https://www.paypal.com/checkoutnow?token=${data.id}`
-        } else {
-          throw new Error("No PayPal approval URL returned.")
+        const data = await res.json().catch(() => ({}))
+        if (!res.ok) {
+          throw new Error(
+            data?.error || "Could not create PayPal order. Please try again or use another payment method."
+          )
         }
+
+        // Orders v2 returns the buyer-approval URL as rel "payer-action"
+        // (current) or "approve" (older). Redirect the buyer there to approve
+        // and pay; on return, /checkout/paypal-return captures the order.
+        const approveLink = (data.links || []).find(
+          (l: any) => l.rel === "payer-action" || l.rel === "approve"
+        )
+        if (!approveLink?.href) {
+          logCheckoutError("paypal_no_approve_link", "no approve/payer-action link", {
+            cartId: cart.id,
+            id: data.id,
+          })
+          throw new Error("PayPal did not return an approval link. Please try again or use another payment method.")
+        }
+        window.location.href = approveLink.href
       } catch (err: any) {
         logCheckoutError("paypal_init", err, { cartId: cart.id, currency, total: displayTotal })
         setError(err.message || "PayPal setup failed. Please try again.")
