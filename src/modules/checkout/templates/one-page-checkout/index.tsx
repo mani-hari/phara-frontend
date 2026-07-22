@@ -776,7 +776,7 @@ export default function OnePageCheckout({
   //    the cart (keeping currency correct) and the destination rides in
   //    structured order metadata (+ a human-readable string and the legacy
   //    ship_to_india flag for backward-compatible rendering on the backend).
-  const buildCheckoutPayload = () => {
+  const buildCheckoutPayload = (gateway: "razorpay" | "paypal") => {
     if (outOfRegion) {
       const destIsIndia = form.countryCode.toLowerCase() === "in"
       const structured = {
@@ -814,6 +814,7 @@ export default function OnePageCheckout({
         countryCode: billing.countryCode,
         sameAsBilling: true,
         metadata: {
+          payment_gateway: gateway,
           alt_delivery: true,
           alt_delivery_country: form.countryCode.toLowerCase(),
           alt_delivery_address: JSON.stringify(structured),
@@ -826,6 +827,7 @@ export default function OnePageCheckout({
       ...form,
       billing: form.sameAsBilling ? undefined : billing,
       metadata: {
+        payment_gateway: gateway,
         alt_delivery: false,
         alt_delivery_country: "",
         alt_delivery_address: "",
@@ -849,7 +851,7 @@ export default function OnePageCheckout({
 
     startTransition(async () => {
       try {
-        await saveAddressesForCheckout(buildCheckoutPayload())
+        await saveAddressesForCheckout(buildCheckoutPayload("razorpay"))
         // Authoritative total = cart total AFTER the selected shipping method is
         // applied. Charging this guarantees charge === final order total.
         const cartTotal = await applyShippingAndGetTotal()
@@ -930,7 +932,7 @@ export default function OnePageCheckout({
 
     startTransition(async () => {
       try {
-        await saveAddressesForCheckout(buildCheckoutPayload())
+        await saveAddressesForCheckout(buildCheckoutPayload("paypal"))
         const cartTotal = await applyShippingAndGetTotal()
         const chargeTotal = cartTotal ?? displayTotal
 
