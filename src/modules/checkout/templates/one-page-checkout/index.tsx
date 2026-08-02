@@ -16,7 +16,7 @@ import {
   createRazorpayOrder,
 } from "@lib/payments/razorpay"
 import { convertToLocale } from "@lib/util/money"
-import { logCheckoutError } from "@lib/util/checkout-log"
+import { logCheckoutError, logCheckoutEvent } from "@lib/util/checkout-log"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 // ─── types ────────────────────────────────────────────────────────────────────
@@ -901,15 +901,36 @@ export default function OnePageCheckout({
               await initiatePaymentSession(cart, { provider_id: "pp_system_default" })
               const result = await completeCartAndGetOrder(cart.id)
               if (!result.ok) throw new Error(result.reason || "order_not_created")
+              logCheckoutEvent("razorpay_complete_ok", {
+                cartId: cart.id,
+                orderId: result.orderId,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_order_id: response.razorpay_order_id,
+              })
               window.location.href = localizeHref(
                 result.countryCode || countryCode,
                 `/order/${result.orderId}/confirmed`
               )
             } catch (err: any) {
-              logCheckoutError("razorpay_verify", err, { cartId: cart.id, currency, total: displayTotal })
+              logCheckoutError("razorpay_verify", err, {
+                cartId: cart.id,
+                currency,
+                total: displayTotal,
+                razorpay_payment_id: response.razorpay_payment_id,
+                razorpay_order_id: response.razorpay_order_id,
+              })
               // Charged (or possibly charged) but order confirmation failed —
-              // capture the attempt so the customer is never lost.
-              await reportFailedCheckout(cart.id, `razorpay_verify_or_complete:${err?.message || "error"}`, "razorpay")
+              // capture the attempt WITH the razorpay_payment_id so staff can
+              // reconcile the real charge against Razorpay. MAN-21.
+              await reportFailedCheckout(
+                cart.id,
+                `razorpay_verify_or_complete:${err?.message || "error"}`,
+                "razorpay",
+                {
+                  razorpay_payment_id: response.razorpay_payment_id,
+                  razorpay_order_id: response.razorpay_order_id,
+                }
+              )
               window.location.href = `/checkout/payment-error?reason=${encodeURIComponent(err.message || "verification_failed")}`
             }
           },
