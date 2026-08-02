@@ -136,6 +136,8 @@ export default async function RootLayout({
               "@context": "https://schema.org",
               "@type": "Organization",
               name: "PariharaOnline",
+              legalName: "Harkarma Enterprises LLP",
+              foundingDate: "2009",
               url: "https://pariharaonline.com",
               logo: "https://pariharaonline.com/logo.png",
               description:
@@ -143,6 +145,7 @@ export default async function RootLayout({
               contactPoint: {
                 "@type": "ContactPoint",
                 telephone: "+91-97432 44501",
+                email: "hello@pariharaonline.com",
                 contactType: "customer service",
                 availableLanguage: ["English", "Tamil", "Hindi"],
               },

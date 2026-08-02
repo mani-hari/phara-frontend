@@ -6,6 +6,7 @@ import { listRegions } from "@lib/data/regions"
 import { StoreRegion } from "@medusajs/types"
 import CategoryTemplate from "@modules/categories/templates"
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
+import { buildBreadcrumbJsonLd } from "@lib/util/json-ld"
 
 type Props = {
   params: Promise<{ category: string[]; countryCode: string }>
@@ -81,12 +82,32 @@ export default async function CategoryPage(props: Props) {
     notFound()
   }
 
+  // Best-effort ancestry from parent_category chain, when populated.
+  const ancestors: { name: string; url: string }[] = []
+  let ancestor = productCategory.parent_category
+  while (ancestor) {
+    ancestors.unshift({ name: ancestor.name, url: `/categories/${ancestor.handle}` })
+    ancestor = ancestor.parent_category
+  }
+
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    ...ancestors,
+    { name: productCategory.name, url: `/categories/${params.category.join("/")}` },
+  ])
+
   return (
-    <CategoryTemplate
-      category={productCategory}
-      sortBy={sortBy}
-      page={page}
-      countryCode={params.countryCode}
-    />
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <CategoryTemplate
+        category={productCategory}
+        sortBy={sortBy}
+        page={page}
+        countryCode={params.countryCode}
+      />
+    </>
   )
 }
