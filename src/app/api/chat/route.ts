@@ -3,7 +3,8 @@ import { anthropic } from "@ai-sdk/anthropic"
 import { z } from "zod"
 import { NextRequest } from "next/server"
 import { retrieveCustomer } from "@lib/data/customer"
-import { upsertSession, saveMessage } from "@lib/chat-store"
+import { upsertSession, saveMessage, updateSessionTitle } from "@lib/chat-store"
+import { generateSessionTitle } from "@lib/chat-title"
 import {
   getMedusaCustomerContext,
   formatCustomerContextForPrompt,
@@ -158,19 +159,27 @@ export async function POST(req: NextRequest) {
         "\n\nNOTE: This visitor has had 3+ conversations without signing in. When relevant, naturally suggest they sign in using suggestSignIn."
     }
 
-    // Persist session + last user message (fire-and-forget)
+    // Persist session + last user message (fire-and-forget relative to the
+    // streaming response below — but the two DB writes themselves are
+    // sequenced: saveMessage(user) must wait for upsertSession's INSERT to
+    // land first, otherwise the chat_messages.session_id FK race can drop the
+    // very first user message when it commits before the session row exists,
+    // silently swallowed by saveMessage's own try/catch. That leaves the
+    // assistant's reply as the first surviving row for the session.
+    const lastUser = [...messages].reverse().find((m) => m.role === "user")
+    // "First exchange" = no assistant messages yet in the incoming history —
+    // used below (after streaming) to decide whether to auto-title the session.
+    const isFirstExchange = !messages.some((m) => m.role === "assistant")
     if (sessionId) {
-      const lastUser = [...messages].reverse().find((m) => m.role === "user")
-      Promise.all([
-        upsertSession(
-          sessionId,
-          "in",
-          pageContext?.currentUrl ?? "",
-          pageContext?.currentTitle ?? "",
-          userEmail
-        ),
-        lastUser ? saveMessage(sessionId, "user", lastUser.content) : Promise.resolve(),
-      ]).catch(() => {})
+      upsertSession(
+        sessionId,
+        "in",
+        pageContext?.currentUrl ?? "",
+        pageContext?.currentTitle ?? "",
+        userEmail
+      )
+        .then(() => (lastUser ? saveMessage(sessionId, "user", lastUser.content) : null))
+        .catch(() => {})
     }
 
     return createDataStreamResponse({
@@ -349,6 +358,17 @@ export async function POST(req: NextRequest) {
           onFinish: ({ text }) => {
             if (sessionId && text) {
               saveMessage(sessionId, "assistant", text).catch(() => {})
+
+              // Auto-title on the first exchange only (fire-and-forget, never
+              // blocks/fails the chat response).
+              if (isFirstExchange && lastUser) {
+                generateSessionTitle([
+                  { role: "user", content: lastUser.content },
+                  { role: "assistant", content: text },
+                ])
+                  .then((title) => updateSessionTitle(sessionId, title))
+                  .catch(() => {})
+              }
             }
           },
         })
