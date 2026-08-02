@@ -629,6 +629,12 @@ export default function OnePageCheckout({
   const [isPending, startTransition] = useTransition()
   const [error, setError] = useState<string | null>(null)
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
+  // Combined terms-acceptance + marketing-consent checkbox — required to
+  // place an order (there was previously NO terms/consent UI at all in this
+  // live checkout). Travels to the backend as cart/order metadata (see
+  // buildCheckoutPayload) rather than a function argument, since the PayPal
+  // flow completes the order from a separate page after a full redirect.
+  const [consentChecked, setConsentChecked] = useState(false)
 
   const patch = useCallback((p: Partial<AddrForm>) => {
     setForm((prev) => ({ ...prev, ...p }))
@@ -765,6 +771,10 @@ export default function OnePageCheckout({
       }
     }
 
+    if (!consentChecked) {
+      errs.consent = "Please accept to continue"
+    }
+
     setFieldErrors(errs)
     return Object.keys(errs).length === 0
   }
@@ -820,6 +830,7 @@ export default function OnePageCheckout({
           alt_delivery_address: JSON.stringify(structured),
           ship_to_india: destIsIndia,
           india_delivery_address: text,
+          marketing_opt_in: consentChecked,
         },
       }
     }
@@ -833,6 +844,7 @@ export default function OnePageCheckout({
         alt_delivery_address: "",
         ship_to_india: false,
         india_delivery_address: "",
+        marketing_opt_in: consentChecked,
       },
     }
   }
@@ -1135,6 +1147,9 @@ export default function OnePageCheckout({
             isIndia={isIndia}
             isPending={isPending}
             error={error}
+            consentChecked={consentChecked}
+            onConsentChange={setConsentChecked}
+            consentError={fieldErrors.consent}
             onPay={(provider) => (provider === "paypal" ? handlePaypal() : handleRazorpay())}
           />
         </section>
@@ -1336,11 +1351,17 @@ function PaymentSection({
   isIndia,
   isPending,
   error,
+  consentChecked,
+  onConsentChange,
+  consentError,
   onPay,
 }: {
   isIndia: boolean
   isPending: boolean
   error: string | null
+  consentChecked: boolean
+  onConsentChange: (checked: boolean) => void
+  consentError?: string
   onPay: (provider: "razorpay" | "paypal") => void
 }) {
   // International carts default to PayPal (Razorpay's international card payments
@@ -1380,16 +1401,45 @@ function PaymentSection({
             <p className="ph-body-sm" style={{ color: "var(--sindoor)", margin: 0 }}>{error}</p>
           </div>
         )}
+        <label
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            gap: 8,
+            marginBottom: 14,
+            cursor: "pointer",
+          }}
+        >
+          <input
+            type="checkbox"
+            checked={consentChecked}
+            onChange={(e) => onConsentChange(e.target.checked)}
+            style={{ marginTop: 3, flexShrink: 0 }}
+          />
+          <span className="ph-body-sm" style={{ color: "var(--ink-3)", lineHeight: 1.5 }}>
+            I agree to the{" "}
+            <a href="/terms" target="_blank" className="underline">Terms of Use</a>,{" "}
+            <a href="/refund" target="_blank" className="underline">Refund Policy</a> and{" "}
+            <a href="/privacy" target="_blank" className="underline">Privacy Policy</a>, and consent to
+            receive occasional order-relevant updates and offers from PariharaOnline. Unsubscribe anytime.
+          </span>
+        </label>
+        {consentError && (
+          <p className="ph-body-sm" style={{ color: "var(--sindoor)", marginTop: -8, marginBottom: 12 }}>
+            {consentError}
+          </p>
+        )}
         <button
           type="button"
           onClick={() => onPay(provider)}
-          disabled={isPending}
+          disabled={isPending || !consentChecked}
           className="ph-btn ph-btn-sindoor"
           data-testid="pay-online"
           style={{
             display: "inline-flex", alignItems: "center", gap: 8,
             width: "auto", padding: "13px 30px", fontSize: 16, fontWeight: 700,
-            opacity: isPending ? 0.7 : 1,
+            opacity: isPending || !consentChecked ? 0.6 : 1,
+            cursor: isPending || !consentChecked ? "not-allowed" : "pointer",
           }}
         >
           {isPending ? "Processing…" : "Proceed to Payment →"}

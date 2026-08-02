@@ -631,13 +631,55 @@ export async function completeCartAndGetOrder(
     const orderCacheTag = await getCacheTag("orders")
     revalidateTag(orderCacheTag)
     await removeCartId()
+    const order = cartRes.order
+    // Consent travels as cart/order metadata (same mechanism as
+    // metadata.payment_gateway) rather than a function parameter, because the
+    // PayPal flow completes the order from a completely separate page
+    // (paypal-return-client.tsx) after a full browser redirect — any React
+    // state from the original checkout form is gone by then. Metadata set on
+    // the cart before redirecting is the only thing guaranteed to survive.
+    if (order?.metadata?.marketing_opt_in === true && order?.email) {
+      // Best-effort, fire-and-forget — must never block/delay order
+      // confirmation. Same "never blocks the storefront" contract as
+      // reportFailedCheckout below.
+      recordEmailConsent(
+        order.email,
+        order.shipping_address?.country_code,
+        order.billing_address?.country_code
+      ).catch(() => {})
+    }
     return {
       ok: true,
-      orderId: cartRes.order.id,
-      countryCode: (cartRes.order.shipping_address?.country_code || "").toLowerCase(),
+      orderId: order.id,
+      countryCode: (order.shipping_address?.country_code || "").toLowerCase(),
     }
   }
   return { ok: false, reason: "not_an_order" }
+}
+
+/**
+ * Records marketing-email consent given at checkout (the "I agree to Terms
+ * & to receive updates" checkbox) into the backend's email_subscribers list.
+ * Fire-and-forget from the caller's perspective — this must never block or
+ * fail checkout itself.
+ */
+async function recordEmailConsent(
+  email: string,
+  shippingCountry?: string | null,
+  billingCountry?: string | null
+): Promise<void> {
+  try {
+    await sdk.client.fetch(`/store/email-consent`, {
+      method: "POST",
+      body: {
+        email,
+        shipping_country: shippingCountry || undefined,
+        billing_country: billingCountry || undefined,
+      },
+    })
+  } catch {
+    // Best-effort — swallow. Consent can be re-captured on a future order.
+  }
 }
 
 /**
