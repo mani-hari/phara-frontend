@@ -650,16 +650,19 @@ export async function completeCartAndGetOrder(
 export async function reportFailedCheckout(
   cartId: string | undefined,
   reason: string,
-  provider: string
+  provider: string,
+  context?: Record<string, unknown>
 ) {
   try {
     const id = cartId || (await getCartId())
     if (!id) return
     const headers = { ...(await getAuthHeaders()) }
+    // `context` carries the gateway payment reference (e.g. razorpay_payment_id)
+    // so staff can reconcile a real charge that failed to become an order. MAN-21.
     await sdk.client.fetch(`/store/report-failed-checkout`, {
       method: "POST",
       headers,
-      body: { cart_id: id, reason, provider },
+      body: { cart_id: id, reason, provider, ...(context || {}) },
     })
   } catch (e) {
     logCheckoutError("report_failed_checkout_error", e, { cartId, reason, provider })

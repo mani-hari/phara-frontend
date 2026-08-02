@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server"
-import { logCheckoutError } from "@lib/util/checkout-log"
+import { logCheckoutError, logCheckoutEvent } from "@lib/util/checkout-log"
 
 export async function POST(req: NextRequest) {
   try {
-    const { amount, currency = "INR", receipt, notes } = await req.json()
+    const { cart_id, amount, currency = "INR", receipt, notes } = await req.json()
 
     const keyId = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID
     const keySecret = process.env.RAZORPAY_KEY_SECRET
@@ -26,8 +26,12 @@ export async function POST(req: NextRequest) {
       body: JSON.stringify({
         amount: Math.round(amount * 100), // major units → paise (Razorpay requires the smallest currency unit)
         currency,
-        receipt: receipt || `order_${Date.now()}`,
-        notes: notes || {},
+        // Stamp the Medusa cart_id onto the Razorpay order so the payment is
+        // recoverable server-side (webhook completion + reconciliation). Without
+        // this, a charged payment has no link to any cart → "paid, no order" is
+        // impossible to reconcile from data. See MAN-21.
+        receipt: receipt || cart_id || `order_${Date.now()}`,
+        notes: { ...(notes || {}), cart_id: cart_id || "" },
       }),
     })
 
@@ -45,6 +49,14 @@ export async function POST(req: NextRequest) {
         { status: response.status }
       )
     }
+
+    // Correlation trail (Vercel logs): cart_id ↔ razorpay_order_id. MAN-21.
+    logCheckoutEvent("razorpay_create_order_ok", {
+      cart_id: cart_id || null,
+      razorpay_order_id: order.id,
+      amount,
+      currency,
+    })
 
     return NextResponse.json(order)
   } catch (error: any) {
