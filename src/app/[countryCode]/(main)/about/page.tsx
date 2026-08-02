@@ -9,9 +9,57 @@ export const metadata: Metadata = {
   openGraph: { url: "/about" },
 }
 
+const VEDIC_SCHOLARS = [
+  "Shri Parthasarathy Srinivasan",
+  "Shri Ganapati Shastrigal",
+  "Shri Satyanarayana Sharma",
+  "Shri Gayatri Shastrigal",
+]
+
 export default function AboutPage() {
+  // AboutPage + Organization E-E-A-T signals — every field here mirrors what
+  // is visibly rendered on this page below (founding year, legal entity,
+  // scholar credentials, track record, contact). Nothing invented (MAN-18).
+  const aboutJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "AboutPage",
+    name: "About PariharaOnline",
+    url: "https://pariharaonline.com/about",
+    mainEntity: {
+      "@type": "Organization",
+      name: "PariharaOnline",
+      legalName: "Harkarma Enterprises LLP",
+      identifier: "LLP ID: AAM-1863",
+      foundingDate: "2009",
+      description:
+        "PariharaOnline bridges modern lives with sacred Hindu traditions worldwide, facilitating authentic Vedic rituals through temple pujas and personalized homams, and delivering blessed prasadham to devotees across 50+ countries.",
+      slogan: "Ancient Rituals, Modern Convenience",
+      knowsAbout: [
+        "Hindu temple pujas",
+        "Vedic homams (fire rituals)",
+        "Vedic astrology",
+        "Prasadam delivery",
+      ],
+      employee: VEDIC_SCHOLARS.map((name) => ({
+        "@type": "Person",
+        name,
+        jobTitle: "Vedic Scholar & Priest",
+      })),
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+91-97432 44501",
+        email: "hello@pariharaonline.com",
+        contactType: "customer service",
+      },
+    },
+  }
+
   return (
     <div className="bg-white min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutJsonLd) }}
+      />
       {/* Hero */}
       <section className="bg-gradient-to-br from-brand-50 via-white to-warm-50 py-16 sm:py-20">
         <div className="content-container max-w-4xl">
@@ -83,12 +131,7 @@ export default function AboutPage() {
             every ritual is performed with utmost authenticity and devotion.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {[
-              "Shri Parthasarathy Srinivasan",
-              "Shri Ganapati Shastrigal",
-              "Shri Satyanarayana Sharma",
-              "Shri Gayatri Shastrigal",
-            ].map((name) => (
+            {VEDIC_SCHOLARS.map((name) => (
               <div
                 key={name}
                 className="p-4 rounded-xl border border-grey-10 bg-brand-50/30"

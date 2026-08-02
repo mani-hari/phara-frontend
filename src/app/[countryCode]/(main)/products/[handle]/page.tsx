@@ -3,6 +3,12 @@ import { notFound } from "next/navigation"
 import { listProducts } from "@lib/data/products"
 import { getRegion, listRegions } from "@lib/data/regions"
 import { getProductPrice } from "@lib/util/get-product-price"
+import {
+  buildBreadcrumbJsonLd,
+  buildFaqJsonLd,
+  extractHowToFromDescription,
+} from "@lib/util/json-ld"
+import { PRODUCT_FAQ_CONTENT } from "@lib/data/product-faq-content"
 import ProductTemplate from "@modules/products/templates"
 import { HttpTypes } from "@medusajs/types"
 
@@ -133,19 +139,29 @@ export default async function ProductPage(props: Props) {
 
   const { cheapestPrice } = getProductPrice({ product: pricedProduct })
 
+  const productPath = `/products/${params.handle}`
+
   const productJsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
     name: pricedProduct.title,
     description: pricedProduct.description || pricedProduct.title,
     image: pricedProduct.thumbnail || undefined,
+    sku: pricedProduct.id,
+    url: productPath,
+    ...(pricedProduct.collection?.title && {
+      category: pricedProduct.collection.title,
+    }),
     brand: {
       "@type": "Brand",
       name: "PariharaOnline",
     },
+    // No aggregateRating/review markup — the site has no review system yet
+    // and we don't fabricate ratings (MAN-18).
     ...(cheapestPrice && {
       offers: {
         "@type": "Offer",
+        url: productPath,
         price: cheapestPrice.calculated_price_number,
         priceCurrency: cheapestPrice.currency_code?.toUpperCase(),
         availability: "https://schema.org/InStock",
@@ -157,17 +173,59 @@ export default async function ProductPage(props: Props) {
     }),
   }
 
+  // BreadcrumbList — mirrors the visible breadcrumb rendered in
+  // ProductTemplate (Home > Collection > Product).
+  const breadcrumbJsonLd = buildBreadcrumbJsonLd([
+    { name: "Home", url: "/" },
+    pricedProduct.collection
+      ? {
+          name: pricedProduct.collection.title,
+          url: `/collections/${pricedProduct.collection.handle}`,
+        }
+      : { name: "Store", url: "/store" },
+    { name: pricedProduct.title, url: productPath },
+  ])
+
+  // HowTo — parsed from the real "How the homam/pooja is performed" section
+  // of the product description, when present. Never fabricated.
+  const howToJsonLd = extractHowToFromDescription({
+    title: pricedProduct.title,
+    description: pricedProduct.description,
+    url: productPath,
+  })
+
+  // FAQPage — only for the hand-curated hero product pages (real Q&A).
+  const faqEntries = PRODUCT_FAQ_CONTENT[params.handle]
+  const faqJsonLd = faqEntries ? buildFaqJsonLd(faqEntries) : null
+
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      {howToJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToJsonLd) }}
+        />
+      )}
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
+      )}
       <ProductTemplate
         product={pricedProduct}
         region={region}
         countryCode={params.countryCode}
         images={images}
+        faqEntries={faqEntries}
       />
     </>
   )

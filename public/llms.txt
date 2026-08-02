@@ -58,7 +58,20 @@ Authentic temple offerings shipped worldwide:
 - Saturn Transit Poojas (₹1,750 / $22)
 - Navratri Special Package (₹1,800 / $22)
 - Diwali Lakshmi Homam (₹2,750 / $34)
-- Jupiter Transit 2025 (₹1,750 / $22)
+- Jupiter Transit 2025 (from ₹1,600 / $19)
+
+## Popular Products (Direct Links)
+Highest-traffic product pages, with live handles and current INR pricing
+(fetched from the store API; USD price shown for the international region):
+- [Navagraha Homam](https://pariharaonline.com/products/navagraha-homam) — Planetary/Rahu-Ketu dosha remedy — ₹8,450 / $102
+- [Rahu Ketu Dosha Parihara Pooja / Sarpa Dosha Parihara Pooja at Sri Kalahasti Temple](https://pariharaonline.com/products/rahu-ketu-dosha-parihara-pooja-sarpa-dosha-parihara-pooja-at-sri-kalahasti-temple) — ₹1,450 / $18
+- [Swayamvara Parvathi Homam](https://pariharaonline.com/products/swayamvara-parvathi-homam) — Marriage blessings — ₹8,350 / $101
+- [Mrityunjaya Homam](https://pariharaonline.com/products/mrityunjaya-homam) — Health and longevity — ₹7,600 / $92
+- [Garbarakshambigai Temple Ghee Prasadham](https://pariharaonline.com/products/garbharakshambika-ghee) — For conceiving — ₹2,470 / $30
+- [Garbarakshambigai Temple Oil Prasadham](https://pariharaonline.com/products/garbharakshambika-oil) — For safe childbirth & delivery — ₹2,470 / $30
+- [Shirdi Sai Baba Udi Prasadham](https://pariharaonline.com/products/shirdi-sai-baba-udi-prasadham) — Sacred ash delivered worldwide — ₹950 / $12
+- [Kamakshi Amman Temple Kanchipuram Pariharam](https://pariharaonline.com/products/kanchi-kamakshi) — For delay in marriage — ₹2,450 / $30
+- [Thila Homam at Rameswaram](https://pariharaonline.com/products/tila-homam-at-rameswaram) — Ancestral remedy (pitru dosha) — ₹23,500 / $284
 
 ## How It Works
 1. Browse & Select - Choose a puja, homam, or astrology service

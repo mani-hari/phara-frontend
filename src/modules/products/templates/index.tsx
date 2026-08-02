@@ -9,6 +9,7 @@ import {
   getMockProductDetailContent,
   howItWorksSteps,
 } from "@lib/mock-storefront"
+import { ProductFaqEntry } from "@lib/data/product-faq-content"
 
 import ProductActionsWrapper from "./product-actions-wrapper"
 import RelatedProducts from "../components/related-products"
@@ -18,6 +19,10 @@ type ProductTemplateProps = {
   region: HttpTypes.StoreRegion
   countryCode: string
   images: HttpTypes.StoreProductImage[]
+  // Real, product-specific Q&A (hero product pages only) — see
+  // src/lib/data/product-faq-content.ts. Rendered as visible, liftable
+  // answer-shaped content in addition to FAQPage JSON-LD (MAN-18).
+  faqEntries?: ProductFaqEntry[]
 }
 
 export default function ProductTemplate({
@@ -25,6 +30,7 @@ export default function ProductTemplate({
   region,
   countryCode,
   images,
+  faqEntries,
 }: ProductTemplateProps) {
   const content = getMockProductDetailContent(product)
   const gallery = getProductGalleryImages(product)
@@ -477,6 +483,72 @@ export default function ProductTemplate({
           </div>
         </div>
       </section>
+
+      {/* ── Real, product-specific FAQ (hero products only) ─────── */}
+      {faqEntries && faqEntries.length > 0 && (
+        <section style={{ background: "var(--paper-2)", padding: "64px 0" }}>
+          <div className="content-container" style={{ maxWidth: 860 }}>
+            <div style={{ textAlign: "center", marginBottom: 40 }}>
+              <p className="ph-eyebrow ph-eyebrow-gold" style={{ marginBottom: 10 }}>
+                Frequently asked
+              </p>
+              <h2 className="ph-h2">About {product.title}.</h2>
+            </div>
+
+            <div>
+              {faqEntries.map((faq, i) => (
+                <details key={i} style={{ borderBottom: "1px solid var(--ink-line)" }}>
+                  <summary
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: 16,
+                      padding: "22px 0",
+                      cursor: "pointer",
+                      listStyle: "none",
+                    }}
+                  >
+                    <span
+                      style={{
+                        fontFamily: "var(--serif)",
+                        fontSize: 21,
+                        fontWeight: 500,
+                        color: "var(--ink)",
+                        lineHeight: 1.25,
+                      }}
+                    >
+                      {faq.question}
+                    </span>
+                    <span
+                      style={{
+                        width: 30,
+                        height: 30,
+                        borderRadius: "50%",
+                        border: "1px solid var(--ink-line-2)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        flexShrink: 0,
+                        fontSize: 18,
+                        color: "var(--ink)",
+                      }}
+                    >
+                      +
+                    </span>
+                  </summary>
+                  <div
+                    className="ph-body"
+                    style={{ paddingBottom: 22, color: "var(--ink-2)", lineHeight: 1.7 }}
+                  >
+                    {faq.answer}
+                  </div>
+                </details>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* ── FAQ ───────────────────────────────────────────────── */}
       <section style={{ background: "var(--paper)", padding: "64px 0" }}>
