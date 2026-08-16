@@ -4,7 +4,7 @@ const MEDUSA = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "https://pariharaon
 const PUB = process.env.PUB || ""
 const REGION_INDIA = "reg_01KCFT12W3X3NF5JYTMXYV7V7C"
 const REGION_INTL = "reg_01KCFT01096J7B6E4TS591JN5V"
-const base = "http://localhost:3000"
+const base = "http://localhost:5001"
 
 async function seedCart(regionId) {
   const ctx = await request.newContext({
