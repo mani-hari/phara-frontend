@@ -10,6 +10,7 @@ import { getProductPrice } from "@lib/util/get-product-price"
 import OptionSelect from "./option-select"
 import { HttpTypes } from "@medusajs/types"
 import { isSimpleProduct } from "@lib/util/product"
+import QuantitySelector from "@modules/common/components/quantity-selector"
 
 type MobileActionsProps = {
   product: HttpTypes.StoreProduct
@@ -22,6 +23,9 @@ type MobileActionsProps = {
   show: boolean
   optionsDisabled: boolean
   buttonText?: string
+  quantity: number
+  updateQuantity: (quantity: number) => void
+  maxQuantity?: number
 }
 
 const MobileActions: React.FC<MobileActionsProps> = ({
@@ -35,6 +39,9 @@ const MobileActions: React.FC<MobileActionsProps> = ({
   show,
   optionsDisabled,
   buttonText,
+  quantity,
+  updateQuantity,
+  maxQuantity,
 }) => {
   const { state, open, close } = useToggleState()
 
@@ -101,6 +108,18 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                 <div></div>
               )}
             </div>
+            {inStock && (
+              <div className="flex items-center justify-center gap-x-3 w-full">
+                <span className="ph-label">Qty</span>
+                <QuantitySelector
+                  quantity={quantity}
+                  onChange={updateQuantity}
+                  max={maxQuantity}
+                  disabled={isAdding}
+                  data-testid="mobile-quantity-selector"
+                />
+              </div>
+            )}
             <div className={clx("grid grid-cols-2 w-full gap-x-4", {
               "!grid-cols-1": isSimple
             })}>

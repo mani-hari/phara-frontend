@@ -5,6 +5,7 @@ import { useIntersection } from "@lib/hooks/use-in-view"
 import { HttpTypes } from "@medusajs/types"
 import { Button } from "@medusajs/ui"
 import Divider from "@modules/common/components/divider"
+import QuantitySelector from "@modules/common/components/quantity-selector"
 import OptionSelect from "@modules/products/components/product-actions/option-select"
 import PujaDetailsForm, {
   PujaDetails,
@@ -63,6 +64,7 @@ export default function ProductActions({
     }
     return {}
   })
+  const [quantity, setQuantity] = useState(1)
   const [isAdding, setIsAdding] = useState(false)
   const [pujaDetails, setPujaDetails] =
     useState<PujaDetails>(initialPujaDetails)
@@ -135,6 +137,25 @@ export default function ProductActions({
     return false
   }, [selectedVariant])
 
+  // Cap by real stock when Medusa is tracking inventory for this variant and
+  // backorders aren't allowed; otherwise there's no ceiling to enforce.
+  const maxQuantity = useMemo(() => {
+    if (
+      selectedVariant?.manage_inventory &&
+      !selectedVariant?.allow_backorder
+    ) {
+      return Math.max(selectedVariant.inventory_quantity || 0, 1)
+    }
+    return undefined
+  }, [selectedVariant])
+
+  // Quantity is scoped to whichever variant is currently selected — reset to
+  // 1 whenever the variant changes so a qty picked for one variant's stock
+  // never silently carries over/overflows another variant's stock.
+  useEffect(() => {
+    setQuantity(1)
+  }, [selectedVariant?.id])
+
   const actionsRef = useRef<HTMLDivElement>(null)
   const inView = useIntersection(actionsRef, "0px")
 
@@ -195,7 +216,7 @@ export default function ProductActions({
 
     await addToCart({
       variantId: selectedVariant.id,
-      quantity: 1,
+      quantity,
       countryCode,
       metadata: metadata as any,
     })
@@ -208,6 +229,7 @@ export default function ProductActions({
     // Reset form after adding to cart
     setPujaDetails({ ...initialPujaDetails, devotees: [{ ...emptyDevotee }] })
     setShowPujaForm(false)
+    setQuantity(1)
     setIsAdding(false)
   }
 
@@ -237,6 +259,19 @@ export default function ProductActions({
         </div>
 
         {showPrice && <ProductPrice product={product} variant={selectedVariant} />}
+
+        {inStock && (
+          <div className="flex items-center gap-x-3">
+            <span className="ph-label">Quantity</span>
+            <QuantitySelector
+              quantity={quantity}
+              onChange={setQuantity}
+              max={maxQuantity}
+              disabled={!!disabled || isAdding}
+              data-testid="product-quantity-selector"
+            />
+          </div>
+        )}
 
         {/* Puja Details Form */}
         {showPujaDetails && showPujaForm && (
@@ -292,6 +327,9 @@ export default function ProductActions({
           show={!inView}
           optionsDisabled={!!disabled || isAdding}
           buttonText={buttonText}
+          quantity={quantity}
+          updateQuantity={setQuantity}
+          maxQuantity={maxQuantity}
         />
       </div>
     </>
