@@ -32,7 +32,8 @@ removed (`src/lib/auth.ts`, the `[...nextauth]` route, `SessionProvider`).
 - Backend env: `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`,
   `GOOGLE_CALLBACK_URL=https://www.pariharaonline.com/account/google-callback`.
 - Google Cloud **Authorized redirect URI** = that exact callback URL (+
-  `http://localhost:3000/account/google-callback` for dev). NOT the backend URL.
+  `http://localhost:5001/account/google-callback` for dev — 5001 is this project's
+  reserved local dev port). NOT the backend URL.
 - Frontend env: `ADMIN_EMAILS` (comma-separated) for the admin gate.
 - The three strings (Google Cloud redirect URI, backend `GOOGLE_CALLBACK_URL`,
   the storefront page path) must be **identical** or Google returns

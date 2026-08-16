@@ -298,7 +298,7 @@ For the frontend to work end-to-end, the Medusa backend needs:
 4. **Product variants with calculated prices** — every variant must have a price set for each region's currency. If a variant has no price for the current region, the add-to-cart button is disabled.
 5. **Shipping options** configured per region — the checkout delivery step lists these.
 6. **Stock management** — `inventory_quantity > 0` or `manage_inventory: false` for add-to-cart to be enabled.
-7. **CORS** — must allow the frontend domain (localhost:3000 in dev, Vercel URL in prod).
+7. **CORS** — must allow the frontend domain (localhost:5001 in dev — this project's reserved dev port, Vercel URL in prod). Update the Medusa backend's `STORE_CORS` if it's still pinned to :3000.
 
 ---
 

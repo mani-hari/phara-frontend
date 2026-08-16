@@ -12,7 +12,7 @@ astrology services, and multi-region (India-default) checkout with PayPal/Razorp
 
 ```bash
 npm install
-npm run dev          # http://localhost:3000
+npm run dev          # http://localhost:5001 (reserved port for this project — don't reuse 3000/8000)
 ```
 
 Requires Node 20+ and the environment variables listed in [`.env.example`](.env.example)
@@ -22,7 +22,7 @@ Requires Node 20+ and the environment variables listed in [`.env.example`](.env.
 
 | Command | Purpose |
 |---|---|
-| `npm run dev` | Local dev server on :3000 |
+| `npm run dev` | Local dev server on :5001 (reserved) |
 | `npm run build` | Production build |
 | `npm run start` | Serve the production build |
 | `npm run lint` | ESLint (also see `next.config.js` → `eslint.ignoreDuringBuilds`) |
