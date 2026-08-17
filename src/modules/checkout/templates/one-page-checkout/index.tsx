@@ -635,6 +635,11 @@ export default function OnePageCheckout({
   // buildCheckoutPayload) rather than a function argument, since the PayPal
   // flow completes the order from a separate page after a full redirect.
   const [consentChecked, setConsentChecked] = useState(false)
+  // Separate from consentChecked (Terms/Refund/Privacy, mandatory to purchase)
+  // — marketing consent must be its own, non-blocking checkbox, never bundled
+  // with required legal agreement. Defaults to checked (positive framing,
+  // easy to uncheck) per Mani's explicit direction.
+  const [marketingOptIn, setMarketingOptIn] = useState(true)
 
   const patch = useCallback((p: Partial<AddrForm>) => {
     setForm((prev) => ({ ...prev, ...p }))
@@ -830,7 +835,7 @@ export default function OnePageCheckout({
           alt_delivery_address: JSON.stringify(structured),
           ship_to_india: destIsIndia,
           india_delivery_address: text,
-          marketing_opt_in: consentChecked,
+          marketing_opt_in: marketingOptIn,
         },
       }
     }
@@ -1150,6 +1155,8 @@ export default function OnePageCheckout({
             consentChecked={consentChecked}
             onConsentChange={setConsentChecked}
             consentError={fieldErrors.consent}
+            marketingOptIn={marketingOptIn}
+            onMarketingOptInChange={setMarketingOptIn}
             onPay={(provider) => (provider === "paypal" ? handlePaypal() : handleRazorpay())}
           />
         </section>
@@ -1354,6 +1361,8 @@ function PaymentSection({
   consentChecked,
   onConsentChange,
   consentError,
+  marketingOptIn,
+  onMarketingOptInChange,
   onPay,
 }: {
   isIndia: boolean
@@ -1362,6 +1371,8 @@ function PaymentSection({
   consentChecked: boolean
   onConsentChange: (checked: boolean) => void
   consentError?: string
+  marketingOptIn: boolean
+  onMarketingOptInChange: (checked: boolean) => void
   onPay: (provider: "razorpay" | "paypal") => void
 }) {
   // International carts default to PayPal (Razorpay's international card payments
@@ -1420,8 +1431,7 @@ function PaymentSection({
             I agree to the{" "}
             <a href="/terms" target="_blank" className="underline">Terms of Use</a>,{" "}
             <a href="/refund" target="_blank" className="underline">Refund Policy</a> and{" "}
-            <a href="/privacy" target="_blank" className="underline">Privacy Policy</a>, and consent to
-            receive occasional order-relevant updates and offers from PariharaOnline. Unsubscribe anytime.
+            <a href="/privacy" target="_blank" className="underline">Privacy Policy</a>.
           </span>
         </label>
         {consentError && (
@@ -1429,6 +1439,30 @@ function PaymentSection({
             {consentError}
           </p>
         )}
+        <label
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            gap: 8,
+            marginBottom: 14,
+            cursor: "pointer",
+            background: "var(--paper-2, #faf7f2)",
+            border: "1px solid var(--ink-line)",
+            borderRadius: 8,
+            padding: "10px 12px",
+          }}
+        >
+          <input
+            type="checkbox"
+            checked={marketingOptIn}
+            onChange={(e) => onMarketingOptInChange(e.target.checked)}
+            style={{ marginTop: 3, flexShrink: 0, accentColor: "var(--sindoor)", width: 18, height: 18 }}
+          />
+          <span className="ph-body-sm" style={{ color: "var(--ink-3)", lineHeight: 1.5 }}>
+            🪔 Yes, remind me about upcoming festivals — send me the Hindu calendar and festival-day pooja
+            reminders so I never miss an auspicious date. Unsubscribe anytime.
+          </span>
+        </label>
         <button
           type="button"
           onClick={() => onPay(provider)}
