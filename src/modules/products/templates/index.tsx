@@ -54,8 +54,12 @@ export default function ProductTemplate({
     ? gallery
     : images.slice(0, 6).map((img) => img.url).filter(Boolean)
 
-  // Real Medusa description → non-empty lines (bullets detected in About)
-  const descriptionLines = (product.description ?? "")
+  // Real Medusa description → non-empty lines (bullets detected in About).
+  // Uses displayDescription (pre-translated line-by-line in page.tsx when
+  // lang !== "en", so bullet/paragraph structure survives translation
+  // intact) rather than product.description directly — this is the full
+  // "About This Ritual" content, not just the clamped preview above.
+  const descriptionLines = (displayDescription ?? "")
     .split(/\r?\n/)
     .map((s) => s.trim())
     .filter(Boolean)

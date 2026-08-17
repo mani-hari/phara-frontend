@@ -209,20 +209,39 @@ export default async function ProductPage(props: Props) {
   // themselves (used above for JSON-LD) — separate variables passed to
   // ProductTemplate, which falls back to the English original when lang="en"
   // or a translation is unavailable.
+  //
+  // The description is translated LINE BY LINE (not as one blob) so the
+  // "About This Ritual" bullet/paragraph structure survives intact —
+  // ProductTemplate's descriptionLines splits displayDescription back into
+  // lines, and a single-string round-trip through translation doesn't
+  // reliably preserve internal newlines. Bullet markers (-, –, •, *) are
+  // stripped before translating each line's text and re-added after, so the
+  // template's bullet-detection regex still matches on the translated line.
+  const BULLET_RE = /^([-–•*]\s*)/
+  const descLines = (pricedProduct.description ?? "")
+    .split(/\r?\n/)
+    .map((s) => s.trim())
+    .filter(Boolean)
+  const descBulletPrefixes = descLines.map((line) => line.match(BULLET_RE)?.[1] || "")
+  const descLineTexts = descLines.map((line, i) => line.slice(descBulletPrefixes[i].length))
+
   let translatedTitle: string | undefined
   let translatedDescription: string | null | undefined
   let translatedFaqEntries: ProductFaqEntry[] | undefined = faqEntries
   if (lang !== "en") {
     const toTranslate = [
       pricedProduct.title,
-      pricedProduct.description || "",
+      ...descLineTexts,
       ...(faqEntries || []).flatMap((f) => [f.question, f.answer]),
     ]
     const translated = await translateBatch(toTranslate, lang)
     translatedTitle = translated[0]
-    translatedDescription = pricedProduct.description ? translated[1] : pricedProduct.description
+    const translatedLineTexts = translated.slice(1, 1 + descLineTexts.length)
+    translatedDescription = pricedProduct.description
+      ? translatedLineTexts.map((text, i) => `${descBulletPrefixes[i]}${text}`).join("\n")
+      : pricedProduct.description
     if (faqEntries) {
-      const faqTexts = translated.slice(2)
+      const faqTexts = translated.slice(1 + descLineTexts.length)
       translatedFaqEntries = faqEntries.map((f, i) => ({
         question: faqTexts[i * 2],
         answer: faqTexts[i * 2 + 1],
