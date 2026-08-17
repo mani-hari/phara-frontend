@@ -3,7 +3,7 @@
 import fs from "node:fs";
 
 const ARM = ".medusa-admin.armed";
-const WINDOW_MIN = 30;
+const WINDOW_MIN = 60;
 const cmd = process.argv[2] || "status";
 const now = Math.floor(Date.now() / 1000);
 
