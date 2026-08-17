@@ -142,6 +142,20 @@ test('unchecking "billing same as delivery" reveals a billing form', async ({ pa
   await expect(page.locator('input[autocomplete="billing given-name"]')).toBeVisible()
 })
 
+test("marketing consent checkbox is separate from the mandatory terms checkbox and defaults checked", async ({ page, context }) => {
+  await gotoCheckoutWithCart(page, context)
+  const terms = page.getByText(/I agree to the/i).locator("..").locator('input[type="checkbox"]')
+  const marketing = page.getByText(/remind me about upcoming festivals/i).locator("..").locator('input[type="checkbox"]')
+  await expect(terms).not.toBeChecked()
+  await expect(marketing).toBeChecked()
+  // Pay button gated only by the terms checkbox, never by marketing consent.
+  await expect(page.getByTestId("pay-online")).toBeDisabled()
+  await marketing.uncheck()
+  await expect(page.getByTestId("pay-online")).toBeDisabled()
+  await terms.check()
+  await expect(page.getByTestId("pay-online")).toBeEnabled()
+})
+
 test("India cart: India shipping, Razorpay-only payment, no PayPal", async ({ page, context }) => {
   await gotoCheckoutWithCart(page, context, "in", REGION_INDIA)
   await expect(page.getByText(/Free shipping/i).first()).toBeVisible()
