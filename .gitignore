@@ -65,3 +65,5 @@ price-backup-*.json
 
 # Shopify customer/order exports — PII, never commit
 customer_data/
+.enrichment-progress.json
+.listmonk-sync-progress.json
