@@ -10,6 +10,8 @@ import {
   howItWorksSteps,
 } from "@lib/mock-storefront"
 import { ProductFaqEntry } from "@lib/data/product-faq-content"
+import LanguageSwitcher from "@modules/common/components/language-switcher"
+import type { LangCode } from "@lib/i18n/languages"
 
 import ProductActionsWrapper from "./product-actions-wrapper"
 import RelatedProducts from "../components/related-products"
@@ -23,6 +25,13 @@ type ProductTemplateProps = {
   // src/lib/data/product-faq-content.ts. Rendered as visible, liftable
   // answer-shaped content in addition to FAQPage JSON-LD (MAN-18).
   faqEntries?: ProductFaqEntry[]
+  // i18n — display-only, never affects product/JSON-LD data (page.tsx keeps
+  // `product` itself in English for structured data; these are pre-translated
+  // separately so a translation hiccup can never corrupt the real product data).
+  lang?: LangCode
+  hintedLang?: LangCode | null
+  translatedTitle?: string
+  translatedDescription?: string | null
 }
 
 export default function ProductTemplate({
@@ -31,7 +40,14 @@ export default function ProductTemplate({
   countryCode,
   images,
   faqEntries,
+  lang = "en",
+  hintedLang,
+  translatedTitle,
+  translatedDescription,
 }: ProductTemplateProps) {
+  const displayTitle = lang !== "en" && translatedTitle ? translatedTitle : product.title
+  const displayDescription =
+    lang !== "en" && translatedDescription !== undefined ? translatedDescription : product.description
   const content = getMockProductDetailContent(product)
   const gallery = getProductGalleryImages(product)
   const displayGallery = gallery.length
@@ -212,9 +228,11 @@ export default function ProductTemplate({
           <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
 
             {/* Title */}
-            <h1 className="ph-h1" style={{ margin: 0 }} data-testid="product-title">
-              {product.title}
+            <h1 className="ph-h1" style={{ margin: 0 }} data-testid="product-title" lang={lang !== "en" ? lang : undefined}>
+              {displayTitle}
             </h1>
+
+            <LanguageSwitcher hintedLang={hintedLang} />
 
             {hasDescription && (
               <>
@@ -233,8 +251,9 @@ export default function ProductTemplate({
                       WebkitBoxOrient: "vertical",
                       overflow: "hidden",
                     }}
+                    lang={lang !== "en" ? lang : undefined}
                   >
-                    {product.description}
+                    {displayDescription}
                   </p>
                   <a
                     href="#about-ritual"
@@ -517,6 +536,7 @@ export default function ProductTemplate({
                         color: "var(--ink)",
                         lineHeight: 1.25,
                       }}
+                      lang={lang !== "en" ? lang : undefined}
                     >
                       {faq.question}
                     </span>
@@ -540,6 +560,7 @@ export default function ProductTemplate({
                   <div
                     className="ph-body"
                     style={{ paddingBottom: 22, color: "var(--ink-2)", lineHeight: 1.7 }}
+                    lang={lang !== "en" ? lang : undefined}
                   >
                     {faq.answer}
                   </div>

@@ -1,6 +1,10 @@
 import { Metadata } from "next"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { FAQ_CATEGORIES } from "@lib/data/faq-data"
+import LanguageSwitcher from "@modules/common/components/language-switcher"
+import { translateBatch } from "@lib/i18n/translate"
+import { isLangCode, type LangCode } from "@lib/i18n/languages"
+import { getHintedLang } from "@lib/i18n/geo-hint"
 import {
   Flame,
   Star,
@@ -37,7 +41,35 @@ export const metadata: Metadata = {
   openGraph: { url: "/faq" },
 }
 
-export default function FAQIndexPage() {
+export default async function FAQIndexPage(props: {
+  searchParams: Promise<{ lang?: string }>
+}) {
+  const { lang: langParam } = await props.searchParams
+  const lang: LangCode = isLangCode(langParam) ? langParam : "en"
+  const hintedLang = getHintedLang()
+
+  const previewEntries = FAQ_CATEGORIES.slice(0, 4).flatMap((cat) => cat.questions.slice(0, 1))
+
+  const toTranslate = [
+    "Frequently Asked Questions",
+    "Everything you need to know about Hindu pujas, Vedic astrology, temple services, and spiritual remedies. Browse by topic below.",
+    ...FAQ_CATEGORIES.flatMap((c) => [c.title, c.description]),
+    ...previewEntries.flatMap((q) => [q.question, q.answer]),
+  ]
+  const translated = await translateBatch(toTranslate, lang)
+  const [heroTitle, heroSubtitle, ...rest] = translated
+  const categoryTexts = rest.slice(0, FAQ_CATEGORIES.length * 2)
+  const previewTexts = rest.slice(FAQ_CATEGORIES.length * 2)
+  const categories = FAQ_CATEGORIES.map((c, i) => ({
+    ...c,
+    title: categoryTexts[i * 2],
+    description: categoryTexts[i * 2 + 1],
+  }))
+  const preview = previewEntries.map((q, i) => ({
+    question: previewTexts[i * 2],
+    answer: previewTexts[i * 2 + 1],
+  }))
+
   return (
     <div className="bg-white min-h-screen">
       {/* Hero */}
@@ -47,12 +79,14 @@ export default function FAQIndexPage() {
             <Search className="w-4 h-4" />
             <span>Knowledge Base</span>
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold text-grey-90 mb-4">
-            Frequently Asked Questions
+          <h1 className="text-4xl sm:text-5xl font-bold text-grey-90 mb-4" lang={lang}>
+            {heroTitle}
           </h1>
-          <p className="text-lg text-grey-50 max-w-2xl mx-auto">
-            Everything you need to know about Hindu pujas, Vedic astrology,
-            temple services, and spiritual remedies. Browse by topic below.
+          <div className="flex justify-center mb-4">
+            <LanguageSwitcher hintedLang={hintedLang} />
+          </div>
+          <p className="text-lg text-grey-50 max-w-2xl mx-auto" lang={lang}>
+            {heroSubtitle}
           </p>
         </div>
       </section>
@@ -61,12 +95,12 @@ export default function FAQIndexPage() {
       <section className="py-12 sm:py-16">
         <div className="content-container">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {FAQ_CATEGORIES.map((category) => {
+            {categories.map((category) => {
               const IconComponent = iconMap[category.icon] || Flame
               return (
                 <LocalizedClientLink
                   key={category.slug}
-                  href={`/faq/${category.slug}`}
+                  href={`/faq/${category.slug}${lang !== "en" ? `?lang=${lang}` : ""}`}
                   className="group flex flex-col p-6 rounded-2xl border border-grey-10 hover:border-brand-200 hover:shadow-md transition-all duration-200"
                 >
                   <div className="flex items-start justify-between mb-4">
@@ -75,10 +109,10 @@ export default function FAQIndexPage() {
                     </div>
                     <ChevronRight className="w-5 h-5 text-grey-30 group-hover:text-brand-500 group-hover:translate-x-1 transition-all" />
                   </div>
-                  <h2 className="text-lg font-semibold text-grey-90 mb-2">
+                  <h2 className="text-lg font-semibold text-grey-90 mb-2" lang={lang}>
                     {category.title}
                   </h2>
-                  <p className="text-sm text-grey-50 mb-4 leading-relaxed">
+                  <p className="text-sm text-grey-50 mb-4 leading-relaxed" lang={lang}>
                     {category.description}
                   </p>
                   <span className="text-sm text-brand-600 font-medium mt-auto">
@@ -98,22 +132,20 @@ export default function FAQIndexPage() {
             Most Popular Questions
           </h2>
           <div className="max-w-3xl mx-auto space-y-4">
-            {FAQ_CATEGORIES.slice(0, 4).flatMap((cat) =>
-              cat.questions.slice(0, 1).map((q) => (
-                <details
-                  key={q.question}
-                  className="group bg-white rounded-xl border border-grey-10 overflow-hidden"
-                >
-                  <summary className="flex items-center justify-between cursor-pointer p-5 text-grey-90 font-medium hover:text-brand-600 transition-colors">
-                    <span>{q.question}</span>
-                    <ChevronRight className="w-5 h-5 text-grey-30 group-open:rotate-90 transition-transform flex-shrink-0 ml-4" />
-                  </summary>
-                  <div className="px-5 pb-5 text-sm text-grey-50 leading-relaxed border-t border-grey-10 pt-4">
-                    {q.answer}
-                  </div>
-                </details>
-              ))
-            )}
+            {preview.map((q, i) => (
+              <details
+                key={i}
+                className="group bg-white rounded-xl border border-grey-10 overflow-hidden"
+              >
+                <summary className="flex items-center justify-between cursor-pointer p-5 text-grey-90 font-medium hover:text-brand-600 transition-colors">
+                  <span lang={lang}>{q.question}</span>
+                  <ChevronRight className="w-5 h-5 text-grey-30 group-open:rotate-90 transition-transform flex-shrink-0 ml-4" />
+                </summary>
+                <div className="px-5 pb-5 text-sm text-grey-50 leading-relaxed border-t border-grey-10 pt-4" lang={lang}>
+                  {q.answer}
+                </div>
+              </details>
+            ))}
           </div>
         </div>
       </section>

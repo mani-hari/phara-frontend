@@ -8,13 +8,16 @@ import {
   buildFaqJsonLd,
   extractHowToFromDescription,
 } from "@lib/util/json-ld"
-import { PRODUCT_FAQ_CONTENT } from "@lib/data/product-faq-content"
+import { PRODUCT_FAQ_CONTENT, type ProductFaqEntry } from "@lib/data/product-faq-content"
 import ProductTemplate from "@modules/products/templates"
 import { HttpTypes } from "@medusajs/types"
+import { translateBatch } from "@lib/i18n/translate"
+import { isLangCode, type LangCode } from "@lib/i18n/languages"
+import { getHintedLang } from "@lib/i18n/geo-hint"
 
 type Props = {
   params: Promise<{ countryCode: string; handle: string }>
-  searchParams: Promise<{ v_id?: string }>
+  searchParams: Promise<{ v_id?: string; lang?: string }>
 }
 
 // Render at request time so the build doesn't depend on Medusa being
@@ -121,6 +124,8 @@ export default async function ProductPage(props: Props) {
   const searchParams = await props.searchParams
 
   const selectedVariantId = searchParams.v_id
+  const lang: LangCode = isLangCode(searchParams.lang) ? searchParams.lang : "en"
+  const hintedLang = getHintedLang()
 
   if (!region) {
     notFound()
@@ -195,8 +200,35 @@ export default async function ProductPage(props: Props) {
   })
 
   // FAQPage — only for the hand-curated hero product pages (real Q&A).
+  // JSON-LD always uses the ORIGINAL English entries — translation is
+  // display-only, applied separately below to a copy passed to the template.
   const faqEntries = PRODUCT_FAQ_CONTENT[params.handle]
   const faqJsonLd = faqEntries ? buildFaqJsonLd(faqEntries) : null
+
+  // Translation is display-only and never touches pricedProduct/faqEntries
+  // themselves (used above for JSON-LD) — separate variables passed to
+  // ProductTemplate, which falls back to the English original when lang="en"
+  // or a translation is unavailable.
+  let translatedTitle: string | undefined
+  let translatedDescription: string | null | undefined
+  let translatedFaqEntries: ProductFaqEntry[] | undefined = faqEntries
+  if (lang !== "en") {
+    const toTranslate = [
+      pricedProduct.title,
+      pricedProduct.description || "",
+      ...(faqEntries || []).flatMap((f) => [f.question, f.answer]),
+    ]
+    const translated = await translateBatch(toTranslate, lang)
+    translatedTitle = translated[0]
+    translatedDescription = pricedProduct.description ? translated[1] : pricedProduct.description
+    if (faqEntries) {
+      const faqTexts = translated.slice(2)
+      translatedFaqEntries = faqEntries.map((f, i) => ({
+        question: faqTexts[i * 2],
+        answer: faqTexts[i * 2 + 1],
+      }))
+    }
+  }
 
   return (
     <>
@@ -225,7 +257,11 @@ export default async function ProductPage(props: Props) {
         region={region}
         countryCode={params.countryCode}
         images={images}
-        faqEntries={faqEntries}
+        faqEntries={translatedFaqEntries}
+        lang={lang}
+        hintedLang={hintedLang}
+        translatedTitle={translatedTitle}
+        translatedDescription={translatedDescription}
       />
     </>
   )

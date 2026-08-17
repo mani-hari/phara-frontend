@@ -412,3 +412,39 @@
 @keyframes ph-blink {
   to { opacity: 0; }
 }
+
+/* i18n: Indic-script fonts for translated content (FAQ + product pages).
+   Applied via [lang] attribute on the wrapping element around translated
+   text, not globally, so English content is unaffected. */
+[lang="ta"] { font-family: var(--font-tamil), sans-serif; }
+[lang="te"] { font-family: var(--font-telugu), sans-serif; }
+[lang="hi"] { font-family: var(--font-hindi), sans-serif; }
+
+.ph-lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  padding: 3px;
+  background: var(--ink-line, #e7ded4);
+  border-radius: 999px;
+  font-size: 13px;
+}
+.ph-lang-pill {
+  border: none;
+  background: transparent;
+  padding: 5px 12px;
+  border-radius: 999px;
+  cursor: pointer;
+  color: var(--ink-3, #6b615c);
+  font-weight: 500;
+  line-height: 1.2;
+  transition: background 0.15s, color 0.15s;
+}
+.ph-lang-pill[aria-pressed="true"] {
+  background: #fff;
+  color: var(--sindoor, #b6442e);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+.ph-lang-pill:not([aria-pressed="true"]):hover {
+  color: var(--ink-2, #2c241d);
+}

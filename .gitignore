@@ -67,3 +67,4 @@ price-backup-*.json
 customer_data/
 .enrichment-progress.json
 .listmonk-sync-progress.json
+.translation-cache/

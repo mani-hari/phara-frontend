@@ -2,6 +2,10 @@ import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { FAQ_CATEGORIES } from "@lib/data/faq-data"
+import LanguageSwitcher from "@modules/common/components/language-switcher"
+import { translateBatch } from "@lib/i18n/translate"
+import { isLangCode, type LangCode } from "@lib/i18n/languages"
+import { getHintedLang } from "@lib/i18n/geo-hint"
 import {
   Flame,
   Star,
@@ -51,8 +55,10 @@ export async function generateMetadata(props: {
 
 export default async function FAQCategoryPage(props: {
   params: Promise<{ slug: string; countryCode: string }>
+  searchParams: Promise<{ lang?: string }>
 }) {
   const { slug } = await props.params
+  const { lang: langParam } = await props.searchParams
   const category = FAQ_CATEGORIES.find((c) => c.slug === slug)
 
   if (!category) {
@@ -60,8 +66,13 @@ export default async function FAQCategoryPage(props: {
   }
 
   const IconComponent = iconMap[category.icon] || Flame
+  const lang: LangCode = isLangCode(langParam) ? langParam : "en"
+  const hintedLang = getHintedLang()
 
-  // JSON-LD FAQPage schema
+  // JSON-LD FAQPage schema — always English, regardless of the view language.
+  // Structured data + SEO stays exactly as it is today; the language switch
+  // is a display-only affordance layered on top, per Mani's explicit
+  // "don't touch SEO" instruction.
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -74,6 +85,21 @@ export default async function FAQCategoryPage(props: {
       },
     })),
   }
+
+  // Batch-translate title + description + every Q&A in one call (cached —
+  // see src/lib/i18n/translate.ts — so repeat views of this category+lang
+  // are instant after the first).
+  const toTranslate = [
+    category.title,
+    category.description,
+    ...category.questions.flatMap((q) => [q.question, q.answer]),
+  ]
+  const translated = await translateBatch(toTranslate, lang)
+  const [title, description, ...qa] = translated
+  const questions = category.questions.map((q, i) => ({
+    question: qa[i * 2],
+    answer: qa[i * 2 + 1],
+  }))
 
   return (
     <div className="bg-white min-h-screen">
@@ -99,11 +125,14 @@ export default async function FAQCategoryPage(props: {
               <IconComponent className="w-8 h-8" />
             </div>
             <div>
-              <h1 className="text-3xl sm:text-4xl font-bold text-grey-90 mb-3">
-                {category.title}
+              <h1 className="text-3xl sm:text-4xl font-bold text-grey-90 mb-3" lang={lang}>
+                {title}
               </h1>
-              <p className="text-lg text-grey-50 max-w-2xl">
-                {category.description}
+              <div className="mb-3">
+                <LanguageSwitcher hintedLang={hintedLang} />
+              </div>
+              <p className="text-lg text-grey-50 max-w-2xl" lang={lang}>
+                {description}
               </p>
             </div>
           </div>
@@ -114,17 +143,17 @@ export default async function FAQCategoryPage(props: {
       <section className="py-12 sm:py-16">
         <div className="content-container max-w-3xl">
           <div className="space-y-4">
-            {category.questions.map((q, i) => (
+            {questions.map((q, i) => (
               <details
                 key={i}
                 className="group bg-white rounded-xl border border-grey-10 hover:border-brand-200 overflow-hidden transition-colors"
                 open={i === 0}
               >
                 <summary className="flex items-center justify-between cursor-pointer p-5 text-grey-90 font-medium hover:text-brand-600 transition-colors">
-                  <span className="pr-4">{q.question}</span>
+                  <span className="pr-4" lang={lang}>{q.question}</span>
                   <ChevronRight className="w-5 h-5 text-grey-30 group-open:rotate-90 transition-transform flex-shrink-0" />
                 </summary>
-                <div className="px-5 pb-5 text-sm text-grey-60 leading-relaxed border-t border-grey-10 pt-4">
+                <div className="px-5 pb-5 text-sm text-grey-60 leading-relaxed border-t border-grey-10 pt-4" lang={lang}>
                   {q.answer}
                 </div>
               </details>

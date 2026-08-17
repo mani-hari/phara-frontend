@@ -1,7 +1,7 @@
 import { Metadata } from "next"
 import { getBaseURL } from "@lib/util/env"
 import Script from "next/script"
-import { DM_Serif_Display, DM_Serif_Text, Inter } from "next/font/google"
+import { DM_Serif_Display, DM_Serif_Text, Inter, Noto_Sans_Tamil, Noto_Sans_Telugu, Noto_Sans_Devanagari } from "next/font/google"
 import "@styles/globals.css"
 import { cookies } from "next/headers"
 import AdminBar from "@/components/admin/admin-bar"
@@ -40,6 +40,30 @@ const dmText = DM_Serif_Text({
   weight: "400",
   style: ["normal"],
   variable: "--font-serif",
+})
+
+// Indic-script fonts for the FAQ/product-page language switcher (Tamil,
+// Telugu, Hindi). Latin fonts above have no glyphs for these scripts —
+// without these, translated text would fall back to a system default and
+// could render as tofu boxes on some devices. Loaded globally (small
+// weight-400-only subsets) so any translated content on any page renders
+// correctly, not just where the switcher currently appears.
+const notoTamil = Noto_Sans_Tamil({
+  subsets: ["tamil"],
+  weight: "400",
+  variable: "--font-tamil",
+})
+
+const notoTelugu = Noto_Sans_Telugu({
+  subsets: ["telugu"],
+  weight: "400",
+  variable: "--font-telugu",
+})
+
+const notoDevanagari = Noto_Sans_Devanagari({
+  subsets: ["devanagari"],
+  weight: "400",
+  variable: "--font-hindi",
 })
 
 export const metadata: Metadata = {
@@ -155,7 +179,7 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${dmDisplay.variable} ${dmText.variable} font-sans`}
+        className={`${inter.variable} ${dmDisplay.variable} ${dmText.variable} ${notoTamil.variable} ${notoTelugu.variable} ${notoDevanagari.variable} font-sans`}
         style={{ background: "var(--paper)", color: "var(--ink-2)" }}
       >
         <TopBanner />
