@@ -61,15 +61,52 @@ export interface PaymentSearchQuery {
   date?: string // YYYY-MM-DD, optional narrowing within the 30-day window
 }
 
+// Coarse bucket the UI colors by — the whole point of this page is reading
+// status at a glance, so raw provider status strings (Razorpay's "captured",
+// PayPal's single-letter "S"/"D"/"P"/"V" codes) get mapped down to exactly
+// three visual buckets rather than shown raw.
+export type PaymentStatusCategory = "success" | "failure" | "other"
+
 export interface PaymentResult {
   provider: "razorpay" | "paypal"
   id: string
+  orderRef?: string // Razorpay order_id, or PayPal's paypal_reference_id
   amount: string
   currency: string
-  status: string
+  statusCategory: PaymentStatusCategory
+  statusLabel: string // human-readable — never a raw code like PayPal's "S"
   createdAt: string // ISO
   email?: string
   phone?: string
+  // Everything else worth showing from that provider's own response, kept
+  // as a flexible bag rather than a rigid per-provider field list.
+  meta: Record<string, string>
+}
+
+function razorpayStatus(raw: string): { category: PaymentStatusCategory; label: string } {
+  const s = (raw || "").toLowerCase()
+  if (s === "captured") return { category: "success", label: "Captured" }
+  if (s === "failed") return { category: "failure", label: "Failed" }
+  if (s === "authorized") return { category: "other", label: "Authorized (not captured)" }
+  if (s === "refunded") return { category: "other", label: "Refunded" }
+  return { category: "other", label: raw || "Unknown" }
+}
+
+// PayPal Transaction Search returns single-letter codes — see PayPal's own
+// docs (D/P/S/V) — never shown raw, always mapped to a real label.
+function paypalStatus(raw: string): { category: PaymentStatusCategory; label: string } {
+  switch (raw) {
+    case "S":
+      return { category: "success", label: "Successful" }
+    case "D":
+      return { category: "failure", label: "Denied" }
+    case "P":
+      return { category: "other", label: "Pending" }
+    case "V":
+      return { category: "other", label: "Reversed/Voided" }
+    default:
+      return { category: "other", label: raw || "Unknown" }
+  }
 }
 
 function normalize(s: string | undefined | null): string {
@@ -147,15 +184,34 @@ async function searchRazorpay(
           createdAt,
         })
       ) {
+        const { category, label } = razorpayStatus(p.status)
+        const meta: Record<string, string> = {}
+        if (p.method) meta["Method"] = String(p.method).toUpperCase()
+        if (p.bank) meta["Bank"] = p.bank
+        if (p.wallet) meta["Wallet"] = p.wallet
+        if (p.vpa) meta["UPI VPA"] = p.vpa
+        if (p.description) meta["Description"] = p.description
+        if (p.international) meta["International"] = "Yes"
+        if (p.error_description) meta["Error"] = p.error_description
+        if (p.fee) meta["Fee"] = (Number(p.fee) / 100).toFixed(2)
+        if (p.notes && typeof p.notes === "object") {
+          for (const [k, v] of Object.entries(p.notes)) {
+            if (v) meta[`Note: ${k}`] = String(v)
+          }
+        }
+
         results.push({
           provider: "razorpay",
           id: p.id,
+          orderRef: p.order_id || undefined,
           amount: (Number(p.amount || 0) / 100).toFixed(2),
           currency: p.currency || "INR",
-          status: p.status || "unknown",
+          statusCategory: category,
+          statusLabel: label,
           createdAt: createdAt.toISOString(),
           email: p.email,
           phone: p.contact,
+          meta,
         })
       }
     }
@@ -260,15 +316,28 @@ async function searchPaypal(
           createdAt,
         })
       ) {
+        const { category, label } = paypalStatus(info.transaction_status)
+        const meta: Record<string, string> = {}
+        if (info.transaction_subject) meta["Subject"] = info.transaction_subject
+        if (info.transaction_note) meta["Note"] = info.transaction_note
+        if (info.payment_tracking_id) meta["Tracking ID"] = info.payment_tracking_id
+        const payerName = [payer.payer_name?.given_name, payer.payer_name?.surname].filter(Boolean).join(" ")
+        if (payerName) meta["Payer name"] = payerName
+        if (payer.country_code) meta["Country"] = payer.country_code
+        if (info.fee_amount?.value) meta["Fee"] = `${info.fee_amount.value} ${info.fee_amount.currency_code || ""}`.trim()
+
         results.push({
           provider: "paypal",
           id: info.transaction_id || "unknown",
+          orderRef: info.paypal_reference_id || undefined,
           amount: info.transaction_amount?.value || "0.00",
           currency: info.transaction_amount?.currency_code || "USD",
-          status: info.transaction_status || "unknown",
+          statusCategory: category,
+          statusLabel: label,
           createdAt: createdAt.toISOString(),
           email: payer.email_address,
           phone: payer.phone_number?.national_number,
+          meta,
         })
       }
     }
@@ -320,13 +389,14 @@ export async function POST(req: NextRequest) {
     searchPaypal(query, thirtyDaysAgo, now),
   ])
 
-  const results = [...razorpayResults, ...paypalOutcome.results].sort(
-    (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-  )
+  const byDateDesc = (a: PaymentResult, b: PaymentResult) =>
+    new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
 
   return NextResponse.json({
     ok: true,
-    results,
+    razorpayResults: [...razorpayResults].sort(byDateDesc),
+    paypalResults: [...paypalOutcome.results].sort(byDateDesc),
+    searchWindowDays: 30,
     warnings: paypalOutcome.warning ? [paypalOutcome.warning] : [],
   })
 }
