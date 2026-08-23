@@ -1,17 +1,18 @@
 import { NextRequest, NextResponse } from "next/server"
-import { checkPassword, signedCookieValue, MANAGE_AUTH_COOKIE } from "@lib/manage-auth"
+import { checkCredentials, signedCookieValue, MANAGE_AUTH_COOKIE } from "@lib/manage-auth"
 
 export const dynamic = "force-dynamic"
 
 export async function POST(req: NextRequest) {
   const body = await req.json().catch(() => ({}))
+  const email = String(body?.email || "").trim()
   const password = String(body?.password || "")
 
-  if (!checkPassword(password)) {
-    return NextResponse.json({ ok: false, message: "Incorrect password." }, { status: 401 })
+  if (!checkCredentials(email, password)) {
+    return NextResponse.json({ ok: false, message: "Incorrect email or password." }, { status: 401 })
   }
 
-  const value = signedCookieValue()
+  const value = signedCookieValue(email.toLowerCase())
   if (!value) {
     return NextResponse.json({ ok: false, message: "Server not configured." }, { status: 500 })
   }

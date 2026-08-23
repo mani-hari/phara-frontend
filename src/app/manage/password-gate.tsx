@@ -4,23 +4,26 @@ import { useState } from "react"
 
 // Shared across /manage/* internal tools.
 export default function PasswordGate() {
+  const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
 
+  const canSubmit = !!email && !!password
+
   const submit = async () => {
-    if (!password || loading) return
+    if (!canSubmit || loading) return
     setLoading(true)
     setError(null)
     try {
       const res = await fetch("/api/manage/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password }),
+        body: JSON.stringify({ email, password }),
       })
       if (!res.ok) {
         const json = await res.json().catch(() => ({}))
-        setError(json.message || "Incorrect password.")
+        setError(json.message || "Incorrect email or password.")
         return
       }
       window.location.reload()
@@ -41,17 +44,33 @@ export default function PasswordGate() {
         fontFamily: "system-ui, sans-serif",
       }}
     >
-      <h1 style={{ fontSize: 20, fontWeight: 700, marginBottom: 10 }}>Password required</h1>
+      <h1 style={{ fontSize: 20, fontWeight: 700, marginBottom: 10 }}>Sign in required</h1>
       <p style={{ color: "#6b615c", fontSize: 14, marginBottom: 20 }}>
         This is an internal tool restricted to authorized staff.
       </p>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        onKeyDown={(e) => e.key === "Enter" && submit()}
+        placeholder="Email"
+        autoFocus
+        style={{
+          width: "100%",
+          padding: "10px 12px",
+          borderRadius: 6,
+          border: "1px solid #e7ded4",
+          fontSize: 14,
+          marginBottom: 10,
+          boxSizing: "border-box",
+        }}
+      />
       <input
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && submit()}
         placeholder="Password"
-        autoFocus
         style={{
           width: "100%",
           padding: "10px 12px",
@@ -65,16 +84,16 @@ export default function PasswordGate() {
       <button
         type="button"
         onClick={submit}
-        disabled={!password || loading}
+        disabled={!canSubmit || loading}
         style={{
           width: "100%",
           padding: "10px 24px",
           borderRadius: 8,
           border: "none",
-          background: password && !loading ? "#b6442e" : "#d9cfc4",
+          background: canSubmit && !loading ? "#b6442e" : "#d9cfc4",
           color: "#fff",
           fontWeight: 600,
-          cursor: password && !loading ? "pointer" : "not-allowed",
+          cursor: canSubmit && !loading ? "pointer" : "not-allowed",
         }}
       >
         {loading ? "Checking…" : "Enter"}
