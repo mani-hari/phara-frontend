@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server"
+import { isManageAuthed } from "@lib/manage-auth"
 
 // Internal support tool — see /manage/paymentstatus. Given an email, phone,
 // order number, and/or date, searches BOTH Razorpay and PayPal's own
@@ -9,13 +10,9 @@ import { NextRequest, NextResponse } from "next/server"
 // separate OAuth token fetch) — so both are fetched in full for the window
 // and filtered here, in this route, after fetching.
 //
-// NOT YET AUTH-GATED — Mani's explicit instruction was to ship the search
-// tool now and add OAuth (restricted to pariharaonline@gmail.com) as a
-// follow-up. Until that lands, this endpoint is reachable by anyone who
-// knows the URL and returns real order amounts/statuses for whatever
-// email/phone is searched. The rate limit below slows down bulk scraping but
-// does not prevent a single targeted lookup of someone else's data — that
-// gap only closes once OAuth ships.
+// Auth-gated the same way as /manage/paymentstatus itself (simple shared
+// password, see src/lib/manage-auth.ts) — checked HERE too, not just in the
+// page's UI, so this endpoint can't be called directly to bypass the gate.
 export const dynamic = "force-dynamic"
 
 // ---------------------------------------------------------------------------
@@ -284,6 +281,10 @@ async function searchPaypal(
 }
 
 export async function POST(req: NextRequest) {
+  if (!(await isManageAuthed())) {
+    return NextResponse.json({ ok: false, message: "Not authenticated." }, { status: 401 })
+  }
+
   const ip = getClientIp(req)
   if (isRateLimited(ip)) {
     return NextResponse.json(
