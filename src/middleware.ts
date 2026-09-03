@@ -43,6 +43,43 @@ const DEFAULT_COUNTRY = (process.env.NEXT_PUBLIC_DEFAULT_REGION || "in").toLower
 // /{cc}/... paths are still recognised and not accidentally rewritten.
 const KNOWN_COUNTRY_CODES = new Set(["in", "us"])
 
+const SITE = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.pariharaonline.com").replace(/\/$/, "")
+
+// Agent discovery: advertised only on the homepage response, per RFC 8288 /
+// RFC 9727. Points to the (deliberately narrow) API catalog and the existing
+// llms.txt service doc.
+const AGENT_LINK_HEADER = `</.well-known/api-catalog>; rel="api-catalog", </llms.txt>; rel="service-doc"`
+
+function withAgentDiscoveryHeaders(response: NextResponse, isHomepage: boolean) {
+  if (isHomepage) {
+    response.headers.set("Link", AGENT_LINK_HEADER)
+  }
+  return response
+}
+
+// Markdown-for-agents: homepage only, for now — the rest of the site is
+// dynamic product/checkout data with no markdown source to negotiate from.
+const HOMEPAGE_MARKDOWN = `# PariharaOnline — Ancient Rituals, Modern Convenience
+
+Online platform for booking authentic Hindu temple services: pujas, homams (fire rituals), and Vedic astrology consultations, performed by Vedic priests at renowned temples across India. Prasadam (consecrated offerings) shipped worldwide.
+
+- Founded: 2009 · Coimbatore, Tamil Nadu, India
+- Contact: hello@pariharaonline.com · WhatsApp: +91 974-324-4501
+
+## Full catalog, pricing, and details
+See ${SITE}/llms.txt
+`
+
+function markdownResponse(text: string) {
+  const tokenEstimate = Math.max(1, Math.ceil(text.length / 4)) // rough char/4 heuristic, not an exact tokenizer
+  return new NextResponse(text, {
+    headers: {
+      "Content-Type": "text/markdown; charset=utf-8",
+      "x-markdown-tokens": String(tokenEstimate),
+    },
+  })
+}
+
 const regionMapCache = {
   regionMap: new Map<string, HttpTypes.StoreRegion>(),
   regionMapUpdated: Date.now(),
@@ -124,6 +161,15 @@ export async function middleware(request: NextRequest) {
       ? "/" + segments.slice(2).join("/") || "/"
       : pathname
 
+    const isHomepage = cleanPath === "/"
+
+    // ── Markdown for agents ──────────────────────────────────────────────────
+    // Accept: text/markdown on the homepage gets a markdown body instead of
+    // the HTML page. Browsers (Accept: text/html, ...) are unaffected.
+    if (isHomepage && (request.headers.get("accept") || "").includes("text/markdown")) {
+      return markdownResponse(HOMEPAGE_MARKDOWN)
+    }
+
     // ── Ghost URL redirects ────────────────────────────────────────────────
     // Always redirect to the canonical clean-URL form for the current country.
     const effectiveCC = hasPrefix ? firstSegment : DEFAULT_COUNTRY
@@ -155,7 +201,7 @@ export async function middleware(request: NextRequest) {
       if (!cacheIdCookie) {
         response.cookies.set("_medusa_cache_id", cacheId, { maxAge: 60 * 60 * 24 })
       }
-      return response
+      return withAgentDiscoveryHeaders(response, isHomepage)
     }
 
     // ── No country prefix — determine which country this visitor is in ──────
@@ -190,13 +236,16 @@ export async function middleware(request: NextRequest) {
       if (!cacheIdCookie) {
         response.cookies.set("_medusa_cache_id", cacheId, { maxAge: 60 * 60 * 24 })
       }
-      return response
+      return withAgentDiscoveryHeaders(response, isHomepage)
     }
 
     // Non-default country (e.g. US): redirect to /{cc}/...
-    return NextResponse.redirect(
-      new URL(`/${targetCountry}${pathname}${search}`, request.url),
-      307
+    return withAgentDiscoveryHeaders(
+      NextResponse.redirect(
+        new URL(`/${targetCountry}${pathname}${search}`, request.url),
+        307
+      ),
+      isHomepage
     )
   } catch (err) {
     console.warn("[middleware] Unexpected failure, passing request through:", err)
