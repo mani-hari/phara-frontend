@@ -2,7 +2,8 @@
 
 import { Plus } from "@medusajs/icons"
 import { Button, Heading } from "@medusajs/ui"
-import { useEffect, useState, useActionState } from "react"
+import { useEffect, useState } from "react"
+import { useFormState } from "react-dom"
 
 import useToggleState from "@lib/hooks/use-toggle-state"
 import CountrySelect from "@modules/checkout/components/country-select"
@@ -11,6 +12,12 @@ import Modal from "@modules/common/components/modal"
 import { SubmitButton } from "@modules/checkout/components/submit-button"
 import { HttpTypes } from "@medusajs/types"
 import { addCustomerAddress } from "@lib/data/customer"
+import ProvinceField from "@modules/common/components/province-field"
+import {
+  normalizeProvince,
+  validateCity,
+  validateProvince,
+} from "@lib/data/regions-provinces"
 
 const AddAddress = ({
   region,
@@ -21,6 +28,11 @@ const AddAddress = ({
 }) => {
   const [successState, setSuccessState] = useState(false)
   const { state, open, close: closeModal } = useToggleState(false)
+  // Country + state are controlled so the state control can switch between a
+  // list (in/us/ca/au) and free text, and be validated before submit.
+  const [country, setCountry] = useState("")
+  const [province, setProvince] = useState("")
+  const [errors, setErrors] = useState<{ city?: string; province?: string }>({})
 
   const [formState, formAction] = useFormState(addCustomerAddress, {
     isDefaultShipping: addresses.length === 0,
@@ -30,7 +42,21 @@ const AddAddress = ({
 
   const close = () => {
     setSuccessState(false)
+    setCountry("")
+    setProvince("")
+    setErrors({})
     closeModal()
+  }
+
+  // City + state rules (same as checkout): block submit with inline messages.
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const fd = new FormData(e.currentTarget)
+    const next = {
+      city: validateCity(fd.get("city") as string) || undefined,
+      province: validateProvince(province, country) || undefined,
+    }
+    setErrors(next)
+    if (next.city || next.province) e.preventDefault()
   }
 
   useEffect(() => {
@@ -61,7 +87,7 @@ const AddAddress = ({
         <Modal.Title>
           <Heading className="mb-2">Add address</Heading>
         </Modal.Title>
-        <form action={formAction}>
+        <form action={formAction} onSubmit={onSubmit}>
           <Modal.Body>
             <div className="flex flex-col gap-y-2">
               <div className="grid grid-cols-2 gap-x-2">
@@ -111,23 +137,46 @@ const AddAddress = ({
                   label="City"
                   name="city"
                   required
-                  autoComplete="locality"
+                  minLength={2}
+                  autoComplete="address-level2"
+                  onChange={() => errors.city && setErrors((p) => ({ ...p, city: undefined }))}
                   data-testid="city-input"
                 />
               </div>
-              <Input
-                label="Province / State"
-                name="province"
-                autoComplete="address-level1"
-                data-testid="state-input"
-              />
+              {errors.city && (
+                <p className="text-rose-500 text-small-regular" data-testid="city-error">
+                  {errors.city}
+                </p>
+              )}
               <CountrySelect
                 region={region}
                 name="country_code"
                 required
                 autoComplete="country"
+                value={country}
+                onChange={(e) => {
+                  const cc = e.target.value
+                  setCountry(cc)
+                  setProvince((p) => normalizeProvince(p, cc))
+                  setErrors((p) => ({ ...p, province: undefined }))
+                }}
                 data-testid="country-select"
               />
+              <ProvinceField
+                variant="account"
+                countryCode={country}
+                value={province}
+                onChange={(v) => {
+                  setProvince(v)
+                  setErrors((p) => ({ ...p, province: undefined }))
+                }}
+                invalid={!!errors.province}
+              />
+              {errors.province && (
+                <p className="text-rose-500 text-small-regular" data-testid="state-error">
+                  {errors.province}
+                </p>
+              )}
               <Input
                 label="Phone"
                 name="phone"

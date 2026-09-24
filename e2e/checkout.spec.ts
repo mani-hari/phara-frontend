@@ -16,6 +16,8 @@ async function api(): Promise<APIRequestContext> {
   })
 }
 
+const SEED_PROVINCE: Record<string, string> = { in: "Karnataka", us: "California" }
+
 async function seedCart(countryCode = "in", regionId = REGION_INDIA): Promise<string> {
   const ctx = await api()
   const prod = await (
@@ -39,7 +41,9 @@ async function seedCart(countryCode = "in", regionId = REGION_INDIA): Promise<st
         first_name: "E2E",
         last_name: "Test",
         address_1: "1 Test St",
-        city: "Bengaluru",
+        city: countryCode === "in" ? "Bengaluru" : "San Jose",
+        // State is mandatory at checkout — full name, as the checkout stores it.
+        province: SEED_PROVINCE[countryCode] || "Test Region",
         country_code: countryCode,
         postal_code: "560001",
       },
@@ -88,6 +92,7 @@ test.skip("cart completes into an order once a system payment session exists", a
         last_name: "Test",
         address_1: "1 Test St",
         city: "Bengaluru",
+        province: "Karnataka",
         country_code: "in",
         postal_code: "560001",
       },
@@ -154,6 +159,19 @@ test("marketing consent checkbox is separate from the mandatory terms checkbox a
   await expect(page.getByTestId("pay-online")).toBeDisabled()
   await terms.check()
   await expect(page.getByTestId("pay-online")).toBeEnabled()
+})
+
+test("city + state required: India state select keeps seeded full name, digits-only city blocks Pay", async ({ page, context }) => {
+  await gotoCheckoutWithCart(page, context, "in", REGION_INDIA)
+  const state = page.getByTestId("state-input").first()
+  // Seeded "Karnataka" is kept; India shows the full-name list (incl. UTs).
+  await expect(state).toHaveValue("Karnataka")
+  await expect(state.locator("option", { hasText: "Puducherry" })).toHaveCount(1)
+  // Digits-only city is rejected inline and Pay does not proceed.
+  await page.getByTestId("city-input").first().fill("12345")
+  await page.getByText(/I agree to the/i).locator("..").locator('input[type="checkbox"]').check()
+  await page.getByTestId("pay-online").click()
+  await expect(page.getByText("Enter a valid city name")).toBeVisible()
 })
 
 test("India cart: India shipping, Razorpay-only payment, no PayPal", async ({ page, context }) => {

@@ -3,6 +3,7 @@ import LocalizedClientLink from "@modules/common/components/localized-client-lin
 import { convertToLocale } from "@lib/util/money"
 import { retrieveCustomer } from "@lib/data/customer"
 import { CONTACT, waLink } from "@lib/contact"
+import { addressLines, deliveryAddressFor } from "@lib/util/order-address"
 
 type Props = { order: HttpTypes.StoreOrder }
 
@@ -21,6 +22,12 @@ export default async function OrderCompletedTemplate({ order }: Props) {
   const shippingTotal = order.shipping_subtotal ?? 0
   const taxTotal = order.tax_total ?? 0
   const total = order.total ?? 0
+  // Where the prasadam ships (alt-delivery metadata for cross-region orders).
+  // Hidden for digital-only / "donate at temple" orders with no address.
+  const noPrasadam = (order.shipping_methods ?? []).some((m: any) =>
+    /donate|do not send/i.test(m?.name || "")
+  )
+  const deliveryLines = noPrasadam ? [] : addressLines(deliveryAddressFor(order))
 
   return (
     <div
@@ -55,7 +62,7 @@ export default async function OrderCompletedTemplate({ order }: Props) {
             Your pooja is booked
           </h1>
           <p className="ph-body" style={{ color: "var(--ink-3)", maxWidth: 480, margin: "0 auto" }}>
-            May your prayers be heard and your wishes fulfilled. We'll keep you
+            May your prayers be heard and your wishes fulfilled. We&apos;ll keep you
             updated every step of the way.
           </p>
         </div>
@@ -243,6 +250,22 @@ export default async function OrderCompletedTemplate({ order }: Props) {
             </div>
           </div>
         </div>
+
+        {/* Delivery address */}
+        {deliveryLines.length > 0 && (
+          <div
+            className="ph-card"
+            style={{ border: "1px solid var(--ink-line)", padding: "20px 24px", marginBottom: 24 }}
+            data-testid="order-delivery-address"
+          >
+            <h3 className="ph-h4" style={{ marginBottom: 10 }}>Prasadam delivery address</h3>
+            {deliveryLines.map((line, i) => (
+              <p key={i} className="ph-body" style={{ color: "var(--ink-3)", margin: 0, lineHeight: 1.6 }}>
+                {line}
+              </p>
+            ))}
+          </div>
+        )}
 
         {/* What happens next */}
         <div

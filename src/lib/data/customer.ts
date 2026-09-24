@@ -3,6 +3,11 @@
 import { sdk } from "@lib/config"
 import medusaError from "@lib/util/medusa-error"
 import { HttpTypes } from "@medusajs/types"
+import {
+  normalizeProvince,
+  validateCity,
+  validateProvince,
+} from "@lib/data/regions-provinces"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
 import { localizeHref } from "@lib/util/localize-href"
@@ -187,6 +192,23 @@ export async function transferCart() {
   revalidateTag(cartCacheTag)
 }
 
+// Server-side twin of the account form's city/state checks (never trust the
+// client). Returns an error string, or "" when valid; also returns the
+// trimmed city and canonical full-name province to store.
+const checkCityProvince = (formData: FormData) => {
+  const countryCode = ((formData.get("country_code") as string) || "").toLowerCase()
+  const city = ((formData.get("city") as string) || "").trim()
+  const province = normalizeProvince(formData.get("province") as string, countryCode)
+  const cityErr = validateCity(city)
+  const provErr = validateProvince(province, countryCode)
+  const error = cityErr
+    ? `City: ${cityErr}`
+    : provErr
+      ? `State / province: ${provErr}`
+      : ""
+  return { error, city, province }
+}
+
 export const addCustomerAddress = async (
   currentState: Record<string, unknown>,
   formData: FormData
@@ -194,15 +216,20 @@ export const addCustomerAddress = async (
   const isDefaultBilling = (currentState.isDefaultBilling as boolean) || false
   const isDefaultShipping = (currentState.isDefaultShipping as boolean) || false
 
+  const cp = checkCityProvince(formData)
+  if (cp.error) {
+    return { ...currentState, success: false, error: cp.error }
+  }
+
   const address = {
     first_name: formData.get("first_name") as string,
     last_name: formData.get("last_name") as string,
     company: formData.get("company") as string,
     address_1: formData.get("address_1") as string,
     address_2: formData.get("address_2") as string,
-    city: formData.get("city") as string,
+    city: cp.city,
     postal_code: formData.get("postal_code") as string,
-    province: formData.get("province") as string,
+    province: cp.province,
     country_code: formData.get("country_code") as string,
     phone: formData.get("phone") as string,
     is_default_billing: isDefaultBilling,
@@ -255,15 +282,20 @@ export const updateCustomerAddress = async (
     return { success: false, error: "Address ID is required" }
   }
 
+  const cp = checkCityProvince(formData)
+  if (cp.error) {
+    return { ...currentState, success: false, error: cp.error }
+  }
+
   const address = {
     first_name: formData.get("first_name") as string,
     last_name: formData.get("last_name") as string,
     company: formData.get("company") as string,
     address_1: formData.get("address_1") as string,
     address_2: formData.get("address_2") as string,
-    city: formData.get("city") as string,
+    city: cp.city,
     postal_code: formData.get("postal_code") as string,
-    province: formData.get("province") as string,
+    province: cp.province,
     country_code: formData.get("country_code") as string,
   } as HttpTypes.StoreUpdateCustomerAddress
 

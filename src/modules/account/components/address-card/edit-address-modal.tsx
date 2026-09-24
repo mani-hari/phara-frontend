@@ -1,6 +1,7 @@
 "use client"
 
-import React, { useEffect, useState, useActionState } from "react"
+import React, { useEffect, useState } from "react"
+import { useFormState } from "react-dom"
 import { PencilSquare as Edit, Trash } from "@medusajs/icons"
 import { Button, Heading, Text, clx } from "@medusajs/ui"
 
@@ -15,6 +16,12 @@ import {
   deleteCustomerAddress,
   updateCustomerAddress,
 } from "@lib/data/customer"
+import ProvinceField from "@modules/common/components/province-field"
+import {
+  normalizeProvince,
+  validateCity,
+  validateProvince,
+} from "@lib/data/regions-provinces"
 
 type EditAddressProps = {
   region: HttpTypes.StoreRegion
@@ -30,6 +37,15 @@ const EditAddress: React.FC<EditAddressProps> = ({
   const [removing, setRemoving] = useState(false)
   const [successState, setSuccessState] = useState(false)
   const { state, open, close: closeModal } = useToggleState(false)
+  // Controlled country + state (list for in/us/ca/au, free text elsewhere).
+  // A legacy code ("TN", "ca") is normalised to the full name; an unknown
+  // value for a list country starts empty so the customer is prompted.
+  const initialCountry = address.country_code || ""
+  const [country, setCountry] = useState(initialCountry)
+  const [province, setProvince] = useState(
+    normalizeProvince(address.province, initialCountry)
+  )
+  const [errors, setErrors] = useState<{ city?: string; province?: string }>({})
 
   const [formState, formAction] = useFormState(updateCustomerAddress, {
     success: false,
@@ -39,7 +55,21 @@ const EditAddress: React.FC<EditAddressProps> = ({
 
   const close = () => {
     setSuccessState(false)
+    setCountry(initialCountry)
+    setProvince(normalizeProvince(address.province, initialCountry))
+    setErrors({})
     closeModal()
+  }
+
+  // City + state rules (same as checkout): block submit with inline messages.
+  const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const fd = new FormData(e.currentTarget)
+    const next = {
+      city: validateCity(fd.get("city") as string) || undefined,
+      province: validateProvince(province, country) || undefined,
+    }
+    setErrors(next)
+    if (next.city || next.province) e.preventDefault()
   }
 
   useEffect(() => {
@@ -93,10 +123,14 @@ const EditAddress: React.FC<EditAddressProps> = ({
               {address.address_2 && <span>, {address.address_2}</span>}
             </span>
             <span data-testid="address-postal-city">
-              {address.postal_code}, {address.city}
+              {[address.city, address.postal_code].filter(Boolean).join(", ")}
             </span>
             <span data-testid="address-province-country">
-              {address.province && `${address.province}, `}
+              {address.province ? (
+                `${address.province}, `
+              ) : (
+                <span className="text-rose-500">State missing — please edit, </span>
+              )}
               {address.country_code?.toUpperCase()}
             </span>
           </Text>
@@ -125,7 +159,7 @@ const EditAddress: React.FC<EditAddressProps> = ({
         <Modal.Title>
           <Heading className="mb-2">Edit address</Heading>
         </Modal.Title>
-        <form action={formAction}>
+        <form action={formAction} onSubmit={onSubmit}>
           <input type="hidden" name="addressId" value={address.id} />
           <Modal.Body>
             <div className="grid grid-cols-1 gap-y-2">
@@ -182,26 +216,47 @@ const EditAddress: React.FC<EditAddressProps> = ({
                   label="City"
                   name="city"
                   required
-                  autoComplete="locality"
+                  minLength={2}
+                  autoComplete="address-level2"
                   defaultValue={address.city || undefined}
+                  onChange={() => errors.city && setErrors((p) => ({ ...p, city: undefined }))}
                   data-testid="city-input"
                 />
               </div>
-              <Input
-                label="Province / State"
-                name="province"
-                autoComplete="address-level1"
-                defaultValue={address.province || undefined}
-                data-testid="state-input"
-              />
+              {errors.city && (
+                <p className="text-rose-500 text-small-regular" data-testid="city-error">
+                  {errors.city}
+                </p>
+              )}
               <CountrySelect
                 name="country_code"
                 region={region}
                 required
                 autoComplete="country"
-                defaultValue={address.country_code || undefined}
+                value={country}
+                onChange={(e) => {
+                  const cc = e.target.value
+                  setCountry(cc)
+                  setProvince((p) => normalizeProvince(p, cc))
+                  setErrors((p) => ({ ...p, province: undefined }))
+                }}
                 data-testid="country-select"
               />
+              <ProvinceField
+                variant="account"
+                countryCode={country}
+                value={province}
+                onChange={(v) => {
+                  setProvince(v)
+                  setErrors((p) => ({ ...p, province: undefined }))
+                }}
+                invalid={!!errors.province}
+              />
+              {errors.province && (
+                <p className="text-rose-500 text-small-regular" data-testid="state-error">
+                  {errors.province}
+                </p>
+              )}
               <Input
                 label="Phone"
                 name="phone"

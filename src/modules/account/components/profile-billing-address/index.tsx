@@ -1,6 +1,7 @@
 "use client"
 
-import React, { useEffect, useMemo, useActionState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
+import { useFormState } from "react-dom"
 
 import Input from "@modules/common/components/input"
 import NativeSelect from "@modules/common/components/native-select"
@@ -8,6 +9,8 @@ import NativeSelect from "@modules/common/components/native-select"
 import AccountInfo from "../account-info"
 import { HttpTypes } from "@medusajs/types"
 import { addCustomerAddress, updateCustomerAddress } from "@lib/data/customer"
+import ProvinceField from "@modules/common/components/province-field"
+import { normalizeProvince } from "@lib/data/regions-provinces"
 
 type MyInformationProps = {
   customer: HttpTypes.StoreCustomer
@@ -35,6 +38,14 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
 
   const billingAddress = customer.addresses?.find(
     (addr) => addr.is_default_billing
+  )
+
+  // Controlled country + state so the state control follows the country
+  // (list for in/us/ca/au, free text elsewhere). City/state are validated
+  // server-side in add/updateCustomerAddress; the message shows below.
+  const [country, setCountry] = useState(billingAddress?.country_code || "")
+  const [province, setProvince] = useState(
+    normalizeProvince(billingAddress?.province, billingAddress?.country_code)
   )
 
   const initialState: Record<string, any> = {
@@ -82,9 +93,11 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
           {billingAddress.address_2 ? `, ${billingAddress.address_2}` : ""}
         </span>
         <span>
-          {billingAddress.postal_code}, {billingAddress.city}
+          {[billingAddress.city, billingAddress.postal_code].filter(Boolean).join(", ")}
         </span>
-        <span>{country}</span>
+        <span>
+          {[billingAddress.province, country].filter(Boolean).join(", ")}
+        </span>
       </div>
     )
   }, [billingAddress, regionOptions])
@@ -97,6 +110,7 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
         currentInfo={currentInfo}
         isSuccess={successState}
         isError={!!state.error}
+        errorMessage={typeof state.error === "string" ? state.error : undefined}
         clearState={clearState}
         data-testid="account-billing-address-editor"
       >
@@ -161,15 +175,14 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
               data-testid="billing-city-input"
             />
           </div>
-          <Input
-            label="Province"
-            name="province"
-            defaultValue={billingAddress?.province || undefined}
-            data-testid="billing-province-input"
-          />
           <NativeSelect
             name="country_code"
-            defaultValue={billingAddress?.country_code || undefined}
+            value={country}
+            onChange={(e) => {
+              const cc = e.target.value
+              setCountry(cc)
+              setProvince((p) => normalizeProvince(p, cc))
+            }}
             required
             data-testid="billing-country-code-select"
           >
@@ -182,6 +195,13 @@ const ProfileBillingAddress: React.FC<MyInformationProps> = ({
               )
             })}
           </NativeSelect>
+          <ProvinceField
+            variant="account"
+            countryCode={country}
+            value={province}
+            onChange={setProvince}
+            data-testid="billing-province-input"
+          />
         </div>
       </AccountInfo>
     </form>

@@ -523,10 +523,10 @@ const toMedusaAddress = (a: CheckoutAddress) => ({
   last_name: a.lastName,
   address_1: a.address1,
   address_2: a.address2 || "",
-  city: a.city,
+  city: (a.city || "").trim(),
   postal_code: a.postalCode,
   country_code: a.countryCode.toLowerCase(),
-  province: a.province || "",
+  province: (a.province || "").trim(), // full state name, e.g. "Tamil Nadu"
   phone: a.phone || "",
 })
 

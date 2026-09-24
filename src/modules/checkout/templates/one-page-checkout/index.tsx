@@ -19,6 +19,13 @@ import {
 import { convertToLocale } from "@lib/util/money"
 import { logCheckoutError, logCheckoutEvent } from "@lib/util/checkout-log"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import ProvinceField from "@modules/common/components/province-field"
+import {
+  normalizeProvince,
+  provinceLabel,
+  validateCity,
+  validateProvince,
+} from "@lib/data/regions-provinces"
 
 // ─── types ────────────────────────────────────────────────────────────────────
 
@@ -264,17 +271,17 @@ function AddressForm({
     <div>
       {/* Name row — 2-col desktop, 1-col mobile */}
       <div className="co-2col" style={{ marginBottom: 10 }}>
-        <FieldWrap label="First name" required error={fieldErrors.firstName}>
+        <FieldWrap label="First name" required error={fieldErrors.firstName} field="firstName">
           <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="given-name" value={form.firstName} onChange={f("firstName")} required />
         </FieldWrap>
-        <FieldWrap label="Last name" required error={fieldErrors.lastName}>
+        <FieldWrap label="Last name" required error={fieldErrors.lastName} field="lastName">
           <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="family-name" value={form.lastName} onChange={f("lastName")} required />
         </FieldWrap>
       </div>
 
       {/* Contact row — 2-col desktop, 1-col mobile */}
       <div className="co-2col" style={{ marginBottom: 10 }}>
-        <FieldWrap label="Email" required error={fieldErrors.email}>
+        <FieldWrap label="Email" required error={fieldErrors.email} field="email">
           <input className="ph-input co-input" style={{ width: "100%" }} type="email" inputMode="email" autoComplete="email" value={form.email} onChange={f("email")} required />
         </FieldWrap>
         <FieldWrap label="Phone">
@@ -283,7 +290,7 @@ function AddressForm({
       </div>
 
       {/* Address */}
-      <FieldWrap label="Address line 1" required error={fieldErrors.address1} style={{ marginBottom: 10 }}>
+      <FieldWrap label="Address line 1" required error={fieldErrors.address1} field="address1" style={{ marginBottom: 10 }}>
         <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="address-line1" value={form.address1} onChange={f("address1")} required />
       </FieldWrap>
       <FieldWrap label="Address line 2" style={{ marginBottom: 10 }}>
@@ -292,21 +299,33 @@ function AddressForm({
 
       {/* City + Postcode — keep 2-col even on mobile (both short) */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 10 }}>
-        <FieldWrap label="City" required error={fieldErrors.city}>
-          <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="address-level2" value={form.city} onChange={f("city")} required />
+        <FieldWrap label="City" required error={fieldErrors.city} field="city">
+          <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="address-level2" value={form.city} onChange={f("city")} required data-testid="city-input" />
         </FieldWrap>
         <FieldWrap label="Postcode">
           <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="postal-code" inputMode="numeric" value={form.postalCode} onChange={f("postalCode")} />
         </FieldWrap>
       </div>
 
-      {/* Country */}
-      <FieldWrap label="Country" required style={{ marginBottom: 0 }}>
+      {/* Country, then State (its options depend on the country) */}
+      <FieldWrap label="Country" required style={{ marginBottom: 10 }}>
         <CountryAutosuggest
           countries={countries}
           value={form.countryCode}
-          onChange={onCountryChange || ((v) => onChange({ countryCode: v }))}
+          onChange={
+            onCountryChange ||
+            ((v) => onChange({ countryCode: v, province: normalizeProvince(form.province, v) }))
+          }
           testId="country-select"
+        />
+      </FieldWrap>
+      <FieldWrap label={provinceLabel(form.countryCode)} required error={fieldErrors.province} field="province" style={{ marginBottom: 0 }}>
+        <ProvinceField
+          countryCode={form.countryCode}
+          value={form.province}
+          onChange={(v) => onChange({ province: v })}
+          invalid={!!fieldErrors.province}
+          data-testid="state-input"
         />
       </FieldWrap>
     </div>
@@ -319,15 +338,18 @@ function FieldWrap({
   error,
   children,
   style,
+  field,
 }: {
   label: string
   required?: boolean
   error?: string
   children: React.ReactNode
   style?: React.CSSProperties
+  /** fieldErrors key — lets validate() scroll to the first invalid field. */
+  field?: string
 }) {
   return (
-    <div style={style}>
+    <div style={style} data-field={field}>
       <label className="ph-label" style={{ display: "block", marginBottom: 5, color: "var(--ink-3)" }}>
         {label}{required && <span style={{ color: "var(--sindoor)", marginLeft: 2 }}>*</span>}
       </label>
@@ -357,29 +379,43 @@ function BillingForm({
   return (
     <div style={{ marginTop: 14, paddingTop: 14, borderTop: "1px dashed var(--ink-line)" }}>
       <div className="co-2col" style={{ marginBottom: 10 }}>
-        <FieldWrap label="First name" required error={fieldErrors.b_firstName}>
+        <FieldWrap label="First name" required error={fieldErrors.b_firstName} field="b_firstName">
           <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing given-name" value={form.firstName} onChange={f("firstName")} required />
         </FieldWrap>
-        <FieldWrap label="Last name" required error={fieldErrors.b_lastName}>
+        <FieldWrap label="Last name" required error={fieldErrors.b_lastName} field="b_lastName">
           <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing family-name" value={form.lastName} onChange={f("lastName")} required />
         </FieldWrap>
       </div>
-      <FieldWrap label="Address line 1" required error={fieldErrors.b_address1} style={{ marginBottom: 10 }}>
+      <FieldWrap label="Address line 1" required error={fieldErrors.b_address1} field="b_address1" style={{ marginBottom: 10 }}>
         <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing address-line1" value={form.address1} onChange={f("address1")} required />
       </FieldWrap>
       <FieldWrap label="Address line 2" style={{ marginBottom: 10 }}>
         <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing address-line2" placeholder="Apartment, suite, landmark (optional)" value={form.address2} onChange={f("address2")} />
       </FieldWrap>
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 10 }}>
-        <FieldWrap label="City" required error={fieldErrors.b_city}>
-          <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing address-level2" value={form.city} onChange={f("city")} required />
+        <FieldWrap label="City" required error={fieldErrors.b_city} field="b_city">
+          <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing address-level2" value={form.city} onChange={f("city")} required data-testid="billing-city-input" />
         </FieldWrap>
         <FieldWrap label="Postcode">
           <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing postal-code" inputMode="numeric" value={form.postalCode} onChange={f("postalCode")} />
         </FieldWrap>
       </div>
-      <FieldWrap label="Country" required style={{ marginBottom: 0 }}>
-        <CountryAutosuggest countries={countries} value={form.countryCode} onChange={(v) => onChange({ countryCode: v })} />
+      <FieldWrap label="Country" required style={{ marginBottom: 10 }}>
+        <CountryAutosuggest
+          countries={countries}
+          value={form.countryCode}
+          onChange={(v) => onChange({ countryCode: v, province: normalizeProvince(form.province, v) })}
+        />
+      </FieldWrap>
+      <FieldWrap label={provinceLabel(form.countryCode)} required error={fieldErrors.b_province} field="b_province" style={{ marginBottom: 0 }}>
+        <ProvinceField
+          countryCode={form.countryCode}
+          value={form.province}
+          onChange={(v) => onChange({ province: v })}
+          autoComplete="billing address-level1"
+          invalid={!!fieldErrors.b_province}
+          data-testid="billing-state-input"
+        />
       </FieldWrap>
     </div>
   )
@@ -598,7 +634,10 @@ export default function OnePageCheckout({
     address2: cart.shipping_address?.address_2 || "",
     city: cart.shipping_address?.city || "",
     postalCode: cart.shipping_address?.postal_code || "",
-    province: cart.shipping_address?.province || "",
+    // Canonicalise any prefilled state to the full name for this country (or
+    // clear it if it isn't one of the country's states) so the select and the
+    // validator agree.
+    province: normalizeProvince(cart.shipping_address?.province, defaultCountry),
     countryCode: defaultCountry,
     sameAsBilling: true,
   })
@@ -655,7 +694,10 @@ export default function OnePageCheckout({
     address2: cart.billing_address?.address_2 || "",
     city: cart.billing_address?.city || "",
     postalCode: cart.billing_address?.postal_code || "",
-    province: cart.billing_address?.province || "",
+    province: normalizeProvince(
+      cart.billing_address?.province,
+      cart.billing_address?.country_code || defaultCountry
+    ),
     countryCode: cart.billing_address?.country_code || defaultCountry,
   })
   const patchBilling = useCallback((p: Partial<BillingAddr>) => {
@@ -673,7 +715,9 @@ export default function OnePageCheckout({
   // (region-valid billing + structured delivery metadata) takes over — the
   // cart region/currency still never changes.
   const chooseCountry = (iso: string) => {
-    patch({ countryCode: iso })
+    // Keep the state only if it belongs to the new country's list (free text
+    // is kept as-is for free-text countries).
+    patch({ countryCode: iso, province: normalizeProvince(form.province, iso) })
   }
 
   // Apply the chosen shipping method to the cart and refresh, so the order
@@ -741,6 +785,38 @@ export default function OnePageCheckout({
     return typeof updated?.total === "number" ? updated.total : null
   }
 
+  // City + state rules (shared with the account address forms):
+  //  • City: required, trimmed, ≥ 2 letters (digits-only fails).
+  //  • State: required — from the list for in/us/ca/au, else free text ≥ 2 letters.
+  const checkCityState = (
+    a: { city: string; province: string; countryCode: string },
+    prefix: "" | "b_",
+    errs: Record<string, string>
+  ) => {
+    const c = validateCity(a.city)
+    if (c) errs[`${prefix}city`] = c
+    const p = validateProvince(a.province, a.countryCode)
+    if (p) errs[`${prefix}province`] = p
+  }
+
+  const checkBilling = (errs: Record<string, string>) => {
+    if (!billing.firstName.trim()) errs.b_firstName = "Required"
+    if (!billing.lastName.trim()) errs.b_lastName = "Required"
+    if (!billing.address1.trim()) errs.b_address1 = "Required"
+    checkCityState(billing, "b_", errs)
+  }
+
+  // Scroll to (and focus) the first invalid field in page order.
+  const scrollToFirstError = (errs: Record<string, string>) => {
+    if (typeof document === "undefined") return
+    const first = Array.from(document.querySelectorAll<HTMLElement>("[data-field]")).find(
+      (el) => !!errs[el.dataset.field || ""]
+    )
+    if (!first) return
+    first.scrollIntoView({ behavior: "smooth", block: "center" })
+    first.querySelector<HTMLElement>("input, select, textarea")?.focus({ preventScroll: true })
+  }
+
   const validate = () => {
     const errs: Record<string, string> = {}
     const emailOk = /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(form.email.trim())
@@ -749,7 +825,12 @@ export default function OnePageCheckout({
     if (!form.email.trim()) errs.email = "Required"
     else if (!emailOk) errs.email = "Enter a valid email"
     if (!form.address1.trim()) errs.address1 = "Required"
-    if (!form.city.trim()) errs.city = "Required"
+    if (isDigitalOnly) {
+      // Delivery form isn't rendered for digital-only carts (legacy check kept).
+      if (!form.city.trim()) errs.city = "Required"
+    } else {
+      checkCityState(form, "", errs)
+    }
 
     if (outOfRegion) {
       // The cross-region option is auto-applied; if the backend option is
@@ -759,22 +840,14 @@ export default function OnePageCheckout({
       }
       // A region-valid billing address is mandatory (it becomes the cart's
       // Medusa shipping/billing address; the delivery country can't).
-      if (!billing.firstName.trim()) errs.b_firstName = "Required"
-      if (!billing.lastName.trim()) errs.b_lastName = "Required"
-      if (!billing.address1.trim()) errs.b_address1 = "Required"
-      if (!billing.city.trim()) errs.b_city = "Required"
+      checkBilling(errs)
     } else {
       // In-region: a shipping method must be chosen when physical delivery
       // applies, and billing is required only when it differs from delivery.
       if (visibleShippingMethods.length > 0 && !selectedShipping) {
         errs.shipping = "Please choose a delivery option"
       }
-      if (!form.sameAsBilling) {
-        if (!billing.firstName.trim()) errs.b_firstName = "Required"
-        if (!billing.lastName.trim()) errs.b_lastName = "Required"
-        if (!billing.address1.trim()) errs.b_address1 = "Required"
-        if (!billing.city.trim()) errs.b_city = "Required"
-      }
+      if (!form.sameAsBilling) checkBilling(errs)
     }
 
     if (!consentChecked) {
@@ -782,7 +855,9 @@ export default function OnePageCheckout({
     }
 
     setFieldErrors(errs)
-    return Object.keys(errs).length === 0
+    const ok = Object.keys(errs).length === 0
+    if (!ok) scrollToFirstError(errs)
+    return ok
   }
 
   // Build the address + metadata payload for saveAddressesForCheckout.
@@ -800,8 +875,8 @@ export default function OnePageCheckout({
         last_name: form.lastName,
         address_1: form.address1,
         address_2: form.address2,
-        city: form.city,
-        province: form.province,
+        city: form.city.trim(),
+        province: form.province.trim(),
         postal_code: form.postalCode,
         country_code: form.countryCode.toLowerCase(),
         phone: form.phone,
@@ -811,7 +886,7 @@ export default function OnePageCheckout({
         `${form.firstName} ${form.lastName}`.trim(),
         form.address1,
         form.address2,
-        [form.city, form.province, form.postalCode].filter(Boolean).join(", "),
+        [form.city.trim(), form.province.trim(), form.postalCode].filter(Boolean).join(", "),
         countryName(form.countryCode),
         form.phone && `Phone: ${form.phone}`,
       ]
@@ -824,9 +899,9 @@ export default function OnePageCheckout({
         phone: billing.phone,
         address1: billing.address1,
         address2: billing.address2,
-        city: billing.city,
+        city: billing.city.trim(),
         postalCode: billing.postalCode,
-        province: billing.province,
+        province: billing.province.trim(),
         countryCode: billing.countryCode,
         sameAsBilling: true,
         metadata: {
@@ -842,7 +917,11 @@ export default function OnePageCheckout({
     }
     return {
       ...form,
-      billing: form.sameAsBilling ? undefined : billing,
+      city: form.city.trim(),
+      province: form.province.trim(),
+      billing: form.sameAsBilling
+        ? undefined
+        : { ...billing, city: billing.city.trim(), province: billing.province.trim() },
       metadata: {
         payment_gateway: gateway,
         alt_delivery: false,
@@ -1101,7 +1180,7 @@ export default function OnePageCheckout({
             auto-applies the cross-region option (free to India / ₹2,800 abroad),
             so there's nothing to choose; we surface it as a note instead. */}
         {!isDigitalOnly && deliveryInRegion && (
-          <section className="co-section">
+          <section className="co-section" data-field="shipping">
             <SectionLabel>Prasad delivery</SectionLabel>
             <ShippingCards
               methods={visibleShippingMethods}
@@ -1440,6 +1519,7 @@ function PaymentSection({
           </div>
         )}
         <label
+          data-field="consent"
           style={{
             display: "flex",
             alignItems: "flex-start",

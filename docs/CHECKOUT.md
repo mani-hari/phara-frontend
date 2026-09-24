@@ -92,6 +92,16 @@ returns the existing order for a completed cart. `/api/payments/razorpay/verify`
 column); `saveAddressesForCheckout` sends the separate billing address to the order (it never sends an
 empty billing address).
 
+## City & state (mandatory)
+
+- **City** is required on the delivery and billing forms: trimmed, at least 2 letters (digits-only is rejected).
+- **State** is required and stored as the **full name** in Medusa's `province` (never a code). India, US (+DC),
+  Canada and Australia get a select (lists in `src/lib/data/regions-provinces.ts`); every other country gets a
+  free-text "State / Province / Region" (≥ 2 letters). Changing country clears a state that isn't in the new list.
+- Errors show inline under the field (`FieldWrap`); Pay validates first and scrolls to the first invalid field.
+  The same rules (shared `ProvinceField` + validators) apply to the account address forms, and are re-checked
+  server-side in `addCustomerAddress` / `updateCustomerAddress`. Cross-region (alt-delivery) addresses use the same form.
+
 ## Completion screens
 
 - **Success:** `/order/[id]/confirmed` (`src/modules/order/templates/order-completed-template.tsx`) —
