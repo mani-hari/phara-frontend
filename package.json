@@ -13,7 +13,8 @@
     "medusa:unlock": "node scripts/medusa-toggle.mjs unlock",
     "medusa:lock": "node scripts/medusa-toggle.mjs lock",
     "medusa:status": "node scripts/medusa-toggle.mjs status",
-    "medusa:key:set": "bash scripts/medusa-admin-key-set.sh"
+    "medusa:key:set": "bash scripts/medusa-admin-key-set.sh",
+    "search:reindex": "node --env-file-if-exists=.env.local --import tsx scripts/search-reindex.ts"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^1.2.12",
@@ -42,6 +43,7 @@
     "zod": "^3.25.76"
   },
   "devDependencies": {
+    "@medusajs/types": "^2.12.2",
     "@medusajs/ui-preset": "^2.1.2",
     "@playwright/test": "^1.61.1",
     "@types/lodash": "^4.17.16",
@@ -54,6 +56,7 @@
     "eslint-config-next": "14.2.28",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.19",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   }
 }

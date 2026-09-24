@@ -21,6 +21,7 @@ product URL slugs are kept identical to the old Shopify slugs so SEO/backlinks d
 | Styling | Tailwind CSS + autoprefixer | v3.4.x (`tailwind.config.js`, `postcss.config.js`) |
 | Commerce backend | Medusa v2 | `@medusajs/js-sdk` 2.12.x |
 | AI chat ("Ask Parihara") | Vercel AI SDK (`ai` v4) + `@ai-sdk/anthropic` | Anthropic direct (see note below) |
+| Product search | Neon Postgres (pgvector + full-text + pg_trgm), embeddings via Vercel AI Gateway | `openai/text-embedding-3-small`; see "Search" below |
 | Payments | PayPal, Razorpay, (Stripe key present), Medusa payments | — |
 | Auth | NextAuth + Google/Facebook OAuth | — |
 | Analytics | Google Analytics 4, Microsoft Clarity | — |
@@ -50,10 +51,10 @@ Full list with placeholders in [`.env.example`](../.env.example). Copy to `.env.
 - **Site:** `NEXT_PUBLIC_SITE_NAME`, `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_BASE_URL`, `NEXT_PUBLIC_DEFAULT_REGION` (`in`), `NEXT_PUBLIC_ADMIN_EMAILS`
 - **Medusa:** `MEDUSA_BACKEND_URL`, `NEXT_PUBLIC_MEDUSA_BACKEND_URL`, `NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY` (public), `MEDUSA_CLOUD_S3_HOSTNAME`, `MEDUSA_CLOUD_S3_PATHNAME`. **The admin key is NOT here** — see "Admin backend access" below.
 - **Payments:** `NEXT_PUBLIC_PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET` (🔒), `NEXT_PUBLIC_PAYPAL_SANDBOX`, `NEXT_PUBLIC_RAZORPAY_KEY_ID`, `RAZORPAY_KEY_SECRET` (🔒), `NEXT_PUBLIC_STRIPE_KEY`, `NEXT_PUBLIC_MEDUSA_PAYMENTS_*`
-- **AI:** `ANTHROPIC_API_KEY` (🔒)
+- **AI:** `ANTHROPIC_API_KEY` (🔒), `AI_GATEWAY_API_KEY` (🔒, search embeddings)
 - **Auth:** `NEXTAUTH_SECRET` (🔒), `NEXTAUTH_URL`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET` (🔒), `FACEBOOK_CLIENT_ID`, `FACEBOOK_CLIENT_SECRET` (🔒)
 - **Analytics:** `NEXT_PUBLIC_GA4_ID`, `NEXT_PUBLIC_CLARITY_ID`
-- **Misc:** `EXCHANGE_RATE_API_KEY` (🔒), `REVALIDATE_SECRET` (🔒)
+- **Misc:** `EXCHANGE_RATE_API_KEY` (🔒), `REVALIDATE_SECRET` (🔒), `CRON_SECRET` (🔒)
 
 Secrets live in: local `.env.local` (dev) and **Vercel → Project → Settings → Environment
 Variables** (preview/prod). Keep the two in sync.
@@ -108,6 +109,24 @@ Medusa product `handle`s are kept **byte-identical to the pariharaonline.com Sho
 existing SEO links don't break. As of 2026-07-07, 32/33 products match Shopify exactly (the
 lone exception has no Shopify counterpart). If you add/rename a product, match the Shopify slug
 or add a 301 in `GHOST_REDIRECTS`.
+
+## Search
+
+The nav search goes to `/search?q=` (noindex). That page lists matching products and links to
+Ask Parihara, pre-seeded with the query. Code lives in `src/lib/search/`.
+
+- **Index:** Neon table `product_search_index` (same `DATABASE_URL` as chat). It stores product
+  text, a generated `tsv` column (GIN index), a trigram index on the title, and
+  `embedding vector(1536)` (HNSW, cosine). The schema is created lazily by `ensureSearchSchema()`.
+- **Ranking:** keyword candidates (full-text + prefix matching + trigram/ILIKE) and vector
+  candidates (cosine similarity) are merged with reciprocal rank fusion. Without
+  `AI_GATEWAY_API_KEY`, or if the embeddings call fails, search runs keyword-only.
+- **Reindex:** `npm run search:reindex` (local), or `POST /api/search/reindex` with the
+  `x-revalidate-secret: $REVALIDATE_SECRET` header. Vercel Cron in `vercel.json` also calls it
+  daily at 03:30 IST (`GET`, `Authorization: Bearer $CRON_SECRET`). Only rows whose content hash
+  changed, or that have no embedding yet, are re-embedded. The model is set in
+  `src/lib/search/embeddings.ts` (`EMBEDDING_MODEL`).
+- **API:** `GET /api/search?q=&limit=` returns `{ query, results, mode }`.
 
 ## Known / pending work
 
