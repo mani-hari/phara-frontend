@@ -21,7 +21,7 @@ product URL slugs are kept identical to the old Shopify slugs so SEO/backlinks d
 | Styling | Tailwind CSS + autoprefixer | v3.4.x (`tailwind.config.js`, `postcss.config.js`) |
 | Commerce backend | Medusa v2 | `@medusajs/js-sdk` 2.12.x |
 | AI chat ("Ask Parihara") | Vercel AI SDK (`ai` v4) + `@ai-sdk/anthropic` | Anthropic direct (see note below) |
-| Product search | Neon Postgres (pgvector + full-text + pg_trgm), embeddings via Vercel AI Gateway | `openai/text-embedding-3-small`; see "Search" below |
+| Product search | Neon Postgres (pgvector + full-text + pg_trgm), embeddings via Vercel AI Gateway | `cohere/embed-v4.0`; see "Search" below |
 | Payments | PayPal, Razorpay, (Stripe key present), Medusa payments | — |
 | Auth | NextAuth + Google/Facebook OAuth | — |
 | Analytics | Google Analytics 4, Microsoft Clarity | — |

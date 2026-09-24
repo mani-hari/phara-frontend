@@ -1,10 +1,12 @@
 /**
  * Embeddings via Vercel AI Gateway (OpenAI-compatible REST). Plain fetch on
- * purpose — the repo pins `ai` v4, which we don't upgrade for this.
+ * purpose. Model note: openai/text-embedding-3-* is NOT available on the Gateway
+ * free tier (403); cohere/embed-v4.0 is, and returns 1536 dims like OpenAI small.
+ * The repo pins `ai` v4, which we don't upgrade for this.
  */
 
 /** The one place the embedding model is configured. Changing it re-embeds everything on next reindex. */
-export const EMBEDDING_MODEL = "openai/text-embedding-3-small"
+export const EMBEDDING_MODEL = "cohere/embed-v4.0"
 export const EMBEDDING_DIMS = 1536
 export const EMBEDDING_BATCH_SIZE = 50
 
