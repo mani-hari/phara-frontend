@@ -68,3 +68,9 @@ customer_data/
 .enrichment-progress.json
 .listmonk-sync-progress.json
 .translation-cache/
+
+# generated business reports (contain customer data)
+reports/
+.env*
+
+.env.vercel*
