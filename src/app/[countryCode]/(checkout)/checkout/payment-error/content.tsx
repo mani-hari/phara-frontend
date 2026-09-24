@@ -41,6 +41,15 @@ export default function PaymentErrorContent() {
   const reason = params.get("reason") || "default"
   const message = REASON_MESSAGES[reason] || REASON_MESSAGES.default
 
+  if (reason === "paid_pending_order") {
+    return (
+      <PaidPendingOrder
+        paymentId={params.get("pid") || ""}
+        gateway={params.get("gw") === "paypal" ? "paypal" : undefined}
+      />
+    )
+  }
+
   const whatsappHref = waLink("Hi, I had a payment issue on PariharaOnline. Order not completed.")
   const emailHref = mailLink(
     "Payment issue on PariharaOnline",
@@ -135,6 +144,116 @@ export default function PaymentErrorContent() {
             style={{ padding: "12px 24px", fontSize: 15 } as any}
           >
             Back to cart
+          </LocalizedClientLink>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+// Shown when Razorpay CONFIRMED the payment (signature verified) but the
+// storefront could not finish creating the order. The customer has paid, so
+// this must never read as a failure: the backend webhook / reconciler / staff
+// finalize the order and the confirmation email follows.
+function PaidPendingOrder({
+  paymentId,
+  gateway,
+}: {
+  paymentId: string
+  gateway?: "paypal"
+}) {
+  const refLabel = gateway === "paypal" ? "PayPal payment reference" : "Payment reference"
+  const ref = paymentId ? ` My ${refLabel.toLowerCase()} is ${paymentId}.` : ""
+  const whatsappHref = waLink(
+    `Hi, I paid on PariharaOnline but haven't received my order confirmation yet.${ref}`
+  )
+  const emailHref = mailLink(
+    "Payment received, awaiting order confirmation",
+    `Hi team, my payment went through but I haven't received an order confirmation yet.${ref}`
+  )
+
+  return (
+    <div style={{ background: "var(--paper)", minHeight: "calc(100vh - 64px)", paddingTop: 48, paddingBottom: 80 }}>
+      <div className="content-container" style={{ maxWidth: 560 }}>
+
+        {/* Header */}
+        <div style={{ textAlign: "center", marginBottom: 36 }}>
+          <div style={{
+            width: 64,
+            height: 64,
+            borderRadius: "50%",
+            background: "#eef7ef",
+            border: "2px solid #3f8f4f",
+            display: "inline-flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: 28,
+            marginBottom: 18,
+          }}>
+            ✓
+          </div>
+          <h1 className="ph-h2" style={{ marginBottom: 10 }}>Your payment was received</h1>
+          <p className="ph-body" style={{ color: "var(--ink-3)", maxWidth: 440, margin: "0 auto", lineHeight: 1.6 }}>
+            Thank you. We&apos;re finalizing your order now. You&apos;ll receive a confirmation
+            email within a few minutes. There&apos;s no need to pay again.
+          </p>
+        </div>
+
+        {/* Reference */}
+        {paymentId && (
+          <div style={{ border: "1px solid var(--ink-line)", borderRadius: 14, padding: "20px 24px", marginBottom: 24, textAlign: "center" }}>
+            <p className="ph-body-sm" style={{ color: "var(--ink-3)", marginBottom: 6 }}>
+              {refLabel}
+            </p>
+            <p className="ph-body" style={{ fontWeight: 700, fontFamily: "monospace", fontSize: 17, wordBreak: "break-all", marginBottom: 6 }}>
+              {paymentId}
+            </p>
+            <p className="ph-body-sm" style={{ color: "var(--ink-4)", lineHeight: 1.6 }}>
+              Please quote this if you contact us about this order.
+            </p>
+          </div>
+        )}
+
+        {/* Contact */}
+        <div style={{
+          background: "var(--sindoor-soft)",
+          border: "1px solid var(--sindoor)",
+          borderRadius: 12,
+          padding: "18px 22px",
+          marginBottom: 28,
+        }}>
+          <p className="ph-body" style={{ fontWeight: 600, marginBottom: 6 }}>No email after a few minutes?</p>
+          <p className="ph-body-sm" style={{ color: "var(--ink-3)", marginBottom: 14, lineHeight: 1.6 }}>
+            Check your spam folder, or message us on WhatsApp with your payment reference and
+            we&apos;ll confirm your order right away.
+          </p>
+          <a
+            href={whatsappHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ph-btn ph-btn-sindoor"
+            style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "11px 20px", fontSize: 14, fontWeight: 700, textDecoration: "none" }}
+          >
+            <span>💬</span> Chat on WhatsApp
+          </a>
+          <p className="ph-body-sm" style={{ color: "var(--ink-4)", marginTop: 10 }}>
+            or WhatsApp / call <strong>{CONTACT.whatsappDisplay}</strong> · email{" "}
+            <a href={emailHref} style={{ color: "var(--sindoor)", fontWeight: 600 }}>
+              {CONTACT.email}
+            </a>
+            <br />
+            <span style={{ color: "var(--ink-4)" }}>{CONTACT.hours}</span>
+          </p>
+        </div>
+
+        {/* Action buttons */}
+        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+          <LocalizedClientLink
+            href="/"
+            className="ph-btn ph-btn-ghost"
+            style={{ padding: "12px 24px", fontSize: 15 } as any}
+          >
+            Back to home
           </LocalizedClientLink>
         </div>
       </div>

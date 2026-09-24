@@ -73,6 +73,19 @@ needed — the cart currency is sent as-is (`createRazorpayOrder` → `cart.curr
 Payment provider selection keys off the URL country (`isIndia = countryCode === "in"`), which matches the
 cart region in normal (geo-consistent) flows.
 
+**Completion after payment (Razorpay handler + PayPal return):** a backend webhook may complete the cart
+first, and initiating a session on a completed cart deletes the authorized session (order ends up "not
+paid"). So `getCartCompletionState` (fresh, uncached) runs first and `initiatePaymentSession` is called only
+if the cart is not completed AND has no `pending`/`authorized`/`requires_more` session (skips log
+`razorpay_session_init_skipped` / `paypal_session_init_skipped`); `completeCartAndGetOrder` always runs and
+returns the existing order for a completed cart. `/api/payments/razorpay/verify` stamps
+`razorpay_payment_id`, `razorpay_order_id`, `payment_gateway` into cart metadata (merged; copied to the order)
+— best-effort, logs `razorpay_stamp_cart_failed`. If anything fails *after* verify, the customer never sees
+"failed": they land on `/checkout/payment-error?reason=paid_pending_order&pid=<razorpay_payment_id>`
+("Your payment was received", reference to quote, support links) and staff get a
+`razorpay_paid_complete_failed:` report. PayPal does the same after a successful capture
+(`&gw=paypal&pid=<capture id or order id>`, report prefix `paypal_paid_complete_failed:`).
+
 ## Billing address
 
 "Billing address same as delivery" is on by default. Unchecking reveals a full billing form (main

@@ -1,7 +1,19 @@
 import { Suspense } from "react"
 import PaymentErrorContent from "./content"
 
-export const metadata = { title: "Payment Error" }
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: { reason?: string }
+}) {
+  // A paid customer must never see "error", not even in the tab title.
+  return {
+    title:
+      searchParams?.reason === "paid_pending_order"
+        ? "Payment Received"
+        : "Payment Error",
+  }
+}
 
 export default function PaymentErrorPage() {
   return (

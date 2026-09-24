@@ -333,6 +333,48 @@ export async function initiatePaymentSession(
     .catch(medusaError)
 }
 
+const PROCESSABLE_SESSION_STATUSES = new Set(["pending", "authorized", "requires_more"])
+
+/**
+ * Fresh (uncached) read of whether a cart is already completed, or already
+ * has a payment session cart.complete() can process. Used by the Razorpay /
+ * PayPal return paths BEFORE initiatePaymentSession: a backend webhook may
+ * have completed the same cart a moment earlier, and re-initiating a session
+ * on a completed cart deletes the authorized session and leaves the order
+ * "not paid". Never throws — on error returns both false (caller then falls
+ * back to the old init-then-complete path).
+ */
+export async function getCartCompletionState(
+  cartId: string
+): Promise<{ completed: boolean; hasProcessableSession: boolean }> {
+  try {
+    const headers = { ...(await getAuthHeaders()) }
+    const { cart } = await sdk.client.fetch<{ cart: any }>(
+      `/store/carts/${cartId}`,
+      {
+        method: "GET",
+        query: {
+          fields:
+            "id,completed_at,+payment_collection.id,+payment_collection.payment_sessions.id,+payment_collection.payment_sessions.status,+payment_collection.payment_sessions.provider_id",
+        },
+        headers,
+        cache: "no-store",
+      }
+    )
+    const sessions: Array<{ status?: string }> =
+      cart?.payment_collection?.payment_sessions || []
+    return {
+      completed: !!cart?.completed_at,
+      hasProcessableSession: sessions.some((s) =>
+        PROCESSABLE_SESSION_STATUSES.has(s?.status || "")
+      ),
+    }
+  } catch (e) {
+    logCheckoutError("cart_completion_state_error", e, { cartId })
+    return { completed: false, hasProcessableSession: false }
+  }
+}
+
 export async function applyPromotions(codes: string[]) {
   const cartId = await getCartId()
 

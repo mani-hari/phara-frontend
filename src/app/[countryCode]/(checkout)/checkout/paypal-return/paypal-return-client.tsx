@@ -5,9 +5,10 @@ import {
   retrieveCart,
   completeCartAndGetOrder,
   initiatePaymentSession,
+  getCartCompletionState,
   reportFailedCheckout,
 } from "@lib/data/cart"
-import { logCheckoutError } from "@lib/util/checkout-log"
+import { logCheckoutError, logCheckoutEvent } from "@lib/util/checkout-log"
 import { localizeHref } from "@lib/util/localize-href"
 
 // Completes a PayPal order AFTER the buyer approves. Runs client-side and calls
@@ -38,6 +39,22 @@ export default function PaypalReturnClient({
       window.location.href = `/${countryCode}/checkout/payment-error?reason=${reason}`
     }
 
+    // PayPal refs, set once capture succeeds. From then on the customer HAS
+    // paid, so no later failure may show "Payment not completed".
+    let paidRefs: { paypal_order_id: string; paypal_capture_id: string | null } | null = null
+
+    const toPaidPending = async (detail: string) => {
+      const refs = paidRefs!
+      try {
+        await reportFailedCheckout(cartId, `paypal_paid_complete_failed:${detail}`, "paypal", refs)
+      } catch {}
+      const pid = refs.paypal_capture_id || refs.paypal_order_id
+      window.location.href = localizeHref(
+        countryCode,
+        `/checkout/payment-error?reason=paid_pending_order&gw=paypal&pid=${encodeURIComponent(pid)}`
+      )
+    }
+
     ;(async () => {
       if (!token) return toError("no_token")
       try {
@@ -57,17 +74,29 @@ export default function PaypalReturnClient({
           return toError("not_completed")
         }
 
+        paidRefs = {
+          paypal_order_id: token,
+          paypal_capture_id:
+            data?.purchase_units?.[0]?.payments?.captures?.[0]?.id || null,
+        }
+
         // 2. Money captured — now create the Medusa order via server actions.
         setStatus("Payment received — creating your order…")
         const cart = await retrieveCart(
           cartId,
           "id,region_id,currency_code,*payment_collection,+shipping_methods.name"
         )
-        if (!cart) {
-          await reportFailedCheckout(cartId, "paypal_no_cart_on_return", "paypal")
-          return toError("order_failed")
+        if (!cart) return toPaidPending("no_cart_on_return")
+        // Only initiate a session if the cart isn't already completed and
+        // has no processable session: initiating on an already-completed
+        // cart deletes the authorized session and leaves the order "not
+        // paid". Completing a completed cart returns the existing order.
+        const state = await getCartCompletionState(cart.id)
+        if (!state.completed && !state.hasProcessableSession) {
+          await initiatePaymentSession(cart, { provider_id: "pp_system_default" })
+        } else {
+          logCheckoutEvent("paypal_session_init_skipped", { cartId: cart.id, ...state })
         }
-        await initiatePaymentSession(cart, { provider_id: "pp_system_default" })
         const result = await completeCartAndGetOrder(cartId || cart.id)
         if (result.ok) {
           // Navigate explicitly (don't rely on a server-action redirect from
@@ -80,11 +109,11 @@ export default function PaypalReturnClient({
         }
 
         // Completion did NOT produce an order though the money was captured —
-        // report it so staff can reconcile, then show the error.
-        await reportFailedCheckout(cartId, `paypal_complete_no_order:${result.reason}`, "paypal")
-        toError("order_failed")
+        // report it (with PayPal ids) so staff can reconcile; show "received".
+        await toPaidPending(`no_order:${result.reason}`)
       } catch (err: any) {
-        logCheckoutError("paypal_return_client_failed", err, { token, cartId })
+        logCheckoutError("paypal_return_client_failed", err, { token, cartId, paid: !!paidRefs })
+        if (paidRefs) return toPaidPending(`exception:${err?.message || "error"}`)
         try {
           await reportFailedCheckout(cartId, `paypal_complete_exception:${err?.message || "error"}`, "paypal")
         } catch {}

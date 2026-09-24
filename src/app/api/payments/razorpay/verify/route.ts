@@ -50,6 +50,15 @@ export async function POST(req: NextRequest) {
       razorpay_order_id,
     })
 
+    // Stamp the Razorpay ids onto the cart BEFORE the client completes it.
+    // Medusa copies cart metadata onto the order, so staff and the reconciler
+    // can match the order to the charge. Medusa merges metadata keys (existing
+    // keys like payment_gateway/marketing_opt_in are kept). Best-effort: a
+    // failure here must never turn a verified payment into an error.
+    if (cart_id) {
+      await stampCartWithRazorpayIds(cart_id, razorpay_payment_id, razorpay_order_id)
+    }
+
     return NextResponse.json({
       verified: true,
       payment_id: razorpay_payment_id,
@@ -61,5 +70,47 @@ export async function POST(req: NextRequest) {
       { error: error.message || "Verification failed", verified: false },
       { status: 500 }
     )
+  }
+}
+
+async function stampCartWithRazorpayIds(
+  cartId: string,
+  razorpayPaymentId: string,
+  razorpayOrderId: string
+) {
+  const ctx = {
+    cart_id: cartId,
+    razorpay_payment_id: razorpayPaymentId,
+    razorpay_order_id: razorpayOrderId,
+  }
+  try {
+    const backend = process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL
+    const key = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY
+    if (!backend || !key) throw new Error("medusa backend not configured")
+    const res = await fetch(
+      `${backend}/store/carts/${encodeURIComponent(cartId)}?fields=id`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-publishable-api-key": key,
+        },
+        body: JSON.stringify({
+          metadata: {
+            razorpay_payment_id: razorpayPaymentId,
+            razorpay_order_id: razorpayOrderId,
+            payment_gateway: "razorpay",
+          },
+        }),
+        cache: "no-store",
+        signal: AbortSignal.timeout(8000),
+      }
+    )
+    if (!res.ok) {
+      const text = await res.text().catch(() => "")
+      throw new Error(`HTTP ${res.status}: ${text.slice(0, 200)}`)
+    }
+  } catch (e) {
+    logCheckoutError("razorpay_stamp_cart_failed", e, ctx)
   }
 }

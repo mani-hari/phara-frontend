@@ -8,6 +8,7 @@ import {
   setShippingMethod,
   completeCartAndGetOrder,
   initiatePaymentSession,
+  getCartCompletionState,
   reportFailedCheckout,
 } from "@lib/data/cart"
 import { localizeHref } from "@lib/util/localize-href"
@@ -898,31 +899,51 @@ export default function OnePageCheckout({
           },
           theme: { color: "#b6442e" },
           handler: async (response: any) => {
+            const rzpRefs = {
+              razorpay_payment_id: response.razorpay_payment_id,
+              razorpay_order_id: response.razorpay_order_id,
+            }
+            // Set once /verify confirms the signature: from then on the
+            // customer HAS paid, so no failure below may show "payment failed".
+            let verified = false
             try {
               const verifyRes = await fetch("/api/payments/razorpay/verify", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                   cart_id: cart.id,
-                  razorpay_payment_id: response.razorpay_payment_id,
-                  razorpay_order_id: response.razorpay_order_id,
+                  ...rzpRefs,
                   razorpay_signature: response.razorpay_signature,
                 }),
               })
               if (!verifyRes.ok) throw new Error("Payment verification failed.")
-              // The real charge is Razorpay's (already verified). Give Medusa
-              // an authorized payment session via the system provider so
-              // cart.complete() can turn the cart into an order, then navigate
-              // to the confirmation page explicitly (a server-action redirect
-              // from here doesn't reliably drive client navigation).
-              await initiatePaymentSession(cart, { provider_id: "pp_system_default" })
+              verified = true
+              // The real charge is Razorpay's (already verified). Medusa needs
+              // a processable payment session (system provider) for
+              // cart.complete() to create the order. But a backend webhook may
+              // have ALREADY completed this cart (or given it a session) — and
+              // initiating a session on a completed cart deletes the authorized
+              // session, leaving the order "not paid". So only initiate when
+              // the cart is neither completed nor already has a session.
+              const state = await getCartCompletionState(cart.id)
+              if (!state.completed && !state.hasProcessableSession) {
+                await initiatePaymentSession(cart, { provider_id: "pp_system_default" })
+              } else {
+                logCheckoutEvent("razorpay_session_init_skipped", {
+                  cartId: cart.id,
+                  ...state,
+                  ...rzpRefs,
+                })
+              }
+              // Completing an already-completed cart returns the existing order.
+              // Navigate explicitly (a server-action redirect from here doesn't
+              // reliably drive client navigation).
               const result = await completeCartAndGetOrder(cart.id)
               if (!result.ok) throw new Error(result.reason || "order_not_created")
               logCheckoutEvent("razorpay_complete_ok", {
                 cartId: cart.id,
                 orderId: result.orderId,
-                razorpay_payment_id: response.razorpay_payment_id,
-                razorpay_order_id: response.razorpay_order_id,
+                ...rzpRefs,
               })
               window.location.href = localizeHref(
                 result.countryCode || countryCode,
@@ -933,21 +954,27 @@ export default function OnePageCheckout({
                 cartId: cart.id,
                 currency,
                 total: displayTotal,
-                razorpay_payment_id: response.razorpay_payment_id,
-                razorpay_order_id: response.razorpay_order_id,
+                verified,
+                ...rzpRefs,
               })
               // Charged (or possibly charged) but order confirmation failed —
               // capture the attempt WITH the razorpay_payment_id so staff can
               // reconcile the real charge against Razorpay. MAN-21.
               await reportFailedCheckout(
                 cart.id,
-                `razorpay_verify_or_complete:${err?.message || "error"}`,
+                `${verified ? "razorpay_paid_complete_failed" : "razorpay_verify_or_complete"}:${err?.message || "error"}`,
                 "razorpay",
-                {
-                  razorpay_payment_id: response.razorpay_payment_id,
-                  razorpay_order_id: response.razorpay_order_id,
-                }
+                rzpRefs
               )
+              if (verified) {
+                // Money is confirmed captured: never tell the customer it
+                // failed. The webhook / reconciler / staff finalize the order.
+                window.location.href = localizeHref(
+                  countryCode,
+                  `/checkout/payment-error?reason=paid_pending_order&pid=${encodeURIComponent(response.razorpay_payment_id || "")}`
+                )
+                return
+              }
               window.location.href = `/checkout/payment-error?reason=${encodeURIComponent(err.message || "verification_failed")}`
             }
           },
