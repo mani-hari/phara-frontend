@@ -122,10 +122,6 @@ export default async function SearchPage(props: Props) {
               </p>
             )}
 
-            <div style={{ marginBottom: 28 }}>
-              <AskPariharaBanner query={q} countryCode={countryCode} compact />
-            </div>
-
             {hasResults ? (
               <ul
                 className="grid grid-cols-2 w-full small:grid-cols-3 medium:grid-cols-4 gap-x-6 gap-y-8"
