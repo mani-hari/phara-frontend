@@ -289,25 +289,7 @@ function AddressForm({
         </FieldWrap>
       </div>
 
-      {/* Address */}
-      <FieldWrap label="Address line 1" required error={fieldErrors.address1} field="address1" style={{ marginBottom: 10 }}>
-        <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="address-line1" value={form.address1} onChange={f("address1")} required />
-      </FieldWrap>
-      <FieldWrap label="Address line 2" style={{ marginBottom: 10 }}>
-        <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="address-line2" placeholder="Apartment, suite, landmark (optional)" value={form.address2} onChange={f("address2")} />
-      </FieldWrap>
-
-      {/* City + Postcode — keep 2-col even on mobile (both short) */}
-      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 10 }}>
-        <FieldWrap label="City" required error={fieldErrors.city} field="city">
-          <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="address-level2" value={form.city} onChange={f("city")} required data-testid="city-input" />
-        </FieldWrap>
-        <FieldWrap label="Postcode">
-          <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="postal-code" inputMode="numeric" value={form.postalCode} onChange={f("postalCode")} />
-        </FieldWrap>
-      </div>
-
-      {/* Country, then State (its options depend on the country) */}
+      {/* Country first — the State field's options depend on it */}
       <FieldWrap label="Country" required style={{ marginBottom: 10 }}>
         <CountryAutosuggest
           countries={countries}
@@ -319,14 +301,33 @@ function AddressForm({
           testId="country-select"
         />
       </FieldWrap>
-      <FieldWrap label={provinceLabel(form.countryCode)} required error={fieldErrors.province} field="province" style={{ marginBottom: 0 }}>
-        <ProvinceField
-          countryCode={form.countryCode}
-          value={form.province}
-          onChange={(v) => onChange({ province: v })}
-          invalid={!!fieldErrors.province}
-          data-testid="state-input"
-        />
+
+      {/* Address */}
+      <FieldWrap label="Address line 1" required error={fieldErrors.address1} field="address1" style={{ marginBottom: 10 }}>
+        <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="address-line1" value={form.address1} onChange={f("address1")} required />
+      </FieldWrap>
+      <FieldWrap label="Address line 2" style={{ marginBottom: 10 }}>
+        <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="address-line2" placeholder="Apartment, suite, landmark (optional)" value={form.address2} onChange={f("address2")} />
+      </FieldWrap>
+
+      {/* City + State side by side — keep 2-col even on mobile */}
+      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10, marginBottom: 10 }}>
+        <FieldWrap label="City" required error={fieldErrors.city} field="city">
+          <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="address-level2" value={form.city} onChange={f("city")} required data-testid="city-input" />
+        </FieldWrap>
+        <FieldWrap label={provinceLabel(form.countryCode)} required error={fieldErrors.province} field="province">
+          <ProvinceField
+            countryCode={form.countryCode}
+            value={form.province}
+            onChange={(v) => onChange({ province: v })}
+            invalid={!!fieldErrors.province}
+            data-testid="state-input"
+          />
+        </FieldWrap>
+      </div>
+
+      <FieldWrap label="Postcode (also known as zipcode / postal code)" style={{ marginBottom: 0 }}>
+        <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="postal-code" inputMode="numeric" value={form.postalCode} onChange={f("postalCode")} />
       </FieldWrap>
     </div>
   )
@@ -386,6 +387,13 @@ function BillingForm({
           <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing family-name" value={form.lastName} onChange={f("lastName")} required />
         </FieldWrap>
       </div>
+      <FieldWrap label="Country" required style={{ marginBottom: 10 }}>
+        <CountryAutosuggest
+          countries={countries}
+          value={form.countryCode}
+          onChange={(v) => onChange({ countryCode: v, province: normalizeProvince(form.province, v) })}
+        />
+      </FieldWrap>
       <FieldWrap label="Address line 1" required error={fieldErrors.b_address1} field="b_address1" style={{ marginBottom: 10 }}>
         <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing address-line1" value={form.address1} onChange={f("address1")} required />
       </FieldWrap>
@@ -396,26 +404,19 @@ function BillingForm({
         <FieldWrap label="City" required error={fieldErrors.b_city} field="b_city">
           <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing address-level2" value={form.city} onChange={f("city")} required data-testid="billing-city-input" />
         </FieldWrap>
-        <FieldWrap label="Postcode">
-          <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing postal-code" inputMode="numeric" value={form.postalCode} onChange={f("postalCode")} />
+        <FieldWrap label={provinceLabel(form.countryCode)} required error={fieldErrors.b_province} field="b_province">
+          <ProvinceField
+            countryCode={form.countryCode}
+            value={form.province}
+            onChange={(v) => onChange({ province: v })}
+            autoComplete="billing address-level1"
+            invalid={!!fieldErrors.b_province}
+            data-testid="billing-state-input"
+          />
         </FieldWrap>
       </div>
-      <FieldWrap label="Country" required style={{ marginBottom: 10 }}>
-        <CountryAutosuggest
-          countries={countries}
-          value={form.countryCode}
-          onChange={(v) => onChange({ countryCode: v, province: normalizeProvince(form.province, v) })}
-        />
-      </FieldWrap>
-      <FieldWrap label={provinceLabel(form.countryCode)} required error={fieldErrors.b_province} field="b_province" style={{ marginBottom: 0 }}>
-        <ProvinceField
-          countryCode={form.countryCode}
-          value={form.province}
-          onChange={(v) => onChange({ province: v })}
-          autoComplete="billing address-level1"
-          invalid={!!fieldErrors.b_province}
-          data-testid="billing-state-input"
-        />
+      <FieldWrap label="Postcode (also known as zipcode / postal code)" style={{ marginBottom: 0 }}>
+        <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing postal-code" inputMode="numeric" value={form.postalCode} onChange={f("postalCode")} />
       </FieldWrap>
     </div>
   )

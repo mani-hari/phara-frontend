@@ -78,10 +78,11 @@ export const AUSTRALIA_STATES: [code: string, name: string][] = [
   ["TAS", "Tasmania"], ["VIC", "Victoria"], ["WA", "Western Australia"],
 ]
 
+// Dropdown countries: India and the USA only (owner decision, 24 Sep 2026). Every
+// other country gets a free-text state field. Canada/Australia lists are kept for
+// reference / future use but are NOT offered as dropdowns.
 const CODED: Record<string, [string, string][]> = {
   us: US_STATES,
-  ca: CANADA_PROVINCES,
-  au: AUSTRALIA_STATES,
 }
 
 /** Full-name options for countries with a fixed list, else null (free text). */
@@ -95,8 +96,7 @@ export function getProvinceOptions(countryCode?: string | null): string[] | null
 /** Field label for the country. */
 export function provinceLabel(countryCode?: string | null): string {
   const cc = (countryCode || "").toLowerCase()
-  if (cc === "in" || cc === "us" || cc === "au") return "State"
-  if (cc === "ca") return "Province"
+  if (cc === "in" || cc === "us") return "State"
   return "State / Province / Region"
 }
 
