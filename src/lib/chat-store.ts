@@ -72,6 +72,16 @@ async function createSchema(db: any) {
   } catch (err) {
     console.warn("[chat-store] schema init failed:", err)
   }
+
+  // Ask Parihara guardrail state (src/lib/chat/guardrail.ts). Own try block so
+  // a failure above never skips these, and vice versa.
+  try {
+    await db`ALTER TABLE chat_sessions ADD COLUMN IF NOT EXISTS guard_flags INT DEFAULT 0`
+    await db`ALTER TABLE chat_sessions ADD COLUMN IF NOT EXISTS guard_locked_at TIMESTAMPTZ NULL`
+    await db`ALTER TABLE chat_sessions ADD COLUMN IF NOT EXISTS guard_reason TEXT NULL`
+  } catch (err) {
+    console.warn("[chat-store] guard schema init failed:", err)
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -229,5 +239,94 @@ export async function linkSessionToUser(
     `
   } catch (err) {
     console.warn("[chat-store] linkSessionToUser:", err)
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Guardrail state (Layer 1 of the Ask Parihara legitimacy protocol)
+// ---------------------------------------------------------------------------
+
+export type GuardState = { flags: number; lockedAt: string | null }
+
+/**
+ * Current guard state for a session, or null when there is no DB / no row /
+ * the query fails (caller falls back to counting flagged turns in history).
+ */
+export async function getGuardState(sessionId: string): Promise<GuardState | null> {
+  const db = await getDb()
+  if (!db) return null
+  try {
+    const rows = await db`
+      SELECT guard_flags, guard_locked_at FROM chat_sessions WHERE id = ${sessionId}
+    `
+    const r = rows?.[0]
+    if (!r) return { flags: 0, lockedAt: null }
+    return { flags: Number(r.guard_flags ?? 0), lockedAt: r.guard_locked_at ?? null }
+  } catch (err) {
+    console.warn("[chat-store] getGuardState:", err)
+    return null
+  }
+}
+
+/**
+ * Atomically record one flagged message. Creates the session row if it does
+ * not exist yet (upsertSession is fire-and-forget and may not have landed).
+ * The session locks on the second flag. Returns the new state, or null on
+ * failure.
+ */
+export async function recordGuardFlag(
+  sessionId: string,
+  reason: string,
+  pageUrl: string,
+  pageTitle: string,
+  userId?: string | null
+): Promise<GuardState | null> {
+  const db = await getDb()
+  if (!db) return null
+  try {
+    const rows = await db`
+      INSERT INTO chat_sessions (id, country, page_url, page_title, user_id, updated_at, guard_flags, guard_reason)
+      VALUES (${sessionId}, 'in', ${pageUrl}, ${pageTitle}, ${userId ?? null}, NOW(), 1, ${reason})
+      ON CONFLICT (id) DO UPDATE SET
+        guard_flags     = COALESCE(chat_sessions.guard_flags, 0) + 1,
+        guard_reason    = EXCLUDED.guard_reason,
+        guard_locked_at = CASE
+                            WHEN COALESCE(chat_sessions.guard_flags, 0) + 1 >= 2
+                              THEN COALESCE(chat_sessions.guard_locked_at, NOW())
+                            ELSE chat_sessions.guard_locked_at
+                          END,
+        user_id         = COALESCE(chat_sessions.user_id, EXCLUDED.user_id),
+        updated_at      = NOW()
+      RETURNING guard_flags, guard_locked_at
+    `
+    const r = rows?.[0]
+    if (!r) return null
+    return { flags: Number(r.guard_flags ?? 0), lockedAt: r.guard_locked_at ?? null }
+  } catch (err) {
+    console.warn("[chat-store] recordGuardFlag:", err)
+    return null
+  }
+}
+
+/** Last N messages of a session (oldest first) for incident transcripts. */
+export async function getRecentMessages(
+  sessionId: string,
+  limit = 12
+): Promise<{ role: string; content: string }[]> {
+  const db = await getDb()
+  if (!db) return []
+  try {
+    const rows = await db`
+      SELECT role, content FROM (
+        SELECT role, content, created_at, id FROM chat_messages
+         WHERE session_id = ${sessionId} AND role IN ('user','assistant')
+         ORDER BY created_at DESC, id DESC
+         LIMIT ${limit}
+      ) t ORDER BY created_at ASC, id ASC
+    `
+    return rows as { role: string; content: string }[]
+  } catch (err) {
+    console.warn("[chat-store] getRecentMessages:", err)
+    return []
   }
 }

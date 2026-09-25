@@ -13,6 +13,8 @@ type Product = {
   collectionTitle?: string
   variantId?: string
   priceInr?: number | null
+  priceUsd?: number | null
+  hasOptions?: boolean
 }
 
 type ChatProductCardsProps = {
@@ -90,17 +92,23 @@ function ProductCard({
   const [adding, setAdding] = useState(false)
   const [added, setAdded] = useState(false)
   const [isHovered, setIsHovered] = useState(false)
+  const [addError, setAddError] = useState<string | null>(null)
+  const isIndia = countryCode.toLowerCase() === "in"
+  const price = isIndia ? p.priceInr : p.priceUsd
 
   const addToCart = async () => {
     if (!p.variantId || adding || added) return
     setAdding(true)
+    setAddError(null)
     try {
       const cartRes = await fetch("/api/cart/add", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ variantId: p.variantId, quantity: 1 }),
+        body: JSON.stringify({ variantId: p.variantId, quantity: 1, countryCode }),
       })
-      if (cartRes.ok) {
+      if (!cartRes.ok) {
+        setAddError("Couldn't add to cart. Please open the product page or try again.")
+      } else {
         setAdded(true)
         onAddedToCart?.({
           title: p.title,
@@ -110,7 +118,7 @@ function ProductCard({
         setTimeout(() => setAdded(false), 2000)
       }
     } catch {
-      // silent
+      setAddError("Couldn't add to cart. Please open the product page or try again.")
     } finally {
       setAdding(false)
     }
@@ -226,7 +234,7 @@ function ProductCard({
             marginBottom: 8,
           }}
         >
-          {p.priceInr ? (
+          {price ? (
             <span
               style={{
                 fontSize: 14,
@@ -236,7 +244,8 @@ function ProductCard({
                 fontFeatureSettings: "'tnum' 1",
               }}
             >
-              ₹{p.priceInr.toLocaleString("en-IN")}
+              {p.hasOptions ? "from " : ""}
+              {isIndia ? `₹${price.toLocaleString("en-IN")}` : `$${price.toLocaleString("en-US")}`}
             </span>
           ) : (
             <span style={{ fontSize: 12, color: "var(--ink-4)" }}>
@@ -244,6 +253,15 @@ function ProductCard({
             </span>
           )}
 
+          {p.hasOptions || !p.variantId ? (
+            <a
+              href={productHref}
+              className="ph-btn ph-btn-primary"
+              style={{ padding: "5px 12px", fontSize: 12, fontWeight: 600, textDecoration: "none" }}
+            >
+              Choose →
+            </a>
+          ) : (
           <button
             type="button"
             onClick={(e) => {
@@ -264,7 +282,14 @@ function ProductCard({
           >
             {added ? "Added ✓" : adding ? "…" : "Book"}
           </button>
+          )}
         </div>
+
+        {addError && (
+          <p role="alert" style={{ margin: "0 0 8px", fontSize: 11.5, color: "var(--sindoor)" }}>
+            {addError}
+          </p>
+        )}
 
         {/* View details link */}
         <a

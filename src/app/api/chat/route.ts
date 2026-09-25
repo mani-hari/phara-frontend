@@ -1,101 +1,98 @@
-import { createDataStreamResponse, streamText, tool } from "ai"
+import { createDataStreamResponse, formatDataStreamPart, streamText, tool } from "ai"
 import { anthropic } from "@ai-sdk/anthropic"
 import { z } from "zod"
 import { NextRequest } from "next/server"
 import { retrieveCustomer } from "@lib/data/customer"
-import { upsertSession, saveMessage, updateSessionTitle } from "@lib/chat-store"
+import {
+  upsertSession,
+  saveMessage,
+  updateSessionTitle,
+  getGuardState,
+  recordGuardFlag,
+  getRecentMessages,
+} from "@lib/chat-store"
 import { generateSessionTitle } from "@lib/chat-title"
 import {
   getMedusaCustomerContext,
   formatCustomerContextForPrompt,
   type SavedAddress,
 } from "@lib/medusa-customer-context"
+import {
+  classifyMessage,
+  sanitizeHistory,
+  getMessageText,
+  STANDARD_REPLY,
+  ESCALATION_REPLY,
+} from "@lib/chat/guardrail"
+import { sendChatIncident, type IncidentStage } from "@lib/chat/incident"
+import {
+  getCatalog,
+  findProduct,
+  pickVariant,
+  formatCatalogForPrompt,
+  type CatalogProduct,
+} from "@lib/chat/catalog"
+import { buildSystemPrompt } from "@lib/chat/system-prompt"
+import { CONTACT } from "@lib/contact"
 
 const BACKEND_URL =
   process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "https://pariharaonline.medusajs.app"
-const PUB_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || ""
 
-const SYSTEM = `You are Parihara — the guiding presence of PariharaOnline, a platform for Hindu temple poojas, homams, and Vedic astrology services.
+type IncomingMessage = {
+  role: "user" | "assistant"
+  content: string
+  parts?: unknown[]
+  [k: string]: unknown
+}
 
-PERSONALITY
-You speak the way a wise elder speaks: directly, warmly, without filler. One clear thought at a time. Never start with "Great question!" or "Absolutely!" You don't qualify everything. You let silence do work. You are not verbose.
-
-TWO MODES — detect from context, never announce:
-- LEARNING: user asks "what is", "why", "explain" → illuminate briefly. One vivid insight beats five explanations.
-- ORDERING: user says "I want to", "which should I", "I'm going through X" → become their guide. Ask one qualifying question if needed, then show options with the recommendProducts tool.
-
-KEY SERVICES (use exact handles in recommendProducts):
-- garbharakshambika-ghee → Garbarakshambigai Ghee Abhishekam (conception blessings)
-- garbharakshambika-oil → Garbarakshambigai Oil Abhishekam (safe pregnancy)
-- rahu-ketu-dosha-parihara-pooja-sarpa-dosha-parihara-pooja-at-sri-kalahasti-temple → Rahu Ketu Parihara at Sri Kalahasti (Sarpa Dosha)
-- sudarsana-homam → Sudarshana Homam (protection, removing obstacles)
-- tila-homam-at-rameswaram → Thila Homam at Rameswaram (pitru / ancestor blessings)
-- annadhanam-donate-food-to-homeless-children → Annadanam (feeding the underprivileged, merit)
-
-ORDER & SHIPPING KNOWLEDGE
-- Carriers: India Post EMS (primary — domestic + most international), FedEx (30% international, faster)
-- India Post tracking: visitor goes to https://tracking.indiapost.gov.in/TrackConsignment.aspx and enters their consignment number (typically starts with EE, EM, or EP followed by digits and IN)
-- FedEx tracking: https://www.fedex.com/fedextrack/?tracknumbers={tracking_id}
-- Pooja completion: 3–5 business days from confirmed payment; video/photos sent to devotee's WhatsApp
-- Prasadam dispatch: 7–14 days after pooja date
-- Transit times: India Post EMS 10–14 business days internationally; FedEx 5–7 business days
-- Delays during Navratri, Karthigai Deepam, Shivaratri are normal — temple schedule comes first
-- Staff WhatsApp: +91-97432 44501 (Mon–Sat 9 AM–6 PM IST)
-- SECURITY: Never reveal order details without identity verification. Logged-in users: freely share their orders. Guests: require BOTH order number AND exact email address that matches the record.
-
-TOOL RULES — follow strictly:
-1. ALWAYS call suggestFollowUps at the end of every response. Never skip this.
-2. Call recommendProducts when recommending any specific service or pooja
-3. Call showBookingForm when user wants to book, proceed to payment, or says "let's do it" / "book this"
-4. Call queryOrderStatus when user asks about order tracking, delivery, or order status
-5. Call suggestSignIn when user asks about past orders without being logged in
-
-RULES
-- No medical or legal claims. No specific outcome promises.
-- Keep responses to 2-4 sentences max unless complexity demands more
-- Use Sanskrit/Tamil terms naturally; meaning should be clear from context
-- You are Parihara, not "an AI assistant"`
-
-async function fetchProduct(handle: string) {
-  try {
-    const res = await fetch(
-      `${BACKEND_URL}/store/products?handle=${handle}&limit=1&fields=id,title,handle,thumbnail,description,collection.title,variants.id,variants.calculated_price,variants.prices.amount,variants.prices.currency_code`,
-      {
-        headers: { "x-publishable-api-key": PUB_KEY },
-        next: { revalidate: 3600 },
-      }
-    )
-    if (!res.ok) return null
-    const { products } = await res.json()
-    const p = products?.[0]
-    if (!p) return null
-
-    const inrVariant = p.variants?.find((v: any) =>
-      v.prices?.some((pr: any) => pr.currency_code === "inr")
-    )
-    const price = inrVariant?.prices?.find((pr: any) => pr.currency_code === "inr")?.amount
-    const variantId = p.variants?.[0]?.id
-
-    return {
-      id: p.id,
-      handle: p.handle,
-      title: p.title,
-      description: p.description?.slice(0, 120),
-      thumbnail: p.thumbnail,
-      collectionTitle: p.collection?.title,
-      variantId,
-      priceInr: price ? Math.round(price) : null,
-    }
-  } catch {
-    return null
+/** Product shape the chat product cards render (src/components/chat/product-card.tsx). */
+function toCard(p: CatalogProduct) {
+  const v = p.variants[0]
+  return {
+    id: p.id,
+    handle: p.handle,
+    title: p.title,
+    description: (p.subtitle || p.description || "").slice(0, 120),
+    thumbnail: p.thumbnail ?? undefined,
+    collectionTitle: p.collection ?? undefined,
+    variantId: v.id,
+    variantTitle: v.title,
+    priceInr: v.priceInr,
+    priceUsd: v.priceUsd,
+    hasOptions: p.variants.length > 1,
   }
 }
 
-export async function POST(req: NextRequest) {
-  if (!process.env.ANTHROPIC_API_KEY) {
-    return new Response(JSON.stringify({ error: "Chat not configured" }), { status: 500 })
-  }
+/**
+ * Stream a fixed reply in the same data-stream format useChat expects from
+ * streamText, without calling the model.
+ */
+function fixedReplyResponse(reply: string, after: () => Promise<void>) {
+  return createDataStreamResponse({
+    execute: async (dataStream) => {
+      const usage = { promptTokens: 0, completionTokens: 0 }
+      dataStream.write(formatDataStreamPart("start_step", { messageId: `guard-${Date.now()}` }))
+      dataStream.write(formatDataStreamPart("text", reply))
+      dataStream.write(
+        formatDataStreamPart("finish_step", { finishReason: "stop", usage, isContinued: false })
+      )
+      dataStream.write(formatDataStreamPart("finish_message", { finishReason: "stop", usage }))
+      // Persistence + incident alert run before the stream closes (a dangling
+      // promise can be frozen on serverless), after the reply is already sent.
+      try {
+        await after()
+      } catch (err) {
+        console.warn("[chat guard] post-reply work failed:", err)
+      }
+    },
+    onError: (err) => {
+      console.error("[chat guard stream]", err)
+      return String(err)
+    },
+  })
+}
 
+export async function POST(req: NextRequest) {
   try {
     const body = await req.json()
     const {
@@ -104,7 +101,7 @@ export async function POST(req: NextRequest) {
       pageContext,
       conversationCount = 0,
     }: {
-      messages: { role: "user" | "assistant"; content: string }[]
+      messages: IncomingMessage[]
       sessionId?: string
       pageContext?: {
         currentUrl: string
@@ -120,8 +117,89 @@ export async function POST(req: NextRequest) {
     const customer = await retrieveCustomer().catch(() => null)
     const userEmail = customer?.email?.toLowerCase() ?? null
 
-    // Build system prompt
-    let systemWithContext = SYSTEM
+    const lastUser = [...messages].reverse().find((m) => m.role === "user")
+    const lastUserText = lastUser ? getMessageText(lastUser) : ""
+
+    // ── Layer 1: deterministic temple-legitimacy guardrail ──────────────────
+    // Runs BEFORE the model. A locked session or a flagged message gets a
+    // fixed, owner-approved reply; the model is never called.
+    const guard = lastUser ? classifyMessage(lastUserText) : { flagged: false, reason: "" }
+    const priorFlags = sanitizeHistory(messages.slice(0, -1)).flaggedCount
+    const dbState = sessionId ? await getGuardState(sessionId) : null
+    // No DB (or no session id): fall back to the flagged turns in the history.
+    const alreadyLocked = dbState ? !!dbState.lockedAt : priorFlags >= 2
+
+    if (lastUser && (alreadyLocked || guard.flagged)) {
+      let reply = ESCALATION_REPLY
+      let incidentStage: IncidentStage | null = null
+      let reason = guard.reason || "session locked"
+
+      if (!alreadyLocked) {
+        const state = sessionId
+          ? await recordGuardFlag(
+              sessionId,
+              guard.reason,
+              pageContext?.currentUrl ?? "",
+              pageContext?.currentTitle ?? "",
+              userEmail
+            )
+          : null
+        const flags = state?.flags ?? priorFlags + 1
+        if (flags <= 1) {
+          reply = STANDARD_REPLY
+          incidentStage = "flagged"
+        } else if (flags === 2 || !state) {
+          incidentStage = "locked"
+        }
+      } else {
+        reason = `locked session: ${guard.flagged ? guard.reason : "follow-up message"}`
+      }
+
+      console.warn(
+        `[chat guard] session=${(sessionId || "-").slice(0, 8)} stage=${incidentStage ?? "locked-followup"} reason=${reason}`
+      )
+
+      return fixedReplyResponse(reply, async () => {
+        if (sessionId) {
+          await upsertSession(
+            sessionId,
+            "in",
+            pageContext?.currentUrl ?? "",
+            pageContext?.currentTitle ?? "",
+            userEmail
+          )
+          await saveMessage(sessionId, "user", lastUserText)
+          await saveMessage(sessionId, "assistant", reply)
+        }
+        if (incidentStage) {
+          const transcript = sessionId ? await getRecentMessages(sessionId, 12) : []
+          await sendChatIncident({
+            sessionId: sessionId || `nosession-${Date.now()}`,
+            reason,
+            stage: incidentStage,
+            pageUrl: pageContext?.currentUrl,
+            transcript: transcript.length
+              ? transcript
+              : [
+                  ...messages.slice(-11).map((m) => ({ role: m.role, content: getMessageText(m) })),
+                  { role: "assistant", content: reply },
+                ],
+            customerEmail: userEmail,
+          })
+        }
+      })
+    }
+
+    if (!process.env.ANTHROPIC_API_KEY) {
+      return new Response(JSON.stringify({ error: "Chat not configured" }), { status: 500 })
+    }
+
+    // Earlier flagged turns never reach the model.
+    const modelMessages = sanitizeHistory(messages.slice(-20)).messages
+
+    // Build system prompt (base + legitimacy protocol + live catalog)
+    const catalog = await getCatalog()
+    let systemWithContext = buildSystemPrompt(formatCatalogForPrompt(catalog))
 
     // Page context injection
     if (pageContext) {
@@ -166,7 +244,6 @@ export async function POST(req: NextRequest) {
     // very first user message when it commits before the session row exists,
     // silently swallowed by saveMessage's own try/catch. That leaves the
     // assistant's reply as the first surviving row for the session.
-    const lastUser = [...messages].reverse().find((m) => m.role === "user")
     // "First exchange" = no assistant messages yet in the incoming history —
     // used below (after streaming) to decide whether to auto-title the session.
     const isFirstExchange = !messages.some((m) => m.role === "assistant")
@@ -178,7 +255,7 @@ export async function POST(req: NextRequest) {
         pageContext?.currentTitle ?? "",
         userEmail
       )
-        .then(() => (lastUser ? saveMessage(sessionId, "user", lastUser.content) : null))
+        .then(() => (lastUser ? saveMessage(sessionId, "user", lastUserText) : null))
         .catch(() => {})
     }
 
@@ -187,25 +264,30 @@ export async function POST(req: NextRequest) {
         const result = streamText({
           model: anthropic("claude-haiku-4-5-20251001"),
           system: systemWithContext,
-          messages: messages.slice(-20),
+          messages: modelMessages as any,
           maxTokens: 800,
           tools: {
             recommendProducts: tool({
               description:
-                "Show product cards for poojas or services that match the user's situation. Call this whenever recommending specific services.",
+                "Show product cards for poojas, homams, prasadam or services that match the user's situation. Call this whenever recommending specific products. Use exact handles from PRODUCT CATALOG.",
               parameters: z.object({
                 handles: z
                   .array(z.string())
                   .min(1)
                   .max(4)
-                  .describe("Product handles from the catalog"),
+                  .describe("Product handles exactly as listed in PRODUCT CATALOG"),
                 reason: z
                   .string()
                   .describe("One-sentence reason why these are right for this person"),
               }),
               execute: async ({ handles, reason }) => {
-                const products = await Promise.all(handles.map(fetchProduct))
-                const valid = products.filter(Boolean)
+                const found = handles
+                  .map((h) => findProduct(catalog, h))
+                  .filter((p): p is CatalogProduct => !!p)
+                const unique = found.filter(
+                  (p, i) => found.findIndex((q) => q.handle === p.handle) === i
+                )
+                const unknown = handles.filter((h) => !findProduct(catalog, h))
                 if (sessionId) {
                   saveMessage(
                     sessionId,
@@ -214,7 +296,16 @@ export async function POST(req: NextRequest) {
                     "recommendProducts"
                   ).catch(() => {})
                 }
-                return { products: valid, reason }
+                return {
+                  products: unique.map(toCard),
+                  reason,
+                  ...(unknown.length
+                    ? {
+                        unknownHandles: unknown,
+                        note: "These handles are not in the catalog. Do not mention them as products.",
+                      }
+                    : {}),
+                }
               },
             }),
 
@@ -235,14 +326,22 @@ export async function POST(req: NextRequest) {
 
             showBookingForm: tool({
               description:
-                "Show a booking form to collect pooja person name, star details, and delivery address before payment. Call this when user wants to book a specific service or proceed to checkout.",
+                "Show a booking card for one catalog product: collects who the pooja is for (name, nakshatra, gothram), adds it to the customer's cart and takes them to our secure checkout to pay. Call this when the user wants to book a specific product or proceed to payment.",
               parameters: z.object({
-                serviceTitle: z
+                handle: z.string().describe("Exact product handle from PRODUCT CATALOG"),
+                variantTitle: z
                   .string()
-                  .describe("Name of the pooja or service being booked"),
-                priceInr: z.number().optional().describe("Price in INR if known"),
+                  .optional()
+                  .describe("Variant/option title from the catalog if the product has several"),
               }),
-              execute: async ({ serviceTitle, priceInr }) => {
+              execute: async ({ handle, variantTitle }) => {
+                const product = findProduct(catalog, handle)
+                if (!product) {
+                  return {
+                    error: `I couldn't find that service to book here. Our team can help on WhatsApp at ${CONTACT.whatsappDisplay}.`,
+                  }
+                }
+                const selected = pickVariant(product, variantTitle)
                 let savedAddresses: SavedAddress[] = []
                 if (userEmail) {
                   try {
@@ -253,8 +352,12 @@ export async function POST(req: NextRequest) {
                   }
                 }
                 return {
-                  serviceTitle,
-                  priceInr: priceInr ?? null,
+                  handle: product.handle,
+                  serviceTitle: product.title,
+                  variants: product.variants,
+                  selectedVariantId: selected.id,
+                  priceInr: selected.priceInr,
+                  priceUsd: selected.priceUsd,
                   savedAddresses,
                   isLoggedIn: !!userEmail,
                 }
@@ -363,7 +466,7 @@ export async function POST(req: NextRequest) {
               // blocks/fails the chat response).
               if (isFirstExchange && lastUser) {
                 generateSessionTitle([
-                  { role: "user", content: lastUser.content },
+                  { role: "user", content: lastUserText },
                   { role: "assistant", content: text },
                 ])
                   .then((title) => updateSessionTitle(sessionId, title))

@@ -1,100 +1,54 @@
 "use client"
 
-import { useState, useCallback } from "react"
-import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js"
-import { loadRazorpayScript } from "@lib/payments/razorpay"
+import { CONTACT, waLink } from "@lib/contact"
+
+// Booking summary shown after the chat booking form. The item has already
+// been added to the visitor's storefront cart (POST /api/chat/checkout); the
+// button takes them to the storefront's secure checkout, where Razorpay (INR)
+// or PayPal (USD) payment, the address and order confirmation are handled.
+// The button is never disabled without a visible reason.
+
+export type ChatCheckoutStatus = "loading" | "ready" | "error"
 
 type CheckoutSummaryCardProps = {
-  items: { title: string; priceInr: number | null; quantity: number }[]
-  totalInr: number
+  serviceTitle: string
+  variantTitle?: string | null
+  price: number | null
+  currency: "INR" | "USD"
   bookingDetails: {
     poojaPersonName: string
     nakshatra?: string
     gothram?: string
-    address: {
-      firstName: string
-      lastName: string
-      city: string
-      countryCode: string
-    }
   }
-  countryCode: string
-  razorpayKeyId: string
-  razorpayOrderId?: string
-  onRazorpaySuccess: (paymentId: string, orderId: string, signature: string) => void
-  onRazorpayFailure: (error: string) => void
-  onPaypalSuccess?: (orderId: string) => void
+  status: ChatCheckoutStatus
+  checkoutUrl?: string
+  productUrl?: string
+  error?: string
+  onRetry?: () => void
   onSaveLater: () => void
-  isProcessing?: boolean
 }
 
-const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ?? "test"
-const COUNTRY_NAMES: Record<string, string> = {
-  in: "India", us: "US", gb: "UK", ca: "Canada", au: "Australia",
-  sg: "Singapore", ae: "UAE", de: "Germany", fr: "France", nl: "Netherlands",
-  nz: "New Zealand", my: "Malaysia",
+function fmt(price: number | null, currency: "INR" | "USD") {
+  if (price == null) return "—"
+  return currency === "INR"
+    ? `₹${price.toLocaleString("en-IN")}`
+    : `$${price.toLocaleString("en-US")}`
 }
 
 export default function CheckoutSummaryCard({
-  items,
-  totalInr,
+  serviceTitle,
+  variantTitle,
+  price,
+  currency,
   bookingDetails,
-  countryCode,
-  razorpayKeyId,
-  razorpayOrderId,
-  onRazorpaySuccess,
-  onRazorpayFailure,
-  onPaypalSuccess,
+  status,
+  checkoutUrl,
+  productUrl,
+  error,
+  onRetry,
   onSaveLater,
-  isProcessing = false,
 }: CheckoutSummaryCardProps) {
-  const [razorpayLoading, setRazorpayLoading] = useState(false)
-  const [showRazorpayFallback, setShowRazorpayFallback] = useState(false)
-  const isIndia = countryCode === "in"
-
-  const handleRazorpay = useCallback(async () => {
-    if (!razorpayOrderId) return
-    setRazorpayLoading(true)
-    try {
-      const loaded = await loadRazorpayScript()
-      if (!loaded) {
-        onRazorpayFailure("Failed to load payment gateway. Please try again.")
-        return
-      }
-      new window.Razorpay({
-        key: razorpayKeyId,
-        amount: totalInr * 100,
-        currency: "INR",
-        order_id: razorpayOrderId,
-        name: "PariharaOnline",
-        description: "Temple Services",
-        prefill: {
-          name: bookingDetails.poojaPersonName,
-        },
-        theme: { color: "#b6442e" },
-        handler: (res) => {
-          onRazorpaySuccess(
-            res.razorpay_payment_id,
-            res.razorpay_order_id ?? "",
-            res.razorpay_signature ?? ""
-          )
-        },
-        modal: {
-          ondismiss: () => {
-            setRazorpayLoading(false)
-          },
-        },
-      }).open()
-    } catch {
-      onRazorpayFailure("Payment failed. Please try again.")
-    } finally {
-      setRazorpayLoading(false)
-    }
-  }, [razorpayOrderId, razorpayKeyId, totalInr, bookingDetails.poojaPersonName, onRazorpaySuccess, onRazorpayFailure])
-
-  const countryLabel =
-    COUNTRY_NAMES[countryCode.toLowerCase()] ||
-    countryCode.toUpperCase()
+  const showVariant = variantTitle && !/^default/i.test(variantTitle)
 
   return (
     <div
@@ -107,118 +61,42 @@ export default function CheckoutSummaryCard({
         maxWidth: "100%",
       }}
     >
-      {/* Header */}
-      <div
+      <h3
         style={{
-          display: "flex",
-          alignItems: "center",
-          gap: 8,
-          marginBottom: 16,
-          paddingBottom: 14,
+          margin: "0 0 14px",
+          paddingBottom: 12,
           borderBottom: "1px solid var(--ink-line)",
+          fontSize: 16,
+          fontWeight: 600,
+          fontFamily: "var(--serif)",
+          color: "var(--ink)",
         }}
       >
-        <span
-          style={{
-            width: 22,
-            height: 22,
-            borderRadius: "50%",
-            background: "var(--sage)",
-            display: "inline-flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: 10,
-            color: "#fff",
-            fontWeight: 700,
-            flexShrink: 0,
-          }}
-        >
-          ✓
-        </span>
-        <h3
-          style={{
-            margin: 0,
-            fontSize: 16,
-            fontWeight: 600,
-            fontFamily: "var(--serif)",
-            color: "var(--ink)",
-          }}
-        >
-          Booking Summary
-        </h3>
-      </div>
+        Booking Summary
+      </h3>
 
-      {/* Line items */}
-      <div style={{ marginBottom: 12 }}>
-        {items.map((item, i) => (
-          <div
-            key={i}
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "flex-start",
-              gap: 8,
-              marginBottom: 6,
-            }}
-          >
-            <span
-              style={{
-                fontSize: 13,
-                color: "var(--ink-2)",
-                lineHeight: 1.4,
-                flex: 1,
-              }}
-            >
-              {item.quantity > 1 && (
-                <span style={{ color: "var(--ink-4)", marginRight: 4 }}>
-                  {item.quantity}×
-                </span>
-              )}
-              {item.title}
+      <div style={{ display: "flex", justifyContent: "space-between", gap: 8, marginBottom: 12 }}>
+        <span style={{ fontSize: 13, color: "var(--ink-2)", lineHeight: 1.4, flex: 1 }}>
+          {serviceTitle}
+          {showVariant && (
+            <span style={{ display: "block", fontSize: 12, color: "var(--ink-4)" }}>
+              {variantTitle}
             </span>
-            <span
-              style={{
-                fontSize: 13,
-                fontWeight: 600,
-                color: "var(--ink)",
-                whiteSpace: "nowrap",
-                fontFeatureSettings: "'tnum' 1",
-              }}
-            >
-              {item.priceInr != null
-                ? `₹${(item.priceInr * item.quantity).toLocaleString("en-IN")}`
-                : "—"}
-            </span>
-          </div>
-        ))}
-      </div>
-
-      {/* Total */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          paddingTop: 10,
-          marginBottom: 14,
-          borderTop: "1px solid var(--ink-line)",
-        }}
-      >
-        <span style={{ fontSize: 14, fontWeight: 700, color: "var(--ink)" }}>
-          Total
+          )}
         </span>
         <span
           style={{
-            fontSize: 16,
+            fontSize: 14,
             fontWeight: 700,
             color: "var(--sindoor)",
+            whiteSpace: "nowrap",
             fontFeatureSettings: "'tnum' 1",
           }}
         >
-          ₹{totalInr.toLocaleString("en-IN")}
+          {fmt(price, currency)}
         </span>
       </div>
 
-      {/* Booking meta */}
       <div
         style={{
           padding: "10px 12px",
@@ -233,13 +111,7 @@ export default function CheckoutSummaryCard({
       >
         <div>
           <span style={{ color: "var(--ink-4)" }}>For: </span>
-          <strong style={{ color: "var(--ink)" }}>
-            {bookingDetails.poojaPersonName}
-          </strong>
-        </div>
-        <div>
-          <span style={{ color: "var(--ink-4)" }}>Deliver to: </span>
-          {bookingDetails.address.city}, {countryLabel}
+          <strong style={{ color: "var(--ink)" }}>{bookingDetails.poojaPersonName}</strong>
         </div>
         {bookingDetails.nakshatra && (
           <div>
@@ -247,102 +119,82 @@ export default function CheckoutSummaryCard({
             {bookingDetails.nakshatra}
           </div>
         )}
+        {bookingDetails.gothram && (
+          <div>
+            <span style={{ color: "var(--ink-4)" }}>Gothram: </span>
+            {bookingDetails.gothram}
+          </div>
+        )}
       </div>
 
-      {/* Payment section */}
-      <div style={{ marginBottom: 12 }}>
-        {!isIndia && (
-          <>
-            {/* PayPal first for international */}
-            <div style={{ marginBottom: 10 }}>
-              <PayPalScriptProvider
-                options={{
-                  clientId: PAYPAL_CLIENT_ID,
-                  currency: "USD",
-                  intent: "capture",
-                }}
-              >
-                <PayPalButtons
-                  style={{
-                    layout: "horizontal",
-                    color: "gold",
-                    shape: "pill",
-                    label: "paypal",
-                    height: 40,
-                  }}
-                  createOrder={async () => {
-                    const res = await fetch("/api/payments/paypal/create-order", {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({
-                        amount: totalInr,
-                        currency: "INR",
-                        description: "PariharaOnline - Temple Services",
-                      }),
-                    })
-                    const data = await res.json()
-                    if (!res.ok) throw new Error(data.error || "Failed to create order")
-                    return data.id
-                  }}
-                  onApprove={async (data) => {
-                    const res = await fetch("/api/payments/paypal/capture-order", {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({ orderId: data.orderID }),
-                    })
-                    if (!res.ok) {
-                      const err = await res.json()
-                      throw new Error(err.error || "Capture failed")
-                    }
-                    onPaypalSuccess?.(data.orderID)
-                  }}
-                />
-              </PayPalScriptProvider>
-            </div>
+      {status === "loading" && (
+        <button
+          type="button"
+          disabled
+          className="ph-btn ph-btn-sindoor ph-btn-block"
+          style={{ fontSize: 14, fontWeight: 600, opacity: 0.7, cursor: "wait" }}
+        >
+          Adding to your cart…
+        </button>
+      )}
 
-            {/* Razorpay fallback for international */}
-            {!showRazorpayFallback ? (
+      {status === "ready" && checkoutUrl && (
+        <>
+          <a
+            href={checkoutUrl}
+            className="ph-btn ph-btn-sindoor ph-btn-block"
+            style={{ fontSize: 14, fontWeight: 600, textDecoration: "none", textAlign: "center" }}
+          >
+            Continue to secure payment →
+          </a>
+          <p style={{ margin: "8px 0 0", fontSize: 12, color: "var(--ink-4)", textAlign: "center" }}>
+            Added to your cart. You&apos;ll enter your address and pay with{" "}
+            {currency === "INR" ? "Razorpay (UPI, cards, netbanking)" : "PayPal or card"} on the
+            next page.
+          </p>
+        </>
+      )}
+
+      {status === "error" && (
+        <div role="alert">
+          <p style={{ margin: "0 0 10px", fontSize: 13, color: "var(--sindoor)", lineHeight: 1.5 }}>
+            {error || "We couldn't add this to your cart."} You can book it from the product page,
+            or our team can help on WhatsApp at {CONTACT.whatsappDisplay}.
+          </p>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            {onRetry && (
               <button
                 type="button"
-                onClick={() => setShowRazorpayFallback(true)}
-                style={{
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  fontSize: 12.5,
-                  color: "var(--ink-4)",
-                  textDecoration: "underline",
-                  padding: 0,
-                  display: "block",
-                  textAlign: "center",
-                  width: "100%",
-                }}
+                onClick={onRetry}
+                className="ph-btn ph-btn-sindoor"
+                style={{ fontSize: 13, padding: "8px 14px" }}
               >
-                or pay with card →
+                Try again
               </button>
-            ) : (
-              <RazorpayButton
-                totalInr={totalInr}
-                loading={razorpayLoading}
-                disabled={!razorpayOrderId || isProcessing}
-                onClick={handleRazorpay}
-              />
             )}
-          </>
-        )}
+            {productUrl && (
+              <a
+                href={productUrl}
+                className="ph-btn ph-btn-ghost"
+                style={{ fontSize: 13, padding: "8px 14px", textDecoration: "none" }}
+              >
+                Open product page
+              </a>
+            )}
+            <a
+              href={waLink(`Hi, I'd like to book ${serviceTitle}.`)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ph-btn ph-btn-ghost"
+              style={{ fontSize: 13, padding: "8px 14px", textDecoration: "none" }}
+            >
+              WhatsApp us
+            </a>
+          </div>
+        </div>
+      )}
 
-        {isIndia && (
-          <RazorpayButton
-            totalInr={totalInr}
-            loading={razorpayLoading}
-            disabled={!razorpayOrderId || isProcessing}
-            onClick={handleRazorpay}
-          />
-        )}
-      </div>
-
-      {/* Save later */}
-      <div style={{ textAlign: "center" }}>
+      <div style={{ textAlign: "center", marginTop: 12 }}>
         <button
           type="button"
           onClick={onSaveLater}
@@ -360,53 +212,5 @@ export default function CheckoutSummaryCard({
         </button>
       </div>
     </div>
-  )
-}
-
-function RazorpayButton({
-  totalInr,
-  loading,
-  disabled,
-  onClick,
-}: {
-  totalInr: number
-  loading: boolean
-  disabled: boolean
-  onClick: () => void
-}) {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      disabled={disabled || loading}
-      className="ph-btn ph-btn-sindoor ph-btn-block"
-      style={{
-        fontSize: 14,
-        fontWeight: 600,
-        opacity: disabled ? 0.5 : 1,
-        cursor: disabled ? "not-allowed" : "pointer",
-        gap: 8,
-      }}
-    >
-      {loading ? (
-        <>
-          <span
-            style={{
-              display: "inline-block",
-              width: 14,
-              height: 14,
-              border: "2px solid rgba(255,255,255,0.4)",
-              borderTopColor: "#fff",
-              borderRadius: "50%",
-              animation: "spin 0.7s linear infinite",
-            }}
-          />
-          Loading…
-        </>
-      ) : (
-        `Pay ₹${totalInr.toLocaleString("en-IN")} with Razorpay →`
-      )}
-      <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-    </button>
   )
 }

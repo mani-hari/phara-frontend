@@ -9,10 +9,12 @@ import React, {
   Fragment,
 } from "react"
 import { useChat, Message } from "ai/react"
+import { useParams } from "next/navigation"
 import ChatProductCards from "./product-card"
 import BookingFormCard, { type BookingFormData } from "./booking-form-card"
-import CheckoutSummaryCard from "./checkout-summary-card"
+import CheckoutSummaryCard, { type ChatCheckoutStatus } from "./checkout-summary-card"
 import OrderStatusCard from "./order-status-card"
+import { CONTACT, waLink } from "@lib/contact"
 
 type PageContext = {
   currentUrl: string
@@ -21,12 +23,38 @@ type PageContext = {
   cartItems: { title: string; quantity: number; priceInr: number }[]
 }
 
+type BookingVariant = {
+  id: string
+  title: string
+  priceInr: number | null
+  priceUsd: number | null
+}
+
+/** Result of the showBookingForm tool (src/app/api/chat/route.ts). */
+type BookingToolResult = {
+  handle?: string
+  serviceTitle?: string
+  variants?: BookingVariant[]
+  selectedVariantId?: string
+  priceInr?: number | null
+  savedAddresses?: any[]
+  isLoggedIn?: boolean
+  error?: string
+}
+
+type BookingSelection = {
+  handle: string
+  serviceTitle: string
+  variant: BookingVariant
+}
+
 type CheckoutState = {
   bookingData: BookingFormData
-  serviceTitle: string
-  priceInr: number
-  razorpayOrderId?: string
-  razorpayKeyId: string
+  selection: BookingSelection
+  status: ChatCheckoutStatus
+  checkoutUrl?: string
+  productUrl?: string
+  error?: string
 }
 
 type Props = {
@@ -49,10 +77,8 @@ const SUGGESTED = [
   "What happens during the Garbarakshambigai Abhishekam?",
 ]
 
-const RAZORPAY_KEY = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID ?? ""
-
 export default function ChatInterface({
-  countryCode = "in",
+  countryCode: countryCodeProp = "in",
   compact = false,
   pageContext,
   sessionId,
@@ -67,8 +93,15 @@ export default function ChatInterface({
   const lastSavedMsgIdRef = useRef<string | null>(null)
   const hasAutoSentRef = useRef(false)
 
+  // The storefront region comes from the [countryCode] route segment (the
+  // callers pass a hardcoded "in"), so an international visitor's chat cart
+  // stays in their USD region.
+  const params = useParams()
+  const routeCountry = typeof params?.countryCode === "string" ? params.countryCode : ""
+  const countryCode = (routeCountry || countryCodeProp || "in").toLowerCase()
+
   const [checkoutState, setCheckoutState] = useState<CheckoutState | null>(null)
-  const [checkoutLoading, setCheckoutLoading] = useState(false)
+  const checkoutLoading = checkoutState?.status === "loading"
 
   const { messages, input, handleInputChange, handleSubmit, isLoading, append, setMessages } =
     useChat({
@@ -121,42 +154,54 @@ export default function ChatInterface({
     handleSubmit(e)
   }
 
+  // Add the booking to the shared storefront cart, then offer the storefront
+  // checkout (Razorpay / PayPal live there). Every outcome is visible.
   const handleBookingSubmit = async (
     formData: BookingFormData,
-    serviceTitle: string,
-    priceInr: number | null
+    selection: BookingSelection
   ) => {
-    setCheckoutLoading(true)
-    const amountInr = priceInr ?? 0
+    setCheckoutState({ bookingData: formData, selection, status: "loading" })
     try {
       const res = await fetch("/api/chat/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          amount: amountInr, // major units; the route converts to paise for Razorpay
-          currency: "INR",
-          bookingDetails: formData,
-          customerName: formData.poojaPersonName,
-          customerEmail: "",
+          handle: selection.handle,
+          variantId: selection.variant.id,
+          countryCode,
+          bookingDetails: {
+            poojaPersonName: formData.poojaPersonName,
+            nakshatra: formData.nakshatra,
+            gothram: formData.gothram,
+          },
         }),
       })
-      const data = await res.json()
+      const data = await res.json().catch(() => ({}))
+      if (!res.ok || !data?.checkoutUrl) {
+        setCheckoutState({
+          bookingData: formData,
+          selection,
+          status: "error",
+          error: data?.error,
+          productUrl: data?.productUrl,
+        })
+        return
+      }
+      window.dispatchEvent(new Event("cart:updated"))
       setCheckoutState({
         bookingData: formData,
-        serviceTitle,
-        priceInr: amountInr,
-        razorpayOrderId: data.razorpayOrderId,
-        razorpayKeyId: data.keyId ?? RAZORPAY_KEY,
+        selection,
+        status: "ready",
+        checkoutUrl: data.checkoutUrl,
+        productUrl: data.productUrl,
       })
     } catch {
       setCheckoutState({
         bookingData: formData,
-        serviceTitle,
-        priceInr: amountInr,
-        razorpayKeyId: RAZORPAY_KEY,
+        selection,
+        status: "error",
+        error: "We couldn't reach our server.",
       })
-    } finally {
-      setCheckoutLoading(false)
     }
   }
 
@@ -317,45 +362,29 @@ export default function ChatInterface({
             ← Back to chat
           </button>
           <CheckoutSummaryCard
-            items={[
-              {
-                title: checkoutState.serviceTitle,
-                priceInr: checkoutState.priceInr,
-                quantity: 1,
-              },
-            ]}
-            totalInr={checkoutState.priceInr}
+            serviceTitle={checkoutState.selection.serviceTitle}
+            variantTitle={checkoutState.selection.variant.title}
+            price={
+              countryCode === "in"
+                ? checkoutState.selection.variant.priceInr
+                : checkoutState.selection.variant.priceUsd
+            }
+            currency={countryCode === "in" ? "INR" : "USD"}
             bookingDetails={{
               poojaPersonName: checkoutState.bookingData.poojaPersonName,
               nakshatra: checkoutState.bookingData.nakshatra,
               gothram: checkoutState.bookingData.gothram,
-              address: {
-                firstName: checkoutState.bookingData.address.firstName,
-                lastName: checkoutState.bookingData.address.lastName,
-                city: checkoutState.bookingData.address.city,
-                countryCode: checkoutState.bookingData.address.countryCode,
-              },
             }}
-            countryCode={countryCode}
-            razorpayKeyId={checkoutState.razorpayKeyId}
-            razorpayOrderId={checkoutState.razorpayOrderId}
-            onRazorpaySuccess={(paymentId) => {
-              setCheckoutState(null)
-              append({
-                role: "user",
-                content: `Payment successful! I've just booked ${checkoutState.serviceTitle}. What happens next?`,
-              })
-            }}
-            onRazorpayFailure={(error) => {
-              console.error("[razorpay]", error)
-            }}
-            onPaypalSuccess={(orderId) => {
-              setCheckoutState(null)
-              append({
-                role: "user",
-                content: `PayPal payment complete for ${checkoutState.serviceTitle}. What happens next?`,
-              })
-            }}
+            status={checkoutState.status}
+            checkoutUrl={checkoutState.checkoutUrl}
+            productUrl={
+              checkoutState.productUrl ??
+              `${countryCode === "in" ? "" : `/${countryCode}`}/products/${checkoutState.selection.handle}`
+            }
+            error={checkoutState.error}
+            onRetry={() =>
+              handleBookingSubmit(checkoutState.bookingData, checkoutState.selection)
+            }
             onSaveLater={() => {
               setCheckoutState(null)
               append({
@@ -473,7 +502,7 @@ function MessageBubble({
   isLastMessage: boolean
   countryCode: string
   onSuggestionClick: (s: string) => void
-  onBookingSubmit: (data: BookingFormData, serviceTitle: string, priceInr: number | null) => void
+  onBookingSubmit: (data: BookingFormData, selection: BookingSelection) => void
   checkoutLoading: boolean
   onAddedToCart: (product: { title: string; handle: string; priceInr: number | null }) => void
 }) {
@@ -569,63 +598,13 @@ function MessageBubble({
         {/* Booking form card */}
         {bookingFormParts?.map((t, i) =>
           t.state === "result" ? (
-            <div key={i} className="ph-card" style={{ padding: 0, overflow: "hidden" }}>
-              <div
-                style={{
-                  padding: "12px 16px",
-                  borderBottom: "1px solid var(--ink-line)",
-                  background: "rgba(182,68,46,0.04)",
-                }}
-              >
-                <p
-                  style={{
-                    margin: 0,
-                    fontFamily: "var(--serif)",
-                    fontSize: 15,
-                    fontWeight: 500,
-                    color: "var(--ink)",
-                  }}
-                >
-                  Book: {t.result.serviceTitle}
-                </p>
-                {t.result.priceInr && (
-                  <p style={{ margin: "2px 0 0", fontSize: 13, color: "var(--ink-3)" }}>
-                    ₹{t.result.priceInr.toLocaleString("en-IN")}
-                  </p>
-                )}
-              </div>
-              <div style={{ padding: "16px" }}>
-                <BookingFormCard
-                  cartItems={[
-                    {
-                      title: t.result.serviceTitle,
-                      priceInr: t.result.priceInr,
-                      quantity: 1,
-                    },
-                  ]}
-                  savedAddresses={t.result.savedAddresses}
-                  isLoggedIn={t.result.isLoggedIn}
-                  onSubmit={(data) =>
-                    onBookingSubmit(data, t.result.serviceTitle, t.result.priceInr)
-                  }
-                  onSignInRequest={() => {
-                    window.location.href = "/account/signin"
-                  }}
-                />
-                {checkoutLoading && (
-                  <p
-                    style={{
-                      textAlign: "center",
-                      fontSize: 13,
-                      color: "var(--ink-4)",
-                      marginTop: 8,
-                    }}
-                  >
-                    Preparing your checkout…
-                  </p>
-                )}
-              </div>
-            </div>
+            <BookingToolCard
+              key={i}
+              result={t.result as BookingToolResult}
+              countryCode={countryCode}
+              checkoutLoading={checkoutLoading}
+              onBookingSubmit={onBookingSubmit}
+            />
           ) : null
         )}
 
@@ -679,6 +658,125 @@ function MessageBubble({
             )}
           </div>
         )}
+      </div>
+    </div>
+  )
+}
+
+function BookingToolCard({
+  result,
+  countryCode,
+  checkoutLoading,
+  onBookingSubmit,
+}: {
+  result: BookingToolResult
+  countryCode: string
+  checkoutLoading: boolean
+  onBookingSubmit: (data: BookingFormData, selection: BookingSelection) => void
+}) {
+  const variants = result.variants ?? []
+  const [variantId, setVariantId] = useState<string>(
+    result.selectedVariantId ?? variants[0]?.id ?? ""
+  )
+  const variant = variants.find((v) => v.id === variantId) ?? variants[0]
+  const isIndia = countryCode === "in"
+  const price = variant ? (isIndia ? variant.priceInr : variant.priceUsd) : null
+
+  // Error from the tool, or a booking card saved in an older conversation
+  // (before handles were passed): explain instead of rendering a dead form.
+  if (result.error || !result.handle || !variant) {
+    return (
+      <div
+        role="alert"
+        style={{
+          padding: "12px 16px",
+          border: "1px solid var(--ink-line)",
+          borderRadius: 10,
+          fontSize: 13.5,
+          color: "var(--ink-3)",
+          lineHeight: 1.55,
+        }}
+      >
+        {result.error ||
+          "This booking card has expired. Ask me to book again, or open the product page."}{" "}
+        <a
+          href={waLink(`Hi, I'd like to book ${result.serviceTitle ?? "a pooja"}.`)}
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "var(--sindoor)", textDecoration: "underline" }}
+        >
+          WhatsApp {CONTACT.whatsappDisplay}
+        </a>
+      </div>
+    )
+  }
+
+  return (
+    <div className="ph-card" style={{ padding: 0, overflow: "hidden" }}>
+      <div
+        style={{
+          padding: "12px 16px",
+          borderBottom: "1px solid var(--ink-line)",
+          background: "rgba(182,68,46,0.04)",
+        }}
+      >
+        <p
+          style={{
+            margin: 0,
+            fontFamily: "var(--serif)",
+            fontSize: 15,
+            fontWeight: 500,
+            color: "var(--ink)",
+          }}
+        >
+          Book: {result.serviceTitle}
+        </p>
+        {price != null && (
+          <p style={{ margin: "2px 0 0", fontSize: 13, color: "var(--ink-3)" }}>
+            {isIndia ? `₹${price.toLocaleString("en-IN")}` : `$${price.toLocaleString("en-US")}`}
+          </p>
+        )}
+        {variants.length > 1 && (
+          <label style={{ display: "block", marginTop: 8, fontSize: 12, color: "var(--ink-3)" }}>
+            Option
+            <select
+              className="ph-input"
+              value={variant.id}
+              onChange={(e) => setVariantId(e.target.value)}
+              style={{ display: "block", width: "100%", marginTop: 4, fontSize: 13 }}
+            >
+              {variants.map((v) => {
+                const p = isIndia ? v.priceInr : v.priceUsd
+                return (
+                  <option key={v.id} value={v.id}>
+                    {v.title}
+                    {p != null ? ` (${isIndia ? "₹" : "$"}${p.toLocaleString(isIndia ? "en-IN" : "en-US")})` : ""}
+                  </option>
+                )
+              })}
+            </select>
+          </label>
+        )}
+      </div>
+      <div style={{ padding: "16px" }}>
+        <BookingFormCard
+          cartItems={[{ title: result.serviceTitle ?? "", priceInr: variant.priceInr, quantity: 1 }]}
+          savedAddresses={result.savedAddresses}
+          isLoggedIn={result.isLoggedIn}
+          collectAddress={false}
+          submitting={checkoutLoading}
+          submitLabel="Add to cart & continue →"
+          onSubmit={(data) =>
+            onBookingSubmit(data, {
+              handle: result.handle as string,
+              serviceTitle: result.serviceTitle ?? "",
+              variant,
+            })
+          }
+          onSignInRequest={() => {
+            window.location.href = "/account/signin"
+          }}
+        />
       </div>
     </div>
   )
@@ -762,7 +860,7 @@ function OrderStatusResult({ result }: { result: any }) {
           color: "var(--ink-3)",
         }}
       >
-        The order number and email don't match our records. Please check and try again, or contact
+        The order number and email don&apos;t match our records. Please check and try again, or contact
         staff on WhatsApp: +91-97432 44501
       </div>
     )

@@ -30,6 +30,12 @@ type BookingFormCardProps = {
   isLoggedIn?: boolean
   onSubmit: (data: BookingFormData) => void
   onSignInRequest?: () => void
+  /** Show the delivery-address section. The chat passes false: the storefront
+   *  checkout collects the address (with its state/country validation). */
+  collectAddress?: boolean
+  /** True while the parent is adding the booking to the cart. */
+  submitting?: boolean
+  submitLabel?: string
 }
 
 const COUNTRY_OPTIONS = [
@@ -53,6 +59,9 @@ export default function BookingFormCard({
   isLoggedIn = false,
   onSubmit,
   onSignInRequest,
+  collectAddress = true,
+  submitting = false,
+  submitLabel = "Continue to payment →",
 }: BookingFormCardProps) {
   const [poojaPersonName, setPoojaPersonName] = useState("")
   const [nakshatra, setNakshatra] = useState("")
@@ -80,12 +89,14 @@ export default function BookingFormCard({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (!poojaPersonName.trim()) return
+    if (!poojaPersonName.trim() || submitting) return
 
     let address: Address
     let useExistingAddressId: string | undefined
 
-    if (!showNewAddressForm) {
+    if (!collectAddress) {
+      address = newAddress
+    } else if (!showNewAddressForm) {
       const saved = savedAddresses.find((a) => a.id === selectedAddressId)
       if (!saved) return
       address = saved
@@ -323,6 +334,7 @@ export default function BookingFormCard({
         </div>
 
         {/* Section 3: Shipping address */}
+        {collectAddress && (
         <div style={{ marginBottom: 20 }}>
           <div
             style={{
@@ -453,21 +465,31 @@ export default function BookingFormCard({
             <AddressForm address={newAddress} onChange={setNewAddress} />
           )}
         </div>
+        )}
 
         {/* Submit */}
         <button
           type="submit"
           className="ph-btn ph-btn-sindoor ph-btn-block"
-          disabled={!poojaPersonName.trim()}
+          disabled={!poojaPersonName.trim() || submitting}
+          aria-describedby="booking-submit-hint"
           style={{
             fontSize: 14,
             fontWeight: 600,
-            opacity: !poojaPersonName.trim() ? 0.5 : 1,
-            cursor: !poojaPersonName.trim() ? "not-allowed" : "pointer",
+            opacity: !poojaPersonName.trim() || submitting ? 0.5 : 1,
+            cursor: !poojaPersonName.trim() || submitting ? "not-allowed" : "pointer",
           }}
         >
-          Continue to payment →
+          {submitting ? "Adding to your cart…" : submitLabel}
         </button>
+        {!poojaPersonName.trim() && !submitting && (
+          <p
+            id="booking-submit-hint"
+            style={{ margin: "8px 0 0", fontSize: 12, color: "var(--ink-4)", textAlign: "center" }}
+          >
+            Enter the name of the person the pooja is for to continue.
+          </p>
+        )}
       </form>
     </div>
   )

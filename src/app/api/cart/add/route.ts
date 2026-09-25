@@ -1,52 +1,25 @@
 import { NextRequest, NextResponse } from "next/server"
-import { cookies } from "next/headers"
+import { addToCart } from "@lib/data/cart"
 
-const BACKEND_URL =
-  process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "https://pariharaonline.medusajs.app"
-const PUB_KEY = process.env.NEXT_PUBLIC_MEDUSA_PUBLISHABLE_KEY || ""
-const REGION_ID = "reg_01KCFT01096J7B6E4TS591JN5V" // India region
-
-async function medusa(path: string, method = "GET", body?: object) {
-  const cookieStore = cookies()
-  const cartIdCookie = cookieStore.get("_medusa_cart_id")
-  const res = await fetch(`${BACKEND_URL}${path}`, {
-    method,
-    headers: {
-      "Content-Type": "application/json",
-      "x-publishable-api-key": PUB_KEY,
-      ...(cartIdCookie ? { Cookie: `_medusa_cart_id=${cartIdCookie.value}` } : {}),
-    },
-    body: body ? JSON.stringify(body) : undefined,
-    cache: "no-store",
-  })
-  return res.json()
-}
-
+// Used by the Ask Parihara product cards. Goes through the storefront's own
+// addToCart/getOrSetCart so the chat and the site share one cart in the
+// visitor's region (this route previously created carts in a hardcoded
+// region id that was actually the International/USD region).
 export async function POST(req: NextRequest) {
   try {
-    const { variantId, quantity = 1 } = await req.json()
-    if (!variantId) return NextResponse.json({ error: "variantId required" }, { status: 400 })
-
-    const cookieStore = cookies()
-    let cartId = cookieStore.get("_medusa_cart_id")?.value
-
-    // Create cart if none exists
-    if (!cartId) {
-      const created = await medusa("/store/carts", "POST", { region_id: REGION_ID })
-      cartId = created?.cart?.id
-      if (!cartId) return NextResponse.json({ error: "Could not create cart" }, { status: 500 })
+    const { variantId, quantity = 1, countryCode = "in" } = await req.json()
+    if (!variantId || typeof variantId !== "string") {
+      return NextResponse.json({ error: "variantId required" }, { status: 400 })
     }
-
-    // Add line item
-    const result = await medusa(`/store/carts/${cartId}/line-items`, "POST", {
-      variant_id: variantId,
-      quantity,
-    })
-
-    const res = NextResponse.json({ ok: true, cartId })
-    res.cookies.set("_medusa_cart_id", cartId, { path: "/", maxAge: 60 * 60 * 24 * 7 })
-    return res
+    const cc = String(countryCode).toLowerCase()
+    if (!/^[a-z]{2}$/.test(cc)) {
+      return NextResponse.json({ error: "invalid countryCode" }, { status: 400 })
+    }
+    const qty = Math.min(Math.max(parseInt(String(quantity), 10) || 1, 1), 10)
+    await addToCart({ variantId, quantity: qty, countryCode: cc })
+    return NextResponse.json({ ok: true })
   } catch (err: any) {
-    return NextResponse.json({ error: err.message }, { status: 500 })
+    console.error("[/api/cart/add]", err?.message ?? err)
+    return NextResponse.json({ error: "Could not add to cart" }, { status: 500 })
   }
 }

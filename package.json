@@ -14,7 +14,8 @@
     "medusa:lock": "node scripts/medusa-toggle.mjs lock",
     "medusa:status": "node scripts/medusa-toggle.mjs status",
     "medusa:key:set": "bash scripts/medusa-admin-key-set.sh",
-    "search:reindex": "node --env-file-if-exists=.env.local --import tsx scripts/search-reindex.ts"
+    "search:reindex": "node --env-file-if-exists=.env.local --import tsx scripts/search-reindex.ts",
+    "test:guardrail": "node --import tsx --test scripts/test-chat-guardrail.mjs"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^1.2.12",

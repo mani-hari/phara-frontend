@@ -1,136 +1,103 @@
 import { NextRequest, NextResponse } from "next/server"
+import { addToCart } from "@lib/data/cart"
+import { localizeHref } from "@lib/util/localize-href"
+import { getCatalog, findProduct } from "@lib/chat/catalog"
 
 // ---------------------------------------------------------------------------
-// Types
+// POST /api/chat/checkout: book from the Ask Parihara chat.
+//
+// Adds the chosen product variant (with who the pooja is for) to the SAME
+// Medusa cart the storefront uses (`_medusa_cart_id` cookie via
+// getOrSetCart/addToCart), then returns the storefront checkout URL. Payment
+// (Razorpay for INR, PayPal for USD), addresses, order completion, failure
+// reporting and confirmation emails all happen in the storefront checkout.
+// The chat no longer creates its own Razorpay order, which was never tied to
+// a Medusa cart and so could never produce an order.
 // ---------------------------------------------------------------------------
 
-type BookingDetails = {
-  poojaPersonName: string
-  nakshatra?: string
-  gothram?: string
-  orderNote?: string
+type Body = {
+  handle?: string
+  variantId?: string
+  countryCode?: string
+  bookingDetails?: {
+    poojaPersonName?: string
+    nakshatra?: string
+    gothram?: string
+    orderNote?: string
+  }
 }
 
-type CheckoutRequestBody = {
-  cartId: string
-  amount: number
-  currency: "INR" | "USD"
-  bookingDetails: BookingDetails
-  customerName: string
-  customerEmail: string
-  customerPhone?: string
-}
-
-// ---------------------------------------------------------------------------
-// POST /api/chat/checkout — create a Razorpay order from the chat interface
-// ---------------------------------------------------------------------------
+const clean = (v: unknown, max = 200) =>
+  typeof v === "string" ? v.replace(/\s+/g, " ").trim().slice(0, max) : ""
 
 export async function POST(req: NextRequest) {
-  const keyId = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID
-  const keySecret = process.env.RAZORPAY_KEY_SECRET
-
-  if (!keyId || !keySecret) {
-    return NextResponse.json(
-      { error: "Payment gateway not configured" },
-      { status: 500 }
-    )
-  }
-
-  let body: CheckoutRequestBody
+  let body: Body
   try {
     body = await req.json()
   } catch {
-    return NextResponse.json({ error: "Invalid JSON body" }, { status: 400 })
+    return NextResponse.json({ error: "Invalid request." }, { status: 400 })
   }
 
-  // Validate required fields
-  const { cartId, amount, currency, bookingDetails, customerName, customerEmail } = body
+  const countryCode = clean(body.countryCode, 2).toLowerCase() || "in"
+  if (!/^[a-z]{2}$/.test(countryCode)) {
+    return NextResponse.json({ error: "Invalid country." }, { status: 400 })
+  }
 
-  if (!cartId || typeof cartId !== "string") {
+  const name = clean(body.bookingDetails?.poojaPersonName, 120)
+  if (!name) {
     return NextResponse.json(
-      { error: "cartId is required" },
-      { status: 400 }
-    )
-  }
-  if (typeof amount !== "number" || amount <= 0) {
-    return NextResponse.json(
-      { error: "amount must be a positive number (in major currency units)" },
-      { status: 400 }
-    )
-  }
-  if (currency !== "INR" && currency !== "USD") {
-    return NextResponse.json(
-      { error: "currency must be INR or USD" },
-      { status: 400 }
-    )
-  }
-  if (!bookingDetails?.poojaPersonName) {
-    return NextResponse.json(
-      { error: "bookingDetails.poojaPersonName is required" },
-      { status: 400 }
-    )
-  }
-  if (!customerName || !customerEmail) {
-    return NextResponse.json(
-      { error: "customerName and customerEmail are required" },
+      { error: "Please enter the name of the person the pooja is for." },
       { status: 400 }
     )
   }
 
-  // Build Razorpay order payload
-  const receipt = `ph_chat_${Date.now()}`
-  const notes: Record<string, string> = {
-    cartId,
-    customerName,
-    customerEmail,
-    poojaPersonName: bookingDetails.poojaPersonName,
-    bookingDetails: JSON.stringify(bookingDetails),
+  // The variant must belong to a published catalog product: never trust a
+  // variant id or price coming from the browser or the model.
+  const catalog = await getCatalog()
+  const product = body.handle ? findProduct(catalog, body.handle) : null
+  const variant = product?.variants.find((v) => v.id === body.variantId)
+  if (!product || !variant) {
+    return NextResponse.json(
+      { error: "This service can't be booked from chat right now." },
+      { status: 400 }
+    )
   }
-  if (body.customerPhone) notes.customerPhone = body.customerPhone
 
-  const auth = Buffer.from(`${keyId}:${keySecret}`).toString("base64")
+  const nakshatram = clean(body.bookingDetails?.nakshatra, 60)
+  const gothram = clean(body.bookingDetails?.gothram, 60)
+  const notes = clean(body.bookingDetails?.orderNote, 500)
+  // Same line-item metadata shape the product page writes
+  // (src/modules/products/components/product-actions), so staff see who each
+  // pooja is for on the order.
+  const metadata: Record<string, unknown> = {
+    devotees: JSON.stringify([
+      { name, ...(nakshatram ? { nakshatram } : {}), ...(gothram ? { gothram } : {}) },
+    ]),
+    devotee_name: name,
+    ...(nakshatram ? { nakshatram } : {}),
+    ...(gothram ? { gothram } : {}),
+    ...(notes ? { sankalpam_notes: notes } : {}),
+    source: "ask-parihara",
+  }
 
-  let razorpayOrder: Record<string, any>
   try {
-    const response = await fetch("https://api.razorpay.com/v1/orders", {
-      method: "POST",
-      headers: {
-        Authorization: `Basic ${auth}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        amount: Math.round(amount * 100), // major units → paise (Razorpay requires the smallest currency unit)
-        currency,
-        receipt,
-        notes,
-      }),
+    await addToCart({
+      variantId: variant.id,
+      quantity: 1,
+      countryCode,
+      metadata: metadata as any,
     })
-
-    razorpayOrder = await response.json()
-
-    if (!response.ok) {
-      console.error("[/api/chat/checkout] Razorpay error:", razorpayOrder)
-      return NextResponse.json(
-        {
-          error:
-            razorpayOrder?.error?.description ||
-            "Failed to create payment order",
-        },
-        { status: response.status }
-      )
-    }
   } catch (err: any) {
-    console.error("[/api/chat/checkout] fetch error:", err?.message ?? err)
+    console.error("[/api/chat/checkout] addToCart failed:", err?.message ?? err)
     return NextResponse.json(
-      { error: "Payment gateway unreachable" },
+      { error: "We couldn't add this to your cart." },
       { status: 502 }
     )
   }
 
   return NextResponse.json({
-    razorpayOrderId: razorpayOrder.id,
-    amount: razorpayOrder.amount,
-    currency: razorpayOrder.currency,
-    keyId,
+    ok: true,
+    checkoutUrl: localizeHref(countryCode, "/checkout"),
+    productUrl: localizeHref(countryCode, `/products/${product.handle}`),
   })
 }

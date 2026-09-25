@@ -43,6 +43,13 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
+  // Import .md files as raw strings (Ask Parihara system prompt is bundled
+  // from src/lib/parihara-soul.md at build time, so it can never be missing
+  // at runtime).
+  webpack: (config) => {
+    config.module.rules.push({ test: /\.md$/, type: "asset/source" })
+    return config
+  },
   images: {
     remotePatterns: [
       {
