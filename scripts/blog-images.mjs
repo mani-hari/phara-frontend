@@ -26,6 +26,7 @@ const PLAN_PATH = path.join(ROOT, "content", "blog-plan", "plan.json")
 const OUT_DIR = path.join(ROOT, "public", "blog")
 
 const GATEWAY_URL = "https://ai-gateway.vercel.sh/v1/images/generations"
+import { stylePrompt } from "./lib/image-style.mjs"
 const MODEL = "openai/gpt-image-1-mini"
 const GEN_SIZE = "1536x1024"
 const WIDTH = 1200
@@ -140,7 +141,7 @@ async function generate(prompt, apiKey) {
     },
     body: JSON.stringify({
       model: MODEL,
-      prompt: `${prompt.replace(/[.\s]+$/, "")}${PROMPT_SUFFIX}`,
+      prompt: stylePrompt(prompt),
       n: 1,
       size: GEN_SIZE,
     }),
