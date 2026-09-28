@@ -1,5 +1,7 @@
 import type { MetadataRoute } from "next"
 import { listProducts } from "@lib/data/products"
+import { getBlogTags, getPublishedBlogPosts } from "@lib/data/blog"
+import { getAllBlogAuthors } from "@lib/data/blog-authors"
 
 const SITE = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.pariharaonline.com").replace(/\/$/, "")
 
@@ -31,6 +33,39 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     changeFrequency: "weekly",
     priority,
   }))
+
+  // Blog: every published post (lastmod = updatedAt), author and tag pages.
+  try {
+    const [posts, tags] = await Promise.all([getPublishedBlogPosts(), getBlogTags()])
+    for (const post of posts) {
+      entries.push({
+        url: `${SITE}/blog/${post.slug}`,
+        lastModified: new Date(`${post.updatedAt}T00:00:00Z`),
+        changeFrequency: "monthly",
+        priority: 0.6,
+      })
+    }
+    for (const author of getAllBlogAuthors()) {
+      const theirs = posts.filter((p) => p.authorSlug === author.slug)
+      if (!theirs.length) continue
+      entries.push({
+        url: `${SITE}/blog/author/${author.slug}`,
+        lastModified: new Date(`${theirs[0].updatedAt}T00:00:00Z`),
+        changeFrequency: "weekly",
+        priority: 0.4,
+      })
+    }
+    for (const tag of tags) {
+      entries.push({
+        url: `${SITE}/blog/tag/${tag.slug}`,
+        lastModified: now,
+        changeFrequency: "weekly",
+        priority: 0.4,
+      })
+    }
+  } catch {
+    // ignore — static entries still ship
+  }
 
   // Best-effort: include all product pages. If the store API is unavailable at
   // build time, the static entries above are still emitted.

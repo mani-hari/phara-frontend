@@ -3,6 +3,8 @@ title: How to Choose the Right Puja for a Specific Life Obstacle
 excerpt: A practical framework for matching common life concerns like marriage delays, career blocks, health worries, and financial pressure with an appropriate puja or homam.
 author: PariharaOnline Editorial Team
 publishedAt: 2026-03-16
+image: /blog/how-to-choose-the-right-puja-for-life-obstacles.webp
+imageAlt: "A brass puja thali with a lit lamp, marigolds and a small Ganesha idol in morning light | pariharaonline.com"
 tags:
   - Puja Guide
   - Spiritual Remedies

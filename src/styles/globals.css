@@ -351,6 +351,85 @@
   .ph-lift { transition: transform 150ms, box-shadow 150ms; }
   .ph-lift:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
 
+  /* Blog article body (rendered markdown) ---------------------------- */
+  .ph-article {
+    font-family: var(--sans);
+    font-size: 18px;
+    line-height: 1.75;
+    color: var(--ink-2);
+  }
+  @media (max-width: 640px) {
+    .ph-article { font-size: 17px; line-height: 1.7; }
+  }
+  .ph-article > * + * { margin-top: 1.1em; }
+  .ph-article h2 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(25px, 3vw, 30px);
+    line-height: 1.2;
+    color: var(--ink);
+    margin-top: 2em;
+    scroll-margin-top: 88px;
+  }
+  .ph-article h3 {
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: 21px;
+    line-height: 1.3;
+    color: var(--ink);
+    margin-top: 1.6em;
+    scroll-margin-top: 88px;
+  }
+  .ph-article h2 + *, .ph-article h3 + * { margin-top: 0.6em; }
+  .ph-article > :first-child { margin-top: 0; }
+  /* Second half of a split article (after the products block): keep the h2 spacing. */
+  .ph-article.ph-article-cont > h2:first-child { margin-top: 2em; }
+  .ph-article a {
+    color: var(--sindoor);
+    text-decoration: underline;
+    text-decoration-color: rgba(182, 68, 46, 0.35);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+    transition: text-decoration-color 120ms;
+  }
+  .ph-article a:hover { text-decoration-color: currentColor; }
+  .ph-article strong { color: var(--ink); font-weight: 600; }
+  .ph-article ul, .ph-article ol { padding-left: 1.4em; }
+  .ph-article ul { list-style: disc; }
+  .ph-article ol { list-style: decimal; }
+  .ph-article li + li { margin-top: 0.4em; }
+  .ph-article li::marker { color: var(--gold); }
+  .ph-article blockquote {
+    border-left: 2px solid var(--gold);
+    padding: 2px 0 2px 22px;
+    font-family: var(--serif);
+    font-size: 21px;
+    line-height: 1.5;
+    color: var(--ink);
+  }
+  .ph-article blockquote p + p { margin-top: 0.6em; }
+  .ph-article hr {
+    border: 0;
+    height: 1px;
+    background: var(--ink-line);
+    margin: 2.4em 0;
+  }
+  .ph-article code {
+    font-family: var(--mono);
+    font-size: 0.85em;
+    background: var(--paper-2);
+    padding: 1px 6px;
+    border-radius: var(--r-sm);
+  }
+  .ph-article pre {
+    background: var(--paper-2);
+    padding: 16px 18px;
+    border-radius: var(--r-md);
+    overflow-x: auto;
+    font-size: 14px;
+  }
+  .ph-article pre code { background: none; padding: 0; }
+
   /* Existing layout helpers (legacy compatibility) -------------------- */
   .content-container {
     @apply max-w-[1440px] w-full mx-auto px-6;

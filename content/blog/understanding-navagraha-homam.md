@@ -3,6 +3,8 @@ title: Understanding Navagraha Homam for Planetary Balance
 excerpt: Learn when Navagraha Homam is recommended, what happens during the ritual, and how devotees typically use it as a remedy for recurring obstacles.
 author: PariharaOnline Editorial Team
 publishedAt: 2026-03-20
+image: /blog/understanding-navagraha-homam.webp
+imageAlt: "A priest offering ghee into a homam fire with nine heaps of grain arranged around it | pariharaonline.com"
 tags:
   - Planetary Remedies
   - Homams

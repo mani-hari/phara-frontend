@@ -1,48 +1,92 @@
+import Image from "next/image"
 import Link from "next/link"
 
-import { BlogPost } from "@lib/data/blog"
+import { BlogPost, formatBlogDate, getPostEyebrow } from "@lib/data/blog"
 import { localizeHref } from "@lib/util/localize-href"
 
 type PostCardProps = {
   post: BlogPost
   countryCode: string
+  /** Hide the excerpt (used for related-post rows). */
   compact?: boolean
 }
 
-export default function PostCard({ post, countryCode }: PostCardProps) {
+export function PostHero({
+  post,
+  sizes,
+  priority,
+  className = "",
+}: {
+  post: BlogPost
+  sizes: string
+  priority?: boolean
+  className?: string
+}) {
   return (
-    <Link
-      href={localizeHref(countryCode, `/blog/${post.slug}`)}
-      className="group block"
+    <div
+      className={`relative w-full overflow-hidden ${className}`}
+      style={{ aspectRatio: "1200 / 630", borderRadius: "var(--r-md)" }}
     >
-      <article className="flex h-full flex-col border-t border-grey-10 pt-6">
-        {post.tags[0] && (
-          <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600">
-            {post.tags[0]}
-          </span>
-        )}
-        <h3
-          className="mt-3 font-serif text-[24px] leading-snug text-grey-90 transition-colors group-hover:text-brand-700"
+      {post.image ? (
+        <Image
+          src={post.image}
+          alt={post.imageAlt}
+          fill
+          sizes={sizes}
+          priority={priority}
+          className="object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+        />
+      ) : (
+        <div className="ph-imgph absolute inset-0" aria-hidden="true" />
+      )}
+    </div>
+  )
+}
+
+export default function PostCard({ post, countryCode, compact }: PostCardProps) {
+  const eyebrow = getPostEyebrow(post)
+  return (
+    <article className="group flex h-full flex-col">
+      <Link
+        href={localizeHref(countryCode, `/blog/${post.slug}`)}
+        className="block"
+        tabIndex={-1}
+        aria-hidden="true"
+      >
+        <PostHero
+          post={post}
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+        />
+      </Link>
+      {eyebrow && (
+        <p className="ph-eyebrow ph-eyebrow-sindoor mt-5">{eyebrow.name}</p>
+      )}
+      <h3 className="ph-h4 mt-2" style={{ fontWeight: 400, fontSize: 21, lineHeight: 1.25 }}>
+        <Link
+          href={localizeHref(countryCode, `/blog/${post.slug}`)}
+          className="transition-colors hover:text-[color:var(--sindoor)]"
         >
           {post.title}
-        </h3>
+        </Link>
+      </h3>
+      {!compact && post.excerpt && (
         <p
-          className="mt-3 text-sm leading-7 text-grey-60"
+          className="ph-body mt-2"
           style={{
+            color: "var(--ink-3)",
             display: "-webkit-box",
-            WebkitLineClamp: 3,
+            WebkitLineClamp: 2,
             WebkitBoxOrient: "vertical",
             overflow: "hidden",
           }}
         >
           {post.excerpt}
         </p>
-        <div className="mt-auto flex items-center gap-2 pt-5 text-xs text-grey-50">
-          <span>{new Date(post.publishedAt).toLocaleDateString("en-US")}</span>
-          <span className="text-grey-20">·</span>
-          <span>{post.readingTime} min read</span>
-        </div>
-      </article>
-    </Link>
+      )}
+      <p className="ph-body-sm mt-3" style={{ color: "var(--ink-4)" }}>
+        {post.author} <span aria-hidden="true">·</span>{" "}
+        <time dateTime={post.publishedAt}>{formatBlogDate(post.publishedAt)}</time>
+      </p>
+    </article>
   )
 }

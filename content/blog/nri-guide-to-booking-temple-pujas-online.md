@@ -3,6 +3,8 @@ title: An NRI Guide to Booking Temple Pujas Online with Confidence
 excerpt: What overseas devotees should check before booking a puja or prasad delivery online, from sankalpam details to temple authenticity and shipping expectations.
 author: PariharaOnline Editorial Team
 publishedAt: 2026-03-12
+image: /blog/nri-guide-to-booking-temple-pujas-online.webp
+imageAlt: "A woman abroad holding a brass lamp beside a laptop, a temple picture on the wall | pariharaonline.com"
 tags:
   - NRI Devotees
   - Prasad Delivery

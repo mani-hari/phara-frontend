@@ -1,121 +1,148 @@
 import { Metadata } from "next"
 import Link from "next/link"
 
-import { getPublishedBlogPosts } from "@lib/data/blog"
-import PostCard from "@modules/blog/components/post-card"
+import {
+  formatBlogDate,
+  getBlogTags,
+  getPostEyebrow,
+  getPublishedBlogPosts,
+  paginate,
+  parsePageParam,
+} from "@lib/data/blog"
+import { resolveBlogAuthor } from "@lib/data/blog-authors"
+import {
+  BLOG_DESCRIPTION,
+  BLOG_TITLE,
+  buildBlogIndexJsonLd,
+  jsonLdString,
+} from "@lib/util/blog-seo"
 import { localizeHref } from "@lib/util/localize-href"
-import { ArrowRight } from "lucide-react"
+import AuthorAvatar from "@modules/blog/components/author-avatar"
+import BlogFilter from "@modules/blog/components/blog-filter"
+import BlogPagination from "@modules/blog/components/blog-pagination"
+import PostCard, { PostHero } from "@modules/blog/components/post-card"
 
-export const metadata: Metadata = {
-  title: "PariharaOnline Blog",
-  description:
-    "Guides on pujas, astrology, prasad delivery, and how to choose the right spiritual remedy for life events.",
-  alternates: { canonical: "/blog" },
-  openGraph: { url: "/blog" },
+type Props = {
+  params: Promise<{ countryCode: string }>
+  searchParams: Promise<{ page?: string | string[] }>
 }
 
-const BLOG_FAQS = [
-  {
-    q: "How does an online pooja work?",
-    a: "You book the pooja and share the sankalpam details (name, nakshatra, gothram). Our priests perform it in your name, and you receive prasadam along with a short video clip.",
-  },
-  {
-    q: "Will I receive prasadam?",
-    a: "Yes — temple-blessed prasadam is couriered worldwide, or you can choose to have it donated at the temple.",
-  },
-  {
-    q: "When do I get the video?",
-    a: "Video clips of your homam or pooja are sent within 24–48 hours of the ritual.",
-  },
-]
+export async function generateMetadata(props: Props): Promise<Metadata> {
+  const page = parsePageParam((await props.searchParams).page)
+  const canonical = page > 1 ? `/blog?page=${page}` : "/blog"
+  return {
+    title: page > 1 ? `${BLOG_TITLE} — page ${page}` : BLOG_TITLE,
+    description: BLOG_DESCRIPTION,
+    alternates: {
+      canonical,
+      types: { "application/rss+xml": "/blog/feed.xml" },
+    },
+    openGraph: {
+      type: "website",
+      siteName: "PariharaOnline",
+      title: BLOG_TITLE,
+      description: BLOG_DESCRIPTION,
+      url: canonical,
+    },
+    twitter: { card: "summary_large_image", title: BLOG_TITLE, description: BLOG_DESCRIPTION },
+  }
+}
 
-export default async function BlogIndexPage(props: {
-  params: Promise<{ countryCode: string }>
-}) {
+export default async function BlogIndexPage(props: Props) {
   const { countryCode } = await props.params
-  const posts = await getPublishedBlogPosts()
-  const [featuredPost, ...otherPosts] = posts
+  const requestedPage = parsePageParam((await props.searchParams).page)
+  const [posts, tags] = await Promise.all([getPublishedBlogPosts(), getBlogTags()])
+
+  // Page 1 leads with the latest post as a feature; the grid holds the rest.
+  const [featured, ...rest] = posts
+  const { items, page, totalPages } = paginate(rest, requestedPage)
+  const href = (path: string) => localizeHref(countryCode, path)
+  const featuredAuthor = featured ? resolveBlogAuthor(featured.authorSlug) : null
+  const featuredEyebrow = featured ? getPostEyebrow(featured) : null
 
   return (
-    <div className="bg-white pb-24">
-      {featuredPost && (
-        <section className="content-container pt-14">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">
-            Featured article
-          </p>
-          <div className="mt-5 grid gap-10 border-t border-grey-10 pt-8 lg:grid-cols-[1.3fr_0.7fr]">
+    <div style={{ background: "var(--paper)" }} className="pb-24">
+      {buildBlogIndexJsonLd(posts).map((data, i) => (
+        <script
+          key={i}
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLdString(data) }}
+        />
+      ))}
+
+      <header className="content-container max-w-[1120px] pt-12 sm:pt-16">
+        <p className="ph-eyebrow ph-eyebrow-sindoor">PariharaOnline Blog</p>
+        <h1 className="ph-h1 mt-3 max-w-[720px]">
+          Stories, practice and the festival year
+        </h1>
+        <p className="ph-body-lg mt-4 max-w-[620px]" style={{ color: "var(--ink-3)" }}>
+          What the old stories mean, how to keep a ritual in an ordinary week,
+          and practical guides to poojas at home or far from it.
+        </p>
+        <div className="mt-8">
+          <BlogFilter tags={tags} countryCode={countryCode} />
+        </div>
+      </header>
+
+      {page === 1 && featured && featuredAuthor && (
+        <section aria-label="Latest post" className="content-container mt-12 max-w-[1120px]">
+          <article
+            className="group grid items-center gap-8 pt-10 lg:grid-cols-[1.15fr_1fr] lg:gap-12"
+            style={{ borderTop: "1px solid var(--ink-line)" }}
+          >
+            <Link href={href(`/blog/${featured.slug}`)} tabIndex={-1} aria-hidden="true">
+              <PostHero post={featured} priority sizes="(max-width: 1024px) 100vw, 600px" />
+            </Link>
             <div>
-              {featuredPost.tags[0] && (
-                <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-600">
-                  {featuredPost.tags[0]}
-                </span>
-              )}
-              <h1 className="mt-3 font-serif text-[40px] leading-[1.1] text-grey-90">
-                {featuredPost.title}
-              </h1>
-              <p className="mt-5 text-lg leading-8 text-grey-60">
-                {featuredPost.excerpt}
+              <p className="ph-eyebrow">
+                Latest
+                {featuredEyebrow && (
+                  <>
+                    <span className="mx-2" aria-hidden="true">·</span>
+                    <span className="ph-eyebrow-sindoor">{featuredEyebrow.name}</span>
+                  </>
+                )}
               </p>
-              <Link
-                href={localizeHref(countryCode, `/blog/${featuredPost.slug}`)}
-                className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-brand-700 transition-colors hover:text-brand-800"
-              >
-                Read article
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+              <h2 className="ph-h2 mt-3" style={{ fontWeight: 400, textWrap: "balance" }}>
+                <Link href={href(`/blog/${featured.slug}`)} className="transition-colors hover:text-[color:var(--sindoor)]">
+                  {featured.title}
+                </Link>
+              </h2>
+              <p className="ph-body-lg mt-4" style={{ color: "var(--ink-3)" }}>
+                {featured.excerpt}
+              </p>
+              <div className="mt-6 flex items-center gap-3">
+                <AuthorAvatar author={featuredAuthor} size={36} />
+                <p className="ph-body-sm">
+                  <span style={{ color: "var(--ink)", fontWeight: 500 }}>{featuredAuthor.name}</span>
+                  <span className="mx-1.5" aria-hidden="true">·</span>
+                  <time dateTime={featured.publishedAt}>{formatBlogDate(featured.publishedAt)}</time>
+                  <span className="mx-1.5" aria-hidden="true">·</span>
+                  {featured.readingTime} min read
+                </p>
+              </div>
             </div>
-            <div className="flex flex-col justify-center gap-2 text-sm text-grey-50 lg:border-l lg:border-grey-10 lg:pl-8">
-              <span>
-                {new Date(featuredPost.publishedAt).toLocaleDateString("en-US")}
-              </span>
-              <span>By {featuredPost.author}</span>
-              <span>{featuredPost.readingTime} min read</span>
-            </div>
-          </div>
+          </article>
         </section>
       )}
 
-      {otherPosts.length > 0 && (
-        <section className="content-container pt-16">
-          <h2 className="border-t border-grey-10 pt-8 font-serif text-[26px] text-grey-90">
-            More articles
-          </h2>
-          <div className="mt-8 grid gap-x-10 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
-            {otherPosts.map((post) => (
+      {items.length > 0 && (
+        <section aria-label="All posts" className="content-container mt-16 max-w-[1120px]">
+          <div
+            className="grid gap-x-8 gap-y-14 pt-10 sm:grid-cols-2 lg:grid-cols-3"
+            style={{ borderTop: "1px solid var(--ink-line)" }}
+          >
+            {items.map((post) => (
               <PostCard key={post.slug} post={post} countryCode={countryCode} />
             ))}
           </div>
+          <BlogPagination basePath={href("/blog")} page={page} totalPages={totalPages} />
         </section>
       )}
 
-      {/* FAQ teaser */}
-      <section className="content-container pt-16">
-        <div className="border-t border-grey-10 pt-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-600">
-            Good to know
-          </p>
-          <h2 className="mt-2 font-serif text-[28px] text-grey-90">
-            Frequently asked questions
-          </h2>
-          <div className="mt-6 max-w-3xl divide-y divide-grey-10 border-y border-grey-10">
-            {BLOG_FAQS.map((f) => (
-              <details key={f.q} className="py-4">
-                <summary className="cursor-pointer text-base font-semibold text-grey-90">
-                  {f.q}
-                </summary>
-                <p className="mt-2 text-sm leading-7 text-grey-60">{f.a}</p>
-              </details>
-            ))}
-          </div>
-          <Link
-            href={localizeHref(countryCode, "/faq")}
-            className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-brand-700 transition-colors hover:text-brand-800"
-          >
-            Read all FAQs
-            <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-      </section>
+      {!posts.length && (
+        <p className="content-container mt-12 max-w-[1120px] ph-body">No posts yet.</p>
+      )}
     </div>
   )
 }

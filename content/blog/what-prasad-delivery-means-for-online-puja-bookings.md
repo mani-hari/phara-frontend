@@ -3,6 +3,8 @@ title: What Prasad Delivery Actually Means in an Online Puja Booking
 excerpt: A practical explanation of what devotees usually receive after a puja, why prasad delivery timelines vary, and how to set the right expectations for domestic and international shipping.
 author: PariharaOnline Editorial Team
 publishedAt: 2026-03-08
+image: /blog/what-prasad-delivery-means-for-online-puja-bookings.webp
+imageAlt: "An opened parcel of temple prasadam with vibhuti, kumkum, a sacred thread and flowers | pariharaonline.com"
 tags:
   - Prasad Delivery
   - Booking Basics

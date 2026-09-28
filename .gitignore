@@ -74,3 +74,9 @@ reports/
 .env*
 
 .env.vercel*
+
+# raw AI image generations (cache for scripts/blog-images.mjs)
+.blog-images-raw/
+
+# internal SEO research (names third-party sites)
+content/blog-plan/keywords.json

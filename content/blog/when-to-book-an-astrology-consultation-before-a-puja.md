@@ -3,6 +3,8 @@ title: When to Book an Astrology Consultation Before Booking a Puja
 excerpt: Not every devotee needs astrology first. This guide explains when a direct puja booking is enough and when an astrological reading helps avoid the wrong remedy.
 author: PariharaOnline Editorial Team
 publishedAt: 2026-03-04
+image: /blog/when-to-book-an-astrology-consultation-before-a-puja.webp
+imageAlt: "A hand-drawn South Indian horoscope chart beside reading glasses and filter coffee | pariharaonline.com"
 tags:
   - Astrology
   - Puja Guide

@@ -32,6 +32,13 @@ const nextConfig = {
     "decode-named-character-reference",
     "character-entities",
   ],
+  experimental: {
+    // Blog posts are read from content/blog at request time; make sure the
+    // sitemap function bundles them too (pages/route handlers already trace them).
+    outputFileTracingIncludes: {
+      "/sitemap.xml": ["./content/blog/**/*", "./public/blog/**/*"],
+    },
+  },
   logging: {
     fetches: {
       fullUrl: true,
