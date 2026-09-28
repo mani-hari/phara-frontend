@@ -336,8 +336,13 @@ export const getProductGalleryEntries = (
     .filter((image) => image.url && !seen.has(image.url) && seen.add(image.url))
     .map((image, i) => ({
       url: image.url as string,
+      // Alt text: image.metadata.alt if the backend keeps it, else the product's
+      // metadata.image_alts map (URL → alt; Medusa 2.12's product update drops
+      // image metadata, so staff set alts there), else a title-based fallback.
       alt:
         (typeof (image as any).metadata?.alt === "string" && (image as any).metadata.alt.trim()) ||
+        (typeof (product.metadata as any)?.image_alts?.[image.url as string] === "string" &&
+          String((product.metadata as any).image_alts[image.url as string]).trim()) ||
         (i === 0 ? product.title : `${product.title} — image ${i + 1}`),
     }))
   if (entries.length) return entries
