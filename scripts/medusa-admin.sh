@@ -51,7 +51,12 @@ mkdir -p "$AUDIT_DIR"
 printf '%s  %s %s\n' "$(date -u +%FT%TZ)" "$METHOD" "$REQ_PATH" >> "$AUDIT"
 
 # 4) Call (key never echoed).
-if [ -n "$BODY" ]; then
+if [ "$METHOD" = "UPLOAD" ]; then
+  # Multipart file upload: scripts/medusa-admin.sh UPLOAD /admin/uploads <file-path>
+  [ -f "$BODY" ] || { echo "UPLOAD needs a file path as the 3rd argument" >&2; exit 2; }
+  curl -sS --max-time 120 -X POST "$BACKEND$REQ_PATH" \
+    -H "Authorization: Basic $BASIC" -F "files=@$BODY"
+elif [ -n "$BODY" ]; then
   curl -sS --max-time 60 -X "$METHOD" "$BACKEND$REQ_PATH" \
     -H "Authorization: Basic $BASIC" -H "Content-Type: application/json" -d "$BODY"
 else
