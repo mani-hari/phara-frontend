@@ -5,8 +5,8 @@ description: >-
   how to break the fast, and how to adapt the tradition to your health and
   routine.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-07'
+updatedAt: '2026-10-07'
 cluster: ekadashi-fasting
 primaryKeyword: ekadashi fasting rules
 secondaryKeywords:

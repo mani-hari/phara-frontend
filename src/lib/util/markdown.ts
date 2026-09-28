@@ -47,12 +47,21 @@ const headingId = (value: string) =>
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "")
 
+/** Heading text without inline markdown (for tables of contents). */
+const plainText = (value: string) =>
+  value
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/[`*_]/g, "")
+    .trim()
+
 const renderBlocks = (markdown: string, variant: Variant) => {
   const article = variant === "article"
   const lines = markdown.replace(/\r\n/g, "\n").split("\n")
   const blocks: string[] = []
   /** Indexes into `blocks` of every h2 (used to split articles into sections). */
   const h2Indexes: number[] = []
+  /** Every h2 in document order, with the same id the rendered heading gets. */
+  const toc: { id: string; text: string }[] = []
   const usedIds = new Set<string>()
   let paragraphLines: string[] = []
   let listItems: string[] = []
@@ -82,8 +91,12 @@ const renderBlocks = (markdown: string, variant: Variant) => {
       // The page renders the H1 from frontmatter, so body headings start at h2.
       const level = Math.max(2, rawLevel)
       const text = value.trim()
-      if (level === 2) h2Indexes.push(blocks.length)
-      return `<h${level} id="${uniqueId(text)}">${inline(text)}</h${level}>`
+      const id = uniqueId(text)
+      if (level === 2) {
+        h2Indexes.push(blocks.length)
+        toc.push({ id, text: plainText(text) })
+      }
+      return `<h${level} id="${id}">${inline(text)}</h${level}>`
     }
     const level = rawLevel
     const className =
@@ -252,7 +265,7 @@ const renderBlocks = (markdown: string, variant: Variant) => {
   flushAll()
   flushCode()
 
-  return { blocks, h2Indexes }
+  return { blocks, h2Indexes, toc }
 }
 
 export const markdownToHtml = (markdown: string) =>
@@ -266,11 +279,13 @@ export const markdownToHtml = (markdown: string) =>
  * h2s, everything is in `before` and `after` is empty.
  */
 export const renderArticleMarkdown = (markdown: string) => {
-  const { blocks, h2Indexes } = renderBlocks(markdown, "article")
+  const { blocks, h2Indexes, toc } = renderBlocks(markdown, "article")
   const splitAt = h2Indexes.length >= 3 ? h2Indexes[2] : blocks.length
   return {
     before: blocks.slice(0, splitAt).join("\n"),
     after: blocks.slice(splitAt).join("\n"),
     headings: h2Indexes.length,
+    /** `##` headings (id + plain text) for an "In this article" list. */
+    toc,
   }
 }

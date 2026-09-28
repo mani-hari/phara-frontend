@@ -4,8 +4,8 @@ description: >-
   Kala sarpa dosha meaning, told gently: what astrologers mean when every planet
   sits between Rahu and Ketu, the common worries, and what tradition says helps.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-28'
+updatedAt: '2026-10-28'
 cluster: navagraha-rahu-ketu
 primaryKeyword: kala sarpa dosha
 secondaryKeywords:

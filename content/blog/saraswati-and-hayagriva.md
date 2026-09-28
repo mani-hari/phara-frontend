@@ -5,8 +5,8 @@ description: >-
   story of the horse-headed Vishnu who rescued the Vedas, and what they ask of
   students.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-02'
+updatedAt: '2026-10-02'
 cluster: exams-education
 primaryKeyword: god of education in Hinduism
 secondaryKeywords:

@@ -4,8 +4,8 @@ description: >-
   Puja at home step by step for beginners: clean, light the lamp, invoke, offer,
   wave the aarti, sit quietly. A simple daily sequence you can learn in a week.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-09-27'
+updatedAt: '2026-09-27'
 cluster: puja-at-home
 primaryKeyword: puja at home step by step
 secondaryKeywords:

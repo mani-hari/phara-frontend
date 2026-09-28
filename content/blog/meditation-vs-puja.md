@@ -4,8 +4,8 @@ description: >-
   Meditation vs puja: are they opposites? How sitting still and offering flowers
   train the mind differently, and why many people find they need both at times.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-22'
+updatedAt: '2026-10-22'
 cluster: ritual-and-mind
 primaryKeyword: meditation vs puja
 secondaryKeywords:

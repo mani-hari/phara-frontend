@@ -4,8 +4,8 @@ description: >-
   When is Diwali in the USA? It follows the new moon of Karthika, so the date
   shifts yearly and can differ from India by a day. Here is how to check.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-04'
+updatedAt: '2026-10-04'
 cluster: diwali-in-usa
 primaryKeyword: when is diwali in the usa
 secondaryKeywords:

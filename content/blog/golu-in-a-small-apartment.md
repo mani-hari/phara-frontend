@@ -4,8 +4,8 @@ description: >-
   Navratri Golu at home in a small apartment: how many steps you need, which
   dolls to start with, a safe setup with kids, and evening visitors.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-09-28'
+updatedAt: '2026-09-28'
 cluster: navratri-usa
 primaryKeyword: navratri golu at home
 secondaryKeywords:

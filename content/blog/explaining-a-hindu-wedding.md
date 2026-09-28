@@ -5,8 +5,8 @@ description: >-
   saptapadi and mangalsutra mean, what to wear, and when it's fine to chat or
   step out.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-22'
+updatedAt: '2026-10-22'
 cluster: festivals-explained-usa
 primaryKeyword: hindu wedding rituals explained
 secondaryKeywords:

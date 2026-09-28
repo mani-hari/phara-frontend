@@ -21,6 +21,13 @@ import AuthorAvatar from "@modules/blog/components/author-avatar"
 import BlogFilter from "@modules/blog/components/blog-filter"
 import BlogPagination from "@modules/blog/components/blog-pagination"
 import PostCard, { PostHero } from "@modules/blog/components/post-card"
+import Subscribe from "@modules/blog/components/subscribe"
+import { pickFeatured } from "@lib/util/blog-publish"
+
+// Re-render at most hourly so drip-published posts and the 3-day featured
+// rotation appear without a deploy. (The (main) layout is force-dynamic, so in
+// practice this page already renders per request; this is the upper bound.)
+export const revalidate = 3600
 
 type Props = {
   params: Promise<{ countryCode: string }>
@@ -53,8 +60,11 @@ export default async function BlogIndexPage(props: Props) {
   const requestedPage = parsePageParam((await props.searchParams).page)
   const [posts, tags] = await Promise.all([getPublishedBlogPosts(), getBlogTags()])
 
-  // Page 1 leads with the latest post as a feature; the grid holds the rest.
-  const [featured, ...rest] = posts
+  // Page 1 leads with a featured post that rotates every 3 days (IST) among
+  // published posts with a hero, legacy posts excluded; the grid holds the
+  // rest, newest first.
+  const featured = pickFeatured(posts)
+  const rest = posts.filter((p) => p !== featured)
   const { items, page, totalPages } = paginate(rest, requestedPage)
   const href = (path: string) => localizeHref(countryCode, path)
   const featuredAuthor = featured ? resolveBlogAuthor(featured.authorSlug) : null
@@ -85,7 +95,7 @@ export default async function BlogIndexPage(props: Props) {
       </header>
 
       {page === 1 && featured && featuredAuthor && (
-        <section aria-label="Latest post" className="content-container mt-12 max-w-[1120px]">
+        <section aria-label="Featured post" className="content-container mt-12 max-w-[1120px]">
           <article
             className="group grid items-center gap-8 pt-10 lg:grid-cols-[1.15fr_1fr] lg:gap-12"
             style={{ borderTop: "1px solid var(--ink-line)" }}
@@ -95,7 +105,7 @@ export default async function BlogIndexPage(props: Props) {
             </Link>
             <div>
               <p className="ph-eyebrow">
-                Latest
+                Featured
                 {featuredEyebrow && (
                   <>
                     <span className="mx-2" aria-hidden="true">·</span>
@@ -124,6 +134,10 @@ export default async function BlogIndexPage(props: Props) {
             </div>
           </article>
         </section>
+      )}
+
+      {page === 1 && posts.length > 0 && (
+        <Subscribe variant="hero" refSlug="blog-home" className="mt-16" />
       )}
 
       {items.length > 0 && (

@@ -5,8 +5,8 @@ description: >-
   lamp, breath and a Saraswati mantra to steady attention before studying or a
   test.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-01'
+updatedAt: '2026-10-01'
 cluster: exams-education
 primaryKeyword: prayer before exams
 secondaryKeywords:

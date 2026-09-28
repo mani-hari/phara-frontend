@@ -4,8 +4,8 @@ description: >-
   Joining a live puja online from another time zone: how to sit, what to keep
   beside you, and where to put your attention when the temple is far away.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-11'
+updatedAt: '2026-10-11'
 cluster: online-puja-usa
 primaryKeyword: live puja online
 secondaryKeywords:

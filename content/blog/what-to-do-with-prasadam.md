@@ -4,8 +4,8 @@ description: >-
   What to do with prasadam when it arrives: how to receive it, when to eat it,
   how to use vibhuti and kumkum, and how to return leftovers to nature.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-12'
+updatedAt: '2026-10-12'
 cluster: prasadam-usa
 primaryKeyword: what to do with prasadam
 secondaryKeywords:

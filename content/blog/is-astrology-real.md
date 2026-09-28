@@ -5,8 +5,8 @@ description: >-
   says, and why many people still find a birth chart useful as a mirror, not a
   verdict.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-09-26'
+updatedAt: '2026-09-26'
 cluster: astrology-real
 primaryKeyword: is astrology real
 secondaryKeywords:

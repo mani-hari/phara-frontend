@@ -5,8 +5,8 @@ description: >-
   the actor. What the Gita really says, and how to think about karma without
   guilt.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-22'
+updatedAt: '2026-10-22'
 cluster: karma-dharma
 primaryKeyword: karma explained
 secondaryKeywords:

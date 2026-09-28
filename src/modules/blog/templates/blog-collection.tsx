@@ -11,6 +11,7 @@ export default function BlogCollection({
   basePath,
   countryCode,
   jsonLd,
+  after,
 }: {
   header: React.ReactNode
   posts: BlogPost[]
@@ -19,6 +20,8 @@ export default function BlogCollection({
   basePath: string
   countryCode: string
   jsonLd: unknown[]
+  /** Rendered below the grid and pagination (e.g. the inline subscribe block). */
+  after?: React.ReactNode
 }) {
   const { items, page, totalPages } = paginate(posts, requestedPage)
   return (
@@ -47,6 +50,7 @@ export default function BlogCollection({
         )}
         <BlogPagination basePath={basePath} page={page} totalPages={totalPages} />
       </section>
+      {after && <div className="content-container mt-16 max-w-[1120px]">{after}</div>}
     </div>
   )
 }

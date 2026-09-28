@@ -4,8 +4,8 @@ description: >-
   How to celebrate Diwali in the USA on a workday: an evening lamp, a short
   Lakshmi puja, sweets for neighbours and a family call across time zones.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-05'
+updatedAt: '2026-10-05'
 cluster: diwali-in-usa
 primaryKeyword: how to celebrate diwali in the usa
 secondaryKeywords:

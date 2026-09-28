@@ -5,8 +5,8 @@ description: >-
   transit means in Jyotish, why families mark it, and a calm way to respond to
   it.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-29'
+updatedAt: '2026-10-29'
 cluster: navagraha-rahu-ketu
 primaryKeyword: guru peyarchi
 secondaryKeywords:

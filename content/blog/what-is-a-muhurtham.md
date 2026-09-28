@@ -5,8 +5,8 @@ description: >-
   housewarmings and new starts in Jyotish, and what the practice says about
   beginnings.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-11-04'
+updatedAt: '2026-11-04'
 cluster: astrology-real
 primaryKeyword: what is muhurtham
 secondaryKeywords:

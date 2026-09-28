@@ -4,8 +4,8 @@ description: >-
   Navratri fasting rules explained plainly: what people eat and avoid, why, how
   to fast safely with work and health, and gentler options that still count.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-09-28'
+updatedAt: '2026-09-28'
 cluster: navratri-meaning
 primaryKeyword: navratri fasting rules
 secondaryKeywords:

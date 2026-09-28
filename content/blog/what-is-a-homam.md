@@ -5,8 +5,8 @@ description: >-
   offered into the flames, how a homam differs from a puja and why families book
   one.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-11-02'
+updatedAt: '2026-11-02'
 cluster: homam-explained
 primaryKeyword: what is a homam
 secondaryKeywords:

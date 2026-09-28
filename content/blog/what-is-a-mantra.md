@@ -5,8 +5,8 @@ description: >-
   attention, why meaning and rhythm both matter, and a simple way to try one
   yourself.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-20'
+updatedAt: '2026-10-20'
 cluster: mantra-basics
 primaryKeyword: what is a mantra
 secondaryKeywords:

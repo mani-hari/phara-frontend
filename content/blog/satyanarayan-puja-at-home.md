@@ -4,8 +4,8 @@ description: >-
   Satyanarayan puja at home in the US: a simple setup with local items, the
   steps from Ganesha to katha to aarti, and sheera prasad in a US kitchen.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-13'
+updatedAt: '2026-10-13'
 cluster: satyanarayan-puja
 primaryKeyword: satyanarayan puja at home
 secondaryKeywords:

@@ -5,8 +5,8 @@ description: >-
   houses, planets and dasha periods as questions to work with, not verdicts to
   dread.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-18'
+updatedAt: '2026-10-18'
 cluster: astrology-real
 primaryKeyword: how to read a birth chart
 secondaryKeywords:

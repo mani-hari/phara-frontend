@@ -4,8 +4,8 @@ description: >-
   Diwali at work in the US: how to share the festival with colleagues, what to
   bring, how to explain it in a minute, and how to ask for the day off.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-06'
+updatedAt: '2026-10-06'
 cluster: diwali-in-usa
 primaryKeyword: diwali at work
 secondaryKeywords:

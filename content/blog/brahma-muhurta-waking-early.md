@@ -4,8 +4,8 @@ description: >-
   Brahma muhurta benefits, honestly: what the pre-dawn window is, why yogis rise
   then, what it does for attention and sleep, and how to try it gently.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-11-05'
+updatedAt: '2026-11-05'
 cluster: ritual-and-mind
 primaryKeyword: brahma muhurta benefits
 secondaryKeywords:

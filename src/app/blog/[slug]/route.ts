@@ -1,4 +1,4 @@
-import { getBlogPostBySlug, getRelatedPosts } from "@lib/data/blog"
+import { getBlogPostBySlug, getRelatedPosts, withLiveLinks } from "@lib/data/blog"
 import { buildPostMarkdown, postUrl } from "@lib/util/blog-seo"
 
 // Markdown twin of each post: GET /blog/<slug>.md
@@ -8,6 +8,11 @@ import { buildPostMarkdown, postUrl } from "@lib/util/blog-seo"
 // paths through without the country rewrite, so .md requests land here, while
 // normal post URLs (/blog/<slug>) are rewritten to /[countryCode]/blog/<slug>
 // and never reach this handler.
+//
+// Drip publishing: future-dated posts 404 here too (getBlogPostBySlug), and
+// links to not-yet-live posts are flattened to text. Revalidated hourly.
+
+export const revalidate = 3600
 
 export async function GET(
   _request: Request,
@@ -17,10 +22,11 @@ export async function GET(
   if (!raw.endsWith(".md")) {
     return new Response("Not found", { status: 404 })
   }
-  const post = await getBlogPostBySlug(raw.slice(0, -3))
-  if (!post) {
+  const found = await getBlogPostBySlug(raw.slice(0, -3))
+  if (!found) {
     return new Response("Not found", { status: 404 })
   }
+  const post = await withLiveLinks(found)
   const related = await getRelatedPosts(post)
   return new Response(buildPostMarkdown(post, related), {
     headers: {

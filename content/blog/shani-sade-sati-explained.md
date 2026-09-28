@@ -5,8 +5,8 @@ description: >-
   means in Jyotish, the stories behind Shani, and why it is a teacher, not a
   curse.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-25'
+updatedAt: '2026-10-25'
 cluster: sade-sati
 primaryKeyword: shani sade sati
 secondaryKeywords:

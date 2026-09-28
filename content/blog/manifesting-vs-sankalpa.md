@@ -4,8 +4,8 @@ description: >-
   Manifesting vs sankalpa: how the popular idea of manifesting compares with
   sankalpa, the Hindu practice of stated intention, and why letting go matters.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-11-04'
+updatedAt: '2026-11-04'
 cluster: ritual-and-mind
 primaryKeyword: manifesting vs sankalpa
 secondaryKeywords:

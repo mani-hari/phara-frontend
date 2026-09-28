@@ -4,8 +4,8 @@ description: >-
   Namakaranam, the Hindu naming ceremony: how families in America pick a name by
   birth star, hold the ritual at home and bring in relatives from far away.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-21'
+updatedAt: '2026-10-21'
 cluster: griha-pravesh
 primaryKeyword: hindu naming ceremony
 secondaryKeywords:

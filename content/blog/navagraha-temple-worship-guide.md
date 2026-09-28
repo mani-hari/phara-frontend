@@ -4,8 +4,8 @@ description: >-
   Navagraha puja benefits start with doing it right: how to walk around the nine
   planets at a temple, which direction, what to offer, and what to hold in mind.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-28'
+updatedAt: '2026-10-28'
 cluster: navagraha-rahu-ketu
 primaryKeyword: how to worship navagrahas
 secondaryKeywords:

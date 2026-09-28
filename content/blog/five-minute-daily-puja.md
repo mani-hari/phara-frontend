@@ -5,8 +5,8 @@ description: >-
   flower, a breath and one line of prayer, so the day starts with you and not
   your inbox.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-11-02'
+updatedAt: '2026-11-02'
 cluster: puja-at-home
 primaryKeyword: daily puja at home
 secondaryKeywords:

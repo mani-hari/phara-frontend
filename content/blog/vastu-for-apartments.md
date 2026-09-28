@@ -5,8 +5,8 @@ description: >-
   corner, kitchen and bed, what you can ignore, and changes that work in
   rentals.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-11-03'
+updatedAt: '2026-11-03'
 cluster: puja-at-home
 primaryKeyword: vastu for apartments
 secondaryKeywords:

@@ -5,8 +5,8 @@ description: >-
   oils, when each is used, how they burn differently, and what to pick for daily
   puja.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-25'
+updatedAt: '2026-10-25'
 cluster: why-light-lamps
 primaryKeyword: ghee lamp vs oil lamp
 secondaryKeywords:

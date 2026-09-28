@@ -5,8 +5,8 @@ description: >-
   tarpanam and remembrance each month, and small ways to honour family who came
   before.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-09-30'
+updatedAt: '2026-09-30'
 cluster: pitru-ancestors
 primaryKeyword: amavasya significance
 secondaryKeywords:

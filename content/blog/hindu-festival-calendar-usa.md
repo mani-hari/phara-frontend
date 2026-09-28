@@ -4,8 +4,8 @@ description: >-
   The Hindu festival calendar in the USA: why festivals follow the moon, why
   dates shift every year, and how to find the right day for your city.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-19'
+updatedAt: '2026-10-19'
 cluster: festivals-explained-usa
 primaryKeyword: hindu festival calendar usa
 secondaryKeywords:

@@ -5,8 +5,8 @@ description: >-
   which direction to face, and simple safety tips for apartments and small
   spaces.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-24'
+updatedAt: '2026-10-24'
 cluster: why-light-lamps
 primaryKeyword: how to light a diya
 secondaryKeywords:

@@ -6,6 +6,8 @@ import path from "path"
 import { cache } from "react"
 import matter from "gray-matter"
 
+import { isPublished, todayIst, unlinkUnpublished } from "@lib/util/blog-publish"
+
 import { resolveBlogAuthor } from "./blog-authors"
 
 // Frontmatter schema: content/blog-plan/SPEC.md. The five original posts use
@@ -221,9 +223,14 @@ const readAllPosts = cache(async (): Promise<BlogPost[]> => {
   return posts.sort(sortByDateDesc)
 })
 
-/** Published (non-draft) posts, newest first. */
+/**
+ * Published posts, newest first: not a draft AND publishedAt <= today in IST
+ * (see src/lib/util/blog-publish.ts). Future-dated posts stay invisible until
+ * their day; every list, feed and lookup goes through this.
+ */
 export const getPublishedBlogPosts = async (limit?: number) => {
-  const posts = (await readAllPosts()).filter((post) => !post.draft)
+  const today = todayIst()
+  const posts = (await readAllPosts()).filter((post) => isPublished(post, today))
   return typeof limit === "number" ? posts.slice(0, limit) : posts
 }
 
@@ -232,12 +239,39 @@ export const getBlogPostSlugs = async () => {
   return posts.map((post) => post.slug)
 }
 
-/** Drafts are only reachable by URL in development (for previewing). */
-export const getBlogPostBySlug = async (slug: string) => {
+/**
+ * In production only published posts resolve (future-dated → null → 404).
+ * In development drafts stay reachable by URL (for previewing), and
+ * future-dated posts resolve with `preview: true` (`?preview=1`).
+ */
+export const getBlogPostBySlug = async (
+  slug: string,
+  options: { preview?: boolean } = {}
+) => {
   const post = (await readAllPosts()).find((p) => p.slug === slug)
   if (!post) return null
-  if (post.draft && process.env.NODE_ENV === "production") return null
+  if (isPublished(post)) return post
+  if (process.env.NODE_ENV === "production") return null
+  const future = post.publishedAt > todayIst()
+  if (future && !options.preview) return null
   return post
+}
+
+// ---------------------------------------------------------------------------
+// Internal links to posts that are not live yet (drip publishing) would 404,
+// so they are rendered as plain text until the target's day comes.
+// ---------------------------------------------------------------------------
+
+/** The post with links to not-yet-published posts flattened to text (body, takeaways, FAQ). */
+export const withLiveLinks = async (post: BlogPost): Promise<BlogPost> => {
+  const live = new Set(await getBlogPostSlugs())
+  const fix = (value: string) => unlinkUnpublished(value, live)
+  return {
+    ...post,
+    content: fix(post.content),
+    takeaways: post.takeaways.map(fix),
+    faq: post.faq.map((f) => ({ q: f.q, a: fix(f.a) })),
+  }
 }
 
 // ---------------------------------------------------------------------------

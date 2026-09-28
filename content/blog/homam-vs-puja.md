@@ -5,8 +5,8 @@ description: >-
   the difference is, when each is used and which fits your intention and your
   home.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-11-01'
+updatedAt: '2026-11-01'
 cluster: homam-explained
 primaryKeyword: homam vs puja
 secondaryKeywords:

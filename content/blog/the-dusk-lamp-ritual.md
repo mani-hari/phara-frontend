@@ -5,8 +5,8 @@ description: >-
   sandhya deepam can mark the end of a workday and bring a household back
   together.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-26'
+updatedAt: '2026-10-26'
 cluster: why-light-lamps
 primaryKeyword: evening lamp ritual
 secondaryKeywords:

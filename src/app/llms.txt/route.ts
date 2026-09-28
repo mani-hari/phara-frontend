@@ -7,6 +7,9 @@ import base from "@lib/llms-base.md"
 // /llms.txt = the static overview + a generated "## Blog" section listing
 // every published post's markdown twin. The middleware matcher excludes
 // llms.txt, so this route is reached directly.
+//
+// Regenerated at most hourly so drip-published posts appear on their day.
+export const revalidate = 3600
 
 const oneLine = (value: string) => value.replace(/\s+/g, " ").trim()
 

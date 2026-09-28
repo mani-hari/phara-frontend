@@ -4,8 +4,8 @@ description: >-
   Shodashopachara puja, the 16 steps of worship, explained as hospitality:
   welcoming God as a guest with water, a seat, a bath, clothes, food and a lamp.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-11-01'
+updatedAt: '2026-11-01'
 cluster: puja-at-home
 primaryKeyword: shodashopachara puja
 secondaryKeywords:

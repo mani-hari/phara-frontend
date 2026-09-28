@@ -17,7 +17,8 @@
     "search:reindex": "node --env-file-if-exists=.env.local --import tsx scripts/search-reindex.ts",
     "test:guardrail": "node --import tsx --test scripts/test-chat-guardrail.mjs",
     "blog:images": "node --env-file-if-exists=.env.local scripts/blog-images.mjs",
-    "blog:images:check": "node scripts/blog-images-check.mjs"
+    "blog:images:check": "node scripts/blog-images-check.mjs",
+    "test:blog": "node --import tsx --test scripts/test-blog-publish.mjs"
   },
   "dependencies": {
     "@ai-sdk/anthropic": "^1.2.12",

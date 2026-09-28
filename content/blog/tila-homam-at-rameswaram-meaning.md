@@ -5,8 +5,8 @@ description: >-
   Rama's shore, and what families hope for when they perform this rite for
   ancestors.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-09-30'
+updatedAt: '2026-09-30'
 cluster: pitru-ancestors
 primaryKeyword: tila homam
 secondaryKeywords:

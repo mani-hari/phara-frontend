@@ -4,8 +4,8 @@ description: >-
   Shani sade sati remedies that are simple and steady: Saturday lamps, service,
   discipline, Hanuman prayers and when a Navagraha or Shani pooja makes sense.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-27'
+updatedAt: '2026-10-27'
 cluster: sade-sati
 primaryKeyword: shani sade sati remedies
 secondaryKeywords:

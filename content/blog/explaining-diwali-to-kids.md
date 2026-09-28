@@ -5,8 +5,8 @@ description: >-
   Lakshmi's visit, Krishna and Narakasura, plus the one idea underneath all of
   them.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-05'
+updatedAt: '2026-10-05'
 cluster: festivals-explained-usa
 primaryKeyword: explaining diwali to kids
 secondaryKeywords:

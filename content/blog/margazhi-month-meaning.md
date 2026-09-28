@@ -4,8 +4,8 @@ description: >-
   Margazhi month significance: why the Tamil month from mid-December to
   mid-January is kept for dawn prayer, big kolams, Tiruppavai and music.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-09'
+updatedAt: '2026-10-09'
 cluster: ekadashi-fasting
 primaryKeyword: margazhi month meaning
 secondaryKeywords:

@@ -4,8 +4,8 @@ description: >-
   Ayudha Pooja meaning, simply: why South Indian homes bless tools, books, cars
   and laptops on Navami, and how to do a small version at your own desk.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-03'
+updatedAt: '2026-10-03'
 cluster: navratri-meaning
 primaryKeyword: ayudha pooja meaning
 secondaryKeywords:

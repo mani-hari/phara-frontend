@@ -4,8 +4,8 @@ description: >-
   Hindu festival activities for kids that are real rituals, not crafts: lighting
   the lamp, drawing kolam, offering flowers, and giving to others.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-14'
+updatedAt: '2026-10-14'
 cluster: festivals-explained-usa
 primaryKeyword: festival rituals for kids
 secondaryKeywords:

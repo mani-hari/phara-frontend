@@ -7,7 +7,11 @@ import { getBlogAuthor } from "@lib/data/blog-authors"
 import { absoluteUrl, buildCollectionJsonLd } from "@lib/util/blog-seo"
 import { localizeHref } from "@lib/util/localize-href"
 import AuthorAvatar from "@modules/blog/components/author-avatar"
+import Subscribe from "@modules/blog/components/subscribe"
 import BlogCollection from "@modules/blog/templates/blog-collection"
+
+// Upper bound for drip-published posts to appear (layout is force-dynamic).
+export const revalidate = 3600
 
 type Props = {
   params: Promise<{ countryCode: string; slug: string }>
@@ -57,6 +61,20 @@ export default async function BlogAuthorPage(props: Props) {
       page={page}
       basePath={localizeHref(countryCode, path)}
       countryCode={countryCode}
+      after={
+        <div className="max-w-[760px]">
+          <Subscribe
+            variant="inline"
+            refSlug={`author-${author.slug}`}
+            heading="Subscribe to our blogs"
+            line={
+              author.slug === "editorial"
+                ? "To get more practical guides like these, subscribe for free."
+                : `To get more from ${author.name} like this, subscribe for free.`
+            }
+          />
+        </div>
+      }
       jsonLd={[
         personJsonLd,
         ...buildCollectionJsonLd({ name: author.name, description: author.bio, path, posts }),

@@ -5,8 +5,8 @@ description: >-
   feed them as the Goddess, and how to keep the ritual kind, modern and
   respectful.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-01'
+updatedAt: '2026-10-01'
 cluster: navratri-meaning
 primaryKeyword: kanya puja meaning
 secondaryKeywords:

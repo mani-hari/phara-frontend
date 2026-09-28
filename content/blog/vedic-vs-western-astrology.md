@@ -5,8 +5,8 @@ description: >-
   sidereal and tropical zodiacs differ, and what each system is really trying to
   tell you.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-20'
+updatedAt: '2026-10-20'
 cluster: astrology-real
 primaryKeyword: vedic vs western astrology
 secondaryKeywords:

@@ -5,8 +5,8 @@ description: >-
   Purana, why the demon became a peacock and rooster, and what that ending
   teaches.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-09'
+updatedAt: '2026-10-09'
 cluster: murugan-skanda
 primaryKeyword: soorasamharam story
 secondaryKeywords:

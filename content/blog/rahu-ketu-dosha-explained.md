@@ -4,8 +4,8 @@ description: >-
   Rahu ketu dosha remedies start with understanding: the churning-of-the-ocean
   story, what the shadow planets mean in Jyotish, and how people respond.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-26'
+updatedAt: '2026-10-26'
 cluster: navagraha-rahu-ketu
 primaryKeyword: rahu ketu dosha
 secondaryKeywords:

@@ -4,8 +4,8 @@ description: >-
   Why Navratri is nine days: the Devi Mahatmyam story, the three goddesses, the
   nine forms of Durga, and what each night asks of you at home today.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-09-26'
+updatedAt: '2026-09-26'
 cluster: navratri-meaning
 primaryKeyword: why navratri is nine nights
 secondaryKeywords:

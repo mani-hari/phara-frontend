@@ -6,6 +6,10 @@ import { BLOG_DESCRIPTION, BLOG_TITLE, SITE, absoluteUrl, postUrl } from "@lib/u
 
 // Lives outside [countryCode]: the middleware passes dotted paths through
 // without the country rewrite, so /blog/feed.xml resolves here.
+//
+// Regenerated at most hourly so drip-published (future-dated) posts join the
+// feed on their IST day without a deploy.
+export const revalidate = 3600
 
 const escapeXml = (value: string) =>
   value

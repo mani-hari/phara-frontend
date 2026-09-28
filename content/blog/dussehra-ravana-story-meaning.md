@@ -4,8 +4,8 @@ description: >-
   Dussehra significance, told through Ravana and Durga: why the tenth day marks
   victory, what burning the effigy means, and why Ravana is more than a villain.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-03'
+updatedAt: '2026-10-03'
 cluster: navratri-meaning
 primaryKeyword: dussehra significance
 secondaryKeywords:

@@ -4,8 +4,8 @@ description: >-
   When a parent dies in India and you live abroad: a gentle guide to Hindu last
   rites for NRIs, what can wait, what you can do from afar, and the first year.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-09-29'
+updatedAt: '2026-09-29'
 cluster: pitru-ancestors
 primaryKeyword: when a parent dies in india
 secondaryKeywords:

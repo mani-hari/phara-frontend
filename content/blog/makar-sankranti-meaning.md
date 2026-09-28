@@ -4,8 +4,8 @@ description: >-
   Makar Sankranti meaning for body and mind: the sun's turn north, why sesame
   and jaggery are eaten in winter, kites, early baths, and one practice to try.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-08'
+updatedAt: '2026-10-08'
 cluster: pongal-sankranti
 primaryKeyword: makar sankranti meaning
 secondaryKeywords:

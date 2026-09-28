@@ -4,8 +4,8 @@ description: >-
   Sudarshana homam benefits explained: the story of Vishnu's spinning discus,
   what the fire ritual invokes for protection, and when families choose it.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-11-06'
+updatedAt: '2026-11-06'
 cluster: homam-explained
 primaryKeyword: sudarshana homam meaning
 secondaryKeywords:

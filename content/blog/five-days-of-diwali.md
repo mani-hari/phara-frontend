@@ -5,8 +5,8 @@ description: >-
   what each day honours and one simple thing to do at home on each of the five
   days.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-03'
+updatedAt: '2026-10-03'
 cluster: diwali-meaning
 primaryKeyword: five days of diwali
 secondaryKeywords:

@@ -5,8 +5,8 @@ description: >-
   and Nandi, and the four days from Bhogi to Kaanum, explained through their
   story.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-13'
+updatedAt: '2026-10-13'
 cluster: pongal-sankranti
 primaryKeyword: why is pongal celebrated
 secondaryKeywords:

@@ -5,8 +5,8 @@ description: >-
   Vijayadashami. What the ritual means, how families do it, and how to hold it
   anywhere.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-04'
+updatedAt: '2026-10-04'
 cluster: exams-education
 primaryKeyword: vidyarambham
 secondaryKeywords:

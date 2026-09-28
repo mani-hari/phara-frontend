@@ -5,8 +5,8 @@ description: >-
   to the Rig Veda verse, the Markandeya story, and how people chant it for
   healing.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-30'
+updatedAt: '2026-10-30'
 cluster: health-longevity
 primaryKeyword: mahamrityunjaya mantra meaning
 secondaryKeywords:

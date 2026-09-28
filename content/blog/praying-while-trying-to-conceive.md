@@ -5,8 +5,8 @@ description: >-
   column on prayer, patience and care for couples trying to conceive, beside
   medicine.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-31'
+updatedAt: '2026-10-31'
 cluster: conceiving-pregnancy
 primaryKeyword: pooja for conceiving
 secondaryKeywords:

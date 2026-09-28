@@ -4,8 +4,8 @@ description: >-
   Prasadam meaning, told through stories: why food offered to God returns as
   grace, why it is shared with everyone, and why it is never refused.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-17'
+updatedAt: '2026-10-17'
 cluster: prasadam-usa
 primaryKeyword: why is prasad shared
 secondaryKeywords:

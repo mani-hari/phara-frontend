@@ -4,8 +4,8 @@ description: >-
   Chanting for beginners: a seven-day mantra practice with posture, breath and
   counting explained, so you can start at home without fear of doing it wrong.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-21'
+updatedAt: '2026-10-21'
 cluster: mantra-basics
 primaryKeyword: how to chant a mantra
 secondaryKeywords:

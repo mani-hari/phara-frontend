@@ -11,7 +11,11 @@ import {
 import { buildCollectionJsonLd } from "@lib/util/blog-seo"
 import { localizeHref } from "@lib/util/localize-href"
 import BlogFilter from "@modules/blog/components/blog-filter"
+import Subscribe from "@modules/blog/components/subscribe"
 import BlogCollection from "@modules/blog/templates/blog-collection"
+
+// Upper bound for drip-published posts to appear (layout is force-dynamic).
+export const revalidate = 3600
 
 type Props = {
   params: Promise<{ countryCode: string; tag: string }>
@@ -56,6 +60,16 @@ export default async function BlogTagPage(props: Props) {
       page={page}
       basePath={localizeHref(countryCode, path)}
       countryCode={countryCode}
+      after={
+        <div className="max-w-[760px]">
+          <Subscribe
+            variant="inline"
+            refSlug={`tag-${tag.slug}`}
+            heading="Subscribe to our blogs"
+            line={`To get more ${tag.name} posts like these, subscribe for free.`}
+          />
+        </div>
+      }
       jsonLd={buildCollectionJsonLd({
         name: tag.name,
         description: describe(tag.name, tag.count),

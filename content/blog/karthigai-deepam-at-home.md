@@ -5,8 +5,8 @@ description: >-
   pori and appam, and keep the lamps as a practice of attention in a small
   space.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-06'
+updatedAt: '2026-10-06'
 cluster: karthigai-deepam
 primaryKeyword: karthigai deepam at home
 secondaryKeywords:

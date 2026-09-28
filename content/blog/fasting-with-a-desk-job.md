@@ -5,8 +5,8 @@ description: >-
   invites and long commutes, what to tell colleagues, and how to be kind to
   yourself.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-18'
+updatedAt: '2026-10-18'
 cluster: ekadashi-fasting
 primaryKeyword: ekadashi fasting at work
 secondaryKeywords:

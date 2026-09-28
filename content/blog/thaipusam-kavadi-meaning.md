@@ -5,8 +5,8 @@ description: >-
   month of Thai, the story of Idumban, and what it says about the burdens we all
   carry.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-11'
+updatedAt: '2026-10-11'
 cluster: murugan-skanda
 primaryKeyword: thaipusam kavadi meaning
 secondaryKeywords:

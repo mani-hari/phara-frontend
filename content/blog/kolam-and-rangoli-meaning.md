@@ -5,8 +5,8 @@ description: >-
   the doorstep each dawn, why rice flour feeds ants, and what the lines are
   about.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-07'
+updatedAt: '2026-10-07'
 cluster: diwali-meaning
 primaryKeyword: rangoli meaning
 secondaryKeywords:

@@ -4,8 +4,8 @@ description: >-
   Satyanarayan katha meaning: the merchant, the woodcutter, the king and the
   forgotten vow. What the five chapters teach about truth and gratitude.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-18'
+updatedAt: '2026-10-18'
 cluster: satyanarayan-puja
 primaryKeyword: satyanarayan katha meaning
 secondaryKeywords:

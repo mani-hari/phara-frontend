@@ -4,8 +4,8 @@ description: >-
   Booking a puja for parents in India from abroad: choosing a ritual for health
   or a birthday, gathering their details, and letting them share in it.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-14'
+updatedAt: '2026-10-14'
 cluster: online-puja-usa
 primaryKeyword: book a puja for your parents in India
 secondaryKeywords:

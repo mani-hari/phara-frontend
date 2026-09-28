@@ -5,8 +5,8 @@ description: >-
   of the sun can fit into an ordinary morning of traffic, emails and school
   runs.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-24'
+updatedAt: '2026-10-24'
 cluster: mantra-basics
 primaryKeyword: gayatri mantra meaning
 secondaryKeywords:

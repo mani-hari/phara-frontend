@@ -4,8 +4,8 @@ description: >-
   Bhai Dooj meaning, told through the story of Yama visiting his sister Yamuna:
   why sisters apply tilak, pray for a brother's long life and share a meal.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-08'
+updatedAt: '2026-10-08'
 cluster: diwali-meaning
 primaryKeyword: bhai dooj meaning
 secondaryKeywords:

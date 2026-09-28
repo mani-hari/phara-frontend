@@ -5,8 +5,8 @@ description: >-
   sankalpam details, time zones, video or photos, and how prasadam finds its way
   to you.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-09-26'
+updatedAt: '2026-09-26'
 cluster: online-puja-usa
 primaryKeyword: online puja from the USA
 secondaryKeywords:

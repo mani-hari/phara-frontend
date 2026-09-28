@@ -4,8 +4,8 @@ description: >-
   A housewarming puja in the USA, whether you rent or own: what to keep, what to
   skip, smoke alarms and all, and how to bless a new home far from your family.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-20'
+updatedAt: '2026-10-20'
 cluster: griha-pravesh
 primaryKeyword: housewarming puja in the USA
 secondaryKeywords:

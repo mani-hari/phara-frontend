@@ -5,8 +5,8 @@ description: >-
   ancestors and a few quiet minutes; a simple offering anyone can learn and keep
   doing.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-09-29'
+updatedAt: '2026-09-29'
 cluster: pitru-ancestors
 primaryKeyword: tarpanam at home
 secondaryKeywords:

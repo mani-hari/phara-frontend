@@ -5,8 +5,8 @@ description: >-
   from, why families circle salt and chillies, and a calm way to read the custom
   today.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-11-05'
+updatedAt: '2026-11-05'
 cluster: karma-dharma
 primaryKeyword: evil eye in hinduism
 secondaryKeywords:

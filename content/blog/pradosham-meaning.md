@@ -4,8 +4,8 @@ description: >-
   Pradosham meaning: the twilight window twice a month when Shiva is worshipped
   with Nandi, the story of the churned ocean, and why dusk matters to Shaivas.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-16'
+updatedAt: '2026-10-16'
 cluster: maha-shivaratri
 primaryKeyword: pradosham meaning
 secondaryKeywords:

@@ -5,8 +5,8 @@ description: >-
   five-letter mantra, what bowing to Shiva really signifies, and how to chant it
   at home.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-23'
+updatedAt: '2026-10-23'
 cluster: mantra-basics
 primaryKeyword: om namah shivaya meaning
 secondaryKeywords:

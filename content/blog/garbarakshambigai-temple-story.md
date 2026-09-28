@@ -5,8 +5,8 @@ description: >-
   why couples pray there for conception and safe delivery, and what the ghee
   means.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-29'
+updatedAt: '2026-10-29'
 cluster: conceiving-pregnancy
 primaryKeyword: garbarakshambigai temple
 secondaryKeywords:

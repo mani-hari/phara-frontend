@@ -5,8 +5,8 @@ description: >-
   about hunger, attention and habit, what tradition claims, and what you may
   notice.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-26'
+updatedAt: '2026-10-26'
 cluster: ekadashi-fasting
 primaryKeyword: fasting and focus
 secondaryKeywords:

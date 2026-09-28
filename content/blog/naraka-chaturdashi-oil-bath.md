@@ -4,8 +4,8 @@ description: >-
   Naraka Chaturdashi and the Deepavali oil bath: the Narakasura story, why Tamil
   families rise before dawn for Ganga snanam, and keeping it far from home.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-07'
+updatedAt: '2026-10-07'
 cluster: diwali-meaning
 primaryKeyword: naraka chaturdashi
 secondaryKeywords:

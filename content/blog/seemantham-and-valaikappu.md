@@ -5,8 +5,8 @@ description: >-
   blessings and rest. What each ritual means, when it is held, how to keep it
   simple.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-30'
+updatedAt: '2026-10-30'
 cluster: conceiving-pregnancy
 primaryKeyword: seemantham and valaikappu
 secondaryKeywords:

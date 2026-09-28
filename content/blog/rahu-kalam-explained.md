@@ -5,8 +5,8 @@ description: >-
   starts, how it is calculated, and how to treat it without letting it run your
   week.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-11-04'
+updatedAt: '2026-11-04'
 cluster: navagraha-rahu-ketu
 primaryKeyword: rahu kalam
 secondaryKeywords:

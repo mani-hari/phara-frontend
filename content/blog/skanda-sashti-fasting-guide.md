@@ -5,8 +5,8 @@ description: >-
   people eat, how to adapt it to work and health, and what to do each of the six
   days.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-05'
+updatedAt: '2026-10-05'
 cluster: murugan-skanda
 primaryKeyword: skanda sashti fasting
 secondaryKeywords:

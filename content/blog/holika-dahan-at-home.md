@@ -4,8 +4,8 @@ description: >-
   Holika Dahan at home: a small, safe version of the Holi bonfire ritual with a
   lamp or brazier, what to offer, what to let go of, and simple safety steps.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-10'
+updatedAt: '2026-10-10'
 cluster: holi
 primaryKeyword: holika dahan at home
 secondaryKeywords:

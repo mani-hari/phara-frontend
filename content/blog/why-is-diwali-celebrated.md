@@ -4,8 +4,8 @@ description: >-
   Why is Diwali celebrated? Rama's return, Krishna and Narakasura, Lakshmi's
   arrival and Mahavira's liberation: four stories and the one light they share.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-06'
+updatedAt: '2026-10-06'
 cluster: diwali-meaning
 primaryKeyword: why is diwali celebrated
 secondaryKeywords:

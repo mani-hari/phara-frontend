@@ -5,8 +5,8 @@ description: >-
   myths around manglik matches, how cancellation works, and traditional
   remedies.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-27'
+updatedAt: '2026-10-27'
 cluster: marriage-delay
 primaryKeyword: mangal dosha
 secondaryKeywords:

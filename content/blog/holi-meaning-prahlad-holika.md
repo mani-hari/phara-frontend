@@ -5,8 +5,8 @@ description: >-
   bonfire, Narasimha at dusk, Krishna's colours, and what the fire and colour
   stand for.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-15'
+updatedAt: '2026-10-15'
 cluster: holi
 primaryKeyword: holi meaning
 secondaryKeywords:

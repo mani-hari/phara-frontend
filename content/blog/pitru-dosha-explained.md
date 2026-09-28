@@ -5,8 +5,8 @@ description: >-
   the stories, how Jyotish describes it, and simple ways families honour
   ancestors.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-09-29'
+updatedAt: '2026-09-29'
 cluster: pitru-ancestors
 primaryKeyword: pitru dosha
 secondaryKeywords:

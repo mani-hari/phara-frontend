@@ -5,8 +5,8 @@ description: >-
   tarpanam at home, a temple rite in India in their name, and food given in
   memory.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-09-28'
+updatedAt: '2026-09-28'
 cluster: pitru-ancestors
 primaryKeyword: pitru paksha for nri
 secondaryKeywords:

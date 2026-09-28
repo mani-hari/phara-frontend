@@ -5,8 +5,8 @@ description: >-
   old prayer to be led from darkness to light to the lamp lit at your door each
   dusk.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-09-28'
+updatedAt: '2026-09-28'
 cluster: why-light-lamps
 primaryKeyword: why do hindus light lamps
 secondaryKeywords:

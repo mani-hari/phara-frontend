@@ -4,8 +4,8 @@ description: >-
   Lakshmi puja at home with no priest or Indian store nearby: what you really
   need, the order of steps, and how to keep the evening calm and focused.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-02'
+updatedAt: '2026-10-02'
 cluster: diwali-in-usa
 primaryKeyword: lakshmi puja at home
 secondaryKeywords:

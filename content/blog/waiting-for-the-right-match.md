@@ -5,8 +5,8 @@ description: >-
   your peace while waiting for the right match: breath, routine and simple
   devotion.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-29'
+updatedAt: '2026-10-29'
 cluster: marriage-delay
 primaryKeyword: prayer for marriage
 secondaryKeywords:

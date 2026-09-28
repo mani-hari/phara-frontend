@@ -5,8 +5,8 @@ description: >-
   Shiva's dance, the Jyotirlinga and the hunter, and what the night of Shiva
   invites.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-14'
+updatedAt: '2026-10-14'
 cluster: maha-shivaratri
 primaryKeyword: maha shivaratri meaning
 secondaryKeywords:

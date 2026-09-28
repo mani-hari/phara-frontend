@@ -5,8 +5,8 @@ description: >-
   reading them at home a few minutes a day, and what to do if Sanskrit feels
   hard.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-09-30'
+updatedAt: '2026-09-30'
 cluster: navratri-meaning
 primaryKeyword: durga saptashati for beginners
 secondaryKeywords:

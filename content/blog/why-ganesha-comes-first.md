@@ -5,8 +5,8 @@ description: >-
   around the world, what the elephant head means, and why doorways need a
   guardian.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-31'
+updatedAt: '2026-10-31'
 cluster: griha-pravesh
 primaryKeyword: why ganesha is worshipped first
 secondaryKeywords:

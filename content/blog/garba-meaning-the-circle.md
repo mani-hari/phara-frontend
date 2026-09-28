@@ -4,8 +4,8 @@ description: >-
   Garba meaning, explained: why the dance circles a lamp, what the clay pot
   stands for, and how a Gujarati village ritual reached halls across America.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-01'
+updatedAt: '2026-10-01'
 cluster: navratri-usa
 primaryKeyword: garba meaning
 secondaryKeywords:

@@ -4,8 +4,8 @@ description: >-
   Annadhanam meaning: why feeding people is treated as the highest gift in Hindu
   tradition, the verses behind it, and simple ways to practise it anywhere.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-11-05'
+updatedAt: '2026-11-05'
 cluster: karma-dharma
 primaryKeyword: annadhanam meaning
 secondaryKeywords:

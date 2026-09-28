@@ -4,8 +4,8 @@ description: >-
   Explaining Hindu festivals to coworkers without a lecture: one-line answers
   for Diwali, Navratri, Holi and Pongal, and the questions people ask.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-17'
+updatedAt: '2026-10-17'
 cluster: festivals-explained-usa
 primaryKeyword: explaining hindu festivals to coworkers
 secondaryKeywords:

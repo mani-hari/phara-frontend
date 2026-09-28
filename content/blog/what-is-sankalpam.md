@@ -4,8 +4,8 @@ description: >-
   What is sankalpam? The spoken intention that opens every puja: your name,
   gotra, birth star and purpose. What each part means and why it matters.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-09-27'
+updatedAt: '2026-09-27'
 cluster: online-puja-usa
 primaryKeyword: what is sankalpam
 secondaryKeywords:

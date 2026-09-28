@@ -4,8 +4,8 @@ description: >-
   How to celebrate Navratri in the USA with a job and a commute: a lamp for nine
   nights, simple fasting, and Golu, garba or the temple on weekends.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-09-27'
+updatedAt: '2026-09-27'
 cluster: navratri-usa
 primaryKeyword: how to celebrate navratri in the usa
 secondaryKeywords:

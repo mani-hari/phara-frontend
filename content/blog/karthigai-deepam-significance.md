@@ -4,8 +4,8 @@ description: >-
   Karthigai Deepam significance: the Shiva Purana story of the endless column of
   fire, why Tiruvannamalai lights a beacon, and what the flame asks of us.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-11'
+updatedAt: '2026-10-11'
 cluster: karthigai-deepam
 primaryKeyword: karthigai deepam significance
 secondaryKeywords:

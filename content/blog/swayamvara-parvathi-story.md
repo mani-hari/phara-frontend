@@ -5,8 +5,8 @@ description: >-
   What the tale means, what the homam involves, and why it is sought for
   marriage.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-28'
+updatedAt: '2026-10-28'
 cluster: marriage-delay
 primaryKeyword: swayamvara parvathi
 secondaryKeywords:

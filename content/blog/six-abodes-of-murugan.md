@@ -4,8 +4,8 @@ description: >-
   Arupadai Veedu are the six abodes of Murugan in Tamil Nadu: the story behind
   each temple, from Palani to Tiruchendur, and what the six together mean.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-10'
+updatedAt: '2026-10-10'
 cluster: murugan-skanda
 primaryKeyword: arupadai veedu
 secondaryKeywords:

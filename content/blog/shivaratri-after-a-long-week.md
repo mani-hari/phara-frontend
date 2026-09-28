@@ -5,8 +5,8 @@ description: >-
   Shiva after a long week, with a verse, a small vigil and one thing to carry
   forward.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-13'
+updatedAt: '2026-10-13'
 cluster: maha-shivaratri
 primaryKeyword: shivaratri fasting for working people
 secondaryKeywords:

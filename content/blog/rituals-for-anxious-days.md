@@ -5,8 +5,8 @@ description: >-
   offered, can steady an anxious mind, what many people find, and when to seek
   help.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-25'
+updatedAt: '2026-10-25'
 cluster: ritual-and-mind
 primaryKeyword: rituals for anxiety
 secondaryKeywords:

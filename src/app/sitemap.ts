@@ -3,6 +3,9 @@ import { listProducts } from "@lib/data/products"
 import { getBlogTags, getPublishedBlogPosts } from "@lib/data/blog"
 import { getAllBlogAuthors } from "@lib/data/blog-authors"
 
+// Regenerated at most hourly so drip-published blog posts appear on their day.
+export const revalidate = 3600
+
 const SITE = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.pariharaonline.com").replace(/\/$/, "")
 
 // Canonical URLs use the clean (India-default) paths — no country prefix — which

@@ -4,8 +4,8 @@ description: >-
   How to celebrate Pongal in the USA from a small kitchen: the boil-over moment
   on an electric stove, a kolam by the door, sugarcane hunting, and calls home.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-10'
+updatedAt: '2026-10-10'
 cluster: pongal-sankranti
 primaryKeyword: how to celebrate pongal in usa
 secondaryKeywords:

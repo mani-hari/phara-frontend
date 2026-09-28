@@ -5,8 +5,8 @@ description: >-
   keep, what to leave out, and making a sacred space that fits a busy, modern
   life.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-11-01'
+updatedAt: '2026-11-01'
 cluster: puja-at-home
 primaryKeyword: small puja corner in an apartment
 secondaryKeywords:

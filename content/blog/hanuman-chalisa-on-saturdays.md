@@ -5,8 +5,8 @@ description: >-
   of Hanuman freeing Saturn, what the verses say, and how to make it a weekly
   habit.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-27'
+updatedAt: '2026-10-27'
 cluster: sade-sati
 primaryKeyword: hanuman chalisa for shani
 secondaryKeywords:

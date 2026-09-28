@@ -5,8 +5,8 @@ description: >-
   Kamakshi temple prayers to Swayamvara Parvathi homam, and how to keep your
   peace.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-30'
+updatedAt: '2026-10-30'
 cluster: marriage-delay
 primaryKeyword: delay in marriage remedies
 secondaryKeywords:

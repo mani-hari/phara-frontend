@@ -5,8 +5,8 @@ description: >-
   circling lamps, and why tradition treats ritual as a language, not a
   transaction.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-24'
+updatedAt: '2026-10-24'
 cluster: ritual-and-mind
 primaryKeyword: why do hindus do rituals
 secondaryKeywords:

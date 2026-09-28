@@ -5,8 +5,8 @@ description: >-
   quiet seekers. How to find your own practice without pretending to believe it
   all.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-23'
+updatedAt: '2026-10-23'
 cluster: karma-dharma
 primaryKeyword: spiritual but not religious hinduism
 secondaryKeywords:

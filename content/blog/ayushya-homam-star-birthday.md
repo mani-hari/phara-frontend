@@ -5,8 +5,8 @@ description: >-
   star. Why tradition celebrates the nakshatra birthday and what the homam
   invokes.
 author: hariharan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-11-03'
+updatedAt: '2026-11-03'
 cluster: health-longevity
 primaryKeyword: ayushya homam
 secondaryKeywords:

@@ -5,8 +5,8 @@ description: >-
   basil in an American apartment, plus the simple daily ritual that goes with
   it.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-15'
+updatedAt: '2026-10-15'
 cluster: puja-at-home
 primaryKeyword: tulsi plant indoors
 secondaryKeywords:

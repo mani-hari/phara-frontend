@@ -5,8 +5,8 @@ description: >-
   represents, how the homam is performed, and how to treat the body as an
   instrument of care.
 author: archana
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-10-04'
+updatedAt: '2026-10-04'
 cluster: health-longevity
 primaryKeyword: dhanvantari homam
 secondaryKeywords:

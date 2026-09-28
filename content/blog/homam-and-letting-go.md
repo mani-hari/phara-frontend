@@ -4,8 +4,8 @@ description: >-
   Homam benefits often go beyond the stated wish: watching offerings vanish into
   the fire teaches something about letting go, grief and trust in ordinary life.
 author: manikandan
-publishedAt: 2026-09-28T00:00:00.000Z
-updatedAt: 2026-09-28T00:00:00.000Z
+publishedAt: '2026-11-03'
+updatedAt: '2026-11-03'
 cluster: homam-explained
 primaryKeyword: homam benefits
 secondaryKeywords:
