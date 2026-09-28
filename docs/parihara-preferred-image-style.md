@@ -7,7 +7,7 @@ Code: `scripts/lib/image-style.mjs` (STYLE_SUFFIX is appended to every prompt).
 ## What it looks like
 
 - Painterly oil-on-linen scenes at **dusk or dawn**.
-- **One warm light source**: a lamp, a fire, a low sun. Everything else falls into shadow.
+- **One warm light source**: a lamp, a fire, a low sun, and it *fills* the scene with a golden glow. Luminous, never gloomy: midtones stay warm and readable (owner note, 28 Sep 2026: "golden glow and serene, not dark as if there is no light in the world").
 - Sky and background run **gold → orange → violet**.
 - **Soft atmospheric haze**, loose visible brushwork, edges dissolve; no hard outlines, no
   photographic sharpness.

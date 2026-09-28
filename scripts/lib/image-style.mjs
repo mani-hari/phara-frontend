@@ -7,7 +7,7 @@ export const STYLE_NAME = "parihara-preferred-image-style"
 /** Appended to every prompt. Keep in one place so the look stays consistent. */
 export const STYLE_SUFFIX = [
   "Painterly oil on linen, twilight tonalism",
-  "a single warm light source (lamp, fire or low sun) against a sky or background that runs gold to orange to violet",
+  "luminous and well lit: a warm golden glow fills the scene from a single light source (lamp, fire or low sun), the sky or background running gold to orange to soft violet; never gloomy or underexposed, midtones stay warm and readable",
   "soft atmospheric haze, visible loose brushwork, muted edges, no hard outlines",
   "calm, devotional, otherworldly mood",
   "South Indian temple and home aesthetic",
