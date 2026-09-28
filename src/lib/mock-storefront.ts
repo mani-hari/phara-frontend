@@ -327,6 +327,24 @@ export const getIntensityDots = (intensity: "Gentle" | "Medium" | "High") => {
 export const getPrimaryProductImage = (product: HttpTypes.StoreProduct) =>
   product.thumbnail || product.images?.[0]?.url || null
 
+/** Gallery images with their alt text (from image.metadata.alt), primary first. */
+export const getProductGalleryEntries = (
+  product: HttpTypes.StoreProduct
+): { url: string; alt: string }[] => {
+  const seen = new Set<string>()
+  const entries = (product.images || [])
+    .filter((image) => image.url && !seen.has(image.url) && seen.add(image.url))
+    .map((image, i) => ({
+      url: image.url as string,
+      alt:
+        (typeof (image as any).metadata?.alt === "string" && (image as any).metadata.alt.trim()) ||
+        (i === 0 ? product.title : `${product.title} — image ${i + 1}`),
+    }))
+  if (entries.length) return entries
+  const fallback = getPrimaryProductImage(product)
+  return fallback ? [{ url: fallback, alt: product.title }] : []
+}
+
 export const getProductGalleryImages = (product: HttpTypes.StoreProduct) => {
   const urls = (product.images || [])
     .map((image) => image.url)

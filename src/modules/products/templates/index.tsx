@@ -6,6 +6,7 @@ import { HttpTypes } from "@medusajs/types"
 import { localizeHref } from "@lib/util/localize-href"
 import {
   getProductGalleryImages,
+  getProductGalleryEntries,
   getMockProductDetailContent,
   howItWorksSteps,
 } from "@lib/mock-storefront"
@@ -49,10 +50,16 @@ export default function ProductTemplate({
   const displayDescription =
     lang !== "en" && translatedDescription !== undefined ? translatedDescription : product.description
   const content = getMockProductDetailContent(product)
-  const gallery = getProductGalleryImages(product)
-  const displayGallery = gallery.length
-    ? gallery
-    : images.slice(0, 6).map((img) => img.url).filter(Boolean)
+  const galleryEntries = getProductGalleryEntries(product)
+  const displayEntries = galleryEntries.length
+    ? galleryEntries
+    : images
+        .slice(0, 6)
+        .filter((img) => !!img.url)
+        .map((img, i) => ({ url: img.url as string, alt: i === 0 ? product.title : `${product.title} — image ${i + 1}` }))
+  const displayGallery = displayEntries.map((e) => e.url)
+  const altFor = (src: string | null, fallback: string) =>
+    displayEntries.find((e) => e.url === src)?.alt || fallback
 
   // Real Medusa description → non-empty lines (bullets detected in About).
   // Uses displayDescription (pre-translated line-by-line in page.tsx when
@@ -152,7 +159,7 @@ export default function ProductTemplate({
                   >
                     <Image
                       src={secondImg}
-                      alt={`${product.title} 2`}
+                      alt={altFor(secondImg, `${product.title} — image 2`)}
                       fill
                       className="object-cover"
                       sizes="(max-width: 1024px) 100vw, 640px"
@@ -182,7 +189,7 @@ export default function ProductTemplate({
                       >
                         <Image
                           src={src}
-                          alt={`${product.title} ${i + 3}`}
+                          alt={altFor(src, `${product.title} — image ${i + 3}`)}
                           fill
                           className="object-cover"
                           sizes="320px"
