@@ -11,9 +11,11 @@ import path from "node:path"
 import matter from "gray-matter"
 
 const ROOT = path.resolve(new URL("..", import.meta.url).pathname)
-const BLOG = path.join(ROOT, "content/blog")
-const plan = JSON.parse(fs.readFileSync(path.join(ROOT, "content/blog-plan/plan.json"), "utf8"))
-const catalog = new Set(JSON.parse(fs.readFileSync(path.join(ROOT, "content/blog-plan/catalog.json"), "utf8")).map((p) => p.handle))
+const BLOG = process.env.BLOG_DIR ? path.resolve(ROOT, process.env.BLOG_DIR) : path.join(ROOT, "content/blog")
+const IMG_DIR = process.env.BLOG_IMAGES_OUT ? path.resolve(ROOT, process.env.BLOG_IMAGES_OUT) : path.join(ROOT, "public/blog")
+const EXTRA_LINK_TARGETS = process.env.BLOG_EXTRA_LINK_DIRS ? process.env.BLOG_EXTRA_LINK_DIRS.split(",").flatMap((d) => fs.readdirSync(path.resolve(ROOT, d)).filter((f) => f.endsWith(".md")).map((f) => f.replace(/\.md$/, ""))) : []
+const plan = JSON.parse(fs.readFileSync(process.env.BLOG_PLAN_PATH ? path.resolve(ROOT, process.env.BLOG_PLAN_PATH) : path.join(ROOT, "content/blog-plan/plan.json"), "utf8"))
+const catalog = new Set(JSON.parse(fs.readFileSync(process.env.BLOG_CATALOG_PATH ? path.resolve(ROOT, process.env.BLOG_CATALOG_PATH) : path.join(ROOT, "content/blog-plan/catalog.json"), "utf8")).map((p) => p.handle))
 const FIX = process.argv.includes("--fix")
 const JSON_OUT = process.argv.includes("--json")
 const FINAL = process.argv.includes("--final") // images must exist
@@ -22,7 +24,7 @@ const planned = [...(plan.posts || []).map((p) => ({ ...p, kind: "core" })), ...
 const byslug = new Map(planned.map((p) => [p.slug, p]))
 const allFiles = fs.readdirSync(BLOG).filter((f) => f.endsWith(".md"))
 const legacySlugs = new Set(allFiles.map((f) => f.replace(/\.md$/, "")).filter((s) => !byslug.has(s)))
-const validLinkTargets = new Set([...byslug.keys(), ...legacySlugs])
+const validLinkTargets = new Set([...byslug.keys(), ...legacySlugs, ...EXTRA_LINK_TARGETS])
 const AUTHORS = new Set(["hariharan", "archana", "manikandan"])
 const BANNED = [/\bdelve\b/i, /\btapestry\b/i, /fast-paced world/i, /as an ai\b/i, /language model/i, /chatgpt/i, /\bmandir\b/i, /\bdevdutt\b|\bpattanaik\b|\bsadhguru\b|\bisha yoga\b|\bisha foundation\b|speakingtree|speaking tree/i, /\bharihar\b/i, /\bharchana\b/i, /₹|\$\s?\d|\brs\.?\s?\d/i, /\b(we|this|it|which|that) (will )?guarantees?\b|(?<!not )guaranteed (results|success)/i]
 const YEAR = /\b(19|20)\d{2}\b/
@@ -65,7 +67,7 @@ for (const p of planned) {
   const dl = (fm.description || "").length; if (dl < 140 || dl > 160) r.errors.push(`description ${dl} chars`)
   if (!/pariharaonline\.com/.test(fm.imageAlt || "")) r.errors.push("imageAlt lacks pariharaonline.com")
   if (fm.image !== `/blog/${p.slug}.webp`) r.warnings.push(`image path ${fm.image}`)
-  if (!fs.existsSync(path.join(ROOT, "public", `blog/${p.slug}.webp`))) (FINAL ? r.errors : r.warnings).push("hero image file missing")
+  if (!fs.existsSync(path.join(IMG_DIR, `${p.slug}.webp`))) (FINAL ? r.errors : r.warnings).push("hero image file missing")
   for (const h of fm.products?.handles || []) if (!catalog.has(h)) r.errors.push(`unknown product handle ${h}`)
   const rel = fm.related || []; if (rel.length < 3 || rel.length > 4) r.errors.push(`related has ${rel.length}`)
   for (const s of rel) { if (s === p.slug) r.errors.push("related includes self"); if (!validLinkTargets.has(s)) r.errors.push(`related slug missing: ${s}`) }

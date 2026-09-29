@@ -80,3 +80,10 @@ reports/
 
 # internal SEO research (names third-party sites)
 content/blog-plan/keywords.json
+
+# customer-only generated material
+artifacts/
+
+# batch-two blog corpus (on disk until published)
+content/blog-batch2/
+content/blog-plan-2/keywords.json

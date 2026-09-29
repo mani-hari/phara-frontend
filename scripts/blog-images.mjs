@@ -22,8 +22,8 @@ import { fileURLToPath } from "node:url"
 import sharp from "sharp"
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..")
-const PLAN_PATH = path.join(ROOT, "content", "blog-plan", "plan.json")
-const OUT_DIR = path.join(ROOT, "public", "blog")
+const PLAN_PATH = process.env.BLOG_PLAN_PATH ? path.resolve(ROOT, process.env.BLOG_PLAN_PATH) : path.join(ROOT, "content", "blog-plan", "plan.json")
+const OUT_DIR = process.env.BLOG_IMAGES_OUT ? path.resolve(ROOT, process.env.BLOG_IMAGES_OUT) : path.join(ROOT, "public", "blog")
 
 const GATEWAY_URL = "https://ai-gateway.vercel.sh/v1/images/generations"
 import { stylePrompt } from "./lib/image-style.mjs"
@@ -35,7 +35,7 @@ const QUALITY = 82
 const CONCURRENCY = 3
 // Raw (un-watermarked) generations are cached here so the watermark can be
 // changed without paying for regeneration. Gitignored.
-const RAW_DIR = path.join(ROOT, ".blog-images-raw")
+const RAW_DIR = process.env.BLOG_IMAGES_RAW ? path.resolve(ROOT, process.env.BLOG_IMAGES_RAW) : path.join(ROOT, ".blog-images-raw")
 const REQUEST_TIMEOUT_MS = 180_000
 const PROMPT_SUFFIX =
   ". Editorial photograph style, warm natural light, no text, no captions, no watermark."
