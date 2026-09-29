@@ -127,8 +127,8 @@ function watermarkSvg(text = "pariharaonline.com") {
   const font = `font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="44" font-weight="600" letter-spacing="3"`
   return Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}">
   <defs><filter id="s" x="-20%" y="-80%" width="140%" height="260%"><feGaussianBlur stdDeviation="3"/></filter></defs>
-  <text x="${x + 2}" y="${y + 2}" text-anchor="middle" ${font} fill="#000" fill-opacity="0.38" filter="url(#s)">${t}</text>
-  <text x="${x}" y="${y}" text-anchor="middle" ${font} fill="#fff" fill-opacity="0.42">${t}</text>
+  <text x="${x + 2}" y="${y + 2}" text-anchor="middle" ${font} fill="#000" fill-opacity="0.24" filter="url(#s)">${t}</text>
+  <text x="${x}" y="${y}" text-anchor="middle" ${font} fill="#fff" fill-opacity="0.30">${t}</text>
 </svg>`)
 }
 
