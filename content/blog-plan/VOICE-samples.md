@@ -70,8 +70,8 @@ else". No years or calendar dates. No "delve", "tapestry", "in today's fast-pace
 
 > My mother still lights the lamp at six, and on our video calls I can see it behind her
 > shoulder, a small gold point in a Chennai evening while my own morning is just beginning in New
-> Jersey. For years I thought of it as her habit, not mine. Then one winter, the week my son was
-> in hospital, I found myself lighting a tea-light on the kitchen counter every night at dusk,
+> Jersey. For years I thought of it as her habit, not mine. Then one winter, the week my father was
+> in hospital after his knee operation, I found myself lighting a tea-light on the kitchen counter every night at dusk,
 > without quite deciding to. Tirumoolar wrote in the Tirumantiram that the heart is the great temple
 > and the body its shrine. I did not have a verse in mind that week. I only knew that
 > the lamp was something I could do when there was nothing else to do. This week, try lighting
