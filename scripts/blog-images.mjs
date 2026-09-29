@@ -35,6 +35,8 @@ const QUALITY = 82
 const CONCURRENCY = 3
 // Raw (un-watermarked) generations are cached here so the watermark can be
 // changed without paying for regeneration. Gitignored.
+// Watermark opacity: 0.30 for batch one (default); batch two uses 0.20 (owner, 29 Sep 2026)
+const WM_OPACITY = process.env.BLOG_WM_OPACITY || "0.30"
 const RAW_DIR = process.env.BLOG_IMAGES_RAW ? path.resolve(ROOT, process.env.BLOG_IMAGES_RAW) : path.join(ROOT, ".blog-images-raw")
 const REQUEST_TIMEOUT_MS = 180_000
 const PROMPT_SUFFIX =
@@ -126,7 +128,7 @@ function watermarkSvg(text = "pariharaonline.com") {
   const t = escapeXml(text)
   const font = `font-family="Inter, 'Helvetica Neue', Helvetica, Arial, sans-serif" font-size="44" font-weight="600" letter-spacing="3"`
   return Buffer.from(`<svg xmlns="http://www.w3.org/2000/svg" width="${WIDTH}" height="${HEIGHT}">
-  <text x="${x}" y="${y}" text-anchor="middle" ${font} fill="#fff" fill-opacity="0.30">${t}</text>
+  <text x="${x}" y="${y}" text-anchor="middle" ${font} fill="#fff" fill-opacity="${WM_OPACITY}">${t}</text>
 </svg>`)
 }
 
