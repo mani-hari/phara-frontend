@@ -99,6 +99,17 @@ export const metadata: Metadata = {
     description:
       "Book authentic Hindu temple pujas, homams, and astrology services online.",
   },
+  // Site-ownership proof for Bing Webmaster Tools / Google Search Console.
+  // Both require a one-time login by the account owner to generate the code;
+  // once set as an env var, no further code change is needed to go live.
+  verification: {
+    ...(process.env.GOOGLE_SITE_VERIFICATION
+      ? { google: process.env.GOOGLE_SITE_VERIFICATION }
+      : {}),
+    ...(process.env.BING_SITE_VERIFICATION
+      ? { other: { "msvalidate.01": process.env.BING_SITE_VERIFICATION } }
+      : {}),
+  },
 }
 
 export default async function RootLayout({
