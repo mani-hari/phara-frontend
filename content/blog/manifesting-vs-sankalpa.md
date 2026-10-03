@@ -1,76 +1,59 @@
 ---
 title: 'Manifesting vs Sankalpa: Intention in Hinduism'
-description: >-
-  Manifesting vs sankalpa: how the popular idea of manifesting compares with
-  sankalpa, the Hindu practice of stated intention, and why letting go matters.
+description: 'Manifesting vs sankalpa: how the popular idea of manifesting compares with sankalpa, the
+  Hindu practice of stated intention, and why letting go matters.'
 author: archana
-publishedAt: '2026-11-04'
-updatedAt: '2026-11-04'
+publishedAt: '2027-04-17'
+updatedAt: '2027-04-17'
 cluster: ritual-and-mind
 primaryKeyword: manifesting vs sankalpa
 secondaryKeywords:
-  - what is sankalpa in yoga
-  - sankalpa meaning
-  - does manifesting work hinduism
+- what is sankalpa in yoga
+- sankalpa meaning
+- does manifesting work hinduism
 tags:
-  - Sankalpa
-  - Intention
-  - Seekers
+- Sankalpa
+- Intention
+- Seekers
 audience: seeker
 image: /blog/manifesting-vs-sankalpa.webp
-imageAlt: >-
-  Hands holding a small brass lamp over an open journal and pen on a wooden
-  floor in morning light — manifesting vs sankalpa | pariharaonline.com
-imagePrompt: >-
-  Editorial photograph of a person's hands holding a small brass lamp over an
-  open journal with a pen on a wooden floor, a window with soft morning light
-  behind.
+imageAlt: Hands holding a small brass lamp over an open journal and pen on a wooden floor in morning light
+  — manifesting vs sankalpa | pariharaonline.com
+imagePrompt: Editorial photograph of a person's hands holding a small brass lamp over an open journal
+  with a pen on a wooden floor, a window with soft morning light behind.
 products:
   handles: []
   query: Ganesha
 related:
-  - meditation-vs-puja
-  - rituals-for-anxious-days
-  - what-is-a-mantra
+- meditation-vs-puja
+- rituals-for-anxious-days
+- what-is-a-mantra
 takeaways:
-  - >-
-    Manifesting and sankalpa both use clear intention, but sankalpa ties the
-    intention to action and to letting go of results.
-  - >-
-    A sankalpa is a short, sincere resolve, stated before a puja or practice,
-    often phrased as already true.
-  - >-
-    The Bhagavad Gita's teaching on acting without clinging to results is the
-    key difference.
+- Manifesting and sankalpa both use clear intention, but sankalpa ties the intention to action and to
+  letting go of results.
+- A sankalpa is a short, sincere resolve, stated before a puja or practice, often phrased as already true.
+- The Bhagavad Gita's teaching on acting without clinging to results is the key difference.
 faq:
-  - q: What is the difference between manifesting and sankalpa?
-    a: >-
-      Manifesting usually focuses on attracting a desired outcome by visualising
-      and believing it. Sankalpa is a resolve made with a clear mind, often
-      before a ritual or meditation, and linked to effort and dharma. In Hindu
-      thought, you commit fully to the action but offer the result to the
-      divine, rather than fixating on getting it.
-  - q: What is sankalpa in yoga?
-    a: >-
-      In yoga, especially yoga nidra, a sankalpa is a short, positive statement
-      of intention repeated at the start and end of practice when the mind is
-      relaxed. It is phrased in the present tense, such as 'I am calm and
-      steady'. Practitioners find that returning to it regularly shapes
-      attention and choices over time.
-  - q: Does manifesting work according to Hinduism?
-    a: >-
-      Hinduism values intention highly; the Upanishads say that as your desire
-      is, so is your will, and as your will is, so is your action. But tradition
-      does not promise that wanting something makes it appear. It teaches clear
-      intention, sincere effort and acceptance of outcomes, which many people
-      find more sustainable than manifesting alone.
-  - q: How do I write a sankalpa?
-    a: >-
-      Keep it to one short sentence, in the present tense, about something that
-      matters deeply, such as 'I live with patience'. Avoid lists or bargaining.
-      Say it silently before your daily practice or puja, pair it with one
-      concrete action, and let go of how and when it unfolds. Revisit it only
-      when life genuinely changes.
+- q: What is the difference between manifesting and sankalpa?
+  a: Manifesting usually focuses on attracting a desired outcome by visualising and believing it. Sankalpa
+    is a resolve made with a clear mind, often before a ritual or meditation, and linked to effort and
+    dharma. In Hindu thought, you commit fully to the action but offer the result to the divine, rather
+    than fixating on getting it.
+- q: What is sankalpa in yoga?
+  a: In yoga, especially yoga nidra, a sankalpa is a short, positive statement of intention repeated at
+    the start and end of practice when the mind is relaxed. It is phrased in the present tense, such as
+    'I am calm and steady'. Practitioners find that returning to it regularly shapes attention and choices
+    over time.
+- q: Does manifesting work according to Hinduism?
+  a: Hinduism values intention highly; the Upanishads say that as your desire is, so is your will, and
+    as your will is, so is your action. But tradition does not promise that wanting something makes it
+    appear. It teaches clear intention, sincere effort and acceptance of outcomes, which many people find
+    more sustainable than manifesting alone.
+- q: How do I write a sankalpa?
+  a: Keep it to one short sentence, in the present tense, about something that matters deeply, such as
+    'I live with patience'. Avoid lists or bargaining. Say it silently before your daily practice or puja,
+    pair it with one concrete action, and let go of how and when it unfolds. Revisit it only when life
+    genuinely changes.
 readingTime: 4
 draft: false
 ---

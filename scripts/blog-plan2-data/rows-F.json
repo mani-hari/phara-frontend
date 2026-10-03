@@ -1,0 +1,455 @@
+[
+ {
+  "cluster": "tirukkural",
+  "slug": "who-was-thiruvalluvar",
+  "title": "Who Was Thiruvalluvar? The Poet Behind the Kural",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "who was thiruvalluvar",
+  "products": {
+   "handles": [],
+   "query": "Saraswati"
+  }
+ },
+ {
+  "cluster": "tirukkural",
+  "slug": "tirukkural-for-daily-life",
+  "title": "Tirukkural for Daily Life: A Beginner's Way In",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "thirukkural for daily life",
+  "products": {
+   "handles": [],
+   "query": "Saraswati"
+  }
+ },
+ {
+  "cluster": "tirukkural",
+  "slug": "tirukkural-on-wealth",
+  "title": "Tirukkural on Wealth: Earning Without Losing Yourself",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "thirukkural on wealth",
+  "products": {
+   "handles": [
+    "diwali-puja"
+   ]
+  }
+ },
+ {
+  "cluster": "tirukkural",
+  "slug": "tirukkural-on-anger",
+  "title": "Tirukkural on Anger: The Fire That Burns the Holder",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "thirukkural on anger",
+  "products": {
+   "handles": [],
+   "query": "Shiva"
+  }
+ },
+ {
+  "cluster": "tirukkural",
+  "slug": "tirukkural-on-sweet-speech",
+  "title": "Tirukkural on Kind Words: Why Sweet Speech Matters",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "thirukkural on speech",
+  "products": {
+   "handles": [],
+   "query": "Saraswati"
+  }
+ },
+ {
+  "cluster": "tirukkural",
+  "slug": "tirukkural-on-gratitude",
+  "title": "Tirukkural on Gratitude: The Help You Cannot Repay",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "thirukkural on gratitude",
+  "products": {
+   "handles": [
+    "annadhanam-donate-food-to-homeless-children"
+   ]
+  }
+ },
+ {
+  "cluster": "tirukkural",
+  "slug": "tirukkural-on-friendship",
+  "title": "Tirukkural on Friendship: The Hand That Catches the Cloth",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "thirukkural on friendship",
+  "products": {
+   "handles": [],
+   "query": "Krishna"
+  }
+ },
+ {
+  "cluster": "tirukkural",
+  "slug": "tirukkural-on-learning",
+  "title": "Tirukkural on Learning: Kalvi and the Lifelong Student",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "thirukkural on education",
+  "products": {
+   "handles": [
+    "saraswati-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "tirukkural",
+  "slug": "tirukkural-on-patience",
+  "title": "Tirukkural on Patience: Bearing Like the Earth",
+  "author": "manikandan",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "thirukkural on patience",
+  "products": {
+   "handles": [],
+   "query": "Bhumi Devi"
+  }
+ },
+ {
+  "cluster": "tirukkural",
+  "slug": "tirukkural-on-hospitality",
+  "title": "Tirukkural on Hospitality: The Guest at the Door",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "thirukkural on hospitality",
+  "products": {
+   "handles": [
+    "annadhanam-donate-food-to-homeless-children"
+   ]
+  }
+ },
+ {
+  "cluster": "tirukkural",
+  "slug": "tirukkural-on-love",
+  "title": "Tirukkural on Love: Anbu as the Breath of Life",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "thirukkural on love",
+  "products": {
+   "handles": [],
+   "query": "Shiva"
+  }
+ },
+ {
+  "cluster": "tirukkural",
+  "slug": "tirukkural-on-effort",
+  "title": "Tirukkural on Effort: When Fate Says No, Try Again",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "thirukkural on hard work",
+  "products": {
+   "handles": [
+    "career-astrology"
+   ]
+  }
+ },
+ {
+  "cluster": "philosophy-basics",
+  "slug": "what-is-moksha",
+  "title": "What Is Moksha? Freedom, Not an Exit",
+  "author": "hariharan",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "what is moksha",
+  "products": {
+   "handles": [],
+   "query": "Shiva"
+  }
+ },
+ {
+  "cluster": "philosophy-basics",
+  "slug": "atman-and-brahman",
+  "title": "Atman and Brahman: Who Is Asking 'Who Am I?'",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "atman and brahman",
+  "products": {
+   "handles": [],
+   "query": "Shiva"
+  }
+ },
+ {
+  "cluster": "philosophy-basics",
+  "slug": "maya-meaning-illusion",
+  "title": "Maya Meaning: Not Illusion, Exactly",
+  "author": "hariharan",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "maya meaning in hinduism",
+  "products": {
+   "handles": [],
+   "query": "Vishnu"
+  }
+ },
+ {
+  "cluster": "philosophy-basics",
+  "slug": "reincarnation-in-hinduism",
+  "title": "Reincarnation in Hinduism: What the Texts Actually Say",
+  "author": "hariharan",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "reincarnation in hinduism",
+  "products": {
+   "handles": [],
+   "query": "Tila Homam"
+  }
+ },
+ {
+  "cluster": "philosophy-basics",
+  "slug": "four-purusharthas",
+  "title": "The Four Purusharthas: Wealth and Pleasure Are Allowed",
+  "author": "manikandan",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "four purusharthas",
+  "products": {
+   "handles": [
+    "career-astrology"
+   ]
+  }
+ },
+ {
+  "cluster": "philosophy-basics",
+  "slug": "three-gunas-explained",
+  "title": "Three Gunas Explained: Sattva, Rajas, Tamas in Your Day",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "three gunas",
+  "products": {
+   "handles": [],
+   "query": "Navagraha"
+  }
+ },
+ {
+  "cluster": "philosophy-basics",
+  "slug": "advaita-simply-explained",
+  "title": "Advaita Explained Simply, With a Pot and Some Space",
+  "author": "hariharan",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "advaita vedanta explained simply",
+  "products": {
+   "handles": [],
+   "query": "Shiva"
+  }
+ },
+ {
+  "cluster": "philosophy-basics",
+  "slug": "ahimsa-in-daily-life",
+  "title": "Ahimsa in Daily Life: Harm Less, Starting Small",
+  "author": "manikandan",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "ahimsa meaning",
+  "products": {
+   "handles": [],
+   "query": "Annadhanam"
+  }
+ },
+ {
+  "cluster": "gita-for-life",
+  "slug": "bhagavad-gita-for-beginners",
+  "title": "Bhagavad Gita for Beginners: Where to Actually Start",
+  "author": "manikandan",
+  "audience": "seeker",
+  "intent": "how-to",
+  "primaryKeyword": "bhagavad gita for beginners",
+  "products": {
+   "handles": [],
+   "query": "Krishna"
+  }
+ },
+ {
+  "cluster": "gita-for-life",
+  "slug": "gita-on-work-without-attachment",
+  "title": "Nishkama Karma: The Gita on Work Without Clinging",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "nishkama karma",
+  "products": {
+   "handles": [
+    "career-astrology"
+   ]
+  }
+ },
+ {
+  "cluster": "gita-for-life",
+  "slug": "bhagavad-gita-on-anxiety",
+  "title": "Bhagavad Gita on Anxiety: What Krishna Told Arjuna",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "bhagavad gita on anxiety",
+  "products": {
+   "handles": [],
+   "query": "Krishna"
+  }
+ },
+ {
+  "cluster": "gita-for-life",
+  "slug": "arjuna-vishada-yoga-meaning",
+  "title": "Arjuna's Despair: Why the Gita Begins With a Breakdown",
+  "author": "hariharan",
+  "audience": "seeker",
+  "intent": "story",
+  "primaryKeyword": "arjuna vishada yoga",
+  "products": {
+   "handles": [],
+   "query": "Krishna"
+  }
+ },
+ {
+  "cluster": "gita-for-life",
+  "slug": "sthitaprajna-steady-mind",
+  "title": "Sthitaprajna: The Gita's Picture of a Steady Mind",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "sthitaprajna meaning",
+  "products": {
+   "handles": [],
+   "query": "Krishna"
+  }
+ },
+ {
+  "cluster": "gita-for-life",
+  "slug": "gita-chapter-twelve-bhakti",
+  "title": "Gita Chapter 12: The Short Chapter on Devotion",
+  "author": "manikandan",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "bhagavad gita chapter 12",
+  "products": {
+   "handles": [],
+   "query": "Krishna"
+  }
+ },
+ {
+  "cluster": "symbols-explained",
+  "slug": "vibhuti-kumkum-tilak-meaning",
+  "title": "Vibhuti, Kumkum, Tilak: What the Forehead Marks Mean",
+  "author": "hariharan",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "why hindus apply tilak",
+  "products": {
+   "handles": [],
+   "query": "Shirdi"
+  }
+ },
+ {
+  "cluster": "symbols-explained",
+  "slug": "why-ring-a-temple-bell",
+  "title": "Why Ring a Bell at the Temple? Sound as a Doorway",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "why ring bell in temple",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "symbols-explained",
+  "slug": "pradakshina-meaning",
+  "title": "Pradakshina Meaning: Why We Walk Around the Shrine",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "pradakshina meaning",
+  "products": {
+   "handles": [
+    "navagraha-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "symbols-explained",
+  "slug": "rudraksha-meaning",
+  "title": "Rudraksha Meaning: Shiva's Tears and How to Wear One",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "rudraksha meaning",
+  "products": {
+   "handles": [
+    "maha-shivaratri"
+   ]
+  }
+ },
+ {
+  "cluster": "symbols-explained",
+  "slug": "namaste-meaning-at-work",
+  "title": "Namaste Meaning: More Than a Greeting at Work",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "namaste meaning",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "symbols-explained",
+  "slug": "why-break-a-coconut",
+  "title": "Why Break a Coconut at the Temple? The Ego and the Shell",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "why break coconut in temple",
+  "products": {
+   "handles": [
+    "temple-coconut-breaking-online"
+   ]
+  }
+ },
+ {
+  "cluster": "symbols-explained",
+  "slug": "camphor-aarti-meaning",
+  "title": "Camphor Aarti Meaning: The Flame That Leaves Nothing",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "why camphor in aarti",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "symbols-explained",
+  "slug": "shankha-conch-meaning",
+  "title": "Shankha: Why the Conch Is Blown in Worship",
+  "author": "hariharan",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "conch shell hinduism meaning",
+  "products": {
+   "handles": [
+    "sudarsana-homam"
+   ]
+  }
+ }
+]

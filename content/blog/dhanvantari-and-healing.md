@@ -1,73 +1,58 @@
 ---
-title: 'Dhanvantari Homam, Healing and the Body as a Temple'
-description: >-
-  The Dhanvantari homam honours the god of Ayurveda. What Dhanvantari
-  represents, how the homam is performed, and how to treat the body as an
-  instrument of care.
+title: Dhanvantari Homam, Healing and the Body as a Temple
+description: The Dhanvantari homam honours the god of Ayurveda. What Dhanvantari represents, how the homam
+  is performed, and how to treat the body as an instrument of care.
 author: archana
-publishedAt: '2026-10-04'
-updatedAt: '2026-10-04'
+publishedAt: '2026-10-20'
+updatedAt: '2026-10-20'
 cluster: health-longevity
 primaryKeyword: dhanvantari homam
 secondaryKeywords:
-  - dhanvantari mantra benefits
-  - who is lord dhanvantari
-  - dhanvantari homam benefits
-  - ayurveda and prayer
+- dhanvantari mantra benefits
+- who is lord dhanvantari
+- dhanvantari homam benefits
+- ayurveda and prayer
 tags:
-  - Dhanvantari
-  - Health
-  - Homams
+- Dhanvantari
+- Health
+- Homams
 audience: general
 image: /blog/dhanvantari-and-healing.webp
-imageAlt: >-
-  Brass pot, neem, tulsi and turmeric with a mortar and pestle in a sunlit
-  courtyard — dhanvantari homam | pariharaonline.com
-imagePrompt: >-
-  A brass pot, fresh neem and tulsi leaves, turmeric roots and a mortar and
-  pestle on a wooden table in a South Indian courtyard, dappled warm sunlight.
+imageAlt: Brass pot, neem, tulsi and turmeric with a mortar and pestle in a sunlit courtyard — dhanvantari
+  homam | pariharaonline.com
+imagePrompt: A brass pot, fresh neem and tulsi leaves, turmeric roots and a mortar and pestle on a wooden
+  table in a South Indian courtyard, dappled warm sunlight.
 products:
   handles:
-    - dhanwantari-homam
-    - ayushya-homam
+  - dhanwantari-homam
+  - ayushya-homam
 related:
-  - mahamrityunjaya-mantra-meaning
-  - praying-for-a-sick-parent
-  - om-namah-shivaya-meaning
-  - ayushya-homam-star-birthday
+- mahamrityunjaya-mantra-meaning
+- praying-for-a-sick-parent
+- om-namah-shivaya-meaning
+- ayushya-homam-star-birthday
 takeaways:
-  - >-
-    Dhanvantari is the physician of the gods in Hindu tradition, who emerged
-    from the churning ocean carrying amrita and is honoured as the patron of
-    Ayurveda.
-  - >-
-    The Dhanvantari homam is a fire ritual for health and recovery, performed as
-    prayer alongside, never instead of, medical care.
-  - >-
-    Dhanvantari's gift is attention: sleep, food and breath treated as daily
-    offerings to the body.
+- Dhanvantari is the physician of the gods in Hindu tradition, who emerged from the churning ocean carrying
+  amrita and is honoured as the patron of Ayurveda.
+- The Dhanvantari homam is a fire ritual for health and recovery, performed as prayer alongside, never
+  instead of, medical care.
+- 'Dhanvantari''s gift is attention: sleep, food and breath treated as daily offerings to the body.'
 faq:
-  - q: Who is Lord Dhanvantari?
-    a: >-
-      Dhanvantari is regarded as the physician of the gods and a form of Vishnu.
-      The Puranas describe him rising from the churning of the cosmic ocean
-      holding a pot of amrita, the nectar of immortality. He is honoured as the
-      patron of Ayurveda, and Dhanteras, the first day of Diwali, is also
-      observed as Dhanvantari Trayodashi.
-  - q: What are the benefits of Dhanvantari homam?
-    a: >-
-      Tradition performs the Dhanvantari homam to pray for recovery from
-      illness, relief in chronic conditions and general wellbeing. Families
-      often arrange it for elders or someone undergoing treatment. It is
-      understood as prayer and intention, offered in the person's name through a
-      sankalpam, and it supports rather than replaces medical advice and care.
-  - q: What is the Dhanvantari mantra?
-    a: >-
-      A widely chanted Dhanvantari mantra begins Om Namo Bhagavate Vasudevaya
-      Dhanvantaraye Amrita Kalasha Hastaya, saluting the Lord who holds the pot
-      of nectar and removes disease. Many people recite it before taking
-      medicine or meals, or eleven or one hundred and eight times daily. Recite
-      it slowly, letting the breath settle first.
+- q: Who is Lord Dhanvantari?
+  a: Dhanvantari is regarded as the physician of the gods and a form of Vishnu. The Puranas describe him
+    rising from the churning of the cosmic ocean holding a pot of amrita, the nectar of immortality. He
+    is honoured as the patron of Ayurveda, and Dhanteras, the first day of Diwali, is also observed as
+    Dhanvantari Trayodashi.
+- q: What are the benefits of Dhanvantari homam?
+  a: Tradition performs the Dhanvantari homam to pray for recovery from illness, relief in chronic conditions
+    and general wellbeing. Families often arrange it for elders or someone undergoing treatment. It is
+    understood as prayer and intention, offered in the person's name through a sankalpam, and it supports
+    rather than replaces medical advice and care.
+- q: What is the Dhanvantari mantra?
+  a: A widely chanted Dhanvantari mantra begins Om Namo Bhagavate Vasudevaya Dhanvantaraye Amrita Kalasha
+    Hastaya, saluting the Lord who holds the pot of nectar and removes disease. Many people recite it
+    before taking medicine or meals, or eleven or one hundred and eight times daily. Recite it slowly,
+    letting the breath settle first.
 readingTime: 4
 draft: false
 ---

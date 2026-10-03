@@ -1,70 +1,57 @@
 ---
 title: 'Skanda Sashti Fasting: A Gentle Six-Day Guide'
-description: >-
-  Skanda Sashti fasting, gently: how the six-day Murugan vratham works, what
-  people eat, how to adapt it to work and health, and what to do each of the six
-  days.
+description: 'Skanda Sashti fasting, gently: how the six-day Murugan vratham works, what people eat, how
+  to adapt it to work and health, and what to do each of the six days.'
 author: archana
-publishedAt: '2026-10-05'
-updatedAt: '2026-10-05'
+publishedAt: '2026-10-11'
+updatedAt: '2026-10-11'
 cluster: murugan-skanda
 primaryKeyword: skanda sashti fasting
 secondaryKeywords:
-  - kanda sashti viratham rules
-  - skanda sashti kavacham
-  - what to eat during skanda sashti fast
+- kanda sashti viratham rules
+- skanda sashti kavacham
+- what to eat during skanda sashti fast
 tags:
-  - Skanda Sashti
-  - Murugan
-  - Fasting
-  - Practice
+- Skanda Sashti
+- Murugan
+- Fasting
+- Practice
 audience: general
 image: /blog/skanda-sashti-fasting-guide.webp
-imageAlt: >-
-  Brass vel beside fruit, a palm-leaf booklet and a lit lamp in a quiet home
-  shrine — skanda sashti fasting | pariharaonline.com
-imagePrompt: >-
-  A brass vel leaning against a stone pillar beside a small bowl of fruit, a
-  folded palm-leaf booklet and a lit lamp, red hibiscus petals scattered, warm
-  evening light in a quiet home shrine.
+imageAlt: Brass vel beside fruit, a palm-leaf booklet and a lit lamp in a quiet home shrine — skanda sashti
+  fasting | pariharaonline.com
+imagePrompt: A brass vel leaning against a stone pillar beside a small bowl of fruit, a folded palm-leaf
+  booklet and a lit lamp, red hibiscus petals scattered, warm evening light in a quiet home shrine.
 products:
   handles:
-    - palani
+  - palani
   query: Murugan
   heading: Poojas for Murugan
 related:
-  - soorasamharam-story-meaning
-  - thaipusam-kavadi-meaning
-  - tiruvannamalai-deepam-from-afar
+- soorasamharam-story-meaning
+- thaipusam-kavadi-meaning
+- tiruvannamalai-deepam-from-afar
 takeaways:
-  - >-
-    Skanda Sashti is a six-day fast for Murugan beginning the day after the new
-    moon following Deepavali and ending on Sashti with Soorasamharam.
-  - >-
-    You can keep it as a full fast, one meal a day, or fruit and milk;
-    consistency across six days matters more than severity.
+- Skanda Sashti is a six-day fast for Murugan beginning the day after the new moon following Deepavali
+  and ending on Sashti with Soorasamharam.
+- You can keep it as a full fast, one meal a day, or fruit and milk; consistency across six days matters
+  more than severity.
 faq:
-  - q: What are the rules of Kanda Sashti viratham?
-    a: >-
-      The Kanda Sashti viratham runs for six days in the Tamil month of Aippasi,
-      from the day after the new moon to Sashti. Devotees eat once a day or only
-      fruit and milk, avoid onion, garlic and meat, recite the Kanda Sashti
-      Kavacham, and visit a Murugan temple if they can. The fast ends after
-      Soorasamharam, usually the next morning.
-  - q: What can I eat during the Skanda Sashti fast?
-    a: >-
-      Common choices are fruits, milk, buttermilk, tender coconut water and one
-      simple vegetarian meal a day without onion or garlic. Some devotees take
-      only water until evening. There is no single rule. Anyone who is pregnant,
-      diabetic, on medication or doing physical work should keep a lighter
-      version and speak to a doctor before fasting.
-  - q: Why is Skanda Sashti celebrated for six days?
-    a: >-
-      Six is Murugan's number. He has six faces as Shanmukha, was nurtured by
-      the six Karthigai maidens, and has six sacred abodes, the Arupadai Veedu.
-      The Skanda Purana describes his battle with the asura Surapadman, which
-      ends on the sixth day, Sashti. The six-day fast mirrors that battle,
-      ending with Soorasamharam.
+- q: What are the rules of Kanda Sashti viratham?
+  a: The Kanda Sashti viratham runs for six days in the Tamil month of Aippasi, from the day after the
+    new moon to Sashti. Devotees eat once a day or only fruit and milk, avoid onion, garlic and meat,
+    recite the Kanda Sashti Kavacham, and visit a Murugan temple if they can. The fast ends after Soorasamharam,
+    usually the next morning.
+- q: What can I eat during the Skanda Sashti fast?
+  a: Common choices are fruits, milk, buttermilk, tender coconut water and one simple vegetarian meal
+    a day without onion or garlic. Some devotees take only water until evening. There is no single rule.
+    Anyone who is pregnant, diabetic, on medication or doing physical work should keep a lighter version
+    and speak to a doctor before fasting.
+- q: Why is Skanda Sashti celebrated for six days?
+  a: Six is Murugan's number. He has six faces as Shanmukha, was nurtured by the six Karthigai maidens,
+    and has six sacred abodes, the Arupadai Veedu. The Skanda Purana describes his battle with the asura
+    Surapadman, which ends on the sixth day, Sashti. The six-day fast mirrors that battle, ending with
+    Soorasamharam.
 readingTime: 4
 draft: false
 ---

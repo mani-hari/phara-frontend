@@ -1,70 +1,54 @@
 ---
-title: 'Mahamrityunjaya Mantra Meaning, Word by Word'
-description: >-
-  Mahamrityunjaya mantra benefits start with its meaning. A word-by-word guide
-  to the Rig Veda verse, the Markandeya story, and how people chant it for
-  healing.
+title: Mahamrityunjaya Mantra Meaning, Word by Word
+description: Mahamrityunjaya mantra benefits start with its meaning. A word-by-word guide to the Rig Veda
+  verse, the Markandeya story, and how people chant it for healing.
 author: hariharan
-publishedAt: '2026-10-30'
-updatedAt: '2026-10-30'
+publishedAt: '2026-10-21'
+updatedAt: '2026-10-21'
 cluster: health-longevity
 primaryKeyword: mahamrityunjaya mantra meaning
 secondaryKeywords:
-  - mahamrityunjaya mantra meaning in english
-  - how many times to chant mahamrityunjaya mantra
-  - markandeya story
-  - mrityunjaya homam
+- mahamrityunjaya mantra meaning in english
+- how many times to chant mahamrityunjaya mantra
+- markandeya story
+- mrityunjaya homam
 tags:
-  - Mantra
-  - Shiva
-  - Health
+- Mantra
+- Shiva
+- Health
 audience: general
 image: /blog/mahamrityunjaya-mantra-meaning.webp
-imageAlt: >-
-  Rudraksha mala, bilva leaves and brass lamp on a temple stone ledge at dawn —
-  mahamrityunjaya mantra meaning | pariharaonline.com
-imagePrompt: >-
-  A rudraksha mala coiled beside a small bilva-leaf offering and a brass lamp on
-  a stone ledge in a Shiva temple at dawn, soft mist and warm light, no figures
-  shown.
+imageAlt: Rudraksha mala, bilva leaves and brass lamp on a temple stone ledge at dawn — mahamrityunjaya
+  mantra meaning | pariharaonline.com
+imagePrompt: A rudraksha mala coiled beside a small bilva-leaf offering and a brass lamp on a stone ledge
+  in a Shiva temple at dawn, soft mist and warm light, no figures shown.
 products:
   handles:
-    - mrityunjaya-homam
+  - mrityunjaya-homam
 related:
-  - praying-for-a-sick-parent
-  - dhanvantari-and-healing
-  - what-is-a-mantra
+- praying-for-a-sick-parent
+- dhanvantari-and-healing
+- what-is-a-mantra
 takeaways:
-  - >-
-    The Mahamrityunjaya mantra is a Rig Veda verse to Shiva as the three-eyed
-    one, asking to be freed from death like a ripe cucumber from its vine.
-  - >-
-    Tradition chants it for health, recovery and long life, and the Mrityunjaya
-    homam uses it as the central offering.
-  - >-
-    It is prayer that accompanies medical care; its deeper request is for
-    nourishment and fearless release.
+- The Mahamrityunjaya mantra is a Rig Veda verse to Shiva as the three-eyed one, asking to be freed from
+  death like a ripe cucumber from its vine.
+- Tradition chants it for health, recovery and long life, and the Mrityunjaya homam uses it as the central
+  offering.
+- It is prayer that accompanies medical care; its deeper request is for nourishment and fearless release.
 faq:
-  - q: What is the meaning of the Mahamrityunjaya mantra in English?
-    a: >-
-      A close translation is: We worship the three-eyed one, fragrant, who
-      nourishes all beings. As the ripe cucumber is freed from its vine, may he
-      free us from death, not from immortality. The verse appears in the Rig
-      Veda and the Yajur Veda and is addressed to Shiva, also called Rudra.
-  - q: How many times should the Mahamrityunjaya mantra be chanted?
-    a: >-
-      One hundred and eight times, using a mala, is the most common count,
-      though three, eleven or twenty-one repetitions are also traditional. For
-      someone who is unwell, families sometimes chant together in turns over
-      several days. A single slow recitation with full attention is still a
-      complete prayer.
-  - q: What is a Mrityunjaya homam?
-    a: >-
-      A Mrityunjaya homam is a Vedic fire ritual in which priests offer
-      oblations while chanting the Mahamrityunjaya mantra many times. Families
-      often arrange it for someone recovering from illness or surgery, for
-      elders, or on birthdays. Tradition sees it as prayer for strength and
-      longevity, performed alongside, never instead of, medical treatment.
+- q: What is the meaning of the Mahamrityunjaya mantra in English?
+  a: 'A close translation is: We worship the three-eyed one, fragrant, who nourishes all beings. As the
+    ripe cucumber is freed from its vine, may he free us from death, not from immortality. The verse appears
+    in the Rig Veda and the Yajur Veda and is addressed to Shiva, also called Rudra.'
+- q: How many times should the Mahamrityunjaya mantra be chanted?
+  a: One hundred and eight times, using a mala, is the most common count, though three, eleven or twenty-one
+    repetitions are also traditional. For someone who is unwell, families sometimes chant together in
+    turns over several days. A single slow recitation with full attention is still a complete prayer.
+- q: What is a Mrityunjaya homam?
+  a: A Mrityunjaya homam is a Vedic fire ritual in which priests offer oblations while chanting the Mahamrityunjaya
+    mantra many times. Families often arrange it for someone recovering from illness or surgery, for elders,
+    or on birthdays. Tradition sees it as prayer for strength and longevity, performed alongside, never
+    instead of, medical treatment.
 readingTime: 4
 draft: false
 ---

@@ -1,68 +1,56 @@
 ---
-title: 'Housewarming Puja in the USA, Rented or Owned'
-description: >-
-  A housewarming puja in the USA, whether you rent or own: what to keep, what to
-  skip, smoke alarms and all, and how to bless a new home far from your family.
+title: Housewarming Puja in the USA, Rented or Owned
+description: 'A housewarming puja in the USA, whether you rent or own: what to keep, what to skip, smoke
+  alarms and all, and how to bless a new home far from your family.'
 author: manikandan
-publishedAt: '2026-10-20'
-updatedAt: '2026-10-20'
+publishedAt: '2026-10-10'
+updatedAt: '2026-10-10'
 cluster: griha-pravesh
 primaryKeyword: housewarming puja in the USA
 secondaryKeywords:
-  - griha pravesh in apartment usa
-  - housewarming puja for rented house
-  - can we do griha pravesh in rented house
+- griha pravesh in apartment usa
+- housewarming puja for rented house
+- can we do griha pravesh in rented house
 tags:
-  - Griha Pravesh
-  - NRI Life
-  - New Home
+- Griha Pravesh
+- NRI Life
+- New Home
 audience: nri-us
 image: /blog/blessing-a-new-home-abroad.webp
-imageAlt: >-
-  Brass kalasha with mango leaves and coconut at the door of a new American
-  apartment — housewarming puja usa | pariharaonline.com
-imagePrompt: >-
-  A sunlit American apartment doorway with a brass kalasha, mango leaves and a
-  coconut on the floor mat, moving boxes softly blurred in the background.
+imageAlt: Brass kalasha with mango leaves and coconut at the door of a new American apartment — housewarming
+  puja usa | pariharaonline.com
+imagePrompt: A sunlit American apartment doorway with a brass kalasha, mango leaves and a coconut on the
+  floor mat, moving boxes softly blurred in the background.
 products:
   handles:
-    - maha-ganapathy-homam
-    - temple-coconut-breaking-online
+  - maha-ganapathy-homam
+  - temple-coconut-breaking-online
 related:
-  - why-ganesha-comes-first
-  - griha-pravesh-puja-steps
-  - hosting-satyanarayan-puja-with-friends
-  - sankatahara-chaturthi-fast
+- why-ganesha-comes-first
+- griha-pravesh-puja-steps
+- hosting-satyanarayan-puja-with-friends
+- sankatahara-chaturthi-fast
 takeaways:
-  - >-
-    You can hold a housewarming puja in a rented home; tradition blesses the
-    space you live in, not the deed.
-  - >-
-    In a US apartment, keep it simple: a lamp placed safely, milk boiled on the
-    new stove, a Ganesha prayer and a meal shared with friends or neighbours.
-  - >-
-    Family in India can join by video, and a temple ritual booked in your name
-    adds the formal chanting you may not manage at home.
+- You can hold a housewarming puja in a rented home; tradition blesses the space you live in, not the
+  deed.
+- 'In a US apartment, keep it simple: a lamp placed safely, milk boiled on the new stove, a Ganesha prayer
+  and a meal shared with friends or neighbours.'
+- Family in India can join by video, and a temple ritual booked in your name adds the formal chanting
+  you may not manage at home.
 faq:
-  - q: Can we do griha pravesh in a rented house?
-    a: >-
-      Yes. Many families bless every home they move into, rented or owned,
-      because the intention is to make the space peaceful and welcoming for the
-      people living in it. The rituals are often lighter than for a newly built
-      house: a Ganesha prayer, a lamp, boiling milk and a shared meal are enough
-      for most renters.
-  - q: How do I do a housewarming puja in a US apartment with smoke alarms?
-    a: >-
-      Use a small ghee or oil lamp on a metal plate away from curtains, skip
-      camphor and heavy incense, and keep a window open. Never disable a smoke
-      alarm for long or leave a flame unattended. Boiling milk on an electric
-      stove works exactly as well as on gas for the traditional overflow moment.
-  - q: How can my parents in India take part in our housewarming?
-    a: >-
-      Schedule a video call for the moment you enter and boil milk, which is
-      usually early morning in the US and evening in India. Many families also
-      book a Ganapathy homam or a coconut breaking at a temple in India in their
-      name, so parents can attend in person and receive the prasadam.
+- q: Can we do griha pravesh in a rented house?
+  a: 'Yes. Many families bless every home they move into, rented or owned, because the intention is to
+    make the space peaceful and welcoming for the people living in it. The rituals are often lighter than
+    for a newly built house: a Ganesha prayer, a lamp, boiling milk and a shared meal are enough for most
+    renters.'
+- q: How do I do a housewarming puja in a US apartment with smoke alarms?
+  a: Use a small ghee or oil lamp on a metal plate away from curtains, skip camphor and heavy incense,
+    and keep a window open. Never disable a smoke alarm for long or leave a flame unattended. Boiling
+    milk on an electric stove works exactly as well as on gas for the traditional overflow moment.
+- q: How can my parents in India take part in our housewarming?
+  a: Schedule a video call for the moment you enter and boil milk, which is usually early morning in the
+    US and evening in India. Many families also book a Ganapathy homam or a coconut breaking at a temple
+    in India in their name, so parents can attend in person and receive the prasadam.
 readingTime: 4
 draft: false
 ---

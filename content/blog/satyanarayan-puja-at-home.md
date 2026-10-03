@@ -1,69 +1,57 @@
 ---
 title: 'Satyanarayan Puja at Home: A Simple Guide for the US'
-description: >-
-  Satyanarayan puja at home in the US: a simple setup with local items, the
-  steps from Ganesha to katha to aarti, and sheera prasad in a US kitchen.
+description: 'Satyanarayan puja at home in the US: a simple setup with local items, the steps from Ganesha
+  to katha to aarti, and sheera prasad in a US kitchen.'
 author: archana
-publishedAt: '2026-10-13'
-updatedAt: '2026-10-13'
+publishedAt: '2026-12-09'
+updatedAt: '2026-12-09'
 cluster: satyanarayan-puja
 primaryKeyword: satyanarayan puja at home
 secondaryKeywords:
-  - satyanarayan puja samagri list
-  - satyanarayan puja vidhi step by step
-  - when to do satyanarayan puja
+- satyanarayan puja samagri list
+- satyanarayan puja vidhi step by step
+- when to do satyanarayan puja
 tags:
-  - Satyanarayan Puja
-  - How To
-  - NRI Life
+- Satyanarayan Puja
+- How To
+- NRI Life
 audience: nri-us
 image: /blog/satyanarayan-puja-at-home.webp
-imageAlt: >-
-  A home altar set for Satyanarayan puja with a kalash, banana leaves and sheera
-  prasad — satyanarayan puja at home | pariharaonline.com
-imagePrompt: >-
-  A low wooden table in an American living room dressed with a silk cloth,
-  banana leaves, a brass kalash topped with a coconut, tulsi and a bowl of
-  golden semolina sheera, warm afternoon light, editorial photograph.
+imageAlt: A home altar set for Satyanarayan puja with a kalash, banana leaves and sheera prasad — satyanarayan
+  puja at home | pariharaonline.com
+imagePrompt: A low wooden table in an American living room dressed with a silk cloth, banana leaves, a
+  brass kalash topped with a coconut, tulsi and a bowl of golden semolina sheera, warm afternoon light,
+  editorial photograph.
 products:
   handles:
-    - sudarsana-homam
+  - sudarsana-homam
   query: Vishnu
   heading: Poojas for Vishnu
 related:
-  - satyanarayan-katha-meaning
-  - hosting-satyanarayan-puja-with-friends
-  - puja-at-home-step-by-step
+- satyanarayan-katha-meaning
+- hosting-satyanarayan-puja-with-friends
+- puja-at-home-step-by-step
 takeaways:
-  - >-
-    Satyanarayan puja can be done at home by the family: honour Ganesha, worship
-    Vishnu as Satyanarayan, read the katha, perform aarti, and share sheera
-    prasad.
-  - >-
-    Purnima, the full-moon day, is traditional, but families also hold it for
-    housewarmings, birthdays and new beginnings on any convenient day.
+- 'Satyanarayan puja can be done at home by the family: honour Ganesha, worship Vishnu as Satyanarayan,
+  read the katha, perform aarti, and share sheera prasad.'
+- Purnima, the full-moon day, is traditional, but families also hold it for housewarmings, birthdays and
+  new beginnings on any convenient day.
 faq:
-  - q: What items do I need for Satyanarayan puja?
-    a: >-
-      A basic list: a picture of Vishnu or Satyanarayan, a kalash with water and
-      mango or betel leaves, a coconut, banana plants or leaves if available,
-      flowers, tulsi, turmeric, kumkum, rice, fruits, betel leaves and nuts,
-      incense, a lamp, and the ingredients for sheera prasad: semolina, ghee,
-      sugar, milk and banana.
-  - q: Can I do Satyanarayan puja without a priest?
-    a: >-
-      Yes. Many families perform it themselves using a printed or online vidhi
-      and read the katha aloud together. A priest adds precision with Sanskrit
-      chanting, but the ritual's heart is the story and shared prasad. Many
-      temples in the US also offer priests for home visits or livestreamed
-      guidance if you prefer support.
-  - q: When is the best time to do Satyanarayan puja?
-    a: >-
-      Purnima, the full-moon day, is the most traditional choice, and evening is
-      common. It is also performed on Ekadashi, Sankranti, housewarmings,
-      weddings, birthdays and after a wish has been fulfilled. The Skanda Purana
-      version of the story says it may be done on any day with devotion, so
-      choose a time the family can gather.
+- q: What items do I need for Satyanarayan puja?
+  a: 'A basic list: a picture of Vishnu or Satyanarayan, a kalash with water and mango or betel leaves,
+    a coconut, banana plants or leaves if available, flowers, tulsi, turmeric, kumkum, rice, fruits, betel
+    leaves and nuts, incense, a lamp, and the ingredients for sheera prasad: semolina, ghee, sugar, milk
+    and banana.'
+- q: Can I do Satyanarayan puja without a priest?
+  a: Yes. Many families perform it themselves using a printed or online vidhi and read the katha aloud
+    together. A priest adds precision with Sanskrit chanting, but the ritual's heart is the story and
+    shared prasad. Many temples in the US also offer priests for home visits or livestreamed guidance
+    if you prefer support.
+- q: When is the best time to do Satyanarayan puja?
+  a: Purnima, the full-moon day, is the most traditional choice, and evening is common. It is also performed
+    on Ekadashi, Sankranti, housewarmings, weddings, birthdays and after a wish has been fulfilled. The
+    Skanda Purana version of the story says it may be done on any day with devotion, so choose a time
+    the family can gather.
 readingTime: 4
 draft: false
 ---

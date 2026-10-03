@@ -1,67 +1,53 @@
 ---
 title: 'Festival Rituals for Kids: Small Things They Can Do'
-description: >-
-  Hindu festival activities for kids that are real rituals, not crafts: lighting
-  the lamp, drawing kolam, offering flowers, and giving to others.
+description: 'Hindu festival activities for kids that are real rituals, not crafts: lighting the lamp,
+  drawing kolam, offering flowers, and giving to others.'
 author: archana
-publishedAt: '2026-10-14'
-updatedAt: '2026-10-14'
+publishedAt: '2026-12-08'
+updatedAt: '2026-12-08'
 cluster: festivals-explained-usa
 primaryKeyword: festival rituals for kids
 secondaryKeywords:
-  - teaching hindu traditions to kids in america
-  - simple puja for kids
-  - kolam rangoli for kids
+- teaching hindu traditions to kids in america
+- simple puja for kids
+- kolam rangoli for kids
 tags:
-  - Kids
-  - Festivals
-  - Practice
+- Kids
+- Festivals
+- Practice
 audience: nri-us
 image: /blog/festival-rituals-for-kids.webp
-imageAlt: >-
-  A child's hands drawing a rice-flour kolam on a doorstep beside a brass lamp —
-  festival rituals for kids | pariharaonline.com
-imagePrompt: >-
-  Small hands drawing a white rice-flour kolam of dots and curves on a doorstep,
-  a brass lamp glowing at the edge, early morning light, close-up editorial
-  photograph without faces.
+imageAlt: A child's hands drawing a rice-flour kolam on a doorstep beside a brass lamp — festival rituals
+  for kids | pariharaonline.com
+imagePrompt: Small hands drawing a white rice-flour kolam of dots and curves on a doorstep, a brass lamp
+  glowing at the edge, early morning light, close-up editorial photograph without faces.
 products:
   handles:
-    - annadhanam-donate-food-to-homeless-children
+  - annadhanam-donate-food-to-homeless-children
 related:
-  - explaining-diwali-to-kids
-  - explaining-hindu-festivals-to-coworkers
-  - holika-dahan-at-home
-  - explaining-a-hindu-wedding
+- explaining-diwali-to-kids
+- explaining-hindu-festivals-to-coworkers
+- holika-dahan-at-home
+- explaining-a-hindu-wedding
 takeaways:
-  - >-
-    The best Hindu festival activities for kids are real rituals scaled to their
-    age: ringing the bell, drawing kolam, offering flowers, or leading a short
-    aarti.
-  - >-
-    Children absorb tradition through repetition and touch, so one ritual they
-    own each festival teaches more than long explanations.
+- 'The best Hindu festival activities for kids are real rituals scaled to their age: ringing the bell,
+  drawing kolam, offering flowers, or leading a short aarti.'
+- Children absorb tradition through repetition and touch, so one ritual they own each festival teaches
+  more than long explanations.
 faq:
-  - q: How do I teach Hindu traditions to kids in America?
-    a: >-
-      Start with the body rather than the book. Let children light the lamp with
-      you each evening, draw kolam before festivals, and offer the first bite of
-      a meal. Add one story per festival, told at bedtime. Visit a temple a few
-      times a year. Consistency beats intensity: small repeated rituals become
-      part of who they are.
-  - q: What is a simple puja kids can do by themselves?
-    a: >-
-      A three-step puja works well: fold hands and say the deity's name, offer a
-      flower and a little water, and wave a lamp slowly in a circle while an
-      adult watches. Older children can add a short chant, such as Om Gam
-      Ganapataye Namah. Keep it under five minutes so it stays joyful.
-  - q: How can kids help with kolam or rangoli?
-    a: >-
-      Give younger children chalk on a driveway or coloured rice on paper and
-      let them fill in a simple grid of dots. Older kids can learn traditional
-      kolam patterns with rice flour at the doorstep. Explain that kolam
-      welcomes guests and feeds ants and birds, so it is a gift as well as
-      decoration.
+- q: How do I teach Hindu traditions to kids in America?
+  a: 'Start with the body rather than the book. Let children light the lamp with you each evening, draw
+    kolam before festivals, and offer the first bite of a meal. Add one story per festival, told at bedtime.
+    Visit a temple a few times a year. Consistency beats intensity: small repeated rituals become part
+    of who they are.'
+- q: What is a simple puja kids can do by themselves?
+  a: 'A three-step puja works well: fold hands and say the deity''s name, offer a flower and a little
+    water, and wave a lamp slowly in a circle while an adult watches. Older children can add a short chant,
+    such as Om Gam Ganapataye Namah. Keep it under five minutes so it stays joyful.'
+- q: How can kids help with kolam or rangoli?
+  a: Give younger children chalk on a driveway or coloured rice on paper and let them fill in a simple
+    grid of dots. Older kids can learn traditional kolam patterns with rice flour at the doorstep. Explain
+    that kolam welcomes guests and feeds ants and birds, so it is a gift as well as decoration.
 readingTime: 4
 draft: false
 ---

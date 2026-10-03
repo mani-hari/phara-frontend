@@ -1,74 +1,56 @@
 ---
 title: 'Garbarakshambigai Temple: The Goddess Who Guards the Womb'
-description: >-
-  The Garbarakshambigai temple story: how the Goddess protected an unborn child,
-  why couples pray there for conception and safe delivery, and what the ghee
-  means.
+description: 'The Garbarakshambigai temple story: how the Goddess protected an unborn child, why couples
+  pray there for conception and safe delivery, and what the ghee means.'
 author: hariharan
-publishedAt: '2026-10-29'
-updatedAt: '2026-10-29'
+publishedAt: '2026-10-05'
+updatedAt: '2026-10-05'
 cluster: conceiving-pregnancy
 primaryKeyword: garbarakshambigai temple
 secondaryKeywords:
-  - garbarakshambigai temple history
-  - garbarakshambigai ghee prasadam
-  - thirukarukavur temple
-  - temple for pregnancy prayers
+- garbarakshambigai temple history
+- garbarakshambigai ghee prasadam
+- thirukarukavur temple
+- temple for pregnancy prayers
 tags:
-  - Garbarakshambigai
-  - Pregnancy
-  - Temples
+- Garbarakshambigai
+- Pregnancy
+- Temples
 audience: general
 image: /blog/garbarakshambigai-temple-story.webp
-imageAlt: >-
-  Small cradle offering tied to a tree in a stone temple courtyard in morning
-  light — garbarakshambigai temple | pariharaonline.com
-imagePrompt: >-
-  The quiet stone courtyard of a Chola-era Tamil temple at soft morning light, a
-  small cradle offering tied with yellow thread to a tree, jasmine and oil lamps
-  on the ground.
+imageAlt: Small cradle offering tied to a tree in a stone temple courtyard in morning light — garbarakshambigai
+  temple | pariharaonline.com
+imagePrompt: The quiet stone courtyard of a Chola-era Tamil temple at soft morning light, a small cradle
+  offering tied with yellow thread to a tree, jasmine and oil lamps on the ground.
 products:
   handles:
-    - garbharakshambika-ghee
-    - pregnancy-safe-childbirth-puja
+  - garbharakshambika-ghee
+  - pregnancy-safe-childbirth-puja
 related:
-  - praying-while-trying-to-conceive
-  - seemantham-and-valaikappu
-  - navagraha-temple-worship-guide
+- praying-while-trying-to-conceive
+- seemantham-and-valaikappu
+- navagraha-temple-worship-guide
 takeaways:
-  - >-
-    Garbarakshambigai, the Goddess who protects the womb, is worshipped at
-    Thirukarukavur near Thanjavur, where legend says she saved a sage's unborn
-    child.
-  - >-
-    Couples traditionally pray there for conception and safe delivery, and
-    consecrated ghee or oil prasadam is given to women for those intentions.
-  - >-
-    Tradition offers the prayer as comfort and hope alongside medical care,
-    never instead of it.
+- Garbarakshambigai, the Goddess who protects the womb, is worshipped at Thirukarukavur near Thanjavur,
+  where legend says she saved a sage's unborn child.
+- Couples traditionally pray there for conception and safe delivery, and consecrated ghee or oil prasadam
+  is given to women for those intentions.
+- Tradition offers the prayer as comfort and hope alongside medical care, never instead of it.
 faq:
-  - q: What is the story of Garbarakshambigai temple?
-    a: >-
-      The temple legend tells of Vedhika, wife of the sage Nidhruva, who was
-      harmed by a sage's curse while pregnant. She prayed to the Goddess, who
-      protected the unborn child in a sacred vessel until birth. The Goddess
-      came to be known as Garbarakshambigai, she who protects the womb, at
-      Thirukarukavur in Tamil Nadu.
-  - q: What is Garbarakshambigai ghee prasadam used for?
-    a: >-
-      Ghee consecrated at the temple is traditionally given to women hoping to
-      conceive, to be taken with prayer for a set number of days, while castor
-      oil prasadam is associated with safe delivery. These are devotional
-      practices. They accompany, and should never replace, guidance from a
-      doctor, and anyone with medical conditions should check with their
-      physician first.
-  - q: Can I get Garbarakshambigai prasadam if I cannot visit?
-    a: >-
-      Yes. Many families living far away arrange for poojas to be performed at
-      the temple in their name, using a sankalpam with their name and birth
-      star, and receive the prasadam by post. PariharaOnline is one service that
-      arranges this. The prayer is considered just as sincere when offered from
-      a distance.
+- q: What is the story of Garbarakshambigai temple?
+  a: The temple legend tells of Vedhika, wife of the sage Nidhruva, who was harmed by a sage's curse while
+    pregnant. She prayed to the Goddess, who protected the unborn child in a sacred vessel until birth.
+    The Goddess came to be known as Garbarakshambigai, she who protects the womb, at Thirukarukavur in
+    Tamil Nadu.
+- q: What is Garbarakshambigai ghee prasadam used for?
+  a: Ghee consecrated at the temple is traditionally given to women hoping to conceive, to be taken with
+    prayer for a set number of days, while castor oil prasadam is associated with safe delivery. These
+    are devotional practices. They accompany, and should never replace, guidance from a doctor, and anyone
+    with medical conditions should check with their physician first.
+- q: Can I get Garbarakshambigai prasadam if I cannot visit?
+  a: Yes. Many families living far away arrange for poojas to be performed at the temple in their name,
+    using a sankalpam with their name and birth star, and receive the prasadam by post. PariharaOnline
+    is one service that arranges this. The prayer is considered just as sincere when offered from a distance.
 readingTime: 4
 draft: false
 ---

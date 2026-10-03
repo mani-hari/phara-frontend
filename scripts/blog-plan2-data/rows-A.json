@@ -1,0 +1,535 @@
+[
+ {
+  "cluster": "birth-stars",
+  "slug": "ashwini-nakshatra",
+  "title": "Ashwini Nakshatra: The Healers' Star and Its Temple",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "ashwini nakshatra",
+  "products": {
+   "handles": [
+    "dhanwantari-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "bharani-nakshatra",
+  "title": "Bharani Nakshatra: Yama's Star, Restraint and Renewal",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "bharani nakshatra",
+  "products": {
+   "handles": [],
+   "query": "Durga"
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "krittika-nakshatra",
+  "title": "Krittika Nakshatra (Karthigai): The Star of Fire",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "krittika nakshatra",
+  "products": {
+   "handles": [
+    "palani"
+   ]
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "rohini-nakshatra",
+  "title": "Rohini Nakshatra: Krishna's Birth Star, Explained",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "rohini nakshatra",
+  "products": {
+   "handles": [],
+   "query": "Krishna"
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "mrigashira-nakshatra",
+  "title": "Mrigashira Nakshatra: The Seeker's Star and Its Ways",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "mrigashira nakshatra",
+  "products": {
+   "handles": [],
+   "query": "Murugan"
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "ardra-nakshatra",
+  "title": "Ardra Nakshatra (Thiruvathirai): Storm, Tears, Shiva",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "ardra nakshatra",
+  "products": {
+   "handles": [
+    "maha-shivaratri"
+   ]
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "punarvasu-nakshatra",
+  "title": "Punarvasu Nakshatra: Rama's Star of Return",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "punarvasu nakshatra",
+  "products": {
+   "handles": [
+    "guru-jupiter-transit"
+   ]
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "pushya-nakshatra",
+  "title": "Pushya Nakshatra (Poosam): The Nourishing Star",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "pushya nakshatra",
+  "products": {
+   "handles": [
+    "guru-jupiter-transit"
+   ]
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "ashlesha-nakshatra",
+  "title": "Ashlesha Nakshatra (Ayilyam): The Serpent's Star",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "ashlesha nakshatra",
+  "products": {
+   "handles": [
+    "rahu-ketu-dosha-parihara-pooja-sarpa-dosha-parihara-pooja-at-sri-kalahasti-temple"
+   ]
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "magha-nakshatra",
+  "title": "Magha Nakshatra (Magam): The Ancestors' Throne",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "magha nakshatra",
+  "products": {
+   "handles": [
+    "tila-homam-at-rameswaram"
+   ]
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "purva-phalguni-nakshatra",
+  "title": "Purva Phalguni (Pooram) Nakshatra: Rest and Delight",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "purva phalguni nakshatra",
+  "products": {
+   "handles": [
+    "swayamvara-parvathi-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "uttara-phalguni-nakshatra",
+  "title": "Uttara Phalguni (Uthiram): The Star of Promises",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "uttara phalguni nakshatra",
+  "products": {
+   "handles": [
+    "swayamvara-parvathi-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "hasta-nakshatra",
+  "title": "Hasta Nakshatra (Hastham): The Star of Skilled Hands",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "hasta nakshatra",
+  "products": {
+   "handles": [],
+   "query": "Surya"
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "chitra-nakshatra",
+  "title": "Chitra Nakshatra (Chithirai): The Builder's Bright Star",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "chitra nakshatra",
+  "products": {
+   "handles": [],
+   "query": "Navagraha"
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "swati-nakshatra",
+  "title": "Swati Nakshatra (Swathi): The Wind's Independent Star",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "swati nakshatra",
+  "products": {
+   "handles": [
+    "sudarsana-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "vishakha-nakshatra",
+  "title": "Vishakha Nakshatra (Visakam): Murugan's Forked Star",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "vishakha nakshatra",
+  "products": {
+   "handles": [
+    "palani"
+   ]
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "anuradha-nakshatra",
+  "title": "Anuradha Nakshatra (Anusham): Friendship and Devotion",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "anuradha nakshatra",
+  "products": {
+   "handles": [
+    "saturn-transit-shani-peyarchi"
+   ]
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "jyeshtha-nakshatra",
+  "title": "Jyeshtha Nakshatra (Kettai): The Eldest's Burden",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "jyeshtha nakshatra",
+  "products": {
+   "handles": [],
+   "query": "Hanuman"
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "mula-nakshatra",
+  "title": "Mula Nakshatra (Moolam): The Root Star, Without Fear",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "mula nakshatra",
+  "products": {
+   "handles": [
+    "ganesha-hanuman-shakti-kavach-the-shield-of-protection-and-victory"
+   ]
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "purva-ashadha-nakshatra",
+  "title": "Purva Ashadha (Pooradam) Nakshatra: The Waters' Star",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "purva ashadha nakshatra",
+  "products": {
+   "handles": [],
+   "query": "Varuna"
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "uttara-ashadha-nakshatra",
+  "title": "Uttara Ashadha (Uthiradam): The Star of Final Victory",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "uttara ashadha nakshatra",
+  "products": {
+   "handles": [
+    "maha-ganapathy-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "shravana-nakshatra",
+  "title": "Shravana Nakshatra (Thiruvonam): The Listener's Star",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "shravana nakshatra",
+  "products": {
+   "handles": [],
+   "query": "Vishnu"
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "dhanishta-nakshatra",
+  "title": "Dhanishta Nakshatra (Avittam): Rhythm and Wealth",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "dhanishta nakshatra",
+  "products": {
+   "handles": [],
+   "query": "Murugan"
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "shatabhisha-nakshatra",
+  "title": "Shatabhisha Nakshatra (Sadayam): A Hundred Healers",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "shatabhisha nakshatra",
+  "products": {
+   "handles": [
+    "dhanwantari-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "purva-bhadrapada-nakshatra",
+  "title": "Purva Bhadrapada (Poorattathi): The Star of Intensity",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "purva bhadrapada nakshatra",
+  "products": {
+   "handles": [
+    "guru-jupiter-transit"
+   ]
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "uttara-bhadrapada-nakshatra",
+  "title": "Uttara Bhadrapada (Uthirattathi): Deep Water, Calm",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "uttara bhadrapada nakshatra",
+  "products": {
+   "handles": [
+    "saturn-transit-shani-peyarchi"
+   ]
+  }
+ },
+ {
+  "cluster": "birth-stars",
+  "slug": "revati-nakshatra",
+  "title": "Revati Nakshatra: The Last Star and Safe Journeys",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "revati nakshatra",
+  "products": {
+   "handles": [],
+   "query": "Vishnu"
+  }
+ },
+ {
+  "cluster": "rasis",
+  "slug": "mesha-rasi",
+  "title": "Mesha Rasi (Aries): Mars, Courage and Its Temples",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "mesha rasi",
+  "products": {
+   "handles": [
+    "navagraha-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "rasis",
+  "slug": "rishabha-rasi",
+  "title": "Rishabha Rasi (Taurus): Venus, Steadiness, Worship",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "rishabha rasi",
+  "products": {
+   "handles": [],
+   "query": "Lakshmi"
+  }
+ },
+ {
+  "cluster": "rasis",
+  "slug": "mithuna-rasi",
+  "title": "Mithuna Rasi (Gemini): Mercury and the Restless Mind",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "mithuna rasi",
+  "products": {
+   "handles": [
+    "hayagreeva-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "rasis",
+  "slug": "kataka-rasi",
+  "title": "Kataka Rasi (Cancer): The Moon's Sign and Its Poojas",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "kataka rasi",
+  "products": {
+   "handles": [],
+   "query": "Parvati"
+  }
+ },
+ {
+  "cluster": "rasis",
+  "slug": "simha-rasi",
+  "title": "Simha Rasi (Leo): The Sun's Sign, Pride and Service",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "simha rasi",
+  "products": {
+   "handles": [
+    "navagraha-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "rasis",
+  "slug": "kanya-rasi",
+  "title": "Kanya Rasi (Virgo): Mercury, Detail and Devotion",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "kanya rasi",
+  "products": {
+   "handles": [
+    "saraswati-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "rasis",
+  "slug": "tula-rasi",
+  "title": "Tula Rasi (Libra): Venus and the Art of Balance",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "tula rasi",
+  "products": {
+   "handles": [],
+   "query": "Lakshmi"
+  }
+ },
+ {
+  "cluster": "rasis",
+  "slug": "vrischika-rasi",
+  "title": "Vrischika Rasi (Scorpio): Depth, Mars and Murugan",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "vrischika rasi",
+  "products": {
+   "handles": [
+    "palani"
+   ]
+  }
+ },
+ {
+  "cluster": "rasis",
+  "slug": "dhanu-rasi",
+  "title": "Dhanu Rasi (Sagittarius): Jupiter's Archer",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "dhanu rasi",
+  "products": {
+   "handles": [
+    "guru-jupiter-transit"
+   ]
+  }
+ },
+ {
+  "cluster": "rasis",
+  "slug": "makara-rasi",
+  "title": "Makara Rasi (Capricorn): Saturn, Work and Patience",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "makara rasi",
+  "products": {
+   "handles": [
+    "saturn-transit-shani-peyarchi"
+   ]
+  }
+ },
+ {
+  "cluster": "rasis",
+  "slug": "kumbha-rasi",
+  "title": "Kumbha Rasi (Aquarius): Saturn's Water-Bearer",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "kumbha rasi",
+  "products": {
+   "handles": [
+    "saturn-transit-shani-peyarchi"
+   ]
+  }
+ },
+ {
+  "cluster": "rasis",
+  "slug": "meena-rasi",
+  "title": "Meena Rasi (Pisces): Jupiter, Compassion, Letting Go",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "meena rasi",
+  "products": {
+   "handles": [
+    "guru-jupiter-transit"
+   ]
+  }
+ }
+]

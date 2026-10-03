@@ -1,75 +1,57 @@
 ---
 title: Simple Mantras for Kids at Bedtime
-description: >-
-  Simple mantras for kids at bedtime: five short Sanskrit prayers children can
-  learn, what they mean in plain words, and how to keep chanting warm, not
-  forced.
+description: 'Simple mantras for kids at bedtime: five short Sanskrit prayers children can learn, what
+  they mean in plain words, and how to keep chanting warm, not forced.'
 author: archana
-publishedAt: '2026-10-17'
-updatedAt: '2026-10-17'
+publishedAt: '2027-02-18'
+updatedAt: '2027-02-18'
 cluster: mantra-basics
 primaryKeyword: mantras for kids
 secondaryKeywords:
-  - easy slokas for children
-  - bedtime prayer for hindu kids
-  - how to teach kids mantras
+- easy slokas for children
+- bedtime prayer for hindu kids
+- how to teach kids mantras
 tags:
-  - Mantras
-  - Children
-  - NRI Life
+- Mantras
+- Children
+- NRI Life
 audience: nri-us
 image: /blog/simple-mantras-for-kids.webp
-imageAlt: >-
-  Small brass lamp and a picture book on a child's bedside table in a softly lit
-  bedroom — mantras for kids | pariharaonline.com
-imagePrompt: >-
-  Warm editorial photograph of a child's bedroom in an American home at night, a
-  small brass lamp and picture book on a bedside table, a parent's hand resting
-  on a quilt, soft golden light.
+imageAlt: Small brass lamp and a picture book on a child's bedside table in a softly lit bedroom — mantras
+  for kids | pariharaonline.com
+imagePrompt: Warm editorial photograph of a child's bedroom in an American home at night, a small brass
+  lamp and picture book on a bedside table, a parent's hand resting on a quilt, soft golden light.
 products:
   handles:
-    - saraswati-homam
+  - saraswati-homam
 related:
-  - what-is-a-mantra
-  - om-namah-shivaya-meaning
-  - mahamrityunjaya-mantra-meaning
+- what-is-a-mantra
+- om-namah-shivaya-meaning
+- mahamrityunjaya-mantra-meaning
 takeaways:
-  - >-
-    Short mantras like Om, Vakratunda Mahakaya and Saraswati Namastubhyam are
-    easy for children to learn at bedtime.
-  - >-
-    Teach them through call and response and rhythm, with one line of meaning in
-    English, rather than drilling.
-  - A consistent bedtime chant also slows breathing and settles a busy mind.
+- Short mantras like Om, Vakratunda Mahakaya and Saraswati Namastubhyam are easy for children to learn
+  at bedtime.
+- Teach them through call and response and rhythm, with one line of meaning in English, rather than drilling.
+- A consistent bedtime chant also slows breathing and settles a busy mind.
 faq:
-  - q: What are some easy slokas for children?
-    a: >-
-      Good starting slokas include the Ganesha prayer Vakratunda Mahakaya, the
-      Saraswati prayer Saraswati Namastubhyam, the morning verse Karagre Vasate
-      Lakshmi, Om Namah Shivaya, and simply Om. Each is short, rhythmic and easy
-      to repeat. Share a one-sentence meaning in English so children know what
-      they are saying and why.
-  - q: What is a good bedtime prayer for Hindu kids?
-    a: >-
-      Many families use Om Namah Shivaya, Om Sahana Vavatu or a simple prayer to
-      Ganesha before sleep. The Ramaskandam or Hanuman prayers are also popular
-      for children who fear the dark. Keep it short, say it together with lights
-      low, and end with a few slow breaths so the ritual becomes a calm signal
-      that the day is ending.
-  - q: How do I teach my child mantras if I don't know Sanskrit well?
-    a: >-
-      Learn alongside them. Listen to a clear recording, repeat line by line,
-      and read the meaning together. Grandparents can teach over video, and many
-      temples run weekend classes. Children often enjoy correcting their
-      parents. Sincerity and consistency matter far more than perfect
-      pronunciation at this stage.
-  - q: At what age can children start learning mantras?
-    a: >-
-      Even toddlers of two or three can repeat Om or a single line when it is
-      part of a playful routine. From about four or five, most children can
-      learn a full short sloka. Follow the child's interest, keep sessions to a
-      minute or two, and never use chanting as a punishment or a performance for
-      guests.
+- q: What are some easy slokas for children?
+  a: Good starting slokas include the Ganesha prayer Vakratunda Mahakaya, the Saraswati prayer Saraswati
+    Namastubhyam, the morning verse Karagre Vasate Lakshmi, Om Namah Shivaya, and simply Om. Each is short,
+    rhythmic and easy to repeat. Share a one-sentence meaning in English so children know what they are
+    saying and why.
+- q: What is a good bedtime prayer for Hindu kids?
+  a: Many families use Om Namah Shivaya, Om Sahana Vavatu or a simple prayer to Ganesha before sleep.
+    The Ramaskandam or Hanuman prayers are also popular for children who fear the dark. Keep it short,
+    say it together with lights low, and end with a few slow breaths so the ritual becomes a calm signal
+    that the day is ending.
+- q: How do I teach my child mantras if I don't know Sanskrit well?
+  a: Learn alongside them. Listen to a clear recording, repeat line by line, and read the meaning together.
+    Grandparents can teach over video, and many temples run weekend classes. Children often enjoy correcting
+    their parents. Sincerity and consistency matter far more than perfect pronunciation at this stage.
+- q: At what age can children start learning mantras?
+  a: Even toddlers of two or three can repeat Om or a single line when it is part of a playful routine.
+    From about four or five, most children can learn a full short sloka. Follow the child's interest,
+    keep sessions to a minute or two, and never use chanting as a punishment or a performance for guests.
 readingTime: 4
 draft: false
 ---

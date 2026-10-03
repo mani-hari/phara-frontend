@@ -1,0 +1,455 @@
+[
+ {
+  "cluster": "our-temples",
+  "slug": "kanchi-kamakshi-temple",
+  "title": "Kanchi Kamakshi Temple: The Goddess of Loving Eyes",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "kanchi kamakshi temple",
+  "products": {
+   "handles": [
+    "kanchi-kamakshi"
+   ]
+  }
+ },
+ {
+  "cluster": "our-temples",
+  "slug": "palani-murugan-temple",
+  "title": "Palani Murugan Temple: The Hill of the Renouncer",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "palani murugan temple history",
+  "products": {
+   "handles": [
+    "palani",
+    "palani-panchamritham"
+   ]
+  }
+ },
+ {
+  "cluster": "our-temples",
+  "slug": "brahma-vidya-ganapati-temple",
+  "title": "Brahma Vidya Ganapati Temple, Bengaluru: A Guide",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "brahma vidya ganapati temple",
+  "products": {
+   "handles": [
+    "brahmavidyaganapati"
+   ]
+  }
+ },
+ {
+  "cluster": "our-temples",
+  "slug": "sri-kalahasti-temple-guide",
+  "title": "Sri Kalahasti Temple: Wind, Spider, Snake, Elephant",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "sri kalahasti temple",
+  "products": {
+   "handles": [
+    "rahu-ketu-dosha-parihara-pooja-sarpa-dosha-parihara-pooja-at-sri-kalahasti-temple"
+   ]
+  }
+ },
+ {
+  "cluster": "our-temples",
+  "slug": "thirunallar-saniswaran-temple",
+  "title": "Thirunallar Saniswaran Temple: Nala's Release",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "thirunallar temple",
+  "products": {
+   "handles": [
+    "saturn-transit-shani-peyarchi"
+   ]
+  }
+ },
+ {
+  "cluster": "our-temples",
+  "slug": "rameswaram-ramanathaswamy-temple",
+  "title": "Rameswaram Temple: The Lingam Rama Made of Sand",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "rameswaram temple history",
+  "products": {
+   "handles": [
+    "tila-homam-at-rameswaram"
+   ]
+  }
+ },
+ {
+  "cluster": "our-temples",
+  "slug": "shirdi-sai-baba-udi",
+  "title": "Shirdi Sai Baba's Udi: Ash, Faith and Sharing",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "shirdi sai baba udi",
+  "products": {
+   "handles": [
+    "shirdi-sai-baba-udi-prasadham"
+   ]
+  }
+ },
+ {
+  "cluster": "our-temples",
+  "slug": "madurai-meenakshi-temple",
+  "title": "Madurai Meenakshi Temple: A Devotee's Guide",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "meenakshi temple madurai",
+  "products": {
+   "handles": [
+    "shakti-samriddhi-pooja-for-feminine-prosperity-family-well-being"
+   ]
+  }
+ },
+ {
+  "cluster": "temples-devotees-ask",
+  "slug": "srirangam-temple-guide",
+  "title": "Srirangam Temple: Vishnu Asleep on the River",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "srirangam temple",
+  "products": {
+   "handles": [],
+   "query": "Vishnu"
+  }
+ },
+ {
+  "cluster": "temples-devotees-ask",
+  "slug": "tirupati-balaji-temple-story",
+  "title": "Tirupati Balaji: The Story Behind the Hair and Hundi",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "tirupati balaji story",
+  "products": {
+   "handles": [],
+   "query": "Venkateswara"
+  }
+ },
+ {
+  "cluster": "temples-devotees-ask",
+  "slug": "guruvayur-temple-guide",
+  "title": "Guruvayur Temple: Krishna the Child in Kerala",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "guruvayur temple",
+  "products": {
+   "handles": [],
+   "query": "Krishna"
+  }
+ },
+ {
+  "cluster": "temples-devotees-ask",
+  "slug": "chidambaram-nataraja-temple",
+  "title": "Chidambaram Temple: The Dance and the Empty Space",
+  "author": "hariharan",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "chidambaram temple",
+  "products": {
+   "handles": [
+    "maha-shivaratri"
+   ]
+  }
+ },
+ {
+  "cluster": "temples-devotees-ask",
+  "slug": "thanjavur-big-temple",
+  "title": "Thanjavur Big Temple: Brihadeeswarar and Its Shadow",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "thanjavur brihadeeswarar temple",
+  "products": {
+   "handles": [],
+   "query": "Shiva"
+  }
+ },
+ {
+  "cluster": "temples-devotees-ask",
+  "slug": "sabarimala-ayyappa-vratham",
+  "title": "Sabarimala and the Ayyappa Vratham: Forty-One Days",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "sabarimala ayyappa vratham",
+  "products": {
+   "handles": [],
+   "query": "Ayyappa"
+  }
+ },
+ {
+  "cluster": "temples-devotees-ask",
+  "slug": "kashi-vishwanath-temple",
+  "title": "Kashi Vishwanath Temple: Why Varanasi Matters",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "kashi vishwanath temple",
+  "products": {
+   "handles": [
+    "tila-homam-at-rameswaram"
+   ]
+  }
+ },
+ {
+  "cluster": "homams-explained-2",
+  "slug": "navagraha-homam-meaning",
+  "title": "Navagraha Homam: What Happens and Who It Is For",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "navagraha homam benefits",
+  "products": {
+   "handles": [
+    "navagraha-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "homams-explained-2",
+  "slug": "ganapathi-homam-meaning",
+  "title": "Ganapathi Homam: The Fire Ritual for Beginnings",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "ganapathi homam benefits",
+  "products": {
+   "handles": [
+    "maha-ganapathy-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "homams-explained-2",
+  "slug": "saraswati-homam-for-students",
+  "title": "Saraswati Homam for Students: What It Can Mean",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "saraswati homam",
+  "products": {
+   "handles": [
+    "saraswati-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "homams-explained-2",
+  "slug": "hayagreeva-homam-meaning",
+  "title": "Hayagreeva Homam: The Horse-Headed God of Learning",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "hayagreeva homam",
+  "products": {
+   "handles": [
+    "hayagreeva-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "homams-explained-2",
+  "slug": "mrityunjaya-homam-meaning",
+  "title": "Mrityunjaya Homam: The Fire Ritual for Health",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "mrityunjaya homam benefits",
+  "products": {
+   "handles": [
+    "mrityunjaya-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "homams-explained-2",
+  "slug": "chandi-homam-meaning",
+  "title": "Chandi Homam and the 700 Verses: What Takes Place",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "chandi homam",
+  "products": {
+   "handles": [
+    "mantra-chanting-of-700-verses-of-durga-saptashati",
+    "navratri-poojas-online"
+   ]
+  }
+ },
+ {
+  "cluster": "homams-explained-2",
+  "slug": "how-to-choose-a-homam",
+  "title": "How to Choose a Homam: Matching Ritual to Need",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "which homam to perform",
+  "products": {
+   "handles": [
+    "ask-our-astrologer"
+   ]
+  }
+ },
+ {
+  "cluster": "temples-in-usa",
+  "slug": "first-visit-hindu-temple-usa",
+  "title": "Your First Visit to a Hindu Temple in the US",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "first time visiting hindu temple",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "temples-in-usa",
+  "slug": "what-to-wear-hindu-temple",
+  "title": "What to Wear to a Hindu Temple, Honestly",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "what to wear to a hindu temple",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "temples-in-usa",
+  "slug": "bringing-a-friend-to-temple",
+  "title": "Bringing a Non-Hindu Friend to the Temple",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "can non hindus visit hindu temples",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "temples-in-usa",
+  "slug": "volunteering-at-a-hindu-temple",
+  "title": "Volunteering at a Hindu Temple: Seva in the Suburbs",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "volunteering at hindu temple",
+  "products": {
+   "handles": [
+    "annadhanam-donate-food-to-homeless-children"
+   ]
+  }
+ },
+ {
+  "cluster": "temples-in-usa",
+  "slug": "why-us-temples-have-many-deities",
+  "title": "Why US Hindu Temples House Many Gods Under One Roof",
+  "author": "hariharan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "why american hindu temples have many deities",
+  "products": {
+   "handles": [],
+   "query": "Navagraha"
+  }
+ },
+ {
+  "cluster": "temples-in-usa",
+  "slug": "temple-festivals-in-america",
+  "title": "Brahmotsavam in the Suburbs: Temple Festivals in America",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "seasonal",
+  "primaryKeyword": "brahmotsavam",
+  "products": {
+   "handles": [],
+   "query": "Venkateswara"
+  }
+ },
+ {
+  "cluster": "seva-and-giving",
+  "slug": "seva-meaning",
+  "title": "Seva Meaning: Service That Is Not About You",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "seva meaning",
+  "products": {
+   "handles": [
+    "annadhanam-donate-food-to-homeless-children"
+   ]
+  }
+ },
+ {
+  "cluster": "seva-and-giving",
+  "slug": "dana-in-hinduism",
+  "title": "Dana in Hinduism: How the Tradition Thinks About Giving",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "dana in hinduism",
+  "products": {
+   "handles": [
+    "annadhanam-donate-food-to-homeless-children"
+   ]
+  }
+ },
+ {
+  "cluster": "seva-and-giving",
+  "slug": "go-puja-cow-worship-meaning",
+  "title": "Go Puja: Why Hindus Honour the Cow",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "go puja meaning",
+  "products": {
+   "handles": [],
+   "query": "Krishna"
+  }
+ },
+ {
+  "cluster": "seva-and-giving",
+  "slug": "feeding-crows-and-birds",
+  "title": "Feeding Crows and Birds: A Daily Offering Explained",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "why feed crows hindu",
+  "products": {
+   "handles": [],
+   "query": "Tila Homam"
+  }
+ },
+ {
+  "cluster": "seva-and-giving",
+  "slug": "giving-on-birthdays",
+  "title": "Giving on Your Birthday: A Hindu Custom Worth Keeping",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "birthday donation hindu",
+  "products": {
+   "handles": [
+    "annadhanam-donate-food-to-homeless-children",
+    "ayushya-homam"
+   ]
+  }
+ }
+]

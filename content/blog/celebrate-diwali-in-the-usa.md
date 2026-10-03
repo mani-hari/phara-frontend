@@ -1,73 +1,56 @@
 ---
-title: 'How to Celebrate Diwali in the USA, Weekday and All'
-description: >-
-  How to celebrate Diwali in the USA on a workday: an evening lamp, a short
-  Lakshmi puja, sweets for neighbours and a family call across time zones.
+title: How to Celebrate Diwali in the USA, Weekday and All
+description: 'How to celebrate Diwali in the USA on a workday: an evening lamp, a short Lakshmi puja,
+  sweets for neighbours and a family call across time zones.'
 author: manikandan
-publishedAt: '2026-10-05'
-updatedAt: '2026-10-05'
+publishedAt: '2026-10-04'
+updatedAt: '2026-10-04'
 cluster: diwali-in-usa
 primaryKeyword: how to celebrate diwali in the usa
 secondaryKeywords:
-  - diwali on a weekday usa
-  - diwali celebration ideas at home usa
-  - diwali with family in india video call
+- diwali on a weekday usa
+- diwali celebration ideas at home usa
+- diwali with family in india video call
 tags:
-  - Diwali
-  - NRI Life
-  - Festivals
+- Diwali
+- NRI Life
+- Festivals
 audience: nri-us
 image: /blog/celebrate-diwali-in-the-usa.webp
-imageAlt: >-
-  Clay oil lamps lit on the steps of a suburban American home at dusk for Diwali
-  — how to celebrate diwali in the usa | pariharaonline.com
-imagePrompt: >-
-  Rows of small brass and clay oil lamps glowing on the front steps of an
-  American suburban house at dusk, marigold garland on the door, warm golden
-  light, editorial photograph.
+imageAlt: Clay oil lamps lit on the steps of a suburban American home at dusk for Diwali — how to celebrate
+  diwali in the usa | pariharaonline.com
+imagePrompt: Rows of small brass and clay oil lamps glowing on the front steps of an American suburban
+  house at dusk, marigold garland on the door, warm golden light, editorial photograph.
 products:
   handles:
-    - diwali-puja
+  - diwali-puja
   heading: Poojas for Diwali
 related:
-  - diwali-at-the-office
-  - lakshmi-puja-at-home-abroad
-  - why-is-diwali-celebrated
+- diwali-at-the-office
+- lakshmi-puja-at-home-abroad
+- why-is-diwali-celebrated
 takeaways:
-  - >-
-    You can celebrate Diwali in the USA fully on a weekday: light lamps at dusk,
-    offer a short Lakshmi puja, and share sweets.
-  - >-
-    Many families keep the puja on the actual day and move the party to the
-    weekend; tradition has always adjusted to where people live.
-  - >-
-    Call family in India during their morning, which usually falls in your
-    previous evening, so the festival feels shared.
+- 'You can celebrate Diwali in the USA fully on a weekday: light lamps at dusk, offer a short Lakshmi
+  puja, and share sweets.'
+- Many families keep the puja on the actual day and move the party to the weekend; tradition has always
+  adjusted to where people live.
+- Call family in India during their morning, which usually falls in your previous evening, so the festival
+  feels shared.
 faq:
-  - q: >-
-      Can I celebrate Diwali on the weekend instead of the actual day in the
-      USA?
-    a: >-
-      Many families do both. They light a lamp and offer a short prayer on the
-      actual evening, even after work, and hold the larger gathering, rangoli
-      and sweets on the nearest weekend. The lunar day matters for the puja
-      itself, but a festival shared with friends on Saturday is still Diwali in
-      spirit. Check your local panchangam for the exact evening.
-  - q: What is the simplest way to celebrate Diwali at home in America?
-    a: >-
-      Clean one corner of your home, set out a few oil lamps or tea lights,
-      place a picture of Lakshmi or Ganesha, and offer flowers and a sweet at
-      dusk. Say a short prayer of thanks, then light lamps at the door and
-      windows. Share sweets with neighbours. That evening of light is the core
-      of the festival.
-  - q: How do I celebrate Diwali with family in India on a video call?
-    a: >-
-      India is roughly nine and a half to thirteen and a half hours ahead of the
-      continental US, depending on your time zone and daylight saving, so
-      India's Diwali morning is often your previous evening. Plan the call for
-      then. Light your lamp on camera, let children show their rangoli, and ask
-      elders to say the prayer. Keep it short and unhurried rather than long and
-      distracted.
+- q: Can I celebrate Diwali on the weekend instead of the actual day in the USA?
+  a: Many families do both. They light a lamp and offer a short prayer on the actual evening, even after
+    work, and hold the larger gathering, rangoli and sweets on the nearest weekend. The lunar day matters
+    for the puja itself, but a festival shared with friends on Saturday is still Diwali in spirit. Check
+    your local panchangam for the exact evening.
+- q: What is the simplest way to celebrate Diwali at home in America?
+  a: Clean one corner of your home, set out a few oil lamps or tea lights, place a picture of Lakshmi
+    or Ganesha, and offer flowers and a sweet at dusk. Say a short prayer of thanks, then light lamps
+    at the door and windows. Share sweets with neighbours. That evening of light is the core of the festival.
+- q: How do I celebrate Diwali with family in India on a video call?
+  a: India is roughly nine and a half to thirteen and a half hours ahead of the continental US, depending
+    on your time zone and daylight saving, so India's Diwali morning is often your previous evening. Plan
+    the call for then. Light your lamp on camera, let children show their rangoli, and ask elders to say
+    the prayer. Keep it short and unhurried rather than long and distracted.
 readingTime: 4
 draft: false
 ---

@@ -1,75 +1,59 @@
 ---
 title: 'Sankatahara Chaturthi: The Monthly Ganesha Fast'
-description: >-
-  Sankatahara Chaturthi is the monthly Ganesha fast after the full moon. How to
-  keep it, when to break it at moonrise, and why a monthly rhythm helps the
-  mind.
+description: Sankatahara Chaturthi is the monthly Ganesha fast after the full moon. How to keep it, when
+  to break it at moonrise, and why a monthly rhythm helps the mind.
 author: archana
-publishedAt: '2026-11-02'
-updatedAt: '2026-11-02'
+publishedAt: '2026-10-15'
+updatedAt: '2026-10-15'
 cluster: griha-pravesh
 primaryKeyword: sankatahara chaturthi
 secondaryKeywords:
-  - sankashti chaturthi vrat rules
-  - sankatahara chaturthi moonrise
-  - how to break sankashti fast
+- sankashti chaturthi vrat rules
+- sankatahara chaturthi moonrise
+- how to break sankashti fast
 tags:
-  - Sankatahara Chaturthi
-  - Ganesha
-  - Fasting
+- Sankatahara Chaturthi
+- Ganesha
+- Fasting
 audience: general
 image: /blog/sankatahara-chaturthi-fast.webp
-imageAlt: >-
-  Plate of modakas and durva grass beside a lit lamp, a rising moon visible
-  through the window — sankatahara chaturthi | pariharaonline.com
-imagePrompt: >-
-  Editorial photograph of a small Ganesha shrine corner with a plate of modakas
-  and bundles of durva grass, a lit lamp, and a rising moon visible through a
-  window at dusk.
+imageAlt: Plate of modakas and durva grass beside a lit lamp, a rising moon visible through the window
+  — sankatahara chaturthi | pariharaonline.com
+imagePrompt: Editorial photograph of a small Ganesha shrine corner with a plate of modakas and bundles
+  of durva grass, a lit lamp, and a rising moon visible through a window at dusk.
 products:
   handles:
-    - brahmavidyaganapati
+  - brahmavidyaganapati
 related:
-  - blessing-a-new-home-abroad
-  - why-ganesha-comes-first
-  - satyanarayan-katha-meaning
+- blessing-a-new-home-abroad
+- why-ganesha-comes-first
+- satyanarayan-katha-meaning
 takeaways:
-  - >-
-    Sankatahara Chaturthi is a monthly Ganesha fast on the fourth lunar day
-    after the full moon, traditionally broken after moonrise.
-  - >-
-    Devotees choose a full, fruit-only or single-meal fast, then offer an
-    evening puja with durva grass and a sweet.
-  - 'Moonrise differs by city, so check a local panchangam.'
+- Sankatahara Chaturthi is a monthly Ganesha fast on the fourth lunar day after the full moon, traditionally
+  broken after moonrise.
+- Devotees choose a full, fruit-only or single-meal fast, then offer an evening puja with durva grass
+  and a sweet.
+- Moonrise differs by city, so check a local panchangam.
 faq:
-  - q: What is Sankatahara Chaturthi and why is it observed?
-    a: >-
-      Sankatahara Chaturthi, also called Sankashti Chaturthi, is observed every
-      month on the fourth lunar day of the waning fortnight, after the full
-      moon. Devotees fast and worship Ganesha, praying for the removal of
-      difficulties, which is what sankata hara means. When it falls on a Tuesday
-      it is called Angaraki Chaturthi and considered especially significant.
-  - q: What are the rules of the Sankashti Chaturthi vrat?
-    a: >-
-      Traditionally devotees fast from sunrise until the moon is sighted, either
-      completely, with fruit and milk, or with one simple meal. In the evening
-      they worship Ganesha with durva grass, flowers and a sweet such as modaka.
-      Anyone with health conditions, pregnancy or medication should choose a
-      gentle version and consult a doctor.
-  - q: How do you break the Sankatahara Chaturthi fast?
-    a: >-
-      After the evening puja, wait for moonrise. Offer water, milk or a little
-      sandalwood-scented water towards the moon, say a short prayer, then eat
-      the prasadam offered to Ganesha before a simple meal. If clouds hide the
-      moon, most families break the fast at the published moonrise time for
-      their location.
-  - q: Why is moonrise time important on Sankatahara Chaturthi?
-    a: >-
-      The fast is traditionally completed only after sighting and honouring the
-      moon, linked to a story in which Ganesha and the moon are reconciled.
-      Because moonrise depends on location, it can differ by an hour or more
-      between cities and countries. Devotees in the US should use a panchangam
-      set to their own city.
+- q: What is Sankatahara Chaturthi and why is it observed?
+  a: Sankatahara Chaturthi, also called Sankashti Chaturthi, is observed every month on the fourth lunar
+    day of the waning fortnight, after the full moon. Devotees fast and worship Ganesha, praying for the
+    removal of difficulties, which is what sankata hara means. When it falls on a Tuesday it is called
+    Angaraki Chaturthi and considered especially significant.
+- q: What are the rules of the Sankashti Chaturthi vrat?
+  a: Traditionally devotees fast from sunrise until the moon is sighted, either completely, with fruit
+    and milk, or with one simple meal. In the evening they worship Ganesha with durva grass, flowers and
+    a sweet such as modaka. Anyone with health conditions, pregnancy or medication should choose a gentle
+    version and consult a doctor.
+- q: How do you break the Sankatahara Chaturthi fast?
+  a: After the evening puja, wait for moonrise. Offer water, milk or a little sandalwood-scented water
+    towards the moon, say a short prayer, then eat the prasadam offered to Ganesha before a simple meal.
+    If clouds hide the moon, most families break the fast at the published moonrise time for their location.
+- q: Why is moonrise time important on Sankatahara Chaturthi?
+  a: The fast is traditionally completed only after sighting and honouring the moon, linked to a story
+    in which Ganesha and the moon are reconciled. Because moonrise depends on location, it can differ
+    by an hour or more between cities and countries. Devotees in the US should use a panchangam set to
+    their own city.
 readingTime: 4
 draft: false
 ---

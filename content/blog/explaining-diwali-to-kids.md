@@ -1,67 +1,52 @@
 ---
 title: 'Explaining Diwali to Kids: Stories That Stick'
-description: >-
-  Explaining Diwali to kids with stories they remember: Rama's homecoming,
-  Lakshmi's visit, Krishna and Narakasura, plus the one idea underneath all of
-  them.
+description: 'Explaining Diwali to kids with stories they remember: Rama''s homecoming, Lakshmi''s visit,
+  Krishna and Narakasura, plus the one idea underneath all of them.'
 author: hariharan
-publishedAt: '2026-10-05'
-updatedAt: '2026-10-05'
+publishedAt: '2026-12-06'
+updatedAt: '2026-12-06'
 cluster: festivals-explained-usa
 primaryKeyword: explaining diwali to kids
 secondaryKeywords:
-  - diwali story for kids
-  - how to teach kids about diwali
-  - diwali meaning for children
+- diwali story for kids
+- how to teach kids about diwali
+- diwali meaning for children
 tags:
-  - Diwali
-  - Kids
-  - Mythology
+- Diwali
+- Kids
+- Mythology
 audience: nri-us
 image: /blog/explaining-diwali-to-kids.webp
-imageAlt: >-
-  A child's hands lighting a clay diya on a chalk rangoli on a driveway at dusk
-  — explaining diwali to kids | pariharaonline.com
-imagePrompt: >-
-  A child's small hands carefully lighting a clay diya on a colourful chalk
-  rangoli on an American driveway at dusk, warm glow, editorial photograph with
-  no faces.
+imageAlt: A child's hands lighting a clay diya on a chalk rangoli on a driveway at dusk — explaining diwali
+  to kids | pariharaonline.com
+imagePrompt: A child's small hands carefully lighting a clay diya on a colourful chalk rangoli on an American
+  driveway at dusk, warm glow, editorial photograph with no faces.
 products:
   handles:
-    - annadhanam-donate-food-to-homeless-children
+  - annadhanam-donate-food-to-homeless-children
 related:
-  - explaining-hindu-festivals-to-coworkers
-  - hindu-festival-calendar-usa
-  - celebrate-diwali-in-the-usa
+- explaining-hindu-festivals-to-coworkers
+- hindu-festival-calendar-usa
+- celebrate-diwali-in-the-usa
 takeaways:
-  - >-
-    The easiest way of explaining Diwali to kids is through its stories, such as
-    Rama's return home, followed by the one idea they share: light chases away
-    darkness.
-  - >-
-    Children remember Diwali best by doing: lighting a lamp, drawing rangoli and
-    giving sweets to a neighbour.
+- 'The easiest way of explaining Diwali to kids is through its stories, such as Rama''s return home, followed
+  by the one idea they share: light chases away darkness.'
+- 'Children remember Diwali best by doing: lighting a lamp, drawing rangoli and giving sweets to a neighbour.'
 faq:
-  - q: What is the Diwali story for kids?
-    a: >-
-      A child-friendly version: Prince Rama, his wife Sita and brother Lakshmana
-      were sent to live in the forest for fourteen years. Sita was taken by the
-      demon king Ravana, and Rama rescued her. When they finally came home to
-      Ayodhya on a dark new-moon night, the people lit rows of lamps to welcome
-      them. We light lamps to remember that welcome.
-  - q: How do I explain Diwali to my child's class in America?
-    a: >-
-      Keep it to five minutes. Say Diwali is the Hindu festival of lights, show
-      a clay diya, tell Rama's homecoming in a few sentences, and explain that
-      families clean their homes, light lamps, wear new clothes and share
-      sweets. Let children draw a rangoli pattern with chalk or coloured paper.
-      Teachers usually welcome a sweet to share.
-  - q: 'Why do we light diyas on Diwali, in simple words?'
-    a: >-
-      We light diyas to welcome good things and to show that even a small light
-      beats darkness. In the stories, people lit lamps to welcome Rama home, and
-      families light them to invite Lakshmi, the goddess of wellbeing. For
-      children, it helps to add that each lamp can be a wish or a thank-you.
+- q: What is the Diwali story for kids?
+  a: 'A child-friendly version: Prince Rama, his wife Sita and brother Lakshmana were sent to live in
+    the forest for fourteen years. Sita was taken by the demon king Ravana, and Rama rescued her. When
+    they finally came home to Ayodhya on a dark new-moon night, the people lit rows of lamps to welcome
+    them. We light lamps to remember that welcome.'
+- q: How do I explain Diwali to my child's class in America?
+  a: Keep it to five minutes. Say Diwali is the Hindu festival of lights, show a clay diya, tell Rama's
+    homecoming in a few sentences, and explain that families clean their homes, light lamps, wear new
+    clothes and share sweets. Let children draw a rangoli pattern with chalk or coloured paper. Teachers
+    usually welcome a sweet to share.
+- q: Why do we light diyas on Diwali, in simple words?
+  a: We light diyas to welcome good things and to show that even a small light beats darkness. In the
+    stories, people lit lamps to welcome Rama home, and families light them to invite Lakshmi, the goddess
+    of wellbeing. For children, it helps to add that each lamp can be a wish or a thank-you.
 readingTime: 4
 draft: false
 ---

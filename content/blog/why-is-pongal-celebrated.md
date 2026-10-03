@@ -1,67 +1,54 @@
 ---
-title: 'Why Is Pongal Celebrated? Sun, Harvest and Cattle'
-description: >-
-  Why is Pongal celebrated? The sun's turn north, the rice harvest, Indra, Surya
-  and Nandi, and the four days from Bhogi to Kaanum, explained through their
-  story.
+title: Why Is Pongal Celebrated? Sun, Harvest and Cattle
+description: Why is Pongal celebrated? The sun's turn north, the rice harvest, Indra, Surya and Nandi,
+  and the four days from Bhogi to Kaanum, explained through their story.
 author: hariharan
-publishedAt: '2026-10-13'
-updatedAt: '2026-10-13'
+publishedAt: '2026-10-26'
+updatedAt: '2026-10-26'
 cluster: pongal-sankranti
 primaryKeyword: why is pongal celebrated
 secondaryKeywords:
-  - pongal festival meaning
-  - four days of pongal
-  - mattu pongal story
+- pongal festival meaning
+- four days of pongal
+- mattu pongal story
 tags:
-  - Pongal
-  - Harvest
-  - Festivals
+- Pongal
+- Harvest
+- Festivals
 audience: general
 image: /blog/why-is-pongal-celebrated.webp
-imageAlt: >-
-  Clay pot boiling over with milk on a wood fire in a courtyard at sunrise,
-  sugarcane beside it — why is pongal celebrated | pariharaonline.com
-imagePrompt: >-
-  A clay pot decorated with turmeric leaves boiling over with milk on a wood
-  fire in a courtyard at sunrise, sugarcane stalks leaning nearby, a kolam in
-  the foreground, warm golden light.
+imageAlt: Clay pot boiling over with milk on a wood fire in a courtyard at sunrise, sugarcane beside it
+  — why is pongal celebrated | pariharaonline.com
+imagePrompt: A clay pot decorated with turmeric leaves boiling over with milk on a wood fire in a courtyard
+  at sunrise, sugarcane stalks leaning nearby, a kolam in the foreground, warm golden light.
 products:
   handles:
-    - temple-coconut-breaking-online
+  - temple-coconut-breaking-online
 related:
-  - making-pongal-in-a-us-kitchen
-  - makar-sankranti-meaning
-  - hindu-festival-calendar-usa
+- making-pongal-in-a-us-kitchen
+- makar-sankranti-meaning
+- hindu-festival-calendar-usa
 takeaways:
-  - >-
-    Pongal is a Tamil harvest thanksgiving to Surya, the sun, celebrated at the
-    start of the Tamil month of Thai when the sun enters Makara, in mid-January.
-  - >-
-    Its four days thank Indra, the sun, the cattle and family in turn; the milk
-    pot boiling over is the festival's image of abundance.
+- Pongal is a Tamil harvest thanksgiving to Surya, the sun, celebrated at the start of the Tamil month
+  of Thai when the sun enters Makara, in mid-January.
+- Its four days thank Indra, the sun, the cattle and family in turn; the milk pot boiling over is the
+  festival's image of abundance.
 faq:
-  - q: Why is Pongal celebrated in Tamil Nadu?
-    a: >-
-      Pongal is a harvest festival that thanks Surya, the sun, and the forces
-      that make farming possible. It falls as the sun enters Makara, the start
-      of the Tamil month of Thai, around mid-January, after the rice harvest.
-      The name comes from the dish of new rice and milk that is boiled until it
-      overflows, a sign of abundance.
-  - q: What are the four days of Pongal?
-    a: >-
-      Bhogi comes first, when old things are discarded and Indra, the rain god,
-      is honoured. Thai Pongal is the main day, for Surya. Mattu Pongal honours
-      cattle, which are bathed, decorated and fed. Kaanum Pongal is for visiting
-      family and outings. Each day thanks a different part of the web that makes
-      a harvest possible.
-  - q: What is the story behind Mattu Pongal?
-    a: >-
-      A popular story says Shiva sent his bull Nandi to earth with a message
-      that people should bathe daily and eat once a month. Nandi mixed it up and
-      said eat daily and bathe once a month. As punishment Shiva sent him to
-      help humans plough fields for the food they now needed. Mattu Pongal
-      thanks cattle for that work.
+- q: Why is Pongal celebrated in Tamil Nadu?
+  a: Pongal is a harvest festival that thanks Surya, the sun, and the forces that make farming possible.
+    It falls as the sun enters Makara, the start of the Tamil month of Thai, around mid-January, after
+    the rice harvest. The name comes from the dish of new rice and milk that is boiled until it overflows,
+    a sign of abundance.
+- q: What are the four days of Pongal?
+  a: Bhogi comes first, when old things are discarded and Indra, the rain god, is honoured. Thai Pongal
+    is the main day, for Surya. Mattu Pongal honours cattle, which are bathed, decorated and fed. Kaanum
+    Pongal is for visiting family and outings. Each day thanks a different part of the web that makes
+    a harvest possible.
+- q: What is the story behind Mattu Pongal?
+  a: A popular story says Shiva sent his bull Nandi to earth with a message that people should bathe daily
+    and eat once a month. Nandi mixed it up and said eat daily and bathe once a month. As punishment Shiva
+    sent him to help humans plough fields for the food they now needed. Mattu Pongal thanks cattle for
+    that work.
 readingTime: 4
 draft: false
 ---

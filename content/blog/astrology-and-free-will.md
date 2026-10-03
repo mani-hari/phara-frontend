@@ -1,70 +1,56 @@
 ---
 title: 'Astrology and Free Will: Who Holds the Pen?'
-description: >-
-  Astrology and free will: what Hindu tradition says about fate, karma and
-  effort, and why the old stories insist the chart describes the road, not the
-  driver.
+description: 'Astrology and free will: what Hindu tradition says about fate, karma and effort, and why
+  the old stories insist the chart describes the road, not the driver.'
 author: hariharan
-publishedAt: '2026-10-21'
-updatedAt: '2026-10-21'
+publishedAt: '2026-10-17'
+updatedAt: '2026-10-17'
 cluster: astrology-real
 primaryKeyword: astrology and free will
 secondaryKeywords:
-  - does astrology mean fate is fixed
-  - karma and free will hinduism
-  - prarabdha karma meaning
+- does astrology mean fate is fixed
+- karma and free will hinduism
+- prarabdha karma meaning
 tags:
-  - Astrology
-  - Karma
-  - Seekers
+- Astrology
+- Karma
+- Seekers
 audience: seeker
 image: /blog/astrology-and-free-will.webp
-imageAlt: >-
-  Village road winding past a small roadside shrine with a lit lamp, misty paddy
-  fields at dawn — astrology and free will | pariharaonline.com
-imagePrompt: >-
-  A narrow village road winding past a small roadside shrine at dawn, a single
-  lamp lit in its niche, mist over paddy fields.
+imageAlt: Village road winding past a small roadside shrine with a lit lamp, misty paddy fields at dawn
+  — astrology and free will | pariharaonline.com
+imagePrompt: A narrow village road winding past a small roadside shrine at dawn, a single lamp lit in
+  its niche, mist over paddy fields.
 products:
   handles:
-    - ask-our-astrologer
+  - ask-our-astrologer
 related:
-  - is-astrology-real
-  - vedic-vs-western-astrology
-  - kala-sarpa-dosha-meaning
-  - what-is-a-muhurtham
+- is-astrology-real
+- vedic-vs-western-astrology
+- kala-sarpa-dosha-meaning
+- what-is-a-muhurtham
 takeaways:
-  - >-
-    Hindu thought separates karma already in motion from karma you are making
-    now, which leaves real room for free will.
-  - >-
-    Stories like Markandeya and Savitri show destiny bending to devotion and
-    effort, not overriding them.
-  - >-
-    Read a chart like a weather report: it describes conditions, and you still
-    decide how to walk through them.
+- Hindu thought separates karma already in motion from karma you are making now, which leaves real room
+  for free will.
+- Stories like Markandeya and Savitri show destiny bending to devotion and effort, not overriding them.
+- 'Read a chart like a weather report: it describes conditions, and you still decide how to walk through
+  them.'
 faq:
-  - q: Does astrology mean my fate is already fixed?
-    a: >-
-      Hindu tradition generally says no. It distinguishes prarabdha karma, the
-      portion already bearing fruit, from agami karma, the actions you take now.
-      Jyotish is traditionally read as showing the first, the conditions you are
-      born into, while your choices shape the second. Many astrologers say the
-      chart shows tendencies, and effort decides the outcome.
-  - q: What is prarabdha karma?
-    a: >-
-      Prarabdha karma is the part of your accumulated past actions that has
-      already begun to ripen in this life, like an arrow already released. It is
-      often described as your starting conditions: family, body, some
-      circumstances. Tradition says it must be lived through, but how you meet
-      it creates new karma, which is where freedom lies.
-  - q: What is the story of Markandeya and fate?
-    a: >-
-      In the Puranas, the boy Markandeya was granted a short life of sixteen
-      years. On the destined day he clung to a Shiva linga in prayer, and when
-      Yama came, Shiva intervened and made him eternally sixteen. The story is
-      often told to show that devotion and courage can meet destiny, rather than
-      surrender to it.
+- q: Does astrology mean my fate is already fixed?
+  a: Hindu tradition generally says no. It distinguishes prarabdha karma, the portion already bearing
+    fruit, from agami karma, the actions you take now. Jyotish is traditionally read as showing the first,
+    the conditions you are born into, while your choices shape the second. Many astrologers say the chart
+    shows tendencies, and effort decides the outcome.
+- q: What is prarabdha karma?
+  a: 'Prarabdha karma is the part of your accumulated past actions that has already begun to ripen in
+    this life, like an arrow already released. It is often described as your starting conditions: family,
+    body, some circumstances. Tradition says it must be lived through, but how you meet it creates new
+    karma, which is where freedom lies.'
+- q: What is the story of Markandeya and fate?
+  a: In the Puranas, the boy Markandeya was granted a short life of sixteen years. On the destined day
+    he clung to a Shiva linga in prayer, and when Yama came, Shiva intervened and made him eternally sixteen.
+    The story is often told to show that devotion and courage can meet destiny, rather than surrender
+    to it.
 readingTime: 4
 draft: false
 ---

@@ -1,0 +1,423 @@
+[
+ {
+  "cluster": "stotras-explained",
+  "slug": "lalitha-sahasranamam-meaning",
+  "title": "Lalitha Sahasranamam Meaning and How to Begin",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "lalitha sahasranamam meaning",
+  "products": {
+   "handles": [
+    "shakti-samriddhi-pooja-for-feminine-prosperity-family-well-being"
+   ]
+  }
+ },
+ {
+  "cluster": "stotras-explained",
+  "slug": "vishnu-sahasranamam-for-beginners",
+  "title": "Vishnu Sahasranamam for Beginners: A Gentle Start",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "vishnu sahasranamam for beginners",
+  "products": {
+   "handles": [],
+   "query": "Vishnu"
+  }
+ },
+ {
+  "cluster": "stotras-explained",
+  "slug": "kanda-sashti-kavasam-meaning",
+  "title": "Kanda Sashti Kavasam Meaning: Murugan's Armour",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "kanda sashti kavasam meaning",
+  "products": {
+   "handles": [
+    "palani"
+   ]
+  }
+ },
+ {
+  "cluster": "stotras-explained",
+  "slug": "aditya-hrudayam-meaning",
+  "title": "Aditya Hrudayam Meaning: Rama's Prayer to the Sun",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "aditya hrudayam meaning",
+  "products": {
+   "handles": [
+    "navagraha-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "stotras-explained",
+  "slug": "abhirami-anthathi-meaning",
+  "title": "Abhirami Anthathi: The Poet Who Made the Moon Rise",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "story",
+  "primaryKeyword": "abhirami anthathi meaning",
+  "products": {
+   "handles": [
+    "shakti-samriddhi-pooja-for-feminine-prosperity-family-well-being"
+   ]
+  }
+ },
+ {
+  "cluster": "stotras-explained",
+  "slug": "soundarya-lahari-explained",
+  "title": "Soundarya Lahari Explained: Beauty as the Goddess",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "soundarya lahari meaning",
+  "products": {
+   "handles": [],
+   "query": "Devi"
+  }
+ },
+ {
+  "cluster": "stotras-explained",
+  "slug": "tiruppavai-meaning",
+  "title": "Tiruppavai Meaning: Andal's Thirty Dawn Songs",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "tiruppavai meaning",
+  "products": {
+   "handles": [],
+   "query": "Vishnu"
+  }
+ },
+ {
+  "cluster": "stotras-explained",
+  "slug": "kolaru-pathigam-navagraha",
+  "title": "Kolaru Pathigam: The Tamil Hymn for the Nine Planets",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "kolaru pathigam",
+  "products": {
+   "handles": [
+    "navagraha-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "mantras-explained",
+  "slug": "saraswati-mantra-for-students",
+  "title": "Saraswati Mantra for Students: Ya Kundendu Explained",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "saraswati mantra for students",
+  "products": {
+   "handles": [
+    "saraswati-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "mantras-explained",
+  "slug": "vakratunda-mahakaya-meaning",
+  "title": "Vakratunda Mahakaya Meaning: The First Prayer",
+  "author": "hariharan",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "vakratunda mahakaya meaning",
+  "products": {
+   "handles": [
+    "maha-ganapathy-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "mantras-explained",
+  "slug": "om-sahana-vavatu-meaning",
+  "title": "Om Sahana Vavatu Meaning: The Teacher-Student Prayer",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "om sahana vavatu meaning",
+  "products": {
+   "handles": [],
+   "query": "Saraswati"
+  }
+ },
+ {
+  "cluster": "mantras-explained",
+  "slug": "mahalakshmi-ashtakam-meaning",
+  "title": "Mahalakshmi Ashtakam Meaning, Verse by Verse",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "mahalakshmi ashtakam meaning",
+  "products": {
+   "handles": [
+    "diwali-puja"
+   ]
+  }
+ },
+ {
+  "cluster": "mantras-explained",
+  "slug": "dhanvantari-mantra-meaning",
+  "title": "Dhanvantari Mantra: A Prayer for Healing, Explained",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "dhanvantari mantra",
+  "products": {
+   "handles": [
+    "dhanwantari-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "mantras-explained",
+  "slug": "hare-krishna-maha-mantra",
+  "title": "Hare Krishna Maha Mantra: Meaning and Practice",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "hare krishna maha mantra meaning",
+  "products": {
+   "handles": [],
+   "query": "Krishna"
+  }
+ },
+ {
+  "cluster": "mantras-explained",
+  "slug": "lingashtakam-meaning",
+  "title": "Lingashtakam Meaning: Eight Verses to the Lingam",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "lingashtakam meaning",
+  "products": {
+   "handles": [
+    "maha-shivaratri"
+   ]
+  }
+ },
+ {
+  "cluster": "inner-practice",
+  "slug": "how-to-use-a-japa-mala",
+  "title": "How to Use a Japa Mala: 108 Beads, One Breath",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "how-to",
+  "primaryKeyword": "how to use a japa mala",
+  "products": {
+   "handles": [],
+   "query": "homam"
+  }
+ },
+ {
+  "cluster": "inner-practice",
+  "slug": "pranayama-before-pooja",
+  "title": "Pranayama Before Pooja: Three Breaths That Settle",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "how-to",
+  "primaryKeyword": "pranayama before puja",
+  "products": {
+   "handles": [],
+   "query": "homam"
+  }
+ },
+ {
+  "cluster": "inner-practice",
+  "slug": "mouna-vratam-silence",
+  "title": "Mouna Vratam: A Day of Silence, Tried Honestly",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "how-to",
+  "primaryKeyword": "mouna vratam",
+  "products": {
+   "handles": [],
+   "query": "Shiva"
+  }
+ },
+ {
+  "cluster": "inner-practice",
+  "slug": "why-108-is-sacred",
+  "title": "Why 108 Is Sacred: The Number Behind the Beads",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "why 108 is sacred",
+  "products": {
+   "handles": [],
+   "query": "Durga"
+  }
+ },
+ {
+  "cluster": "inner-practice",
+  "slug": "trataka-lamp-gazing",
+  "title": "Trataka: Lamp Gazing as a Practice of Attention",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "how-to",
+  "primaryKeyword": "trataka meditation",
+  "products": {
+   "handles": [],
+   "query": "Lakshmi"
+  }
+ },
+ {
+  "cluster": "inner-practice",
+  "slug": "likhita-japa-writing-mantras",
+  "title": "Likhita Japa: Writing a Mantra in a Notebook",
+  "author": "manikandan",
+  "audience": "seeker",
+  "intent": "how-to",
+  "primaryKeyword": "likhita japa",
+  "products": {
+   "handles": [],
+   "query": "Rama"
+  }
+ },
+ {
+  "cluster": "inner-practice",
+  "slug": "surya-namaskar-meaning",
+  "title": "Surya Namaskar Meaning: A Greeting, Not a Workout",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "surya namaskar meaning",
+  "products": {
+   "handles": [
+    "navagraha-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "inner-practice",
+  "slug": "sitting-on-the-floor-to-pray",
+  "title": "Why We Sit on the Floor to Pray (and Chairs Are Fine)",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "why sit on floor for puja",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "weekday-vratams",
+  "slug": "which-god-on-which-day",
+  "title": "Which God to Worship on Which Day of the Week",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "which god to worship on which day",
+  "products": {
+   "handles": [
+    "navagraha-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "weekday-vratams",
+  "slug": "somvar-vrat-monday-fast",
+  "title": "Monday Fast for Shiva (Somvar Vrat): A Gentle Guide",
+  "author": "archana",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "somvar vrat",
+  "products": {
+   "handles": [
+    "maha-shivaratri"
+   ]
+  }
+ },
+ {
+  "cluster": "weekday-vratams",
+  "slug": "tuesday-worship-murugan-durga",
+  "title": "Tuesday Worship: Murugan, Durga and Hanuman",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "tuesday god hindu",
+  "products": {
+   "handles": [
+    "ganesha-hanuman-shakti-kavach-the-shield-of-protection-and-victory"
+   ]
+  }
+ },
+ {
+  "cluster": "weekday-vratams",
+  "slug": "thursday-sai-baba-guru",
+  "title": "Thursday Prayers: Sai Baba, Dakshinamurthy, Guru",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "thursday sai baba pooja",
+  "products": {
+   "handles": [
+    "shirdi-sai-baba-udi-prasadham"
+   ]
+  }
+ },
+ {
+  "cluster": "weekday-vratams",
+  "slug": "friday-lakshmi-pooja",
+  "title": "Friday Lakshmi Pooja at Home in Ten Minutes",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "friday lakshmi pooja",
+  "products": {
+   "handles": [
+    "shakti-samriddhi-pooja-for-feminine-prosperity-family-well-being"
+   ]
+  }
+ },
+ {
+  "cluster": "weekday-vratams",
+  "slug": "pournami-pooja-at-home",
+  "title": "Pournami Pooja at Home: The Full-Moon Evening",
+  "author": "archana",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "pournami pooja at home",
+  "products": {
+   "handles": [],
+   "query": "Lakshmi"
+  }
+ },
+ {
+  "cluster": "weekday-vratams",
+  "slug": "monthly-sashti-vratham",
+  "title": "Monthly Sashti Vratham: A Small Fast for Murugan",
+  "author": "archana",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "sashti viratham",
+  "products": {
+   "handles": [
+    "palani"
+   ]
+  }
+ },
+ {
+  "cluster": "weekday-vratams",
+  "slug": "masik-shivaratri",
+  "title": "Masik Shivaratri: The Monthly Night for Shiva",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "masik shivaratri",
+  "products": {
+   "handles": [
+    "maha-shivaratri"
+   ]
+  }
+ }
+]

@@ -1,0 +1,425 @@
+[
+ {
+  "cluster": "hindu-kids-usa",
+  "slug": "raising-hindu-kids-in-america",
+  "title": "Raising Hindu Kids in America Without Pressure",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "raising hindu kids in america",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "hindu-kids-usa",
+  "slug": "hindu-bedtime-stories-for-kids",
+  "title": "Hindu Stories for Kids at Bedtime: Where to Start",
+  "author": "hariharan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "hindu stories for kids",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "hindu-kids-usa",
+  "slug": "bala-vihar-temple-sunday-school",
+  "title": "Bala Vihar: Is Temple Sunday School Worth It?",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "comparison",
+  "primaryKeyword": "bala vihar",
+  "products": {
+   "handles": [],
+   "query": "Saraswati"
+  }
+ },
+ {
+  "cluster": "hindu-kids-usa",
+  "slug": "teens-questioning-hinduism",
+  "title": "When Your Teen Questions Hinduism: Good News, Actually",
+  "author": "hariharan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "teenager questioning religion hindu",
+  "products": {
+   "handles": [],
+   "query": "Krishna"
+  }
+ },
+ {
+  "cluster": "hindu-kids-usa",
+  "slug": "grandparents-on-video-calls",
+  "title": "Grandparents, Prayers and Video Calls Across Oceans",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "grandparents teaching prayers online",
+  "products": {
+   "handles": [
+    "ayushya-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "hindu-kids-usa",
+  "slug": "should-kids-fast-hindu",
+  "title": "Should Kids Fast? A Gentle Hindu Approach",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "should children fast hindu",
+  "products": {
+   "handles": [],
+   "query": "Vishnu"
+  }
+ },
+ {
+  "cluster": "hindu-kids-usa",
+  "slug": "explaining-death-to-kids-hindu",
+  "title": "Explaining Death to Children: A Hindu View",
+  "author": "hariharan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "explaining death to kids hindu",
+  "products": {
+   "handles": [
+    "tila-homam-at-rameswaram"
+   ]
+  }
+ },
+ {
+  "cluster": "interfaith-families",
+  "slug": "interfaith-marriage-hindu",
+  "title": "Interfaith Marriage and Hindu Family: Making Room",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "interfaith marriage hindu",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "interfaith-families",
+  "slug": "christmas-and-diwali-at-home",
+  "title": "Christmas and Diwali in One Home: A December Story",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "celebrating diwali and christmas",
+  "products": {
+   "handles": [
+    "diwali-puja"
+   ]
+  }
+ },
+ {
+  "cluster": "interfaith-families",
+  "slug": "puja-with-a-non-hindu-spouse",
+  "title": "Doing Puja With a Non-Hindu Spouse",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "puja with non hindu spouse",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "interfaith-families",
+  "slug": "hindu-view-of-other-religions",
+  "title": "What Hinduism Says About Other Religions",
+  "author": "hariharan",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "hindu view of other religions",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "interfaith-families",
+  "slug": "raising-interfaith-kids-hindu",
+  "title": "Raising Interfaith Kids With a Hindu Thread",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "raising interfaith children",
+  "products": {
+   "handles": [],
+   "query": "Krishna"
+  }
+ },
+ {
+  "cluster": "parents-elders",
+  "slug": "shashtiabdapoorthi-60th-birthday",
+  "title": "Shashtiabdapoorthi: Planning a Parent's 60th From Abroad",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "shashtiabdapoorthi",
+  "products": {
+   "handles": [
+    "ayushya-homam",
+    "mrityunjaya-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "parents-elders",
+  "slug": "bheemaratha-shanti-70th-birthday",
+  "title": "Bheemaratha Shanti: The 70th Birthday Ritual",
+  "author": "hariharan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "bheemaratha shanti",
+  "products": {
+   "handles": [
+    "ayushya-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "parents-elders",
+  "slug": "sathabhishekam-80th-birthday",
+  "title": "Sathabhishekam: A Thousand Full Moons at Eighty",
+  "author": "hariharan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "sathabhishekam",
+  "products": {
+   "handles": [
+    "ayushya-homam",
+    "mrityunjaya-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "parents-elders",
+  "slug": "parents-visiting-from-india",
+  "title": "When Parents Visit From India: Their Prayers in Your Home",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "parents visiting usa from india",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "parents-elders",
+  "slug": "caring-for-parents-from-abroad",
+  "title": "Caring for Ageing Parents From Abroad: A Steady Practice",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "caring for aging parents in india from abroad",
+  "products": {
+   "handles": [
+    "astrology-health"
+   ]
+  }
+ },
+ {
+  "cluster": "parents-elders",
+  "slug": "recording-elders-chants",
+  "title": "Recording Your Elders' Chants Before You Need Them",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "learning slokas from grandparents",
+  "products": {
+   "handles": [],
+   "query": "Vishnu"
+  }
+ },
+ {
+  "cluster": "samskaras-abroad",
+  "slug": "sixteen-samskaras-explained",
+  "title": "The 16 Samskaras: Hindu Rites From Birth to Death",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "16 samskaras",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "samskaras-abroad",
+  "slug": "annaprashan-first-rice",
+  "title": "Annaprashan: Your Baby's First Rice, Abroad",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "annaprashan ceremony",
+  "products": {
+   "handles": [
+    "ayushya-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "samskaras-abroad",
+  "slug": "upanayanam-in-the-usa",
+  "title": "Upanayanam in the USA: The Thread and What It Asks",
+  "author": "hariharan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "upanayanam in usa",
+  "products": {
+   "handles": [
+    "saraswati-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "samskaras-abroad",
+  "slug": "mundan-first-haircut",
+  "title": "Mundan: The First Haircut, Temple or Home",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "mundan ceremony",
+  "products": {
+   "handles": [
+    "palani"
+   ]
+  }
+ },
+ {
+  "cluster": "samskaras-abroad",
+  "slug": "karnavedha-ear-piercing",
+  "title": "Karnavedha: The Ear-Piercing Ceremony Explained",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "karnavedha ceremony",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "samskaras-abroad",
+  "slug": "babys-first-temple-visit",
+  "title": "A Baby's First Temple Visit: What Families Do",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "baby first temple visit",
+  "products": {
+   "handles": [
+    "garbharakshambika-oil"
+   ]
+  }
+ },
+ {
+  "cluster": "astrology-practice",
+  "slug": "how-to-find-your-nakshatra",
+  "title": "How to Find Your Nakshatra (Birth Star) Quickly",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "how to find my nakshatra",
+  "products": {
+   "handles": [
+    "ask-our-astrologer"
+   ]
+  }
+ },
+ {
+  "cluster": "astrology-practice",
+  "slug": "rasi-vs-nakshatra",
+  "title": "Rasi vs Nakshatra: Moon Sign and Birth Star Compared",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "comparison",
+  "primaryKeyword": "rasi vs nakshatra",
+  "products": {
+   "handles": [
+    "ask-our-astrologer"
+   ]
+  }
+ },
+ {
+  "cluster": "astrology-practice",
+  "slug": "lagna-rising-sign-explained",
+  "title": "Lagna Explained: The Rising Sign in Vedic Astrology",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "lagna in astrology",
+  "products": {
+   "handles": [
+    "ask-our-astrologer"
+   ]
+  }
+ },
+ {
+  "cluster": "astrology-practice",
+  "slug": "dasha-periods-explained",
+  "title": "Dasha Periods Explained: Life in Planetary Chapters",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "vimshottari dasha explained",
+  "products": {
+   "handles": [
+    "career-astrology"
+   ]
+  }
+ },
+ {
+  "cluster": "astrology-practice",
+  "slug": "horoscope-matching-porutham",
+  "title": "Horoscope Matching (Porutham): The Ten Checks, Calmly",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "horoscope matching porutham",
+  "products": {
+   "handles": [
+    "ask-our-astrologer"
+   ]
+  }
+ },
+ {
+  "cluster": "astrology-practice",
+  "slug": "gochara-transits-explained",
+  "title": "Gochara: What Planetary Transits Mean, Without Panic",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "gochara transit",
+  "products": {
+   "handles": [
+    "saturn-transit-shani-peyarchi"
+   ]
+  }
+ },
+ {
+  "cluster": "astrology-practice",
+  "slug": "twelve-houses-in-astrology",
+  "title": "The Twelve Houses in Vedic Astrology, Plainly",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "12 houses in vedic astrology",
+  "products": {
+   "handles": [
+    "career-astrology"
+   ]
+  }
+ }
+]

@@ -1,74 +1,58 @@
 ---
 title: 'The Six Abodes of Murugan: Arupadai Veedu'
-description: >-
-  Arupadai Veedu are the six abodes of Murugan in Tamil Nadu: the story behind
-  each temple, from Palani to Tiruchendur, and what the six together mean.
+description: 'Arupadai Veedu are the six abodes of Murugan in Tamil Nadu: the story behind each temple,
+  from Palani to Tiruchendur, and what the six together mean.'
 author: hariharan
 publishedAt: '2026-10-10'
 updatedAt: '2026-10-10'
 cluster: murugan-skanda
 primaryKeyword: arupadai veedu
 secondaryKeywords:
-  - six abodes of murugan list
-  - arupadai veedu temples in order
-  - palani murugan temple significance
+- six abodes of murugan list
+- arupadai veedu temples in order
+- palani murugan temple significance
 tags:
-  - Murugan
-  - Temples
-  - Tamil Tradition
+- Murugan
+- Temples
+- Tamil Tradition
 audience: general
 image: /blog/six-abodes-of-murugan.webp
-imageAlt: >-
-  Hilltop temple with a golden tower at sunrise above misty hills and a stairway
-  lined with lamps — arupadai veedu | pariharaonline.com
-imagePrompt: >-
-  Painterly landscape of a hilltop South Indian temple with a golden tower at
-  sunrise, a winding stone stairway lined with pilgrims' lamps, mist over green
-  hills below.
+imageAlt: Hilltop temple with a golden tower at sunrise above misty hills and a stairway lined with lamps
+  — arupadai veedu | pariharaonline.com
+imagePrompt: Painterly landscape of a hilltop South Indian temple with a golden tower at sunrise, a winding
+  stone stairway lined with pilgrims' lamps, mist over green hills below.
 products:
   handles:
-    - palani
+  - palani
   query: Murugan
 related:
-  - skanda-sashti-fasting-guide
-  - soorasamharam-story-meaning
-  - karthigai-deepam-significance
+- skanda-sashti-fasting-guide
+- soorasamharam-story-meaning
+- karthigai-deepam-significance
 takeaways:
-  - >-
-    Arupadai Veedu are the six sacred abodes of Murugan in Tamil Nadu:
-    Thiruparankundram, Tiruchendur, Palani, Swamimalai, Thiruthani and
-    Pazhamudircholai.
-  - They are named in the ancient Tamil poem Tirumurugatruppadai by Nakkeerar.
-  - Each temple holds a different episode of Murugan's story.
+- 'Arupadai Veedu are the six sacred abodes of Murugan in Tamil Nadu: Thiruparankundram, Tiruchendur,
+  Palani, Swamimalai, Thiruthani and Pazhamudircholai.'
+- They are named in the ancient Tamil poem Tirumurugatruppadai by Nakkeerar.
+- Each temple holds a different episode of Murugan's story.
 faq:
-  - q: What are the six abodes of Murugan?
-    a: >-
-      The Arupadai Veedu are Thiruparankundram near Madurai, Tiruchendur on the
-      sea coast, Palani in the western hills, Swamimalai near Kumbakonam,
-      Thiruthani near Chennai and Pazhamudircholai near Madurai. Together they
-      are the most sacred Murugan temples in Tamil tradition, and many devotees
-      hope to visit all six in their lifetime.
-  - q: What is the significance of Palani Murugan temple?
-    a: >-
-      Palani is where Murugan, after losing a contest for a sacred fruit, left
-      home and stood on the hill as a renunciate with a staff. He is worshipped
-      there as Dandayudhapani. The temple is famous for its panchamritham
-      prasadam and for pilgrims who climb the hill carrying kavadi, especially
-      during Thaipusam.
-  - q: In what order should the Arupadai Veedu be visited?
-    a: >-
-      The traditional order follows the Tirumurugatruppadai: Thiruparankundram,
-      Tiruchendur, Palani, Swamimalai, Thiruthani and Pazhamudircholai. Many
-      pilgrims follow a route that suits travel instead, often starting near
-      Madurai. There is no strict rule; devotion matters more than sequence, and
-      visiting even one abode with care is valued.
-  - q: Why does Murugan have six abodes?
-    a: >-
-      Tradition links the six abodes to Murugan's six faces as Shanmukha and to
-      six stages of the spiritual journey, from worldly life and struggle to
-      renunciation and wisdom. Each temple marks a moment in his story, so
-      visiting them in sequence is often read as walking through the growth of a
-      seeker.
+- q: What are the six abodes of Murugan?
+  a: The Arupadai Veedu are Thiruparankundram near Madurai, Tiruchendur on the sea coast, Palani in the
+    western hills, Swamimalai near Kumbakonam, Thiruthani near Chennai and Pazhamudircholai near Madurai.
+    Together they are the most sacred Murugan temples in Tamil tradition, and many devotees hope to visit
+    all six in their lifetime.
+- q: What is the significance of Palani Murugan temple?
+  a: Palani is where Murugan, after losing a contest for a sacred fruit, left home and stood on the hill
+    as a renunciate with a staff. He is worshipped there as Dandayudhapani. The temple is famous for its
+    panchamritham prasadam and for pilgrims who climb the hill carrying kavadi, especially during Thaipusam.
+- q: In what order should the Arupadai Veedu be visited?
+  a: 'The traditional order follows the Tirumurugatruppadai: Thiruparankundram, Tiruchendur, Palani, Swamimalai,
+    Thiruthani and Pazhamudircholai. Many pilgrims follow a route that suits travel instead, often starting
+    near Madurai. There is no strict rule; devotion matters more than sequence, and visiting even one
+    abode with care is valued.'
+- q: Why does Murugan have six abodes?
+  a: Tradition links the six abodes to Murugan's six faces as Shanmukha and to six stages of the spiritual
+    journey, from worldly life and struggle to renunciation and wisdom. Each temple marks a moment in
+    his story, so visiting them in sequence is often read as walking through the growth of a seeker.
 readingTime: 4
 draft: false
 ---

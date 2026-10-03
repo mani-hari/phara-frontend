@@ -1,69 +1,55 @@
 ---
 title: 'Vedic vs Western Astrology: What Is Different'
-description: >-
-  Vedic vs Western astrology: why your sun sign often shifts by one, how
-  sidereal and tropical zodiacs differ, and what each system is really trying to
-  tell you.
+description: 'Vedic vs Western astrology: why your sun sign often shifts by one, how sidereal and tropical
+  zodiacs differ, and what each system is really trying to tell you.'
 author: hariharan
 publishedAt: '2026-10-20'
 updatedAt: '2026-10-20'
 cluster: astrology-real
 primaryKeyword: vedic vs western astrology
 secondaryKeywords:
-  - sidereal vs tropical zodiac
-  - why is my vedic sign different
-  - what is jyotish
+- sidereal vs tropical zodiac
+- why is my vedic sign different
+- what is jyotish
 tags:
-  - Astrology
-  - Jyotish
-  - Seekers
+- Astrology
+- Jyotish
+- Seekers
 audience: seeker
 image: /blog/vedic-vs-western-astrology.webp
-imageAlt: >-
-  Starry night sky above a temple tower with a small oil lamp glowing in the
-  courtyard — vedic vs western astrology | pariharaonline.com
-imagePrompt: >-
-  A painterly night sky over a South Indian temple gopuram, stars faintly
-  traced, a small oil lamp glowing in the foreground courtyard.
+imageAlt: Starry night sky above a temple tower with a small oil lamp glowing in the courtyard — vedic
+  vs western astrology | pariharaonline.com
+imagePrompt: A painterly night sky over a South Indian temple gopuram, stars faintly traced, a small oil
+  lamp glowing in the foreground courtyard.
 products:
   handles:
-    - ask-our-astrologer
+  - ask-our-astrologer
 related:
-  - reading-your-birth-chart-calmly
-  - astrology-and-free-will
-  - rahu-ketu-dosha-explained
+- reading-your-birth-chart-calmly
+- astrology-and-free-will
+- rahu-ketu-dosha-explained
 takeaways:
-  - >-
-    Western astrology uses a season-based tropical zodiac; Vedic astrology uses
-    a star-based sidereal zodiac, so most signs shift back by about one.
-  - >-
-    Jyotish emphasises the moon sign, 27 nakshatras and planetary periods, and
-    links the chart to karma and remedies.
-  - >-
-    Neither is scientifically proven; they are two cultural languages for
-    reflecting on character and time.
+- Western astrology uses a season-based tropical zodiac; Vedic astrology uses a star-based sidereal zodiac,
+  so most signs shift back by about one.
+- Jyotish emphasises the moon sign, 27 nakshatras and planetary periods, and links the chart to karma
+  and remedies.
+- Neither is scientifically proven; they are two cultural languages for reflecting on character and time.
 faq:
-  - q: Why is my Vedic zodiac sign different from my Western sign?
-    a: >-
-      Western astrology fixes the zodiac to the seasons, starting at the spring
-      equinox. Vedic astrology fixes it to the actual star constellations.
-      Because the earth's axis slowly wobbles, the two have drifted apart by
-      roughly twenty-four degrees, so many people find their Vedic sun sign is
-      one sign earlier than their Western one.
-  - q: What is the difference between sidereal and tropical zodiac?
-    a: >-
-      The tropical zodiac, used in Western astrology, is measured from the point
-      where the sun sits at the spring equinox. The sidereal zodiac, used in
-      Jyotish, is measured against the fixed stars. The gap between them, called
-      ayanamsa, grows very slowly over centuries, which is why the two systems
-      place planets in different signs.
-  - q: What is a nakshatra in Vedic astrology?
-    a: >-
-      A nakshatra is one of twenty-seven lunar mansions, star groups the moon
-      passes through roughly once a month. In Jyotish, the nakshatra your moon
-      occupied at birth is often considered more personal than your sun sign. It
-      is used in naming ceremonies, in the sankalpam before a pooja and in
-      choosing auspicious times.
+- q: Why is my Vedic zodiac sign different from my Western sign?
+  a: Western astrology fixes the zodiac to the seasons, starting at the spring equinox. Vedic astrology
+    fixes it to the actual star constellations. Because the earth's axis slowly wobbles, the two have
+    drifted apart by roughly twenty-four degrees, so many people find their Vedic sun sign is one sign
+    earlier than their Western one.
+- q: What is the difference between sidereal and tropical zodiac?
+  a: The tropical zodiac, used in Western astrology, is measured from the point where the sun sits at
+    the spring equinox. The sidereal zodiac, used in Jyotish, is measured against the fixed stars. The
+    gap between them, called ayanamsa, grows very slowly over centuries, which is why the two systems
+    place planets in different signs.
+- q: What is a nakshatra in Vedic astrology?
+  a: A nakshatra is one of twenty-seven lunar mansions, star groups the moon passes through roughly once
+    a month. In Jyotish, the nakshatra your moon occupied at birth is often considered more personal than
+    your sun sign. It is used in naming ceremonies, in the sankalpam before a pooja and in choosing auspicious
+    times.
 readingTime: 4
 draft: false
 ---

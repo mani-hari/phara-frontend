@@ -1,75 +1,59 @@
 ---
 title: Puja Items List for a Home Altar Abroad
-description: >-
-  A puja items list for a home altar abroad: the essentials to start with, what
-  to buy at an Indian store, easy substitutes, and tidy storage for small
-  spaces.
+description: 'A puja items list for a home altar abroad: the essentials to start with, what to buy at
+  an Indian store, easy substitutes, and tidy storage for small spaces.'
 author: archana
-publishedAt: '2026-10-16'
-updatedAt: '2026-10-16'
+publishedAt: '2026-11-29'
+updatedAt: '2026-11-29'
 cluster: puja-at-home
 primaryKeyword: puja items list
 secondaryKeywords:
-  - puja samagri list for home
-  - basic pooja items for beginners
-  - where to buy puja items in usa
+- puja samagri list for home
+- basic pooja items for beginners
+- where to buy puja items in usa
 tags:
-  - Puja At Home
-  - NRI Life
-  - Beginners
+- Puja At Home
+- NRI Life
+- Beginners
 audience: nri-us
 image: /blog/puja-items-list-for-home.webp
-imageAlt: >-
-  Neatly arranged puja items on a white cloth: brass lamp, wicks, kumkum,
-  turmeric, incense and a bell — puja items list | pariharaonline.com
-imagePrompt: >-
-  Overhead editorial photograph of neatly arranged puja items on a white cloth,
-  a brass lamp, cotton wicks, kumkum and turmeric bowls, incense, camphor and a
-  bell, soft daylight.
+imageAlt: 'Neatly arranged puja items on a white cloth: brass lamp, wicks, kumkum, turmeric, incense and
+  a bell — puja items list | pariharaonline.com'
+imagePrompt: Overhead editorial photograph of neatly arranged puja items on a white cloth, a brass lamp,
+  cotton wicks, kumkum and turmeric bowls, incense, camphor and a bell, soft daylight.
 products:
   handles: []
   query: pooja
 related:
-  - small-puja-corner-apartment
-  - sixteen-steps-of-puja
-  - homam-vs-puja
+- small-puja-corner-apartment
+- sixteen-steps-of-puja
+- homam-vs-puja
 takeaways:
-  - >-
-    A beginner's home altar needs only a lamp, an image or idol, flowers,
-    incense and a small plate; everything else can come later.
-  - >-
-    Most puja items are sold at Indian grocery stores and temple shops across
-    the US, and local flowers are perfectly acceptable.
-  - Keeping everything in one box makes daily puja quicker in small homes.
+- A beginner's home altar needs only a lamp, an image or idol, flowers, incense and a small plate; everything
+  else can come later.
+- Most puja items are sold at Indian grocery stores and temple shops across the US, and local flowers
+  are perfectly acceptable.
+- Keeping everything in one box makes daily puja quicker in small homes.
 faq:
-  - q: What are the basic puja items needed at home?
-    a: >-
-      The core items are a lamp with cotton wicks and ghee or oil, an image or
-      small idol of your chosen deity, kumkum and turmeric, incense sticks,
-      camphor, a small plate, a bell and a vessel of water. Fresh flowers and a
-      fruit or sweet for offering complete a daily setup. Start small and add
-      items as needed.
-  - q: Where can I buy puja items in the USA?
-    a: >-
-      Most Indian grocery stores carry wicks, camphor, kumkum, incense and brass
-      lamps, and many Hindu temples run a small shop. Items like copper vessels
-      or specific idols can be ordered from India or bought during a visit.
-      Flowers, fruit and even marigolds are usually easy to find at local
-      florists and farmers markets.
-  - q: What can I use instead of a traditional diya?
-    a: >-
-      A tealight in a small brass or ceramic holder is a common substitute in
-      apartments, and many families use electric lamps where open flames are
-      restricted. Tradition values the flame as an offering of light, so a real
-      lamp is preferred when safe, but a sincere offering with what is available
-      is always acceptable.
-  - q: How do I store puja items in a small apartment?
-    a: >-
-      Keep a single box, drawer or basket as your puja kit, with the lamp,
-      wicks, oil, camphor, kumkum and incense together. A small shelf or
-      wall-mounted unit can hold the image and a plate. Store matches safely,
-      keep camphor sealed, and place the lamp away from curtains and smoke
-      detectors.
+- q: What are the basic puja items needed at home?
+  a: The core items are a lamp with cotton wicks and ghee or oil, an image or small idol of your chosen
+    deity, kumkum and turmeric, incense sticks, camphor, a small plate, a bell and a vessel of water.
+    Fresh flowers and a fruit or sweet for offering complete a daily setup. Start small and add items
+    as needed.
+- q: Where can I buy puja items in the USA?
+  a: Most Indian grocery stores carry wicks, camphor, kumkum, incense and brass lamps, and many Hindu
+    temples run a small shop. Items like copper vessels or specific idols can be ordered from India or
+    bought during a visit. Flowers, fruit and even marigolds are usually easy to find at local florists
+    and farmers markets.
+- q: What can I use instead of a traditional diya?
+  a: A tealight in a small brass or ceramic holder is a common substitute in apartments, and many families
+    use electric lamps where open flames are restricted. Tradition values the flame as an offering of
+    light, so a real lamp is preferred when safe, but a sincere offering with what is available is always
+    acceptable.
+- q: How do I store puja items in a small apartment?
+  a: Keep a single box, drawer or basket as your puja kit, with the lamp, wicks, oil, camphor, kumkum
+    and incense together. A small shelf or wall-mounted unit can hold the image and a plate. Store matches
+    safely, keep camphor sealed, and place the lamp away from curtains and smoke detectors.
 readingTime: 4
 draft: false
 ---

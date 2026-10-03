@@ -1,74 +1,58 @@
 ---
 title: Keeping a Tulsi Plant Indoors in a Cold Climate
-description: >-
-  Tulsi plant care indoors for cold winters: light, water and warmth for holy
-  basil in an American apartment, plus the simple daily ritual that goes with
-  it.
+description: 'Tulsi plant care indoors for cold winters: light, water and warmth for holy basil in an
+  American apartment, plus the simple daily ritual that goes with it.'
 author: archana
-publishedAt: '2026-10-15'
-updatedAt: '2026-10-15'
+publishedAt: '2026-12-02'
+updatedAt: '2026-12-02'
 cluster: puja-at-home
 primaryKeyword: tulsi plant indoors
 secondaryKeywords:
-  - how to grow tulsi in usa
-  - holy basil winter care
-  - tulsi puja at home daily
+- how to grow tulsi in usa
+- holy basil winter care
+- tulsi puja at home daily
 tags:
-  - Tulsi
-  - Home Rituals
-  - NRI Life
+- Tulsi
+- Home Rituals
+- NRI Life
 audience: nri-us
 image: /blog/tulsi-plant-indoors.webp
-imageAlt: >-
-  Potted tulsi plant on a sunny apartment windowsill with snow outside and a
-  brass lamp beside it — tulsi plant indoors | pariharaonline.com
-imagePrompt: >-
-  Editorial photograph of a potted tulsi plant on a sunny apartment windowsill
-  with snow visible outside, a small brass lamp and copper water pot beside it,
-  warm interior light.
+imageAlt: Potted tulsi plant on a sunny apartment windowsill with snow outside and a brass lamp beside
+  it — tulsi plant indoors | pariharaonline.com
+imagePrompt: Editorial photograph of a potted tulsi plant on a sunny apartment windowsill with snow visible
+  outside, a small brass lamp and copper water pot beside it, warm interior light.
 products:
   handles: []
   query: Vishnu
 related:
-  - puja-at-home-step-by-step
-  - small-puja-corner-apartment
-  - why-do-hindus-light-lamps
+- puja-at-home-step-by-step
+- small-puja-corner-apartment
+- why-do-hindus-light-lamps
 takeaways:
-  - >-
-    Indoors in a cold climate, tulsi needs the brightest window or a grow light,
-    steady warmth away from drafts and water only when the topsoil dries.
-  - 'Most winter tulsi losses come from cold and overwatering, not from neglect.'
-  - >-
-    Offering water to tulsi each morning doubles as a simple, daily moment of
-    prayer.
+- Indoors in a cold climate, tulsi needs the brightest window or a grow light, steady warmth away from
+  drafts and water only when the topsoil dries.
+- Most winter tulsi losses come from cold and overwatering, not from neglect.
+- Offering water to tulsi each morning doubles as a simple, daily moment of prayer.
 faq:
-  - q: How do I keep a tulsi plant alive indoors in winter?
-    a: >-
-      Give it the sunniest window you have, ideally south facing, or add an
-      inexpensive grow light for ten to twelve hours a day. Keep it away from
-      cold glass and heating vents, water only when the top inch of soil feels
-      dry, and pinch off flower spikes so the plant puts energy into leaves.
-  - q: Can I grow tulsi in the USA from seeds?
-    a: >-
-      Yes. Holy basil seeds are widely available in the United States and sprout
-      easily in warm, moist potting mix within one to two weeks. Start them
-      indoors in spring, or anytime under a grow light. Many families also bring
-      cuttings from friends, which root in water within a few weeks and grow
-      faster than seeds.
-  - q: What is the daily tulsi puja at home?
-    a: >-
-      The simplest practice is to offer a little water to the plant in the
-      morning with a short prayer or the tulsi mantra, and to light a small lamp
-      near it at dusk. Some people circle the plant three times. Tradition
-      treats tulsi as sacred to Vishnu, so the plant is tended with care rather
-      than casually harvested.
-  - q: Is it okay to pluck tulsi leaves for puja or tea?
-    a: >-
-      Yes, with respect. Tradition suggests plucking gently, with clean hands,
-      and avoiding certain days such as Ekadashi, when leaves are gathered the
-      day before. Pinching the tops actually helps the plant grow bushier. Take
-      only what you need for offering or for a cup of tea, and thank the plant
-      as you do.
+- q: How do I keep a tulsi plant alive indoors in winter?
+  a: Give it the sunniest window you have, ideally south facing, or add an inexpensive grow light for
+    ten to twelve hours a day. Keep it away from cold glass and heating vents, water only when the top
+    inch of soil feels dry, and pinch off flower spikes so the plant puts energy into leaves.
+- q: Can I grow tulsi in the USA from seeds?
+  a: Yes. Holy basil seeds are widely available in the United States and sprout easily in warm, moist
+    potting mix within one to two weeks. Start them indoors in spring, or anytime under a grow light.
+    Many families also bring cuttings from friends, which root in water within a few weeks and grow faster
+    than seeds.
+- q: What is the daily tulsi puja at home?
+  a: The simplest practice is to offer a little water to the plant in the morning with a short prayer
+    or the tulsi mantra, and to light a small lamp near it at dusk. Some people circle the plant three
+    times. Tradition treats tulsi as sacred to Vishnu, so the plant is tended with care rather than casually
+    harvested.
+- q: Is it okay to pluck tulsi leaves for puja or tea?
+  a: Yes, with respect. Tradition suggests plucking gently, with clean hands, and avoiding certain days
+    such as Ekadashi, when leaves are gathered the day before. Pinching the tops actually helps the plant
+    grow bushier. Take only what you need for offering or for a cup of tea, and thank the plant as you
+    do.
 readingTime: 4
 draft: false
 ---

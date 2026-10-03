@@ -1,77 +1,60 @@
 ---
 title: 'Rahu Kalam Explained: Should You Avoid It?'
-description: >-
-  Rahu kalam meaning in plain words: the daily period tradition avoids for new
-  starts, how it is calculated, and how to treat it without letting it run your
-  week.
+description: 'Rahu kalam meaning in plain words: the daily period tradition avoids for new starts, how
+  it is calculated, and how to treat it without letting it run your week.'
 author: manikandan
-publishedAt: '2026-11-04'
-updatedAt: '2026-11-04'
+publishedAt: '2026-11-09'
+updatedAt: '2026-11-09'
 cluster: navagraha-rahu-ketu
 primaryKeyword: rahu kalam
 secondaryKeywords:
-  - what is rahu kalam
-  - rahu kalam timing calculation
-  - yamagandam and gulika kalam
+- what is rahu kalam
+- rahu kalam timing calculation
+- yamagandam and gulika kalam
 tags:
-  - Rahu Kalam
-  - Astrology
-  - Daily Life
+- Rahu Kalam
+- Astrology
+- Daily Life
 audience: seeker
 image: /blog/rahu-kalam-explained.webp
-imageAlt: >-
-  Brass sundial and folded almanac on a wooden veranda table with long afternoon
-  shadows — rahu kalam | pariharaonline.com
-imagePrompt: >-
-  An old brass sundial casting a long afternoon shadow on a South Indian veranda
-  floor, a brass lamp unlit beside it, warm light and deep shadows, editorial
-  photograph.
+imageAlt: Brass sundial and folded almanac on a wooden veranda table with long afternoon shadows — rahu
+  kalam | pariharaonline.com
+imagePrompt: An old brass sundial casting a long afternoon shadow on a South Indian veranda floor, a brass
+  lamp unlit beside it, warm light and deep shadows, editorial photograph.
 products:
   handles:
-    - navagraha-homam
+  - navagraha-homam
 related:
-  - rahu-ketu-dosha-explained
-  - kala-sarpa-dosha-meaning
-  - shani-sade-sati-explained
+- rahu-ketu-dosha-explained
+- kala-sarpa-dosha-meaning
+- shani-sade-sati-explained
 takeaways:
-  - >-
-    Rahu kalam is a roughly ninety-minute period each day that Jyotish tradition
-    considers unsuitable for starting new ventures.
-  - >-
-    It is calculated as one-eighth of daylight hours, with a fixed slot for each
-    weekday, so it depends on local sunrise and sunset.
-  - >-
-    Tradition avoids beginnings then, not ordinary work, and some devotees use
-    it for prayer.
+- Rahu kalam is a roughly ninety-minute period each day that Jyotish tradition considers unsuitable for
+  starting new ventures.
+- It is calculated as one-eighth of daylight hours, with a fixed slot for each weekday, so it depends
+  on local sunrise and sunset.
+- Tradition avoids beginnings then, not ordinary work, and some devotees use it for prayer.
 faq:
-  - q: What is rahu kalam and why is it considered inauspicious?
-    a: >-
-      Rahu kalam is a daily window of about ninety minutes associated with Rahu,
-      the shadow planet in Jyotish. Tradition holds that new ventures started in
-      this period may meet obstacles, so people avoid beginning journeys,
-      signing agreements or holding ceremonies then. It is a traditional
-      guideline rather than a certainty, and routine work continues as normal.
-  - q: How is rahu kalam timing calculated?
-    a: >-
-      Daylight from local sunrise to sunset is divided into eight equal parts.
-      Each weekday assigns rahu kalam to a fixed part, for example the second
-      part on Monday and the last part on Sunday, so most people simply use a
-      panchangam app. Because sunrise changes by place and season, rahu kalam in
-      New Jersey differs from Chennai.
-  - q: Is it bad to travel during rahu kalam?
-    a: >-
-      Tradition suggests not starting an important journey during rahu kalam,
-      and many families leave slightly earlier or later. Nothing is said to
-      happen automatically; it is about choosing a favourable moment when you
-      can. If a flight or meeting cannot move, many people simply say a short
-      prayer before starting and carry on without worry.
-  - q: 'What is the difference between rahu kalam, yamagandam and gulika kalam?'
-    a: >-
-      All three are daily periods listed in the panchangam. Rahu kalam and
-      yamagandam are traditionally avoided for new beginnings. Gulika kalam is
-      different: tradition says actions begun then tend to repeat, so it is
-      avoided for things you would not want to recur, like funerals, but
-      considered fine for buying property or starting good habits.
+- q: What is rahu kalam and why is it considered inauspicious?
+  a: Rahu kalam is a daily window of about ninety minutes associated with Rahu, the shadow planet in Jyotish.
+    Tradition holds that new ventures started in this period may meet obstacles, so people avoid beginning
+    journeys, signing agreements or holding ceremonies then. It is a traditional guideline rather than
+    a certainty, and routine work continues as normal.
+- q: How is rahu kalam timing calculated?
+  a: Daylight from local sunrise to sunset is divided into eight equal parts. Each weekday assigns rahu
+    kalam to a fixed part, for example the second part on Monday and the last part on Sunday, so most
+    people simply use a panchangam app. Because sunrise changes by place and season, rahu kalam in New
+    Jersey differs from Chennai.
+- q: Is it bad to travel during rahu kalam?
+  a: Tradition suggests not starting an important journey during rahu kalam, and many families leave slightly
+    earlier or later. Nothing is said to happen automatically; it is about choosing a favourable moment
+    when you can. If a flight or meeting cannot move, many people simply say a short prayer before starting
+    and carry on without worry.
+- q: What is the difference between rahu kalam, yamagandam and gulika kalam?
+  a: 'All three are daily periods listed in the panchangam. Rahu kalam and yamagandam are traditionally
+    avoided for new beginnings. Gulika kalam is different: tradition says actions begun then tend to repeat,
+    so it is avoided for things you would not want to recur, like funerals, but considered fine for buying
+    property or starting good habits.'
 readingTime: 4
 draft: false
 ---

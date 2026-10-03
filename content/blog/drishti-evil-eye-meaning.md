@@ -1,75 +1,59 @@
 ---
 title: 'Evil Eye in Hinduism: What Tradition Says About Drishti'
-description: >-
-  The evil eye in Hinduism, called drishti or nazar: where the belief comes
-  from, why families circle salt and chillies, and a calm way to read the custom
-  today.
+description: 'The evil eye in Hinduism, called drishti or nazar: where the belief comes from, why families
+  circle salt and chillies, and a calm way to read the custom today.'
 author: hariharan
-publishedAt: '2026-11-05'
-updatedAt: '2026-11-05'
+publishedAt: '2027-02-12'
+updatedAt: '2027-02-12'
 cluster: karma-dharma
 primaryKeyword: evil eye in hinduism
 secondaryKeywords:
-  - drishti meaning
-  - nazar remedies at home
-  - why hindus apply kajal dot on babies
+- drishti meaning
+- nazar remedies at home
+- why hindus apply kajal dot on babies
 tags:
-  - Drishti
-  - Evil Eye
-  - Traditions
+- Drishti
+- Evil Eye
+- Traditions
 audience: seeker
 image: /blog/drishti-evil-eye-meaning.webp
-imageAlt: >-
-  Lemon and green chillies hanging at a carved wooden doorway with a brass lamp
-  glowing inside — evil eye in hinduism | pariharaonline.com
-imagePrompt: >-
-  Editorial photograph of a lemon threaded with green chillies hanging at a
-  carved wooden doorway of a South Indian home, a brass lamp glowing inside,
-  late afternoon light.
+imageAlt: Lemon and green chillies hanging at a carved wooden doorway with a brass lamp glowing inside
+  — evil eye in hinduism | pariharaonline.com
+imagePrompt: Editorial photograph of a lemon threaded with green chillies hanging at a carved wooden doorway
+  of a South Indian home, a brass lamp glowing inside, late afternoon light.
 products:
   handles:
-    - ganesha-hanuman-shakti-kavach-the-shield-of-protection-and-victory
+  - ganesha-hanuman-shakti-kavach-the-shield-of-protection-and-victory
 related:
-  - karma-explained-simply
-  - spiritual-but-not-religious-hinduism
-  - is-astrology-real
+- karma-explained-simply
+- spiritual-but-not-religious-hinduism
+- is-astrology-real
 takeaways:
-  - >-
-    Drishti, or nazar, is the traditional belief that an envious or admiring
-    gaze can cause harm, especially to babies, new homes or success.
-  - >-
-    Familiar customs include a black kajal dot, circling salt or chillies, and
-    hanging a drishti face or lemon-and-chilli strand.
-  - Many families today keep them as gestures of care rather than fear.
+- Drishti, or nazar, is the traditional belief that an envious or admiring gaze can cause harm, especially
+  to babies, new homes or success.
+- Familiar customs include a black kajal dot, circling salt or chillies, and hanging a drishti face or
+  lemon-and-chilli strand.
+- Many families today keep them as gestures of care rather than fear.
 faq:
-  - q: What does drishti mean in Hinduism?
-    a: >-
-      Drishti literally means sight or gaze. In everyday tradition it refers to
-      the evil eye, the belief that an envious or excessively admiring look can
-      bring misfortune, illness or setbacks. Similar beliefs exist across many
-      cultures, from the Mediterranean to the Middle East. In Hindu homes the
-      response is usually a small protective ritual, not alarm.
-  - q: What are common nazar remedies at home?
-    a: >-
-      Families often circle a handful of salt, dried red chillies or a lit
-      camphor around a person three times and then dissolve or burn it, called
-      drishti suthi in Tamil. Others apply a black kajal dot, hang a lemon with
-      green chillies at the door, or place a protective image of Ganesha or
-      Hanuman at the entrance.
-  - q: Why do Hindu families put a black dot on babies?
-    a: >-
-      The black kajal dot, placed on the cheek, forehead or behind the ear, is
-      meant to make the child look slightly imperfect so admiring eyes do not
-      linger with envy. It is one of the most widespread drishti customs in
-      India. For many parents it is simply an affectionate family tradition
-      passed from grandmothers.
-  - q: Is the evil eye real or superstition?
-    a: >-
-      There is no scientific evidence that a gaze causes harm, and many people
-      see drishti customs as superstition. Others value them as a way to
-      acknowledge envy, a real emotion, and to feel protected. Hindu tradition
-      leaves room for both views. What matters is that no custom should create
-      fear or blame anyone.
+- q: What does drishti mean in Hinduism?
+  a: Drishti literally means sight or gaze. In everyday tradition it refers to the evil eye, the belief
+    that an envious or excessively admiring look can bring misfortune, illness or setbacks. Similar beliefs
+    exist across many cultures, from the Mediterranean to the Middle East. In Hindu homes the response
+    is usually a small protective ritual, not alarm.
+- q: What are common nazar remedies at home?
+  a: Families often circle a handful of salt, dried red chillies or a lit camphor around a person three
+    times and then dissolve or burn it, called drishti suthi in Tamil. Others apply a black kajal dot,
+    hang a lemon with green chillies at the door, or place a protective image of Ganesha or Hanuman at
+    the entrance.
+- q: Why do Hindu families put a black dot on babies?
+  a: The black kajal dot, placed on the cheek, forehead or behind the ear, is meant to make the child
+    look slightly imperfect so admiring eyes do not linger with envy. It is one of the most widespread
+    drishti customs in India. For many parents it is simply an affectionate family tradition passed from
+    grandmothers.
+- q: Is the evil eye real or superstition?
+  a: There is no scientific evidence that a gaze causes harm, and many people see drishti customs as superstition.
+    Others value them as a way to acknowledge envy, a real emotion, and to feel protected. Hindu tradition
+    leaves room for both views. What matters is that no custom should create fear or blame anyone.
 readingTime: 4
 draft: false
 ---

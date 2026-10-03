@@ -1,74 +1,57 @@
 ---
 title: 'Bhai Dooj Meaning: Yama, Yamuna and Siblings'
-description: >-
-  Bhai Dooj meaning, told through the story of Yama visiting his sister Yamuna:
-  why sisters apply tilak, pray for a brother's long life and share a meal.
+description: 'Bhai Dooj meaning, told through the story of Yama visiting his sister Yamuna: why sisters
+  apply tilak, pray for a brother''s long life and share a meal.'
 author: hariharan
-publishedAt: '2026-10-08'
-updatedAt: '2026-10-08'
+publishedAt: '2026-10-07'
+updatedAt: '2026-10-07'
 cluster: diwali-meaning
 primaryKeyword: bhai dooj meaning
 secondaryKeywords:
-  - bhai dooj story yama yamuna
-  - why is bhai dooj celebrated
-  - bhai dooj tilak ritual
+- bhai dooj story yama yamuna
+- why is bhai dooj celebrated
+- bhai dooj tilak ritual
 tags:
-  - Bhai Dooj
-  - Diwali
-  - Family
+- Bhai Dooj
+- Diwali
+- Family
 audience: general
 image: /blog/bhai-dooj-meaning.webp
-imageAlt: >-
-  Brass tilak plate with a lit lamp, kumkum, rice grains and a sweet beside a
-  doorway — bhai dooj meaning | pariharaonline.com
-imagePrompt: >-
-  Painterly still life of a small brass plate with a lit lamp, red kumkum, rice
-  grains and a sweet on a wooden floor beside a doorway, warm evening light.
+imageAlt: Brass tilak plate with a lit lamp, kumkum, rice grains and a sweet beside a doorway — bhai dooj
+  meaning | pariharaonline.com
+imagePrompt: Painterly still life of a small brass plate with a lit lamp, red kumkum, rice grains and
+  a sweet on a wooden floor beside a doorway, warm evening light.
 products:
   handles:
-    - ayushya-homam
+  - ayushya-homam
 related:
-  - five-days-of-diwali
-  - naraka-chaturdashi-oil-bath
-  - how-to-light-a-diya
+- five-days-of-diwali
+- naraka-chaturdashi-oil-bath
+- how-to-light-a-diya
 takeaways:
-  - >-
-    Bhai Dooj comes from the story of Yama, god of death, visiting his sister
-    Yamuna and granting long life to brothers who accept a sister's hospitality.
-  - >-
-    The ritual is simple: a tilak on the brother's forehead, an aarti, a shared
-    meal and a gift in return.
-  - >-
-    Its real subject is showing up for siblings, which is why it works just as
-    well over a video call.
+- Bhai Dooj comes from the story of Yama, god of death, visiting his sister Yamuna and granting long life
+  to brothers who accept a sister's hospitality.
+- 'The ritual is simple: a tilak on the brother''s forehead, an aarti, a shared meal and a gift in return.'
+- Its real subject is showing up for siblings, which is why it works just as well over a video call.
 faq:
-  - q: What is the story behind Bhai Dooj?
-    a: >-
-      Tradition says Yamuna repeatedly invited her brother Yama, the god of
-      death, to visit. When he finally came on the second day of the bright
-      fortnight after Diwali, she welcomed him with a tilak, lamps and a meal.
-      Moved, Yama declared that any brother who visits his sister on this day
-      would be blessed with long life.
-  - q: When is Bhai Dooj celebrated?
-    a: >-
-      Bhai Dooj falls on Dwitiya, the second lunar day of the bright fortnight
-      of Kartika, which is two days after the Diwali new moon. It usually lands
-      in late October or November. Because the date follows the lunar calendar,
-      check the current panchangam for your city, as it can shift by a day in
-      different time zones.
-  - q: How do sisters perform the Bhai Dooj tilak?
-    a: >-
-      The sister places a small plate with a lamp, kumkum or sandalwood paste,
-      rice grains and a sweet. She applies a tilak on her brother's forehead,
-      adds a few grains of rice, waves the lamp in a small circle and feeds him
-      a sweet. Brothers offer a gift and a promise to stand by her.
-  - q: Can Bhai Dooj be celebrated if siblings live far apart?
-    a: >-
-      Yes. Many families now do the tilak over a video call, with the brother
-      applying it himself while the sister does the aarti on her side. Others
-      post a card with a little kumkum, or cook the sibling's favourite food and
-      eat together on screen. The heart of the day is making time for each
-      other.
+- q: What is the story behind Bhai Dooj?
+  a: Tradition says Yamuna repeatedly invited her brother Yama, the god of death, to visit. When he finally
+    came on the second day of the bright fortnight after Diwali, she welcomed him with a tilak, lamps
+    and a meal. Moved, Yama declared that any brother who visits his sister on this day would be blessed
+    with long life.
+- q: When is Bhai Dooj celebrated?
+  a: Bhai Dooj falls on Dwitiya, the second lunar day of the bright fortnight of Kartika, which is two
+    days after the Diwali new moon. It usually lands in late October or November. Because the date follows
+    the lunar calendar, check the current panchangam for your city, as it can shift by a day in different
+    time zones.
+- q: How do sisters perform the Bhai Dooj tilak?
+  a: The sister places a small plate with a lamp, kumkum or sandalwood paste, rice grains and a sweet.
+    She applies a tilak on her brother's forehead, adds a few grains of rice, waves the lamp in a small
+    circle and feeds him a sweet. Brothers offer a gift and a promise to stand by her.
+- q: Can Bhai Dooj be celebrated if siblings live far apart?
+  a: Yes. Many families now do the tilak over a video call, with the brother applying it himself while
+    the sister does the aarti on her side. Others post a card with a little kumkum, or cook the sibling's
+    favourite food and eat together on screen. The heart of the day is making time for each other.
 readingTime: 4
 draft: false
 ---

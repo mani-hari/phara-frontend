@@ -1,68 +1,53 @@
 ---
 title: 'Ekadashi Fasting at Work: A Desk-Job Guide'
-description: >-
-  Ekadashi fasting at work in the US: keeping the fast through meetings, lunch
-  invites and long commutes, what to tell colleagues, and how to be kind to
-  yourself.
+description: 'Ekadashi fasting at work in the US: keeping the fast through meetings, lunch invites and
+  long commutes, what to tell colleagues, and how to be kind to yourself.'
 author: manikandan
-publishedAt: '2026-10-18'
-updatedAt: '2026-10-18'
+publishedAt: '2026-10-19'
+updatedAt: '2026-10-19'
 cluster: ekadashi-fasting
 primaryKeyword: ekadashi fasting at work
 secondaryKeywords:
-  - how to fast at work
-  - explaining religious fasting to coworkers
-  - ekadashi fasting tips for working people
+- how to fast at work
+- explaining religious fasting to coworkers
+- ekadashi fasting tips for working people
 tags:
-  - Ekadashi
-  - Fasting
-  - NRI Life
+- Ekadashi
+- Fasting
+- NRI Life
 audience: nri-us
 image: /blog/fasting-with-a-desk-job.webp
-imageAlt: >-
-  Office desk with a laptop, a bowl of cut fruit and a steel water bottle
-  against a city skyline — ekadashi fasting at work | pariharaonline.com
-imagePrompt: >-
-  An office desk in an American high-rise with a laptop, a small bowl of cut
-  fruit and a steel water bottle, city skyline in soft afternoon light.
+imageAlt: Office desk with a laptop, a bowl of cut fruit and a steel water bottle against a city skyline
+  — ekadashi fasting at work | pariharaonline.com
+imagePrompt: An office desk in an American high-rise with a laptop, a small bowl of cut fruit and a steel
+  water bottle, city skyline in soft afternoon light.
 products:
   handles: []
   query: Vishnu
 related:
-  - vaikunta-ekadashi-significance
-  - ekadashi-fasting-rules
-  - satyanarayan-katha-meaning
-  - margazhi-month-meaning
+- vaikunta-ekadashi-significance
+- ekadashi-fasting-rules
+- satyanarayan-katha-meaning
+- margazhi-month-meaning
 takeaways:
-  - >-
-    Check the Ekadashi date for your US city, since lunar days can differ from
-    India by a day.
-  - >-
-    A short, honest line such as 'It's a fasting day in my tradition' is usually
-    all coworkers need.
-  - >-
-    With a desk job, a fruit-and-milk fast is often wiser than a waterless one;
-    keep the spirit, adapt the form.
+- Check the Ekadashi date for your US city, since lunar days can differ from India by a day.
+- A short, honest line such as 'It's a fasting day in my tradition' is usually all coworkers need.
+- With a desk job, a fruit-and-milk fast is often wiser than a waterless one; keep the spirit, adapt the
+  form.
 faq:
-  - q: How do I fast at work without feeling awkward?
-    a: >-
-      Plan ahead: keep fruit, nuts or milk at your desk, move lunch meetings
-      where possible, and join team lunches with a drink if you like. Most
-      colleagues respect a simple explanation. Treat it matter-of-factly rather
-      than apologetically. People are often curious and appreciative when you
-      share a bit about the tradition.
-  - q: How do I explain religious fasting to coworkers?
-    a: >-
-      Keep it short and friendly: 'Today is Ekadashi, a fasting day in my
-      tradition, so I'm skipping grains.' You can add that it happens twice a
-      month and is about discipline and prayer. Avoid long justifications. Many
-      coworkers will relate it to fasts in their own traditions.
-  - q: Is Ekadashi on a different day in the USA than in India?
-    a: >-
-      It can be. Ekadashi is determined by the lunar day, or tithi, at local
-      sunrise, so the date in a US time zone sometimes falls a day earlier than
-      in India. Use a panchangam set to your city, or check with your local
-      temple, to know when to fast and when to break the fast.
+- q: How do I fast at work without feeling awkward?
+  a: 'Plan ahead: keep fruit, nuts or milk at your desk, move lunch meetings where possible, and join
+    team lunches with a drink if you like. Most colleagues respect a simple explanation. Treat it matter-of-factly
+    rather than apologetically. People are often curious and appreciative when you share a bit about the
+    tradition.'
+- q: How do I explain religious fasting to coworkers?
+  a: 'Keep it short and friendly: ''Today is Ekadashi, a fasting day in my tradition, so I''m skipping
+    grains.'' You can add that it happens twice a month and is about discipline and prayer. Avoid long
+    justifications. Many coworkers will relate it to fasts in their own traditions.'
+- q: Is Ekadashi on a different day in the USA than in India?
+  a: It can be. Ekadashi is determined by the lunar day, or tithi, at local sunrise, so the date in a
+    US time zone sometimes falls a day earlier than in India. Use a panchangam set to your city, or check
+    with your local temple, to know when to fast and when to break the fast.
 readingTime: 4
 draft: false
 ---

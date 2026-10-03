@@ -1,69 +1,55 @@
 ---
 title: 'Fasting and Focus: What an Empty Stomach Teaches'
-description: >-
-  Benefits of fasting in Hinduism, honestly: what a day of eating less teaches
-  about hunger, attention and habit, what tradition claims, and what you may
-  notice.
+description: 'Benefits of fasting in Hinduism, honestly: what a day of eating less teaches about hunger,
+  attention and habit, what tradition claims, and what you may notice.'
 author: archana
-publishedAt: '2026-10-26'
-updatedAt: '2026-10-26'
+publishedAt: '2026-10-19'
+updatedAt: '2026-10-19'
 cluster: ekadashi-fasting
 primaryKeyword: fasting and focus
 secondaryKeywords:
-  - why do hindus fast
-  - fasting and mental clarity
-  - spiritual benefits of fasting
+- why do hindus fast
+- fasting and mental clarity
+- spiritual benefits of fasting
 tags:
-  - Fasting
-  - Mind and Body
-  - Seekers
+- Fasting
+- Mind and Body
+- Seekers
 audience: seeker
 image: /blog/fasting-and-focus.webp
-imageAlt: >-
-  Empty brass plate and a glass of water beside a small lamp and a book on a
-  sunny table — fasting and focus | pariharaonline.com
-imagePrompt: >-
-  An empty brass plate and a single glass of water on a wooden table by a sunny
-  window, a small lit lamp beside it, calm morning light, minimal still life.
+imageAlt: Empty brass plate and a glass of water beside a small lamp and a book on a sunny table — fasting
+  and focus | pariharaonline.com
+imagePrompt: An empty brass plate and a single glass of water on a wooden table by a sunny window, a small
+  lit lamp beside it, calm morning light, minimal still life.
 products:
   handles: []
   query: Vishnu
 related:
-  - fasting-with-a-desk-job
-  - vaikunta-ekadashi-significance
-  - prasad-and-gratitude
+- fasting-with-a-desk-job
+- vaikunta-ekadashi-significance
+- prasad-and-gratitude
 takeaways:
-  - >-
-    The Sanskrit word upavasa, often used for fasting, means 'sitting near',
-    suggesting the fast is meant to bring you closer to the divine.
-  - >-
-    Many people notice sharper attention and clearer awareness of habits during
-    a light fast, alongside hunger and irritability.
-  - >-
-    Treat fasting as an experiment in attention, not self-punishment, and skip
-    it when health requires.
+- The Sanskrit word upavasa, often used for fasting, means 'sitting near', suggesting the fast is meant
+  to bring you closer to the divine.
+- Many people notice sharper attention and clearer awareness of habits during a light fast, alongside
+  hunger and irritability.
+- Treat fasting as an experiment in attention, not self-punishment, and skip it when health requires.
 faq:
-  - q: Why do Hindus fast?
-    a: >-
-      Hindus fast for devotion, discipline and inner cleansing. Fasting on
-      Ekadashi, Shivaratri, Navratri or a weekday linked to a deity is a way of
-      offering restraint and turning attention towards prayer. The Sanskrit
-      upavasa is often explained as 'sitting near' the divine. Some also fast to
-      mark vows, gratitude or seasonal transitions.
-  - q: Does fasting improve mental clarity?
-    a: >-
-      Many people report feeling lighter and more focused on fasting days,
-      especially after the first few hours of hunger pass. Others feel tired or
-      irritable. Experiences vary with health, sleep and the type of fast. It is
-      best approached as a personal experiment, with medical advice if you have
-      any condition that makes fasting risky.
-  - q: What are the spiritual benefits of fasting?
-    a: >-
-      Tradition holds that fasting purifies body and mind, strengthens willpower
-      and makes prayer more focused. On a practical level, freeing time from
-      cooking and eating leaves more room for reflection, and noticing cravings
-      teaches you about your habits. Many find gratitude for food deepens when
-      the fast is broken.
+- q: Why do Hindus fast?
+  a: Hindus fast for devotion, discipline and inner cleansing. Fasting on Ekadashi, Shivaratri, Navratri
+    or a weekday linked to a deity is a way of offering restraint and turning attention towards prayer.
+    The Sanskrit upavasa is often explained as 'sitting near' the divine. Some also fast to mark vows,
+    gratitude or seasonal transitions.
+- q: Does fasting improve mental clarity?
+  a: Many people report feeling lighter and more focused on fasting days, especially after the first few
+    hours of hunger pass. Others feel tired or irritable. Experiences vary with health, sleep and the
+    type of fast. It is best approached as a personal experiment, with medical advice if you have any
+    condition that makes fasting risky.
+- q: What are the spiritual benefits of fasting?
+  a: Tradition holds that fasting purifies body and mind, strengthens willpower and makes prayer more
+    focused. On a practical level, freeing time from cooking and eating leaves more room for reflection,
+    and noticing cravings teaches you about your habits. Many find gratitude for food deepens when the
+    fast is broken.
 readingTime: 4
 draft: false
 ---

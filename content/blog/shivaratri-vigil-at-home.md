@@ -1,69 +1,56 @@
 ---
 title: 'Shivaratri Puja at Home: A Night Vigil, Hour by Hour'
-description: >-
-  How to do Shivaratri puja at home: an hour-by-hour night vigil with the four
-  praharas, simple abhishekam, chanting, fasting options and staying awake
-  gently.
+description: 'How to do Shivaratri puja at home: an hour-by-hour night vigil with the four praharas, simple
+  abhishekam, chanting, fasting options and staying awake gently.'
 author: archana
-publishedAt: '2026-10-09'
-updatedAt: '2026-10-09'
+publishedAt: '2026-10-31'
+updatedAt: '2026-10-31'
 cluster: maha-shivaratri
 primaryKeyword: shivaratri puja at home
 secondaryKeywords:
-  - four prahara puja shivaratri
-  - shivaratri abhishekam at home
-  - what to eat on shivaratri fast
+- four prahara puja shivaratri
+- shivaratri abhishekam at home
+- what to eat on shivaratri fast
 tags:
-  - Maha Shivaratri
-  - Shiva
-  - Practice
+- Maha Shivaratri
+- Shiva
+- Practice
 audience: general
 image: /blog/shivaratri-vigil-at-home.webp
-imageAlt: >-
-  Small brass linga with bilva leaves, a copper tumbler of milk and a lamp in a
-  dark home — shivaratri puja at home | pariharaonline.com
-imagePrompt: >-
-  A small brass Shiva linga on a wooden stand at home, surrounded by bilva
-  leaves, a copper tumbler of milk and a single lamp, a wall clock softly
-  visible in the dark, warm lamplight.
+imageAlt: Small brass linga with bilva leaves, a copper tumbler of milk and a lamp in a dark home — shivaratri
+  puja at home | pariharaonline.com
+imagePrompt: A small brass Shiva linga on a wooden stand at home, surrounded by bilva leaves, a copper
+  tumbler of milk and a single lamp, a wall clock softly visible in the dark, warm lamplight.
 products:
   handles:
-    - maha-shivaratri
-    - mrityunjaya-homam
+  - maha-shivaratri
+  - mrityunjaya-homam
   heading: Poojas for Maha Shivaratri
 related:
-  - shivaratri-after-a-long-week
-  - maha-shivaratri-meaning
-  - karthigai-deepam-at-home
+- shivaratri-after-a-long-week
+- maha-shivaratri-meaning
+- karthigai-deepam-at-home
 takeaways:
-  - >-
-    To do Shivaratri puja at home, set up a small linga or image, and offer
-    water, milk and bilva leaves in each of the night's four praharas.
-  - >-
-    Dividing the night into four watches of about three hours, each with a short
-    abhishekam and chant, makes an all-night vigil manageable.
+- To do Shivaratri puja at home, set up a small linga or image, and offer water, milk and bilva leaves
+  in each of the night's four praharas.
+- Dividing the night into four watches of about three hours, each with a short abhishekam and chant, makes
+  an all-night vigil manageable.
 faq:
-  - q: How do you do Shivaratri puja at home?
-    a: >-
-      Clean your puja space before sunset and set up a small Shiva linga or
-      picture. Offer water, then milk, curd, honey or just water again, followed
-      by bilva or other leaves, flowers and a lamp. Chant Om Namah Shivaya or
-      the Shiva Panchakshara stotram. Repeat a short version in each prahara of
-      the night and close with arati.
-  - q: What is the four prahara puja on Shivaratri?
-    a: >-
-      The night of Shivaratri is divided into four praharas, watches of roughly
-      three hours each, from sunset to sunrise. In temples a separate abhishekam
-      is performed in each, often with milk, curd, ghee and honey in turn. At
-      home you can do a brief offering and chant at the start of each prahara
-      and meditate or read in between.
-  - q: What can I eat during the Shivaratri fast?
-    a: >-
-      Strict observers take only water through the day and night. Many others
-      eat fruit, milk, nuts, sabudana or a single simple meal without grains,
-      onion or garlic, breaking the fast after the morning puja the next day.
-      Anyone with a health condition, pregnancy or medication should keep a
-      gentle fast and ask a doctor before going without food.
+- q: How do you do Shivaratri puja at home?
+  a: Clean your puja space before sunset and set up a small Shiva linga or picture. Offer water, then
+    milk, curd, honey or just water again, followed by bilva or other leaves, flowers and a lamp. Chant
+    Om Namah Shivaya or the Shiva Panchakshara stotram. Repeat a short version in each prahara of the
+    night and close with arati.
+- q: What is the four prahara puja on Shivaratri?
+  a: The night of Shivaratri is divided into four praharas, watches of roughly three hours each, from
+    sunset to sunrise. In temples a separate abhishekam is performed in each, often with milk, curd, ghee
+    and honey in turn. At home you can do a brief offering and chant at the start of each prahara and
+    meditate or read in between.
+- q: What can I eat during the Shivaratri fast?
+  a: Strict observers take only water through the day and night. Many others eat fruit, milk, nuts, sabudana
+    or a single simple meal without grains, onion or garlic, breaking the fast after the morning puja
+    the next day. Anyone with a health condition, pregnancy or medication should keep a gentle fast and
+    ask a doctor before going without food.
 readingTime: 4
 draft: false
 ---

@@ -1,0 +1,453 @@
+[
+ {
+  "cluster": "naivedyam-recipes",
+  "slug": "sakkarai-pongal-for-pooja",
+  "title": "Sakkarai Pongal for Pooja: Jaggery, Ghee, Patience",
+  "author": "archana",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "sakkarai pongal recipe",
+  "products": {
+   "handles": [],
+   "query": "Lakshmi"
+  }
+ },
+ {
+  "cluster": "naivedyam-recipes",
+  "slug": "ven-pongal-temple-style",
+  "title": "Ven Pongal, Temple Style: Pepper, Cumin and Ghee",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "ven pongal recipe",
+  "products": {
+   "handles": [],
+   "query": "Vishnu"
+  }
+ },
+ {
+  "cluster": "naivedyam-recipes",
+  "slug": "paal-payasam-naivedyam",
+  "title": "Paal Payasam for Naivedyam: Slow Milk, Simple Rice",
+  "author": "archana",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "paal payasam recipe",
+  "products": {
+   "handles": [],
+   "query": "Lakshmi"
+  }
+ },
+ {
+  "cluster": "naivedyam-recipes",
+  "slug": "panchamrutham-at-home",
+  "title": "Panchamrutham at Home: The Five Nectars for Abhishekam",
+  "author": "archana",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "panchamrutham recipe",
+  "products": {
+   "handles": [
+    "palani-panchamritham"
+   ]
+  }
+ },
+ {
+  "cluster": "naivedyam-recipes",
+  "slug": "sundal-for-navratri-and-fridays",
+  "title": "Sundal Recipe for Pooja: Chickpeas, Coconut, Care",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "sundal recipe for pooja",
+  "products": {
+   "handles": [],
+   "query": "Durga"
+  }
+ },
+ {
+  "cluster": "naivedyam-recipes",
+  "slug": "puliyodarai-temple-tamarind-rice",
+  "title": "Puliyodarai: The Temple Tamarind Rice at Home",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "puliyodarai recipe",
+  "products": {
+   "handles": [],
+   "query": "Vishnu"
+  }
+ },
+ {
+  "cluster": "naivedyam-recipes",
+  "slug": "daddojanam-curd-rice-prasadam",
+  "title": "Daddojanam: Curd Rice as Prasadam, Cool and Kind",
+  "author": "archana",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "daddojanam recipe",
+  "products": {
+   "handles": [],
+   "query": "Vishnu"
+  }
+ },
+ {
+  "cluster": "naivedyam-recipes",
+  "slug": "rava-kesari-naivedyam",
+  "title": "Rava Kesari for Naivedyam in Twenty Minutes",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "rava kesari naivedyam",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "naivedyam-recipes",
+  "slug": "nei-appam-for-pooja",
+  "title": "Nei Appam for Pooja: Rice, Jaggery, Banana",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "nei appam recipe",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "naivedyam-recipes",
+  "slug": "vadai-mala-for-hanuman",
+  "title": "Vadai Mala for Hanuman: Why Vadas, How to Make",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "vadai mala for hanuman",
+  "products": {
+   "handles": [
+    "ganesha-hanuman-shakti-kavach-the-shield-of-protection-and-victory"
+   ]
+  }
+ },
+ {
+  "cluster": "festival-prasadam",
+  "slug": "modak-for-ganesh-chaturthi",
+  "title": "Modak for Ganesh Chaturthi: Steamed Kozhukattai",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "modak recipe for ganesh chaturthi",
+  "products": {
+   "handles": [
+    "maha-ganapathy-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "festival-prasadam",
+  "slug": "panakam-and-neer-mor",
+  "title": "Panakam and Neer Mor: Ram Navami's Cooling Drinks",
+  "author": "archana",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "panakam recipe",
+  "products": {
+   "handles": [],
+   "query": "Rama"
+  }
+ },
+ {
+  "cluster": "festival-prasadam",
+  "slug": "aval-for-krishna-janmashtami",
+  "title": "Aval for Krishna: Sweet Poha and Sudama's Gift",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "aval recipe for krishna jayanthi",
+  "products": {
+   "handles": [],
+   "query": "Krishna"
+  }
+ },
+ {
+  "cluster": "festival-prasadam",
+  "slug": "seedai-for-gokulashtami",
+  "title": "Seedai for Gokulashtami: Small Crunchy Offerings",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "seedai recipe",
+  "products": {
+   "handles": [],
+   "query": "Krishna"
+  }
+ },
+ {
+  "cluster": "festival-prasadam",
+  "slug": "ugadi-pachadi-six-tastes",
+  "title": "Ugadi Pachadi: Six Tastes in One Spoon",
+  "author": "archana",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "ugadi pachadi recipe",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "festival-prasadam",
+  "slug": "ada-pradhaman-for-onam",
+  "title": "Ada Pradhaman for Onam: The Payasam of Kerala",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "ada pradhaman recipe",
+  "products": {
+   "handles": [
+    "annadhanam-donate-food-to-homeless-children"
+   ]
+  }
+ },
+ {
+  "cluster": "festival-prasadam",
+  "slug": "thiruvathirai-kali-recipe",
+  "title": "Thiruvathirai Kali: The Sweet Offered to Nataraja",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "thiruvathirai kali recipe",
+  "products": {
+   "handles": [],
+   "query": "Shiva"
+  }
+ },
+ {
+  "cluster": "festival-prasadam",
+  "slug": "ellu-urundai-sesame-balls",
+  "title": "Ellu Urundai: Sesame Balls for Saturn and Winter",
+  "author": "archana",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "ellu urundai recipe",
+  "products": {
+   "handles": [
+    "saturn-transit-shani-peyarchi"
+   ]
+  }
+ },
+ {
+  "cluster": "festival-prasadam",
+  "slug": "varalakshmi-vratham-naivedyam",
+  "title": "Varalakshmi Vratham Naivedyam: What to Cook",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "varalakshmi vratham naivedyam",
+  "products": {
+   "handles": [
+    "shakti-samriddhi-pooja-for-feminine-prosperity-family-well-being"
+   ]
+  }
+ },
+ {
+  "cluster": "festival-prasadam",
+  "slug": "karadaiyan-nombu-adai",
+  "title": "Karadaiyan Nombu Adai: Savitri's Offering",
+  "author": "archana",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "karadaiyan nombu adai recipe",
+  "products": {
+   "handles": [
+    "shakti-samriddhi-pooja-for-feminine-prosperity-family-well-being"
+   ]
+  }
+ },
+ {
+  "cluster": "home-rituals",
+  "slug": "vahana-pooja-new-car",
+  "title": "Vahana Pooja: Blessing a New Car, Lemons and All",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "vahana pooja for new car",
+  "products": {
+   "handles": [
+    "temple-coconut-breaking-online"
+   ]
+  }
+ },
+ {
+  "cluster": "home-rituals",
+  "slug": "kalasam-meaning",
+  "title": "Kalasam Meaning: The Pot That Holds the Universe",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "kalash meaning",
+  "products": {
+   "handles": [],
+   "query": "Lakshmi"
+  }
+ },
+ {
+  "cluster": "home-rituals",
+  "slug": "how-to-do-aarti-at-home",
+  "title": "How to Do Aarti at Home: Flame, Circle, Song",
+  "author": "archana",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "how to do aarti at home",
+  "products": {
+   "handles": [],
+   "query": "Lakshmi"
+  }
+ },
+ {
+  "cluster": "home-rituals",
+  "slug": "cleaning-brass-puja-items",
+  "title": "Cleaning Brass Puja Items: Tamarind, Lemon, Time",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "how to clean brass pooja items",
+  "products": {
+   "handles": [],
+   "query": "Lakshmi"
+  }
+ },
+ {
+  "cluster": "home-rituals",
+  "slug": "old-idols-and-photos",
+  "title": "What to Do With Old Idols and Puja Photos",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "what to do with old god photos",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "home-rituals",
+  "slug": "incense-and-dhoop-meaning",
+  "title": "Incense and Dhoop: Why Smoke Belongs in Worship",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "why incense in puja",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "home-rituals",
+  "slug": "flowers-for-pooja",
+  "title": "Flowers for Pooja: Which Flower for Which God",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "which flower for which god",
+  "products": {
+   "handles": [],
+   "query": "Lakshmi"
+  }
+ },
+ {
+  "cluster": "food-and-body",
+  "slug": "sattvic-diet-explained",
+  "title": "Sattvic Diet Explained: Food That Leaves You Clear",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "sattvic diet",
+  "products": {
+   "handles": [],
+   "query": "prasadham"
+  }
+ },
+ {
+  "cluster": "food-and-body",
+  "slug": "why-no-onion-garlic",
+  "title": "Why No Onion or Garlic in Hindu Pooja Food?",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "why no onion garlic hindu",
+  "products": {
+   "handles": [],
+   "query": "prasadham"
+  }
+ },
+ {
+  "cluster": "food-and-body",
+  "slug": "eating-on-a-banana-leaf",
+  "title": "Eating on a Banana Leaf: Tradition and Attention",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "eating on banana leaf",
+  "products": {
+   "handles": [],
+   "query": "Annadhanam"
+  }
+ },
+ {
+  "cluster": "food-and-body",
+  "slug": "eating-with-your-hands",
+  "title": "Eating With Your Hands: The Oldest Mindful Meal",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "eating with hands benefits",
+  "products": {
+   "handles": [],
+   "query": "Annadhanam"
+  }
+ },
+ {
+  "cluster": "food-and-body",
+  "slug": "turmeric-in-hindu-ritual",
+  "title": "Turmeric in Hindu Ritual: Gold at the Threshold",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "turmeric in hindu rituals",
+  "products": {
+   "handles": [],
+   "query": "Lakshmi"
+  }
+ },
+ {
+  "cluster": "food-and-body",
+  "slug": "cooking-as-an-offering",
+  "title": "Cooking as an Offering: The Kitchen as Shrine",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "how-to",
+  "primaryKeyword": "cooking as offering",
+  "products": {
+   "handles": [
+    "annadhanam-donate-food-to-homeless-children"
+   ]
+  }
+ },
+ {
+  "cluster": "food-and-body",
+  "slug": "brahmarpanam-prayer-before-meals",
+  "title": "Brahmarpanam: A Prayer Before Meals, Explained",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "brahmarpanam prayer before food",
+  "products": {
+   "handles": [],
+   "query": "Annadhanam"
+  }
+ }
+]

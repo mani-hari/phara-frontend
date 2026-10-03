@@ -1,71 +1,55 @@
 ---
 title: Om Namah Shivaya Meaning and How to Chant It
-description: >-
-  Om Namah Shivaya meaning, syllable by syllable: why it is called the
-  five-letter mantra, what bowing to Shiva really signifies, and how to chant it
-  at home.
+description: 'Om Namah Shivaya meaning, syllable by syllable: why it is called the five-letter mantra,
+  what bowing to Shiva really signifies, and how to chant it at home.'
 author: hariharan
-publishedAt: '2026-10-23'
-updatedAt: '2026-10-23'
+publishedAt: '2027-02-17'
+updatedAt: '2027-02-17'
 cluster: mantra-basics
 primaryKeyword: om namah shivaya meaning
 secondaryKeywords:
-  - panchakshara mantra meaning
-  - how many times to chant om namah shivaya
-  - benefits of chanting om namah shivaya
+- panchakshara mantra meaning
+- how many times to chant om namah shivaya
+- benefits of chanting om namah shivaya
 tags:
-  - Mantra
-  - Shiva
-  - Meaning
+- Mantra
+- Shiva
+- Meaning
 audience: seeker
 image: /blog/om-namah-shivaya-meaning.webp
-imageAlt: >-
-  Temple corridor at dusk with oil lamps in stone niches, bilva leaves and a
-  rudraksha mala on a ledge — om namah shivaya meaning | pariharaonline.com
-imagePrompt: >-
-  A stone Shiva shrine corridor in a Tamil temple at dusk, oil lamps glowing in
-  niches, bilva leaves and a rudraksha mala on the ledge.
+imageAlt: Temple corridor at dusk with oil lamps in stone niches, bilva leaves and a rudraksha mala on
+  a ledge — om namah shivaya meaning | pariharaonline.com
+imagePrompt: A stone Shiva shrine corridor in a Tamil temple at dusk, oil lamps glowing in niches, bilva
+  leaves and a rudraksha mala on the ledge.
 products:
   handles:
-    - maha-shivaratri
+  - maha-shivaratri
   query: Shiva
   heading: Poojas for Shiva
 related:
-  - gayatri-mantra-meaning
-  - chanting-for-beginners
-  - maha-shivaratri-meaning
+- gayatri-mantra-meaning
+- chanting-for-beginners
+- maha-shivaratri-meaning
 takeaways:
-  - >-
-    Om Namah Shivaya means 'I bow to Shiva', the auspicious one; 'namah' is
-    often read as surrendering the sense of 'mine'.
-  - >-
-    It is called the Panchakshara, the five-syllable mantra, and appears in the
-    Sri Rudram of the Yajurveda.
-  - >-
-    Tradition says it can be chanted by anyone, at any time, aloud or silently,
-    often counted on a mala of 108 beads.
+- Om Namah Shivaya means 'I bow to Shiva', the auspicious one; 'namah' is often read as surrendering the
+  sense of 'mine'.
+- It is called the Panchakshara, the five-syllable mantra, and appears in the Sri Rudram of the Yajurveda.
+- Tradition says it can be chanted by anyone, at any time, aloud or silently, often counted on a mala
+  of 108 beads.
 faq:
-  - q: What does Om Namah Shivaya mean?
-    a: >-
-      Om Namah Shivaya translates as 'I bow to Shiva'. Om is the primordial
-      sound, namah means salutation or bowing, and Shiva means the auspicious
-      one. Some teachers read namah as na mama, 'not mine', turning the mantra
-      into an act of letting go. It is one of the most widely chanted mantras in
-      Hindu practice.
-  - q: What is the Panchakshara mantra?
-    a: >-
-      Panchakshara means five syllables, and refers to Namah Shivaya: na, ma,
-      shi, va, ya. In Shaiva tradition these are linked with the five elements
-      of earth, water, fire, air and space. The mantra appears at the heart of
-      the Sri Rudram in the Yajurveda and is central to Shiva worship in Tamil
-      Nadu and beyond.
-  - q: How many times should I chant Om Namah Shivaya?
-    a: >-
-      A traditional count is 108, often tracked on a rudraksha mala, but many
-      people chant 11 or 21 times daily. Tradition values consistency over large
-      numbers. Chanting slowly with attention for a few minutes each day is
-      usually more rewarding than rushing a high count. It can be chanted aloud,
-      in a whisper or silently.
+- q: What does Om Namah Shivaya mean?
+  a: Om Namah Shivaya translates as 'I bow to Shiva'. Om is the primordial sound, namah means salutation
+    or bowing, and Shiva means the auspicious one. Some teachers read namah as na mama, 'not mine', turning
+    the mantra into an act of letting go. It is one of the most widely chanted mantras in Hindu practice.
+- q: What is the Panchakshara mantra?
+  a: 'Panchakshara means five syllables, and refers to Namah Shivaya: na, ma, shi, va, ya. In Shaiva tradition
+    these are linked with the five elements of earth, water, fire, air and space. The mantra appears at
+    the heart of the Sri Rudram in the Yajurveda and is central to Shiva worship in Tamil Nadu and beyond.'
+- q: How many times should I chant Om Namah Shivaya?
+  a: A traditional count is 108, often tracked on a rudraksha mala, but many people chant 11 or 21 times
+    daily. Tradition values consistency over large numbers. Chanting slowly with attention for a few minutes
+    each day is usually more rewarding than rushing a high count. It can be chanted aloud, in a whisper
+    or silently.
 readingTime: 4
 draft: false
 ---

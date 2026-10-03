@@ -1,0 +1,1764 @@
+{
+  "clusters": [
+    {
+      "id": "diwali-in-usa",
+      "name": "Diwali in the USA"
+    },
+    {
+      "id": "online-puja-usa",
+      "name": "Online temple puja from the USA"
+    },
+    {
+      "id": "prasadam-usa",
+      "name": "Prasadam delivery to the USA"
+    },
+    {
+      "id": "satyanarayan-puja",
+      "name": "Satyanarayan Puja at home"
+    },
+    {
+      "id": "festivals-explained-usa",
+      "name": "Explaining Hindu festivals in America"
+    },
+    {
+      "id": "navratri-usa",
+      "name": "Navratri in America"
+    },
+    {
+      "id": "astrology-real",
+      "name": "Is astrology real? Jyotish for sceptics"
+    },
+    {
+      "id": "karma-dharma",
+      "name": "Karma, dharma and being spiritual"
+    },
+    {
+      "id": "mantra-basics",
+      "name": "Mantra basics"
+    },
+    {
+      "id": "ritual-and-mind",
+      "name": "Ritual, meditation and the mind"
+    },
+    {
+      "id": "why-light-lamps",
+      "name": "Why and how Hindus light lamps"
+    },
+    {
+      "id": "navratri-meaning",
+      "name": "Navratri, Ayudha Pooja and Dussehra"
+    },
+    {
+      "id": "diwali-meaning",
+      "name": "Diwali meaning and the five days"
+    },
+    {
+      "id": "karthigai-deepam",
+      "name": "Karthigai Deepam"
+    },
+    {
+      "id": "murugan-skanda",
+      "name": "Skanda Sashti and Thaipusam"
+    },
+    {
+      "id": "ekadashi-fasting",
+      "name": "Vaikunta Ekadashi and fasting"
+    },
+    {
+      "id": "pongal-sankranti",
+      "name": "Pongal and Makar Sankranti"
+    },
+    {
+      "id": "maha-shivaratri",
+      "name": "Maha Shivaratri"
+    },
+    {
+      "id": "holi",
+      "name": "Holi and Holika Dahan"
+    },
+    {
+      "id": "sade-sati",
+      "name": "Shani and Sade Sati"
+    },
+    {
+      "id": "navagraha-rahu-ketu",
+      "name": "Navagraha, Rahu-Ketu and Guru transits"
+    },
+    {
+      "id": "marriage-delay",
+      "name": "Delay in marriage and Mangal dosha"
+    },
+    {
+      "id": "conceiving-pregnancy",
+      "name": "Prayer for conceiving and safe pregnancy"
+    },
+    {
+      "id": "health-longevity",
+      "name": "Prayers for health and longevity"
+    },
+    {
+      "id": "griha-pravesh",
+      "name": "Griha pravesh and new beginnings"
+    },
+    {
+      "id": "exams-education",
+      "name": "Exams, studies and learning"
+    },
+    {
+      "id": "pitru-ancestors",
+      "name": "Ancestors, pitru dosha and tarpanam"
+    },
+    {
+      "id": "puja-at-home",
+      "name": "Puja at home basics"
+    },
+    {
+      "id": "homam-explained",
+      "name": "Homams explained"
+    }
+  ],
+  "posts": [
+    {
+      "slug": "celebrate-diwali-in-the-usa",
+      "title": "How to Celebrate Diwali in the USA, Weekday and All",
+      "primaryKeyword": "how to celebrate diwali in the usa",
+      "cluster": "diwali-in-usa",
+      "author": "manikandan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "diwali on a weekday usa",
+        "diwali celebration ideas at home usa",
+        "diwali with family in india video call"
+      ]
+    },
+    {
+      "slug": "diwali-at-the-office",
+      "title": "Diwali at the Office: Sharing the Festival at Work",
+      "primaryKeyword": "diwali at work",
+      "cluster": "diwali-in-usa",
+      "author": "manikandan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "how to explain diwali to coworkers",
+        "diwali sweets for office",
+        "time off for diwali at work"
+      ]
+    },
+    {
+      "slug": "lakshmi-puja-at-home-abroad",
+      "title": "Lakshmi Puja at Home When You Live Abroad",
+      "primaryKeyword": "lakshmi puja at home",
+      "cluster": "diwali-in-usa",
+      "author": "archana",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "lakshmi puja vidhi at home",
+        "diwali puja items list usa",
+        "lakshmi puja without priest"
+      ]
+    },
+    {
+      "slug": "when-is-diwali-in-the-usa",
+      "title": "When Is Diwali in the USA? Why the Date Moves",
+      "primaryKeyword": "when is diwali in the usa",
+      "cluster": "diwali-in-usa",
+      "author": "hariharan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "why does diwali date change every year",
+        "diwali date usa vs india",
+        "diwali new moon kartik amavasya"
+      ]
+    },
+    {
+      "slug": "online-puja-from-usa-explained",
+      "title": "Online Puja From the USA: How It Actually Works",
+      "primaryKeyword": "online puja from the USA",
+      "cluster": "online-puja-usa",
+      "author": "manikandan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "how does online puja work",
+        "book temple puja online from abroad",
+        "online homam booking nri"
+      ]
+    },
+    {
+      "slug": "what-is-sankalpam",
+      "title": "What Is Sankalpam? Name, Gotra and Star Explained",
+      "primaryKeyword": "what is sankalpam",
+      "cluster": "online-puja-usa",
+      "author": "hariharan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "what is gotra in puja",
+        "nakshatra for puja booking",
+        "sankalpam meaning"
+      ]
+    },
+    {
+      "slug": "joining-a-puja-across-time-zones",
+      "title": "Live Puja Online: Joining a Temple Puja From Afar",
+      "primaryKeyword": "live puja online",
+      "cluster": "online-puja-usa",
+      "author": "archana",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "watch temple puja live online",
+        "how to participate in online puja",
+        "live homam streaming from india"
+      ]
+    },
+    {
+      "slug": "booking-a-puja-for-parents",
+      "title": "Booking a Puja for Your Parents in India, From Abroad",
+      "primaryKeyword": "book a puja for your parents in India",
+      "cluster": "online-puja-usa",
+      "author": "manikandan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "puja for parents health",
+        "ayushya homam for parents birthday",
+        "gift a puja to family in india"
+      ]
+    },
+    {
+      "slug": "prasadam-delivery-to-the-usa",
+      "title": "Prasadam Delivery to the USA: What Arrives and How",
+      "primaryKeyword": "prasadam delivery to the USA",
+      "cluster": "prasadam-usa",
+      "author": "manikandan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "temple prasad shipping to usa",
+        "can prasadam pass us customs",
+        "order prasad online from india"
+      ]
+    },
+    {
+      "slug": "what-to-do-with-prasadam",
+      "title": "What to Do With Prasadam When It Arrives",
+      "primaryKeyword": "what to do with prasadam",
+      "cluster": "prasadam-usa",
+      "author": "archana",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "how to use vibhuti prasadam",
+        "how to dispose of old prasad",
+        "can you throw away prasadam"
+      ]
+    },
+    {
+      "slug": "why-prasadam-is-shared",
+      "title": "Why Is Prasad Shared? The Meaning of Prasadam",
+      "primaryKeyword": "why is prasad shared",
+      "cluster": "prasadam-usa",
+      "author": "hariharan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "what is prasad in hinduism",
+        "why can't you refuse prasad",
+        "prasad vs naivedyam"
+      ]
+    },
+    {
+      "slug": "satyanarayan-puja-at-home",
+      "title": "Satyanarayan Puja at Home: A Simple Guide for the US",
+      "primaryKeyword": "satyanarayan puja at home",
+      "cluster": "satyanarayan-puja",
+      "author": "archana",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "satyanarayan puja samagri list",
+        "satyanarayan puja vidhi step by step",
+        "when to do satyanarayan puja"
+      ]
+    },
+    {
+      "slug": "satyanarayan-katha-meaning",
+      "title": "Satyanarayan Katha Meaning: What the Stories Teach",
+      "primaryKeyword": "satyanarayan katha meaning",
+      "cluster": "satyanarayan-puja",
+      "author": "hariharan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "satyanarayan katha story in english",
+        "satyanarayan vrat katha five chapters",
+        "why is prasad important in satyanarayan katha"
+      ]
+    },
+    {
+      "slug": "hosting-satyanarayan-puja-with-friends",
+      "title": "Hosting Satyanarayan Puja for Friends in America",
+      "primaryKeyword": "satyanarayan puja in america",
+      "cluster": "satyanarayan-puja",
+      "author": "manikandan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "satyanarayan puja at home with guests",
+        "priest for home puja usa",
+        "what to serve after satyanarayan puja"
+      ]
+    },
+    {
+      "slug": "explaining-diwali-to-kids",
+      "title": "Explaining Diwali to Kids: Stories That Stick",
+      "primaryKeyword": "explaining diwali to kids",
+      "cluster": "festivals-explained-usa",
+      "author": "hariharan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "diwali story for kids",
+        "how to teach kids about diwali",
+        "diwali meaning for children"
+      ]
+    },
+    {
+      "slug": "explaining-hindu-festivals-to-coworkers",
+      "title": "Explaining Hindu Festivals to Coworkers, Simply",
+      "primaryKeyword": "explaining hindu festivals to coworkers",
+      "cluster": "festivals-explained-usa",
+      "author": "manikandan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "hindu holidays at work",
+        "how to explain navratri to colleagues",
+        "inclusive holiday calendar hindu festivals"
+      ]
+    },
+    {
+      "slug": "hindu-festival-calendar-usa",
+      "title": "Hindu Festival Calendar in the USA: How It Works",
+      "primaryKeyword": "hindu festival calendar usa",
+      "cluster": "festivals-explained-usa",
+      "author": "hariharan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "how does the hindu calendar work",
+        "what is a panchangam",
+        "why hindu festival dates differ in usa"
+      ]
+    },
+    {
+      "slug": "festival-rituals-for-kids",
+      "title": "Festival Rituals for Kids: Small Things They Can Do",
+      "primaryKeyword": "festival rituals for kids",
+      "cluster": "festivals-explained-usa",
+      "author": "archana",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "teaching hindu traditions to kids in america",
+        "simple puja for kids",
+        "kolam rangoli for kids"
+      ]
+    },
+    {
+      "slug": "celebrate-navratri-in-the-usa",
+      "title": "How to Celebrate Navratri in the USA",
+      "primaryKeyword": "how to celebrate navratri in the usa",
+      "cluster": "navratri-usa",
+      "author": "manikandan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "navratri celebration at home usa",
+        "navratri puja at home simple",
+        "garba events near me usa"
+      ]
+    },
+    {
+      "slug": "golu-in-a-small-apartment",
+      "title": "Navratri Golu at Home in a Small Apartment",
+      "primaryKeyword": "navratri golu at home",
+      "cluster": "navratri-usa",
+      "author": "archana",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "golu steps arrangement ideas",
+        "how to set up golu for beginners",
+        "bommai golu meaning"
+      ]
+    },
+    {
+      "slug": "garba-meaning-the-circle",
+      "title": "Garba Meaning: Why the Dance Moves in a Circle",
+      "primaryKeyword": "garba meaning",
+      "cluster": "navratri-usa",
+      "author": "hariharan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "what is garba dance",
+        "garba and dandiya difference",
+        "why is garba danced in a circle"
+      ]
+    },
+    {
+      "slug": "is-astrology-real",
+      "title": "Is Astrology Real? An Honest Look at Jyotish",
+      "primaryKeyword": "is astrology real",
+      "cluster": "astrology-real",
+      "author": "manikandan",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "does vedic astrology work",
+        "is astrology scientific",
+        "why do people believe in astrology"
+      ]
+    },
+    {
+      "slug": "vedic-vs-western-astrology",
+      "title": "Vedic vs Western Astrology: What Is Different",
+      "primaryKeyword": "vedic vs western astrology",
+      "cluster": "astrology-real",
+      "author": "hariharan",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "sidereal vs tropical zodiac",
+        "why is my vedic sign different",
+        "what is jyotish"
+      ]
+    },
+    {
+      "slug": "reading-your-birth-chart-calmly",
+      "title": "Reading Your Birth Chart Without Fear",
+      "primaryKeyword": "how to read a birth chart",
+      "cluster": "astrology-real",
+      "author": "archana",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "how to read a vedic birth chart",
+        "what are houses in a kundli",
+        "birth chart anxiety"
+      ]
+    },
+    {
+      "slug": "astrology-and-free-will",
+      "title": "Astrology and Free Will: Who Holds the Pen?",
+      "primaryKeyword": "astrology and free will",
+      "cluster": "astrology-real",
+      "author": "hariharan",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "does astrology mean fate is fixed",
+        "karma and free will hinduism",
+        "prarabdha karma meaning"
+      ]
+    },
+    {
+      "slug": "karma-explained-simply",
+      "title": "Karma Explained Simply, Without the Guilt",
+      "primaryKeyword": "karma explained",
+      "cluster": "karma-dharma",
+      "author": "hariharan",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "what is karma in hinduism",
+        "is karma punishment",
+        "karma in the bhagavad gita"
+      ]
+    },
+    {
+      "slug": "spiritual-but-not-religious-hinduism",
+      "title": "Spiritual but Not Religious? Hinduism Has Room",
+      "primaryKeyword": "spiritual but not religious hinduism",
+      "cluster": "karma-dharma",
+      "author": "manikandan",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "can you be hindu without believing in god",
+        "hinduism for non religious people",
+        "hindu philosophy without rituals"
+      ]
+    },
+    {
+      "slug": "dharma-meaning-in-everyday-life",
+      "title": "Dharma Meaning: Duty, Nature and an Ordinary Day",
+      "primaryKeyword": "dharma meaning",
+      "cluster": "karma-dharma",
+      "author": "archana",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "what is dharma in simple terms",
+        "svadharma meaning",
+        "how to find your dharma"
+      ]
+    },
+    {
+      "slug": "what-is-a-mantra",
+      "title": "What Is a Mantra, Actually? Sound and Attention",
+      "primaryKeyword": "what is a mantra",
+      "cluster": "mantra-basics",
+      "author": "archana",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "how do mantras work",
+        "mantra meaning in sanskrit",
+        "do mantras have to be in sanskrit"
+      ]
+    },
+    {
+      "slug": "om-namah-shivaya-meaning",
+      "title": "Om Namah Shivaya Meaning and How to Chant It",
+      "primaryKeyword": "om namah shivaya meaning",
+      "cluster": "mantra-basics",
+      "author": "hariharan",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "panchakshara mantra meaning",
+        "how many times to chant om namah shivaya",
+        "benefits of chanting om namah shivaya"
+      ]
+    },
+    {
+      "slug": "gayatri-mantra-meaning",
+      "title": "Gayatri Mantra Meaning for an Ordinary Morning",
+      "primaryKeyword": "gayatri mantra meaning",
+      "cluster": "mantra-basics",
+      "author": "manikandan",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "gayatri mantra meaning in english",
+        "best time to chant gayatri mantra",
+        "who can chant gayatri mantra"
+      ]
+    },
+    {
+      "slug": "chanting-for-beginners",
+      "title": "Chanting for Beginners: A Seven-Day Mantra Practice",
+      "primaryKeyword": "how to chant a mantra",
+      "cluster": "mantra-basics",
+      "author": "archana",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "how to chant a mantra correctly",
+        "how to use a mala for chanting",
+        "chanting mantra for beginners at home"
+      ]
+    },
+    {
+      "slug": "meditation-vs-puja",
+      "title": "Meditation vs Puja: Do You Have to Choose?",
+      "primaryKeyword": "meditation vs puja",
+      "cluster": "ritual-and-mind",
+      "author": "archana",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "is puja a form of meditation",
+        "difference between meditation and prayer",
+        "should i meditate or pray"
+      ]
+    },
+    {
+      "slug": "rituals-for-anxious-days",
+      "title": "Rituals for Anxiety: A Small Anchor for Hard Days",
+      "primaryKeyword": "rituals for anxiety",
+      "cluster": "ritual-and-mind",
+      "author": "manikandan",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "can rituals help with anxiety",
+        "hindu prayer for anxiety",
+        "daily ritual for mental peace"
+      ]
+    },
+    {
+      "slug": "prasad-and-gratitude",
+      "title": "Prasad and Gratitude: Eating as an Offering",
+      "primaryKeyword": "prasad and gratitude",
+      "cluster": "ritual-and-mind",
+      "author": "archana",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "what is prasad in hinduism",
+        "why do we offer food to god",
+        "mindful eating hindu tradition"
+      ]
+    },
+    {
+      "slug": "why-do-hindus-do-rituals",
+      "title": "Why Do Hindus Do Rituals? The Idea Behind the Act",
+      "primaryKeyword": "why do hindus do rituals",
+      "cluster": "ritual-and-mind",
+      "author": "hariharan",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "purpose of rituals in hinduism",
+        "meaning of hindu rituals",
+        "are hindu rituals superstition"
+      ]
+    },
+    {
+      "slug": "why-do-hindus-light-lamps",
+      "title": "Why Do Hindus Light Lamps? The Meaning of the Flame",
+      "primaryKeyword": "why do hindus light lamps",
+      "cluster": "why-light-lamps",
+      "author": "hariharan",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "meaning of lighting a diya",
+        "significance of lamp in hinduism",
+        "deepa jyothi mantra"
+      ]
+    },
+    {
+      "slug": "how-to-light-a-diya",
+      "title": "How to Light a Diya at Home: Oil, Wick, Direction",
+      "primaryKeyword": "how to light a diya",
+      "cluster": "why-light-lamps",
+      "author": "archana",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "which direction should a diya face",
+        "how many wicks in a diya",
+        "how to make cotton wicks for diya"
+      ]
+    },
+    {
+      "slug": "the-dusk-lamp-ritual",
+      "title": "The Dusk Lamp: A Two-Minute Evening Ritual",
+      "primaryKeyword": "evening lamp ritual",
+      "cluster": "why-light-lamps",
+      "author": "manikandan",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "sandhya deepam meaning",
+        "best time to light lamp in evening",
+        "evening prayer at home hindu"
+      ]
+    },
+    {
+      "slug": "ghee-lamp-or-oil-lamp",
+      "title": "Ghee Lamp or Oil Lamp? What Tradition Says",
+      "primaryKeyword": "ghee lamp vs oil lamp",
+      "cluster": "why-light-lamps",
+      "author": "archana",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "which oil is best for lighting lamp at home",
+        "sesame oil lamp benefits",
+        "can i use olive oil for diya"
+      ]
+    },
+    {
+      "slug": "why-navratri-lasts-nine-nights",
+      "title": "Why Navratri Lasts Nine Nights: The Story Behind It",
+      "primaryKeyword": "why navratri is nine nights",
+      "cluster": "navratri-meaning",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "sharad navratri meaning",
+        "nine forms of durga",
+        "navratri story devi mahatmyam"
+      ]
+    },
+    {
+      "slug": "ayudha-pooja-meaning",
+      "title": "Ayudha Pooja Meaning: Why We Bless Our Tools",
+      "primaryKeyword": "ayudha pooja meaning",
+      "cluster": "navratri-meaning",
+      "author": "manikandan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "why we worship tools on ayudha pooja",
+        "saraswati pooja books",
+        "ayudha pooja at home"
+      ]
+    },
+    {
+      "slug": "navratri-fasting-rules",
+      "title": "Navratri Fasting Rules, Reasons and Kindness",
+      "primaryKeyword": "navratri fasting rules",
+      "cluster": "navratri-meaning",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "what to eat during navratri fast",
+        "navratri vrat food list",
+        "can i drink coffee during navratri fast"
+      ]
+    },
+    {
+      "slug": "dussehra-ravana-story-meaning",
+      "title": "Dussehra Significance: Ravana and What the Burning Means",
+      "primaryKeyword": "dussehra significance",
+      "cluster": "navratri-meaning",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "why is dussehra celebrated",
+        "vijayadashami meaning",
+        "ravana dahan meaning"
+      ]
+    },
+    {
+      "slug": "why-is-diwali-celebrated",
+      "title": "Why Is Diwali Celebrated? Four Stories, One Light",
+      "primaryKeyword": "why is diwali celebrated",
+      "cluster": "diwali-meaning",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "diwali story for kids",
+        "deepavali meaning",
+        "why do we light diyas on diwali"
+      ]
+    },
+    {
+      "slug": "five-days-of-diwali",
+      "title": "The Five Days of Diwali, From Dhanteras to Bhai Dooj",
+      "primaryKeyword": "five days of diwali",
+      "cluster": "diwali-meaning",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "dhanteras meaning",
+        "diwali five days names",
+        "govardhan puja and bhai dooj"
+      ]
+    },
+    {
+      "slug": "naraka-chaturdashi-oil-bath",
+      "title": "Naraka Chaturdashi and the Deepavali Oil Bath",
+      "primaryKeyword": "naraka chaturdashi",
+      "cluster": "diwali-meaning",
+      "author": "manikandan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "deepavali oil bath significance",
+        "ganga snanam deepavali",
+        "narakasura story"
+      ]
+    },
+    {
+      "slug": "karthigai-deepam-significance",
+      "title": "Karthigai Deepam Significance: The Column of Fire",
+      "primaryKeyword": "karthigai deepam significance",
+      "cluster": "karthigai-deepam",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "karthigai deepam story",
+        "why is karthigai deepam celebrated",
+        "arunachala deepam meaning"
+      ]
+    },
+    {
+      "slug": "karthigai-deepam-at-home",
+      "title": "Karthigai Deepam at Home: Lamps in Rows",
+      "primaryKeyword": "karthigai deepam at home",
+      "cluster": "karthigai-deepam",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "how to celebrate karthigai deepam at home",
+        "agal vilakku lighting",
+        "karthigai deepam pori"
+      ]
+    },
+    {
+      "slug": "tiruvannamalai-deepam-from-afar",
+      "title": "Tiruvannamalai Deepam, Watched From Far Away",
+      "primaryKeyword": "tiruvannamalai deepam",
+      "cluster": "karthigai-deepam",
+      "author": "manikandan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "tiruvannamalai deepam live",
+        "arunachala maha deepam",
+        "karthigai deepam in usa"
+      ]
+    },
+    {
+      "slug": "skanda-sashti-fasting-guide",
+      "title": "Skanda Sashti Fasting: A Gentle Six-Day Guide",
+      "primaryKeyword": "skanda sashti fasting",
+      "cluster": "murugan-skanda",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "kanda sashti viratham rules",
+        "skanda sashti kavacham",
+        "what to eat during skanda sashti fast"
+      ]
+    },
+    {
+      "slug": "soorasamharam-story-meaning",
+      "title": "Soorasamharam Story: What Murugan's Victory Means",
+      "primaryKeyword": "soorasamharam story",
+      "cluster": "murugan-skanda",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "surapadman story",
+        "skanda sashti story",
+        "murugan peacock meaning"
+      ]
+    },
+    {
+      "slug": "thaipusam-kavadi-meaning",
+      "title": "Thaipusam Kavadi Meaning: Carrying What You Carry",
+      "primaryKeyword": "thaipusam kavadi meaning",
+      "cluster": "murugan-skanda",
+      "author": "manikandan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "what is thaipusam",
+        "idumban kavadi story",
+        "why do devotees carry kavadi"
+      ]
+    },
+    {
+      "slug": "vaikunta-ekadashi-significance",
+      "title": "Vaikunta Ekadashi Significance: The Gate That Opens",
+      "primaryKeyword": "vaikunta ekadashi significance",
+      "cluster": "ekadashi-fasting",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "vaikunta dwaram meaning",
+        "vaikunta ekadashi story",
+        "why fast on vaikunta ekadashi"
+      ]
+    },
+    {
+      "slug": "ekadashi-fasting-rules",
+      "title": "Ekadashi Fasting Rules for Beginners",
+      "primaryKeyword": "ekadashi fasting rules",
+      "cluster": "ekadashi-fasting",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "what to eat on ekadashi fast",
+        "how to break ekadashi fast",
+        "can i drink water on ekadashi"
+      ]
+    },
+    {
+      "slug": "fasting-and-focus",
+      "title": "Fasting and Focus: What an Empty Stomach Teaches",
+      "primaryKeyword": "fasting and focus",
+      "cluster": "ekadashi-fasting",
+      "author": "archana",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "why do hindus fast",
+        "fasting and mental clarity",
+        "spiritual benefits of fasting"
+      ]
+    },
+    {
+      "slug": "fasting-with-a-desk-job",
+      "title": "Ekadashi Fasting at Work: A Desk-Job Guide",
+      "primaryKeyword": "ekadashi fasting at work",
+      "cluster": "ekadashi-fasting",
+      "author": "manikandan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "how to fast at work",
+        "explaining religious fasting to coworkers",
+        "ekadashi fasting tips for working people"
+      ]
+    },
+    {
+      "slug": "why-is-pongal-celebrated",
+      "title": "Why Is Pongal Celebrated? Sun, Harvest and Cattle",
+      "primaryKeyword": "why is pongal celebrated",
+      "cluster": "pongal-sankranti",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "pongal festival meaning",
+        "four days of pongal",
+        "mattu pongal story"
+      ]
+    },
+    {
+      "slug": "making-pongal-in-a-us-kitchen",
+      "title": "How to Celebrate Pongal in the USA, Boil-Over and All",
+      "primaryKeyword": "how to celebrate pongal in usa",
+      "cluster": "pongal-sankranti",
+      "author": "manikandan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "sakkarai pongal recipe for festival",
+        "pongal celebration in america",
+        "how to do pongal pooja at home"
+      ]
+    },
+    {
+      "slug": "makar-sankranti-meaning",
+      "title": "Makar Sankranti Meaning: Sun, Sesame and Winter",
+      "primaryKeyword": "makar sankranti meaning",
+      "cluster": "pongal-sankranti",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "why til and jaggery on sankranti",
+        "uttarayan meaning",
+        "makar sankranti significance"
+      ]
+    },
+    {
+      "slug": "maha-shivaratri-meaning",
+      "title": "Maha Shivaratri Meaning: Why Stay Awake All Night",
+      "primaryKeyword": "maha shivaratri meaning",
+      "cluster": "maha-shivaratri",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "why do we stay awake on shivaratri",
+        "maha shivaratri story",
+        "significance of maha shivaratri"
+      ]
+    },
+    {
+      "slug": "shivaratri-vigil-at-home",
+      "title": "Shivaratri Puja at Home: A Night Vigil, Hour by Hour",
+      "primaryKeyword": "shivaratri puja at home",
+      "cluster": "maha-shivaratri",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "four prahara puja shivaratri",
+        "shivaratri abhishekam at home",
+        "what to eat on shivaratri fast"
+      ]
+    },
+    {
+      "slug": "shivaratri-after-a-long-week",
+      "title": "Shivaratri Fasting for Working People, After a Long Week",
+      "primaryKeyword": "shivaratri fasting for working people",
+      "cluster": "maha-shivaratri",
+      "author": "manikandan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "how to observe shivaratri while working",
+        "shivaratri on a weekday",
+        "simple shivaratri at home"
+      ]
+    },
+    {
+      "slug": "holi-meaning-prahlad-holika",
+      "title": "Holi Meaning: Prahlad, Holika and the Bonfire",
+      "primaryKeyword": "holi meaning",
+      "cluster": "holi",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "holika dahan story",
+        "why is holi celebrated",
+        "prahlad and narasimha story"
+      ]
+    },
+    {
+      "slug": "holika-dahan-at-home",
+      "title": "Holika Dahan at Home: A Small, Safe Fire Ritual",
+      "primaryKeyword": "holika dahan at home",
+      "cluster": "holi",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "how to do holika dahan puja at home",
+        "holika dahan rituals",
+        "what to offer in holika dahan"
+      ]
+    },
+    {
+      "slug": "holi-in-america",
+      "title": "Holi in America: Colours, Campus and Belonging",
+      "primaryKeyword": "holi in america",
+      "cluster": "holi",
+      "author": "manikandan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "holi festival in usa",
+        "how to celebrate holi in america",
+        "explaining holi to friends"
+      ]
+    },
+    {
+      "slug": "shani-sade-sati-explained",
+      "title": "Shani Sade Sati Explained, Without the Fear",
+      "primaryKeyword": "shani sade sati",
+      "cluster": "sade-sati",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "what is sade sati",
+        "sade sati phases",
+        "is sade sati bad",
+        "shani mahadasha vs sade sati"
+      ]
+    },
+    {
+      "slug": "sade-sati-remedies",
+      "title": "Shani Sade Sati Remedies: Simple, Steady, Practical",
+      "primaryKeyword": "shani sade sati remedies",
+      "cluster": "sade-sati",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "simple remedies for sade sati at home",
+        "saturday remedies for shani",
+        "sesame oil lamp for shani",
+        "shani pooja for sade sati"
+      ]
+    },
+    {
+      "slug": "hanuman-chalisa-on-saturdays",
+      "title": "Hanuman Chalisa on Saturdays: Shani and Strength",
+      "primaryKeyword": "hanuman chalisa for shani",
+      "cluster": "sade-sati",
+      "author": "manikandan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "hanuman chalisa benefits",
+        "why worship hanuman on saturday",
+        "hanuman and shani story",
+        "how many times to chant hanuman chalisa"
+      ]
+    },
+    {
+      "slug": "rahu-ketu-dosha-explained",
+      "title": "Rahu Ketu Dosha: The Shadow Planets Explained",
+      "primaryKeyword": "rahu ketu dosha",
+      "cluster": "navagraha-rahu-ketu",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "what is rahu and ketu",
+        "rahu ketu transit effects",
+        "sarpa dosha remedies",
+        "sri kalahasti rahu ketu pooja"
+      ]
+    },
+    {
+      "slug": "kala-sarpa-dosha-meaning",
+      "title": "Kala Sarpa Dosha: What It Means and What Helps",
+      "primaryKeyword": "kala sarpa dosha",
+      "cluster": "navagraha-rahu-ketu",
+      "author": "manikandan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "kala sarpa dosha effects",
+        "kala sarpa dosha remedies",
+        "how to check kala sarpa dosha",
+        "is kala sarpa dosha real"
+      ]
+    },
+    {
+      "slug": "navagraha-temple-worship-guide",
+      "title": "How to Worship the Navagrahas at a Temple",
+      "primaryKeyword": "how to worship navagrahas",
+      "cluster": "navagraha-rahu-ketu",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "how to worship navagraha in temple",
+        "how many rounds around navagraha",
+        "navagraha pradakshina rules",
+        "navagraha puja at home"
+      ]
+    },
+    {
+      "slug": "guru-peyarchi-jupiter-transit",
+      "title": "Guru Peyarchi: What Jupiter's Transit Asks of You",
+      "primaryKeyword": "guru peyarchi",
+      "cluster": "navagraha-rahu-ketu",
+      "author": "manikandan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "jupiter transit effects on moon signs",
+        "guru peyarchi palangal",
+        "guru peyarchi remedies",
+        "alangudi guru temple"
+      ]
+    },
+    {
+      "slug": "delay-in-marriage-remedies",
+      "title": "Delay in Marriage Remedies: A Calm, Honest Guide",
+      "primaryKeyword": "delay in marriage remedies",
+      "cluster": "marriage-delay",
+      "author": "manikandan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "remedies for late marriage in astrology",
+        "pooja for early marriage",
+        "kanchi kamakshi for marriage",
+        "swayamvara parvathi mantra"
+      ]
+    },
+    {
+      "slug": "mangal-dosha-explained",
+      "title": "Mangal Dosha Explained: Myths, Maths and Meaning",
+      "primaryKeyword": "mangal dosha",
+      "cluster": "marriage-delay",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "what is manglik dosha",
+        "mangal dosha cancellation",
+        "manglik and non manglik marriage",
+        "mangal dosha remedies for marriage"
+      ]
+    },
+    {
+      "slug": "swayamvara-parvathi-story",
+      "title": "Swayamvara Parvathi: The Goddess Who Chose",
+      "primaryKeyword": "swayamvara parvathi",
+      "cluster": "marriage-delay",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "swayamvara parvathi mantra benefits",
+        "parvati and shiva marriage story",
+        "swayamvara parvathi homam for marriage",
+        "who can do swayamvara parvathi homam"
+      ]
+    },
+    {
+      "slug": "waiting-for-the-right-match",
+      "title": "Prayer for Marriage While You Wait for the Right Match",
+      "primaryKeyword": "prayer for marriage",
+      "cluster": "marriage-delay",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "how to stay positive while waiting for marriage",
+        "mantra for peace of mind",
+        "friday prayer for marriage",
+        "dealing with family pressure to marry"
+      ]
+    },
+    {
+      "slug": "garbarakshambigai-temple-story",
+      "title": "Garbarakshambigai Temple: The Goddess Who Guards the Womb",
+      "primaryKeyword": "garbarakshambigai temple",
+      "cluster": "conceiving-pregnancy",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "garbarakshambigai temple history",
+        "garbarakshambigai ghee prasadam",
+        "thirukarukavur temple",
+        "temple for pregnancy prayers"
+      ]
+    },
+    {
+      "slug": "praying-while-trying-to-conceive",
+      "title": "Pooja for Conceiving: Hope and Patience While Trying",
+      "primaryKeyword": "pooja for conceiving",
+      "cluster": "conceiving-pregnancy",
+      "author": "manikandan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "prayer for pregnancy",
+        "mantra for conceiving a baby",
+        "santana gopala mantra",
+        "how to cope with infertility stress"
+      ]
+    },
+    {
+      "slug": "seemantham-and-valaikappu",
+      "title": "Seemantham and Valaikappu: Rituals of Rest and Care",
+      "primaryKeyword": "seemantham and valaikappu",
+      "cluster": "conceiving-pregnancy",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "valaikappu meaning",
+        "seemantham in which month",
+        "baby shower hindu tradition",
+        "valaikappu at home simple"
+      ]
+    },
+    {
+      "slug": "mahamrityunjaya-mantra-meaning",
+      "title": "Mahamrityunjaya Mantra Meaning, Word by Word",
+      "primaryKeyword": "mahamrityunjaya mantra meaning",
+      "cluster": "health-longevity",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "mahamrityunjaya mantra meaning in english",
+        "how many times to chant mahamrityunjaya mantra",
+        "markandeya story",
+        "mrityunjaya homam"
+      ]
+    },
+    {
+      "slug": "praying-for-a-sick-parent",
+      "title": "Prayer for a Sick Parent When You Live Far Away",
+      "primaryKeyword": "prayer for sick parent",
+      "cluster": "health-longevity",
+      "author": "manikandan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "mantra for sick family member",
+        "how to cope when parent is sick in india",
+        "mrityunjaya homam for parents",
+        "prayer for speedy recovery"
+      ]
+    },
+    {
+      "slug": "dhanvantari-and-healing",
+      "title": "Dhanvantari Homam, Healing and the Body as a Temple",
+      "primaryKeyword": "dhanvantari homam",
+      "cluster": "health-longevity",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "dhanvantari mantra benefits",
+        "who is lord dhanvantari",
+        "dhanvantari homam benefits",
+        "ayurveda and prayer"
+      ]
+    },
+    {
+      "slug": "griha-pravesh-puja-steps",
+      "title": "Griha Pravesh Puja Steps for a New Home",
+      "primaryKeyword": "griha pravesh puja",
+      "cluster": "griha-pravesh",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "griha pravesh puja at home steps",
+        "boiling milk in new house meaning",
+        "griha pravesh without priest"
+      ]
+    },
+    {
+      "slug": "blessing-a-new-home-abroad",
+      "title": "Housewarming Puja in the USA, Rented or Owned",
+      "primaryKeyword": "housewarming puja in the USA",
+      "cluster": "griha-pravesh",
+      "author": "manikandan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "griha pravesh in apartment usa",
+        "housewarming puja for rented house",
+        "can we do griha pravesh in rented house"
+      ]
+    },
+    {
+      "slug": "why-ganesha-comes-first",
+      "title": "Why Ganesha Is Worshipped First at Every Beginning",
+      "primaryKeyword": "why ganesha is worshipped first",
+      "cluster": "griha-pravesh",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "why is ganesha worshipped first story",
+        "ganesha remover of obstacles meaning",
+        "ganesha race around the world story"
+      ]
+    },
+    {
+      "slug": "prayer-before-exams",
+      "title": "Prayer Before Exams: A Calm Ritual for Students",
+      "primaryKeyword": "prayer before exams",
+      "cluster": "exams-education",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "prayer before exam for concentration",
+        "saraswati mantra for students",
+        "hayagriva mantra for exams"
+      ]
+    },
+    {
+      "slug": "saraswati-and-hayagriva",
+      "title": "God of Education in Hinduism: Saraswati and Hayagriva",
+      "primaryKeyword": "god of education in Hinduism",
+      "cluster": "exams-education",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "who is the god of education in hinduism",
+        "hayagriva story vedas",
+        "saraswati symbolism veena swan"
+      ]
+    },
+    {
+      "slug": "exam-season-for-parents",
+      "title": "Prayer for Your Child's Exam: Worry, Faith and Tea",
+      "primaryKeyword": "prayer for child's exam",
+      "cluster": "exams-education",
+      "author": "manikandan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "how to support child during exams",
+        "prayer for child's exam success",
+        "parents exam stress"
+      ]
+    },
+    {
+      "slug": "pitru-dosha-explained",
+      "title": "Pitru Dosha Explained: Ancestors, Debt and Love",
+      "primaryKeyword": "pitru dosha",
+      "cluster": "pitru-ancestors",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "what is pitru dosha",
+        "pitru dosha symptoms",
+        "how to remove pitru dosha at home"
+      ]
+    },
+    {
+      "slug": "pitru-paksha-for-nri-families",
+      "title": "Pitru Paksha for NRI Families: Honouring Ancestors Abroad",
+      "primaryKeyword": "pitru paksha for nri",
+      "cluster": "pitru-ancestors",
+      "author": "manikandan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "pitru paksha rituals abroad",
+        "shraddha from usa",
+        "tarpanam in usa"
+      ]
+    },
+    {
+      "slug": "tarpanam-at-home",
+      "title": "Tarpanam at Home: A Simple Offering to Ancestors",
+      "primaryKeyword": "tarpanam at home",
+      "cluster": "pitru-ancestors",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "how to do tarpanam at home",
+        "amavasya tarpanam procedure",
+        "tarpanam with black sesame"
+      ]
+    },
+    {
+      "slug": "tila-homam-at-rameswaram-meaning",
+      "title": "Tila Homam at Rameswaram: Why Sesame and the Sea",
+      "primaryKeyword": "tila homam",
+      "cluster": "pitru-ancestors",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "tila homam benefits",
+        "why rameswaram for ancestors",
+        "tila homam for pitru dosha"
+      ]
+    },
+    {
+      "slug": "puja-at-home-step-by-step",
+      "title": "Puja at Home, Step by Step for Beginners",
+      "primaryKeyword": "puja at home step by step",
+      "cluster": "puja-at-home",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "how to do puja at home daily",
+        "simple puja vidhi for beginners",
+        "puja at home without priest"
+      ]
+    },
+    {
+      "slug": "small-puja-corner-apartment",
+      "title": "A Small Puja Corner for an Apartment",
+      "primaryKeyword": "small puja corner in an apartment",
+      "cluster": "puja-at-home",
+      "author": "manikandan",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "puja corner ideas for small spaces",
+        "minimalist puja room",
+        "puja shelf in living room"
+      ]
+    },
+    {
+      "slug": "sixteen-steps-of-puja",
+      "title": "Shodashopachara Puja: The 16 Steps of Hosting God",
+      "primaryKeyword": "shodashopachara puja",
+      "cluster": "puja-at-home",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "16 steps of puja meaning",
+        "shodashopachara puja list",
+        "what are upacharas in puja"
+      ]
+    },
+    {
+      "slug": "five-minute-daily-puja",
+      "title": "Daily Puja at Home: A Five-Minute Routine for Mornings",
+      "primaryKeyword": "daily puja at home",
+      "cluster": "puja-at-home",
+      "author": "manikandan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "quick puja for working people",
+        "short daily prayer hindu",
+        "daily puja in 5 minutes"
+      ]
+    },
+    {
+      "slug": "what-is-a-homam",
+      "title": "What Is a Homam? The Fire Ritual Explained",
+      "primaryKeyword": "what is a homam",
+      "cluster": "homam-explained",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "homam meaning",
+        "what happens during a homam",
+        "types of homam and benefits"
+      ]
+    },
+    {
+      "slug": "homam-vs-puja",
+      "title": "Homam vs Puja: What Is the Difference?",
+      "primaryKeyword": "homam vs puja",
+      "cluster": "homam-explained",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "difference between homam and puja",
+        "havan vs puja",
+        "can homam be done at home"
+      ]
+    },
+    {
+      "slug": "homam-and-letting-go",
+      "title": "Homam Benefits: What the Fire Teaches About Letting Go",
+      "primaryKeyword": "homam benefits",
+      "cluster": "homam-explained",
+      "author": "manikandan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "benefits of attending a homam",
+        "spiritual meaning of homam fire",
+        "why offerings go into fire"
+      ]
+    },
+    {
+      "slug": "kolam-and-rangoli-meaning",
+      "title": "Kolam and Rangoli Meaning: Drawing at the Doorstep",
+      "primaryKeyword": "rangoli meaning",
+      "cluster": "diwali-meaning",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "kolam meaning",
+        "why draw rangoli at the entrance",
+        "rice flour kolam significance"
+      ]
+    },
+    {
+      "slug": "bhai-dooj-meaning",
+      "title": "Bhai Dooj Meaning: Yama, Yamuna and Siblings",
+      "primaryKeyword": "bhai dooj meaning",
+      "cluster": "diwali-meaning",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "bhai dooj story yama yamuna",
+        "why is bhai dooj celebrated",
+        "bhai dooj tilak ritual"
+      ]
+    },
+    {
+      "slug": "kanya-puja-meaning",
+      "title": "Kanya Puja Meaning: Honouring Girls in Navratri",
+      "primaryKeyword": "kanya puja meaning",
+      "cluster": "navratri-meaning",
+      "author": "manikandan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "kanjak puja meaning",
+        "kanya pujan on ashtami navami",
+        "why girls are worshipped in navratri"
+      ]
+    },
+    {
+      "slug": "durga-saptashati-for-beginners",
+      "title": "Durga Saptashati for Beginners: How to Begin",
+      "primaryKeyword": "durga saptashati for beginners",
+      "cluster": "navratri-meaning",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "how to read durga saptashati at home",
+        "devi mahatmyam chapters",
+        "durga saptashati in navratri"
+      ]
+    },
+    {
+      "slug": "vidyarambham-first-letters",
+      "title": "Vidyarambham: A Child's First Letters in Rice",
+      "primaryKeyword": "vidyarambham",
+      "cluster": "exams-education",
+      "author": "manikandan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "vidyarambham ceremony at home",
+        "writing in rice vijayadashami",
+        "ezhuthiniruthu meaning"
+      ]
+    },
+    {
+      "slug": "tulsi-plant-indoors",
+      "title": "Keeping a Tulsi Plant Indoors in a Cold Climate",
+      "primaryKeyword": "tulsi plant indoors",
+      "cluster": "puja-at-home",
+      "author": "archana",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "how to grow tulsi in usa",
+        "holy basil winter care",
+        "tulsi puja at home daily"
+      ]
+    },
+    {
+      "slug": "puja-items-list-for-home",
+      "title": "Puja Items List for a Home Altar Abroad",
+      "primaryKeyword": "puja items list",
+      "cluster": "puja-at-home",
+      "author": "archana",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "puja samagri list for home",
+        "basic pooja items for beginners",
+        "where to buy puja items in usa"
+      ]
+    },
+    {
+      "slug": "namakaranam-in-america",
+      "title": "Hindu Naming Ceremony in America: Namakaranam",
+      "primaryKeyword": "hindu naming ceremony",
+      "cluster": "griha-pravesh",
+      "author": "manikandan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "naming ceremony for baby at home",
+        "baby name by nakshatra",
+        "namakaran ceremony in usa"
+      ]
+    },
+    {
+      "slug": "ayushya-homam-star-birthday",
+      "title": "Ayushya Homam: Celebrating a Birthday by the Star",
+      "primaryKeyword": "ayushya homam",
+      "cluster": "health-longevity",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "nakshatra birthday meaning",
+        "star birthday calculation",
+        "ayushya homam for child"
+      ]
+    },
+    {
+      "slug": "rahu-kalam-explained",
+      "title": "Rahu Kalam Explained: Should You Avoid It?",
+      "primaryKeyword": "rahu kalam",
+      "cluster": "navagraha-rahu-ketu",
+      "author": "manikandan",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "what is rahu kalam",
+        "rahu kalam timing calculation",
+        "yamagandam and gulika kalam"
+      ]
+    },
+    {
+      "slug": "what-is-a-muhurtham",
+      "title": "What Is a Muhurtham? Choosing an Auspicious Time",
+      "primaryKeyword": "what is muhurtham",
+      "cluster": "astrology-real",
+      "author": "hariharan",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "how is muhurtham calculated",
+        "auspicious time for wedding",
+        "muhurat meaning"
+      ]
+    },
+    {
+      "slug": "sankatahara-chaturthi-fast",
+      "title": "Sankatahara Chaturthi: The Monthly Ganesha Fast",
+      "primaryKeyword": "sankatahara chaturthi",
+      "cluster": "griha-pravesh",
+      "author": "archana",
+      "audience": "general",
+      "secondaryKeywords": [
+        "sankashti chaturthi vrat rules",
+        "sankatahara chaturthi moonrise",
+        "how to break sankashti fast"
+      ]
+    },
+    {
+      "slug": "pradosham-meaning",
+      "title": "Pradosham Meaning: The Twilight Hour for Shiva",
+      "primaryKeyword": "pradosham meaning",
+      "cluster": "maha-shivaratri",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "pradosham significance",
+        "why nandi is worshipped on pradosham",
+        "pradosha vratham"
+      ]
+    },
+    {
+      "slug": "amavasya-and-ancestors",
+      "title": "Amavasya Significance: Why the New Moon Is for Ancestors",
+      "primaryKeyword": "amavasya significance",
+      "cluster": "pitru-ancestors",
+      "author": "manikandan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "what to do on amavasya",
+        "amavasya tarpanam",
+        "why amavasya is for pitrus"
+      ]
+    },
+    {
+      "slug": "when-a-parent-dies-abroad",
+      "title": "When a Parent Dies in India and You Live Abroad",
+      "primaryKeyword": "when a parent dies in india",
+      "cluster": "pitru-ancestors",
+      "author": "manikandan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "hindu funeral rites when you cannot travel",
+        "13th day ceremony for nri",
+        "shraddha from abroad"
+      ]
+    },
+    {
+      "slug": "drishti-evil-eye-meaning",
+      "title": "Evil Eye in Hinduism: What Tradition Says About Drishti",
+      "primaryKeyword": "evil eye in hinduism",
+      "cluster": "karma-dharma",
+      "author": "hariharan",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "drishti meaning",
+        "nazar remedies at home",
+        "why hindus apply kajal dot on babies"
+      ]
+    },
+    {
+      "slug": "vastu-for-apartments",
+      "title": "Vastu for Apartments: What Matters, What Doesn't",
+      "primaryKeyword": "vastu for apartments",
+      "cluster": "puja-at-home",
+      "author": "archana",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "vastu tips for rented apartment",
+        "puja room direction in apartment",
+        "vastu for bedroom in flat"
+      ]
+    },
+    {
+      "slug": "sudarshana-homam-meaning",
+      "title": "Sudarshana Homam Meaning: The Wheel That Protects",
+      "primaryKeyword": "sudarshana homam meaning",
+      "cluster": "homam-explained",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "sudarshana chakra meaning",
+        "who should do sudarshana homam",
+        "sudarshana homam for obstacles"
+      ]
+    },
+    {
+      "slug": "annadhanam-feeding-as-worship",
+      "title": "Annadhanam Meaning: Why Feeding People Is Worship",
+      "primaryKeyword": "annadhanam meaning",
+      "cluster": "karma-dharma",
+      "author": "manikandan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "annadanam significance",
+        "why food donation is important in hinduism",
+        "annadhanam in memory of ancestors"
+      ]
+    },
+    {
+      "slug": "six-abodes-of-murugan",
+      "title": "The Six Abodes of Murugan: Arupadai Veedu",
+      "primaryKeyword": "arupadai veedu",
+      "cluster": "murugan-skanda",
+      "author": "hariharan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "six abodes of murugan list",
+        "arupadai veedu temples in order",
+        "palani murugan temple significance"
+      ]
+    },
+    {
+      "slug": "margazhi-month-meaning",
+      "title": "Margazhi Month Meaning: Dawn, Kolam and Song",
+      "primaryKeyword": "margazhi month meaning",
+      "cluster": "ekadashi-fasting",
+      "author": "manikandan",
+      "audience": "general",
+      "secondaryKeywords": [
+        "why margazhi is special",
+        "tiruppavai in margazhi",
+        "margazhi kolam tradition"
+      ]
+    },
+    {
+      "slug": "simple-mantras-for-kids",
+      "title": "Simple Mantras for Kids at Bedtime",
+      "primaryKeyword": "mantras for kids",
+      "cluster": "mantra-basics",
+      "author": "archana",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "easy slokas for children",
+        "bedtime prayer for hindu kids",
+        "how to teach kids mantras"
+      ]
+    },
+    {
+      "slug": "explaining-a-hindu-wedding",
+      "title": "Hindu Wedding Rituals Explained for Your Guests",
+      "primaryKeyword": "hindu wedding rituals explained",
+      "cluster": "festivals-explained-usa",
+      "author": "manikandan",
+      "audience": "nri-us",
+      "secondaryKeywords": [
+        "what to expect at a hindu wedding",
+        "saptapadi meaning",
+        "hindu wedding guide for non indian guests"
+      ]
+    },
+    {
+      "slug": "manifesting-vs-sankalpa",
+      "title": "Manifesting vs Sankalpa: Intention in Hinduism",
+      "primaryKeyword": "manifesting vs sankalpa",
+      "cluster": "ritual-and-mind",
+      "author": "archana",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "what is sankalpa in yoga",
+        "sankalpa meaning",
+        "does manifesting work hinduism"
+      ]
+    },
+    {
+      "slug": "brahma-muhurta-waking-early",
+      "title": "Brahma Muhurta Benefits: Is Waking Before Dawn Worth It?",
+      "primaryKeyword": "brahma muhurta benefits",
+      "cluster": "ritual-and-mind",
+      "author": "archana",
+      "audience": "seeker",
+      "secondaryKeywords": [
+        "what is brahma muhurta time",
+        "waking up at brahma muhurta",
+        "brahma muhurta meditation"
+      ]
+    }
+  ]
+}

@@ -1,77 +1,57 @@
 ---
 title: 'Hindu Naming Ceremony in America: Namakaranam'
-description: >-
-  Namakaranam, the Hindu naming ceremony: how families in America pick a name by
-  birth star, hold the ritual at home and bring in relatives from far away.
+description: 'Namakaranam, the Hindu naming ceremony: how families in America pick a name by birth star,
+  hold the ritual at home and bring in relatives from far away.'
 author: manikandan
-publishedAt: '2026-10-21'
-updatedAt: '2026-10-21'
+publishedAt: '2026-10-13'
+updatedAt: '2026-10-13'
 cluster: griha-pravesh
 primaryKeyword: hindu naming ceremony
 secondaryKeywords:
-  - naming ceremony for baby at home
-  - baby name by nakshatra
-  - namakaran ceremony in usa
+- naming ceremony for baby at home
+- baby name by nakshatra
+- namakaran ceremony in usa
 tags:
-  - Namakaranam
-  - Samskaras
-  - NRI Life
+- Namakaranam
+- Samskaras
+- NRI Life
 audience: nri-us
 image: /blog/namakaranam-in-america.webp
-imageAlt: >-
-  Newborn's hand on a white cloth beside a brass plate of rice and a small lit
-  lamp — hindu naming ceremony | pariharaonline.com
-imagePrompt: >-
-  Editorial photograph of a sleeping newborn's tiny hand resting on a soft white
-  cloth beside a brass plate of rice with a name traced in it and a small lamp,
-  warm light in a modern home.
+imageAlt: Newborn's hand on a white cloth beside a brass plate of rice and a small lit lamp — hindu naming
+  ceremony | pariharaonline.com
+imagePrompt: Editorial photograph of a sleeping newborn's tiny hand resting on a soft white cloth beside
+  a brass plate of rice with a name traced in it and a small lamp, warm light in a modern home.
 products:
   handles:
-    - ayushya-homam
+  - ayushya-homam
 related:
-  - griha-pravesh-puja-steps
-  - blessing-a-new-home-abroad
-  - puja-at-home-step-by-step
+- griha-pravesh-puja-steps
+- blessing-a-new-home-abroad
+- puja-at-home-step-by-step
 takeaways:
-  - >-
-    Namakaranam is the Hindu naming ceremony, traditionally held around the
-    eleventh or twelfth day after birth, when the name is whispered into the
-    baby's ear.
-  - >-
-    Many families choose a name beginning with a syllable linked to the baby's
-    birth star, or nakshatra.
-  - >-
-    In America it can be held at home, at a temple or online with grandparents
-    joining.
+- Namakaranam is the Hindu naming ceremony, traditionally held around the eleventh or twelfth day after
+  birth, when the name is whispered into the baby's ear.
+- Many families choose a name beginning with a syllable linked to the baby's birth star, or nakshatra.
+- In America it can be held at home, at a temple or online with grandparents joining.
 faq:
-  - q: When is the Hindu naming ceremony done?
-    a: >-
-      Tradition places namakaranam on the eleventh or twelfth day after birth,
-      after the initial period of rest for mother and baby. Many families,
-      especially abroad, hold it later, at one month, three months or whenever
-      relatives can gather. Family custom and the advice of a priest or
-      astrologer usually decide the day and time.
-  - q: How do I choose a baby name based on nakshatra?
-    a: >-
-      Each of the twenty-seven nakshatras, or birth stars, is divided into four
-      parts, each linked to a syllable. An astrologer calculates the baby's
-      nakshatra from the time and place of birth, then suggests the starting
-      syllables. Families pick a name beginning with one of them, sometimes
-      keeping it as a second or pet name alongside an everyday name.
-  - q: Can we do a namakaran ceremony at home in the USA?
-    a: >-
-      Yes. Many families invite a temple priest home or join one online. You
-      need a clean space, a lamp, flowers, a plate of rice and a picture of the
-      family deity. The father or an elder whispers the name in the baby's right
-      ear, writes it in rice, and relatives bless the child, often joining by
-      video.
-  - q: What does the father whisper in the baby's ear?
-    a: >-
-      In the classic form, the father or an elder leans close to the baby's
-      right ear and says the chosen name, sometimes with a short blessing or
-      mantra for a long, healthy and good life. Some families whisper the name
-      three times. It is a tender moment that marks the child's welcome into the
-      family and community.
+- q: When is the Hindu naming ceremony done?
+  a: Tradition places namakaranam on the eleventh or twelfth day after birth, after the initial period
+    of rest for mother and baby. Many families, especially abroad, hold it later, at one month, three
+    months or whenever relatives can gather. Family custom and the advice of a priest or astrologer usually
+    decide the day and time.
+- q: How do I choose a baby name based on nakshatra?
+  a: Each of the twenty-seven nakshatras, or birth stars, is divided into four parts, each linked to a
+    syllable. An astrologer calculates the baby's nakshatra from the time and place of birth, then suggests
+    the starting syllables. Families pick a name beginning with one of them, sometimes keeping it as a
+    second or pet name alongside an everyday name.
+- q: Can we do a namakaran ceremony at home in the USA?
+  a: Yes. Many families invite a temple priest home or join one online. You need a clean space, a lamp,
+    flowers, a plate of rice and a picture of the family deity. The father or an elder whispers the name
+    in the baby's right ear, writes it in rice, and relatives bless the child, often joining by video.
+- q: What does the father whisper in the baby's ear?
+  a: In the classic form, the father or an elder leans close to the baby's right ear and says the chosen
+    name, sometimes with a short blessing or mantra for a long, healthy and good life. Some families whisper
+    the name three times. It is a tender moment that marks the child's welcome into the family and community.
 readingTime: 4
 draft: false
 ---

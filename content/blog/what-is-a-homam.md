@@ -1,73 +1,57 @@
 ---
 title: What Is a Homam? The Fire Ritual Explained
-description: >-
-  What is a homam? The Vedic fire ritual explained: Agni as messenger, what is
-  offered into the flames, how a homam differs from a puja and why families book
-  one.
+description: 'What is a homam? The Vedic fire ritual explained: Agni as messenger, what is offered into
+  the flames, how a homam differs from a puja and why families book one.'
 author: hariharan
-publishedAt: '2026-11-02'
-updatedAt: '2026-11-02'
+publishedAt: '2026-10-30'
+updatedAt: '2026-10-30'
 cluster: homam-explained
 primaryKeyword: what is a homam
 secondaryKeywords:
-  - homam meaning
-  - what happens during a homam
-  - types of homam and benefits
+- homam meaning
+- what happens during a homam
+- types of homam and benefits
 tags:
-  - Homam
-  - Rituals
-  - Mythology
+- Homam
+- Rituals
+- Mythology
 audience: general
 image: /blog/what-is-a-homam.webp
-imageAlt: >-
-  Hand pouring ghee from a wooden ladle into a homam fire in a temple courtyard
-  — what is a homam | pariharaonline.com
-imagePrompt: >-
-  A square brick homam pit with bright flames and rising smoke in a temple
-  courtyard, a priest's hand pouring ghee from a long wooden ladle, warm golden
-  light.
+imageAlt: Hand pouring ghee from a wooden ladle into a homam fire in a temple courtyard — what is a homam
+  | pariharaonline.com
+imagePrompt: A square brick homam pit with bright flames and rising smoke in a temple courtyard, a priest's
+  hand pouring ghee from a long wooden ladle, warm golden light.
 products:
   handles:
-    - maha-ganapathy-homam
-    - sudarsana-homam
+  - maha-ganapathy-homam
+  - sudarsana-homam
 related:
-  - homam-vs-puja
-  - homam-and-letting-go
-  - joining-a-puja-across-time-zones
+- homam-vs-puja
+- homam-and-letting-go
+- joining-a-puja-across-time-zones
 takeaways:
-  - >-
-    A homam is a Vedic fire ritual in which ghee, grains and herbs are offered
-    into consecrated fire with mantras, with Agni seen as the messenger to the
-    deities.
-  - >-
-    Each homam is dedicated to a deity and purpose, such as Ganapathy for
-    beginnings, Navagraha for planetary balance or Mrityunjaya for health and
-    longevity.
-  - >-
-    A homam usually moves from sankalpam and kalasha to offerings with 'svaha'
-    and a final purnahuti, after which prasadam is shared.
+- A homam is a Vedic fire ritual in which ghee, grains and herbs are offered into consecrated fire with
+  mantras, with Agni seen as the messenger to the deities.
+- Each homam is dedicated to a deity and purpose, such as Ganapathy for beginnings, Navagraha for planetary
+  balance or Mrityunjaya for health and longevity.
+- A homam usually moves from sankalpam and kalasha to offerings with 'svaha' and a final purnahuti, after
+  which prasadam is shared.
 faq:
-  - q: What is a homam in Hinduism?
-    a: >-
-      A homam, also called havan or homa, is a ritual in which offerings such as
-      ghee, rice, sesame and herbs are poured into a consecrated fire while
-      priests chant mantras. The fire, Agni, is regarded as the messenger who
-      carries offerings to the deities. Homams are performed for specific
-      intentions like health, protection or new beginnings.
-  - q: What happens during a homam?
-    a: >-
-      A homam typically starts with a prayer to Ganesha and a sankalpam naming
-      the person and purpose. A kalasha of water is consecrated, the fire is lit
-      in a special pit, and offerings are made with each mantra ending in
-      'svaha'. It ends with the purnahuti, the final full offering, followed by
-      aarti and prasadam.
-  - q: What are the different types of homam?
-    a: >-
-      Common homams include Ganapathy homam for beginnings and obstacles,
-      Navagraha homam for planetary balance, Mrityunjaya homam for health and
-      longevity, Sudarshana homam for protection, Saraswati homam for learning
-      and Ayushya homam for birthdays. Each invokes a particular deity with
-      specific mantras and offerings suited to the intention.
+- q: What is a homam in Hinduism?
+  a: A homam, also called havan or homa, is a ritual in which offerings such as ghee, rice, sesame and
+    herbs are poured into a consecrated fire while priests chant mantras. The fire, Agni, is regarded
+    as the messenger who carries offerings to the deities. Homams are performed for specific intentions
+    like health, protection or new beginnings.
+- q: What happens during a homam?
+  a: A homam typically starts with a prayer to Ganesha and a sankalpam naming the person and purpose.
+    A kalasha of water is consecrated, the fire is lit in a special pit, and offerings are made with each
+    mantra ending in 'svaha'. It ends with the purnahuti, the final full offering, followed by aarti and
+    prasadam.
+- q: What are the different types of homam?
+  a: Common homams include Ganapathy homam for beginnings and obstacles, Navagraha homam for planetary
+    balance, Mrityunjaya homam for health and longevity, Sudarshana homam for protection, Saraswati homam
+    for learning and Ayushya homam for birthdays. Each invokes a particular deity with specific mantras
+    and offerings suited to the intention.
 readingTime: 4
 draft: false
 ---

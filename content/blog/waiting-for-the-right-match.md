@@ -1,70 +1,54 @@
 ---
 title: Prayer for Marriage While You Wait for the Right Match
-description: >-
-  A prayer for marriage works best with a steady mind. Practical ways to keep
-  your peace while waiting for the right match: breath, routine and simple
-  devotion.
+description: 'A prayer for marriage works best with a steady mind. Practical ways to keep your peace while
+  waiting for the right match: breath, routine and simple devotion.'
 author: archana
-publishedAt: '2026-10-29'
-updatedAt: '2026-10-29'
+publishedAt: '2026-11-05'
+updatedAt: '2026-11-05'
 cluster: marriage-delay
 primaryKeyword: prayer for marriage
 secondaryKeywords:
-  - how to stay positive while waiting for marriage
-  - mantra for peace of mind
-  - friday prayer for marriage
-  - dealing with family pressure to marry
+- how to stay positive while waiting for marriage
+- mantra for peace of mind
+- friday prayer for marriage
+- dealing with family pressure to marry
 tags:
-  - Marriage
-  - Mind
-  - Practice
+- Marriage
+- Mind
+- Practice
 audience: general
 image: /blog/waiting-for-the-right-match.webp
-imageAlt: >-
-  Hands cupping a small brass lamp on a window sill at dawn beside jasmine —
-  prayer for marriage | pariharaonline.com
-imagePrompt: >-
-  A young woman's hands cupped around a small brass lamp on a window sill at
-  dawn, city rooftops blurred outside, jasmine on the sill, soft warm light,
-  face not shown.
+imageAlt: Hands cupping a small brass lamp on a window sill at dawn beside jasmine — prayer for marriage
+  | pariharaonline.com
+imagePrompt: A young woman's hands cupped around a small brass lamp on a window sill at dawn, city rooftops
+  blurred outside, jasmine on the sill, soft warm light, face not shown.
 products:
   handles:
-    - kanchi-kamakshi
+  - kanchi-kamakshi
 related:
-  - delay-in-marriage-remedies
-  - mangal-dosha-explained
-  - is-astrology-real
+- delay-in-marriage-remedies
+- mangal-dosha-explained
+- is-astrology-real
 takeaways:
-  - >-
-    While waiting for the right match, a steady daily practice protects your
-    peace more than anxious checking and comparison.
-  - >-
-    A simple Friday lamp and a short prayer to the Goddess is a traditional,
-    complete devotion for marriage.
-  - >-
-    Family pressure is usually love without patience; one calm conversation can
-    ease months of tension.
+- While waiting for the right match, a steady daily practice protects your peace more than anxious checking
+  and comparison.
+- A simple Friday lamp and a short prayer to the Goddess is a traditional, complete devotion for marriage.
+- Family pressure is usually love without patience; one calm conversation can ease months of tension.
 faq:
-  - q: How do I stay positive while waiting for marriage?
-    a: >-
-      Keep a routine that is yours regardless of the search: sleep, movement,
-      friends and work you care about. Limit comparison, especially on social
-      media. Many people find a short daily practice helps, such as five minutes
-      of slow breathing followed by a single prayer. The aim is not forced
-      cheerfulness but a steady mind.
-  - q: Which prayer is said for a good marriage?
-    a: >-
-      Traditional choices include the Swayamvara Parvathi mantra, the Katyayani
-      mantra from the Bhagavata Purana tradition, recitation of Andal's
-      Tiruppavai, and prayers to Goddess Kamakshi. Choose one that resonates and
-      say it regularly. Many families also light a lamp to the Goddess on
-      Fridays. Sincerity and regularity matter more than the specific prayer.
-  - q: How do I deal with family pressure to get married?
-    a: >-
-      Choose a calm time, not a festival or a wedding, to talk honestly with
-      your parents. Share what you are looking for and what you are doing. Ask
-      for specific support, such as fewer questions in front of relatives.
-      Remember their worry often comes from love and their own expectations.
+- q: How do I stay positive while waiting for marriage?
+  a: 'Keep a routine that is yours regardless of the search: sleep, movement, friends and work you care
+    about. Limit comparison, especially on social media. Many people find a short daily practice helps,
+    such as five minutes of slow breathing followed by a single prayer. The aim is not forced cheerfulness
+    but a steady mind.'
+- q: Which prayer is said for a good marriage?
+  a: Traditional choices include the Swayamvara Parvathi mantra, the Katyayani mantra from the Bhagavata
+    Purana tradition, recitation of Andal's Tiruppavai, and prayers to Goddess Kamakshi. Choose one that
+    resonates and say it regularly. Many families also light a lamp to the Goddess on Fridays. Sincerity
+    and regularity matter more than the specific prayer.
+- q: How do I deal with family pressure to get married?
+  a: Choose a calm time, not a festival or a wedding, to talk honestly with your parents. Share what you
+    are looking for and what you are doing. Ask for specific support, such as fewer questions in front
+    of relatives. Remember their worry often comes from love and their own expectations.
 readingTime: 4
 draft: false
 ---

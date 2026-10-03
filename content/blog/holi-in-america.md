@@ -1,67 +1,55 @@
 ---
 title: 'Holi in America: Colours, Campus and Belonging'
-description: >-
-  Holi in the USA, from campus colour runs to temple lawns: an NRI reflection on
-  belonging, explaining Holi to friends, and keeping its story alive in a new
-  home.
+description: 'Holi in the USA, from campus colour runs to temple lawns: an NRI reflection on belonging,
+  explaining Holi to friends, and keeping its story alive in a new home.'
 author: manikandan
-publishedAt: '2026-10-12'
-updatedAt: '2026-10-12'
+publishedAt: '2026-11-02'
+updatedAt: '2026-11-02'
 cluster: holi
 primaryKeyword: holi in america
 secondaryKeywords:
-  - holi festival in usa
-  - how to celebrate holi in america
-  - explaining holi to friends
+- holi festival in usa
+- how to celebrate holi in america
+- explaining holi to friends
 tags:
-  - Holi
-  - NRI Life
-  - Festivals
+- Holi
+- NRI Life
+- Festivals
 audience: nri-us
 image: /blog/holi-in-america.webp
-imageAlt: >-
-  Clouds of coloured powder over a university lawn with bowls of gulal on a
-  picnic table — holi in america | pariharaonline.com
-imagePrompt: >-
-  Clouds of pink, yellow and green powder drifting over a green university lawn
-  with red-brick buildings behind, bowls of gulal on a picnic table in the
-  foreground, bright spring light, people only as distant blurred shapes.
+imageAlt: Clouds of coloured powder over a university lawn with bowls of gulal on a picnic table — holi
+  in america | pariharaonline.com
+imagePrompt: Clouds of pink, yellow and green powder drifting over a green university lawn with red-brick
+  buildings behind, bowls of gulal on a picnic table in the foreground, bright spring light, people only
+  as distant blurred shapes.
 products:
   handles: []
   query: Krishna
 related:
-  - holi-meaning-prahlad-holika
-  - holika-dahan-at-home
-  - festival-rituals-for-kids
+- holi-meaning-prahlad-holika
+- holika-dahan-at-home
+- festival-rituals-for-kids
 takeaways:
-  - >-
-    Holi in the USA is often celebrated on the nearest weekend at temples and
-    campuses, since the full moon of Phalguna rarely falls on a day off.
-  - >-
-    Telling the Prahlad and Holika story, even in two sentences, turns a colour
-    party into a festival with roots.
+- Holi in the USA is often celebrated on the nearest weekend at temples and campuses, since the full moon
+  of Phalguna rarely falls on a day off.
+- Telling the Prahlad and Holika story, even in two sentences, turns a colour party into a festival with
+  roots.
 faq:
-  - q: How is Holi celebrated in the USA?
-    a: >-
-      Many US temples, Indian associations and universities host Holi on the
-      nearest weekend to the Phalguna full moon, with colour play on lawns,
-      music, food and sometimes a small Holika bonfire where permitted. Families
-      also mark the evening before at home with a lamp and prayer. Weather in
-      March can be cold, so some events move to April.
-  - q: How do I explain Holi to American friends?
-    a: >-
-      Keep it simple: Holi is a Hindu spring festival. The night before, a
-      bonfire recalls a boy named Prahlad whose faith protected him from fire.
-      The next day people throw coloured powder, remembering Krishna's
-      playfulness, and for a day age and status do not matter. Invite them to
-      wear old white clothes and say 'Happy Holi'.
-  - q: Is the colour powder used for Holi safe for skin?
-    a: >-
-      Traditional gulal was made from flowers and herbs like marigold, turmeric
-      and beetroot. Some cheaper powders today contain synthetic dyes that can
-      irritate skin and eyes. Look for powders labelled natural or skin-safe,
-      oil your skin and hair beforehand, protect eyes, and keep it away from
-      young children's faces. Or make your own from turmeric and flowers.
+- q: How is Holi celebrated in the USA?
+  a: Many US temples, Indian associations and universities host Holi on the nearest weekend to the Phalguna
+    full moon, with colour play on lawns, music, food and sometimes a small Holika bonfire where permitted.
+    Families also mark the evening before at home with a lamp and prayer. Weather in March can be cold,
+    so some events move to April.
+- q: How do I explain Holi to American friends?
+  a: 'Keep it simple: Holi is a Hindu spring festival. The night before, a bonfire recalls a boy named
+    Prahlad whose faith protected him from fire. The next day people throw coloured powder, remembering
+    Krishna''s playfulness, and for a day age and status do not matter. Invite them to wear old white
+    clothes and say ''Happy Holi''.'
+- q: Is the colour powder used for Holi safe for skin?
+  a: Traditional gulal was made from flowers and herbs like marigold, turmeric and beetroot. Some cheaper
+    powders today contain synthetic dyes that can irritate skin and eyes. Look for powders labelled natural
+    or skin-safe, oil your skin and hair beforehand, protect eyes, and keep it away from young children's
+    faces. Or make your own from turmeric and flowers.
 readingTime: 4
 draft: false
 ---

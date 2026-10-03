@@ -1,75 +1,59 @@
 ---
 title: 'Vidyarambham: A Child''s First Letters in Rice'
-description: >-
-  Vidyarambham is when a child writes first letters in a plate of rice on
-  Vijayadashami. What the ritual means, how families do it, and how to hold it
-  anywhere.
+description: Vidyarambham is when a child writes first letters in a plate of rice on Vijayadashami. What
+  the ritual means, how families do it, and how to hold it anywhere.
 author: manikandan
 publishedAt: '2026-10-04'
 updatedAt: '2026-10-04'
 cluster: exams-education
 primaryKeyword: vidyarambham
 secondaryKeywords:
-  - vidyarambham ceremony at home
-  - writing in rice vijayadashami
-  - ezhuthiniruthu meaning
+- vidyarambham ceremony at home
+- writing in rice vijayadashami
+- ezhuthiniruthu meaning
 tags:
-  - Vidyarambham
-  - Vijayadashami
-  - Children
+- Vidyarambham
+- Vijayadashami
+- Children
 audience: general
 image: /blog/vidyarambham-first-letters.webp
-imageAlt: >-
-  Elder's hand guiding a child's finger to trace a letter in a brass plate of
-  rice beside a lamp — vidyarambham | pariharaonline.com
-imagePrompt: >-
-  Close editorial photograph of a small child's hand guided by an elder's hand
-  tracing a letter in a brass plate of raw rice, a lit lamp and white jasmine
-  nearby, soft morning light.
+imageAlt: Elder's hand guiding a child's finger to trace a letter in a brass plate of rice beside a lamp
+  — vidyarambham | pariharaonline.com
+imagePrompt: Close editorial photograph of a small child's hand guided by an elder's hand tracing a letter
+  in a brass plate of raw rice, a lit lamp and white jasmine nearby, soft morning light.
 products:
   handles:
-    - saraswati-homam
+  - saraswati-homam
 related:
-  - prayer-before-exams
-  - saraswati-and-hayagriva
-  - why-navratri-lasts-nine-nights
+- prayer-before-exams
+- saraswati-and-hayagriva
+- why-navratri-lasts-nine-nights
 takeaways:
-  - >-
-    Vidyarambham is the ritual where a young child writes their first letters,
-    usually in a plate of rice, on Vijayadashami.
-  - >-
-    An elder or teacher guides the child's finger, often starting with Om or the
-    name of Ganesha or Saraswati.
-  - 'Adults also use the day to begin music, dance or any new learning.'
+- Vidyarambham is the ritual where a young child writes their first letters, usually in a plate of rice,
+  on Vijayadashami.
+- An elder or teacher guides the child's finger, often starting with Om or the name of Ganesha or Saraswati.
+- Adults also use the day to begin music, dance or any new learning.
 faq:
-  - q: What is vidyarambham and why is it done on Vijayadashami?
-    a: >-
-      Vidyarambham means the beginning of learning. On Vijayadashami, the day
-      after Saraswati is worshipped during Navratri, young children are
-      introduced to letters by writing in rice or sand. The day is considered
-      auspicious for beginnings because it marks victory and knowledge together.
-      It is widely observed in Kerala and in many Tamil and Karnataka homes.
-  - q: How do you do a vidyarambham ceremony at home?
-    a: >-
-      Place a plate of raw rice before a lamp and a picture of Saraswati or
-      Ganesha. An elder sits the child on their lap, holds the child's index
-      finger and writes a sacred syllable such as Om, then the first letters of
-      the alphabet. Some families gently trace a letter on the tongue with a
-      gold ring. Close with a sweet.
-  - q: At what age is vidyarambham done?
-    a: >-
-      Most families do it between two and five years old, before formal
-      schooling begins. There is no strict rule, and some wait until the child
-      can sit still happily. Adults also mark the day by starting music, dance,
-      a new language or any skill, because the ritual honours beginnings in
-      learning rather than a particular age.
-  - q: What is ezhuthiniruthu?
-    a: >-
-      Ezhuthiniruthu is the Malayalam name for vidyarambham, meaning sitting
-      down to write. In Kerala, children are brought to temples, schools or
-      elders' homes on Vijayadashami to write their first letters in rice or
-      sand. It is one of the most loved family rituals of the season and is
-      often photographed and remembered for years.
+- q: What is vidyarambham and why is it done on Vijayadashami?
+  a: Vidyarambham means the beginning of learning. On Vijayadashami, the day after Saraswati is worshipped
+    during Navratri, young children are introduced to letters by writing in rice or sand. The day is considered
+    auspicious for beginnings because it marks victory and knowledge together. It is widely observed in
+    Kerala and in many Tamil and Karnataka homes.
+- q: How do you do a vidyarambham ceremony at home?
+  a: Place a plate of raw rice before a lamp and a picture of Saraswati or Ganesha. An elder sits the
+    child on their lap, holds the child's index finger and writes a sacred syllable such as Om, then the
+    first letters of the alphabet. Some families gently trace a letter on the tongue with a gold ring.
+    Close with a sweet.
+- q: At what age is vidyarambham done?
+  a: Most families do it between two and five years old, before formal schooling begins. There is no strict
+    rule, and some wait until the child can sit still happily. Adults also mark the day by starting music,
+    dance, a new language or any skill, because the ritual honours beginnings in learning rather than
+    a particular age.
+- q: What is ezhuthiniruthu?
+  a: Ezhuthiniruthu is the Malayalam name for vidyarambham, meaning sitting down to write. In Kerala,
+    children are brought to temples, schools or elders' homes on Vijayadashami to write their first letters
+    in rice or sand. It is one of the most loved family rituals of the season and is often photographed
+    and remembered for years.
 readingTime: 4
 draft: false
 ---

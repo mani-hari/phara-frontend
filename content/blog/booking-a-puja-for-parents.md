@@ -1,67 +1,54 @@
 ---
-title: 'Booking a Puja for Your Parents in India, From Abroad'
-description: >-
-  Booking a puja for parents in India from abroad: choosing a ritual for health
-  or a birthday, gathering their details, and letting them share in it.
+title: Booking a Puja for Your Parents in India, From Abroad
+description: 'Booking a puja for parents in India from abroad: choosing a ritual for health or a birthday,
+  gathering their details, and letting them share in it.'
 author: manikandan
-publishedAt: '2026-10-14'
-updatedAt: '2026-10-14'
+publishedAt: '2026-11-11'
+updatedAt: '2026-11-11'
 cluster: online-puja-usa
 primaryKeyword: book a puja for your parents in India
 secondaryKeywords:
-  - puja for parents health
-  - ayushya homam for parents birthday
-  - gift a puja to family in india
+- puja for parents health
+- ayushya homam for parents birthday
+- gift a puja to family in india
 tags:
-  - Online Puja
-  - NRI Life
-  - Family
+- Online Puja
+- NRI Life
+- Family
 audience: nri-us
 image: /blog/booking-a-puja-for-parents.webp
-imageAlt: >-
-  Elderly hands receiving temple prasadam and flowers on a South Indian veranda
-  — book puja for parents in india | pariharaonline.com
-imagePrompt: >-
-  An elderly couple's hands receiving a small packet of temple prasadam and
-  flowers on a veranda in a South Indian home, soft morning light, brass lamp in
-  the background, painterly photograph.
+imageAlt: Elderly hands receiving temple prasadam and flowers on a South Indian veranda — book puja for
+  parents in india | pariharaonline.com
+imagePrompt: An elderly couple's hands receiving a small packet of temple prasadam and flowers on a veranda
+  in a South Indian home, soft morning light, brass lamp in the background, painterly photograph.
 products:
   handles:
-    - ayushya-homam
-    - mrityunjaya-homam
+  - ayushya-homam
+  - mrityunjaya-homam
 related:
-  - online-puja-from-usa-explained
-  - what-is-sankalpam
-  - homam-vs-puja
+- online-puja-from-usa-explained
+- what-is-sankalpam
+- homam-vs-puja
 takeaways:
-  - >-
-    Booking a puja for parents in India from abroad needs only their names,
-    gotra and birth star; the ritual is performed in their names at the temple.
-  - >-
-    Ayushya homam suits a lunar birthday, while Mrityunjaya homam is
-    traditionally chosen during illness or recovery.
+- Booking a puja for parents in India from abroad needs only their names, gotra and birth star; the ritual
+  is performed in their names at the temple.
+- Ayushya homam suits a lunar birthday, while Mrityunjaya homam is traditionally chosen during illness
+  or recovery.
 faq:
-  - q: Which puja is good for my parents' health?
-    a: >-
-      Traditionally, families choose Mrityunjaya homam, dedicated to Shiva as
-      the conqueror of death, when a parent is unwell or recovering, and Ayushya
-      homam for longevity on a birthday. Dhanvantari homam honours the deity of
-      healing. These are prayers for strength and peace, offered alongside
-      medical care, never instead of it.
-  - q: Can I book a puja for my parents' birthday online?
-    a: >-
-      Yes. Many families book an Ayushya homam on the parent's janma nakshatra,
-      the day their birth star returns in the lunar month, which is the
-      traditional birthday. Share their names, gotra and star when booking.
-      Services like PariharaOnline can post prasadam to their address in India
-      so they receive it directly.
-  - q: Do my parents need to be present for the puja?
-    a: >-
-      No. The priest performs the ritual with their names and details in the
-      sankalpam, the statement of intention, so it is offered on their behalf.
-      If they live near the temple and wish to attend, they can. Otherwise,
-      lighting a lamp at home during the puja hour is a simple way for them to
-      take part.
+- q: Which puja is good for my parents' health?
+  a: Traditionally, families choose Mrityunjaya homam, dedicated to Shiva as the conqueror of death, when
+    a parent is unwell or recovering, and Ayushya homam for longevity on a birthday. Dhanvantari homam
+    honours the deity of healing. These are prayers for strength and peace, offered alongside medical
+    care, never instead of it.
+- q: Can I book a puja for my parents' birthday online?
+  a: Yes. Many families book an Ayushya homam on the parent's janma nakshatra, the day their birth star
+    returns in the lunar month, which is the traditional birthday. Share their names, gotra and star when
+    booking. Services like PariharaOnline can post prasadam to their address in India so they receive
+    it directly.
+- q: Do my parents need to be present for the puja?
+  a: No. The priest performs the ritual with their names and details in the sankalpam, the statement of
+    intention, so it is offered on their behalf. If they live near the temple and wish to attend, they
+    can. Otherwise, lighting a lamp at home during the puja hour is a simple way for them to take part.
 readingTime: 4
 draft: false
 ---

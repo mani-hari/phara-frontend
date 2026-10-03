@@ -1,68 +1,54 @@
 ---
-title: 'Why Is Diwali Celebrated? Four Stories, One Light'
-description: >-
-  Why is Diwali celebrated? Rama's return, Krishna and Narakasura, Lakshmi's
-  arrival and Mahavira's liberation: four stories and the one light they share.
+title: Why Is Diwali Celebrated? Four Stories, One Light
+description: 'Why is Diwali celebrated? Rama''s return, Krishna and Narakasura, Lakshmi''s arrival and
+  Mahavira''s liberation: four stories and the one light they share.'
 author: hariharan
-publishedAt: '2026-10-06'
-updatedAt: '2026-10-06'
+publishedAt: '2026-10-09'
+updatedAt: '2026-10-09'
 cluster: diwali-meaning
 primaryKeyword: why is diwali celebrated
 secondaryKeywords:
-  - diwali story for kids
-  - deepavali meaning
-  - why do we light diyas on diwali
+- diwali story for kids
+- deepavali meaning
+- why do we light diyas on diwali
 tags:
-  - Diwali
-  - Festivals
-  - Mythology
+- Diwali
+- Festivals
+- Mythology
 audience: general
 image: /blog/why-is-diwali-celebrated.webp
-imageAlt: >-
-  Rows of lit clay diyas on the steps and threshold of a traditional house on a
-  dark night — why is diwali celebrated | pariharaonline.com
-imagePrompt: >-
-  Rows of clay diyas lining the steps and threshold of a traditional South
-  Indian house at night, a rangoli glowing softly, warm golden light against
-  deep blue darkness.
+imageAlt: Rows of lit clay diyas on the steps and threshold of a traditional house on a dark night — why
+  is diwali celebrated | pariharaonline.com
+imagePrompt: Rows of clay diyas lining the steps and threshold of a traditional South Indian house at
+  night, a rangoli glowing softly, warm golden light against deep blue darkness.
 products:
   handles:
-    - diwali-puja
+  - diwali-puja
   heading: Poojas for Diwali
 related:
-  - five-days-of-diwali
-  - naraka-chaturdashi-oil-bath
-  - lakshmi-puja-at-home-abroad
+- five-days-of-diwali
+- naraka-chaturdashi-oil-bath
+- lakshmi-puja-at-home-abroad
 takeaways:
-  - >-
-    Diwali is celebrated for several reasons: Rama's homecoming to Ayodhya,
-    Krishna's victory over Narakasura, Lakshmi's arrival from the cosmic ocean,
-    and Mahavira's liberation in the Jain tradition.
-  - >-
-    It falls on the new-moon night of Karthika (Ashwin in some calendars),
-    usually late October or November, so its lamps light the darkest night of
-    the month.
+- 'Diwali is celebrated for several reasons: Rama''s homecoming to Ayodhya, Krishna''s victory over Narakasura,
+  Lakshmi''s arrival from the cosmic ocean, and Mahavira''s liberation in the Jain tradition.'
+- It falls on the new-moon night of Karthika (Ashwin in some calendars), usually late October or November,
+  so its lamps light the darkest night of the month.
 faq:
-  - q: What is the main story behind Diwali?
-    a: >-
-      In north India the best-known story is Rama returning to Ayodhya after
-      fourteen years of exile and defeating Ravana; the city lit rows of lamps
-      to welcome him. In Tamil Nadu and much of the south, Deepavali honours
-      Krishna's victory over the demon Narakasura. Lakshmi Puja on the same
-      night celebrates the goddess of abundance. All are traditional.
-  - q: Why is Diwali called the festival of lights?
-    a: >-
-      The name Deepavali means a row of lamps. It falls on the new moon, the
-      darkest night of the lunar month, and homes are lit with clay oil lamps,
-      candles and electric lights. The lamp is a symbol of knowledge pushing
-      back ignorance, and of welcoming Lakshmi and returning heroes home. The
-      light is the one element every Diwali story shares.
-  - q: How can I explain the Diwali story to kids simply?
-    a: >-
-      Try this: a good prince named Rama was sent away from home for many years.
-      He rescued his wife Sita from a demon king and finally came home. The
-      whole city was so happy they lit lamps on every doorstep so he could find
-      his way in the dark. That is why we light lamps: to welcome goodness home.
+- q: What is the main story behind Diwali?
+  a: In north India the best-known story is Rama returning to Ayodhya after fourteen years of exile and
+    defeating Ravana; the city lit rows of lamps to welcome him. In Tamil Nadu and much of the south,
+    Deepavali honours Krishna's victory over the demon Narakasura. Lakshmi Puja on the same night celebrates
+    the goddess of abundance. All are traditional.
+- q: Why is Diwali called the festival of lights?
+  a: The name Deepavali means a row of lamps. It falls on the new moon, the darkest night of the lunar
+    month, and homes are lit with clay oil lamps, candles and electric lights. The lamp is a symbol of
+    knowledge pushing back ignorance, and of welcoming Lakshmi and returning heroes home. The light is
+    the one element every Diwali story shares.
+- q: How can I explain the Diwali story to kids simply?
+  a: 'Try this: a good prince named Rama was sent away from home for many years. He rescued his wife Sita
+    from a demon king and finally came home. The whole city was so happy they lit lamps on every doorstep
+    so he could find his way in the dark. That is why we light lamps: to welcome goodness home.'
 readingTime: 4
 draft: false
 ---

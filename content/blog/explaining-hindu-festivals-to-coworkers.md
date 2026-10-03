@@ -1,67 +1,53 @@
 ---
-title: 'Explaining Hindu Festivals to Coworkers, Simply'
-description: >-
-  Explaining Hindu festivals to coworkers without a lecture: one-line answers
-  for Diwali, Navratri, Holi and Pongal, and the questions people ask.
+title: Explaining Hindu Festivals to Coworkers, Simply
+description: 'Explaining Hindu festivals to coworkers without a lecture: one-line answers for Diwali,
+  Navratri, Holi and Pongal, and the questions people ask.'
 author: manikandan
-publishedAt: '2026-10-17'
-updatedAt: '2026-10-17'
+publishedAt: '2026-12-07'
+updatedAt: '2026-12-07'
 cluster: festivals-explained-usa
 primaryKeyword: explaining hindu festivals to coworkers
 secondaryKeywords:
-  - hindu holidays at work
-  - how to explain navratri to colleagues
-  - inclusive holiday calendar hindu festivals
+- hindu holidays at work
+- how to explain navratri to colleagues
+- inclusive holiday calendar hindu festivals
 tags:
-  - Festivals
-  - Workplace
-  - NRI Life
+- Festivals
+- Workplace
+- NRI Life
 audience: nri-us
 image: /blog/explaining-hindu-festivals-to-coworkers.webp
-imageAlt: >-
-  Indian sweets, a clay tea light and marigold petals on an office kitchen
-  counter — explaining hindu festivals to coworkers | pariharaonline.com
-imagePrompt: >-
-  A shared office kitchen counter with a small plate of Indian sweets, a lit tea
-  light in a clay holder and marigold petals beside coffee mugs, soft daylight,
-  editorial still life.
+imageAlt: Indian sweets, a clay tea light and marigold petals on an office kitchen counter — explaining
+  hindu festivals to coworkers | pariharaonline.com
+imagePrompt: A shared office kitchen counter with a small plate of Indian sweets, a lit tea light in a
+  clay holder and marigold petals beside coffee mugs, soft daylight, editorial still life.
 products:
   handles: []
   query: Ganesha
 related:
-  - hindu-festival-calendar-usa
-  - festival-rituals-for-kids
-  - holi-meaning-prahlad-holika
+- hindu-festival-calendar-usa
+- festival-rituals-for-kids
+- holi-meaning-prahlad-holika
 takeaways:
-  - >-
-    Explaining Hindu festivals to coworkers works best in one sentence per
-    festival: what it celebrates, how families mark it, and whether greetings
-    are welcome.
-  - >-
-    Most colleagues simply want to know how to greet you and whether they can
-    join; invite them to one gathering.
+- 'Explaining Hindu festivals to coworkers works best in one sentence per festival: what it celebrates,
+  how families mark it, and whether greetings are welcome.'
+- Most colleagues simply want to know how to greet you and whether they can join; invite them to one gathering.
 faq:
-  - q: What should I say to a Hindu coworker on Diwali?
-    a: >-
-      Happy Diwali is the most common greeting and always welcome. Shubh
-      Deepavali, meaning auspicious Deepavali, is a warm alternative. You might
-      ask how they celebrate or whether they are lighting lamps at home.
-      Offering to cover a late meeting that evening so they can be home at dusk
-      is a thoughtful, practical gesture.
-  - q: How do I explain Navratri to my colleagues?
-    a: >-
-      Navratri is a nine-night Hindu festival honouring the Goddess in her many
-      forms, held in autumn. Families fast, pray and gather in the evenings; in
-      many communities people dance garba and dandiya in large circles. It ends
-      with Dussehra, celebrating good over evil. Colleagues are often welcome at
-      community garba nights.
-  - q: Which Hindu festivals should be on a workplace holiday calendar?
-    a: >-
-      The most widely observed are Diwali in autumn, Holi in spring, Navratri
-      and Dussehra in autumn, Maha Shivaratri in late winter, Ganesh Chaturthi
-      in late summer, and Pongal or Makar Sankranti in mid-January. Because they
-      follow the lunar calendar, dates shift yearly, so check a panchangam when
-      updating the calendar each year.
+- q: What should I say to a Hindu coworker on Diwali?
+  a: Happy Diwali is the most common greeting and always welcome. Shubh Deepavali, meaning auspicious
+    Deepavali, is a warm alternative. You might ask how they celebrate or whether they are lighting lamps
+    at home. Offering to cover a late meeting that evening so they can be home at dusk is a thoughtful,
+    practical gesture.
+- q: How do I explain Navratri to my colleagues?
+  a: Navratri is a nine-night Hindu festival honouring the Goddess in her many forms, held in autumn.
+    Families fast, pray and gather in the evenings; in many communities people dance garba and dandiya
+    in large circles. It ends with Dussehra, celebrating good over evil. Colleagues are often welcome
+    at community garba nights.
+- q: Which Hindu festivals should be on a workplace holiday calendar?
+  a: The most widely observed are Diwali in autumn, Holi in spring, Navratri and Dussehra in autumn, Maha
+    Shivaratri in late winter, Ganesh Chaturthi in late summer, and Pongal or Makar Sankranti in mid-January.
+    Because they follow the lunar calendar, dates shift yearly, so check a panchangam when updating the
+    calendar each year.
 readingTime: 4
 draft: false
 ---

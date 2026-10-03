@@ -1,69 +1,56 @@
 ---
 title: 'Prasadam Delivery to the USA: What Arrives and How'
-description: >-
-  Prasadam delivery to the USA: what usually ships, from vibhuti to
-  panchamritham, how long it takes, customs basics, and how to store it with
-  care.
+description: 'Prasadam delivery to the USA: what usually ships, from vibhuti to panchamritham, how long
+  it takes, customs basics, and how to store it with care.'
 author: manikandan
-publishedAt: '2026-10-15'
-updatedAt: '2026-10-15'
+publishedAt: '2026-11-24'
+updatedAt: '2026-11-24'
 cluster: prasadam-usa
 primaryKeyword: prasadam delivery to the USA
 secondaryKeywords:
-  - temple prasad shipping to usa
-  - can prasadam pass us customs
-  - order prasad online from india
+- temple prasad shipping to usa
+- can prasadam pass us customs
+- order prasad online from india
 tags:
-  - Prasadam
-  - NRI Life
-  - Shipping
+- Prasadam
+- NRI Life
+- Shipping
 audience: nri-us
 image: /blog/prasadam-delivery-to-the-usa.webp
-imageAlt: >-
-  An opened parcel of temple prasadam with vibhuti and panchamritham on a table
-  in a US home — prasadam delivery usa | pariharaonline.com
-imagePrompt: >-
-  An opened paper parcel on a wooden table in a snowy-windowed American home
-  revealing small packets of vibhuti, kumkum and a jar of panchamritham beside a
-  brass lamp, warm light, editorial still life.
+imageAlt: An opened parcel of temple prasadam with vibhuti and panchamritham on a table in a US home —
+  prasadam delivery usa | pariharaonline.com
+imagePrompt: An opened paper parcel on a wooden table in a snowy-windowed American home revealing small
+  packets of vibhuti, kumkum and a jar of panchamritham beside a brass lamp, warm light, editorial still
+  life.
 products:
   handles:
-    - palani-panchamritham
-    - shirdi-sai-baba-udi-prasadham
+  - palani-panchamritham
+  - shirdi-sai-baba-udi-prasadham
   heading: Prasadam you can order
 related:
-  - what-to-do-with-prasadam
-  - why-prasadam-is-shared
-  - online-puja-from-usa-explained
+- what-to-do-with-prasadam
+- why-prasadam-is-shared
+- online-puja-from-usa-explained
 takeaways:
-  - >-
-    Prasadam shipped to the USA usually includes shelf-stable items such as
-    vibhuti, kumkum, turmeric, dry sweets or sealed panchamritham.
-  - >-
-    International post takes longer than domestic delivery; sealed, labelled
-    food items generally clear US customs when declared properly.
+- Prasadam shipped to the USA usually includes shelf-stable items such as vibhuti, kumkum, turmeric, dry
+  sweets or sealed panchamritham.
+- International post takes longer than domestic delivery; sealed, labelled food items generally clear
+  US customs when declared properly.
 faq:
-  - q: Can temple prasadam be shipped to the USA?
-    a: >-
-      Yes. Dry and sealed prasadam travels well: vibhuti or sacred ash, kumkum,
-      turmeric, sacred threads, and packaged sweets or panchamritham. Fresh
-      flowers, cooked food and fruit do not. PariharaOnline ships consecrated
-      prasadam worldwide, including the US, and packs it so it arrives clean and
-      intact.
-  - q: Does prasadam get stopped at US customs?
-    a: >-
-      Most dry prasadam such as ash, kumkum and threads passes without trouble.
-      Food items such as sweets or panchamritham should be commercially sealed
-      and declared, as US customs requires all food to be declared. Undeclared
-      food is what causes problems. Reputable senders label contents clearly,
-      which keeps delays and seizures rare.
-  - q: How long does prasadam take to reach the USA from India?
-    a: >-
-      It depends on the courier and season. International post usually takes one
-      to three weeks after the puja, and festival periods are busier. Customs
-      checks can add a few days. It helps to see prasadam as the tail end of the
-      ritual rather than a parcel on a deadline; the puja itself was complete on
-      the day.
+- q: Can temple prasadam be shipped to the USA?
+  a: 'Yes. Dry and sealed prasadam travels well: vibhuti or sacred ash, kumkum, turmeric, sacred threads,
+    and packaged sweets or panchamritham. Fresh flowers, cooked food and fruit do not. PariharaOnline
+    ships consecrated prasadam worldwide, including the US, and packs it so it arrives clean and intact.'
+- q: Does prasadam get stopped at US customs?
+  a: Most dry prasadam such as ash, kumkum and threads passes without trouble. Food items such as sweets
+    or panchamritham should be commercially sealed and declared, as US customs requires all food to be
+    declared. Undeclared food is what causes problems. Reputable senders label contents clearly, which
+    keeps delays and seizures rare.
+- q: How long does prasadam take to reach the USA from India?
+  a: It depends on the courier and season. International post usually takes one to three weeks after the
+    puja, and festival periods are busier. Customs checks can add a few days. It helps to see prasadam
+    as the tail end of the ritual rather than a parcel on a deadline; the puja itself was complete on
+    the day.
 readingTime: 4
 draft: false
 ---

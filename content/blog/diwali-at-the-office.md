@@ -1,67 +1,55 @@
 ---
 title: 'Diwali at the Office: Sharing the Festival at Work'
-description: >-
-  Diwali at work in the US: how to share the festival with colleagues, what to
-  bring, how to explain it in a minute, and how to ask for the day off.
+description: 'Diwali at work in the US: how to share the festival with colleagues, what to bring, how
+  to explain it in a minute, and how to ask for the day off.'
 author: manikandan
-publishedAt: '2026-10-06'
-updatedAt: '2026-10-06'
+publishedAt: '2026-10-05'
+updatedAt: '2026-10-05'
 cluster: diwali-in-usa
 primaryKeyword: diwali at work
 secondaryKeywords:
-  - how to explain diwali to coworkers
-  - diwali sweets for office
-  - time off for diwali at work
+- how to explain diwali to coworkers
+- diwali sweets for office
+- time off for diwali at work
 tags:
-  - Diwali
-  - NRI Life
-  - Workplace
+- Diwali
+- NRI Life
+- Workplace
 audience: nri-us
 image: /blog/diwali-at-the-office.webp
-imageAlt: >-
-  A lit clay diya and a box of Indian sweets on an office desk during Diwali —
-  diwali at work | pariharaonline.com
-imagePrompt: >-
-  An open box of Indian sweets and a single lit clay diya on a modern office
-  desk, soft window light, marigold petals scattered, editorial still life.
+imageAlt: A lit clay diya and a box of Indian sweets on an office desk during Diwali — diwali at work
+  | pariharaonline.com
+imagePrompt: An open box of Indian sweets and a single lit clay diya on a modern office desk, soft window
+  light, marigold petals scattered, editorial still life.
 products:
   handles: []
   query: Lakshmi
   heading: Poojas for Diwali
 related:
-  - lakshmi-puja-at-home-abroad
-  - when-is-diwali-in-the-usa
-  - explaining-diwali-to-kids
+- lakshmi-puja-at-home-abroad
+- when-is-diwali-in-the-usa
+- explaining-diwali-to-kids
 takeaways:
-  - >-
-    The easiest way to share Diwali at work is a box of sweets and one sentence:
-    it is the festival of lights, celebrating light over darkness.
-  - >-
-    It is reasonable to request Diwali off the way colleagues request other
-    major holidays; give notice early because the date moves each year.
+- 'The easiest way to share Diwali at work is a box of sweets and one sentence: it is the festival of
+  lights, celebrating light over darkness.'
+- It is reasonable to request Diwali off the way colleagues request other major holidays; give notice
+  early because the date moves each year.
 faq:
-  - q: How do I explain Diwali to coworkers quickly?
-    a: >-
-      Try this: Diwali is the Hindu festival of lights, celebrated over five
-      days in autumn. Families light oil lamps, clean their homes, pray for
-      prosperity, and share sweets, marking the victory of light over darkness
-      and good over evil. It is a little like New Year and Thanksgiving
-      together. Most colleagues appreciate a short, warm explanation more than a
-      detailed one.
-  - q: What sweets should I bring to the office for Diwali?
-    a: >-
-      Choose sweets that travel well and suit many diets: kaju katli, besan
-      ladoo, soan papdi or dry fruit bites. Label ingredients, especially nuts,
-      dairy and ghee, since colleagues may have allergies or be vegan. A small
-      card explaining that sharing sweets is a Diwali custom turns a snack into
-      a conversation and makes people feel included.
-  - q: Should I take the day off for Diwali?
-    a: >-
-      If your workplace allows floating holidays or personal days, Diwali is a
-      natural use for one. Because the festival follows the lunar calendar,
-      check the panchangam early and tell your manager weeks ahead. If you
-      cannot take the day, a lighter schedule and leaving on time to light lamps
-      at dusk keeps the evening intact.
+- q: How do I explain Diwali to coworkers quickly?
+  a: 'Try this: Diwali is the Hindu festival of lights, celebrated over five days in autumn. Families
+    light oil lamps, clean their homes, pray for prosperity, and share sweets, marking the victory of
+    light over darkness and good over evil. It is a little like New Year and Thanksgiving together. Most
+    colleagues appreciate a short, warm explanation more than a detailed one.'
+- q: What sweets should I bring to the office for Diwali?
+  a: 'Choose sweets that travel well and suit many diets: kaju katli, besan ladoo, soan papdi or dry fruit
+    bites. Label ingredients, especially nuts, dairy and ghee, since colleagues may have allergies or
+    be vegan. A small card explaining that sharing sweets is a Diwali custom turns a snack into a conversation
+    and makes people feel included.'
+- q: Should I take the day off for Diwali?
+  a: If your workplace allows floating holidays or personal days, Diwali is a natural use for one. Because
+    the festival follows the lunar calendar, check the panchangam early and tell your manager weeks ahead.
+    If you cannot take the day, a lighter schedule and leaving on time to light lamps at dusk keeps the
+    evening intact.
 readingTime: 4
 draft: false
 ---

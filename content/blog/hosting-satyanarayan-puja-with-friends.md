@@ -1,67 +1,54 @@
 ---
 title: Hosting Satyanarayan Puja for Friends in America
-description: >-
-  Hosting Satyanarayan puja in the USA: invitations, a realistic timeline,
-  welcoming non-Hindu guests, feeding everyone, and keeping it prayerful.
+description: 'Hosting Satyanarayan puja in the USA: invitations, a realistic timeline, welcoming non-Hindu
+  guests, feeding everyone, and keeping it prayerful.'
 author: manikandan
-publishedAt: '2026-10-16'
-updatedAt: '2026-10-16'
+publishedAt: '2026-12-07'
+updatedAt: '2026-12-07'
 cluster: satyanarayan-puja
 primaryKeyword: satyanarayan puja in america
 secondaryKeywords:
-  - satyanarayan puja at home with guests
-  - priest for home puja usa
-  - what to serve after satyanarayan puja
+- satyanarayan puja at home with guests
+- priest for home puja usa
+- what to serve after satyanarayan puja
 tags:
-  - Satyanarayan Puja
-  - NRI Life
-  - Community
+- Satyanarayan Puja
+- NRI Life
+- Community
 audience: nri-us
 image: /blog/hosting-satyanarayan-puja-with-friends.webp
-imageAlt: >-
-  Guests seated before a flower-decked Satyanarayan puja altar in an American
-  living room — satyanarayan puja in america | pariharaonline.com
-imagePrompt: >-
-  A crowded warm living room in an American townhouse seen from behind seated
-  guests, focused on a decorated altar with lamps, flowers and a kalash,
-  afternoon light, editorial photograph without visible faces.
+imageAlt: Guests seated before a flower-decked Satyanarayan puja altar in an American living room — satyanarayan
+  puja in america | pariharaonline.com
+imagePrompt: A crowded warm living room in an American townhouse seen from behind seated guests, focused
+  on a decorated altar with lamps, flowers and a kalash, afternoon light, editorial photograph without
+  visible faces.
 products:
   handles:
-    - sudarsana-homam
+  - sudarsana-homam
 related:
-  - satyanarayan-puja-at-home
-  - satyanarayan-katha-meaning
-  - small-puja-corner-apartment
+- satyanarayan-puja-at-home
+- satyanarayan-katha-meaning
+- small-puja-corner-apartment
 takeaways:
-  - >-
-    Hosting Satyanarayan puja in the USA works best on a weekend, with a
-    two-hour plan: puja and katha first, then sheera prasad and a simple
-    vegetarian meal.
-  - >-
-    Guests unfamiliar with the ritual feel welcome when given a short
-    explanation and a small role, such as reading part of the story.
+- 'Hosting Satyanarayan puja in the USA works best on a weekend, with a two-hour plan: puja and katha
+  first, then sheera prasad and a simple vegetarian meal.'
+- Guests unfamiliar with the ritual feel welcome when given a short explanation and a small role, such
+  as reading part of the story.
 faq:
-  - q: How long does a Satyanarayan puja take?
-    a: >-
-      With a priest, the puja and katha usually take between one and a half and
-      two hours, including Ganesha puja, the main worship, the five chapters of
-      the story and the aarti. Doing it yourselves can be shorter. Add time for
-      guests to arrive, receive prasad and eat, so plan about three hours for
-      the whole gathering.
-  - q: Where can I find a priest for a home puja in the USA?
-    a: >-
-      Most Hindu temples in the US offer priest services for home rituals and
-      publish a list of pujas with booking details. Local community groups and
-      WhatsApp networks also recommend priests. Some priests guide the puja by
-      video call if none are nearby. Book early for popular dates such as full
-      moons and long weekends.
-  - q: What should I serve after Satyanarayan puja?
-    a: >-
-      Serve the sheera prasad first, made with semolina, ghee, sugar, milk and
-      banana, along with fruits and panchamrit. After that, a simple vegetarian
-      meal is traditional: rice, dal, a vegetable dish, and a sweet. Avoid onion
-      and garlic if your family follows that custom, and label dishes for guests
-      with allergies.
+- q: How long does a Satyanarayan puja take?
+  a: With a priest, the puja and katha usually take between one and a half and two hours, including Ganesha
+    puja, the main worship, the five chapters of the story and the aarti. Doing it yourselves can be shorter.
+    Add time for guests to arrive, receive prasad and eat, so plan about three hours for the whole gathering.
+- q: Where can I find a priest for a home puja in the USA?
+  a: Most Hindu temples in the US offer priest services for home rituals and publish a list of pujas with
+    booking details. Local community groups and WhatsApp networks also recommend priests. Some priests
+    guide the puja by video call if none are nearby. Book early for popular dates such as full moons and
+    long weekends.
+- q: What should I serve after Satyanarayan puja?
+  a: 'Serve the sheera prasad first, made with semolina, ghee, sugar, milk and banana, along with fruits
+    and panchamrit. After that, a simple vegetarian meal is traditional: rice, dal, a vegetable dish,
+    and a sweet. Avoid onion and garlic if your family follows that custom, and label dishes for guests
+    with allergies.'
 readingTime: 4
 draft: false
 ---

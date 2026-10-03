@@ -1,69 +1,54 @@
 ---
-title: 'Tiruvannamalai Deepam, Watched From Far Away'
-description: >-
-  Tiruvannamalai Deepam, watched from far away: an NRI reflection on the
-  Arunachala beacon, livestreams at odd US hours, and lighting one lamp to join
-  in.
+title: Tiruvannamalai Deepam, Watched From Far Away
+description: 'Tiruvannamalai Deepam, watched from far away: an NRI reflection on the Arunachala beacon,
+  livestreams at odd US hours, and lighting one lamp to join in.'
 author: manikandan
-publishedAt: '2026-10-08'
-updatedAt: '2026-10-08'
+publishedAt: '2026-10-17'
+updatedAt: '2026-10-17'
 cluster: karthigai-deepam
 primaryKeyword: tiruvannamalai deepam
 secondaryKeywords:
-  - tiruvannamalai deepam live
-  - arunachala maha deepam
-  - karthigai deepam in usa
+- tiruvannamalai deepam live
+- arunachala maha deepam
+- karthigai deepam in usa
 tags:
-  - Karthigai Deepam
-  - NRI Life
-  - Tiruvannamalai
+- Karthigai Deepam
+- NRI Life
+- Tiruvannamalai
 audience: nri-us
 image: /blog/tiruvannamalai-deepam-from-afar.webp
-imageAlt: >-
-  A clay lamp on a kitchen counter at dawn beside a phone showing a distant
-  hilltop flame — tiruvannamalai deepam | pariharaonline.com
-imagePrompt: >-
-  A single clay lamp glowing on a kitchen counter in a snowy American suburban
-  home at dawn, a phone leaning on a jar showing a distant hilltop flame, cold
-  blue window light meeting warm lamp glow.
+imageAlt: A clay lamp on a kitchen counter at dawn beside a phone showing a distant hilltop flame — tiruvannamalai
+  deepam | pariharaonline.com
+imagePrompt: A single clay lamp glowing on a kitchen counter in a snowy American suburban home at dawn,
+  a phone leaning on a jar showing a distant hilltop flame, cold blue window light meeting warm lamp glow.
 products:
   handles: []
   query: Shiva
 related:
-  - karthigai-deepam-significance
-  - karthigai-deepam-at-home
-  - why-do-hindus-light-lamps
+- karthigai-deepam-significance
+- karthigai-deepam-at-home
+- why-do-hindus-light-lamps
 takeaways:
-  - >-
-    The Tiruvannamalai Deepam is a great beacon lit atop Arunachala hill at dusk
-    on Karthigai Deepam, honouring Shiva as the endless column of fire.
-  - >-
-    From the US, that dusk in India usually falls in your early morning;
-    lighting a lamp as the livestream shows the flame is a simple way to join.
+- The Tiruvannamalai Deepam is a great beacon lit atop Arunachala hill at dusk on Karthigai Deepam, honouring
+  Shiva as the endless column of fire.
+- From the US, that dusk in India usually falls in your early morning; lighting a lamp as the livestream
+  shows the flame is a simple way to join.
 faq:
-  - q: >-
-      What time is the Tiruvannamalai Deepam lit, and can I watch it live from
-      the US?
-    a: >-
-      The Maha Deepam is lit on the summit of Arunachala around sunset in India,
-      roughly six in the evening IST, on Karthigai Deepam day. On the US East
-      Coast that is usually early morning, and on the West Coast late the
-      previous night. Many channels livestream it; check the current year's
-      panchangam and the temple's announcements for exact timing.
-  - q: What is the difference between Bharani Deepam and Maha Deepam?
-    a: >-
-      Bharani Deepam is lit before dawn inside the Arunachaleswarar temple, when
-      five lamps are lit from one flame and later merged back, symbolising the
-      many arising from the one. Maha Deepam is lit at dusk on the hilltop in a
-      huge cauldron of ghee and can be seen for miles. Together they frame the
-      festival day.
-  - q: How can I celebrate Karthigai Deepam in the USA?
-    a: >-
-      Light clay lamps or tea lights at your door and windows at dusk on the
-      day, draw a small kolam, and offer pori or any simple sweet. If you can,
-      light one lamp at the moment the Maha Deepam is lit in Tiruvannamalai
-      while watching the livestream. Local Hindu temples in larger US cities
-      often hold their own Deepam.
+- q: What time is the Tiruvannamalai Deepam lit, and can I watch it live from the US?
+  a: The Maha Deepam is lit on the summit of Arunachala around sunset in India, roughly six in the evening
+    IST, on Karthigai Deepam day. On the US East Coast that is usually early morning, and on the West
+    Coast late the previous night. Many channels livestream it; check the current year's panchangam and
+    the temple's announcements for exact timing.
+- q: What is the difference between Bharani Deepam and Maha Deepam?
+  a: Bharani Deepam is lit before dawn inside the Arunachaleswarar temple, when five lamps are lit from
+    one flame and later merged back, symbolising the many arising from the one. Maha Deepam is lit at
+    dusk on the hilltop in a huge cauldron of ghee and can be seen for miles. Together they frame the
+    festival day.
+- q: How can I celebrate Karthigai Deepam in the USA?
+  a: Light clay lamps or tea lights at your door and windows at dusk on the day, draw a small kolam, and
+    offer pori or any simple sweet. If you can, light one lamp at the moment the Maha Deepam is lit in
+    Tiruvannamalai while watching the livestream. Local Hindu temples in larger US cities often hold their
+    own Deepam.
 readingTime: 4
 draft: false
 ---

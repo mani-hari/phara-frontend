@@ -1,68 +1,55 @@
 ---
 title: What to Do With Prasadam When It Arrives
-description: >-
-  What to do with prasadam when it arrives: how to receive it, when to eat it,
-  how to use vibhuti and kumkum, and how to return leftovers to nature.
+description: 'What to do with prasadam when it arrives: how to receive it, when to eat it, how to use
+  vibhuti and kumkum, and how to return leftovers to nature.'
 author: archana
-publishedAt: '2026-10-12'
-updatedAt: '2026-10-12'
+publishedAt: '2026-11-25'
+updatedAt: '2026-11-25'
 cluster: prasadam-usa
 primaryKeyword: what to do with prasadam
 secondaryKeywords:
-  - how to use vibhuti prasadam
-  - how to dispose of old prasad
-  - can you throw away prasadam
+- how to use vibhuti prasadam
+- how to dispose of old prasad
+- can you throw away prasadam
 tags:
-  - Prasadam
-  - Practice
-  - How To
+- Prasadam
+- Practice
+- How To
 audience: nri-us
 image: /blog/what-to-do-with-prasadam.webp
-imageAlt: >-
-  Cupped hands receiving sacred ash beside a lamp and flower at a home altar —
-  what to do with prasadam | pariharaonline.com
-imagePrompt: >-
-  Two cupped hands receiving a small pinch of sacred ash over a brass plate with
-  a flower and a lit lamp, dark wooden altar, soft morning light, intimate
-  photograph.
+imageAlt: Cupped hands receiving sacred ash beside a lamp and flower at a home altar — what to do with
+  prasadam | pariharaonline.com
+imagePrompt: Two cupped hands receiving a small pinch of sacred ash over a brass plate with a flower and
+  a lit lamp, dark wooden altar, soft morning light, intimate photograph.
 products:
   handles:
-    - shirdi-sai-baba-udi-prasadham
+  - shirdi-sai-baba-udi-prasadham
   query: prasadam
   heading: Prasadam you can order
 related:
-  - why-prasadam-is-shared
-  - prasadam-delivery-to-the-usa
-  - meditation-vs-puja
+- why-prasadam-is-shared
+- prasadam-delivery-to-the-usa
+- meditation-vs-puja
 takeaways:
-  - >-
-    Receive prasadam with clean hands, place it at your altar first, then eat or
-    use it with attention, ideally sharing some with others.
-  - >-
-    Old or spoiled prasadam is traditionally returned to nature, under a tree,
-    in a plant pot or flowing water, not thrown in the trash.
+- Receive prasadam with clean hands, place it at your altar first, then eat or use it with attention,
+  ideally sharing some with others.
+- Old or spoiled prasadam is traditionally returned to nature, under a tree, in a plant pot or flowing
+  water, not thrown in the trash.
 faq:
-  - q: How do you use vibhuti prasadam at home?
-    a: >-
-      Take a small pinch with the ring finger of your right hand and apply it
-      across the forehead, or as a dot between the eyebrows. Some people also
-      touch it to the throat. Many take a tiny amount on the tongue. Store the
-      rest in a clean, dry, closed container at your altar and use it daily or
-      on special days.
-  - q: How should I dispose of old prasad?
-    a: >-
-      Traditionally, prasadam is never thrown in household garbage. Dry items
-      such as vibhuti or flowers can be placed at the foot of a tree, in a
-      garden or a large plant pot. Food that has spoiled can be buried or
-      composted. Some families release items into flowing water, though check
-      local rules before putting anything into rivers.
-  - q: Can I share prasadam with friends who are not Hindu?
-    a: >-
-      Yes. Prasadam is meant to be shared, and offering it to anyone is
-      considered a blessing, not a conversion. Explain simply that it was
-      offered at a temple and is shared as a sign of goodwill. Let people
-      decline without awkwardness, and mention ingredients such as ghee or nuts
-      for those with dietary needs.
+- q: How do you use vibhuti prasadam at home?
+  a: Take a small pinch with the ring finger of your right hand and apply it across the forehead, or as
+    a dot between the eyebrows. Some people also touch it to the throat. Many take a tiny amount on the
+    tongue. Store the rest in a clean, dry, closed container at your altar and use it daily or on special
+    days.
+- q: How should I dispose of old prasad?
+  a: Traditionally, prasadam is never thrown in household garbage. Dry items such as vibhuti or flowers
+    can be placed at the foot of a tree, in a garden or a large plant pot. Food that has spoiled can be
+    buried or composted. Some families release items into flowing water, though check local rules before
+    putting anything into rivers.
+- q: Can I share prasadam with friends who are not Hindu?
+  a: Yes. Prasadam is meant to be shared, and offering it to anyone is considered a blessing, not a conversion.
+    Explain simply that it was offered at a temple and is shared as a sign of goodwill. Let people decline
+    without awkwardness, and mention ingredients such as ghee or nuts for those with dietary needs.
 readingTime: 4
 draft: false
 ---

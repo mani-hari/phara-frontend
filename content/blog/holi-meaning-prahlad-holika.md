@@ -1,69 +1,55 @@
 ---
 title: 'Holi Meaning: Prahlad, Holika and the Bonfire'
-description: >-
-  Holi meaning told through the Bhagavata Purana: Prahlad, Holika and the
-  bonfire, Narasimha at dusk, Krishna's colours, and what the fire and colour
-  stand for.
+description: 'Holi meaning told through the Bhagavata Purana: Prahlad, Holika and the bonfire, Narasimha
+  at dusk, Krishna''s colours, and what the fire and colour stand for.'
 author: hariharan
-publishedAt: '2026-10-15'
-updatedAt: '2026-10-15'
+publishedAt: '2026-11-03'
+updatedAt: '2026-11-03'
 cluster: holi
 primaryKeyword: holi meaning
 secondaryKeywords:
-  - holika dahan story
-  - why is holi celebrated
-  - prahlad and narasimha story
+- holika dahan story
+- why is holi celebrated
+- prahlad and narasimha story
 tags:
-  - Holi
-  - Festivals
-  - Mythology
+- Holi
+- Festivals
+- Mythology
 audience: general
 image: /blog/holi-meaning-prahlad-holika.webp
-imageAlt: >-
-  A bonfire at twilight with sparks rising and bowls of coloured powder on a
-  nearby ledge — holi meaning | pariharaonline.com
-imagePrompt: >-
-  A crackling bonfire in a village square at twilight, sparks rising into a
-  violet sky, small heaps of coloured powder in brass bowls on a ledge nearby,
-  warm painterly light.
+imageAlt: A bonfire at twilight with sparks rising and bowls of coloured powder on a nearby ledge — holi
+  meaning | pariharaonline.com
+imagePrompt: A crackling bonfire in a village square at twilight, sparks rising into a violet sky, small
+  heaps of coloured powder in brass bowls on a ledge nearby, warm painterly light.
 products:
   handles:
-    - sudarsana-homam
+  - sudarsana-homam
   query: Vishnu
 related:
-  - holika-dahan-at-home
-  - holi-in-america
-  - explaining-hindu-festivals-to-coworkers
+- holika-dahan-at-home
+- holi-in-america
+- explaining-hindu-festivals-to-coworkers
 takeaways:
-  - >-
-    Holi begins with Holika Dahan, a bonfire recalling how Prahlad, the boy
-    devotee of the Bhagavata Purana, survived the fire that consumed his aunt
-    Holika in later tellings.
-  - >-
-    The next morning's colours recall Krishna's play with Radha in Braj; Holi
-    falls on the full moon of Phalguna, usually in March.
+- Holi begins with Holika Dahan, a bonfire recalling how Prahlad, the boy devotee of the Bhagavata Purana,
+  survived the fire that consumed his aunt Holika in later tellings.
+- The next morning's colours recall Krishna's play with Radha in Braj; Holi falls on the full moon of
+  Phalguna, usually in March.
 faq:
-  - q: What is the story behind Holika Dahan?
-    a: >-
-      In the Bhagavata Purana, the demon king Hiranyakashipu demanded everyone
-      worship him, but his son Prahlad stayed devoted to Vishnu. The king's
-      sister Holika, who could not be harmed by fire, sat in a pyre with Prahlad
-      on her lap. She burned; Prahlad walked out unharmed. The Holika Dahan
-      bonfire on the eve of Holi remembers this.
-  - q: Why is Holi celebrated with colours?
-    a: >-
-      The colours come from Krishna's story in Braj. Tradition says the
-      dark-skinned Krishna worried that fair Radha would not like him, and his
-      mother Yashoda playfully suggested he colour her face. Holi in Mathura and
-      Vrindavan still re-enacts that play. More broadly, colour marks spring and
-      the one day when age, caste and status are set aside in fun.
-  - q: How is Narasimha connected to Holi?
-    a: >-
-      After the Holika episode, Hiranyakashipu's boon said he could be killed
-      neither by man nor beast, neither by day nor night, neither indoors nor
-      outdoors. Vishnu appeared as Narasimha, half man, half lion, at dusk, on
-      the threshold of the palace, and ended his tyranny. Holi's story therefore
-      honours Prahlad's faith and Vishnu's protection together.
+- q: What is the story behind Holika Dahan?
+  a: In the Bhagavata Purana, the demon king Hiranyakashipu demanded everyone worship him, but his son
+    Prahlad stayed devoted to Vishnu. The king's sister Holika, who could not be harmed by fire, sat in
+    a pyre with Prahlad on her lap. She burned; Prahlad walked out unharmed. The Holika Dahan bonfire
+    on the eve of Holi remembers this.
+- q: Why is Holi celebrated with colours?
+  a: The colours come from Krishna's story in Braj. Tradition says the dark-skinned Krishna worried that
+    fair Radha would not like him, and his mother Yashoda playfully suggested he colour her face. Holi
+    in Mathura and Vrindavan still re-enacts that play. More broadly, colour marks spring and the one
+    day when age, caste and status are set aside in fun.
+- q: How is Narasimha connected to Holi?
+  a: After the Holika episode, Hiranyakashipu's boon said he could be killed neither by man nor beast,
+    neither by day nor night, neither indoors nor outdoors. Vishnu appeared as Narasimha, half man, half
+    lion, at dusk, on the threshold of the palace, and ended his tyranny. Holi's story therefore honours
+    Prahlad's faith and Vishnu's protection together.
 readingTime: 4
 draft: false
 ---

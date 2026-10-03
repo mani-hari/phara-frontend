@@ -1,70 +1,54 @@
 ---
 title: Prayer for a Sick Parent When You Live Far Away
-description: >-
-  A prayer for a sick parent in India, from thousands of miles away: what
-  families abroad can do, from a daily mantra to arranging a homam, and how to
-  cope.
+description: 'A prayer for a sick parent in India, from thousands of miles away: what families abroad
+  can do, from a daily mantra to arranging a homam, and how to cope.'
 author: manikandan
-publishedAt: '2026-10-19'
-updatedAt: '2026-10-19'
+publishedAt: '2026-10-23'
+updatedAt: '2026-10-23'
 cluster: health-longevity
 primaryKeyword: prayer for sick parent
 secondaryKeywords:
-  - mantra for sick family member
-  - how to cope when parent is sick in india
-  - mrityunjaya homam for parents
-  - prayer for speedy recovery
+- mantra for sick family member
+- how to cope when parent is sick in india
+- mrityunjaya homam for parents
+- prayer for speedy recovery
 tags:
-  - NRI Families
-  - Health
-  - Prayer
+- NRI Families
+- Health
+- Prayer
 audience: nri-us
 image: /blog/praying-for-a-sick-parent.webp
-imageAlt: >-
-  A brass lamp glowing beside a phone on an apartment counter on a snowy night —
-  prayer for sick parent | pariharaonline.com
-imagePrompt: >-
-  A small brass lamp glowing on the kitchen counter of an American apartment at
-  night, a phone lying face-down beside it, window showing a snowy street, warm
-  and quiet.
+imageAlt: A brass lamp glowing beside a phone on an apartment counter on a snowy night — prayer for sick
+  parent | pariharaonline.com
+imagePrompt: A small brass lamp glowing on the kitchen counter of an American apartment at night, a phone
+  lying face-down beside it, window showing a snowy street, warm and quiet.
 products:
   handles:
-    - mrityunjaya-homam
-    - astrology-health
+  - mrityunjaya-homam
+  - astrology-health
 related:
-  - dhanvantari-and-healing
-  - mahamrityunjaya-mantra-meaning
-  - garbarakshambigai-temple-story
+- dhanvantari-and-healing
+- mahamrityunjaya-mantra-meaning
+- garbarakshambigai-temple-story
 takeaways:
-  - >-
-    When a parent falls ill in India and you live abroad, a fixed daily prayer,
-    the Mahamrityunjaya mantra or a homam in their name can give helplessness a
-    shape.
-  - Prayer accompanies the doctors' care; it does not replace medical decisions.
-  - >-
-    Practical support such as calls with doctors and relief for siblings is part
-    of the prayer too.
+- When a parent falls ill in India and you live abroad, a fixed daily prayer, the Mahamrityunjaya mantra
+  or a homam in their name can give helplessness a shape.
+- Prayer accompanies the doctors' care; it does not replace medical decisions.
+- Practical support such as calls with doctors and relief for siblings is part of the prayer too.
 faq:
-  - q: What mantra can I chant for a sick family member?
-    a: >-
-      The Mahamrityunjaya mantra to Shiva is the most widely chanted prayer for
-      health and recovery. Others include the Dhanvantari mantra, the Vishnu
-      Sahasranamam and the Hanuman Chalisa. Choose one your family knows, and
-      chant at a fixed time daily, even for five minutes. The regularity itself
-      often brings steadiness to an anxious mind.
-  - q: Can I book a homam for my parent in India from the USA?
-    a: >-
-      Yes. Services such as PariharaOnline arrange homams like the Mrityunjaya
-      or Dhanvantari homam at temples in India in your parent's name. You
-      provide their name and birth star for the sankalpam, the priests perform
-      the ritual, and prasadam can be sent to your parent's home or yours.
-  - q: How do I cope when my parent is sick in India and I live abroad?
-    a: >-
-      Share the load with siblings and relatives, and be the one who handles
-      something specific, such as doctor calls or bills. Keep a fixed time to
-      call. Allow yourself to feel guilt without acting on it blindly. A small
-      daily prayer or lamp can help. Talk to a counsellor if the worry becomes
-      overwhelming.
+- q: What mantra can I chant for a sick family member?
+  a: The Mahamrityunjaya mantra to Shiva is the most widely chanted prayer for health and recovery. Others
+    include the Dhanvantari mantra, the Vishnu Sahasranamam and the Hanuman Chalisa. Choose one your family
+    knows, and chant at a fixed time daily, even for five minutes. The regularity itself often brings
+    steadiness to an anxious mind.
+- q: Can I book a homam for my parent in India from the USA?
+  a: Yes. Services such as PariharaOnline arrange homams like the Mrityunjaya or Dhanvantari homam at
+    temples in India in your parent's name. You provide their name and birth star for the sankalpam, the
+    priests perform the ritual, and prasadam can be sent to your parent's home or yours.
+- q: How do I cope when my parent is sick in India and I live abroad?
+  a: Share the load with siblings and relatives, and be the one who handles something specific, such as
+    doctor calls or bills. Keep a fixed time to call. Allow yourself to feel guilt without acting on it
+    blindly. A small daily prayer or lamp can help. Talk to a counsellor if the worry becomes overwhelming.
 readingTime: 4
 draft: false
 ---

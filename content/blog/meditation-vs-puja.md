@@ -1,67 +1,54 @@
 ---
 title: 'Meditation vs Puja: Do You Have to Choose?'
-description: >-
-  Meditation vs puja: are they opposites? How sitting still and offering flowers
-  train the mind differently, and why many people find they need both at times.
+description: 'Meditation vs puja: are they opposites? How sitting still and offering flowers train the
+  mind differently, and why many people find they need both at times.'
 author: archana
-publishedAt: '2026-10-22'
-updatedAt: '2026-10-22'
+publishedAt: '2027-04-18'
+updatedAt: '2027-04-18'
 cluster: ritual-and-mind
 primaryKeyword: meditation vs puja
 secondaryKeywords:
-  - is puja a form of meditation
-  - difference between meditation and prayer
-  - should i meditate or pray
+- is puja a form of meditation
+- difference between meditation and prayer
+- should i meditate or pray
 tags:
-  - Meditation
-  - Puja
-  - Seekers
+- Meditation
+- Puja
+- Seekers
 audience: seeker
 image: /blog/meditation-vs-puja.webp
-imageAlt: >-
-  Quiet room with a lit brass lamp and marigolds on a low altar beside an empty
-  meditation cushion — meditation vs puja | pariharaonline.com
-imagePrompt: >-
-  Split light across a quiet room: on one side a lit brass lamp and marigolds on
-  a low altar, on the other an empty cushion by a window.
+imageAlt: Quiet room with a lit brass lamp and marigolds on a low altar beside an empty meditation cushion
+  — meditation vs puja | pariharaonline.com
+imagePrompt: 'Split light across a quiet room: on one side a lit brass lamp and marigolds on a low altar,
+  on the other an empty cushion by a window.'
 products:
   handles: []
   query: pooja
 related:
-  - rituals-for-anxious-days
-  - prasad-and-gratitude
-  - what-is-a-mantra
+- rituals-for-anxious-days
+- prasad-and-gratitude
+- what-is-a-mantra
 takeaways:
-  - >-
-    Meditation trains attention through stillness; puja trains it through the
-    senses, using flame, sound, fragrance and touch as anchors.
-  - >-
-    Many people find puja easier on restless days and meditation deeper on calm
-    ones.
-  - >-
-    They are not rivals; a short puja followed by a few minutes of silence is a
-    traditional and practical pairing.
+- Meditation trains attention through stillness; puja trains it through the senses, using flame, sound,
+  fragrance and touch as anchors.
+- Many people find puja easier on restless days and meditation deeper on calm ones.
+- They are not rivals; a short puja followed by a few minutes of silence is a traditional and practical
+  pairing.
 faq:
-  - q: Is puja a form of meditation?
-    a: >-
-      It can be. Puja uses the senses: lighting a lamp, offering flowers,
-      ringing a bell, smelling incense. When done with full attention, each
-      action becomes an anchor for the mind in the same way the breath is in
-      meditation. Done mechanically, it is just routine; done attentively, many
-      describe it as meditation in motion.
-  - q: What is the difference between meditation and prayer?
-    a: >-
-      Prayer usually addresses something beyond yourself, with words, requests
-      or gratitude. Meditation typically directs attention inward, towards the
-      breath, a mantra or awareness itself, often without asking for anything.
-      In Hindu practice they overlap: mantra repetition is both, and many people
-      pray first and then sit quietly to let the prayer settle.
-  - q: Should I meditate or do puja if I only have ten minutes?
-    a: >-
-      Split it. Spend a few minutes lighting a lamp and offering a flower or
-      water with attention, then sit in silence for the remaining time. The puja
-      helps gather a scattered mind and the silence lets it settle. If you are
-      especially agitated, lean towards puja; if calm, lean towards sitting.
+- q: Is puja a form of meditation?
+  a: 'It can be. Puja uses the senses: lighting a lamp, offering flowers, ringing a bell, smelling incense.
+    When done with full attention, each action becomes an anchor for the mind in the same way the breath
+    is in meditation. Done mechanically, it is just routine; done attentively, many describe it as meditation
+    in motion.'
+- q: What is the difference between meditation and prayer?
+  a: 'Prayer usually addresses something beyond yourself, with words, requests or gratitude. Meditation
+    typically directs attention inward, towards the breath, a mantra or awareness itself, often without
+    asking for anything. In Hindu practice they overlap: mantra repetition is both, and many people pray
+    first and then sit quietly to let the prayer settle.'
+- q: Should I meditate or do puja if I only have ten minutes?
+  a: Split it. Spend a few minutes lighting a lamp and offering a flower or water with attention, then
+    sit in silence for the remaining time. The puja helps gather a scattered mind and the silence lets
+    it settle. If you are especially agitated, lean towards puja; if calm, lean towards sitting.
 readingTime: 4
 draft: false
 ---

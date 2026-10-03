@@ -1,68 +1,53 @@
 ---
 title: How to Worship the Navagrahas at a Temple
-description: >-
-  Navagraha puja benefits start with doing it right: how to walk around the nine
-  planets at a temple, which direction, what to offer, and what to hold in mind.
+description: 'Navagraha puja benefits start with doing it right: how to walk around the nine planets at
+  a temple, which direction, what to offer, and what to hold in mind.'
 author: archana
-publishedAt: '2026-10-28'
-updatedAt: '2026-10-28'
+publishedAt: '2026-11-08'
+updatedAt: '2026-11-08'
 cluster: navagraha-rahu-ketu
 primaryKeyword: how to worship navagrahas
 secondaryKeywords:
-  - how to worship navagraha in temple
-  - how many rounds around navagraha
-  - navagraha pradakshina rules
-  - navagraha puja at home
+- how to worship navagraha in temple
+- how many rounds around navagraha
+- navagraha pradakshina rules
+- navagraha puja at home
 tags:
-  - Navagraha
-  - Temple Worship
-  - Practice
+- Navagraha
+- Temple Worship
+- Practice
 audience: general
 image: /blog/navagraha-temple-worship-guide.webp
-imageAlt: >-
-  Nine coloured-cloth draped planet shrines on a stone platform in a temple
-  courtyard — how to worship navagrahas | pariharaonline.com
-imagePrompt: >-
-  A raised granite platform in a South Indian temple courtyard draped in nine
-  coloured cloths, oil lamps flickering around it and bare footprints on smooth
-  stone, warm morning light.
+imageAlt: Nine coloured-cloth draped planet shrines on a stone platform in a temple courtyard — how to
+  worship navagrahas | pariharaonline.com
+imagePrompt: A raised granite platform in a South Indian temple courtyard draped in nine coloured cloths,
+  oil lamps flickering around it and bare footprints on smooth stone, warm morning light.
 products:
   handles:
-    - navagraha-homam
+  - navagraha-homam
 related:
-  - guru-peyarchi-jupiter-transit
-  - rahu-ketu-dosha-explained
-  - shani-sade-sati-explained
+- guru-peyarchi-jupiter-transit
+- rahu-ketu-dosha-explained
+- shani-sade-sati-explained
 takeaways:
-  - >-
-    At a temple, Navagrahas are usually worshipped after the main deity by
-    walking clockwise around the nine planets, commonly nine rounds, without
-    touching the idols.
-  - >-
-    Tradition sees Navagraha worship as seeking balance among the nine
-    influences of time rather than appeasing a single planet.
-  - 'Slow, attentive rounds turn a routine temple habit into a moving meditation.'
+- At a temple, Navagrahas are usually worshipped after the main deity by walking clockwise around the
+  nine planets, commonly nine rounds, without touching the idols.
+- Tradition sees Navagraha worship as seeking balance among the nine influences of time rather than appeasing
+  a single planet.
+- Slow, attentive rounds turn a routine temple habit into a moving meditation.
 faq:
-  - q: How many rounds should I do around the Navagraha?
-    a: >-
-      Nine rounds, one for each graha, is the most common practice in South
-      Indian temples, though some traditions do three, seven or eleven. Walk
-      clockwise, keeping the planets on your right, at an unhurried pace. Many
-      families end by saying the Navagraha stotram or simply naming each planet
-      with a bow.
-  - q: Should I visit the Navagraha shrine before or after the main deity?
-    a: >-
-      Most temple customs ask you to worship the presiding deity first, such as
-      Shiva, Vishnu or the Goddess, and visit the Navagrahas afterwards. The
-      idea is that the grahas act under the main deity, so you begin with the
-      source. Local practice can vary, so follow the temple's custom when it is
-      posted.
-  - q: Can I do Navagraha puja at home?
-    a: >-
-      Yes, in a simple form. Light a lamp, chant the Navagraha mantra or the
-      nine planet names, and offer a flower or grain for each. Some people light
-      a lamp on the weekday linked with a particular planet, such as Saturday
-      for Shani. A full Navagraha homam is usually performed by trained priests.
+- q: How many rounds should I do around the Navagraha?
+  a: Nine rounds, one for each graha, is the most common practice in South Indian temples, though some
+    traditions do three, seven or eleven. Walk clockwise, keeping the planets on your right, at an unhurried
+    pace. Many families end by saying the Navagraha stotram or simply naming each planet with a bow.
+- q: Should I visit the Navagraha shrine before or after the main deity?
+  a: Most temple customs ask you to worship the presiding deity first, such as Shiva, Vishnu or the Goddess,
+    and visit the Navagrahas afterwards. The idea is that the grahas act under the main deity, so you
+    begin with the source. Local practice can vary, so follow the temple's custom when it is posted.
+- q: Can I do Navagraha puja at home?
+  a: Yes, in a simple form. Light a lamp, chant the Navagraha mantra or the nine planet names, and offer
+    a flower or grain for each. Some people light a lamp on the weekday linked with a particular planet,
+    such as Saturday for Shani. A full Navagraha homam is usually performed by trained priests.
 readingTime: 4
 draft: false
 ---

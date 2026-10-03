@@ -1,70 +1,56 @@
 ---
 title: 'Mangal Dosha Explained: Myths, Maths and Meaning'
-description: >-
-  Mangal dosha explained without panic: what Mars in certain houses means, the
-  myths around manglik matches, how cancellation works, and traditional
-  remedies.
+description: 'Mangal dosha explained without panic: what Mars in certain houses means, the myths around
+  manglik matches, how cancellation works, and traditional remedies.'
 author: hariharan
-publishedAt: '2026-10-27'
-updatedAt: '2026-10-27'
+publishedAt: '2026-11-02'
+updatedAt: '2026-11-02'
 cluster: marriage-delay
 primaryKeyword: mangal dosha
 secondaryKeywords:
-  - what is manglik dosha
-  - mangal dosha cancellation
-  - manglik and non manglik marriage
-  - mangal dosha remedies for marriage
+- what is manglik dosha
+- mangal dosha cancellation
+- manglik and non manglik marriage
+- mangal dosha remedies for marriage
 tags:
-  - Mangal Dosha
-  - Marriage
-  - Astrology
+- Mangal Dosha
+- Marriage
+- Astrology
 audience: general
 image: /blog/mangal-dosha-explained.webp
-imageAlt: >-
-  Red hibiscus and a copper lamp on a sandstone temple step at sunset — mangal
-  dosha | pariharaonline.com
-imagePrompt: >-
-  Red hibiscus flowers and a small copper lamp on a sandstone temple step washed
-  in warm red-orange sunset light, a hint of carved pillars behind.
+imageAlt: Red hibiscus and a copper lamp on a sandstone temple step at sunset — mangal dosha | pariharaonline.com
+imagePrompt: Red hibiscus flowers and a small copper lamp on a sandstone temple step washed in warm red-orange
+  sunset light, a hint of carved pillars behind.
 products:
   handles:
-    - ask-our-astrologer
+  - ask-our-astrologer
 related:
-  - swayamvara-parvathi-story
-  - waiting-for-the-right-match
-  - astrology-and-free-will
+- swayamvara-parvathi-story
+- waiting-for-the-right-match
+- astrology-and-free-will
 takeaways:
-  - >-
-    Mangal dosha is the traditional name for Mars sitting in certain houses of a
-    birth chart, which happens in a large share of all charts.
-  - >-
-    Astrologers apply many cancellation rules, and matching two manglik charts
-    is a traditional answer, so the label alone should never stop a marriage.
-  - >-
-    Common remedies include Tuesday prayers to Murugan or Hanuman and Mangal
-    parihara poojas, offered as prayer rather than certainty.
+- Mangal dosha is the traditional name for Mars sitting in certain houses of a birth chart, which happens
+  in a large share of all charts.
+- Astrologers apply many cancellation rules, and matching two manglik charts is a traditional answer,
+  so the label alone should never stop a marriage.
+- Common remedies include Tuesday prayers to Murugan or Hanuman and Mangal parihara poojas, offered as
+  prayer rather than certainty.
 faq:
-  - q: What is manglik dosha?
-    a: >-
-      Manglik or Mangal dosha is a Jyotish term for Mars placed in the first,
-      second, fourth, seventh, eighth or twelfth house, counted from the
-      ascendant and sometimes also from the Moon and Venus. Tradition links it
-      with intensity and friction in marriage. Because the rule covers so many
-      houses, a large proportion of people have it in some form.
-  - q: Can a manglik marry a non-manglik?
-    a: >-
-      Many do. Astrologers check whether the dosha is cancelled, for example by
-      Mars in its own or exalted sign, by Jupiter's aspect, or by age, and they
-      compare the whole chart. Traditionally, two manglik charts are considered
-      a balanced match. The decision should rest on compatibility, understanding
-      and family conversation, not on one factor.
-  - q: What are the remedies for Mangal dosha?
-    a: >-
-      Traditional remedies include worshipping Murugan or Hanuman on Tuesdays,
-      reciting the Angaraka stotram, performing a Mangal dosha parihara pooja,
-      and, in some families, a symbolic ritual before the wedding. An astrologer
-      usually advises based on the specific chart. These are acts of devotion
-      and intention, not guarantees about married life.
+- q: What is manglik dosha?
+  a: Manglik or Mangal dosha is a Jyotish term for Mars placed in the first, second, fourth, seventh,
+    eighth or twelfth house, counted from the ascendant and sometimes also from the Moon and Venus. Tradition
+    links it with intensity and friction in marriage. Because the rule covers so many houses, a large
+    proportion of people have it in some form.
+- q: Can a manglik marry a non-manglik?
+  a: Many do. Astrologers check whether the dosha is cancelled, for example by Mars in its own or exalted
+    sign, by Jupiter's aspect, or by age, and they compare the whole chart. Traditionally, two manglik
+    charts are considered a balanced match. The decision should rest on compatibility, understanding and
+    family conversation, not on one factor.
+- q: What are the remedies for Mangal dosha?
+  a: Traditional remedies include worshipping Murugan or Hanuman on Tuesdays, reciting the Angaraka stotram,
+    performing a Mangal dosha parihara pooja, and, in some families, a symbolic ritual before the wedding.
+    An astrologer usually advises based on the specific chart. These are acts of devotion and intention,
+    not guarantees about married life.
 readingTime: 4
 draft: false
 ---

@@ -1,67 +1,53 @@
 ---
 title: 'How to Light a Diya at Home: Oil, Wick, Direction'
-description: >-
-  How to light a diya at home: choosing the lamp, oil or ghee, how many wicks,
-  which direction to face, and simple safety tips for apartments and small
-  spaces.
+description: 'How to light a diya at home: choosing the lamp, oil or ghee, how many wicks, which direction
+  to face, and simple safety tips for apartments and small spaces.'
 author: archana
-publishedAt: '2026-10-24'
-updatedAt: '2026-10-24'
+publishedAt: '2027-07-03'
+updatedAt: '2027-07-03'
 cluster: why-light-lamps
 primaryKeyword: how to light a diya
 secondaryKeywords:
-  - which direction should a diya face
-  - how many wicks in a diya
-  - how to make cotton wicks for diya
+- which direction should a diya face
+- how many wicks in a diya
+- how to make cotton wicks for diya
 tags:
-  - Lamps
-  - How To
-  - Puja at Home
+- Lamps
+- How To
+- Puja at Home
 audience: seeker
 image: /blog/how-to-light-a-diya.webp
-imageAlt: >-
-  Fingers placing a hand-rolled cotton wick into a brass diya filled with golden
-  oil — how to light a diya | pariharaonline.com
-imagePrompt: >-
-  Close-up of fingers placing a hand-rolled cotton wick into a small brass diya
-  filled with golden oil, warm lamp light in a dim room.
+imageAlt: Fingers placing a hand-rolled cotton wick into a brass diya filled with golden oil — how to
+  light a diya | pariharaonline.com
+imagePrompt: Close-up of fingers placing a hand-rolled cotton wick into a small brass diya filled with
+  golden oil, warm lamp light in a dim room.
 products:
   handles: []
   query: Lakshmi
 related:
-  - the-dusk-lamp-ritual
-  - ghee-lamp-or-oil-lamp
-  - naraka-chaturdashi-oil-bath
+- the-dusk-lamp-ritual
+- ghee-lamp-or-oil-lamp
+- naraka-chaturdashi-oil-bath
 takeaways:
-  - >-
-    To light a diya, place a cotton wick in oil or ghee, let it soak, then light
-    it and set the lamp on a stable plate.
-  - >-
-    Tradition often favours facing the flame east or north; wick number varies
-    by family, so follow yours if it has a custom.
-  - >-
-    In apartments, keep lamps away from curtains and smoke detectors, and never
-    leave them unattended.
+- To light a diya, place a cotton wick in oil or ghee, let it soak, then light it and set the lamp on
+  a stable plate.
+- Tradition often favours facing the flame east or north; wick number varies by family, so follow yours
+  if it has a custom.
+- In apartments, keep lamps away from curtains and smoke detectors, and never leave them unattended.
 faq:
-  - q: Which direction should a diya face?
-    a: >-
-      Many traditions recommend facing the flame east, associated with the
-      rising sun, or north, associated with prosperity. South is often avoided
-      for daily lamps as it is linked to ancestors. These are customs rather
-      than strict rules, and practices vary between regions and families, so it
-      is worth asking elders what your household follows.
-  - q: How many wicks should a diya have?
-    a: >-
-      Customs vary. Some families light a single wick daily, while others prefer
-      two wicks twisted together or a lamp with several faces lit on special
-      days. Some traditions avoid a single wick for worship. If your family has
-      no custom, two wicks side by side is a common and simple choice.
-  - q: How do I make cotton wicks for a diya?
-    a: >-
-      Take a small tuft of clean cotton and roll it between your palms or along
-      your thigh to form a thin, tight strand, slightly thicker at one end. For
-      long-burning lamps, roll a longer wick. Soak it in oil or ghee for a
-      minute before placing it in the lamp so it lights evenly.
+- q: Which direction should a diya face?
+  a: Many traditions recommend facing the flame east, associated with the rising sun, or north, associated
+    with prosperity. South is often avoided for daily lamps as it is linked to ancestors. These are customs
+    rather than strict rules, and practices vary between regions and families, so it is worth asking elders
+    what your household follows.
+- q: How many wicks should a diya have?
+  a: Customs vary. Some families light a single wick daily, while others prefer two wicks twisted together
+    or a lamp with several faces lit on special days. Some traditions avoid a single wick for worship.
+    If your family has no custom, two wicks side by side is a common and simple choice.
+- q: How do I make cotton wicks for a diya?
+  a: Take a small tuft of clean cotton and roll it between your palms or along your thigh to form a thin,
+    tight strand, slightly thicker at one end. For long-burning lamps, roll a longer wick. Soak it in
+    oil or ghee for a minute before placing it in the lamp so it lights evenly.
 readingTime: 4
 draft: false
 ---

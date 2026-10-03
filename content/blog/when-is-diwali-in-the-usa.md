@@ -1,66 +1,54 @@
 ---
 title: When Is Diwali in the USA? Why the Date Moves
-description: >-
-  When is Diwali in the USA? It follows the new moon of Karthika, so the date
-  shifts yearly and can differ from India by a day. Here is how to check.
+description: When is Diwali in the USA? It follows the new moon of Karthika, so the date shifts yearly
+  and can differ from India by a day. Here is how to check.
 author: hariharan
-publishedAt: '2026-10-04'
-updatedAt: '2026-10-04'
+publishedAt: '2026-10-06'
+updatedAt: '2026-10-06'
 cluster: diwali-in-usa
 primaryKeyword: when is diwali in the usa
 secondaryKeywords:
-  - why does diwali date change every year
-  - diwali date usa vs india
-  - diwali new moon kartik amavasya
+- why does diwali date change every year
+- diwali date usa vs india
+- diwali new moon kartik amavasya
 tags:
-  - Diwali
-  - Hindu Calendar
-  - NRI Life
+- Diwali
+- Hindu Calendar
+- NRI Life
 audience: nri-us
 image: /blog/when-is-diwali-in-the-usa.webp
-imageAlt: >-
-  Oil lamps glowing along a porch railing under a dark new-moon sky in an
-  American suburb — when is diwali in the usa | pariharaonline.com
-imagePrompt: >-
-  A thin crescent-less night sky over an American suburb with a single row of
-  oil lamps glowing along a porch railing, deep blue dusk and warm amber flames,
-  cinematic photograph.
+imageAlt: Oil lamps glowing along a porch railing under a dark new-moon sky in an American suburb — when
+  is diwali in the usa | pariharaonline.com
+imagePrompt: A thin crescent-less night sky over an American suburb with a single row of oil lamps glowing
+  along a porch railing, deep blue dusk and warm amber flames, cinematic photograph.
 products:
   handles:
-    - diwali-puja
+  - diwali-puja
 related:
-  - celebrate-diwali-in-the-usa
-  - diwali-at-the-office
-  - explaining-hindu-festivals-to-coworkers
+- celebrate-diwali-in-the-usa
+- diwali-at-the-office
+- explaining-hindu-festivals-to-coworkers
 takeaways:
-  - >-
-    Diwali falls on the new-moon night of the lunar month Karthika, usually late
-    October or November, so its Gregorian date changes every year.
-  - >-
-    In the USA, Diwali can fall a day apart from India because the lunar day is
-    calculated for local time; check a panchangam set to your city.
+- Diwali falls on the new-moon night of the lunar month Karthika, usually late October or November, so
+  its Gregorian date changes every year.
+- In the USA, Diwali can fall a day apart from India because the lunar day is calculated for local time;
+  check a panchangam set to your city.
 faq:
-  - q: Why does the Diwali date change every year?
-    a: >-
-      Diwali follows the Hindu lunisolar calendar, not the Gregorian one. It is
-      celebrated on Amavasya, the new moon, that closes Karthika in many
-      northern calendars and Ashwin in the South and West. A lunar month is
-      about twenty-nine and a half days, so the festival slides against the
-      solar year, usually landing between mid-October and mid-November.
-  - q: Is Diwali on the same day in the USA and India?
-    a: >-
-      Often, but not always. A tithi, or lunar day, begins at a precise
-      astronomical moment, and the evening when Amavasya prevails depends on
-      local time. Because the US is many hours behind India, the Lakshmi puja
-      evening can fall a day earlier or on the same calendar date. Local temples
-      and city-specific panchangams give the correct evening.
-  - q: How do I find the correct Diwali date for my city in America?
-    a: >-
-      Use a panchangam, the traditional Hindu almanac, set to your city rather
-      than to Delhi or Chennai. Many online panchangams let you choose a
-      location. Your nearest Hindu temple will also publish its festival
-      calendar. If the date and your work schedule clash, many families light
-      lamps on the day and gather on the weekend.
+- q: Why does the Diwali date change every year?
+  a: Diwali follows the Hindu lunisolar calendar, not the Gregorian one. It is celebrated on Amavasya,
+    the new moon, that closes Karthika in many northern calendars and Ashwin in the South and West. A
+    lunar month is about twenty-nine and a half days, so the festival slides against the solar year, usually
+    landing between mid-October and mid-November.
+- q: Is Diwali on the same day in the USA and India?
+  a: Often, but not always. A tithi, or lunar day, begins at a precise astronomical moment, and the evening
+    when Amavasya prevails depends on local time. Because the US is many hours behind India, the Lakshmi
+    puja evening can fall a day earlier or on the same calendar date. Local temples and city-specific
+    panchangams give the correct evening.
+- q: How do I find the correct Diwali date for my city in America?
+  a: Use a panchangam, the traditional Hindu almanac, set to your city rather than to Delhi or Chennai.
+    Many online panchangams let you choose a location. Your nearest Hindu temple will also publish its
+    festival calendar. If the date and your work schedule clash, many families light lamps on the day
+    and gather on the weekend.
 readingTime: 4
 draft: false
 ---

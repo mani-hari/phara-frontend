@@ -1,66 +1,53 @@
 ---
 title: 'Holika Dahan at Home: A Small, Safe Fire Ritual'
-description: >-
-  Holika Dahan at home: a small, safe version of the Holi bonfire ritual with a
-  lamp or brazier, what to offer, what to let go of, and simple safety steps.
+description: 'Holika Dahan at home: a small, safe version of the Holi bonfire ritual with a lamp or brazier,
+  what to offer, what to let go of, and simple safety steps.'
 author: archana
-publishedAt: '2026-10-10'
-updatedAt: '2026-10-10'
+publishedAt: '2026-11-03'
+updatedAt: '2026-11-03'
 cluster: holi
 primaryKeyword: holika dahan at home
 secondaryKeywords:
-  - how to do holika dahan puja at home
-  - holika dahan rituals
-  - what to offer in holika dahan
+- how to do holika dahan puja at home
+- holika dahan rituals
+- what to offer in holika dahan
 tags:
-  - Holi
-  - Practice
-  - Rituals
+- Holi
+- Practice
+- Rituals
 audience: general
 image: /blog/holika-dahan-at-home.webp
-imageAlt: >-
-  A small contained flame in a clay pot on a balcony, ringed with wheat ears,
-  coconut and turmeric — holika dahan at home | pariharaonline.com
-imagePrompt: >-
-  A clay pot holding a small contained flame on a balcony at dusk, ringed with
-  roasted wheat ears, a coconut and turmeric, a copper jug of water beside it,
-  city lights softly blurred behind.
+imageAlt: A small contained flame in a clay pot on a balcony, ringed with wheat ears, coconut and turmeric
+  — holika dahan at home | pariharaonline.com
+imagePrompt: A clay pot holding a small contained flame on a balcony at dusk, ringed with roasted wheat
+  ears, a coconut and turmeric, a copper jug of water beside it, city lights softly blurred behind.
 products:
   handles: []
   query: Vishnu
 related:
-  - holi-in-america
-  - holi-meaning-prahlad-holika
-  - hindu-festival-calendar-usa
+- holi-in-america
+- holi-meaning-prahlad-holika
+- hindu-festival-calendar-usa
 takeaways:
-  - >-
-    Holika Dahan is the bonfire lit on the full-moon evening of Phalguna, the
-    night before colour-day Holi, to recall Prahlad's protection from fire.
-  - >-
-    At home, a large ghee lamp or a small contained flame, circled with
-    offerings of grain and coconut, keeps the ritual's meaning safely.
+- Holika Dahan is the bonfire lit on the full-moon evening of Phalguna, the night before colour-day Holi,
+  to recall Prahlad's protection from fire.
+- At home, a large ghee lamp or a small contained flame, circled with offerings of grain and coconut,
+  keeps the ritual's meaning safely.
 faq:
-  - q: How can I do Holika Dahan puja at home?
-    a: >-
-      On the evening of Holika Dahan, clean a safe spot and light a large ghee
-      lamp or a small contained fire in a metal or clay vessel. Offer turmeric,
-      kumkum, roasted grains, a coconut or jaggery. Walk around it three or
-      seven times, praying for protection and the release of what weighs on you.
-      Keep water nearby and never leave it unattended.
-  - q: What do you offer in the Holika Dahan fire?
-    a: >-
-      Traditional offerings include roasted wheat or barley ears, grams,
-      coconut, jaggery, turmeric, kumkum, raw cotton thread wound around the
-      pyre, and cow-dung cakes. Some families roast new grain in the fire and
-      eat it as prasad. A personal practice is to write down a habit or grudge
-      and offer that too, symbolically burning it.
-  - q: Is it safe to light a Holika fire in an apartment?
-    a: >-
-      An open bonfire indoors is not safe and may break building rules. Instead,
-      use a large oil or ghee lamp, or a small flame in a sturdy metal or clay
-      vessel on a balcony, away from curtains and with water at hand. The
-      meaning lies in the intention and the circling, not in the size of the
-      fire.
+- q: How can I do Holika Dahan puja at home?
+  a: On the evening of Holika Dahan, clean a safe spot and light a large ghee lamp or a small contained
+    fire in a metal or clay vessel. Offer turmeric, kumkum, roasted grains, a coconut or jaggery. Walk
+    around it three or seven times, praying for protection and the release of what weighs on you. Keep
+    water nearby and never leave it unattended.
+- q: What do you offer in the Holika Dahan fire?
+  a: Traditional offerings include roasted wheat or barley ears, grams, coconut, jaggery, turmeric, kumkum,
+    raw cotton thread wound around the pyre, and cow-dung cakes. Some families roast new grain in the
+    fire and eat it as prasad. A personal practice is to write down a habit or grudge and offer that too,
+    symbolically burning it.
+- q: Is it safe to light a Holika fire in an apartment?
+  a: An open bonfire indoors is not safe and may break building rules. Instead, use a large oil or ghee
+    lamp, or a small flame in a sturdy metal or clay vessel on a balcony, away from curtains and with
+    water at hand. The meaning lies in the intention and the circling, not in the size of the fire.
 readingTime: 4
 draft: false
 ---

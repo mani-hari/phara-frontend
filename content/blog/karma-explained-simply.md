@@ -1,68 +1,53 @@
 ---
-title: 'Karma Explained Simply, Without the Guilt'
-description: >-
-  Karma explained simply: not cosmic punishment but the idea that actions shape
-  the actor. What the Gita really says, and how to think about karma without
-  guilt.
+title: Karma Explained Simply, Without the Guilt
+description: 'Karma explained simply: not cosmic punishment but the idea that actions shape the actor.
+  What the Gita really says, and how to think about karma without guilt.'
 author: hariharan
-publishedAt: '2026-10-22'
-updatedAt: '2026-10-22'
+publishedAt: '2027-02-13'
+updatedAt: '2027-02-13'
 cluster: karma-dharma
 primaryKeyword: karma explained
 secondaryKeywords:
-  - what is karma in hinduism
-  - is karma punishment
-  - karma in the bhagavad gita
+- what is karma in hinduism
+- is karma punishment
+- karma in the bhagavad gita
 tags:
-  - Karma
-  - Philosophy
-  - Seekers
+- Karma
+- Philosophy
+- Seekers
 audience: seeker
 image: /blog/karma-explained-simply.webp
-imageAlt: >-
-  Wooden chariot wheel and a conch shell resting on a dusty field in golden
-  evening light — karma explained | pariharaonline.com
-imagePrompt: >-
-  A painterly scene of a chariot wheel resting on a dusty field at golden hour,
-  a conch shell beside it, no figures.
+imageAlt: Wooden chariot wheel and a conch shell resting on a dusty field in golden evening light — karma
+  explained | pariharaonline.com
+imagePrompt: A painterly scene of a chariot wheel resting on a dusty field at golden hour, a conch shell
+  beside it, no figures.
 products:
   handles:
-    - annadhanam-donate-food-to-homeless-children
+  - annadhanam-donate-food-to-homeless-children
 related:
-  - spiritual-but-not-religious-hinduism
-  - dharma-meaning-in-everyday-life
-  - is-astrology-real
+- spiritual-but-not-religious-hinduism
+- dharma-meaning-in-everyday-life
+- is-astrology-real
 takeaways:
-  - >-
-    Karma literally means action; the idea is that what you do, and why you do
-    it, shapes who you become.
-  - >-
-    In the Bhagavad Gita, Krishna teaches acting fully while letting go of
-    attachment to results, called karma yoga.
-  - >-
-    Karma is not a cosmic punishment system; using it to blame people for their
-    suffering misreads the tradition.
+- Karma literally means action; the idea is that what you do, and why you do it, shapes who you become.
+- In the Bhagavad Gita, Krishna teaches acting fully while letting go of attachment to results, called
+  karma yoga.
+- Karma is not a cosmic punishment system; using it to blame people for their suffering misreads the tradition.
 faq:
-  - q: What is karma in Hinduism in simple words?
-    a: >-
-      Karma comes from a Sanskrit root meaning to act. In Hindu thought, every
-      action, word and intention leaves an impression that shapes future
-      tendencies and circumstances. It works less like a judge handing out
-      rewards and more like a habit forming: repeated anger makes an angry
-      person, repeated kindness makes a kind one.
-  - q: Is karma a punishment for past sins?
-    a: >-
-      Not in the way it is often portrayed. Karma describes consequences, not a
-      deity keeping score to punish. Many teachers warn against using karma to
-      blame the sick or poor for their situation. The emphasis in texts like the
-      Bhagavad Gita is on how you act now, with compassion and without selfish
-      attachment.
-  - q: What does the Bhagavad Gita say about karma?
-    a: >-
-      The Gita, in Krishna's teaching to Arjuna, says you have a right to your
-      actions but not to their fruits. It asks for wholehearted action done as
-      duty or offering, without clinging to success or failure. This is karma
-      yoga, a way to act fully in the world while staying inwardly free.
+- q: What is karma in Hinduism in simple words?
+  a: 'Karma comes from a Sanskrit root meaning to act. In Hindu thought, every action, word and intention
+    leaves an impression that shapes future tendencies and circumstances. It works less like a judge handing
+    out rewards and more like a habit forming: repeated anger makes an angry person, repeated kindness
+    makes a kind one.'
+- q: Is karma a punishment for past sins?
+  a: Not in the way it is often portrayed. Karma describes consequences, not a deity keeping score to
+    punish. Many teachers warn against using karma to blame the sick or poor for their situation. The
+    emphasis in texts like the Bhagavad Gita is on how you act now, with compassion and without selfish
+    attachment.
+- q: What does the Bhagavad Gita say about karma?
+  a: The Gita, in Krishna's teaching to Arjuna, says you have a right to your actions but not to their
+    fruits. It asks for wholehearted action done as duty or offering, without clinging to success or failure.
+    This is karma yoga, a way to act fully in the world while staying inwardly free.
 readingTime: 4
 draft: false
 ---

@@ -1,67 +1,53 @@
 ---
 title: 'Hindu Festival Calendar in the USA: How It Works'
-description: >-
-  The Hindu festival calendar in the USA: why festivals follow the moon, why
-  dates shift every year, and how to find the right day for your city.
+description: 'The Hindu festival calendar in the USA: why festivals follow the moon, why dates shift every
+  year, and how to find the right day for your city.'
 author: hariharan
-publishedAt: '2026-10-19'
-updatedAt: '2026-10-19'
+publishedAt: '2026-12-09'
+updatedAt: '2026-12-09'
 cluster: festivals-explained-usa
 primaryKeyword: hindu festival calendar usa
 secondaryKeywords:
-  - how does the hindu calendar work
-  - what is a panchangam
-  - why hindu festival dates differ in usa
+- how does the hindu calendar work
+- what is a panchangam
+- why hindu festival dates differ in usa
 tags:
-  - Hindu Calendar
-  - Festivals
-  - NRI Life
+- Hindu Calendar
+- Festivals
+- NRI Life
 audience: nri-us
 image: /blog/hindu-festival-calendar-usa.webp
-imageAlt: >-
-  A traditional panchangam almanac open beside a wall calendar and a small brass
-  lamp — hindu festival calendar usa | pariharaonline.com
-imagePrompt: >-
-  A crescent moon over a quiet American suburban street at dusk, one window
-  glowing with a small brass lamp on the sill and a string of marigolds,
-  painterly scene.
+imageAlt: A traditional panchangam almanac open beside a wall calendar and a small brass lamp — hindu
+  festival calendar usa | pariharaonline.com
+imagePrompt: A crescent moon over a quiet American suburban street at dusk, one window glowing with a
+  small brass lamp on the sill and a string of marigolds, painterly scene.
 products:
   handles:
-    - ask-our-astrologer
+  - ask-our-astrologer
 related:
-  - festival-rituals-for-kids
-  - explaining-diwali-to-kids
-  - diwali-at-the-office
+- festival-rituals-for-kids
+- explaining-diwali-to-kids
+- diwali-at-the-office
 takeaways:
-  - >-
-    The Hindu festival calendar is lunisolar: most festivals fall on a
-    particular lunar day in a lunar month, so their Gregorian dates move every
-    year.
-  - >-
-    In the USA, use a panchangam set to your city or follow your local temple,
-    since timings can differ from India by a day.
+- 'The Hindu festival calendar is lunisolar: most festivals fall on a particular lunar day in a lunar
+  month, so their Gregorian dates move every year.'
+- In the USA, use a panchangam set to your city or follow your local temple, since timings can differ
+  from India by a day.
 faq:
-  - q: How does the Hindu calendar work?
-    a: >-
-      The Hindu calendar is lunisolar. Months follow the moon's cycle, divided
-      into two fortnights, and each day is a tithi, a lunar day defined by the
-      angle between sun and moon. An extra month is added every few years to
-      keep pace with the seasons. Some regional calendars, including the Tamil
-      one, use solar months for certain festivals.
-  - q: What is a panchangam?
-    a: >-
-      A panchangam is the traditional Hindu almanac. Its name means five limbs:
-      tithi, the lunar day; vara, the weekday; nakshatra, the lunar mansion;
-      yoga, a sun-moon combination; and karana, half a tithi. Families use it to
-      find festival days, fasting days and auspicious times. Modern panchangams
-      can be set to any city in the world.
-  - q: Why are Hindu festivals on different days in the USA and India?
-    a: >-
-      A tithi begins and ends at a precise astronomical moment, and festivals
-      are often fixed by which tithi prevails at local sunrise, sunset or
-      midnight. Because US cities are many hours behind India, that moment can
-      fall on a different local day. That is why US temples publish their own
-      calendars.
+- q: How does the Hindu calendar work?
+  a: The Hindu calendar is lunisolar. Months follow the moon's cycle, divided into two fortnights, and
+    each day is a tithi, a lunar day defined by the angle between sun and moon. An extra month is added
+    every few years to keep pace with the seasons. Some regional calendars, including the Tamil one, use
+    solar months for certain festivals.
+- q: What is a panchangam?
+  a: 'A panchangam is the traditional Hindu almanac. Its name means five limbs: tithi, the lunar day;
+    vara, the weekday; nakshatra, the lunar mansion; yoga, a sun-moon combination; and karana, half a
+    tithi. Families use it to find festival days, fasting days and auspicious times. Modern panchangams
+    can be set to any city in the world.'
+- q: Why are Hindu festivals on different days in the USA and India?
+  a: A tithi begins and ends at a precise astronomical moment, and festivals are often fixed by which
+    tithi prevails at local sunrise, sunset or midnight. Because US cities are many hours behind India,
+    that moment can fall on a different local day. That is why US temples publish their own calendars.
 readingTime: 5
 draft: false
 ---

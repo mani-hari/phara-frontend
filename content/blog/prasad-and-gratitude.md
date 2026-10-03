@@ -1,70 +1,55 @@
 ---
 title: 'Prasad and Gratitude: Eating as an Offering'
-description: >-
-  Prasad and gratitude: why Hindus offer food before eating it, what changes
-  when a meal becomes prasad, and a simple practice for eating with more
-  attention.
+description: 'Prasad and gratitude: why Hindus offer food before eating it, what changes when a meal becomes
+  prasad, and a simple practice for eating with more attention.'
 author: archana
-publishedAt: '2026-10-23'
-updatedAt: '2026-10-23'
+publishedAt: '2027-04-19'
+updatedAt: '2027-04-19'
 cluster: ritual-and-mind
 primaryKeyword: prasad and gratitude
 secondaryKeywords:
-  - what is prasad in hinduism
-  - why do we offer food to god
-  - mindful eating hindu tradition
+- what is prasad in hinduism
+- why do we offer food to god
+- mindful eating hindu tradition
 tags:
-  - Prasad
-  - Gratitude
-  - Food
+- Prasad
+- Gratitude
+- Food
 audience: seeker
 image: /blog/prasad-and-gratitude.webp
-imageAlt: >-
-  Banana leaf with rice, fruit and sweet pongal beside a lit brass lamp on a
-  kitchen floor — prasad and gratitude | pariharaonline.com
-imagePrompt: >-
-  A banana leaf with small portions of rice, fruit and sweet pongal beside a lit
-  brass lamp on a kitchen floor, soft afternoon light.
+imageAlt: Banana leaf with rice, fruit and sweet pongal beside a lit brass lamp on a kitchen floor — prasad
+  and gratitude | pariharaonline.com
+imagePrompt: A banana leaf with small portions of rice, fruit and sweet pongal beside a lit brass lamp
+  on a kitchen floor, soft afternoon light.
 products:
   handles:
-    - palani-panchamritham
+  - palani-panchamritham
 related:
-  - why-do-hindus-do-rituals
-  - meditation-vs-puja
-  - om-namah-shivaya-meaning
-  - brahma-muhurta-waking-early
+- why-do-hindus-do-rituals
+- meditation-vs-puja
+- om-namah-shivaya-meaning
+- brahma-muhurta-waking-early
 takeaways:
-  - >-
-    Prasad is food first offered to the divine, then received back as a
-    blessing; the offering turns eating into gratitude.
-  - >-
-    The Bhagavad Gita says even a leaf, flower, fruit or water offered with
-    devotion is accepted.
-  - >-
-    Pausing to offer a meal before eating slows you down, and many people find
-    they eat with more attention and less waste.
+- Prasad is food first offered to the divine, then received back as a blessing; the offering turns eating
+  into gratitude.
+- The Bhagavad Gita says even a leaf, flower, fruit or water offered with devotion is accepted.
+- Pausing to offer a meal before eating slows you down, and many people find they eat with more attention
+  and less waste.
 faq:
-  - q: What is prasad in Hinduism?
-    a: >-
-      Prasad, meaning grace, is food or another offering that has been presented
-      to a deity during worship and is then distributed to devotees. Before
-      offering it is called naivedyam. Receiving prasad is seen as receiving a
-      blessing, which is why it is accepted with the right hand, never wasted,
-      and usually shared with others.
-  - q: Why do Hindus offer food to God before eating?
-    a: >-
-      Offering food expresses the idea that everything we have is received, not
-      owned. In the Bhagavad Gita, Krishna says he accepts a leaf, flower, fruit
-      or water offered with love. Offering first and eating after turns an
-      ordinary meal into gratitude, and the food returns to the family as
-      prasad.
-  - q: Is offering food before eating a kind of mindful eating?
-    a: >-
-      It shares a lot with it. The pause before eating, the attention to what is
-      on the plate and the sense of gratitude all slow the meal down. Many
-      people who practise offering find they notice taste and fullness more. The
-      tradition's focus is devotion, but the effect on attention is something
-      anyone can experience.
+- q: What is prasad in Hinduism?
+  a: Prasad, meaning grace, is food or another offering that has been presented to a deity during worship
+    and is then distributed to devotees. Before offering it is called naivedyam. Receiving prasad is seen
+    as receiving a blessing, which is why it is accepted with the right hand, never wasted, and usually
+    shared with others.
+- q: Why do Hindus offer food to God before eating?
+  a: Offering food expresses the idea that everything we have is received, not owned. In the Bhagavad
+    Gita, Krishna says he accepts a leaf, flower, fruit or water offered with love. Offering first and
+    eating after turns an ordinary meal into gratitude, and the food returns to the family as prasad.
+- q: Is offering food before eating a kind of mindful eating?
+  a: It shares a lot with it. The pause before eating, the attention to what is on the plate and the sense
+    of gratitude all slow the meal down. Many people who practise offering find they notice taste and
+    fullness more. The tradition's focus is devotion, but the effect on attention is something anyone
+    can experience.
 readingTime: 4
 draft: false
 ---

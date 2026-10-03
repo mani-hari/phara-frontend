@@ -1,68 +1,54 @@
 ---
 title: 'Soorasamharam Story: What Murugan''s Victory Means'
-description: >-
-  Soorasamharam story and meaning: how Murugan fought Surapadman in the Skanda
-  Purana, why the demon became a peacock and rooster, and what that ending
-  teaches.
+description: 'Soorasamharam story and meaning: how Murugan fought Surapadman in the Skanda Purana, why
+  the demon became a peacock and rooster, and what that ending teaches.'
 author: hariharan
-publishedAt: '2026-10-09'
-updatedAt: '2026-10-09'
+publishedAt: '2026-10-12'
+updatedAt: '2026-10-12'
 cluster: murugan-skanda
 primaryKeyword: soorasamharam story
 secondaryKeywords:
-  - surapadman story
-  - skanda sashti story
-  - murugan peacock meaning
+- surapadman story
+- skanda sashti story
+- murugan peacock meaning
 tags:
-  - Skanda Sashti
-  - Murugan
-  - Mythology
+- Skanda Sashti
+- Murugan
+- Mythology
 audience: general
 image: /blog/soorasamharam-story-meaning.webp
-imageAlt: >-
-  Seaside temple tower at golden hour with a peacock feather on the wet sand —
-  soorasamharam story | pariharaonline.com
-imagePrompt: >-
-  A seaside temple tower at golden hour with waves breaking on the sand below, a
-  single peacock feather lying on the wet shore in the foreground, painterly
-  warm light.
+imageAlt: Seaside temple tower at golden hour with a peacock feather on the wet sand — soorasamharam story
+  | pariharaonline.com
+imagePrompt: A seaside temple tower at golden hour with waves breaking on the sand below, a single peacock
+  feather lying on the wet shore in the foreground, painterly warm light.
 products:
   handles:
-    - palani
+  - palani
 related:
-  - thaipusam-kavadi-meaning
-  - skanda-sashti-fasting-guide
-  - vaikunta-ekadashi-significance
+- thaipusam-kavadi-meaning
+- skanda-sashti-fasting-guide
+- vaikunta-ekadashi-significance
 takeaways:
-  - >-
-    Soorasamharam re-enacts Murugan's victory over the asura Surapadman on the
-    sixth day of Skanda Sashti, most famously at the seaside Tiruchendur temple.
-  - >-
-    In the Skanda Purana, the defeated demon becomes Murugan's peacock and
-    rooster: the story transforms the ego rather than destroying it.
+- Soorasamharam re-enacts Murugan's victory over the asura Surapadman on the sixth day of Skanda Sashti,
+  most famously at the seaside Tiruchendur temple.
+- 'In the Skanda Purana, the defeated demon becomes Murugan''s peacock and rooster: the story transforms
+  the ego rather than destroying it.'
 faq:
-  - q: What is the story of Soorasamharam?
-    a: >-
-      The Skanda Purana tells of Surapadman, an asura who won a boon of near
-      invincibility and oppressed the gods. Murugan, born from sparks of Shiva's
-      third eye, received the vel, a spear, from Parvati and fought him for six
-      days. On the last day Surapadman became a mango tree; Murugan split it
-      with the vel, and the halves became a peacock and a rooster.
-  - q: Why is the peacock Murugan's vehicle?
-    a: >-
-      According to the Soorasamharam story, one half of the defeated Surapadman
-      became the peacock that Murugan rides, and the other became the rooster on
-      his banner. Symbolically, the proud, restless ego is not destroyed but
-      tamed and put to work. The peacock, beautiful and vain, now carries wisdom
-      instead of fighting it.
-  - q: Where is Soorasamharam celebrated?
-    a: >-
-      Soorasamharam is celebrated in Murugan temples across Tamil Nadu and
-      wherever Tamil communities live, including Malaysia, Singapore, Sri Lanka
-      and the United States. The most famous re-enactment is on the beach at
-      Tiruchendur, one of the six abodes of Murugan, where the battle is
-      traditionally said to have taken place. It falls on Sashti tithi in
-      Aippasi.
+- q: What is the story of Soorasamharam?
+  a: The Skanda Purana tells of Surapadman, an asura who won a boon of near invincibility and oppressed
+    the gods. Murugan, born from sparks of Shiva's third eye, received the vel, a spear, from Parvati
+    and fought him for six days. On the last day Surapadman became a mango tree; Murugan split it with
+    the vel, and the halves became a peacock and a rooster.
+- q: Why is the peacock Murugan's vehicle?
+  a: According to the Soorasamharam story, one half of the defeated Surapadman became the peacock that
+    Murugan rides, and the other became the rooster on his banner. Symbolically, the proud, restless ego
+    is not destroyed but tamed and put to work. The peacock, beautiful and vain, now carries wisdom instead
+    of fighting it.
+- q: Where is Soorasamharam celebrated?
+  a: Soorasamharam is celebrated in Murugan temples across Tamil Nadu and wherever Tamil communities live,
+    including Malaysia, Singapore, Sri Lanka and the United States. The most famous re-enactment is on
+    the beach at Tiruchendur, one of the six abodes of Murugan, where the battle is traditionally said
+    to have taken place. It falls on Sashti tithi in Aippasi.
 readingTime: 4
 draft: false
 ---

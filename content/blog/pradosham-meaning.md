@@ -1,75 +1,59 @@
 ---
 title: 'Pradosham Meaning: The Twilight Hour for Shiva'
-description: >-
-  Pradosham meaning: the twilight window twice a month when Shiva is worshipped
-  with Nandi, the story of the churned ocean, and why dusk matters to Shaivas.
+description: 'Pradosham meaning: the twilight window twice a month when Shiva is worshipped with Nandi,
+  the story of the churned ocean, and why dusk matters to Shaivas.'
 author: hariharan
-publishedAt: '2026-10-16'
-updatedAt: '2026-10-16'
+publishedAt: '2026-10-29'
+updatedAt: '2026-10-29'
 cluster: maha-shivaratri
 primaryKeyword: pradosham meaning
 secondaryKeywords:
-  - pradosham significance
-  - why nandi is worshipped on pradosham
-  - pradosha vratham
+- pradosham significance
+- why nandi is worshipped on pradosham
+- pradosha vratham
 tags:
-  - Pradosham
-  - Shiva
-  - Rituals
+- Pradosham
+- Shiva
+- Rituals
 audience: general
 image: /blog/pradosham-meaning.webp
-imageAlt: >-
-  Stone Nandi with marigold garland in a temple courtyard at twilight, oil lamps
-  along the corridor — pradosham meaning | pariharaonline.com
-imagePrompt: >-
-  Painterly scene of a garlanded stone Nandi seen from behind in a South Indian
-  temple courtyard at twilight, oil lamps glowing along the pillared corridor,
-  violet sky.
+imageAlt: Stone Nandi with marigold garland in a temple courtyard at twilight, oil lamps along the corridor
+  — pradosham meaning | pariharaonline.com
+imagePrompt: Painterly scene of a garlanded stone Nandi seen from behind in a South Indian temple courtyard
+  at twilight, oil lamps glowing along the pillared corridor, violet sky.
 products:
   handles:
-    - maha-shivaratri
+  - maha-shivaratri
   query: Shiva
 related:
-  - maha-shivaratri-meaning
-  - shivaratri-vigil-at-home
-  - what-is-a-mantra
+- maha-shivaratri-meaning
+- shivaratri-vigil-at-home
+- what-is-a-mantra
 takeaways:
-  - >-
-    Pradosham is the twilight period on the thirteenth lunar day of each
-    fortnight, when Shiva and Nandi are worshipped together.
-  - >-
-    Tradition links it to Shiva drinking the poison from the churning of the
-    ocean and dancing at dusk.
-  - Devotees attend the abhishekam to Nandi or keep a fast until evening.
+- Pradosham is the twilight period on the thirteenth lunar day of each fortnight, when Shiva and Nandi
+  are worshipped together.
+- Tradition links it to Shiva drinking the poison from the churning of the ocean and dancing at dusk.
+- Devotees attend the abhishekam to Nandi or keep a fast until evening.
 faq:
-  - q: What is Pradosham and when does it happen?
-    a: >-
-      Pradosham falls on Trayodashi, the thirteenth lunar day, in both the
-      waxing and waning fortnights, so it comes about twice a month. The worship
-      happens in the twilight window around sunset, roughly ninety minutes
-      before and after. When it falls on a Saturday it is called Shani Pradosham
-      and considered especially powerful by many devotees.
-  - q: Why is Nandi worshipped during Pradosham?
-    a: >-
-      In Shaiva tradition, after Shiva swallowed the halahala poison during the
-      churning of the ocean, he danced in joy between the horns of Nandi, his
-      bull and devoted gatekeeper. So on Pradosham temples bathe and decorate
-      Nandi first, and devotees look at the Shiva linga through the space
-      between Nandi's horns.
-  - q: What is the story behind Pradosham?
-    a: >-
-      The Shiva Purana and other texts tell how gods and demons churned the
-      ocean for amrita, but first brought up a deadly poison. Shiva drank it to
-      protect the world, and Parvati held his throat so it stayed there, turning
-      it blue. The twilight of that day became Pradosham, a time of gratitude to
-      Shiva.
-  - q: How do you observe Pradosha vratham at home?
-    a: >-
-      Many devotees fast through the day or eat simply, then at twilight light a
-      lamp, offer water, milk or bilva leaves to a Shiva image, and chant Om
-      Namah Shivaya or the Shiva Panchakshara stotram. The fast is broken after
-      the evening worship. Visiting a Shiva temple for the Nandi abhishekam is a
-      treasured addition when possible.
+- q: What is Pradosham and when does it happen?
+  a: Pradosham falls on Trayodashi, the thirteenth lunar day, in both the waxing and waning fortnights,
+    so it comes about twice a month. The worship happens in the twilight window around sunset, roughly
+    ninety minutes before and after. When it falls on a Saturday it is called Shani Pradosham and considered
+    especially powerful by many devotees.
+- q: Why is Nandi worshipped during Pradosham?
+  a: In Shaiva tradition, after Shiva swallowed the halahala poison during the churning of the ocean,
+    he danced in joy between the horns of Nandi, his bull and devoted gatekeeper. So on Pradosham temples
+    bathe and decorate Nandi first, and devotees look at the Shiva linga through the space between Nandi's
+    horns.
+- q: What is the story behind Pradosham?
+  a: The Shiva Purana and other texts tell how gods and demons churned the ocean for amrita, but first
+    brought up a deadly poison. Shiva drank it to protect the world, and Parvati held his throat so it
+    stayed there, turning it blue. The twilight of that day became Pradosham, a time of gratitude to Shiva.
+- q: How do you observe Pradosha vratham at home?
+  a: Many devotees fast through the day or eat simply, then at twilight light a lamp, offer water, milk
+    or bilva leaves to a Shiva image, and chant Om Namah Shivaya or the Shiva Panchakshara stotram. The
+    fast is broken after the evening worship. Visiting a Shiva temple for the Nandi abhishekam is a treasured
+    addition when possible.
 readingTime: 4
 draft: false
 ---

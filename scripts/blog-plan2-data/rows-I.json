@@ -1,0 +1,430 @@
+[
+ {
+  "cluster": "end-of-life-abroad",
+  "slug": "hindu-funeral-in-the-usa",
+  "title": "A Hindu Funeral in the USA: What Families Do",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "hindu funeral in usa",
+  "products": {
+   "handles": [
+    "tila-homam-at-rameswaram"
+   ]
+  }
+ },
+ {
+  "cluster": "end-of-life-abroad",
+  "slug": "immersing-ashes-from-abroad",
+  "title": "Immersing Ashes in India When You Live Abroad",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "immersing ashes in india from usa",
+  "products": {
+   "handles": [
+    "tila-homam-at-rameswaram"
+   ]
+  }
+ },
+ {
+  "cluster": "end-of-life-abroad",
+  "slug": "annual-shraddham-meaning",
+  "title": "Annual Shraddham: Remembering on the Lunar Day",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "annual shraddham",
+  "products": {
+   "handles": [
+    "tila-homam-at-rameswaram"
+   ]
+  }
+ },
+ {
+  "cluster": "end-of-life-abroad",
+  "slug": "thirteenth-day-ceremony-meaning",
+  "title": "The Thirteenth Day After Death: Why Mourning Ends",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "13th day ceremony after death hindu",
+  "products": {
+   "handles": [],
+   "query": "Tila Homam"
+  }
+ },
+ {
+  "cluster": "end-of-life-abroad",
+  "slug": "grief-in-hinduism",
+  "title": "Grief in Hinduism: Room to Mourn, Room to Heal",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "hindu view of grief",
+  "products": {
+   "handles": [
+    "mrityunjaya-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "nri-practice",
+  "slug": "hindu-student-in-a-dorm",
+  "title": "A Hindu Student in a Dorm Room: Faith at College",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "hindu college student practice",
+  "products": {
+   "handles": [],
+   "query": "Saraswati"
+  }
+ },
+ {
+  "cluster": "nri-practice",
+  "slug": "how-to-read-a-panchangam",
+  "title": "How to Read a Panchangam: Five Limbs of the Day",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "how to read panchangam",
+  "products": {
+   "handles": [
+    "ask-our-astrologer"
+   ]
+  }
+ },
+ {
+  "cluster": "nri-practice",
+  "slug": "festivals-alone-abroad",
+  "title": "Celebrating Festivals Alone Abroad: A Kinder Way",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "celebrating festivals alone abroad",
+  "products": {
+   "handles": [],
+   "query": "Lakshmi"
+  }
+ },
+ {
+  "cluster": "nri-practice",
+  "slug": "finding-a-hindu-priest-usa",
+  "title": "Finding a Hindu Priest in the USA: What to Ask",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "finding a hindu priest in usa",
+  "products": {
+   "handles": [
+    "maha-ganapathy-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "nri-practice",
+  "slug": "flying-with-puja-items",
+  "title": "Flying With Puja Items: Ghee, Coconut, Kumkum",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "carrying puja items on flight",
+  "products": {
+   "handles": [],
+   "query": "prasadham"
+  }
+ },
+ {
+  "cluster": "nri-practice",
+  "slug": "school-day-off-for-diwali",
+  "title": "Asking School for a Day Off for a Hindu Festival",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "school holiday for diwali",
+  "products": {
+   "handles": [],
+   "query": "Diwali"
+  }
+ },
+ {
+  "cluster": "nri-practice",
+  "slug": "birth-star-for-us-born-baby",
+  "title": "Your US-Born Baby's Birth Star: Time Zones Explained",
+  "author": "hariharan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "nakshatra for baby born in usa",
+  "products": {
+   "handles": [
+    "ask-our-astrologer"
+   ]
+  }
+ },
+ {
+  "cluster": "career-and-work",
+  "slug": "prayer-for-a-job-hindu",
+  "title": "Prayer for a Job: Hindu Practices While You Search",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "prayer for job hindu",
+  "products": {
+   "handles": [
+    "career-astrology",
+    "maha-ganapathy-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "career-and-work",
+  "slug": "after-a-layoff-hindu-view",
+  "title": "After a Layoff: Steadiness, Visa Worries and Faith",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "coping with layoff spiritually",
+  "products": {
+   "handles": [
+    "career-astrology"
+   ]
+  }
+ },
+ {
+  "cluster": "career-and-work",
+  "slug": "prayer-before-an-interview",
+  "title": "A Prayer Before a Job Interview, in Two Minutes",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "prayer before interview",
+  "products": {
+   "handles": [
+    "maha-ganapathy-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "career-and-work",
+  "slug": "new-business-opening-pooja",
+  "title": "New Business Opening Pooja: Ganesha, Lakshmi, Kubera",
+  "author": "hariharan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "new business opening pooja",
+  "products": {
+   "handles": [
+    "maha-ganapathy-homam",
+    "temple-coconut-breaking-online"
+   ]
+  }
+ },
+ {
+  "cluster": "career-and-work",
+  "slug": "small-altar-at-your-desk",
+  "title": "A Small Altar at Your Desk: Quiet Faith at Work",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "desk altar at work",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "career-and-work",
+  "slug": "work-as-worship",
+  "title": "Work as Worship: An Old Idea for an Open-Plan Office",
+  "author": "manikandan",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "work is worship meaning",
+  "products": {
+   "handles": [],
+   "query": "Career"
+  }
+ },
+ {
+  "cluster": "health-prayer",
+  "slug": "prayer-before-surgery-hindu",
+  "title": "A Hindu Prayer Before Surgery, for You or Someone You Love",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "hindu prayer before surgery",
+  "products": {
+   "handles": [
+    "mrityunjaya-homam",
+    "dhanwantari-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "health-prayer",
+  "slug": "illness-and-karma",
+  "title": "Is Illness Karma? A Kinder Reading of an Old Idea",
+  "author": "hariharan",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "is illness karma",
+  "products": {
+   "handles": [
+    "astrology-health"
+   ]
+  }
+ },
+ {
+  "cluster": "health-prayer",
+  "slug": "gratitude-after-recovery",
+  "title": "After Recovery: Simple Thanksgiving Rituals",
+  "author": "archana",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "thanksgiving pooja after recovery",
+  "products": {
+   "handles": [
+    "temple-coconut-breaking-online"
+   ]
+  }
+ },
+ {
+  "cluster": "health-prayer",
+  "slug": "caregiver-spiritual-strength",
+  "title": "Caregiving and Faith: When You Are the One Holding On",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "informational",
+  "primaryKeyword": "prayer for caregivers",
+  "products": {
+   "handles": [],
+   "query": "Dhanvantari"
+  }
+ },
+ {
+  "cluster": "health-prayer",
+  "slug": "chronic-illness-and-practice",
+  "title": "Living With Chronic Illness: A Practice That Bends",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "spiritual practice with chronic illness",
+  "products": {
+   "handles": [
+    "dhanwantari-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "health-prayer",
+  "slug": "om-shanti-shanti-shanti-meaning",
+  "title": "Om Shanti Shanti Shanti: Why Peace Is Said Three Times",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "informational",
+  "primaryKeyword": "om shanti shanti shanti meaning",
+  "products": {
+   "handles": [],
+   "query": "Mrityunjaya"
+  }
+ },
+ {
+  "cluster": "navagraha-grahas",
+  "slug": "surya-graha-worship",
+  "title": "Surya Graha Worship: Sunday, Sunlight and Self-Respect",
+  "author": "archana",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "surya graha remedies",
+  "products": {
+   "handles": [
+    "navagraha-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "navagraha-grahas",
+  "slug": "chandra-graha-worship",
+  "title": "Chandra Graha: The Moon, the Mind and Monday",
+  "author": "archana",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "chandra graha remedies",
+  "products": {
+   "handles": [
+    "navagraha-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "navagraha-grahas",
+  "slug": "angaraka-mars-worship",
+  "title": "Angaraka (Mars) Worship: Tuesday and Vaitheeswaran",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "angaraka dosha remedies",
+  "products": {
+   "handles": [
+    "navagraha-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "navagraha-grahas",
+  "slug": "budha-graha-worship",
+  "title": "Budha Graha: Mercury, Speech and Clever Hands",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "budha graha remedies",
+  "products": {
+   "handles": [
+    "hayagreeva-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "navagraha-grahas",
+  "slug": "guru-graha-thursday-worship",
+  "title": "Guru Graha: Jupiter, Thursdays and Teachers",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "guru graha remedies",
+  "products": {
+   "handles": [
+    "guru-jupiter-transit"
+   ]
+  }
+ },
+ {
+  "cluster": "navagraha-grahas",
+  "slug": "shukra-graha-worship",
+  "title": "Shukra Graha: Venus, Beauty and Friday Prayers",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "shukra graha remedies",
+  "products": {
+   "handles": [
+    "navagraha-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "navagraha-grahas",
+  "slug": "ketu-graha-worship",
+  "title": "Ketu Graha: The Headless Planet of Letting Go",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "ketu graha remedies",
+  "products": {
+   "handles": [
+    "rahu-ketu-dosha-parihara-pooja-sarpa-dosha-parihara-pooja-at-sri-kalahasti-temple"
+   ]
+  }
+ }
+]

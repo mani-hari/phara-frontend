@@ -1,73 +1,55 @@
 ---
 title: 'Seemantham and Valaikappu: Rituals of Rest and Care'
-description: >-
-  The seemantham ceremony and valaikappu honour a pregnant woman with bangles,
-  blessings and rest. What each ritual means, when it is held, how to keep it
-  simple.
+description: The seemantham ceremony and valaikappu honour a pregnant woman with bangles, blessings and
+  rest. What each ritual means, when it is held, how to keep it simple.
 author: archana
-publishedAt: '2026-10-30'
-updatedAt: '2026-10-30'
+publishedAt: '2026-10-08'
+updatedAt: '2026-10-08'
 cluster: conceiving-pregnancy
 primaryKeyword: seemantham and valaikappu
 secondaryKeywords:
-  - valaikappu meaning
-  - seemantham in which month
-  - baby shower hindu tradition
-  - valaikappu at home simple
+- valaikappu meaning
+- seemantham in which month
+- baby shower hindu tradition
+- valaikappu at home simple
 tags:
-  - Pregnancy
-  - Rituals
-  - Family
+- Pregnancy
+- Rituals
+- Family
 audience: general
 image: /blog/seemantham-and-valaikappu.webp
-imageAlt: >-
-  A pregnant woman's hands with green and red glass bangles holding jasmine over
-  silk — seemantham and valaikappu | pariharaonline.com
-imagePrompt: >-
-  Close-up of a pregnant woman's hands wearing stacks of green and red glass
-  bangles, holding jasmine flowers over a silk sari, warm festive light, face
-  not shown.
+imageAlt: A pregnant woman's hands with green and red glass bangles holding jasmine over silk — seemantham
+  and valaikappu | pariharaonline.com
+imagePrompt: Close-up of a pregnant woman's hands wearing stacks of green and red glass bangles, holding
+  jasmine flowers over a silk sari, warm festive light, face not shown.
 products:
   handles:
-    - garbharakshambika-oil
-    - pregnancy-safe-childbirth-puja
+  - garbharakshambika-oil
+  - pregnancy-safe-childbirth-puja
 related:
-  - garbarakshambigai-temple-story
-  - praying-while-trying-to-conceive
-  - guru-peyarchi-jupiter-transit
+- garbarakshambigai-temple-story
+- praying-while-trying-to-conceive
+- guru-peyarchi-jupiter-transit
 takeaways:
-  - >-
-    Seemantham is a Vedic pregnancy ritual and valaikappu a Tamil bangle
-    ceremony, both held to bless the mother and child and wish them a safe
-    delivery.
-  - >-
-    At heart, both rituals centre the mother's calm, rest and nourishment,
-    surrounded by family and song.
-  - >-
-    Keep the ceremony short, seated and comfortable, and let medical advice
-    decide what is safe.
+- Seemantham is a Vedic pregnancy ritual and valaikappu a Tamil bangle ceremony, both held to bless the
+  mother and child and wish them a safe delivery.
+- At heart, both rituals centre the mother's calm, rest and nourishment, surrounded by family and song.
+- Keep the ceremony short, seated and comfortable, and let medical advice decide what is safe.
 faq:
-  - q: What is the difference between seemantham and valaikappu?
-    a: >-
-      Seemantham, from the Vedic seemanthonnayanam, is a samskara in which the
-      husband ritually parts the wife's hair while mantras bless mother and
-      child. Valaikappu is a Tamil ceremony in which women slip glass bangles
-      onto the mother's wrists and sing. Many families combine both on one day,
-      with local variations in order and detail.
-  - q: In which month of pregnancy is seemantham done?
-    a: >-
-      Custom varies. Many families perform seemantham or valaikappu in the
-      fifth, seventh or ninth month of pregnancy, often choosing an odd month
-      and an auspicious day from the panchangam. Some families, especially
-      abroad, choose a time that suits the mother's health and travel. Her
-      comfort and doctor's advice should guide the final choice.
-  - q: Can we do a simple valaikappu at home?
-    a: >-
-      Yes. A simple valaikappu needs a comfortable seat for the mother, glass
-      bangles, turmeric and kumkum, flowers, a lamp and a few favourite dishes.
-      Elders slip on bangles and bless her. Family abroad can join by video
-      call. Keep it short, avoid long periods of standing or fasting, and let
-      her rest afterwards.
+- q: What is the difference between seemantham and valaikappu?
+  a: Seemantham, from the Vedic seemanthonnayanam, is a samskara in which the husband ritually parts the
+    wife's hair while mantras bless mother and child. Valaikappu is a Tamil ceremony in which women slip
+    glass bangles onto the mother's wrists and sing. Many families combine both on one day, with local
+    variations in order and detail.
+- q: In which month of pregnancy is seemantham done?
+  a: Custom varies. Many families perform seemantham or valaikappu in the fifth, seventh or ninth month
+    of pregnancy, often choosing an odd month and an auspicious day from the panchangam. Some families,
+    especially abroad, choose a time that suits the mother's health and travel. Her comfort and doctor's
+    advice should guide the final choice.
+- q: Can we do a simple valaikappu at home?
+  a: Yes. A simple valaikappu needs a comfortable seat for the mother, glass bangles, turmeric and kumkum,
+    flowers, a lamp and a few favourite dishes. Elders slip on bangles and bless her. Family abroad can
+    join by video call. Keep it short, avoid long periods of standing or fasting, and let her rest afterwards.
 readingTime: 4
 draft: false
 ---

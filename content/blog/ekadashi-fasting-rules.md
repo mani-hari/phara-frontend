@@ -1,69 +1,56 @@
 ---
 title: Ekadashi Fasting Rules for Beginners
-description: >-
-  Ekadashi fasting rules for beginners: what to eat and avoid, how strict to be,
-  how to break the fast, and how to adapt the tradition to your health and
-  routine.
+description: 'Ekadashi fasting rules for beginners: what to eat and avoid, how strict to be, how to break
+  the fast, and how to adapt the tradition to your health and routine.'
 author: archana
-publishedAt: '2026-10-07'
-updatedAt: '2026-10-07'
+publishedAt: '2026-10-18'
+updatedAt: '2026-10-18'
 cluster: ekadashi-fasting
 primaryKeyword: ekadashi fasting rules
 secondaryKeywords:
-  - what to eat on ekadashi fast
-  - how to break ekadashi fast
-  - can i drink water on ekadashi
+- what to eat on ekadashi fast
+- how to break ekadashi fast
+- can i drink water on ekadashi
 tags:
-  - Ekadashi
-  - Fasting
-  - How To
+- Ekadashi
+- Fasting
+- How To
 audience: general
 image: /blog/ekadashi-fasting-rules.webp
-imageAlt: >-
-  Fasting plate of cut fruit, a tumbler of milk and a tulsi sprig beside a small
-  lit lamp — ekadashi fasting rules | pariharaonline.com
-imagePrompt: >-
-  A simple fasting plate of cut fruit, a steel tumbler of milk and a tulsi sprig
-  on a banana leaf beside a small lit lamp, morning light.
+imageAlt: Fasting plate of cut fruit, a tumbler of milk and a tulsi sprig beside a small lit lamp — ekadashi
+  fasting rules | pariharaonline.com
+imagePrompt: A simple fasting plate of cut fruit, a steel tumbler of milk and a tulsi sprig on a banana
+  leaf beside a small lit lamp, morning light.
 products:
   handles: []
   query: Vishnu
 related:
-  - fasting-and-focus
-  - fasting-with-a-desk-job
-  - satyanarayan-puja-at-home
+- fasting-and-focus
+- fasting-with-a-desk-job
+- satyanarayan-puja-at-home
 takeaways:
-  - >-
-    Ekadashi falls on the eleventh day of each lunar fortnight; the core rule in
-    most traditions is to avoid grains and beans.
-  - >-
-    Fasts range from waterless to fruit-and-milk only; beginners usually start
-    with a grain-free or one-meal fast.
-  - >-
-    Break the fast the next morning with light food, and skip strict fasting if
-    you are pregnant, unwell or on medication without medical advice.
+- Ekadashi falls on the eleventh day of each lunar fortnight; the core rule in most traditions is to avoid
+  grains and beans.
+- Fasts range from waterless to fruit-and-milk only; beginners usually start with a grain-free or one-meal
+  fast.
+- Break the fast the next morning with light food, and skip strict fasting if you are pregnant, unwell
+  or on medication without medical advice.
 faq:
-  - q: What can I eat on an Ekadashi fast?
-    a: >-
-      Most traditions avoid rice, wheat and other grains, as well as beans and
-      lentils. Commonly allowed foods include fruit, milk, curd, nuts, potatoes,
-      sweet potatoes, sabudana and rock salt. Some families avoid onion and
-      garlic too. Rules vary by region and lineage, so it helps to follow your
-      family's custom or start with a simple grain-free day.
-  - q: How do I break an Ekadashi fast?
-    a: >-
-      The fast is traditionally broken on the next morning, Dwadashi, within a
-      window called parana, which your local panchangam lists. Many start with
-      water, a tulsi leaf or fruit, then have a light meal of rice and simple
-      dishes. Avoid heavy, oily food immediately. Breaking it with gratitude is
-      considered part of the practice.
-  - q: Can I drink water on Ekadashi?
-    a: >-
-      Yes, unless you choose a nirjala, or waterless, fast, which is the
-      strictest form and usually kept only on special Ekadashis by experienced
-      fasters. Most people drink water, and many take milk or fruit juice. If
-      you have health conditions, stay hydrated and consult a doctor before
-      attempting a strict fast.
+- q: What can I eat on an Ekadashi fast?
+  a: Most traditions avoid rice, wheat and other grains, as well as beans and lentils. Commonly allowed
+    foods include fruit, milk, curd, nuts, potatoes, sweet potatoes, sabudana and rock salt. Some families
+    avoid onion and garlic too. Rules vary by region and lineage, so it helps to follow your family's
+    custom or start with a simple grain-free day.
+- q: How do I break an Ekadashi fast?
+  a: The fast is traditionally broken on the next morning, Dwadashi, within a window called parana, which
+    your local panchangam lists. Many start with water, a tulsi leaf or fruit, then have a light meal
+    of rice and simple dishes. Avoid heavy, oily food immediately. Breaking it with gratitude is considered
+    part of the practice.
+- q: Can I drink water on Ekadashi?
+  a: Yes, unless you choose a nirjala, or waterless, fast, which is the strictest form and usually kept
+    only on special Ekadashis by experienced fasters. Most people drink water, and many take milk or fruit
+    juice. If you have health conditions, stay hydrated and consult a doctor before attempting a strict
+    fast.
 readingTime: 4
 draft: false
 ---

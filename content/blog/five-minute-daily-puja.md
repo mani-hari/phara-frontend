@@ -1,70 +1,56 @@
 ---
 title: 'Daily Puja at Home: A Five-Minute Routine for Mornings'
-description: >-
-  A daily puja at home in five minutes for busy mornings: lamp, a name, a
-  flower, a breath and one line of prayer, so the day starts with you and not
-  your inbox.
+description: 'A daily puja at home in five minutes for busy mornings: lamp, a name, a flower, a breath
+  and one line of prayer, so the day starts with you and not your inbox.'
 author: manikandan
-publishedAt: '2026-11-02'
-updatedAt: '2026-11-02'
+publishedAt: '2026-11-28'
+updatedAt: '2026-11-28'
 cluster: puja-at-home
 primaryKeyword: daily puja at home
 secondaryKeywords:
-  - quick puja for working people
-  - short daily prayer hindu
-  - daily puja in 5 minutes
+- quick puja for working people
+- short daily prayer hindu
+- daily puja in 5 minutes
 tags:
-  - Daily Practice
-  - Puja at Home
-  - Busy Life
+- Daily Practice
+- Puja at Home
+- Busy Life
 audience: general
 image: /blog/five-minute-daily-puja.webp
-imageAlt: >-
-  Hand lighting a small brass lamp on a kitchen windowsill beside a hibiscus
-  flower at dawn — daily puja at home | pariharaonline.com
-imagePrompt: >-
-  Early morning in a small kitchen, a hand lighting a tiny brass lamp on a
-  windowsill beside a single hibiscus flower, a coffee mug and keys blurred in
-  the background.
+imageAlt: Hand lighting a small brass lamp on a kitchen windowsill beside a hibiscus flower at dawn —
+  daily puja at home | pariharaonline.com
+imagePrompt: Early morning in a small kitchen, a hand lighting a tiny brass lamp on a windowsill beside
+  a single hibiscus flower, a coffee mug and keys blurred in the background.
 products:
   handles: []
   query: Ganesha
 related:
-  - puja-at-home-step-by-step
-  - small-puja-corner-apartment
-  - homam-and-letting-go
-  - tulsi-plant-indoors
+- puja-at-home-step-by-step
+- small-puja-corner-apartment
+- homam-and-letting-go
+- tulsi-plant-indoors
 takeaways:
-  - >-
-    A five-minute daily puja can be complete: light a lamp, offer a flower or
-    water, say the deity's name, breathe, and speak one line of prayer.
-  - >-
-    In the Bhagavad Gita, Krishna says a leaf, a flower, a fruit or water
-    offered with love is accepted; length was never the point.
-  - >-
-    Doing the puja before picking up your phone turns five minutes into a daily
-    anchor rather than one more task.
+- 'A five-minute daily puja can be complete: light a lamp, offer a flower or water, say the deity''s name,
+  breathe, and speak one line of prayer.'
+- In the Bhagavad Gita, Krishna says a leaf, a flower, a fruit or water offered with love is accepted;
+  length was never the point.
+- Doing the puja before picking up your phone turns five minutes into a daily anchor rather than one more
+  task.
 faq:
-  - q: Is a 5 minute puja enough?
-    a: >-
-      Many traditional teachers say yes. The Bhagavad Gita, chapter nine, speaks
-      of a leaf, a flower, a fruit or water offered with devotion being
-      accepted. A short, sincere daily puja done regularly is often more
-      sustaining than a long ritual done occasionally. On festival days you can
-      always extend it.
-  - q: What is a quick puja for working people?
-    a: >-
-      Wash your hands and face, light a lamp, offer a flower or a little water,
-      say the deity's name or a short mantra such as 'Om Namah Shivaya' or 'Om
-      Gam Ganapataye Namah', take three slow breaths and state one intention for
-      the day. The whole sequence takes about five minutes.
-  - q: What should I do if I miss my daily puja?
-    a: >-
-      Simply resume the next day, without guilt. Tradition values steady return
-      more than a perfect record. If you are travelling or unwell, a mental
-      puja, imagining the lamp and offerings while saying the name, is accepted
-      in many traditions. Some people light the lamp in the evening if the
-      morning slipped by.
+- q: Is a 5 minute puja enough?
+  a: Many traditional teachers say yes. The Bhagavad Gita, chapter nine, speaks of a leaf, a flower, a
+    fruit or water offered with devotion being accepted. A short, sincere daily puja done regularly is
+    often more sustaining than a long ritual done occasionally. On festival days you can always extend
+    it.
+- q: What is a quick puja for working people?
+  a: Wash your hands and face, light a lamp, offer a flower or a little water, say the deity's name or
+    a short mantra such as 'Om Namah Shivaya' or 'Om Gam Ganapataye Namah', take three slow breaths and
+    state one intention for the day. The whole sequence takes about five minutes.
+- q: What should I do if I miss my daily puja?
+  a: Simply resume the next day, without guilt. Tradition values steady return more than a perfect record.
+    If you are travelling or unwell, a mental puja, imagining the lamp and offerings while saying the
+    name, is accepted in many traditions. Some people light the lamp in the evening if the morning slipped
+    by.
 readingTime: 4
 draft: false
 ---

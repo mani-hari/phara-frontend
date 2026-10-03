@@ -1,0 +1,425 @@
+[
+ {
+  "cluster": "festivals-new-year",
+  "slug": "ugadi-significance",
+  "title": "Ugadi Significance: A New Year That Tastes Bitter Too",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "seasonal",
+  "primaryKeyword": "ugadi significance",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "festivals-new-year",
+  "slug": "puthandu-tamil-new-year-usa",
+  "title": "Puthandu in the USA: Tamil New Year Far From Home",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "seasonal",
+  "primaryKeyword": "tamil new year puthandu",
+  "products": {
+   "handles": [],
+   "query": "Ganesha"
+  }
+ },
+ {
+  "cluster": "festivals-new-year",
+  "slug": "vishu-kani-meaning",
+  "title": "Vishu Kani: The First Thing You See in the New Year",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "seasonal",
+  "primaryKeyword": "vishu kani meaning",
+  "products": {
+   "handles": [],
+   "query": "Krishna"
+  }
+ },
+ {
+  "cluster": "festivals-new-year",
+  "slug": "ram-navami-puja-at-home",
+  "title": "Ram Navami Puja at Home: A Simple Noon Ritual",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "seasonal",
+  "primaryKeyword": "ram navami puja at home",
+  "products": {
+   "handles": [],
+   "query": "Rama"
+  }
+ },
+ {
+  "cluster": "festivals-new-year",
+  "slug": "hanuman-jayanti-significance",
+  "title": "Hanuman Jayanti Significance: Strength That Serves",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "seasonal",
+  "primaryKeyword": "hanuman jayanti significance",
+  "products": {
+   "handles": [
+    "ganesha-hanuman-shakti-kavach-the-shield-of-protection-and-victory"
+   ]
+  }
+ },
+ {
+  "cluster": "festivals-summer",
+  "slug": "akshaya-tritiya-significance",
+  "title": "Akshaya Tritiya Significance: What Never Runs Out",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "seasonal",
+  "primaryKeyword": "akshaya tritiya significance",
+  "products": {
+   "handles": [
+    "diwali-puja",
+    "annadhanam-donate-food-to-homeless-children"
+   ]
+  }
+ },
+ {
+  "cluster": "festivals-summer",
+  "slug": "vaikasi-visakam-murugan",
+  "title": "Vaikasi Visakam: Murugan's Birthday, Kept at Home",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "seasonal",
+  "primaryKeyword": "vaikasi visakam",
+  "products": {
+   "handles": [
+    "palani"
+   ]
+  }
+ },
+ {
+  "cluster": "festivals-summer",
+  "slug": "chitra-pournami-meaning",
+  "title": "Chitra Pournami: The Full Moon of the Record-Keeper",
+  "author": "archana",
+  "audience": "general",
+  "intent": "seasonal",
+  "primaryKeyword": "chitra pournami",
+  "products": {
+   "handles": [],
+   "query": "Chitragupta"
+  }
+ },
+ {
+  "cluster": "festivals-summer",
+  "slug": "meenakshi-thirukalyanam-festival",
+  "title": "Meenakshi Thirukalyanam: The Wedding a City Attends",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "seasonal",
+  "primaryKeyword": "meenakshi thirukalyanam",
+  "products": {
+   "handles": [
+    "shakti-samriddhi-pooja-for-feminine-prosperity-family-well-being"
+   ]
+  }
+ },
+ {
+  "cluster": "festivals-aadi-monsoon",
+  "slug": "aadi-month-significance",
+  "title": "Aadi Month Significance: The Goddess Season",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "seasonal",
+  "primaryKeyword": "aadi month significance",
+  "products": {
+   "handles": [
+    "shakti-samriddhi-pooja-for-feminine-prosperity-family-well-being"
+   ]
+  }
+ },
+ {
+  "cluster": "festivals-aadi-monsoon",
+  "slug": "aadi-perukku-meaning",
+  "title": "Aadi Perukku: Thanking the River When It Rises",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "seasonal",
+  "primaryKeyword": "aadi perukku",
+  "products": {
+   "handles": [],
+   "query": "Kaveri"
+  }
+ },
+ {
+  "cluster": "festivals-aadi-monsoon",
+  "slug": "varalakshmi-vratham-at-home",
+  "title": "Varalakshmi Vratham at Home, Abroad and on a Workday",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "seasonal",
+  "primaryKeyword": "varalakshmi vratham pooja at home",
+  "products": {
+   "handles": [
+    "shakti-samriddhi-pooja-for-feminine-prosperity-family-well-being"
+   ]
+  }
+ },
+ {
+  "cluster": "festivals-aadi-monsoon",
+  "slug": "avani-avittam-meaning",
+  "title": "Avani Avittam: Changing the Sacred Thread, Renewing Study",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "seasonal",
+  "primaryKeyword": "avani avittam",
+  "products": {
+   "handles": [],
+   "query": "Hayagriva"
+  }
+ },
+ {
+  "cluster": "festivals-aadi-monsoon",
+  "slug": "naga-panchami-meaning",
+  "title": "Naga Panchami Meaning: Why Hindus Honour Snakes",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "seasonal",
+  "primaryKeyword": "naga panchami significance",
+  "products": {
+   "handles": [
+    "rahu-ketu-dosha-parihara-pooja-sarpa-dosha-parihara-pooja-at-sri-kalahasti-temple"
+   ]
+  }
+ },
+ {
+  "cluster": "festivals-krishna-ganesha",
+  "slug": "krishna-janmashtami-at-home",
+  "title": "Krishna Janmashtami at Home: A Midnight for Beginners",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "seasonal",
+  "primaryKeyword": "krishna janmashtami at home",
+  "products": {
+   "handles": [],
+   "query": "Krishna"
+  }
+ },
+ {
+  "cluster": "festivals-krishna-ganesha",
+  "slug": "ganesh-chaturthi-in-the-usa",
+  "title": "Ganesh Chaturthi in the USA: Clay, Community, Care",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "seasonal",
+  "primaryKeyword": "ganesh chaturthi in usa",
+  "products": {
+   "handles": [
+    "maha-ganapathy-homam",
+    "brahmavidyaganapati"
+   ]
+  }
+ },
+ {
+  "cluster": "festivals-krishna-ganesha",
+  "slug": "eco-friendly-ganesh-visarjan",
+  "title": "Eco-Friendly Ganesh Visarjan at Home, in a Bucket",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "eco friendly ganesh visarjan",
+  "products": {
+   "handles": [
+    "brahmavidyaganapati"
+   ]
+  }
+ },
+ {
+  "cluster": "festivals-krishna-ganesha",
+  "slug": "onam-mahabali-meaning",
+  "title": "Onam and Mahabali: The King Who Comes Home",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "seasonal",
+  "primaryKeyword": "onam significance",
+  "products": {
+   "handles": [],
+   "query": "Vishnu"
+  }
+ },
+ {
+  "cluster": "festivals-krishna-ganesha",
+  "slug": "raksha-bandhan-meaning",
+  "title": "Raksha Bandhan Meaning: The Thread That Protects Both",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "seasonal",
+  "primaryKeyword": "raksha bandhan meaning",
+  "products": {
+   "handles": [
+    "ganesha-hanuman-shakti-kavach-the-shield-of-protection-and-victory"
+   ]
+  }
+ },
+ {
+  "cluster": "festivals-winter-guru",
+  "slug": "guru-purnima-meaning",
+  "title": "Guru Purnima Meaning: Thanking the People Who Taught You",
+  "author": "archana",
+  "audience": "seeker",
+  "intent": "seasonal",
+  "primaryKeyword": "guru purnima meaning",
+  "products": {
+   "handles": [
+    "guru-jupiter-transit"
+   ]
+  }
+ },
+ {
+  "cluster": "festivals-winter-guru",
+  "slug": "kartik-purnima-significance",
+  "title": "Kartik Purnima Significance: Lamps on the Water",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "seasonal",
+  "primaryKeyword": "kartik purnima significance",
+  "products": {
+   "handles": [],
+   "query": "Shiva"
+  }
+ },
+ {
+  "cluster": "festivals-winter-guru",
+  "slug": "ratha-saptami-significance",
+  "title": "Ratha Saptami: The Sun Turns His Chariot North",
+  "author": "archana",
+  "audience": "general",
+  "intent": "seasonal",
+  "primaryKeyword": "ratha saptami significance",
+  "products": {
+   "handles": [
+    "navagraha-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "festivals-winter-guru",
+  "slug": "vasant-panchami-saraswati",
+  "title": "Vasant Panchami: Saraswati, Yellow and Spring",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "seasonal",
+  "primaryKeyword": "vasant panchami significance",
+  "products": {
+   "handles": [
+    "saraswati-homam"
+   ]
+  }
+ },
+ {
+  "cluster": "festivals-winter-guru",
+  "slug": "arudra-darshan-meaning",
+  "title": "Arudra Darshan: The Night Nataraja Dances",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "seasonal",
+  "primaryKeyword": "arudra darshan",
+  "products": {
+   "handles": [
+    "maha-shivaratri"
+   ]
+  }
+ },
+ {
+  "cluster": "festivals-winter-guru",
+  "slug": "tulsi-vivah-meaning",
+  "title": "Tulsi Vivah Meaning: The Wedding of a Plant",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "seasonal",
+  "primaryKeyword": "tulsi vivah",
+  "products": {
+   "handles": [],
+   "query": "Vishnu"
+  }
+ },
+ {
+  "cluster": "marriage-and-family",
+  "slug": "wedding-anniversary-pooja",
+  "title": "Wedding Anniversary Pooja: Marking the Years Quietly",
+  "author": "manikandan",
+  "audience": "nri-us",
+  "intent": "how-to",
+  "primaryKeyword": "wedding anniversary pooja",
+  "products": {
+   "handles": [
+    "swayamvara-parvathi-homam",
+    "temple-coconut-breaking-online"
+   ]
+  }
+ },
+ {
+  "cluster": "marriage-and-family",
+  "slug": "saptapadi-seven-steps-meaning",
+  "title": "Saptapadi Meaning: The Seven Steps, Vow by Vow",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "saptapadi meaning",
+  "products": {
+   "handles": [],
+   "query": "Parvati"
+  }
+ },
+ {
+  "cluster": "marriage-and-family",
+  "slug": "when-marriage-is-hard",
+  "title": "When Marriage Is Hard: Prayer, Patience and Help",
+  "author": "manikandan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "prayer for marriage problems",
+  "products": {
+   "handles": [
+    "shakti-samriddhi-pooja-for-feminine-prosperity-family-well-being"
+   ]
+  }
+ },
+ {
+  "cluster": "marriage-and-family",
+  "slug": "thali-mangalsutra-meaning",
+  "title": "Thali and Mangalsutra: What the Sacred Thread Means",
+  "author": "hariharan",
+  "audience": "general",
+  "intent": "informational",
+  "primaryKeyword": "mangalsutra meaning",
+  "products": {
+   "handles": [],
+   "query": "Parvati"
+  }
+ },
+ {
+  "cluster": "marriage-and-family",
+  "slug": "praying-together-as-a-couple",
+  "title": "Praying Together as a Couple: Five Minutes, Two People",
+  "author": "archana",
+  "audience": "general",
+  "intent": "how-to",
+  "primaryKeyword": "couple praying together hindu",
+  "products": {
+   "handles": [],
+   "query": "Shiva Parvati"
+  }
+ },
+ {
+  "cluster": "marriage-and-family",
+  "slug": "thalai-deepavali-newlyweds",
+  "title": "Thalai Deepavali: A Newlywed Couple's First Diwali",
+  "author": "archana",
+  "audience": "nri-us",
+  "intent": "seasonal",
+  "primaryKeyword": "thalai deepavali",
+  "products": {
+   "handles": [
+    "diwali-puja"
+   ]
+  }
+ }
+]

@@ -1,74 +1,59 @@
 ---
 title: 'Guru Peyarchi: What Jupiter''s Transit Asks of You'
-description: >-
-  Guru peyarchi, Jupiter's yearly change of sign, explained simply: what the
-  transit means in Jyotish, why families mark it, and a calm way to respond to
-  it.
+description: 'Guru peyarchi, Jupiter''s yearly change of sign, explained simply: what the transit means
+  in Jyotish, why families mark it, and a calm way to respond to it.'
 author: manikandan
-publishedAt: '2026-10-29'
-updatedAt: '2026-10-29'
+publishedAt: '2026-11-06'
+updatedAt: '2026-11-06'
 cluster: navagraha-rahu-ketu
 primaryKeyword: guru peyarchi
 secondaryKeywords:
-  - jupiter transit effects on moon signs
-  - guru peyarchi palangal
-  - guru peyarchi remedies
-  - alangudi guru temple
+- jupiter transit effects on moon signs
+- guru peyarchi palangal
+- guru peyarchi remedies
+- alangudi guru temple
 tags:
-  - Guru Peyarchi
-  - Jupiter
-  - Astrology
+- Guru Peyarchi
+- Jupiter
+- Astrology
 audience: general
 image: /blog/guru-peyarchi-jupiter-transit.webp
-imageAlt: >-
-  Open Tamil almanac with yellow chrysanthemums and a brass tumbler on a wooden
-  table — guru peyarchi | pariharaonline.com
-imagePrompt: >-
-  An old Tamil almanac lying open on a wooden table beside yellow
-  chrysanthemums, a brass tumbler and reading glasses, soft window light on a
-  quiet morning.
+imageAlt: Open Tamil almanac with yellow chrysanthemums and a brass tumbler on a wooden table — guru peyarchi
+  | pariharaonline.com
+imagePrompt: An old Tamil almanac lying open on a wooden table beside yellow chrysanthemums, a brass tumbler
+  and reading glasses, soft window light on a quiet morning.
 products:
   handles:
-    - guru-jupiter-transit
+  - guru-jupiter-transit
   heading: Poojas for Guru
 related:
-  - rahu-ketu-dosha-explained
-  - kala-sarpa-dosha-meaning
-  - mangal-dosha-explained
-  - rahu-kalam-explained
+- rahu-ketu-dosha-explained
+- kala-sarpa-dosha-meaning
+- mangal-dosha-explained
+- rahu-kalam-explained
 takeaways:
-  - >-
-    Guru peyarchi is the Tamil name for Jupiter moving into a new zodiac sign,
-    which happens roughly once a year.
-  - >-
-    In Jyotish, Jupiter is the guru, linked with wisdom, children, marriage and
-    good counsel, so its transit is watched closely by families.
-  - >-
-    Moon-sign predictions are broad; a gentle response is Thursday prayer,
-    honouring teachers and committing to learn something new.
+- Guru peyarchi is the Tamil name for Jupiter moving into a new zodiac sign, which happens roughly once
+  a year.
+- In Jyotish, Jupiter is the guru, linked with wisdom, children, marriage and good counsel, so its transit
+  is watched closely by families.
+- Moon-sign predictions are broad; a gentle response is Thursday prayer, honouring teachers and committing
+  to learn something new.
 faq:
-  - q: What is Guru peyarchi?
-    a: >-
-      Guru peyarchi means Jupiter's change. It is the moment Jupiter, called
-      Guru or Brihaspati, moves from one zodiac sign to the next, roughly once
-      every twelve to thirteen months. Tamil almanacs publish palangal,
-      predictions, for each Moon sign, and many temples hold special poojas for
-      Guru around the transit.
-  - q: How does a Jupiter transit affect my Moon sign?
-    a: >-
-      Tradition reads Jupiter's position counted from your Moon sign. Some
-      positions, such as the second, fifth, seventh, ninth and eleventh, are
-      considered favourable, and others more testing. These are general
-      indications shared by everyone with the same Moon sign, so personal charts
-      and running dashas matter far more for an individual reading.
-  - q: What are the traditional remedies during Guru peyarchi?
-    a: >-
-      Common practices include Thursday prayers to Dakshinamurthy or Guru,
-      offering yellow flowers or chana dal, visiting Guru shrines such as
-      Alangudi near Kumbakonam, feeding people, and honouring teachers and
-      elders. Some families book a Guru pooja around the transit. Tradition
-      treats these as acts of respect for wisdom rather than bargains with a
-      planet.
+- q: What is Guru peyarchi?
+  a: Guru peyarchi means Jupiter's change. It is the moment Jupiter, called Guru or Brihaspati, moves
+    from one zodiac sign to the next, roughly once every twelve to thirteen months. Tamil almanacs publish
+    palangal, predictions, for each Moon sign, and many temples hold special poojas for Guru around the
+    transit.
+- q: How does a Jupiter transit affect my Moon sign?
+  a: Tradition reads Jupiter's position counted from your Moon sign. Some positions, such as the second,
+    fifth, seventh, ninth and eleventh, are considered favourable, and others more testing. These are
+    general indications shared by everyone with the same Moon sign, so personal charts and running dashas
+    matter far more for an individual reading.
+- q: What are the traditional remedies during Guru peyarchi?
+  a: Common practices include Thursday prayers to Dakshinamurthy or Guru, offering yellow flowers or chana
+    dal, visiting Guru shrines such as Alangudi near Kumbakonam, feeding people, and honouring teachers
+    and elders. Some families book a Guru pooja around the transit. Tradition treats these as acts of
+    respect for wisdom rather than bargains with a planet.
 readingTime: 4
 draft: false
 ---

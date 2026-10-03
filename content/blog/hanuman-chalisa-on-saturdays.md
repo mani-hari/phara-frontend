@@ -1,71 +1,55 @@
 ---
 title: 'Hanuman Chalisa on Saturdays: Shani and Strength'
-description: >-
-  Why many families chant the Hanuman Chalisa on Saturdays for Shani: the story
-  of Hanuman freeing Saturn, what the verses say, and how to make it a weekly
-  habit.
+description: 'Why many families chant the Hanuman Chalisa on Saturdays for Shani: the story of Hanuman
+  freeing Saturn, what the verses say, and how to make it a weekly habit.'
 author: manikandan
-publishedAt: '2026-10-27'
-updatedAt: '2026-10-27'
+publishedAt: '2026-12-04'
+updatedAt: '2026-12-04'
 cluster: sade-sati
 primaryKeyword: hanuman chalisa for shani
 secondaryKeywords:
-  - hanuman chalisa benefits
-  - why worship hanuman on saturday
-  - hanuman and shani story
-  - how many times to chant hanuman chalisa
+- hanuman chalisa benefits
+- why worship hanuman on saturday
+- hanuman and shani story
+- how many times to chant hanuman chalisa
 tags:
-  - Hanuman
-  - Shani
-  - Mantra
+- Hanuman
+- Shani
+- Mantra
 audience: general
 image: /blog/hanuman-chalisa-on-saturdays.webp
-imageAlt: >-
-  Brass lamp, marigolds and an open prayer booklet on a home altar in morning
-  light — hanuman chalisa for shani | pariharaonline.com
-imagePrompt: >-
-  Early-morning light on a small home altar with a saffron-smeared stone, a
-  brass lamp, a marigold garland and a rudraksha mala coiled on a wooden stand,
-  no figures visible.
+imageAlt: Brass lamp, marigolds and an open prayer booklet on a home altar in morning light — hanuman
+  chalisa for shani | pariharaonline.com
+imagePrompt: Early-morning light on a small home altar with a saffron-smeared stone, a brass lamp, a marigold
+  garland and a rudraksha mala coiled on a wooden stand, no figures visible.
 products:
   handles:
-    - ganesha-hanuman-shakti-kavach-the-shield-of-protection-and-victory
+  - ganesha-hanuman-shakti-kavach-the-shield-of-protection-and-victory
 related:
-  - shani-sade-sati-explained
-  - sade-sati-remedies
-  - guru-peyarchi-jupiter-transit
+- shani-sade-sati-explained
+- sade-sati-remedies
+- guru-peyarchi-jupiter-transit
 takeaways:
-  - >-
-    Many Hindu families chant the Hanuman Chalisa on Saturdays because folk
-    tradition says Shani promised to spare devotees of Hanuman, who once freed
-    him.
-  - >-
-    The Chalisa's forty verses ask for strength, wisdom and fearlessness; its
-    real gift is a weekly reminder that you can face hard things.
-  - >-
-    One unhurried recitation each Saturday, at the same time and place, is
-    enough to build the habit.
+- Many Hindu families chant the Hanuman Chalisa on Saturdays because folk tradition says Shani promised
+  to spare devotees of Hanuman, who once freed him.
+- The Chalisa's forty verses ask for strength, wisdom and fearlessness; its real gift is a weekly reminder
+  that you can face hard things.
+- One unhurried recitation each Saturday, at the same time and place, is enough to build the habit.
 faq:
-  - q: Why do people chant Hanuman Chalisa for Shani?
-    a: >-
-      A popular folk story says Hanuman freed Shani, Saturn, from Ravana's
-      captivity, and in gratitude Shani promised to ease his influence on anyone
-      who worships Hanuman. So during sade sati or difficult Saturn periods,
-      families often turn to the Hanuman Chalisa on Saturdays. It is devotion
-      rooted in story, not a mechanical cancellation of a planet.
-  - q: How many times should I chant the Hanuman Chalisa?
-    a: >-
-      Tradition offers many counts, including once, three, seven, eleven or one
-      hundred and eight times, but none is required. Once, recited slowly with
-      attention, is a complete practice. If you want a vow, some people commit
-      to reciting it every Saturday for a set number of weeks. Consistency
-      matters more than volume.
-  - q: Can women chant the Hanuman Chalisa?
-    a: >-
-      Yes. The Hanuman Chalisa, written by the poet-saint Tulsidas in Awadhi, is
-      a devotional hymn meant for everyone. Women, men and children recite it at
-      home and in temples. Some family customs have their own preferences, but
-      the Chalisa itself carries no restriction on who may sing it.
+- q: Why do people chant Hanuman Chalisa for Shani?
+  a: A popular folk story says Hanuman freed Shani, Saturn, from Ravana's captivity, and in gratitude
+    Shani promised to ease his influence on anyone who worships Hanuman. So during sade sati or difficult
+    Saturn periods, families often turn to the Hanuman Chalisa on Saturdays. It is devotion rooted in
+    story, not a mechanical cancellation of a planet.
+- q: How many times should I chant the Hanuman Chalisa?
+  a: Tradition offers many counts, including once, three, seven, eleven or one hundred and eight times,
+    but none is required. Once, recited slowly with attention, is a complete practice. If you want a vow,
+    some people commit to reciting it every Saturday for a set number of weeks. Consistency matters more
+    than volume.
+- q: Can women chant the Hanuman Chalisa?
+  a: Yes. The Hanuman Chalisa, written by the poet-saint Tulsidas in Awadhi, is a devotional hymn meant
+    for everyone. Women, men and children recite it at home and in temples. Some family customs have their
+    own preferences, but the Chalisa itself carries no restriction on who may sing it.
 readingTime: 4
 draft: false
 ---

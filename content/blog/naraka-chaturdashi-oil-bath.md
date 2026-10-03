@@ -1,69 +1,55 @@
 ---
 title: Naraka Chaturdashi and the Deepavali Oil Bath
-description: >-
-  Naraka Chaturdashi and the Deepavali oil bath: the Narakasura story, why Tamil
-  families rise before dawn for Ganga snanam, and keeping it far from home.
+description: 'Naraka Chaturdashi and the Deepavali oil bath: the Narakasura story, why Tamil families
+  rise before dawn for Ganga snanam, and keeping it far from home.'
 author: manikandan
-publishedAt: '2026-10-07'
-updatedAt: '2026-10-07'
+publishedAt: '2026-10-09'
+updatedAt: '2026-10-09'
 cluster: diwali-meaning
 primaryKeyword: naraka chaturdashi
 secondaryKeywords:
-  - deepavali oil bath significance
-  - ganga snanam deepavali
-  - narakasura story
+- deepavali oil bath significance
+- ganga snanam deepavali
+- narakasura story
 tags:
-  - Deepavali
-  - Diwali
-  - Tamil Traditions
+- Deepavali
+- Diwali
+- Tamil Traditions
 audience: general
 image: /blog/naraka-chaturdashi-oil-bath.webp
-imageAlt: >-
-  Brass vessel of sesame oil, shikakai powder and new silk cloth by a single
-  lamp before dawn — naraka chaturdashi | pariharaonline.com
-imagePrompt: >-
-  A small brass vessel of warm sesame oil, a bowl of shikakai powder and a
-  folded new silk veshti on a stone ledge beside a bathing area, pre-dawn blue
-  light with one lamp glowing.
+imageAlt: Brass vessel of sesame oil, shikakai powder and new silk cloth by a single lamp before dawn
+  — naraka chaturdashi | pariharaonline.com
+imagePrompt: A small brass vessel of warm sesame oil, a bowl of shikakai powder and a folded new silk
+  veshti on a stone ledge beside a bathing area, pre-dawn blue light with one lamp glowing.
 products:
   handles:
-    - diwali-puja
+  - diwali-puja
 related:
-  - why-is-diwali-celebrated
-  - five-days-of-diwali
-  - when-is-diwali-in-the-usa
-  - kolam-and-rangoli-meaning
+- why-is-diwali-celebrated
+- five-days-of-diwali
+- when-is-diwali-in-the-usa
+- kolam-and-rangoli-meaning
 takeaways:
-  - >-
-    Naraka Chaturdashi remembers Krishna and Satyabhama defeating the demon
-    Narakasura; in Tamil Nadu it is Deepavali day itself, begun with a pre-dawn
-    oil bath.
-  - >-
-    The oil bath is called Ganga snanam because tradition holds that the Ganga
-    is present in all water at dawn on this day.
+- Naraka Chaturdashi remembers Krishna and Satyabhama defeating the demon Narakasura; in Tamil Nadu it
+  is Deepavali day itself, begun with a pre-dawn oil bath.
+- The oil bath is called Ganga snanam because tradition holds that the Ganga is present in all water at
+  dawn on this day.
 faq:
-  - q: Why do we take an oil bath on Deepavali?
-    a: >-
-      In South Indian tradition the pre-dawn oil bath on Naraka Chaturdashi is
-      called Ganga snanam, because the Ganga is believed to be present in all
-      water that morning. Warm sesame oil is massaged into the head and body,
-      washed off with shikakai or herbal powder, and followed by new clothes. It
-      marks cleansing after Narakasura's defeat and the start of the festival.
-  - q: What is the story of Narakasura?
-    a: >-
-      The Bhagavata Purana tells of Narakasura, a powerful demon who imprisoned
-      thousands of women and terrorised the heavens. Krishna, with his wife
-      Satyabhama driving his chariot, defeated him. Some tellings say Satyabhama
-      herself struck the final blow. Before dying, Narakasura asked that his
-      death be remembered with lamps and celebration, which is why the day opens
-      Deepavali.
-  - q: Is Naraka Chaturdashi the same day as Diwali?
-    a: >-
-      In Tamil Nadu and much of South India, Deepavali is celebrated on Naraka
-      Chaturdashi, often a day before the north Indian Lakshmi Puja, though some
-      years they coincide. In the north it is called Choti Diwali, the day
-      before the main night. The exact day depends on the tithi, so check the
-      current year's panchangam for your city.
+- q: Why do we take an oil bath on Deepavali?
+  a: In South Indian tradition the pre-dawn oil bath on Naraka Chaturdashi is called Ganga snanam, because
+    the Ganga is believed to be present in all water that morning. Warm sesame oil is massaged into the
+    head and body, washed off with shikakai or herbal powder, and followed by new clothes. It marks cleansing
+    after Narakasura's defeat and the start of the festival.
+- q: What is the story of Narakasura?
+  a: The Bhagavata Purana tells of Narakasura, a powerful demon who imprisoned thousands of women and
+    terrorised the heavens. Krishna, with his wife Satyabhama driving his chariot, defeated him. Some
+    tellings say Satyabhama herself struck the final blow. Before dying, Narakasura asked that his death
+    be remembered with lamps and celebration, which is why the day opens Deepavali.
+- q: Is Naraka Chaturdashi the same day as Diwali?
+  a: In Tamil Nadu and much of South India, Deepavali is celebrated on Naraka Chaturdashi, often a day
+    before the north Indian Lakshmi Puja, though some years they coincide. In the north it is called Choti
+    Diwali, the day before the main night. The exact day depends on the tithi, so check the current year's
+    panchangam for your city.
 readingTime: 4
 draft: false
 ---

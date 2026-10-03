@@ -87,3 +87,4 @@ artifacts/
 # batch-two blog corpus (on disk until published)
 content/blog-batch2/
 content/blog-plan-2/keywords.json
+.blog-images-raw-batch2/

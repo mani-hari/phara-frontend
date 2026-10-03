@@ -1,76 +1,59 @@
 ---
 title: Hindu Wedding Rituals Explained for Your Guests
-description: >-
-  Hindu wedding rituals explained for guests: what the mandap, kanyadaan,
-  saptapadi and mangalsutra mean, what to wear, and when it's fine to chat or
-  step out.
+description: 'Hindu wedding rituals explained for guests: what the mandap, kanyadaan, saptapadi and mangalsutra
+  mean, what to wear, and when it''s fine to chat or step out.'
 author: manikandan
-publishedAt: '2026-10-22'
-updatedAt: '2026-10-22'
+publishedAt: '2026-12-05'
+updatedAt: '2026-12-05'
 cluster: festivals-explained-usa
 primaryKeyword: hindu wedding rituals explained
 secondaryKeywords:
-  - what to expect at a hindu wedding
-  - saptapadi meaning
-  - hindu wedding guide for non indian guests
+- what to expect at a hindu wedding
+- saptapadi meaning
+- hindu wedding guide for non indian guests
 tags:
-  - Hindu Wedding
-  - NRI Life
-  - Explainers
+- Hindu Wedding
+- NRI Life
+- Explainers
 audience: nri-us
 image: /blog/explaining-a-hindu-wedding.webp
-imageAlt: >-
-  Wedding canopy draped with marigolds, a fire pit and brass lamps on a backyard
-  lawn at golden hour — hindu wedding rituals explained | pariharaonline.com
-imagePrompt: >-
-  Editorial photograph of an empty decorated wedding mandap with marigold
-  garlands, a small sacred fire pit and brass lamps set up on a lawn in an
-  American backyard at golden hour.
+imageAlt: Wedding canopy draped with marigolds, a fire pit and brass lamps on a backyard lawn at golden
+  hour — hindu wedding rituals explained | pariharaonline.com
+imagePrompt: Editorial photograph of an empty decorated wedding mandap with marigold garlands, a small
+  sacred fire pit and brass lamps set up on a lawn in an American backyard at golden hour.
 products:
   handles:
-    - maha-ganapathy-homam
+  - maha-ganapathy-homam
 related:
-  - explaining-diwali-to-kids
-  - explaining-hindu-festivals-to-coworkers
-  - celebrate-diwali-in-the-usa
+- explaining-diwali-to-kids
+- explaining-hindu-festivals-to-coworkers
+- celebrate-diwali-in-the-usa
 takeaways:
-  - >-
-    A Hindu wedding centres on vows made before a sacred fire, with the couple
-    taking seven steps, saptapadi, that seal the marriage.
-  - >-
-    Guests are welcome to chat, eat and move around during long rituals; bright
-    colours are encouraged, shoes come off near the mandap.
-  - Rituals vary widely by region.
+- A Hindu wedding centres on vows made before a sacred fire, with the couple taking seven steps, saptapadi,
+  that seal the marriage.
+- Guests are welcome to chat, eat and move around during long rituals; bright colours are encouraged,
+  shoes come off near the mandap.
+- Rituals vary widely by region.
 faq:
-  - q: What should I expect at a Hindu wedding as a guest?
-    a: >-
-      Expect colour, music, food and a ceremony that can last from one to
-      several hours around a decorated canopy called the mandap. Guests often
-      come and go, talk quietly and take photos during long parts. You may be
-      offered rice or flower petals to shower on the couple. Everyone is welcome
-      to join the celebration.
-  - q: What is saptapadi in a Hindu wedding?
-    a: >-
-      Saptapadi means seven steps. The couple walk seven steps together, often
-      around the sacred fire, with a vow at each step: for food, strength,
-      prosperity, happiness, children, long life together and friendship. In
-      many traditions the marriage is considered complete once the seventh step
-      is taken, with fire as the witness.
-  - q: What should non-Indian guests wear to a Hindu wedding?
-    a: >-
-      Bright, festive clothes are welcome, and many guests enjoy wearing a sari,
-      lehenga or kurta. Western formal wear is also perfectly fine. Avoid
-      all-white or all-black outfits, which some families associate with
-      mourning, and very revealing clothes. Bring something to cover shoulders
-      if the ceremony is at a temple, and expect to remove shoes near the
-      mandap.
-  - q: Is it rude to leave during a Hindu wedding ceremony?
-    a: >-
-      Not usually. Hindu ceremonies can be long, and guests commonly step out
-      for food, a break or to greet relatives. Try to be present for the key
-      moments, such as the garland exchange, the saptapadi and the tying of the
-      mangalsutra, and keep your phone on silent. Your hosts will simply be glad
-      you came.
+- q: What should I expect at a Hindu wedding as a guest?
+  a: Expect colour, music, food and a ceremony that can last from one to several hours around a decorated
+    canopy called the mandap. Guests often come and go, talk quietly and take photos during long parts.
+    You may be offered rice or flower petals to shower on the couple. Everyone is welcome to join the
+    celebration.
+- q: What is saptapadi in a Hindu wedding?
+  a: 'Saptapadi means seven steps. The couple walk seven steps together, often around the sacred fire,
+    with a vow at each step: for food, strength, prosperity, happiness, children, long life together and
+    friendship. In many traditions the marriage is considered complete once the seventh step is taken,
+    with fire as the witness.'
+- q: What should non-Indian guests wear to a Hindu wedding?
+  a: Bright, festive clothes are welcome, and many guests enjoy wearing a sari, lehenga or kurta. Western
+    formal wear is also perfectly fine. Avoid all-white or all-black outfits, which some families associate
+    with mourning, and very revealing clothes. Bring something to cover shoulders if the ceremony is at
+    a temple, and expect to remove shoes near the mandap.
+- q: Is it rude to leave during a Hindu wedding ceremony?
+  a: Not usually. Hindu ceremonies can be long, and guests commonly step out for food, a break or to greet
+    relatives. Try to be present for the key moments, such as the garland exchange, the saptapadi and
+    the tying of the mangalsutra, and keep your phone on silent. Your hosts will simply be glad you came.
 readingTime: 4
 draft: false
 ---

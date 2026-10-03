@@ -1,72 +1,55 @@
 ---
 title: 'Homam vs Puja: What Is the Difference?'
-description: >-
-  Homam vs puja: one is offered through fire, one through image and lamp. What
-  the difference is, when each is used and which fits your intention and your
-  home.
+description: 'Homam vs puja: one is offered through fire, one through image and lamp. What the difference
+  is, when each is used and which fits your intention and your home.'
 author: archana
-publishedAt: '2026-11-01'
-updatedAt: '2026-11-01'
+publishedAt: '2026-10-26'
+updatedAt: '2026-10-26'
 cluster: homam-explained
 primaryKeyword: homam vs puja
 secondaryKeywords:
-  - difference between homam and puja
-  - havan vs puja
-  - can homam be done at home
+- difference between homam and puja
+- havan vs puja
+- can homam be done at home
 tags:
-  - Homam
-  - Puja
-  - Rituals
+- Homam
+- Puja
+- Rituals
 audience: general
 image: /blog/homam-vs-puja.webp
-imageAlt: >-
-  Painterly still life contrasting a small homam fire with a brass lamp and
-  flowers — homam vs puja | pariharaonline.com
-imagePrompt: >-
-  Split scene in warm light: on one side a small homam fire with rising smoke,
-  on the other a brass lamp and flowers before a temple altar, rendered as a
-  painterly still life.
+imageAlt: Painterly still life contrasting a small homam fire with a brass lamp and flowers — homam vs
+  puja | pariharaonline.com
+imagePrompt: 'Split scene in warm light: on one side a small homam fire with rising smoke, on the other
+  a brass lamp and flowers before a temple altar, rendered as a painterly still life.'
 products:
   handles:
-    - navagraha-homam
+  - navagraha-homam
   query: homam
 related:
-  - homam-and-letting-go
-  - what-is-a-homam
-  - puja-at-home-step-by-step
+- homam-and-letting-go
+- what-is-a-homam
+- puja-at-home-step-by-step
 takeaways:
-  - >-
-    The main difference between a homam and a puja is the medium: a homam makes
-    offerings into consecrated fire, while a puja offers to an image, idol or
-    lamp.
-  - >-
-    Homams come from Vedic ritual and usually need trained priests; pujas are
-    the everyday worship of home and temple and can be done by anyone.
-  - >-
-    Families often choose a homam for major beginnings or remedies, and keep a
-    simple daily puja for steady, regular practice.
+- 'The main difference between a homam and a puja is the medium: a homam makes offerings into consecrated
+  fire, while a puja offers to an image, idol or lamp.'
+- Homams come from Vedic ritual and usually need trained priests; pujas are the everyday worship of home
+  and temple and can be done by anyone.
+- Families often choose a homam for major beginnings or remedies, and keep a simple daily puja for steady,
+  regular practice.
 faq:
-  - q: What is the difference between a homam and a puja?
-    a: >-
-      A homam is a Vedic ritual in which offerings are made into a consecrated
-      fire with mantras, the fire acting as messenger. A puja is worship of a
-      deity through an image, idol or lamp using flowers, water, incense and
-      food. Homams usually need priests; pujas can be done daily by anyone at
-      home.
-  - q: Is havan the same as homam?
-    a: >-
-      Yes, havan and homam refer to the same kind of fire ritual. Havan is the
-      term used more in North India and homam in South India. Both involve
-      offering ghee, grains and herbs into a sacred fire with mantras, though
-      the specific procedures and hymns can differ between regional and family
-      traditions.
-  - q: Can a homam be done at home?
-    a: >-
-      Yes, homams are often performed at home, especially for housewarmings,
-      birthdays or ceremonies, with priests setting up a small fire pit. In
-      apartments, smoke and fire safety can make this difficult, so many
-      families have the homam performed at a temple in their name and attend by
-      video or receive prasadam afterwards.
+- q: What is the difference between a homam and a puja?
+  a: A homam is a Vedic ritual in which offerings are made into a consecrated fire with mantras, the fire
+    acting as messenger. A puja is worship of a deity through an image, idol or lamp using flowers, water,
+    incense and food. Homams usually need priests; pujas can be done daily by anyone at home.
+- q: Is havan the same as homam?
+  a: Yes, havan and homam refer to the same kind of fire ritual. Havan is the term used more in North
+    India and homam in South India. Both involve offering ghee, grains and herbs into a sacred fire with
+    mantras, though the specific procedures and hymns can differ between regional and family traditions.
+- q: Can a homam be done at home?
+  a: Yes, homams are often performed at home, especially for housewarmings, birthdays or ceremonies, with
+    priests setting up a small fire pit. In apartments, smoke and fire safety can make this difficult,
+    so many families have the homam performed at a temple in their name and attend by video or receive
+    prasadam afterwards.
 readingTime: 4
 draft: false
 ---

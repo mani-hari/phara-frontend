@@ -1,76 +1,59 @@
 ---
 title: 'Ayushya Homam: Celebrating a Birthday by the Star'
-description: >-
-  Ayushya homam is a fire ritual for long life, done on the birthday by birth
-  star. Why tradition celebrates the nakshatra birthday and what the homam
-  invokes.
+description: Ayushya homam is a fire ritual for long life, done on the birthday by birth star. Why tradition
+  celebrates the nakshatra birthday and what the homam invokes.
 author: hariharan
-publishedAt: '2026-11-03'
-updatedAt: '2026-11-03'
+publishedAt: '2026-10-18'
+updatedAt: '2026-10-18'
 cluster: health-longevity
 primaryKeyword: ayushya homam
 secondaryKeywords:
-  - nakshatra birthday meaning
-  - star birthday calculation
-  - ayushya homam for child
+- nakshatra birthday meaning
+- star birthday calculation
+- ayushya homam for child
 tags:
-  - Ayushya Homam
-  - Birthdays
-  - Homams
+- Ayushya Homam
+- Birthdays
+- Homams
 audience: general
 image: /blog/ayushya-homam-star-birthday.webp
-imageAlt: >-
-  Small homam fire in a copper vessel with ghee poured from a ladle, child's
-  bangles and flowers nearby — ayushya homam | pariharaonline.com
-imagePrompt: >-
-  Painterly scene of a small homam fire in a copper kund with ghee being poured
-  from a wooden ladle, a child's tiny bangles and flowers on a banana leaf
-  beside it, warm glow.
+imageAlt: Small homam fire in a copper vessel with ghee poured from a ladle, child's bangles and flowers
+  nearby — ayushya homam | pariharaonline.com
+imagePrompt: Painterly scene of a small homam fire in a copper kund with ghee being poured from a wooden
+  ladle, a child's tiny bangles and flowers on a banana leaf beside it, warm glow.
 products:
   handles:
-    - ayushya-homam
+  - ayushya-homam
 related:
-  - mahamrityunjaya-mantra-meaning
-  - praying-for-a-sick-parent
-  - what-is-a-mantra
+- mahamrityunjaya-mantra-meaning
+- praying-for-a-sick-parent
+- what-is-a-mantra
 takeaways:
-  - >-
-    Ayushya homam is a Vedic fire ritual praying for long life and good health,
-    traditionally done on a person's birthday by birth star.
-  - >-
-    The star birthday falls when the Moon returns to your birth nakshatra in
-    your birth month, so it moves on the solar calendar.
-  - >-
-    Families often perform it for a child's first birthday and for milestone
-    birthdays.
+- Ayushya homam is a Vedic fire ritual praying for long life and good health, traditionally done on a
+  person's birthday by birth star.
+- The star birthday falls when the Moon returns to your birth nakshatra in your birth month, so it moves
+  on the solar calendar.
+- Families often perform it for a child's first birthday and for milestone birthdays.
 faq:
-  - q: What is Ayushya homam and who should do it?
-    a: >-
-      Ayushya homam is a fire ritual offered to Ayur Devata, the deity of
-      lifespan, praying for health and a long, meaningful life. Families
-      commonly perform it for a baby's first birthday, for children's birthdays,
-      for elders and for anyone recovering from illness. It is often done on the
-      birthday calculated by the birth star rather than the solar date.
-  - q: How is a nakshatra birthday calculated?
-    a: >-
-      Your nakshatra birthday is the day in your birth month, on the lunar or
-      Tamil solar calendar, when the Moon passes through the same nakshatra it
-      occupied when you were born. Because the Moon's cycle does not match the
-      solar calendar, the date moves each year. A panchangam or astrologer can
-      find it from your birth details.
-  - q: Can Ayushya homam be done for a child's first birthday?
-    a: >-
-      Yes, it is one of the most common occasions. Many South Indian families
-      hold Ayushya homam on the first star birthday, called Abdapoorthi in some
-      regions, praying for the child's health and long life. It can be done at
-      home with a priest, at a temple, or booked with a temple online while the
-      family watches.
-  - q: Why do Hindus celebrate birthdays by the star?
-    a: >-
-      Tradition sees time as cyclical, measured by the Moon and stars as much as
-      the Sun. The star birthday marks the Moon returning to the exact point in
-      the sky where it was at your birth, which is considered a spiritually
-      charged moment for prayers, charity and blessings from elders.
+- q: What is Ayushya homam and who should do it?
+  a: Ayushya homam is a fire ritual offered to Ayur Devata, the deity of lifespan, praying for health
+    and a long, meaningful life. Families commonly perform it for a baby's first birthday, for children's
+    birthdays, for elders and for anyone recovering from illness. It is often done on the birthday calculated
+    by the birth star rather than the solar date.
+- q: How is a nakshatra birthday calculated?
+  a: Your nakshatra birthday is the day in your birth month, on the lunar or Tamil solar calendar, when
+    the Moon passes through the same nakshatra it occupied when you were born. Because the Moon's cycle
+    does not match the solar calendar, the date moves each year. A panchangam or astrologer can find it
+    from your birth details.
+- q: Can Ayushya homam be done for a child's first birthday?
+  a: Yes, it is one of the most common occasions. Many South Indian families hold Ayushya homam on the
+    first star birthday, called Abdapoorthi in some regions, praying for the child's health and long life.
+    It can be done at home with a priest, at a temple, or booked with a temple online while the family
+    watches.
+- q: Why do Hindus celebrate birthdays by the star?
+  a: Tradition sees time as cyclical, measured by the Moon and stars as much as the Sun. The star birthday
+    marks the Moon returning to the exact point in the sky where it was at your birth, which is considered
+    a spiritually charged moment for prayers, charity and blessings from elders.
 readingTime: 4
 draft: false
 ---

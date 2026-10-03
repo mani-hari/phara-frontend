@@ -1,71 +1,55 @@
 ---
 title: 'Pooja for Conceiving: Hope and Patience While Trying'
-description: >-
-  A pooja for conceiving a baby can hold hope during a hard wait. A gentle
-  column on prayer, patience and care for couples trying to conceive, beside
-  medicine.
+description: A pooja for conceiving a baby can hold hope during a hard wait. A gentle column on prayer,
+  patience and care for couples trying to conceive, beside medicine.
 author: manikandan
-publishedAt: '2026-10-31'
-updatedAt: '2026-10-31'
+publishedAt: '2026-10-06'
+updatedAt: '2026-10-06'
 cluster: conceiving-pregnancy
 primaryKeyword: pooja for conceiving
 secondaryKeywords:
-  - prayer for pregnancy
-  - mantra for conceiving a baby
-  - santana gopala mantra
-  - how to cope with infertility stress
+- prayer for pregnancy
+- mantra for conceiving a baby
+- santana gopala mantra
+- how to cope with infertility stress
 tags:
-  - Pregnancy
-  - Prayer
-  - Family
+- Pregnancy
+- Prayer
+- Family
 audience: general
 image: /blog/praying-while-trying-to-conceive.webp
-imageAlt: >-
-  A couple's hands together lighting one clay lamp beside jasmine on a home
-  altar — pooja for conceiving | pariharaonline.com
-imagePrompt: >-
-  Two pairs of hands, a man's and a woman's, together lighting a single clay
-  lamp on a small home altar with a bowl of jasmine, soft evening light, faces
-  not shown.
+imageAlt: A couple's hands together lighting one clay lamp beside jasmine on a home altar — pooja for
+  conceiving | pariharaonline.com
+imagePrompt: Two pairs of hands, a man's and a woman's, together lighting a single clay lamp on a small
+  home altar with a bowl of jasmine, soft evening light, faces not shown.
 products:
   handles:
-    - garbharakshambika-ghee
+  - garbharakshambika-ghee
 related:
-  - seemantham-and-valaikappu
-  - garbarakshambigai-temple-story
-  - dhanvantari-and-healing
+- seemantham-and-valaikappu
+- garbarakshambigai-temple-story
+- dhanvantari-and-healing
 takeaways:
-  - >-
-    Couples trying to conceive often turn to prayers such as the Santana Gopala
-    mantra or poojas at Garbarakshambigai temple for comfort and hope.
-  - >-
-    Prayer accompanies medical care and never replaces it; tradition offers no
-    guarantee of conception.
-  - >-
-    A small ritual shared by both partners can ease the loneliness of the
-    monthly wait.
+- Couples trying to conceive often turn to prayers such as the Santana Gopala mantra or poojas at Garbarakshambigai
+  temple for comfort and hope.
+- Prayer accompanies medical care and never replaces it; tradition offers no guarantee of conception.
+- A small ritual shared by both partners can ease the loneliness of the monthly wait.
 faq:
-  - q: Which pooja is done for conceiving a baby?
-    a: >-
-      Common choices include prayers and poojas at the Garbarakshambigai temple
-      in Tamil Nadu, chanting the Santana Gopala mantra dedicated to Krishna,
-      and, where an astrologer sees Rahu or Ketu influences, a parihara pooja.
-      Families choose based on custom and advice. These are devotional practices
-      that support hope, alongside medical care, without promising conception.
-  - q: What is the Santana Gopala mantra?
-    a: >-
-      The Santana Gopala mantra is a prayer to Krishna as Gopala, the divine
-      child, traditionally chanted by couples wishing for children. Santana
-      means offspring. Some chant it a fixed number of times daily, others for a
-      set period. It is a prayer of longing and trust, and many couples find it
-      gives shape to a difficult wait.
-  - q: How can we cope with the stress of trying to conceive?
-    a: >-
-      Talk honestly with each other, and set limits on how much the calendar
-      dominates conversation. Seek a good doctor and ask questions freely. Many
-      couples find a short shared ritual, such as lighting a lamp together,
-      restores closeness. Counselling can help too. Prayer can steady the heart,
-      while medical guidance leads treatment decisions.
+- q: Which pooja is done for conceiving a baby?
+  a: Common choices include prayers and poojas at the Garbarakshambigai temple in Tamil Nadu, chanting
+    the Santana Gopala mantra dedicated to Krishna, and, where an astrologer sees Rahu or Ketu influences,
+    a parihara pooja. Families choose based on custom and advice. These are devotional practices that
+    support hope, alongside medical care, without promising conception.
+- q: What is the Santana Gopala mantra?
+  a: The Santana Gopala mantra is a prayer to Krishna as Gopala, the divine child, traditionally chanted
+    by couples wishing for children. Santana means offspring. Some chant it a fixed number of times daily,
+    others for a set period. It is a prayer of longing and trust, and many couples find it gives shape
+    to a difficult wait.
+- q: How can we cope with the stress of trying to conceive?
+  a: Talk honestly with each other, and set limits on how much the calendar dominates conversation. Seek
+    a good doctor and ask questions freely. Many couples find a short shared ritual, such as lighting
+    a lamp together, restores closeness. Counselling can help too. Prayer can steady the heart, while
+    medical guidance leads treatment decisions.
 readingTime: 4
 draft: false
 ---

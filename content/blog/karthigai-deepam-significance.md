@@ -1,68 +1,56 @@
 ---
 title: 'Karthigai Deepam Significance: The Column of Fire'
-description: >-
-  Karthigai Deepam significance: the Shiva Purana story of the endless column of
-  fire, why Tiruvannamalai lights a beacon, and what the flame asks of us.
+description: 'Karthigai Deepam significance: the Shiva Purana story of the endless column of fire, why
+  Tiruvannamalai lights a beacon, and what the flame asks of us.'
 author: hariharan
-publishedAt: '2026-10-11'
-updatedAt: '2026-10-11'
+publishedAt: '2026-10-16'
+updatedAt: '2026-10-16'
 cluster: karthigai-deepam
 primaryKeyword: karthigai deepam significance
 secondaryKeywords:
-  - karthigai deepam story
-  - why is karthigai deepam celebrated
-  - arunachala deepam meaning
+- karthigai deepam story
+- why is karthigai deepam celebrated
+- arunachala deepam meaning
 tags:
-  - Karthigai Deepam
-  - Shiva
-  - Festivals
-  - Mythology
+- Karthigai Deepam
+- Shiva
+- Festivals
+- Mythology
 audience: general
 image: /blog/karthigai-deepam-significance.webp
-imageAlt: >-
-  A great flame burning on a hilltop at dusk with temple towers silhouetted
-  below — karthigai deepam significance | pariharaonline.com
-imagePrompt: >-
-  A distant sacred hill at dusk with a single great flame burning on its summit,
-  temple towers silhouetted in the foreground, warm orange and violet sky,
-  painterly landscape.
+imageAlt: A great flame burning on a hilltop at dusk with temple towers silhouetted below — karthigai
+  deepam significance | pariharaonline.com
+imagePrompt: A distant sacred hill at dusk with a single great flame burning on its summit, temple towers
+  silhouetted in the foreground, warm orange and violet sky, painterly landscape.
 products:
   handles:
-    - maha-shivaratri
+  - maha-shivaratri
   query: Shiva
 related:
-  - karthigai-deepam-at-home
-  - tiruvannamalai-deepam-from-afar
-  - ghee-lamp-or-oil-lamp
+- karthigai-deepam-at-home
+- tiruvannamalai-deepam-from-afar
+- ghee-lamp-or-oil-lamp
 takeaways:
-  - >-
-    Karthigai Deepam recalls the Shiva Purana story of Shiva appearing as an
-    endless column of fire that neither Brahma nor Vishnu could measure.
-  - >-
-    It falls on the Karthigai nakshatra in the Tamil month of Karthigai, around
-    November or December, when the Maha Deepam is lit atop Arunachala hill.
+- Karthigai Deepam recalls the Shiva Purana story of Shiva appearing as an endless column of fire that
+  neither Brahma nor Vishnu could measure.
+- It falls on the Karthigai nakshatra in the Tamil month of Karthigai, around November or December, when
+  the Maha Deepam is lit atop Arunachala hill.
 faq:
-  - q: What is the story behind Karthigai Deepam?
-    a: >-
-      The Shiva Purana tells of Brahma and Vishnu arguing over who was supreme.
-      A boundless pillar of fire appeared. Vishnu became a boar and dug down,
-      Brahma became a swan and flew up; neither found its end. Vishnu admitted
-      it, Brahma lied. The fire was Shiva. At Tiruvannamalai, the hill
-      Arunachala is revered as that fire made solid.
-  - q: Why is Karthigai Deepam celebrated in Tamil Nadu?
-    a: >-
-      Karthigai Deepam is one of the oldest Tamil festivals of light, mentioned
-      in Sangam-era poetry. It honours Shiva as the column of fire and also
-      Murugan, who was raised by the six Karthigai maidens, the stars of the
-      Pleiades. Homes are lit with rows of clay agal vilakku lamps, and a great
-      beacon is lit on Arunachala hill.
-  - q: When is Karthigai Deepam celebrated?
-    a: >-
-      Karthigai Deepam falls on the day the Moon is in the Karthigai nakshatra
-      (Krittika, the Pleiades) during the Tamil month of Karthigai, usually
-      close to the full moon, around November or December. The exact date moves
-      each year with the lunar calendar, so check the current year's panchangam,
-      especially if you live outside India.
+- q: What is the story behind Karthigai Deepam?
+  a: The Shiva Purana tells of Brahma and Vishnu arguing over who was supreme. A boundless pillar of fire
+    appeared. Vishnu became a boar and dug down, Brahma became a swan and flew up; neither found its end.
+    Vishnu admitted it, Brahma lied. The fire was Shiva. At Tiruvannamalai, the hill Arunachala is revered
+    as that fire made solid.
+- q: Why is Karthigai Deepam celebrated in Tamil Nadu?
+  a: Karthigai Deepam is one of the oldest Tamil festivals of light, mentioned in Sangam-era poetry. It
+    honours Shiva as the column of fire and also Murugan, who was raised by the six Karthigai maidens,
+    the stars of the Pleiades. Homes are lit with rows of clay agal vilakku lamps, and a great beacon
+    is lit on Arunachala hill.
+- q: When is Karthigai Deepam celebrated?
+  a: Karthigai Deepam falls on the day the Moon is in the Karthigai nakshatra (Krittika, the Pleiades)
+    during the Tamil month of Karthigai, usually close to the full moon, around November or December.
+    The exact date moves each year with the lunar calendar, so check the current year's panchangam, especially
+    if you live outside India.
 readingTime: 4
 draft: false
 ---

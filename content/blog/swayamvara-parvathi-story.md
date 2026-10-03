@@ -1,71 +1,56 @@
 ---
 title: 'Swayamvara Parvathi: The Goddess Who Chose'
-description: >-
-  The Swayamvara Parvathi homam draws on the story of Parvati choosing Shiva.
-  What the tale means, what the homam involves, and why it is sought for
-  marriage.
+description: The Swayamvara Parvathi homam draws on the story of Parvati choosing Shiva. What the tale
+  means, what the homam involves, and why it is sought for marriage.
 author: hariharan
-publishedAt: '2026-10-28'
-updatedAt: '2026-10-28'
+publishedAt: '2026-11-04'
+updatedAt: '2026-11-04'
 cluster: marriage-delay
 primaryKeyword: swayamvara parvathi
 secondaryKeywords:
-  - swayamvara parvathi mantra benefits
-  - parvati and shiva marriage story
-  - swayamvara parvathi homam for marriage
-  - who can do swayamvara parvathi homam
+- swayamvara parvathi mantra benefits
+- parvati and shiva marriage story
+- swayamvara parvathi homam for marriage
+- who can do swayamvara parvathi homam
 tags:
-  - Parvati
-  - Marriage
-  - Homams
+- Parvati
+- Marriage
+- Homams
 audience: general
 image: /blog/swayamvara-parvathi-story.webp
-imageAlt: >-
-  Small ritual fire on a Himalayan rock ledge at dawn with marigold petals in
-  the wind — swayamvara parvathi | pariharaonline.com
-imagePrompt: >-
-  A painterly Himalayan dawn with snow peaks, a small sacrificial fire burning
-  on a rock ledge and marigold petals scattered in the wind, warm gold and rose
-  light.
+imageAlt: Small ritual fire on a Himalayan rock ledge at dawn with marigold petals in the wind — swayamvara
+  parvathi | pariharaonline.com
+imagePrompt: A painterly Himalayan dawn with snow peaks, a small sacrificial fire burning on a rock ledge
+  and marigold petals scattered in the wind, warm gold and rose light.
 products:
   handles:
-    - swayamvara-parvathi-homam
+  - swayamvara-parvathi-homam
 related:
-  - waiting-for-the-right-match
-  - delay-in-marriage-remedies
-  - kala-sarpa-dosha-meaning
+- waiting-for-the-right-match
+- delay-in-marriage-remedies
+- kala-sarpa-dosha-meaning
 takeaways:
-  - >-
-    The Swayamvara Parvathi homam takes its name from the story of Parvati, who
-    chose Shiva as her husband and pursued that choice through tapas.
-  - >-
-    Tradition performs the homam for unmarried men and women seeking a suitable
-    partner, using a mantra dedicated to Parvati as the bride who chose.
-  - >-
-    The story's lesson is steady intention and self-respect in the search, not
-    passive waiting.
+- The Swayamvara Parvathi homam takes its name from the story of Parvati, who chose Shiva as her husband
+  and pursued that choice through tapas.
+- Tradition performs the homam for unmarried men and women seeking a suitable partner, using a mantra
+  dedicated to Parvati as the bride who chose.
+- The story's lesson is steady intention and self-respect in the search, not passive waiting.
 faq:
-  - q: What is the story behind Swayamvara Parvathi?
-    a: >-
-      In the Shiva Purana and Kalidasa's Kumarasambhavam, Parvati, reborn after
-      Sati, resolves to marry Shiva, who is lost in meditation. When attempts to
-      rouse him fail, she undertakes intense tapas. Moved by her resolve, Shiva
-      tests her and then accepts. Swayamvara means one's own choice, so the name
-      honours Parvati as the one who chose.
-  - q: What are the benefits of the Swayamvara Parvathi mantra?
-    a: >-
-      Tradition holds that chanting the Swayamvara Parvathi mantra invokes the
-      Goddess's blessing for finding a compatible partner and removing obstacles
-      to marriage. Devotees often chant it daily for a set period. It is best
-      understood as prayer that steadies intention and hope, not as a promise of
-      a wedding within a particular time.
-  - q: Can men also do Swayamvara Parvathi homam?
-    a: >-
-      Yes. Although the story centres on Parvati, the homam is traditionally
-      performed for both unmarried women and men seeking a good life partner.
-      The sankalpam, the spoken statement of intention, carries the person's
-      name and birth star, and priests can perform it on their behalf if they
-      cannot attend in person.
+- q: What is the story behind Swayamvara Parvathi?
+  a: In the Shiva Purana and Kalidasa's Kumarasambhavam, Parvati, reborn after Sati, resolves to marry
+    Shiva, who is lost in meditation. When attempts to rouse him fail, she undertakes intense tapas. Moved
+    by her resolve, Shiva tests her and then accepts. Swayamvara means one's own choice, so the name honours
+    Parvati as the one who chose.
+- q: What are the benefits of the Swayamvara Parvathi mantra?
+  a: Tradition holds that chanting the Swayamvara Parvathi mantra invokes the Goddess's blessing for finding
+    a compatible partner and removing obstacles to marriage. Devotees often chant it daily for a set period.
+    It is best understood as prayer that steadies intention and hope, not as a promise of a wedding within
+    a particular time.
+- q: Can men also do Swayamvara Parvathi homam?
+  a: Yes. Although the story centres on Parvati, the homam is traditionally performed for both unmarried
+    women and men seeking a good life partner. The sankalpam, the spoken statement of intention, carries
+    the person's name and birth star, and priests can perform it on their behalf if they cannot attend
+    in person.
 readingTime: 4
 draft: false
 ---

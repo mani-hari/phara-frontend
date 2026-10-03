@@ -1,68 +1,54 @@
 ---
-title: 'Shivaratri Fasting for Working People, After a Long Week'
-description: >-
-  Shivaratri fasting for working people: a reflection on keeping the night of
-  Shiva after a long week, with a verse, a small vigil and one thing to carry
-  forward.
+title: Shivaratri Fasting for Working People, After a Long Week
+description: 'Shivaratri fasting for working people: a reflection on keeping the night of Shiva after
+  a long week, with a verse, a small vigil and one thing to carry forward.'
 author: manikandan
-publishedAt: '2026-10-13'
-updatedAt: '2026-10-13'
+publishedAt: '2026-10-30'
+updatedAt: '2026-10-30'
 cluster: maha-shivaratri
 primaryKeyword: shivaratri fasting for working people
 secondaryKeywords:
-  - how to observe shivaratri while working
-  - shivaratri on a weekday
-  - simple shivaratri at home
+- how to observe shivaratri while working
+- shivaratri on a weekday
+- simple shivaratri at home
 tags:
-  - Maha Shivaratri
-  - Shiva
-  - Everyday Spirituality
+- Maha Shivaratri
+- Shiva
+- Everyday Spirituality
 audience: general
 image: /blog/shivaratri-after-a-long-week.webp
-imageAlt: >-
-  Work bag set beside a single lit lamp and copper tumbler in a dim apartment at
-  night — shivaratri fasting for working people | pariharaonline.com
-imagePrompt: >-
-  A work bag and loosened lanyard set down beside a single lit lamp and a copper
-  tumbler of water on a low table in a dim city apartment at night, warm
-  lamplight against blue window light.
+imageAlt: Work bag set beside a single lit lamp and copper tumbler in a dim apartment at night — shivaratri
+  fasting for working people | pariharaonline.com
+imagePrompt: A work bag and loosened lanyard set down beside a single lit lamp and a copper tumbler of
+  water on a low table in a dim city apartment at night, warm lamplight against blue window light.
 products:
   handles:
-    - maha-shivaratri
+  - maha-shivaratri
 related:
-  - maha-shivaratri-meaning
-  - shivaratri-vigil-at-home
-  - chanting-for-beginners
-  - pradosham-meaning
+- maha-shivaratri-meaning
+- shivaratri-vigil-at-home
+- chanting-for-beginners
+- pradosham-meaning
 takeaways:
-  - >-
-    If you work, Shivaratri can be kept with intention, one offering and a
-    stretch of wakeful quiet, even if a full fast and all-night vigil are not
-    possible.
-  - >-
-    A tired mind sitting honestly in the dark with Om Namah Shivaya is still
-    keeping vigil; the tradition values sincerity over stamina.
+- If you work, Shivaratri can be kept with intention, one offering and a stretch of wakeful quiet, even
+  if a full fast and all-night vigil are not possible.
+- A tired mind sitting honestly in the dark with Om Namah Shivaya is still keeping vigil; the tradition
+  values sincerity over stamina.
 faq:
-  - q: How can I observe Shivaratri while working?
-    a: >-
-      Keep what is essential and let the rest bend. Eat lightly or keep a fruit
-      fast through the workday if your health allows. In the evening, offer
-      water and a leaf or flower to a Shiva linga or picture, light a lamp and
-      chant Om Namah Shivaya. Stay awake as long as you honestly can, perhaps
-      through one prahara.
-  - q: Is it okay to sleep on Shivaratri night?
-    a: >-
-      Tradition encourages staying awake, but no one is judged for their body's
-      limits. Many devotees keep vigil until midnight, the most important time,
-      and then rest. Others wake before dawn for the last prahara. If you must
-      sleep, sleep after a sincere offering and a quiet sitting. The alertness
-      you bring matters more than the hours.
-  - q: What is the simplest way to celebrate Shivaratri at home?
-    a: >-
-      Light a lamp, pour a little water over a Shiva linga or place it before a
-      picture of Shiva, offer a leaf or flower, and chant Om Namah Shivaya for a
-      few minutes. Switch off the lights and sit quietly in the lamplight. This
-      simple act, done with attention, holds the essence of the whole night.
+- q: How can I observe Shivaratri while working?
+  a: Keep what is essential and let the rest bend. Eat lightly or keep a fruit fast through the workday
+    if your health allows. In the evening, offer water and a leaf or flower to a Shiva linga or picture,
+    light a lamp and chant Om Namah Shivaya. Stay awake as long as you honestly can, perhaps through one
+    prahara.
+- q: Is it okay to sleep on Shivaratri night?
+  a: Tradition encourages staying awake, but no one is judged for their body's limits. Many devotees keep
+    vigil until midnight, the most important time, and then rest. Others wake before dawn for the last
+    prahara. If you must sleep, sleep after a sincere offering and a quiet sitting. The alertness you
+    bring matters more than the hours.
+- q: What is the simplest way to celebrate Shivaratri at home?
+  a: Light a lamp, pour a little water over a Shiva linga or place it before a picture of Shiva, offer
+    a leaf or flower, and chant Om Namah Shivaya for a few minutes. Switch off the lights and sit quietly
+    in the lamplight. This simple act, done with attention, holds the essence of the whole night.
 readingTime: 5
 draft: false
 ---

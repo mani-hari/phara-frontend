@@ -1,76 +1,58 @@
 ---
 title: 'Vastu for Apartments: What Matters, What Doesn''t'
-description: >-
-  Vastu for apartments, simply: what tradition says about the entrance, puja
-  corner, kitchen and bed, what you can ignore, and changes that work in
-  rentals.
+description: 'Vastu for apartments, simply: what tradition says about the entrance, puja corner, kitchen
+  and bed, what you can ignore, and changes that work in rentals.'
 author: archana
-publishedAt: '2026-11-03'
-updatedAt: '2026-11-03'
+publishedAt: '2026-12-03'
+updatedAt: '2026-12-03'
 cluster: puja-at-home
 primaryKeyword: vastu for apartments
 secondaryKeywords:
-  - vastu tips for rented apartment
-  - puja room direction in apartment
-  - vastu for bedroom in flat
+- vastu tips for rented apartment
+- puja room direction in apartment
+- vastu for bedroom in flat
 tags:
-  - Vastu
-  - Home
-  - Seekers
+- Vastu
+- Home
+- Seekers
 audience: seeker
 image: /blog/vastu-for-apartments.webp
-imageAlt: >-
-  Bright apartment corner with a small wooden shelf holding a brass lamp and
-  flowers in morning light — vastu for apartments | pariharaonline.com
-imagePrompt: >-
-  Editorial photograph of a bright minimalist apartment corner with a small
-  wooden shelf holding a brass lamp and a few flowers, morning light through a
-  large window, plants nearby.
+imageAlt: Bright apartment corner with a small wooden shelf holding a brass lamp and flowers in morning
+  light — vastu for apartments | pariharaonline.com
+imagePrompt: Editorial photograph of a bright minimalist apartment corner with a small wooden shelf holding
+  a brass lamp and a few flowers, morning light through a large window, plants nearby.
 products:
   handles: []
   query: Ganesha
 related:
-  - sixteen-steps-of-puja
-  - five-minute-daily-puja
-  - the-dusk-lamp-ritual
+- sixteen-steps-of-puja
+- five-minute-daily-puja
+- the-dusk-lamp-ritual
 takeaways:
-  - >-
-    Vastu for apartments focuses on what you can change: a clean, well-lit
-    entrance, a calm puja corner, sensible bed and stove placement, and less
-    clutter.
-  - >-
-    The north-east is traditionally preferred for the puja corner, but a clean,
-    quiet spot anywhere is acceptable.
-  - Structural flaws you cannot fix are not a reason for fear.
+- 'Vastu for apartments focuses on what you can change: a clean, well-lit entrance, a calm puja corner,
+  sensible bed and stove placement, and less clutter.'
+- The north-east is traditionally preferred for the puja corner, but a clean, quiet spot anywhere is acceptable.
+- Structural flaws you cannot fix are not a reason for fear.
 faq:
-  - q: Does vastu apply to apartments?
-    a: >-
-      Vastu shastra was written for houses and temples on open land, so
-      apartments cannot follow every rule. Most practitioners say the principles
-      still apply inside your unit: a bright, uncluttered entrance, natural
-      light and air, a calm centre, and thoughtful placement of the puja corner,
-      bed and kitchen. Focus on what you can control.
-  - q: Which direction should the puja room face in an apartment?
-    a: >-
-      Tradition prefers the north-east corner of the home for worship, with the
-      deity facing west or east so you face east or north while praying. In an
-      apartment, a shelf or cabinet in the north-east of the living room works
-      well. If that is impossible, any clean, quiet, respectful spot is widely
-      accepted.
-  - q: What are simple vastu tips for a rented flat?
-    a: >-
-      Keep the entrance clean, well lit and free of shoes and clutter. Place
-      your bed so your head points south or east while sleeping. Avoid storing
-      broken items, fix leaking taps, and let in morning light. Set up a small
-      puja corner, ideally in the north-east. None of these require renovation
-      or permission from a landlord.
-  - q: What if my apartment has a vastu defect I cannot fix?
-    a: >-
-      Many homes, especially rentals, have features like a south-facing door or
-      an awkward kitchen. Traditional advice offers gentle adjustments such as
-      keeping that area bright, clean and uncluttered, or placing a Ganesha
-      image near the entrance. There is no need for fear or expensive fixes. A
-      home kept with care and peace is the heart of vastu.
+- q: Does vastu apply to apartments?
+  a: 'Vastu shastra was written for houses and temples on open land, so apartments cannot follow every
+    rule. Most practitioners say the principles still apply inside your unit: a bright, uncluttered entrance,
+    natural light and air, a calm centre, and thoughtful placement of the puja corner, bed and kitchen.
+    Focus on what you can control.'
+- q: Which direction should the puja room face in an apartment?
+  a: Tradition prefers the north-east corner of the home for worship, with the deity facing west or east
+    so you face east or north while praying. In an apartment, a shelf or cabinet in the north-east of
+    the living room works well. If that is impossible, any clean, quiet, respectful spot is widely accepted.
+- q: What are simple vastu tips for a rented flat?
+  a: Keep the entrance clean, well lit and free of shoes and clutter. Place your bed so your head points
+    south or east while sleeping. Avoid storing broken items, fix leaking taps, and let in morning light.
+    Set up a small puja corner, ideally in the north-east. None of these require renovation or permission
+    from a landlord.
+- q: What if my apartment has a vastu defect I cannot fix?
+  a: Many homes, especially rentals, have features like a south-facing door or an awkward kitchen. Traditional
+    advice offers gentle adjustments such as keeping that area bright, clean and uncluttered, or placing
+    a Ganesha image near the entrance. There is no need for fear or expensive fixes. A home kept with
+    care and peace is the heart of vastu.
 readingTime: 4
 draft: false
 ---

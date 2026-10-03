@@ -1,77 +1,60 @@
 ---
 title: 'Kolam and Rangoli Meaning: Drawing at the Doorstep'
-description: >-
-  Rangoli meaning goes beyond decoration: why South Indian homes draw kolam at
-  the doorstep each dawn, why rice flour feeds ants, and what the lines are
-  about.
+description: 'Rangoli meaning goes beyond decoration: why South Indian homes draw kolam at the doorstep
+  each dawn, why rice flour feeds ants, and what the lines are about.'
 author: hariharan
-publishedAt: '2026-10-07'
-updatedAt: '2026-10-07'
+publishedAt: '2026-10-08'
+updatedAt: '2026-10-08'
 cluster: diwali-meaning
 primaryKeyword: rangoli meaning
 secondaryKeywords:
-  - kolam meaning
-  - why draw rangoli at the entrance
-  - rice flour kolam significance
+- kolam meaning
+- why draw rangoli at the entrance
+- rice flour kolam significance
 tags:
-  - Kolam
-  - Rangoli
-  - Home Rituals
+- Kolam
+- Rangoli
+- Home Rituals
 audience: general
 image: /blog/kolam-and-rangoli-meaning.webp
-imageAlt: >-
-  White rice-flour kolam with looping lines on a stone doorstep at dawn, with a
-  small brass lamp — rangoli meaning | pariharaonline.com
-imagePrompt: >-
-  Overhead editorial photograph of a white rice-flour kolam of looping lines
-  around dots on a swept stone doorstep at dawn, a brass lamp and marigold
-  petals at its edge, soft golden light.
+imageAlt: White rice-flour kolam with looping lines on a stone doorstep at dawn, with a small brass lamp
+  — rangoli meaning | pariharaonline.com
+imagePrompt: Overhead editorial photograph of a white rice-flour kolam of looping lines around dots on
+  a swept stone doorstep at dawn, a brass lamp and marigold petals at its edge, soft golden light.
 products:
   handles: []
   query: Lakshmi
 related:
-  - why-is-diwali-celebrated
-  - five-days-of-diwali
-  - celebrate-diwali-in-the-usa
+- why-is-diwali-celebrated
+- five-days-of-diwali
+- celebrate-diwali-in-the-usa
 takeaways:
-  - >-
-    Rangoli and kolam are drawn at the doorstep to welcome guests and the
-    goddess Lakshmi, marking the threshold as a place of care.
-  - >-
-    Traditional kolam uses rice flour so ants and birds can eat it, making the
-    design a small daily act of feeding other beings.
-  - >-
-    The drawing is meant to be temporary; being walked over and redrawn each
-    dawn is part of its meaning.
+- Rangoli and kolam are drawn at the doorstep to welcome guests and the goddess Lakshmi, marking the threshold
+  as a place of care.
+- Traditional kolam uses rice flour so ants and birds can eat it, making the design a small daily act
+  of feeding other beings.
+- The drawing is meant to be temporary; being walked over and redrawn each dawn is part of its meaning.
 faq:
-  - q: What is the spiritual meaning of rangoli?
-    a: >-
-      Rangoli is a welcome drawn at the entrance of a home. Tradition says it
-      invites Lakshmi, the goddess of prosperity, and keeps the threshold
-      auspicious. Many families also see it as a way of beginning the day with
-      attention and beauty, offering something lovely to anyone who crosses the
-      doorway, whether guest, neighbour or passer-by.
-  - q: Why is kolam drawn with rice flour instead of chalk?
-    a: >-
-      Rice flour kolam feeds ants, sparrows and other small creatures that
-      nibble at the lines through the day. In Tamil homes this is understood as
-      a quiet form of charity, a way of sharing food before eating yourself.
-      Chalk and powder colours are used for festival designs, but the everyday
-      dawn kolam is traditionally rice.
-  - q: Is it okay to draw rangoli inside an apartment?
-    a: >-
-      Yes. Many families living in apartments or rented homes draw a small
-      rangoli on a wooden board, a tray or a mat by the door or the puja corner.
-      Removable stickers and chalk work too. The intention of welcome and order
-      matters more than the surface, and a small design done with care is fully
-      in keeping with tradition.
-  - q: What is the difference between kolam and rangoli?
-    a: >-
-      Kolam is the South Indian form, usually white rice flour drawn in lines
-      around a grid of dots, often made daily at dawn. Rangoli is the broader
-      North and West Indian term, typically colourful and freehand, and most
-      common at festivals like Diwali. Both share the same idea: a threshold
-      drawing that welcomes and blesses.
+- q: What is the spiritual meaning of rangoli?
+  a: Rangoli is a welcome drawn at the entrance of a home. Tradition says it invites Lakshmi, the goddess
+    of prosperity, and keeps the threshold auspicious. Many families also see it as a way of beginning
+    the day with attention and beauty, offering something lovely to anyone who crosses the doorway, whether
+    guest, neighbour or passer-by.
+- q: Why is kolam drawn with rice flour instead of chalk?
+  a: Rice flour kolam feeds ants, sparrows and other small creatures that nibble at the lines through
+    the day. In Tamil homes this is understood as a quiet form of charity, a way of sharing food before
+    eating yourself. Chalk and powder colours are used for festival designs, but the everyday dawn kolam
+    is traditionally rice.
+- q: Is it okay to draw rangoli inside an apartment?
+  a: Yes. Many families living in apartments or rented homes draw a small rangoli on a wooden board, a
+    tray or a mat by the door or the puja corner. Removable stickers and chalk work too. The intention
+    of welcome and order matters more than the surface, and a small design done with care is fully in
+    keeping with tradition.
+- q: What is the difference between kolam and rangoli?
+  a: 'Kolam is the South Indian form, usually white rice flour drawn in lines around a grid of dots, often
+    made daily at dawn. Rangoli is the broader North and West Indian term, typically colourful and freehand,
+    and most common at festivals like Diwali. Both share the same idea: a threshold drawing that welcomes
+    and blesses.'
 readingTime: 5
 draft: false
 ---

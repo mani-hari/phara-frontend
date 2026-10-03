@@ -1,76 +1,60 @@
 ---
 title: 'Annadhanam Meaning: Why Feeding People Is Worship'
-description: >-
-  Annadhanam meaning: why feeding people is treated as the highest gift in Hindu
-  tradition, the verses behind it, and simple ways to practise it anywhere.
+description: 'Annadhanam meaning: why feeding people is treated as the highest gift in Hindu tradition,
+  the verses behind it, and simple ways to practise it anywhere.'
 author: manikandan
-publishedAt: '2026-11-05'
-updatedAt: '2026-11-05'
+publishedAt: '2027-02-10'
+updatedAt: '2027-02-10'
 cluster: karma-dharma
 primaryKeyword: annadhanam meaning
 secondaryKeywords:
-  - annadanam significance
-  - why food donation is important in hinduism
-  - annadhanam in memory of ancestors
+- annadanam significance
+- why food donation is important in hinduism
+- annadhanam in memory of ancestors
 tags:
-  - Annadhanam
-  - Charity
-  - Seva
+- Annadhanam
+- Charity
+- Seva
 audience: general
 image: /blog/annadhanam-feeding-as-worship.webp
-imageAlt: >-
-  Rows of banana leaves with rice and sambar on a temple dining floor as hands
-  serve from a steel bucket — annadhanam meaning | pariharaonline.com
-imagePrompt: >-
-  Editorial photograph of rows of banana leaves with rice, sambar and vegetables
-  laid out on a long temple dining floor, steam rising, a volunteer's hands
-  serving from a steel bucket, warm light.
+imageAlt: Rows of banana leaves with rice and sambar on a temple dining floor as hands serve from a steel
+  bucket — annadhanam meaning | pariharaonline.com
+imagePrompt: Editorial photograph of rows of banana leaves with rice, sambar and vegetables laid out on
+  a long temple dining floor, steam rising, a volunteer's hands serving from a steel bucket, warm light.
 products:
   handles:
-    - annadhanam-donate-food-to-homeless-children
+  - annadhanam-donate-food-to-homeless-children
 related:
-  - spiritual-but-not-religious-hinduism
-  - dharma-meaning-in-everyday-life
-  - pitru-paksha-for-nri-families
+- spiritual-but-not-religious-hinduism
+- dharma-meaning-in-everyday-life
+- pitru-paksha-for-nri-families
 takeaways:
-  - >-
-    Annadhanam, the gift of food, is considered one of the highest forms of
-    charity in Hindu tradition because food sustains life itself.
-  - >-
-    The Taittiriya Upanishad says 'annam brahma', food is the divine, which is
-    why feeding others is treated as worship.
-  - >-
-    Families offer annadhanam on birthdays, festivals and in memory of
-    ancestors.
+- Annadhanam, the gift of food, is considered one of the highest forms of charity in Hindu tradition because
+  food sustains life itself.
+- The Taittiriya Upanishad says 'annam brahma', food is the divine, which is why feeding others is treated
+  as worship.
+- Families offer annadhanam on birthdays, festivals and in memory of ancestors.
 faq:
-  - q: What is the meaning of annadhanam?
-    a: >-
-      Annadhanam combines anna, food, and dhanam, gift. It is the act of feeding
-      people freely, without asking who they are. Hindu tradition regards it as
-      among the highest forms of charity, because every other gift can leave
-      someone wanting more, but a full meal satisfies completely. Temples across
-      India run daily annadhanam kitchens.
-  - q: Why is food donation considered so important in Hinduism?
-    a: >-
-      Scriptures such as the Taittiriya Upanishad call food brahman, the source
-      of life, and teach respect for guests as divine. Feeding the hungry is
-      therefore seen as serving God directly. It also cultivates humility and
-      gratitude in the giver. Annadhanam is often recommended as a gentle remedy
-      in astrology because it helps others first.
-  - q: Can annadhanam be done in memory of a parent or ancestor?
-    a: >-
-      Yes. Offering a meal to the poor, to children or at a temple on a parent's
-      death anniversary, on Amavasya or during Pitru Paksha is a widely
-      respected way to honour the departed. Many families abroad sponsor
-      annadhanam in India on these days, or volunteer at a local food bank in
-      their loved one's name.
-  - q: How can I practise annadhanam if I live abroad?
-    a: >-
-      Volunteer at a food bank, soup kitchen or temple kitchen, cook for a
-      neighbour going through a hard time, or sponsor meals through a trusted
-      organisation in India. Even packing an extra lunch for someone who needs
-      it counts. The spirit of annadhanam is giving food with respect and
-      without expecting anything back.
+- q: What is the meaning of annadhanam?
+  a: Annadhanam combines anna, food, and dhanam, gift. It is the act of feeding people freely, without
+    asking who they are. Hindu tradition regards it as among the highest forms of charity, because every
+    other gift can leave someone wanting more, but a full meal satisfies completely. Temples across India
+    run daily annadhanam kitchens.
+- q: Why is food donation considered so important in Hinduism?
+  a: Scriptures such as the Taittiriya Upanishad call food brahman, the source of life, and teach respect
+    for guests as divine. Feeding the hungry is therefore seen as serving God directly. It also cultivates
+    humility and gratitude in the giver. Annadhanam is often recommended as a gentle remedy in astrology
+    because it helps others first.
+- q: Can annadhanam be done in memory of a parent or ancestor?
+  a: Yes. Offering a meal to the poor, to children or at a temple on a parent's death anniversary, on
+    Amavasya or during Pitru Paksha is a widely respected way to honour the departed. Many families abroad
+    sponsor annadhanam in India on these days, or volunteer at a local food bank in their loved one's
+    name.
+- q: How can I practise annadhanam if I live abroad?
+  a: Volunteer at a food bank, soup kitchen or temple kitchen, cook for a neighbour going through a hard
+    time, or sponsor meals through a trusted organisation in India. Even packing an extra lunch for someone
+    who needs it counts. The spirit of annadhanam is giving food with respect and without expecting anything
+    back.
 readingTime: 4
 draft: false
 ---

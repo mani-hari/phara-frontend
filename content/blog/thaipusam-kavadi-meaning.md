@@ -1,69 +1,56 @@
 ---
 title: 'Thaipusam Kavadi Meaning: Carrying What You Carry'
-description: >-
-  Thaipusam kavadi meaning: why devotees carry the kavadi to Murugan in the
-  month of Thai, the story of Idumban, and what it says about the burdens we all
-  carry.
+description: 'Thaipusam kavadi meaning: why devotees carry the kavadi to Murugan in the month of Thai,
+  the story of Idumban, and what it says about the burdens we all carry.'
 author: manikandan
-publishedAt: '2026-10-11'
-updatedAt: '2026-10-11'
+publishedAt: '2026-10-13'
+updatedAt: '2026-10-13'
 cluster: murugan-skanda
 primaryKeyword: thaipusam kavadi meaning
 secondaryKeywords:
-  - what is thaipusam
-  - idumban kavadi story
-  - why do devotees carry kavadi
+- what is thaipusam
+- idumban kavadi story
+- why do devotees carry kavadi
 tags:
-  - Thaipusam
-  - Murugan
-  - Festivals
+- Thaipusam
+- Murugan
+- Festivals
 audience: general
 image: /blog/thaipusam-kavadi-meaning.webp
-imageAlt: >-
-  Decorated kavadi arch with peacock feathers resting on temple steps winding up
-  a hill at sunrise — thaipusam kavadi meaning | pariharaonline.com
-imagePrompt: >-
-  Long stone temple steps winding up a green hill at sunrise, a decorated wooden
-  kavadi arch with peacock feathers resting on the first step, marigold petals
-  scattered, warm golden light.
+imageAlt: Decorated kavadi arch with peacock feathers resting on temple steps winding up a hill at sunrise
+  — thaipusam kavadi meaning | pariharaonline.com
+imagePrompt: Long stone temple steps winding up a green hill at sunrise, a decorated wooden kavadi arch
+  with peacock feathers resting on the first step, marigold petals scattered, warm golden light.
 products:
   handles:
-    - palani-panchamritham
-    - palani
+  - palani-panchamritham
+  - palani
 related:
-  - skanda-sashti-fasting-guide
-  - soorasamharam-story-meaning
-  - karthigai-deepam-significance
-  - six-abodes-of-murugan
+- skanda-sashti-fasting-guide
+- soorasamharam-story-meaning
+- karthigai-deepam-significance
+- six-abodes-of-murugan
 takeaways:
-  - >-
-    Thaipusam honours Murugan on the Poosam star in the Tamil month of Thai,
-    near the full moon, usually in January or February.
-  - >-
-    The kavadi recalls Idumban, who carried two hills on a pole for sage
-    Agastya; devotees carry a decorated burden to Murugan as a fulfilled vow.
+- Thaipusam honours Murugan on the Poosam star in the Tamil month of Thai, near the full moon, usually
+  in January or February.
+- The kavadi recalls Idumban, who carried two hills on a pole for sage Agastya; devotees carry a decorated
+  burden to Murugan as a fulfilled vow.
 faq:
-  - q: What is Thaipusam and why is it celebrated?
-    a: >-
-      Thaipusam is a festival for Murugan on the day the Moon is in the Poosam
-      nakshatra during the Tamil month of Thai, usually January or February.
-      Tradition says Parvati gave Murugan his vel on this day to defeat the
-      asura Surapadman. It is celebrated at Palani and other Murugan temples,
-      and on a large scale by Tamil communities in Malaysia and Singapore.
-  - q: What is the Idumban kavadi story?
-    a: >-
-      Idumban was asked by sage Agastya to carry two hills, Sivagiri and
-      Sakthigiri, to the south. He hung them from a pole across his shoulders.
-      At Palani the load became immovable because the young Murugan stood on one
-      hill. After a playful struggle, Murugan blessed Idumban and declared that
-      anyone carrying a kavadi to him would be blessed.
-  - q: Why do devotees carry kavadi on Thaipusam?
-    a: >-
-      Carrying a kavadi, a decorated arch or pots of milk borne on the
-      shoulders, fulfils a vow made to Murugan, often after a prayer was
-      answered or during a hardship. Devotees usually fast and keep discipline
-      beforehand. The meaning is that the burden is offered to the deity: it is
-      still carried, but it is carried as devotion.
+- q: What is Thaipusam and why is it celebrated?
+  a: Thaipusam is a festival for Murugan on the day the Moon is in the Poosam nakshatra during the Tamil
+    month of Thai, usually January or February. Tradition says Parvati gave Murugan his vel on this day
+    to defeat the asura Surapadman. It is celebrated at Palani and other Murugan temples, and on a large
+    scale by Tamil communities in Malaysia and Singapore.
+- q: What is the Idumban kavadi story?
+  a: Idumban was asked by sage Agastya to carry two hills, Sivagiri and Sakthigiri, to the south. He hung
+    them from a pole across his shoulders. At Palani the load became immovable because the young Murugan
+    stood on one hill. After a playful struggle, Murugan blessed Idumban and declared that anyone carrying
+    a kavadi to him would be blessed.
+- q: Why do devotees carry kavadi on Thaipusam?
+  a: 'Carrying a kavadi, a decorated arch or pots of milk borne on the shoulders, fulfils a vow made to
+    Murugan, often after a prayer was answered or during a hardship. Devotees usually fast and keep discipline
+    beforehand. The meaning is that the burden is offered to the deity: it is still carried, but it is
+    carried as devotion.'
 readingTime: 4
 draft: false
 ---

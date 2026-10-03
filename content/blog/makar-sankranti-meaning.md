@@ -1,67 +1,54 @@
 ---
 title: 'Makar Sankranti Meaning: Sun, Sesame and Winter'
-description: >-
-  Makar Sankranti meaning for body and mind: the sun's turn north, why sesame
-  and jaggery are eaten in winter, kites, early baths, and one practice to try.
+description: 'Makar Sankranti meaning for body and mind: the sun''s turn north, why sesame and jaggery
+  are eaten in winter, kites, early baths, and one practice to try.'
 author: archana
-publishedAt: '2026-10-08'
-updatedAt: '2026-10-08'
+publishedAt: '2026-10-24'
+updatedAt: '2026-10-24'
 cluster: pongal-sankranti
 primaryKeyword: makar sankranti meaning
 secondaryKeywords:
-  - why til and jaggery on sankranti
-  - uttarayan meaning
-  - makar sankranti significance
+- why til and jaggery on sankranti
+- uttarayan meaning
+- makar sankranti significance
 tags:
-  - Makar Sankranti
-  - Harvest
-  - Practice
+- Makar Sankranti
+- Harvest
+- Practice
 audience: general
 image: /blog/makar-sankranti-meaning.webp
-imageAlt: >-
-  Sesame-jaggery sweets and a paper kite on a sunlit terrace wall with kites in
-  the winter sky — makar sankranti meaning | pariharaonline.com
-imagePrompt: >-
-  A brass plate of sesame-jaggery sweets beside a folded paper kite and a small
-  lamp on a sunlit terrace wall, clear winter sky with distant kites, crisp warm
-  morning light.
+imageAlt: Sesame-jaggery sweets and a paper kite on a sunlit terrace wall with kites in the winter sky
+  — makar sankranti meaning | pariharaonline.com
+imagePrompt: A brass plate of sesame-jaggery sweets beside a folded paper kite and a small lamp on a sunlit
+  terrace wall, clear winter sky with distant kites, crisp warm morning light.
 products:
   handles:
-    - temple-coconut-breaking-online
+  - temple-coconut-breaking-online
 related:
-  - why-is-pongal-celebrated
-  - making-pongal-in-a-us-kitchen
-  - explaining-diwali-to-kids
+- why-is-pongal-celebrated
+- making-pongal-in-a-us-kitchen
+- explaining-diwali-to-kids
 takeaways:
-  - >-
-    Makar Sankranti marks the sun entering Makara, or Capricorn, around
-    mid-January, beginning Uttarayana, the sun's northward journey,
-    traditionally an auspicious turn.
-  - >-
-    Sesame and jaggery are eaten because they are warming winter foods, and
-    sharing them is a gesture of speaking sweetly to one another.
+- Makar Sankranti marks the sun entering Makara, or Capricorn, around mid-January, beginning Uttarayana,
+  the sun's northward journey, traditionally an auspicious turn.
+- Sesame and jaggery are eaten because they are warming winter foods, and sharing them is a gesture of
+  speaking sweetly to one another.
 faq:
-  - q: What is the meaning of Makar Sankranti?
-    a: >-
-      Sankranti means the sun's movement from one zodiac sign to the next. Makar
-      Sankranti is when it enters Makara, Capricorn, around mid-January,
-      beginning Uttarayana, the sun's six-month northward course. It is one of
-      the few Hindu festivals fixed by the solar calendar, so its date barely
-      moves. It is celebrated as Pongal, Lohri, Uttarayan and Bihu across India.
-  - q: Why do we eat til and jaggery on Sankranti?
-    a: >-
-      Sesame and jaggery are warming, energy-dense foods suited to the cold of
-      mid-winter, and both appear in Ayurvedic winter diets. In Maharashtra
-      people exchange til-gul saying 'til gul ghya, god god bola', take this
-      sweet and speak sweetly. So the food carries two ideas: care for the body
-      in winter and sweetness in relationships.
-  - q: What is the significance of Uttarayan?
-    a: >-
-      Uttarayana is the half of the year when the sun appears to move northward,
-      from Makar Sankranti to around the summer solstice. Tradition treats it as
-      auspicious; in the Mahabharata, Bhishma waits on his bed of arrows until
-      Uttarayana begins before leaving his body. In Gujarat, Uttarayan is
-      celebrated with kite flying across rooftops.
+- q: What is the meaning of Makar Sankranti?
+  a: Sankranti means the sun's movement from one zodiac sign to the next. Makar Sankranti is when it enters
+    Makara, Capricorn, around mid-January, beginning Uttarayana, the sun's six-month northward course.
+    It is one of the few Hindu festivals fixed by the solar calendar, so its date barely moves. It is
+    celebrated as Pongal, Lohri, Uttarayan and Bihu across India.
+- q: Why do we eat til and jaggery on Sankranti?
+  a: 'Sesame and jaggery are warming, energy-dense foods suited to the cold of mid-winter, and both appear
+    in Ayurvedic winter diets. In Maharashtra people exchange til-gul saying ''til gul ghya, god god bola'',
+    take this sweet and speak sweetly. So the food carries two ideas: care for the body in winter and
+    sweetness in relationships.'
+- q: What is the significance of Uttarayan?
+  a: Uttarayana is the half of the year when the sun appears to move northward, from Makar Sankranti to
+    around the summer solstice. Tradition treats it as auspicious; in the Mahabharata, Bhishma waits on
+    his bed of arrows until Uttarayana begins before leaving his body. In Gujarat, Uttarayan is celebrated
+    with kite flying across rooftops.
 readingTime: 4
 draft: false
 ---

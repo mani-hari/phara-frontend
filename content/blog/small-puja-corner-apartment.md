@@ -1,72 +1,55 @@
 ---
 title: A Small Puja Corner for an Apartment
-description: >-
-  A small puja corner for an apartment: choosing a shelf or a nook, what to
-  keep, what to leave out, and making a sacred space that fits a busy, modern
-  life.
+description: 'A small puja corner for an apartment: choosing a shelf or a nook, what to keep, what to
+  leave out, and making a sacred space that fits a busy, modern life.'
 author: manikandan
-publishedAt: '2026-11-01'
-updatedAt: '2026-11-01'
+publishedAt: '2026-12-01'
+updatedAt: '2026-12-01'
 cluster: puja-at-home
 primaryKeyword: small puja corner in an apartment
 secondaryKeywords:
-  - puja corner ideas for small spaces
-  - minimalist puja room
-  - puja shelf in living room
+- puja corner ideas for small spaces
+- minimalist puja room
+- puja shelf in living room
 tags:
-  - Puja at Home
-  - Small Spaces
-  - Home
+- Puja at Home
+- Small Spaces
+- Home
 audience: seeker
 image: /blog/small-puja-corner-apartment.webp
-imageAlt: >-
-  Minimalist wooden wall shelf with a brass lamp, bell, copper vessel and
-  jasmine in an apartment — small puja corner apartment | pariharaonline.com
-imagePrompt: >-
-  A minimalist wooden wall shelf in a bright modern apartment holding a single
-  small brass lamp, a bell, a copper vessel and a few jasmine flowers, soft
-  evening light.
+imageAlt: Minimalist wooden wall shelf with a brass lamp, bell, copper vessel and jasmine in an apartment
+  — small puja corner apartment | pariharaonline.com
+imagePrompt: A minimalist wooden wall shelf in a bright modern apartment holding a single small brass
+  lamp, a bell, a copper vessel and a few jasmine flowers, soft evening light.
 products:
   handles: []
   query: Ganesha
 related:
-  - sixteen-steps-of-puja
-  - five-minute-daily-puja
-  - homam-vs-puja
-  - vastu-for-apartments
+- sixteen-steps-of-puja
+- five-minute-daily-puja
+- homam-vs-puja
+- vastu-for-apartments
 takeaways:
-  - >-
-    A small puja corner in an apartment can be a single shelf or cabinet;
-    tradition prefers east or north-east, but a clean, respected spot matters
-    more than direction.
-  - >-
-    Keep it minimal: one image or idol, a lamp, a bell, a water vessel and fresh
-    flowers are enough for daily worship.
-  - >-
-    A cabinet with doors or a wall shelf works well in rentals and keeps the
-    space calm, clean and away from clutter.
+- A small puja corner in an apartment can be a single shelf or cabinet; tradition prefers east or north-east,
+  but a clean, respected spot matters more than direction.
+- 'Keep it minimal: one image or idol, a lamp, a bell, a water vessel and fresh flowers are enough for
+  daily worship.'
+- A cabinet with doors or a wall shelf works well in rentals and keeps the space calm, clean and away
+  from clutter.
 faq:
-  - q: Where should I put a puja corner in a small apartment?
-    a: >-
-      Tradition favours the north-east or east, facing the rising sun, but in a
-      small apartment choose a clean, quiet spot where you naturally pause, such
-      as a living-room shelf or a cabinet. Avoid bathrooms and under-stair
-      storage. A respected, uncluttered place you actually use is more important
-      than perfect direction.
-  - q: What items are needed for a minimalist puja room?
-    a: >-
-      A minimalist setup needs one image or small idol of your chosen deity, a
-      lamp, a small bell, a copper or brass water vessel, an incense holder and
-      a place for fresh flowers. Many people also keep a small plate for
-      offerings. Too many idols can make the space feel cluttered rather than
-      sacred.
-  - q: Is it okay to have a puja shelf in the living room?
-    a: >-
-      Yes. Many apartments have no separate room, and a shelf or wall cabinet in
-      the living room is common. Place it at or above eye level, keep it clean
-      and away from shoes, and consider doors you can close. Tradition cares
-      more about respect and regular attention than about having a dedicated
-      room.
+- q: Where should I put a puja corner in a small apartment?
+  a: Tradition favours the north-east or east, facing the rising sun, but in a small apartment choose
+    a clean, quiet spot where you naturally pause, such as a living-room shelf or a cabinet. Avoid bathrooms
+    and under-stair storage. A respected, uncluttered place you actually use is more important than perfect
+    direction.
+- q: What items are needed for a minimalist puja room?
+  a: A minimalist setup needs one image or small idol of your chosen deity, a lamp, a small bell, a copper
+    or brass water vessel, an incense holder and a place for fresh flowers. Many people also keep a small
+    plate for offerings. Too many idols can make the space feel cluttered rather than sacred.
+- q: Is it okay to have a puja shelf in the living room?
+  a: Yes. Many apartments have no separate room, and a shelf or wall cabinet in the living room is common.
+    Place it at or above eye level, keep it clean and away from shoes, and consider doors you can close.
+    Tradition cares more about respect and regular attention than about having a dedicated room.
 readingTime: 4
 draft: false
 ---

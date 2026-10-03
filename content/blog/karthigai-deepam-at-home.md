@@ -1,67 +1,54 @@
 ---
 title: 'Karthigai Deepam at Home: Lamps in Rows'
-description: >-
-  Karthigai Deepam at home: how to set out rows of agal vilakku lamps, prepare
-  pori and appam, and keep the lamps as a practice of attention in a small
-  space.
+description: 'Karthigai Deepam at home: how to set out rows of agal vilakku lamps, prepare pori and appam,
+  and keep the lamps as a practice of attention in a small space.'
 author: archana
-publishedAt: '2026-10-06'
-updatedAt: '2026-10-06'
+publishedAt: '2026-10-15'
+updatedAt: '2026-10-15'
 cluster: karthigai-deepam
 primaryKeyword: karthigai deepam at home
 secondaryKeywords:
-  - how to celebrate karthigai deepam at home
-  - agal vilakku lighting
-  - karthigai deepam pori
+- how to celebrate karthigai deepam at home
+- agal vilakku lighting
+- karthigai deepam pori
 tags:
-  - Karthigai Deepam
-  - Lamps
-  - Practice
+- Karthigai Deepam
+- Lamps
+- Practice
 audience: general
 image: /blog/karthigai-deepam-at-home.webp
-imageAlt: >-
-  Rows of clay agal vilakku lamps glowing along a windowsill and doorway at dusk
-  — karthigai deepam at home | pariharaonline.com
-imagePrompt: >-
-  Rows of small clay agal vilakku lamps glowing along a windowsill and doorway
-  of a modest home at dusk, a plate of pori urundai nearby, warm golden light,
-  no people.
+imageAlt: Rows of clay agal vilakku lamps glowing along a windowsill and doorway at dusk — karthigai deepam
+  at home | pariharaonline.com
+imagePrompt: Rows of small clay agal vilakku lamps glowing along a windowsill and doorway of a modest
+  home at dusk, a plate of pori urundai nearby, warm golden light, no people.
 products:
   handles: []
   query: Shiva
 related:
-  - tiruvannamalai-deepam-from-afar
-  - karthigai-deepam-significance
-  - skanda-sashti-fasting-guide
+- tiruvannamalai-deepam-from-afar
+- karthigai-deepam-significance
+- skanda-sashti-fasting-guide
 takeaways:
-  - >-
-    To celebrate Karthigai Deepam at home, light rows of clay agal vilakku lamps
-    at dusk, from the puja lamp outward to the front door and windows.
-  - >-
-    Lighting many lamps one by one works as a practice of attention; offerings
-    of pori urundai and nei appam complete the evening.
+- To celebrate Karthigai Deepam at home, light rows of clay agal vilakku lamps at dusk, from the puja
+  lamp outward to the front door and windows.
+- Lighting many lamps one by one works as a practice of attention; offerings of pori urundai and nei appam
+  complete the evening.
 faq:
-  - q: How do you celebrate Karthigai Deepam at home?
-    a: >-
-      Clean the home, draw a kolam at the entrance, and at dusk light clay agal
-      vilakku lamps filled with sesame oil or ghee, starting from the lamp in
-      your puja corner and moving to the threshold, steps and windows. Offer
-      pori urundai, nei appam or adai, say a simple prayer to Shiva or Murugan,
-      and let the lamps burn into the night.
-  - q: How many lamps should be lit on Karthigai Deepam?
-    a: >-
-      There is no fixed number. Many families light lamps in rows at every
-      doorway and window, often choosing odd numbers such as nine, twenty-seven
-      or more. Some light the lamps for three evenings, from the day before to
-      the day after. Light as many as you can watch safely; attention matters
-      more than the count.
-  - q: What is Karthigai pori and why is it offered?
-    a: >-
-      Pori is puffed rice, mixed with melted jaggery, cardamom and sometimes
-      coconut, then shaped into balls called pori urundai. It is the traditional
-      offering on Karthigai Deepam, alongside nei appam and vella adai. Puffed
-      rice is light and bursts open in heat, which many read as a symbol of the
-      self opening in the presence of the flame.
+- q: How do you celebrate Karthigai Deepam at home?
+  a: Clean the home, draw a kolam at the entrance, and at dusk light clay agal vilakku lamps filled with
+    sesame oil or ghee, starting from the lamp in your puja corner and moving to the threshold, steps
+    and windows. Offer pori urundai, nei appam or adai, say a simple prayer to Shiva or Murugan, and let
+    the lamps burn into the night.
+- q: How many lamps should be lit on Karthigai Deepam?
+  a: There is no fixed number. Many families light lamps in rows at every doorway and window, often choosing
+    odd numbers such as nine, twenty-seven or more. Some light the lamps for three evenings, from the
+    day before to the day after. Light as many as you can watch safely; attention matters more than the
+    count.
+- q: What is Karthigai pori and why is it offered?
+  a: Pori is puffed rice, mixed with melted jaggery, cardamom and sometimes coconut, then shaped into
+    balls called pori urundai. It is the traditional offering on Karthigai Deepam, alongside nei appam
+    and vella adai. Puffed rice is light and bursts open in heat, which many read as a symbol of the self
+    opening in the presence of the flame.
 readingTime: 4
 draft: false
 ---

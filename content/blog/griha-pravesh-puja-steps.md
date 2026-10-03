@@ -1,72 +1,55 @@
 ---
 title: Griha Pravesh Puja Steps for a New Home
-description: >-
-  Griha pravesh puja steps for a new home: Ganesha first, boiling milk, the
-  lamp, the threshold and the first meal, explained so any family can follow
-  them.
+description: 'Griha pravesh puja steps for a new home: Ganesha first, boiling milk, the lamp, the threshold
+  and the first meal, explained so any family can follow them.'
 author: archana
-publishedAt: '2026-10-31'
-updatedAt: '2026-10-31'
+publishedAt: '2026-10-11'
+updatedAt: '2026-10-11'
 cluster: griha-pravesh
 primaryKeyword: griha pravesh puja
 secondaryKeywords:
-  - griha pravesh puja at home steps
-  - boiling milk in new house meaning
-  - griha pravesh without priest
+- griha pravesh puja at home steps
+- boiling milk in new house meaning
+- griha pravesh without priest
 tags:
-  - Griha Pravesh
-  - New Home
-  - Puja at Home
+- Griha Pravesh
+- New Home
+- Puja at Home
 audience: general
 image: /blog/griha-pravesh-puja-steps.webp
-imageAlt: >-
-  Milk boiling over in a brass pot on a new stove beside a lit oil lamp and
-  marigolds — griha pravesh puja | pariharaonline.com
-imagePrompt: >-
-  Warm morning light on a brass pot of milk just beginning to boil over on a new
-  stove, a small oil lamp and marigolds beside it in a bright South-Indian
-  kitchen.
+imageAlt: Milk boiling over in a brass pot on a new stove beside a lit oil lamp and marigolds — griha
+  pravesh puja | pariharaonline.com
+imagePrompt: Warm morning light on a brass pot of milk just beginning to boil over on a new stove, a small
+  oil lamp and marigolds beside it in a bright South-Indian kitchen.
 products:
   handles:
-    - maha-ganapathy-homam
+  - maha-ganapathy-homam
 related:
-  - blessing-a-new-home-abroad
-  - why-ganesha-comes-first
-  - sixteen-steps-of-puja
+- blessing-a-new-home-abroad
+- why-ganesha-comes-first
+- sixteen-steps-of-puja
 takeaways:
-  - >-
-    A griha pravesh puja usually follows a simple order: pray to Ganesha, set a
-    kalasha at the entrance, step in with the right foot, light a lamp and boil
-    milk.
-  - >-
-    Letting the milk boil over in the new kitchen is a traditional sign of
-    abundance; many families simply do it with full attention and a short
-    prayer.
-  - >-
-    You can perform the core steps yourself; a priest or a Ganapathy homam adds
-    formal mantras but the intention of arriving mindfully matters most.
+- 'A griha pravesh puja usually follows a simple order: pray to Ganesha, set a kalasha at the entrance,
+  step in with the right foot, light a lamp and boil milk.'
+- Letting the milk boil over in the new kitchen is a traditional sign of abundance; many families simply
+  do it with full attention and a short prayer.
+- You can perform the core steps yourself; a priest or a Ganapathy homam adds formal mantras but the intention
+  of arriving mindfully matters most.
 faq:
-  - q: What are the basic steps of a griha pravesh puja at home?
-    a: >-
-      Most families begin with a prayer to Ganesha, place a water-filled kalasha
-      with mango leaves and a coconut at the entrance, enter with the right foot
-      first, light a lamp in the puja corner and boil milk on the new stove
-      until it overflows. A simple meal cooked and shared that day completes the
-      ritual in many homes.
-  - q: Why do we boil milk when entering a new house?
-    a: >-
-      Boiling milk until it spills over is a traditional symbol of prosperity
-      and plenty flowing through the household. It also marks the first use of
-      the kitchen, which many traditions treat as the heart of the home. The
-      milk is often made into a sweet dish and offered before the family eats it
-      together.
-  - q: Can I do griha pravesh without a priest?
-    a: >-
-      Yes. The essential acts, a Ganesha prayer, a lamp, the kalasha, entering
-      thoughtfully and boiling milk, can be done by the family. A priest adds
-      Vedic chanting and a formal sankalpam. Some families do the steps
-      themselves and book a Ganapathy homam at a temple so the formal part is
-      performed on their behalf.
+- q: What are the basic steps of a griha pravesh puja at home?
+  a: Most families begin with a prayer to Ganesha, place a water-filled kalasha with mango leaves and
+    a coconut at the entrance, enter with the right foot first, light a lamp in the puja corner and boil
+    milk on the new stove until it overflows. A simple meal cooked and shared that day completes the ritual
+    in many homes.
+- q: Why do we boil milk when entering a new house?
+  a: Boiling milk until it spills over is a traditional symbol of prosperity and plenty flowing through
+    the household. It also marks the first use of the kitchen, which many traditions treat as the heart
+    of the home. The milk is often made into a sweet dish and offered before the family eats it together.
+- q: Can I do griha pravesh without a priest?
+  a: Yes. The essential acts, a Ganesha prayer, a lamp, the kalasha, entering thoughtfully and boiling
+    milk, can be done by the family. A priest adds Vedic chanting and a formal sankalpam. Some families
+    do the steps themselves and book a Ganapathy homam at a temple so the formal part is performed on
+    their behalf.
 readingTime: 4
 draft: false
 ---

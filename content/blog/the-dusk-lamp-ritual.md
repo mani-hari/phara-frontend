@@ -1,68 +1,52 @@
 ---
 title: 'The Dusk Lamp: A Two-Minute Evening Ritual'
-description: >-
-  Lighting a lamp in the evening takes two minutes. How the old dusk ritual of
-  sandhya deepam can mark the end of a workday and bring a household back
-  together.
+description: Lighting a lamp in the evening takes two minutes. How the old dusk ritual of sandhya deepam
+  can mark the end of a workday and bring a household back together.
 author: manikandan
-publishedAt: '2026-10-26'
-updatedAt: '2026-10-26'
+publishedAt: '2027-07-04'
+updatedAt: '2027-07-04'
 cluster: why-light-lamps
 primaryKeyword: evening lamp ritual
 secondaryKeywords:
-  - sandhya deepam meaning
-  - best time to light lamp in evening
-  - evening prayer at home hindu
+- sandhya deepam meaning
+- best time to light lamp in evening
+- evening prayer at home hindu
 tags:
-  - Lamps
-  - Evening Ritual
-  - Family
+- Lamps
+- Evening Ritual
+- Family
 audience: seeker
 image: /blog/the-dusk-lamp-ritual.webp
-imageAlt: >-
-  Small brass lamp lit on a kitchen windowsill at sunset beside a closed laptop
-  — evening lamp ritual | pariharaonline.com
-imagePrompt: >-
-  A suburban kitchen window at sunset with a small brass lamp lit on the sill, a
-  laptop closed on the counter below, warm orange light.
+imageAlt: Small brass lamp lit on a kitchen windowsill at sunset beside a closed laptop — evening lamp
+  ritual | pariharaonline.com
+imagePrompt: A suburban kitchen window at sunset with a small brass lamp lit on the sill, a laptop closed
+  on the counter below, warm orange light.
 products:
   handles: []
   query: Deepam
 related:
-  - ghee-lamp-or-oil-lamp
-  - why-do-hindus-light-lamps
-  - karthigai-deepam-at-home
+- ghee-lamp-or-oil-lamp
+- why-do-hindus-light-lamps
+- karthigai-deepam-at-home
 takeaways:
-  - >-
-    Sandhya deepam is the lamp lit at dusk, a threshold time traditionally seen
-    as welcoming auspiciousness into the home.
-  - >-
-    Lit at the same time daily, it can mark the end of the workday and a shift
-    in the household's attention.
-  - >-
-    The ritual needs only two minutes: a lamp, a short verse and a pause
-    together.
+- Sandhya deepam is the lamp lit at dusk, a threshold time traditionally seen as welcoming auspiciousness
+  into the home.
+- Lit at the same time daily, it can mark the end of the workday and a shift in the household's attention.
+- 'The ritual needs only two minutes: a lamp, a short verse and a pause together.'
 faq:
-  - q: What is sandhya deepam?
-    a: >-
-      Sandhya deepam is the lamp lit at dusk, the sandhya or junction between
-      day and night. In many South Indian homes it is lit near the entrance or
-      altar as the sun sets, often with doors opened to welcome Lakshmi.
-      Families may recite a short prayer, and children are taught to pause and
-      fold their hands.
-  - q: What is the best time to light a lamp in the evening?
-    a: >-
-      Tradition suggests lighting it around sunset, the twilight period when day
-      turns to night. If your schedule makes this difficult, light it as soon as
-      you are home. Many people find that lighting it at a consistent time
-      matters more than exact timing, because the regularity is what turns it
-      into a habit and a boundary.
-  - q: What prayer do you say when lighting the evening lamp?
-    a: >-
-      A common verse is 'Shubham karoti kalyanam', which asks the light to bring
-      auspiciousness, health and prosperity and to remove harmful thoughts.
-      Others recite the deepa jyothi mantra or a name of a family deity. If you
-      know none of these, a simple thank you for the day is a sincere start.
+- q: What is sandhya deepam?
+  a: Sandhya deepam is the lamp lit at dusk, the sandhya or junction between day and night. In many South
+    Indian homes it is lit near the entrance or altar as the sun sets, often with doors opened to welcome
+    Lakshmi. Families may recite a short prayer, and children are taught to pause and fold their hands.
+- q: What is the best time to light a lamp in the evening?
+  a: Tradition suggests lighting it around sunset, the twilight period when day turns to night. If your
+    schedule makes this difficult, light it as soon as you are home. Many people find that lighting it
+    at a consistent time matters more than exact timing, because the regularity is what turns it into
+    a habit and a boundary.
+- q: What prayer do you say when lighting the evening lamp?
+  a: A common verse is 'Shubham karoti kalyanam', which asks the light to bring auspiciousness, health
+    and prosperity and to remove harmful thoughts. Others recite the deepa jyothi mantra or a name of
+    a family deity. If you know none of these, a simple thank you for the day is a sincere start.
 readingTime: 4
 draft: false
 ---

@@ -1,74 +1,59 @@
 ---
 title: 'Margazhi Month Meaning: Dawn, Kolam and Song'
-description: >-
-  Margazhi month significance: why the Tamil month from mid-December to
-  mid-January is kept for dawn prayer, big kolams, Tiruppavai and music.
+description: 'Margazhi month significance: why the Tamil month from mid-December to mid-January is kept
+  for dawn prayer, big kolams, Tiruppavai and music.'
 author: manikandan
-publishedAt: '2026-10-09'
-updatedAt: '2026-10-09'
+publishedAt: '2026-10-20'
+updatedAt: '2026-10-20'
 cluster: ekadashi-fasting
 primaryKeyword: margazhi month meaning
 secondaryKeywords:
-  - why margazhi is special
-  - tiruppavai in margazhi
-  - margazhi kolam tradition
+- why margazhi is special
+- tiruppavai in margazhi
+- margazhi kolam tradition
 tags:
-  - Margazhi
-  - Tamil Tradition
-  - Dawn
+- Margazhi
+- Tamil Tradition
+- Dawn
 audience: general
 image: /blog/margazhi-month-meaning.webp
-imageAlt: >-
-  Large kolam in a Tamil street before dawn with a yellow pumpkin flower and an
-  oil lamp on the doorstep — margazhi month meaning | pariharaonline.com
-imagePrompt: >-
-  Editorial photograph of a large intricate kolam in a dark Tamil street before
-  dawn, a yellow pumpkin flower at its centre, a single oil lamp glowing on the
-  doorstep, cool blue light meeting warm lamp glow.
+imageAlt: Large kolam in a Tamil street before dawn with a yellow pumpkin flower and an oil lamp on the
+  doorstep — margazhi month meaning | pariharaonline.com
+imagePrompt: Editorial photograph of a large intricate kolam in a dark Tamil street before dawn, a yellow
+  pumpkin flower at its centre, a single oil lamp glowing on the doorstep, cool blue light meeting warm
+  lamp glow.
 products:
   handles: []
   query: Vishnu
 related:
-  - vaikunta-ekadashi-significance
-  - ekadashi-fasting-rules
-  - meditation-vs-puja
+- vaikunta-ekadashi-significance
+- ekadashi-fasting-rules
+- meditation-vs-puja
 takeaways:
-  - >-
-    Margazhi is the Tamil month from mid-December to mid-January, dedicated to
-    early-morning prayer, large kolams and devotional song.
-  - >-
-    In the Bhagavad Gita, Krishna names this month, Margashirsha, as his own
-    among months.
-  - 'Andal''s Tiruppavai, thirty verses, is sung one each dawn.'
+- Margazhi is the Tamil month from mid-December to mid-January, dedicated to early-morning prayer, large
+  kolams and devotional song.
+- In the Bhagavad Gita, Krishna names this month, Margashirsha, as his own among months.
+- Andal's Tiruppavai, thirty verses, is sung one each dawn.
 faq:
-  - q: Why is Margazhi month considered special?
-    a: >-
-      Margazhi, running roughly from mid-December to mid-January, is said to be
-      the pre-dawn hour of the gods, a year of human time equalling one day for
-      them. Krishna says in the Bhagavad Gita that among months he is
-      Margashirsha. So the month is set aside for dawn worship, bhajans, kolams
-      and temple visits rather than personal celebrations.
-  - q: What is Tiruppavai and why is it sung in Margazhi?
-    a: >-
-      Tiruppavai is a set of thirty Tamil verses by the poet-saint Andal, who
-      imagined herself as a cowherd girl waking friends to worship Krishna at
-      dawn during Margazhi. Devotees sing one verse each morning of the month.
-      Vishnu temples recite it daily, and it is part of many homes' morning
-      routine.
-  - q: Why are weddings not held in Margazhi?
-    a: >-
-      Tradition reserves Margazhi for devotion and spiritual practice, so
-      personal ceremonies like weddings and housewarmings are usually postponed
-      until Thai, the next Tamil month, which begins with Pongal. The saying
-      'Thai pirandhal vazhi pirakkum', when Thai is born a way opens, reflects
-      that expectation of new beginnings after the month of prayer.
-  - q: What is the Margazhi kolam tradition?
-    a: >-
-      During Margazhi, women in Tamil homes draw especially large and elaborate
-      kolams at dawn, often decorated with pumpkin flowers and cow-dung balls.
-      Streets become galleries of designs, and neighbourhoods sometimes hold
-      friendly competitions. The practice combines early rising, devotion and
-      art, welcoming the goddess and neighbours through the coldest weeks.
+- q: Why is Margazhi month considered special?
+  a: Margazhi, running roughly from mid-December to mid-January, is said to be the pre-dawn hour of the
+    gods, a year of human time equalling one day for them. Krishna says in the Bhagavad Gita that among
+    months he is Margashirsha. So the month is set aside for dawn worship, bhajans, kolams and temple
+    visits rather than personal celebrations.
+- q: What is Tiruppavai and why is it sung in Margazhi?
+  a: Tiruppavai is a set of thirty Tamil verses by the poet-saint Andal, who imagined herself as a cowherd
+    girl waking friends to worship Krishna at dawn during Margazhi. Devotees sing one verse each morning
+    of the month. Vishnu temples recite it daily, and it is part of many homes' morning routine.
+- q: Why are weddings not held in Margazhi?
+  a: Tradition reserves Margazhi for devotion and spiritual practice, so personal ceremonies like weddings
+    and housewarmings are usually postponed until Thai, the next Tamil month, which begins with Pongal.
+    The saying 'Thai pirandhal vazhi pirakkum', when Thai is born a way opens, reflects that expectation
+    of new beginnings after the month of prayer.
+- q: What is the Margazhi kolam tradition?
+  a: During Margazhi, women in Tamil homes draw especially large and elaborate kolams at dawn, often decorated
+    with pumpkin flowers and cow-dung balls. Streets become galleries of designs, and neighbourhoods sometimes
+    hold friendly competitions. The practice combines early rising, devotion and art, welcoming the goddess
+    and neighbours through the coldest weeks.
 readingTime: 4
 draft: false
 ---

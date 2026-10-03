@@ -1,78 +1,59 @@
 ---
 title: What Is a Muhurtham? Choosing an Auspicious Time
-description: >-
-  What is a muhurtham? How an auspicious time is chosen for weddings,
-  housewarmings and new starts in Jyotish, and what the practice says about
-  beginnings.
+description: What is a muhurtham? How an auspicious time is chosen for weddings, housewarmings and new
+  starts in Jyotish, and what the practice says about beginnings.
 author: hariharan
-publishedAt: '2026-11-04'
-updatedAt: '2026-11-04'
+publishedAt: '2026-10-22'
+updatedAt: '2026-10-22'
 cluster: astrology-real
 primaryKeyword: what is muhurtham
 secondaryKeywords:
-  - how is muhurtham calculated
-  - auspicious time for wedding
-  - muhurat meaning
+- how is muhurtham calculated
+- auspicious time for wedding
+- muhurat meaning
 tags:
-  - Muhurtham
-  - Astrology
-  - Beginnings
+- Muhurtham
+- Astrology
+- Beginnings
 audience: seeker
 image: /blog/what-is-a-muhurtham.webp
-imageAlt: >-
-  Brass water clock bowl beside a lamp and jasmine garlands in a wedding hall
-  before dawn — what is muhurtham | pariharaonline.com
-imagePrompt: >-
-  Painterly scene of an old brass water clock bowl floating in a larger vessel
-  beside a lamp and jasmine garlands at a South Indian wedding mandapam before
-  dawn, warm glow.
+imageAlt: Brass water clock bowl beside a lamp and jasmine garlands in a wedding hall before dawn — what
+  is muhurtham | pariharaonline.com
+imagePrompt: Painterly scene of an old brass water clock bowl floating in a larger vessel beside a lamp
+  and jasmine garlands at a South Indian wedding mandapam before dawn, warm glow.
 products:
   handles:
-    - ask-our-astrologer
+  - ask-our-astrologer
 related:
-  - is-astrology-real
-  - vedic-vs-western-astrology
-  - shani-sade-sati-explained
+- is-astrology-real
+- vedic-vs-western-astrology
+- shani-sade-sati-explained
 takeaways:
-  - >-
-    A muhurtham is an auspicious time chosen from the Hindu almanac for starting
-    something important, such as a wedding, housewarming or new business.
-  - >-
-    It is worked out from the lunar day, birth star, weekday and the charts of
-    the people involved.
-  - >-
-    Tradition treats a good muhurtham as support for a beginning, not a
-    guarantee of its outcome.
+- A muhurtham is an auspicious time chosen from the Hindu almanac for starting something important, such
+  as a wedding, housewarming or new business.
+- It is worked out from the lunar day, birth star, weekday and the charts of the people involved.
+- Tradition treats a good muhurtham as support for a beginning, not a guarantee of its outcome.
 faq:
-  - q: What does muhurtham mean?
-    a: >-
-      Strictly, a muhurtham is a unit of time of about forty-eight minutes, one
-      of thirty in a day. In common use it means an auspicious time chosen for
-      an important event, such as a wedding, griha pravesh, naming ceremony or
-      business launch. The chosen moment is meant to align the beginning with
-      favourable conditions described in Jyotish.
-  - q: How is a muhurtham calculated for a wedding?
-    a: >-
-      An astrologer studies the panchangam for suitable tithis, nakshatras and
-      weekdays, rules out inauspicious periods and months, then checks the
-      bride's and groom's birth charts for compatibility with the chosen day.
-      The final muhurtham is a specific window, often early morning. Because
-      many conditions must align, good wedding dates can cluster in certain
-      months.
-  - q: What is Abhijit muhurtham?
-    a: >-
-      Abhijit muhurtham is the period around local midday, roughly twenty-four
-      minutes before and after the Sun reaches its highest point. Tradition
-      considers it broadly auspicious for most beginnings, and it is often
-      suggested when no other suitable time can be found. Many sources exclude
-      Wednesday. A panchangam for your city will show the exact window.
-  - q: Is it necessary to follow a muhurtham?
-    a: >-
-      It is a tradition, not a requirement. Many families value it because
-      choosing a time deliberately brings attention and blessing to a beginning.
-      Others, especially abroad where dates depend on venues and leave, pick a
-      practical day and offer prayers. Priests often say that a sincere prayer
-      before starting matters as much as the clock.
+- q: What does muhurtham mean?
+  a: Strictly, a muhurtham is a unit of time of about forty-eight minutes, one of thirty in a day. In
+    common use it means an auspicious time chosen for an important event, such as a wedding, griha pravesh,
+    naming ceremony or business launch. The chosen moment is meant to align the beginning with favourable
+    conditions described in Jyotish.
+- q: How is a muhurtham calculated for a wedding?
+  a: An astrologer studies the panchangam for suitable tithis, nakshatras and weekdays, rules out inauspicious
+    periods and months, then checks the bride's and groom's birth charts for compatibility with the chosen
+    day. The final muhurtham is a specific window, often early morning. Because many conditions must align,
+    good wedding dates can cluster in certain months.
+- q: What is Abhijit muhurtham?
+  a: Abhijit muhurtham is the period around local midday, roughly twenty-four minutes before and after
+    the Sun reaches its highest point. Tradition considers it broadly auspicious for most beginnings,
+    and it is often suggested when no other suitable time can be found. Many sources exclude Wednesday.
+    A panchangam for your city will show the exact window.
+- q: Is it necessary to follow a muhurtham?
+  a: It is a tradition, not a requirement. Many families value it because choosing a time deliberately
+    brings attention and blessing to a beginning. Others, especially abroad where dates depend on venues
+    and leave, pick a practical day and offer prayers. Priests often say that a sincere prayer before
+    starting matters as much as the clock.
 readingTime: 4
 draft: false
 ---

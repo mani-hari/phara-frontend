@@ -1,71 +1,55 @@
 ---
 title: 'Vaikunta Ekadashi Significance: The Gate That Opens'
-description: >-
-  Vaikunta Ekadashi significance: why the northern gate of Vishnu temples opens,
-  the story of Madhu and Kaitabha, and what the fast and night vigil really
-  mean.
+description: 'Vaikunta Ekadashi significance: why the northern gate of Vishnu temples opens, the story
+  of Madhu and Kaitabha, and what the fast and night vigil really mean.'
 author: hariharan
-publishedAt: '2026-10-12'
-updatedAt: '2026-10-12'
+publishedAt: '2026-10-21'
+updatedAt: '2026-10-21'
 cluster: ekadashi-fasting
 primaryKeyword: vaikunta ekadashi significance
 secondaryKeywords:
-  - vaikunta dwaram meaning
-  - vaikunta ekadashi story
-  - why fast on vaikunta ekadashi
+- vaikunta dwaram meaning
+- vaikunta ekadashi story
+- why fast on vaikunta ekadashi
 tags:
-  - Vaikunta Ekadashi
-  - Vishnu
-  - Festivals
+- Vaikunta Ekadashi
+- Vishnu
+- Festivals
 audience: general
 image: /blog/vaikunta-ekadashi-significance.webp
-imageAlt: >-
-  Carved temple gateway at dawn with oil lamps lining the path and tulsi
-  garlands on the stone frame — vaikunta ekadashi significance |
-  pariharaonline.com
-imagePrompt: >-
-  A tall carved temple doorway in a Srirangam-style gopuram at dawn, lamps
-  lining the path, tulsi garlands draped over the stone frame.
+imageAlt: Carved temple gateway at dawn with oil lamps lining the path and tulsi garlands on the stone
+  frame — vaikunta ekadashi significance | pariharaonline.com
+imagePrompt: A tall carved temple doorway in a Srirangam-style gopuram at dawn, lamps lining the path,
+  tulsi garlands draped over the stone frame.
 products:
   handles:
-    - sudarsana-homam
+  - sudarsana-homam
   query: Vishnu
 related:
-  - ekadashi-fasting-rules
-  - fasting-and-focus
-  - rituals-for-anxious-days
+- ekadashi-fasting-rules
+- fasting-and-focus
+- rituals-for-anxious-days
 takeaways:
-  - >-
-    Vaikunta Ekadashi falls on the eleventh day of the waxing moon in Margazhi,
-    usually December or January, and is Vishnu's most important Ekadashi.
-  - >-
-    Vishnu temples open the northern Vaikunta Dwaram, and passing through it is
-    believed to symbolise entering Vishnu's abode.
-  - >-
-    Devotees fast and keep vigil; the gate is often read as an inner threshold
-    as much as a temple door.
+- Vaikunta Ekadashi falls on the eleventh day of the waxing moon in Margazhi, usually December or January,
+  and is Vishnu's most important Ekadashi.
+- Vishnu temples open the northern Vaikunta Dwaram, and passing through it is believed to symbolise entering
+  Vishnu's abode.
+- Devotees fast and keep vigil; the gate is often read as an inner threshold as much as a temple door.
 faq:
-  - q: What is Vaikunta Dwaram?
-    a: >-
-      Vaikunta Dwaram is the northern gate of Vishnu temples, opened specially
-      on Vaikunta Ekadashi. It symbolises the entrance to Vaikunta, Vishnu's
-      abode. Temples such as Srirangam and Tirupati see large crowds passing
-      through it at dawn. Devotees believe walking through the gate with
-      devotion brings Vishnu's grace and spiritual merit.
-  - q: What is the story of Vaikunta Ekadashi?
-    a: >-
-      One Puranic account tells of the demons Madhu and Kaitabha, who were
-      defeated by Vishnu but granted a boon. They asked that anyone who hears
-      their story and sees Vishnu emerge through the northern gate on this
-      Ekadashi reach Vaikunta. Another tells of the goddess Ekadashi emerging
-      from Vishnu to defeat the demon Mura.
-  - q: Why do people fast on Vaikunta Ekadashi?
-    a: >-
-      Fasting on Ekadashi is a long Vaishnava tradition, and Vaikunta Ekadashi
-      is considered the most important of the year. Many avoid grains entirely,
-      some take only water or fruit, and many keep awake at night singing or
-      reading scripture. The fast is broken the next morning within a set time
-      called parana.
+- q: What is Vaikunta Dwaram?
+  a: Vaikunta Dwaram is the northern gate of Vishnu temples, opened specially on Vaikunta Ekadashi. It
+    symbolises the entrance to Vaikunta, Vishnu's abode. Temples such as Srirangam and Tirupati see large
+    crowds passing through it at dawn. Devotees believe walking through the gate with devotion brings
+    Vishnu's grace and spiritual merit.
+- q: What is the story of Vaikunta Ekadashi?
+  a: One Puranic account tells of the demons Madhu and Kaitabha, who were defeated by Vishnu but granted
+    a boon. They asked that anyone who hears their story and sees Vishnu emerge through the northern gate
+    on this Ekadashi reach Vaikunta. Another tells of the goddess Ekadashi emerging from Vishnu to defeat
+    the demon Mura.
+- q: Why do people fast on Vaikunta Ekadashi?
+  a: Fasting on Ekadashi is a long Vaishnava tradition, and Vaikunta Ekadashi is considered the most important
+    of the year. Many avoid grains entirely, some take only water or fruit, and many keep awake at night
+    singing or reading scripture. The fast is broken the next morning within a set time called parana.
 readingTime: 4
 draft: false
 ---

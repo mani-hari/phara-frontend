@@ -1,66 +1,53 @@
 ---
 title: 'Live Puja Online: Joining a Temple Puja From Afar'
-description: >-
-  Joining a live puja online from another time zone: how to sit, what to keep
-  beside you, and where to put your attention when the temple is far away.
+description: 'Joining a live puja online from another time zone: how to sit, what to keep beside you,
+  and where to put your attention when the temple is far away.'
 author: archana
-publishedAt: '2026-10-11'
-updatedAt: '2026-10-11'
+publishedAt: '2026-11-12'
+updatedAt: '2026-11-12'
 cluster: online-puja-usa
 primaryKeyword: live puja online
 secondaryKeywords:
-  - watch temple puja live online
-  - how to participate in online puja
-  - live homam streaming from india
+- watch temple puja live online
+- how to participate in online puja
+- live homam streaming from india
 tags:
-  - Online Puja
-  - NRI Life
-  - Practice
+- Online Puja
+- NRI Life
+- Practice
 audience: nri-us
 image: /blog/joining-a-puja-across-time-zones.webp
-imageAlt: >-
-  A person seated before a small lamp and a phone showing a live temple puja at
-  night — live puja online | pariharaonline.com
-imagePrompt: >-
-  A person seated cross-legged on a mat in a dim apartment at night, a small oil
-  lamp and a copper cup of water beside a phone propped against a wall showing a
-  glowing temple scene, warm light, editorial photograph.
+imageAlt: A person seated before a small lamp and a phone showing a live temple puja at night — live puja
+  online | pariharaonline.com
+imagePrompt: A person seated cross-legged on a mat in a dim apartment at night, a small oil lamp and a
+  copper cup of water beside a phone propped against a wall showing a glowing temple scene, warm light,
+  editorial photograph.
 products:
   handles:
-    - maha-ganapathy-homam
+  - maha-ganapathy-homam
 related:
-  - booking-a-puja-for-parents
-  - online-puja-from-usa-explained
-  - what-to-do-with-prasadam
+- booking-a-puja-for-parents
+- online-puja-from-usa-explained
+- what-to-do-with-prasadam
 takeaways:
-  - >-
-    To join a live puja from abroad, prepare as if you were at the temple: wash,
-    sit down, light a lamp, and silence other screens.
-  - >-
-    If the live hour is impractical, watching the recording at a calm time with
-    full attention is a sincere way to participate.
+- 'To join a live puja from abroad, prepare as if you were at the temple: wash, sit down, light a lamp,
+  and silence other screens.'
+- If the live hour is impractical, watching the recording at a calm time with full attention is a sincere
+  way to participate.
 faq:
-  - q: How do I participate in an online puja from home?
-    a: >-
-      Treat the screen as a window, not a video. Wash your hands and face, sit
-      on a mat facing the screen, and keep a lamp, water and a flower beside
-      you. Repeat the deity's name quietly while the priest chants, fold your
-      hands during the aarti, and offer your flower at the end. Afterwards, sit
-      quietly for a few minutes.
-  - q: Is it okay to watch the puja recording later instead of live?
-    a: >-
-      Yes. The ritual is complete when the priest performs it with your
-      sankalpam, whether or not you watch. Many people in the US cannot be awake
-      at the IST hour. Watching later with the same preparation, a lamp lit and
-      attention undivided, lets you share in it. What matters is presence, not
-      the timestamp.
-  - q: Can I light a lamp at home during a live temple puja?
-    a: >-
-      Yes, and many families find it the most meaningful part. Lighting your own
-      lamp as the priest lights the temple lamps connects your home altar with
-      the temple. Use a stable holder away from curtains, keep it attended, and
-      let children help. It turns watching into doing, which helps the mind
-      settle.
+- q: How do I participate in an online puja from home?
+  a: Treat the screen as a window, not a video. Wash your hands and face, sit on a mat facing the screen,
+    and keep a lamp, water and a flower beside you. Repeat the deity's name quietly while the priest chants,
+    fold your hands during the aarti, and offer your flower at the end. Afterwards, sit quietly for a
+    few minutes.
+- q: Is it okay to watch the puja recording later instead of live?
+  a: Yes. The ritual is complete when the priest performs it with your sankalpam, whether or not you watch.
+    Many people in the US cannot be awake at the IST hour. Watching later with the same preparation, a
+    lamp lit and attention undivided, lets you share in it. What matters is presence, not the timestamp.
+- q: Can I light a lamp at home during a live temple puja?
+  a: Yes, and many families find it the most meaningful part. Lighting your own lamp as the priest lights
+    the temple lamps connects your home altar with the temple. Use a stable holder away from curtains,
+    keep it attended, and let children help. It turns watching into doing, which helps the mind settle.
 readingTime: 4
 draft: false
 ---

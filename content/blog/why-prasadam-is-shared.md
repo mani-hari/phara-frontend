@@ -1,66 +1,54 @@
 ---
 title: Why Is Prasad Shared? The Meaning of Prasadam
-description: >-
-  Prasadam meaning, told through stories: why food offered to God returns as
-  grace, why it is shared with everyone, and why it is never refused.
+description: 'Prasadam meaning, told through stories: why food offered to God returns as grace, why it
+  is shared with everyone, and why it is never refused.'
 author: hariharan
-publishedAt: '2026-10-17'
-updatedAt: '2026-10-17'
+publishedAt: '2026-11-27'
+updatedAt: '2026-11-27'
 cluster: prasadam-usa
 primaryKeyword: why is prasad shared
 secondaryKeywords:
-  - what is prasad in hinduism
-  - why can't you refuse prasad
-  - prasad vs naivedyam
+- what is prasad in hinduism
+- why can't you refuse prasad
+- prasad vs naivedyam
 tags:
-  - Prasadam
-  - Mythology
-  - Hindu Traditions
+- Prasadam
+- Mythology
+- Hindu Traditions
 audience: nri-us
 image: /blog/why-prasadam-is-shared.webp
-imageAlt: >-
-  Many hands receiving sweet pongal prasadam from a brass vessel in a temple
-  corridor — why is prasad shared | pariharaonline.com
-imagePrompt: >-
-  A long line of hands of different ages receiving spoonfuls of sweet pongal
-  from a brass vessel in a stone temple corridor, warm lamp light, painterly
-  scene with no faces shown.
+imageAlt: Many hands receiving sweet pongal prasadam from a brass vessel in a temple corridor — why is
+  prasad shared | pariharaonline.com
+imagePrompt: A long line of hands of different ages receiving spoonfuls of sweet pongal from a brass vessel
+  in a stone temple corridor, warm lamp light, painterly scene with no faces shown.
 products:
   handles:
-    - palani-panchamritham
+  - palani-panchamritham
 related:
-  - prasadam-delivery-to-the-usa
-  - what-to-do-with-prasadam
-  - what-is-sankalpam
+- prasadam-delivery-to-the-usa
+- what-to-do-with-prasadam
+- what-is-sankalpam
 takeaways:
-  - >-
-    Prasadam is food or other offerings that have been offered to the deity and
-    returned to devotees as grace; before offering it is called naivedyam.
-  - >-
-    Prasadam is shared with everyone equally because, in tradition, grace does
-    not check status; that is why it is never refused.
+- Prasadam is food or other offerings that have been offered to the deity and returned to devotees as
+  grace; before offering it is called naivedyam.
+- Prasadam is shared with everyone equally because, in tradition, grace does not check status; that is
+  why it is never refused.
 faq:
-  - q: What is prasad in Hinduism?
-    a: >-
-      Prasad, or prasadam, means grace. It is food, flowers, ash or other items
-      that are first offered to the deity during worship and then returned to
-      devotees. Before the offering it is called naivedyam; after, it becomes
-      prasadam. Eating it is understood as receiving the deity's blessing, which
-      is why it is handled with care.
-  - q: Why should you not refuse prasad?
-    a: >-
-      In Hindu tradition, refusing prasadam is seen as refusing the blessing and
-      the relationship it represents, not just the food. If you cannot eat it
-      for health or dietary reasons, the respectful practice is to accept it
-      with the right hand, touch it to your forehead, and quietly give it to
-      someone else or return it to nature later.
-  - q: What is the difference between prasad and naivedyam?
-    a: >-
-      Naivedyam is the food offered to the deity during puja, usually prepared
-      with special cleanliness and not tasted beforehand. Once offered, it is
-      considered accepted and blessed, and becomes prasadam, which is then
-      distributed. The food is the same; its meaning changes through the act of
-      offering, which is the heart of the idea.
+- q: What is prasad in Hinduism?
+  a: Prasad, or prasadam, means grace. It is food, flowers, ash or other items that are first offered
+    to the deity during worship and then returned to devotees. Before the offering it is called naivedyam;
+    after, it becomes prasadam. Eating it is understood as receiving the deity's blessing, which is why
+    it is handled with care.
+- q: Why should you not refuse prasad?
+  a: In Hindu tradition, refusing prasadam is seen as refusing the blessing and the relationship it represents,
+    not just the food. If you cannot eat it for health or dietary reasons, the respectful practice is
+    to accept it with the right hand, touch it to your forehead, and quietly give it to someone else or
+    return it to nature later.
+- q: What is the difference between prasad and naivedyam?
+  a: Naivedyam is the food offered to the deity during puja, usually prepared with special cleanliness
+    and not tasted beforehand. Once offered, it is considered accepted and blessed, and becomes prasadam,
+    which is then distributed. The food is the same; its meaning changes through the act of offering,
+    which is the heart of the idea.
 readingTime: 5
 draft: false
 ---

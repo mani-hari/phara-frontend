@@ -1,66 +1,55 @@
 ---
-title: 'How to Celebrate Pongal in the USA, Boil-Over and All'
-description: >-
-  How to celebrate Pongal in the USA from a small kitchen: the boil-over moment
-  on an electric stove, a kolam by the door, sugarcane hunting, and calls home.
+title: How to Celebrate Pongal in the USA, Boil-Over and All
+description: 'How to celebrate Pongal in the USA from a small kitchen: the boil-over moment on an electric
+  stove, a kolam by the door, sugarcane hunting, and calls home.'
 author: manikandan
-publishedAt: '2026-10-10'
-updatedAt: '2026-10-10'
+publishedAt: '2026-10-25'
+updatedAt: '2026-10-25'
 cluster: pongal-sankranti
 primaryKeyword: how to celebrate pongal in usa
 secondaryKeywords:
-  - sakkarai pongal recipe for festival
-  - pongal celebration in america
-  - how to do pongal pooja at home
+- sakkarai pongal recipe for festival
+- pongal celebration in america
+- how to do pongal pooja at home
 tags:
-  - Pongal
-  - NRI Life
-  - Festivals
+- Pongal
+- NRI Life
+- Festivals
 audience: nri-us
 image: /blog/making-pongal-in-a-us-kitchen.webp
-imageAlt: >-
-  Pot of milk boiling over on an electric stove with turmeric leaves, a chalk
-  kolam at the door — how to celebrate pongal in usa | pariharaonline.com
-imagePrompt: >-
-  A steel pot of milk bubbling over on an electric stove in a small American
-  kitchen, turmeric leaves tied around its neck, a chalk kolam visible on the
-  porch through the open door, soft winter morning light.
+imageAlt: Pot of milk boiling over on an electric stove with turmeric leaves, a chalk kolam at the door
+  — how to celebrate pongal in usa | pariharaonline.com
+imagePrompt: A steel pot of milk bubbling over on an electric stove in a small American kitchen, turmeric
+  leaves tied around its neck, a chalk kolam visible on the porch through the open door, soft winter morning
+  light.
 products:
   handles:
-    - annadhanam-donate-food-to-homeless-children
+  - annadhanam-donate-food-to-homeless-children
 related:
-  - makar-sankranti-meaning
-  - why-is-pongal-celebrated
-  - festival-rituals-for-kids
+- makar-sankranti-meaning
+- why-is-pongal-celebrated
+- festival-rituals-for-kids
 takeaways:
-  - >-
-    You can celebrate Pongal in the USA with a pot of new rice and milk on the
-    stove, boiled until it overflows, and the family shouting 'Pongalo Pongal'.
-  - >-
-    A chalk kolam at the door, sakkarai pongal offered to the sun, and a call to
-    grandparents carry most of the festival's meaning.
+- You can celebrate Pongal in the USA with a pot of new rice and milk on the stove, boiled until it overflows,
+  and the family shouting 'Pongalo Pongal'.
+- A chalk kolam at the door, sakkarai pongal offered to the sun, and a call to grandparents carry most
+  of the festival's meaning.
 faq:
-  - q: How can I celebrate Pongal at home in the USA?
-    a: >-
-      Clean the kitchen, draw a kolam with chalk or rice flour at the door, and
-      cook new rice in milk in a pot tied with turmeric leaves if you can find
-      them. When it boils over, everyone says 'Pongalo Pongal'. Offer sakkarai
-      pongal to the sun, facing east if possible, then share it. Local Tamil
-      associations often hold community Pongal events too.
-  - q: Can I do Pongal pooja without a priest?
-    a: >-
-      Yes. Pongal has always been a household festival led by the family. Set up
-      a simple offering to Surya with the pongal, sugarcane or a banana,
-      turmeric, a lamp and some flowers. Say a prayer of thanks for food, family
-      and work, in Tamil, English or any language. The overflowing pot is the
-      heart of the ritual, not a priest's presence.
-  - q: What is the difference between ven pongal and sakkarai pongal?
-    a: >-
-      Ven pongal is savoury, rice and moong dal cooked soft with ghee, black
-      pepper, cumin, ginger and cashews, often eaten for breakfast. Sakkarai
-      pongal is sweet, made with rice, moong dal, jaggery, ghee, cardamom and
-      cashews. On Thai Pongal day the sweet version is traditionally cooked in
-      the new pot and offered to the sun.
+- q: How can I celebrate Pongal at home in the USA?
+  a: Clean the kitchen, draw a kolam with chalk or rice flour at the door, and cook new rice in milk in
+    a pot tied with turmeric leaves if you can find them. When it boils over, everyone says 'Pongalo Pongal'.
+    Offer sakkarai pongal to the sun, facing east if possible, then share it. Local Tamil associations
+    often hold community Pongal events too.
+- q: Can I do Pongal pooja without a priest?
+  a: Yes. Pongal has always been a household festival led by the family. Set up a simple offering to Surya
+    with the pongal, sugarcane or a banana, turmeric, a lamp and some flowers. Say a prayer of thanks
+    for food, family and work, in Tamil, English or any language. The overflowing pot is the heart of
+    the ritual, not a priest's presence.
+- q: What is the difference between ven pongal and sakkarai pongal?
+  a: Ven pongal is savoury, rice and moong dal cooked soft with ghee, black pepper, cumin, ginger and
+    cashews, often eaten for breakfast. Sakkarai pongal is sweet, made with rice, moong dal, jaggery,
+    ghee, cardamom and cashews. On Thai Pongal day the sweet version is traditionally cooked in the new
+    pot and offered to the sun.
 readingTime: 4
 draft: false
 ---

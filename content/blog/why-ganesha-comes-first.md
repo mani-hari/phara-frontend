@@ -1,72 +1,57 @@
 ---
 title: Why Ganesha Is Worshipped First at Every Beginning
-description: >-
-  Why Ganesha is worshipped first at every beginning: the story of the race
-  around the world, what the elephant head means, and why doorways need a
-  guardian.
+description: 'Why Ganesha is worshipped first at every beginning: the story of the race around the world,
+  what the elephant head means, and why doorways need a guardian.'
 author: hariharan
-publishedAt: '2026-10-31'
-updatedAt: '2026-10-31'
+publishedAt: '2026-10-16'
+updatedAt: '2026-10-16'
 cluster: griha-pravesh
 primaryKeyword: why ganesha is worshipped first
 secondaryKeywords:
-  - why is ganesha worshipped first story
-  - ganesha remover of obstacles meaning
-  - ganesha race around the world story
+- why is ganesha worshipped first story
+- ganesha remover of obstacles meaning
+- ganesha race around the world story
 tags:
-  - Ganesha
-  - Mythology
-  - New Beginnings
+- Ganesha
+- Mythology
+- New Beginnings
 audience: general
 image: /blog/why-ganesha-comes-first.webp
-imageAlt: >-
-  Carved temple doorway at golden hour with a small niche, durva grass and a lit
-  oil lamp — why ganesha is worshipped first | pariharaonline.com
-imagePrompt: >-
-  An old carved stone doorway of a South-Indian temple at golden hour, a small
-  Ganesha niche seen from a distance with fresh durva grass and a flickering oil
-  lamp.
+imageAlt: Carved temple doorway at golden hour with a small niche, durva grass and a lit oil lamp — why
+  ganesha is worshipped first | pariharaonline.com
+imagePrompt: An old carved stone doorway of a South-Indian temple at golden hour, a small Ganesha niche
+  seen from a distance with fresh durva grass and a flickering oil lamp.
 products:
   handles:
-    - maha-ganapathy-homam
-    - brahmavidyaganapati
+  - maha-ganapathy-homam
+  - brahmavidyaganapati
 related:
-  - griha-pravesh-puja-steps
-  - blessing-a-new-home-abroad
-  - five-minute-daily-puja
-  - namakaranam-in-america
+- griha-pravesh-puja-steps
+- blessing-a-new-home-abroad
+- five-minute-daily-puja
+- namakaranam-in-america
 takeaways:
-  - >-
-    Ganesha is worshipped first because, in the Puranic story, Shiva granted him
-    that honour after he circled his parents instead of the world.
-  - >-
-    As guardian of the threshold, Ganesha is seen as the one who places and
-    removes obstacles, so every new beginning starts with him.
-  - >-
-    The Ganesha prayer works as a deliberate pause before action, which is why
-    it opens weddings, homams, housewarmings and even a new school year.
+- Ganesha is worshipped first because, in the Puranic story, Shiva granted him that honour after he circled
+  his parents instead of the world.
+- As guardian of the threshold, Ganesha is seen as the one who places and removes obstacles, so every
+  new beginning starts with him.
+- The Ganesha prayer works as a deliberate pause before action, which is why it opens weddings, homams,
+  housewarmings and even a new school year.
 faq:
-  - q: Why is Ganesha worshipped first before other gods?
-    a: >-
-      In the Puranic telling, Shiva and Parvati set their sons a race around the
-      world. Kartikeya flew off on his peacock while Ganesha simply walked
-      around his parents, saying they were his world. Pleased, Shiva decreed
-      that Ganesha would be worshipped before every other deity at the start of
-      any ritual or undertaking.
-  - q: What does it mean that Ganesha is the remover of obstacles?
-    a: >-
-      Ganesha is called Vighneshvara, lord of obstacles, which means he is
-      traditionally seen as both placing and removing them. Devotees pray to him
-      not for a life without difficulty but for obstacles to be cleared or
-      understood. The idea is that a thoughtful start, with humility, makes the
-      path ahead smoother.
-  - q: Why does Ganesha have an elephant head?
-    a: >-
-      In the best-known story, Shiva, not recognising the boy guarding Parvati's
-      door, beheaded him and then restored him with the head of an elephant.
-      Symbolically the large head suggests wisdom and listening, the small eyes
-      focus, and the single broken tusk sacrifice, since tradition says he used
-      it to write down the Mahabharata.
+- q: Why is Ganesha worshipped first before other gods?
+  a: In the Puranic telling, Shiva and Parvati set their sons a race around the world. Kartikeya flew
+    off on his peacock while Ganesha simply walked around his parents, saying they were his world. Pleased,
+    Shiva decreed that Ganesha would be worshipped before every other deity at the start of any ritual
+    or undertaking.
+- q: What does it mean that Ganesha is the remover of obstacles?
+  a: Ganesha is called Vighneshvara, lord of obstacles, which means he is traditionally seen as both placing
+    and removing them. Devotees pray to him not for a life without difficulty but for obstacles to be
+    cleared or understood. The idea is that a thoughtful start, with humility, makes the path ahead smoother.
+- q: Why does Ganesha have an elephant head?
+  a: In the best-known story, Shiva, not recognising the boy guarding Parvati's door, beheaded him and
+    then restored him with the head of an elephant. Symbolically the large head suggests wisdom and listening,
+    the small eyes focus, and the single broken tusk sacrifice, since tradition says he used it to write
+    down the Mahabharata.
 readingTime: 4
 draft: false
 ---

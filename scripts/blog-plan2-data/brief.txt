@@ -1,0 +1,55 @@
+BATCH TWO PLAN DETAIL BRIEF (pariharaonline.com blog). Repo root: /Users/lynda/Documents/FOR_AGENTS/02_agenticcoding/phara-frontend
+Do not commit. Do not edit any file except your own output file.
+
+READ FIRST: content/blog-plan-2/SPEC.md, VOICE-samples.md, AUTHOR-BIBLE.md, BATCH2-DELTA.md, and skim
+content/blog-plan-2/batch1-index.json (125 existing posts; your posts must not restate their core intent, and
+secondary keywords must not equal any batch-one primaryKeyword). Look at two or three posts in
+content/blog-plan/plan.json to see the exact format of outline/takeaways/faq (batch one).
+
+YOUR INPUT: scripts/blog-plan2-data/rows-<G>.json (slug, title, author, audience, intent, primaryKeyword, cluster,
+products are FIXED — do not change them). YOUR OUTPUT: scripts/blog-plan2-data/posts-<G>.json, one JSON object keyed
+by slug:
+{ "<slug>": { "description": "...", "secondaryKeywords": [..], "tags": [..], "outline": [..], "takeaways": [..],
+  "faq": [{"q":"...","a":"..."}], "imagePrompt": "...", "imageAlt": "..." }, ... }
+Do NOT write related links, products or dates; the build adds them.
+
+FIELD RULES (a checker enforces them):
+- description: 140–160 characters (count them), plain and specific, contains the primary keyword, no dates.
+- secondaryKeywords: 2–4 realistic search phrases (lowercase), distinct from the primary keyword.
+- tags: 2–4, Title Case (e.g. "Nakshatra", "Jyotish", "NRI Life", "Recipes", "Mythology", "Festivals", "Tirukkural").
+- outline: 3–5 strings. First "Hook: <answer-first opening idea>", then 2–3 section strings
+  "## <Heading> — <what the section covers>", last "Close: <practical close, never a sales pitch>".
+  At least one ## heading must be a question (the "?" goes BEFORE the " — "). One ## heading must contain the
+  primary keyword's words. Notes must be specific: name the text (Skanda Purana, Tiruppavai, Devi Mahatmyam...),
+  the story, the step, the ingredient. Write it in the author's lens (see VOICE-samples.md).
+- takeaways: 2–3 plain, quotable, answer-first sentences, each ≤35 words.
+- faq: 3–5 items. q = a real question a person types into Google/ChatGPT, ending with "?". a = 40–70 words (count
+  them), self-contained, evergreen, no prices, no dates; may mention PariharaOnline at most once in the whole post.
+  At least one FAQ must target one of your secondaryKeywords (use its words).
+- imagePrompt: ONE sentence describing a concrete scene (objects, setting, time of day, hands). NO style words at all
+  (never: photograph, photo, editorial, cinematic, illustration, painting, style, realistic, glow, glowing, golden
+  light/hour, luminous, warm light, soft light, bokeh) — the pipeline adds the house style. No text in the image
+  (avoid books, pages, screens, signs, labels, calendars, writing). Deities appear only as a shrine, lamps, flowers,
+  offerings or symbolic objects — never a deity's face, never "idol"/"statue". Mythology posts: a symbolic object or
+  scene stands for the story (a broken tusk on a cloth, a churning rope coiled by the sea). People may appear as hands
+  or seen from behind.
+- imageAlt: describes the image, includes the primary keyword naturally, ≤170 characters, and ends EXACTLY with
+  " | pariharaonline.com".
+
+CONTENT RULES: Evergreen: no years, no month+day dates, no "this year". Festivals by season and lunar timing
+("usually March or April, on the new moon of Chaitra"). Astrology is tradition ("in Jyotish, Shani is seen as..."),
+never certainty. No medical/legal/financial promises, no fear, no guilt, no "do this or else", no prices, no
+guarantees. Banned: delve, tapestry, fast-paced world, mandir (say temple), vibrant, embark, holistic, "unlock your",
+"in conclusion", any mention of AI or the persona influences. Author bible: Manikandan = NJ (Edison area), wife, son
+about eleven, mother in Chennai lights the lamp at six, father in Tamil Nadu (heart surgery, knee), Thatha's cloth
+shop in Kumbakonam, grandmother in Thanjavur, family astrologer in Madurai — no new biography. Archana has NO
+family/city/job ("try this for a week", second person). Hariharan has no biography (a niece is allowed).
+Facts: be accurate; when a tradition varies by region, say so; for temple/star associations use "traditionally
+associated". Never invent kural numbers, verse numbers or dates you are not sure of — name the chapter or text instead.
+
+CHECK: run  node scripts/blog-plan2-data/check-detail.mjs posts-<G>.json scripts/blog-plan2-data/slugs-<G>.txt
+from the repo root, and fix until 0 errors. Keep warnings low (primary keyword in a ## heading; an FAQ that targets
+a secondary keyword). Write the file in a few chunks if needed (e.g. build it with a small node script that merges
+parts), but the final file must be one valid JSON object with every slug in slugs-<G>.txt.
+
+FINAL REPORT (short): number of entries, checker result line, and any facts you were unsure of.
