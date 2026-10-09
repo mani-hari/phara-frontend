@@ -2,7 +2,7 @@
 
 import { sdk } from "@lib/config"
 import medusaError from "@lib/util/medusa-error"
-import { logCheckoutError } from "@lib/util/checkout-log"
+import { logCheckoutError, logCheckoutEvent } from "@lib/util/checkout-log"
 import { HttpTypes } from "@medusajs/types"
 import { revalidateTag } from "next/cache"
 import { redirect } from "next/navigation"
@@ -649,13 +649,29 @@ export async function completeCartAndGetOrder(
   let cartRes: any
   let lastErr: any
   for (let attempt = 0; attempt < 6; attempt++) {
+    const startedAt = Date.now()
     try {
       cartRes = await sdk.store.cart.complete(id, {}, headers)
+      logCheckoutEvent("complete_cart_response", {
+        cartId: id,
+        attempt,
+        ms: Date.now() - startedAt,
+        type: cartRes?.type,
+        errorType: cartRes?.error?.type,
+      })
       break
     } catch (e: any) {
       lastErr = e
       const status = e?.status ?? e?.response?.status
       const conflict = status === 409 || /conflict|idempoten/i.test(e?.message || "")
+      logCheckoutEvent("complete_cart_attempt_failed", {
+        cartId: id,
+        attempt,
+        ms: Date.now() - startedAt,
+        status,
+        conflict,
+        message: e?.message,
+      })
       if (conflict && attempt < 5) {
         await new Promise((r) => setTimeout(r, 1500))
         continue
@@ -696,7 +712,13 @@ export async function completeCartAndGetOrder(
       countryCode: (order.shipping_address?.country_code || "").toLowerCase(),
     }
   }
-  return { ok: false, reason: "not_an_order" }
+  // Medusa answered type:"cart" with its own error (payment authorization /
+  // requires-more): keep it, so the failed-checkout alert and logs say why.
+  const detail = cartRes?.error
+    ? `${cartRes.error.type || "error"}: ${String(cartRes.error.message || "").slice(0, 160)}`
+    : ""
+  logCheckoutError("complete_cart_not_order", detail || "type=cart", { cartId: id, type: cartRes?.type })
+  return { ok: false, reason: detail ? `not_an_order:${detail}` : "not_an_order" }
 }
 
 /**
