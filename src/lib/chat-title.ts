@@ -1,10 +1,11 @@
 /**
- * Shared Haiku-based session title generator.
+ * Shared session title generator (small model, whichever chat provider is configured).
  * Used by both /api/chat/title (client-triggered) and the onFinish hook in
  * /api/chat (server-side, first-exchange auto-title) so the prompt/model
  * only lives in one place.
  */
-import Anthropic from "@anthropic-ai/sdk"
+import { generateText } from "ai"
+import { chatModel } from "@lib/chat/model"
 
 export const TITLE_SYSTEM_PROMPT =
   "Generate a 2-3 word topic label for this spiritual guidance chat. Ultra-concise — like a file tag or category name. Use sacred/Sanskrit terms when fitting. Title-case, no punctuation, no articles. Examples: 'Sarpa Dosha', 'Progeny Pooja', 'Saturn Remedy', 'Pitru Homam', 'Nakshatram Guide', 'Marriage Delay', 'Health Parihara'. Reply with ONLY the label."
@@ -32,9 +33,9 @@ function sanitizeTitle(raw: string | undefined | null): string | null {
 /**
  * Generate a short (2-3 word) session title from the first few messages of a
  * conversation. Falls back to "Chat conversation" on any failure or if
- * ANTHROPIC_API_KEY is missing — never throws.
+ * no chat provider key is configured — never throws.
  *
- * IMPORTANT: the Anthropic Messages API treats a trailing `assistant`-role
+ * IMPORTANT: chat APIs (Anthropic's especially) treat a trailing `assistant`-role
  * message as a "prefill" to continue/complete, not as context to summarize.
  * Since our transcripts almost always end on the assistant's reply, passing
  * them through as alternating user/assistant turns makes Claude literally
@@ -46,8 +47,8 @@ function sanitizeTitle(raw: string | undefined | null): string | null {
 export async function generateSessionTitle(
   messages: TitleMessage[]
 ): Promise<string> {
-  const apiKey = process.env.ANTHROPIC_API_KEY
-  if (!apiKey) return FALLBACK_TITLE
+  const model = chatModel()
+  if (!model) return FALLBACK_TITLE
 
   const trimmed = messages.slice(0, 4).filter((m) => m.content?.trim())
   if (trimmed.length === 0) return FALLBACK_TITLE
@@ -57,17 +58,13 @@ export async function generateSessionTitle(
     .join("\n\n")
 
   try {
-    const client = new Anthropic({ apiKey })
-    const response = await client.messages.create({
-      model: "claude-haiku-4-5-20251001",
-      max_tokens: 20,
+    const { text } = await generateText({
+      model,
+      maxTokens: 20,
       temperature: 0,
       system: TITLE_SYSTEM_PROMPT,
       messages: [{ role: "user", content: transcript }],
     })
-
-    const raw = response.content[0]
-    const text = raw?.type === "text" ? raw.text : null
     return sanitizeTitle(text) ?? FALLBACK_TITLE
   } catch (err: any) {
     console.warn("[chat-title] generateSessionTitle:", err?.message ?? err)

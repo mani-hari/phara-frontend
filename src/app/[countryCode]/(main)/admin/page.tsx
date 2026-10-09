@@ -2,6 +2,7 @@ import { Metadata } from "next"
 import { redirect } from "next/navigation"
 import { retrieveCustomer } from "@lib/data/customer"
 import { localizeHref } from "@lib/util/localize-href"
+import { chatProvider } from "@lib/chat/model"
 
 export const metadata: Metadata = {
   title: "Admin — PariharaOnline",
@@ -73,7 +74,9 @@ function AdminDashboard({
     { label: "PayPal client ID", value: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID?.slice(0, 16) + "…" },
     { label: "PayPal secret", value: process.env.PAYPAL_CLIENT_SECRET ? "✓ set" : "✗ missing" },
     { label: "PayPal sandbox", value: process.env.NEXT_PUBLIC_PAYPAL_SANDBOX },
-    { label: "Anthropic API key", value: process.env.ANTHROPIC_API_KEY ? "✓ set" : "✗ missing" },
+    { label: "Ask Parihara provider", value: chatProvider() ?? "✗ no AI key set" },
+    { label: "OpenAI API key", value: process.env.OPENAI_API_KEY ? "✓ set" : "not set" },
+    { label: "Anthropic API key", value: process.env.ANTHROPIC_API_KEY ? "✓ set" : "not set" },
     { label: "Admin emails", value: process.env.ADMIN_EMAILS ? "✓ set" : "✗ missing" },
     { label: "GA4 ID", value: process.env.NEXT_PUBLIC_GA4_ID || "not set" },
     { label: "Clarity ID", value: process.env.NEXT_PUBLIC_CLARITY_ID || "not set" },

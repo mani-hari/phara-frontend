@@ -1,5 +1,4 @@
 import { createDataStreamResponse, formatDataStreamPart, streamText, tool } from "ai"
-import { anthropic } from "@ai-sdk/anthropic"
 import { z } from "zod"
 import { NextRequest } from "next/server"
 import { retrieveCustomer } from "@lib/data/customer"
@@ -34,6 +33,7 @@ import {
 } from "@lib/chat/catalog"
 import { buildSystemPrompt } from "@lib/chat/system-prompt"
 import { CONTACT } from "@lib/contact"
+import { chatModel } from "@lib/chat/model"
 
 const BACKEND_URL =
   process.env.NEXT_PUBLIC_MEDUSA_BACKEND_URL || "https://pariharaonline.medusajs.app"
@@ -190,7 +190,8 @@ export async function POST(req: NextRequest) {
       })
     }
 
-    if (!process.env.ANTHROPIC_API_KEY) {
+    const model = chatModel()
+    if (!model) {
       return new Response(JSON.stringify({ error: "Chat not configured" }), { status: 500 })
     }
 
@@ -262,7 +263,7 @@ export async function POST(req: NextRequest) {
     return createDataStreamResponse({
       execute: async (dataStream) => {
         const result = streamText({
-          model: anthropic("claude-haiku-4-5-20251001"),
+          model,
           system: systemWithContext,
           messages: modelMessages as any,
           maxTokens: 800,
@@ -478,8 +479,9 @@ export async function POST(req: NextRequest) {
         result.mergeIntoDataStream(dataStream)
       },
       onError: (err) => {
+        // Provider errors (billing, rate limits) must never reach the visitor.
         console.error("[chat stream]", err)
-        return String(err)
+        return `Ask Parihara is unavailable right now. Please try again shortly, or message us on WhatsApp at ${CONTACT.whatsappDisplay}.`
       },
     })
   } catch (err: any) {
