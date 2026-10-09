@@ -668,6 +668,11 @@ export default function OnePageCheckout({
   const [selectedShipping, setSelectedShipping] = useState<string>(defaultShippingId)
 
   const [isPending, startTransition] = useTransition()
+  // True from "Proceed to Payment" until the Razorpay modal is dismissed unpaid
+  // or the page navigates away. startTransition ends as soon as the modal
+  // opens, so isPending alone can't stop a second tap (a second tap would
+  // create a second Razorpay order, risking a double charge).
+  const razorpayInFlight = useRef(false)
   const [error, setError] = useState<string | null>(null)
   const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
   // Combined terms-acceptance + marketing-consent checkbox — required to
@@ -938,6 +943,7 @@ export default function OnePageCheckout({
   // ── Razorpay ────────────────────────────────────────────────────────────────
 
   const handleRazorpay = () => {
+    if (razorpayInFlight.current) return
     if (!validate()) return
     setError(null)
 
@@ -947,6 +953,7 @@ export default function OnePageCheckout({
       return
     }
 
+    razorpayInFlight.current = true
     startTransition(async () => {
       try {
         await saveAddressesForCheckout(buildCheckoutPayload("razorpay"))
@@ -1046,22 +1053,23 @@ export default function OnePageCheckout({
                 "razorpay",
                 rzpRefs
               )
-              if (verified) {
-                // Money is confirmed captured: never tell the customer it
-                // failed. The webhook / reconciler / staff finalize the order.
-                window.location.href = localizeHref(
-                  countryCode,
-                  `/checkout/payment-error?reason=paid_pending_order&pid=${encodeURIComponent(response.razorpay_payment_id || "")}`
-                )
-                return
-              }
-              window.location.href = `/checkout/payment-error?reason=${encodeURIComponent(err.message || "verification_failed")}`
+              // Razorpay only calls this handler after a successful payment, so
+              // whatever failed above (verify request, session init, cart
+              // completion), the customer HAS paid. Never tell them it failed:
+              // the reconciler finalizes the order and staff are only alerted
+              // if it truly can't.
+              window.location.href = localizeHref(
+                countryCode,
+                `/checkout/payment-error?reason=paid_pending_order&pid=${encodeURIComponent(response.razorpay_payment_id || "")}`
+              )
             }
           },
-          modal: { ondismiss: () => {} },
+          // Closed without paying: allow trying again.
+          modal: { ondismiss: () => { razorpayInFlight.current = false } },
         })
         rzp.open()
       } catch (err: any) {
+        razorpayInFlight.current = false
         logCheckoutError("razorpay_init", err, { cartId: cart.id, currency, total: displayTotal })
         await reportFailedCheckout(cart.id, `razorpay_init:${err?.message || "error"}`, "razorpay")
         setError(err.message || "Payment failed. Please try again.")

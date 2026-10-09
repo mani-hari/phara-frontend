@@ -33,7 +33,7 @@ const REASON_MESSAGES: Record<string, string> = {
   capture_failed: "We were unable to capture your PayPal payment. No charge was made.",
   not_completed: "Your PayPal payment was not completed. No charge was made.",
   order_failed: "Payment succeeded but we had trouble confirming your order. Please contact us immediately.",
-  default: "Something went wrong during payment. Your cart is saved and no money has been charged.",
+  default: "Something went wrong during payment. Your cart is saved. If your bank or UPI app shows a debit, please message us on WhatsApp and we'll match it to your order right away.",
 }
 
 export default function PaymentErrorContent() {
