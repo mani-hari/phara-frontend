@@ -17,6 +17,11 @@ import type { LangCode } from "@lib/i18n/languages"
 import ProductActionsWrapper from "./product-actions-wrapper"
 import RelatedProducts from "../components/related-products"
 
+// Videos shown once, under "About This Ritual", for specific products (keyed by handle).
+const PRODUCT_VIDEOS: Record<string, { youtubeId: string; title: string }> = {
+  "sudarsana-homam": { youtubeId: "1Ycn82X6VP4", title: "How a homam is performed at PariharaOnline" },
+}
+
 type ProductTemplateProps = {
   product: HttpTypes.StoreProduct
   region: HttpTypes.StoreRegion
@@ -444,6 +449,30 @@ export default function ProductTemplate({
                 )
               })}
             </div>
+            {product.handle && PRODUCT_VIDEOS[product.handle] && (
+              <div style={{ marginTop: 32, maxWidth: 820 }}>
+                <div
+                  style={{
+                    position: "relative",
+                    width: "100%",
+                    aspectRatio: "16 / 9",
+                    borderRadius: 12,
+                    overflow: "hidden",
+                    background: "var(--ink)",
+                  }}
+                >
+                  <iframe
+                    src={`https://www.youtube.com/embed/${PRODUCT_VIDEOS[product.handle].youtubeId}`}
+                    title={PRODUCT_VIDEOS[product.handle].title}
+                    loading="lazy"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerPolicy="strict-origin-when-cross-origin"
+                    allowFullScreen
+                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
+                  />
+                </div>
+              </div>
+            )}
           </div>
         )}
       </section>
