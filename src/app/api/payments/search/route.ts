@@ -257,13 +257,13 @@ async function searchPaypal(
   startDate: Date,
   endDate: Date
 ): Promise<PaypalSearchOutcome> {
-  const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID
+  const clientId = (process.env.PAYPAL_CLIENT_ID || process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID)
   const clientSecret = process.env.PAYPAL_CLIENT_SECRET
   if (!clientId || !clientSecret) {
     return { results: [], warning: "PayPal search skipped: credentials not configured." }
   }
 
-  const isSandbox = process.env.NEXT_PUBLIC_PAYPAL_SANDBOX === "true"
+  const isSandbox = (process.env.PAYPAL_SANDBOX || process.env.NEXT_PUBLIC_PAYPAL_SANDBOX) === "true"
   const base = isSandbox ? "https://api-m.sandbox.paypal.com" : "https://api-m.paypal.com"
 
   const token = await getPaypalAccessToken(base, clientId, clientSecret)

@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
   try {
     const { orderId } = await req.json()
 
-    const clientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID
+    const clientId = (process.env.PAYPAL_CLIENT_ID || process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID)
     const clientSecret = process.env.PAYPAL_CLIENT_SECRET
 
     if (!clientId || !clientSecret) {
@@ -18,7 +18,7 @@ export async function POST(req: NextRequest) {
 
     // Get access token
     const auth = Buffer.from(`${clientId}:${clientSecret}`).toString("base64")
-    const isSandbox = process.env.NEXT_PUBLIC_PAYPAL_SANDBOX === "true"
+    const isSandbox = (process.env.PAYPAL_SANDBOX || process.env.NEXT_PUBLIC_PAYPAL_SANDBOX) === "true"
     const paypalBase = isSandbox ? "https://api-m.sandbox.paypal.com" : "https://api-m.paypal.com"
 
     const tokenResponse = await fetch(

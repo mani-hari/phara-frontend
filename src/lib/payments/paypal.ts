@@ -1,6 +1,7 @@
 import type { Cart, PaymentResult } from '@/types';
 
-const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || '';
+// Server-side only: checkout redirects to PayPal from the API routes, so the browser never needs the ID.
+const PAYPAL_CLIENT_ID = process.env.PAYPAL_CLIENT_ID || process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || '';
 
 export interface PayPalOrderResponse {
   id: string;
