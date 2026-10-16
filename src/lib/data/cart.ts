@@ -234,6 +234,26 @@ export async function addToCart({
     .catch(medusaError)
 }
 
+/** Adds several variants (quantity 1 each) in one server call, so none is dropped by the
+ *  refresh that follows a cart revalidation. Used by the checkbox bundle on package pages. */
+export async function addManyToCart({ variantIds, countryCode }: { variantIds: string[]; countryCode: string }) {
+  const ids = variantIds.filter(Boolean)
+  if (!ids.length) throw new Error("No items selected")
+  const cart = await getOrSetCart(countryCode)
+  if (!cart) throw new Error("Error retrieving or creating cart")
+  const headers = { ...(await getAuthHeaders()) }
+  try {
+    for (const variant_id of ids) {
+      await sdk.store.cart.createLineItem(cart.id, { variant_id, quantity: 1 }, {}, headers)
+    }
+  } catch (e) {
+    medusaError(e)
+  } finally {
+    revalidateTag(await getCacheTag("carts"))
+    revalidateTag(await getCacheTag("fulfillment"))
+  }
+}
+
 export async function updateLineItem({
   lineId,
   quantity,

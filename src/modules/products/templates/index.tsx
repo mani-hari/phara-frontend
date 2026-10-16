@@ -15,6 +15,8 @@ import LanguageSwitcher from "@modules/common/components/language-switcher"
 import type { LangCode } from "@lib/i18n/languages"
 
 import ProductActionsWrapper from "./product-actions-wrapper"
+import BundleChecklistWrapper from "../components/bundle-checklist/wrapper"
+import { PRODUCT_BUNDLES } from "@lib/data/product-bundles"
 import RelatedProducts from "../components/related-products"
 
 // Videos shown once, under "About This Ritual", for specific products (keyed by handle).
@@ -349,14 +351,22 @@ export default function ProductTemplate({
                     />
                   }
                 >
-                  <ProductActionsWrapper
-                    id={product.id}
-                    region={region}
-                    showPujaDetails={false}
-                    showPrice={true}
-                    buttonText="Add Pooja to Cart"
-                    buttonClassName="ph-btn ph-btn-sindoor ph-btn-lg ph-btn-block"
-                  />
+                  {product.handle && PRODUCT_BUNDLES[product.handle] ? (
+                    <BundleChecklistWrapper
+                      handle={product.handle}
+                      region={region}
+                      buttonClassName="ph-btn ph-btn-sindoor ph-btn-lg ph-btn-block"
+                    />
+                  ) : (
+                    <ProductActionsWrapper
+                      id={product.id}
+                      region={region}
+                      showPujaDetails={false}
+                      showPrice={true}
+                      buttonText="Add Pooja to Cart"
+                      buttonClassName="ph-btn ph-btn-sindoor ph-btn-lg ph-btn-block"
+                    />
+                  )}
                 </Suspense>
 
                 <p
