@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import { listProducts } from "@lib/data/products"
 import { getRegion, listRegions } from "@lib/data/regions"
 import { getProductPrice } from "@lib/util/get-product-price"
+import { descriptionIntro, descriptionPlain } from "@lib/util/description-text"
 import {
   buildBreadcrumbJsonLd,
   buildFaqJsonLd,
@@ -105,13 +106,13 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
 
   return {
     title: product.title,
-    description: product.description || `${product.title} - Book authentic temple services at PariharaOnline`,
+    description: descriptionIntro(product.description) || `${product.title} - Book authentic temple services at PariharaOnline`,
     // Canonical is the prefix-free URL so regional variants (/us, /fr, …)
     // all consolidate to https://www.pariharaonline.com/products/<handle>.
     alternates: { canonical: `/products/${handle}` },
     openGraph: {
       title: `${product.title} | PariharaOnline`,
-      description: product.description || `${product.title} - Book authentic temple services at PariharaOnline`,
+      description: descriptionIntro(product.description) || `${product.title} - Book authentic temple services at PariharaOnline`,
       url: `/products/${handle}`,
       images: product.thumbnail ? [product.thumbnail] : [],
     },
@@ -150,7 +151,7 @@ export default async function ProductPage(props: Props) {
     "@context": "https://schema.org",
     "@type": "Product",
     name: pricedProduct.title,
-    description: pricedProduct.description || pricedProduct.title,
+    description: descriptionPlain(pricedProduct.description) || pricedProduct.title,
     image: pricedProduct.thumbnail || undefined,
     sku: pricedProduct.id,
     url: productPath,
