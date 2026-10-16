@@ -78,6 +78,24 @@ export default function ProductTemplate({
     .map((s) => s.trim())
     .filter(Boolean)
   const hasDescription = descriptionLines.length > 0
+  // Light markup in descriptions: "## " starts a section heading, "> " is a sloka/mantra line,
+  // "- " a bullet. The short snippet shows only the opening text, before the first heading.
+  const firstHeading = descriptionLines.findIndex((l) => l.startsWith("## "))
+  const snippetText = (firstHeading > 0 ? descriptionLines.slice(0, firstHeading) : descriptionLines)
+    .map((l) => l.replace(/^(##|>|[-–•*])\s*/, ""))
+    .join(" ")
+  type DescBlock = { kind: "heading" | "para" | "bullet"; text: string } | { kind: "sloka"; lines: string[] }
+  const descriptionBlocks = descriptionLines.reduce<DescBlock[]>((out, line) => {
+    if (line.startsWith("## ")) out.push({ kind: "heading", text: line.slice(3).trim() })
+    else if (line.startsWith(">")) {
+      const text = line.replace(/^>\s*/, "")
+      const last = out[out.length - 1]
+      if (last && last.kind === "sloka") last.lines.push(text)
+      else out.push({ kind: "sloka", lines: [text] })
+    } else if (/^[-–•*]\s*/.test(line)) out.push({ kind: "bullet", text: line.replace(/^[-–•*]\s*/, "") })
+    else out.push({ kind: "para", text: line })
+    return out
+  }, [])
 
   const primaryImg = displayGallery[0] ?? null
   const secondImg = displayGallery[1] ?? null
@@ -271,7 +289,7 @@ export default function ProductTemplate({
                     }}
                     lang={lang !== "en" ? lang : undefined}
                   >
-                    {displayDescription}
+                    {snippetText}
                   </p>
                   <a
                     href="#about-ritual"
@@ -440,21 +458,48 @@ export default function ProductTemplate({
             <div
               style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 820 }}
             >
-              {descriptionLines.map((line, i) => {
-                const isBullet = /^[-–•*]\s*/.test(line)
-                const text = line.replace(/^[-–•*]\s*/, "")
-                return isBullet ? (
+              {descriptionBlocks.map((b, i) => {
+                if (b.kind === "heading")
+                  return (
+                    <h3 key={i} className="ph-h4" style={{ margin: i === 0 ? "0 0 2px" : "20px 0 2px", color: "var(--ink)" }}>
+                      {b.text}
+                    </h3>
+                  )
+                if (b.kind === "sloka")
+                  return (
+                    <blockquote
+                      key={i}
+                      style={{
+                        margin: "4px 0",
+                        padding: "14px 18px",
+                        borderLeft: "3px solid var(--sindoor)",
+                        background: "var(--paper-2)",
+                        borderRadius: 8,
+                      }}
+                    >
+                      {b.lines.map((l, k) => (
+                        <p
+                          key={k}
+                          className="ph-body"
+                          style={{ margin: 0, lineHeight: 1.7, fontStyle: k === b.lines.length - 1 && b.lines.length > 1 && l.startsWith("(") ? "normal" : "italic", color: "var(--ink-2)" }}
+                        >
+                          {l}
+                        </p>
+                      ))}
+                    </blockquote>
+                  )
+                return b.kind === "bullet" ? (
                   <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
                     <span style={{ color: "var(--sindoor)", marginTop: 9, flexShrink: 0, fontSize: 9 }}>
                       ●
                     </span>
                     <p className="ph-body" style={{ margin: 0, lineHeight: 1.75, color: "var(--ink-2)" }}>
-                      {text}
+                      {b.text}
                     </p>
                   </div>
                 ) : (
                   <p key={i} className="ph-body" style={{ margin: 0, lineHeight: 1.75, color: "var(--ink-2)" }}>
-                    {text}
+                    {b.text}
                   </p>
                 )
               })}
