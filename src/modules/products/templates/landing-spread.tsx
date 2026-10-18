@@ -153,10 +153,10 @@ export default function LandingSpread({
 
         {review && <Review review={review} />}
 
-        {(howPerformed || history || altNames || extra.length > 0) && (
+        {/* "How your pooja is performed" is intentionally not shown here: the Important note covers it. */}
+        {(history || altNames || extra.length > 0) && (
           <MobileCollapse label="More about the temple and our service">
             <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
-              {howPerformed && <Section section={{ heading: "How we get it from the temple", blocks: howPerformed.blocks }} lang={langAttr} />}
               {history && <Section section={history} lang={langAttr} />}
               {extra.map((s, i) => (
                 <Section key={i} section={s} lang={langAttr} />
