@@ -20,6 +20,7 @@ import MobileActions from "./mobile-actions"
 import { useRouter } from "next/navigation"
 
 type ProductActionsProps = {
+  stickyWhen?: "after" | "away"
   product: HttpTypes.StoreProduct
   region: HttpTypes.StoreRegion
   disabled?: boolean
@@ -54,6 +55,7 @@ export default function ProductActions({
   showPrice = true,
   buttonClassName,
   buttonText,
+  stickyWhen = "after",
 }: ProductActionsProps) {
   const router = useRouter()
   const pathname = usePathname()
@@ -163,10 +165,16 @@ export default function ProductActions({
   useEffect(() => {
     const el = actionsRef.current
     if (!el) return
-    const io = new IntersectionObserver(([e]) => setScrolledPast(!e.isIntersecting && e.boundingClientRect.top < 0))
+    // "after": once scrolled past the card. "away": whenever the card is off screen (landing pages, where the
+    // card sits lower down the page).
+    // The bottom margin keeps the bar from covering the card's own button as it scrolls into view.
+    const io = new IntersectionObserver(
+      ([e]) => setScrolledPast(!e.isIntersecting && (stickyWhen === "away" || e.boundingClientRect.top < 0)),
+      { rootMargin: "0px 0px -90px 0px" }
+    )
     io.observe(el)
     return () => io.disconnect()
-  }, [])
+  }, [stickyWhen])
   const [justAdded, setJustAdded] = useState(false)
 
   // Check if puja details are valid (at least first devotee name required)

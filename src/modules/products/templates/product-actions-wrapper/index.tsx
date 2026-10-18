@@ -12,7 +12,9 @@ export default async function ProductActionsWrapper({
   showPrice,
   buttonClassName,
   buttonText,
+  stickyWhen,
 }: {
+  stickyWhen?: "after" | "away"
   id: string
   region: HttpTypes.StoreRegion
   showPujaDetails?: boolean
@@ -37,6 +39,7 @@ export default async function ProductActionsWrapper({
       showPrice={showPrice}
       buttonClassName={buttonClassName}
       buttonText={buttonText}
+      stickyWhen={stickyWhen}
     />
   )
 }

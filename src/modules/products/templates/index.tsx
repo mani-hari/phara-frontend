@@ -14,6 +14,8 @@ import type { LangCode } from "@lib/i18n/languages"
 
 import ProductActionsWrapper from "./product-actions-wrapper"
 import ProductSpread, { BundleProductSpread } from "./product-spread"
+import LandingSpread from "./landing-spread"
+import { LANDING_PRODUCTS } from "@lib/data/landing-products"
 import { PRODUCT_BUNDLES } from "@lib/data/product-bundles"
 import RelatedProducts from "../components/related-products"
 
@@ -69,12 +71,14 @@ export default function ProductTemplate({
   // Prasadam is a physical item, not a ritual: different card wording and button.
   const isPrasad = /prasad/i.test(`${product.collection?.handle ?? ""} ${product.collection?.title ?? ""} ${product.title ?? ""}`)
   const currency = region.currency_code
+  const landing = product.handle ? LANDING_PRODUCTS[product.handle] : undefined
 
   return (
     <div style={{ background: "var(--paper)" }}>
       <div style={{ borderTop: "1px solid var(--ink-line)" }} />
 
-      {/* Breadcrumb */}
+      {/* Breadcrumb (not on special landing pages: it wraps to several lines on phones) */}
+      {!landing && (
       <div className="content-container" style={{ paddingTop: 18, paddingBottom: 4 }}>
         <nav style={{ display: "flex", alignItems: "center", gap: 6 }} aria-label="breadcrumb">
           <Link
@@ -101,8 +105,34 @@ export default function ProductTemplate({
         </nav>
       </div>
 
+      )}
+
       {/* ── Product page spread: story + gallery on the left, booking card fixed on the right ── */}
-      {product.handle && PRODUCT_BUNDLES[product.handle] ? (
+      {landing ? (
+        <LandingSpread
+          title={displayTitle}
+          lang={lang}
+          hintedLang={hintedLang}
+          description={displayDescription}
+          gallery={displayEntries}
+          review={content.review}
+          currency={currency}
+          config={landing}
+          actions={
+            <Suspense fallback={<div style={{ height: 52, borderRadius: 10, background: "var(--sindoor)", opacity: 0.7 }} />}>
+              <ProductActionsWrapper
+                id={product.id}
+                region={region}
+                showPujaDetails={false}
+                showPrice={true}
+                buttonText="Add to cart"
+                buttonClassName="ph-btn ph-btn-sindoor ph-btn-lg ph-btn-block"
+                stickyWhen="away"
+              />
+            </Suspense>
+          }
+        />
+      ) : product.handle && PRODUCT_BUNDLES[product.handle] ? (
         <BundleProductSpread
           product={product}
           region={region}

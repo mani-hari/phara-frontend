@@ -22,7 +22,7 @@ import {
 
 type GalleryEntry = { url: string; alt: string }
 
-function Blocks({ blocks, lang }: { blocks: DescBlock[]; lang?: string }) {
+export function Blocks({ blocks, lang }: { blocks: DescBlock[]; lang?: string }) {
   return (
     <div style={{ display: "flex", flexDirection: "column", gap: 12 }} lang={lang}>
       {blocks.map((b, i) => {
@@ -58,7 +58,7 @@ function Blocks({ blocks, lang }: { blocks: DescBlock[]; lang?: string }) {
   )
 }
 
-function Section({ section, lang }: { section: DescSection; lang?: string }) {
+export function Section({ section, lang }: { section: DescSection; lang?: string }) {
   return (
     <section style={{ display: "flex", flexDirection: "column", gap: 12 }}>
       {section.heading && (
@@ -91,11 +91,11 @@ function ItemSection({ item, section, lang }: { item: PricedBundleItem; section?
   )
 }
 
-function VideoEmbed({ video }: { video: { youtubeId: string; title: string } }) {
+export function VideoEmbed({ video }: { video: { youtubeId: string; title: string } }) {
   return <LiteYouTube id={video.youtubeId} title={video.title} />
 }
 
-function Review({ review }: { review: { text: string; author: string } }) {
+export function Review({ review }: { review: { text: string; author: string } }) {
   return (
     <div className="ph-card" style={{ padding: 20, background: "var(--paper-2)" }}>
       <p className="ph-label" style={{ margin: "0 0 8px", color: "var(--ink-4)" }}>
@@ -112,7 +112,7 @@ function Review({ review }: { review: { text: string; author: string } }) {
   )
 }
 
-function BookingCard({ heading, children, note }: { heading: string; children: ReactNode; note: string }) {
+export function BookingCard({ heading, children, note }: { heading: string; children: ReactNode; note: string }) {
   return (
     <div style={{ border: "1px solid var(--ink-line)", borderRadius: 14, overflow: "hidden", background: "var(--paper)", boxShadow: "0 2px 20px rgba(26,20,16,0.07)" }}>
       <div style={{ padding: "14px 20px", background: "rgba(182,68,46,0.04)", borderBottom: "1px solid var(--ink-line)", display: "flex", alignItems: "center", gap: 8 }}>

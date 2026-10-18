@@ -13,6 +13,8 @@ const CHIPS = [
 
 export default function HeroChatInput({ countryCode = "in" }: { countryCode?: string }) {
   const [value, setValue] = useState("")
+  // Phones: suggestions folded behind one toggle so the first screen isn't four rows of chips.
+  const [showChips, setShowChips] = useState(false)
   const router = useRouter()
 
   const navigate = (q: string) => {
@@ -88,25 +90,19 @@ export default function HeroChatInput({ countryCode = "in" }: { countryCode?: st
         </div>
       </div>
 
-      {/* Suggestion chips */}
-      <p
-        style={{
-          textAlign: "center",
-          marginTop: 18,
-          marginBottom: 0,
-          fontSize: 12,
-          fontWeight: 600,
-          letterSpacing: "0.06em",
-          textTransform: "uppercase",
-          color: "var(--ink-4)",
-          fontFamily: "var(--sans)",
-        }}
+      {/* Suggestion chips (always shown on larger screens; behind a toggle on phones) */}
+      <p className="hero-chips-label">Suggested questions</p>
+      <button
+        type="button"
+        className="hero-chips-toggle"
+        aria-expanded={showChips}
+        onClick={() => setShowChips((v) => !v)}
       >
-        Suggested questions
-      </p>
+        {showChips ? "Hide suggestions ▴" : "Show suggestions ▾"}
+      </button>
       <div
+        className={`hero-chips${showChips ? " open" : ""}`}
         style={{
-          display: "flex",
           flexWrap: "wrap",
           alignItems: "center",
           justifyContent: "center",
