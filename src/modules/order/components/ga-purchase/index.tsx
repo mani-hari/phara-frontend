@@ -27,7 +27,7 @@ export default function GaPurchase(props: { orderId: string; currency: string; v
     // gtag may still be loading (afterInteractive); retry briefly.
     let tries = 0
     const t = setInterval(() => {
-      if (typeof window.gtag === "function" || tries++ > 20) {
+      if (typeof window.gtag === "function" || tries++ > 60) {
         clearInterval(t)
         if (typeof window.gtag === "function") send()
       }

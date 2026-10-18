@@ -2,6 +2,7 @@ import { ReactNode } from "react"
 import { HttpTypes } from "@medusajs/types"
 import LanguageSwitcher from "@modules/common/components/language-switcher"
 import SafeImage from "@modules/common/components/safe-image"
+import LiteYouTube from "@modules/common/components/lite-youtube"
 import { MobileCollapse, MobileGallery } from "@modules/products/components/spread-mobile"
 import { INTL_PRASAD_SHIPPING_USD, showsIntlShipping } from "@lib/shipping-estimate"
 import type { LangCode } from "@lib/i18n/languages"
@@ -91,19 +92,7 @@ function ItemSection({ item, section, lang }: { item: PricedBundleItem; section?
 }
 
 function VideoEmbed({ video }: { video: { youtubeId: string; title: string } }) {
-  return (
-    <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", borderRadius: 12, overflow: "hidden", background: "var(--ink)" }}>
-      <iframe
-        src={`https://www.youtube.com/embed/${video.youtubeId}`}
-        title={video.title}
-        loading="lazy"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerPolicy="strict-origin-when-cross-origin"
-        allowFullScreen
-        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
-      />
-    </div>
-  )
+  return <LiteYouTube id={video.youtubeId} title={video.title} />
 }
 
 function Review({ review }: { review: { text: string; author: string } }) {

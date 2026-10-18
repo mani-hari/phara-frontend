@@ -58,7 +58,14 @@ const nextConfig = {
     return config
   },
   images: {
+    // Smaller modern formats for phones, and long CDN caching of optimised images.
+    formats: ["image/avif", "image/webp"],
+    minimumCacheTTL: 60 * 60 * 24 * 30,
     remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "i.ytimg.com",
+      },
       {
         protocol: "http",
         hostname: "localhost",

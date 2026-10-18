@@ -59,11 +59,11 @@ Finding (18 Oct): the home page has **no** blog section, so scheduled posts are 
 ## D. Conversion fixes from the 18 Oct site review (docs/SITE-REVIEW-2026-10-18.md)
 
 P0 (leaks):
-- [ ] D1. GA4 purchase tracking (+ add_to_cart, begin_checkout) with value/currency.
-- [ ] D2. Cart: don't require devotee name for prasadam-only carts; make it skippable for poojas.
-- [ ] D3. Show shipping upfront on prasadam pages and in the cart (or price as delivered / 2-bottle course).
-- [ ] D4. Mobile product page order: photo before booking card; hide sticky bar while card visible; button copy by product type.
-- [ ] D5. Bugs: /af/checkout country code; "Medusa catalog" copy; double "| PariharaOnline" title; cart thumbnail + "Default variant"; mobile header overflow; mobile add-to-cart confirmation.
+- [x] D1. GA4 purchase tracking (+ add_to_cart, begin_checkout) with value/currency.
+- [x] D2. Cart: don't require devotee name for prasadam-only carts; make it skippable for poojas.
+- [x] D3. Show shipping upfront on prasadam pages and in the cart (or price as delivered / 2-bottle course).
+- [x] D4. Mobile product page order: photo before booking card; hide sticky bar while card visible; button copy by product type.
+- [x] D5. Bugs: /af/checkout country code; "Medusa catalog" copy; double "| PariharaOnline" title; cart thumbnail + "Default variant"; mobile header overflow; mobile add-to-cart confirmation.
 - [ ] D6. GA: exclude bot traffic (Singapore/China data-centre).
 P1 (trust/fit): D7 home first screen; D8 fertility hub; D9 real reviews; D10 "what happens after you book" timeline; D11 browse page redesign.
 P2 (repeat revenue): D12 festival calendar; D13 WhatsApp cart follow-up; D14 journey bundles; D15 language for trust lines.
@@ -75,3 +75,12 @@ Do: all P0 (D1–D5; D6 is a GA admin setting, ask first), with these specifics:
 - M. Mobile-first polish: world-class mobile UX (Nike-level): show-more truncation for long text, images grouped
   into a swipe gallery on mobile, compact header, clear sticky CTA, big tap targets.
 - P1: ONLY D11 (lighter browse page with need filters). P2: ONLY D12 (festival calendar). Skip the rest for now.
+
+### Done 18–19 Oct (overnight, owner approved pushing)
+- D1 GA4 purchase / add_to_cart / begin_checkout. D2 names optional, star visible, WhatsApp sankalpam prompt on
+  order-confirmed. D3 shipping estimate (non-India) on product card + cart. D4 mobile product page (gallery first,
+  slim sticky bar after card, read-more folding, wording by type, added toast). D5 /af checkout bug, Medusa wording,
+  doubled titles, cart thumbnail/variant, header (search/cart/sign-in tap targets; sign-in in side menu on phones).
+- D11 browse page with need chips. D12 /calendar. Home top sellers from real orders (oil, ghee, Rahu-Ketu, Shirdi udi).
+- Speed: Indic fonts not preloaded, Clarity lazyOnload, AVIF/WebP + 30-day image cache, tap-to-load YouTube.
+Open: D6 GA bot filter (GA admin setting, ask owner); "test-product" and "sample-bundle-product" are public in the store.

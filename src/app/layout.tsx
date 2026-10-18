@@ -49,18 +49,21 @@ const dmText = DM_Serif_Text({
 // correctly, not just where the switcher currently appears.
 const notoTamil = Noto_Sans_Tamil({
   subsets: ["tamil"],
+  preload: false, // only fetched when Tamil/Telugu/Hindi text is on screen (unicode-range)
   weight: "400",
   variable: "--font-tamil",
 })
 
 const notoTelugu = Noto_Sans_Telugu({
   subsets: ["telugu"],
+  preload: false, // only fetched when Tamil/Telugu/Hindi text is on screen (unicode-range)
   weight: "400",
   variable: "--font-telugu",
 })
 
 const notoDevanagari = Noto_Sans_Devanagari({
   subsets: ["devanagari"],
+  preload: false, // only fetched when Tamil/Telugu/Hindi text is on screen (unicode-range)
   weight: "400",
   variable: "--font-hindi",
 })
@@ -153,7 +156,7 @@ export default async function RootLayout({
           </>
         )}
         {clarityId && (
-          <Script id="microsoft-clarity" strategy="afterInteractive">
+          <Script id="microsoft-clarity" strategy="lazyOnload">
             {`
               (function(c,l,a,r,i,t,y){
                 c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};

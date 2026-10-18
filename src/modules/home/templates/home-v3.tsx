@@ -10,6 +10,7 @@ import {
 } from "@modules/common/components/brand"
 import { getProductPrice } from "@lib/util/get-product-price"
 import HeroChatInput from "@modules/home/components/hero-chat-input"
+import LiteYouTube from "@modules/common/components/lite-youtube"
 import { todayIst } from "@lib/util/blog-publish"
 import { PRODUCT_BUNDLES } from "@lib/data/product-bundles"
 import Link from "next/link"
@@ -269,14 +270,9 @@ export default function HomeV3({ products, countryCode, posts = [] }: HomeV3Prop
                   }}
                 >
                   {v.youtubeId ? (
-                    <iframe
-                      src={`https://www.youtube.com/embed/${v.youtubeId}`}
-                      title={v.title}
-                      loading="lazy"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
-                    />
+                    <div style={{ position: "absolute", inset: 0 }}>
+                      <LiteYouTube id={v.youtubeId} title={v.title} radius={0} />
+                    </div>
                   ) : (
                     <div
                       style={{
