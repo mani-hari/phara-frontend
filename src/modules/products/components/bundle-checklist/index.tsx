@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useParams } from "next/navigation"
+import { useEffect, useState } from "react"
 import { useBundle } from "./context"
 
 export { BundleProvider } from "./context"
@@ -128,25 +129,68 @@ export function BundleItemToggle({ variantId }: { variantId: string }) {
   )
 }
 
-/** Mobile only: a bar fixed to the bottom with the running total and the Add button. */
+/** Mobile only: a bar fixed to the bottom with the selection count and a "Select poojas" button that opens
+ *  a bottom sheet with the checklist (the page itself has no checkboxes on phones). */
 export function BundleMobileBar() {
-  const { selected, total, money, adding, addSelected, added } = useBundle()
+  const { selected, total, money, added } = useBundle()
+  const countryCode = useParams().countryCode as string
+  const [open, setOpen] = useState(false)
+
+  // Close the sheet once the items are in the cart; lock page scroll while it is open.
+  useEffect(() => {
+    if (added) setOpen(false)
+  }, [added])
+  useEffect(() => {
+    if (!open) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.style.overflow = prev
+    }
+  }, [open])
+
+  const count = selected.length
   return (
-    <div className="bundle-mobile-bar">
-      <div style={{ flex: 1, minWidth: 0 }}>
-        <p className="ph-body-sm" style={{ margin: 0, fontWeight: 700, color: "var(--ink)" }}>
-          {selected.length ? `${selected.length} selected · ${money(total)}` : added ? "✓ Added to cart" : "Tick the poojas you want"}
-        </p>
+    <>
+      <div className="bundle-mobile-bar">
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <p className="ph-body-sm" style={{ margin: 0, fontWeight: 700, color: "var(--ink)" }}>
+            {added && !count ? "✓ Added to cart" : count ? `${count} selected · ${money(total)}` : "0 poojas selected"}
+          </p>
+        </div>
+        {added && !count ? (
+          <Link href={`/${countryCode}/cart`} className="ph-btn ph-btn-sindoor" style={{ whiteSpace: "nowrap" }}>
+            View cart
+          </Link>
+        ) : (
+          <button type="button" onClick={() => setOpen(true)} className="ph-btn ph-btn-sindoor" style={{ whiteSpace: "nowrap" }}>
+            {count ? "Review & add" : "Select poojas"}
+          </button>
+        )}
       </div>
-      <button
-        type="button"
-        onClick={addSelected}
-        disabled={!selected.length || adding}
-        className="ph-btn ph-btn-sindoor"
-        style={{ opacity: !selected.length || adding ? 0.6 : 1, whiteSpace: "nowrap" }}
-      >
-        {adding ? "Adding…" : "Add to cart"}
-      </button>
-    </div>
+
+      {open && (
+        <div className="bundle-sheet-root" role="dialog" aria-modal="true" aria-label="Choose your poojas">
+          <button type="button" className="bundle-sheet-backdrop" aria-label="Close" onClick={() => setOpen(false)} />
+          <div className="bundle-sheet">
+            <div className="bundle-sheet-grip" aria-hidden />
+            <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: 12 }}>
+              <h2 className="ph-h3" style={{ margin: 0 }}>
+                Choose your poojas
+              </h2>
+              <button
+                type="button"
+                onClick={() => setOpen(false)}
+                aria-label="Close"
+                style={{ width: 40, height: 40, borderRadius: 999, border: "1px solid var(--ink-line)", background: "var(--paper)", fontSize: 18 }}
+              >
+                ✕
+              </button>
+            </div>
+            <BundleCard />
+          </div>
+        </div>
+      )}
+    </>
   )
 }

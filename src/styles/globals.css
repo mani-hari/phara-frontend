@@ -658,3 +658,16 @@
 .ph-cal-link { display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border-radius: 999px;
   border: 1px solid var(--ink-line); background: var(--paper); font-size: 14px; font-weight: 600; color: var(--ink); }
 .ph-cal-link:hover { border-color: var(--sindoor); color: var(--sindoor); }
+
+/* ── Pooja bundle: phone bottom sheet with the checklist (bundle-checklist BundleMobileBar) ── */
+.bundle-sheet-root { position: fixed; inset: 0; z-index: 80; }
+.bundle-sheet-backdrop { position: absolute; inset: 0; width: 100%; border: 0; background: rgba(26,20,16,0.45); animation: bundle-fade 0.2s ease-out; }
+.bundle-sheet {
+  position: absolute; left: 0; right: 0; bottom: 0; max-height: 88vh; overflow-y: auto;
+  background: var(--paper); border-radius: 20px 20px 0 0; padding: 10px 18px calc(18px + env(safe-area-inset-bottom));
+  box-shadow: 0 -10px 30px rgba(0,0,0,0.15); animation: bundle-up 0.25s ease-out;
+}
+.bundle-sheet-grip { width: 40px; height: 4px; border-radius: 2px; background: var(--ink-line-2, #d8cfc2); margin: 0 auto 12px; }
+@keyframes bundle-up { from { transform: translateY(100%); } to { transform: translateY(0); } }
+@keyframes bundle-fade { from { opacity: 0; } to { opacity: 1; } }
+@media (min-width: 1024px) { .bundle-sheet-root { display: none; } }
