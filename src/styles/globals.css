@@ -791,3 +791,53 @@
 .term-tip-modal-text { font-size: 15px; line-height: 1.6; color: var(--ink-2); }
 .term-tip-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border-radius: 999px;
   border: 1px solid var(--ink-line); background: var(--paper); font-size: 16px; cursor: pointer; }
+
+/* ── Digital Aarti (modules/aarti): full-height stage, layered art, canvas light, dock ── */
+.aarti-stage { position: relative; height: calc(100dvh - 64px); min-height: 560px; overflow: hidden; background: #1a0f08; color: #fff; user-select: none; -webkit-user-select: none; }
+.aarti-layer, .aarti-canvas, .aarti-vignette { position: absolute; inset: 0; }
+.aarti-bg { inset: -4%; will-change: transform; }
+.aarti-deity { position: absolute; left: 50%; bottom: 7%; width: min(92vw, 520px); height: 74%; transform: translateX(-50%); will-change: transform; }
+.aarti-canvas { pointer-events: none; }
+.aarti-vignette { pointer-events: none; background: radial-gradient(ellipse at 50% 55%, transparent 45%, rgba(10,5,2,0.65) 100%), linear-gradient(to bottom, rgba(10,5,2,0.55), transparent 22%, transparent 70%, rgba(10,5,2,0.7)); }
+.aarti-top { position: absolute; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; gap: 12px; padding: 16px 16px 0; z-index: 3; }
+.aarti-eyebrow { margin: 0; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #e9c987; font-weight: 600; }
+.aarti-title { margin: 4px 0 0; font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1.15; color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,0.5); }
+.aarti-next { margin: 6px 0 0; font-size: 13px; color: rgba(255,255,255,0.85); }
+.aarti-icon-btn { width: 42px; height: 42px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.25); background: rgba(0,0,0,0.3); color: #fff; font-size: 18px; flex-shrink: 0; }
+.aarti-intro { position: absolute; left: 0; right: 0; bottom: 0; z-index: 4; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 28px 20px calc(30px + env(safe-area-inset-bottom)); background: linear-gradient(to top, rgba(10,5,2,0.85), transparent); text-align: center; }
+.aarti-intro-line { margin: 0; font-size: 17px; color: rgba(255,255,255,0.9); }
+.aarti-begin { height: 54px; padding: 0 34px; border-radius: 999px; border: 0; background: #ccb264; color: #2a1a10; font-size: 17px; font-weight: 700; box-shadow: 0 8px 28px rgba(204,178,100,0.35); cursor: pointer; }
+.aarti-intro-small { margin: 0; font-size: 12.5px; color: rgba(255,255,255,0.6); }
+.aarti-hint { position: absolute; left: 50%; top: 42%; transform: translateX(-50%); z-index: 3; width: min(320px, 86vw); padding: 10px 14px; border-radius: 12px; background: rgba(0,0,0,0.45); color: #fff; font-size: 14px; text-align: center; pointer-events: none; }
+.aarti-dock { position: absolute; left: 0; right: 0; bottom: 0; z-index: 4; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 14px 12px calc(14px + env(safe-area-inset-bottom)); background: linear-gradient(to top, rgba(10,5,2,0.9), rgba(10,5,2,0.3)); }
+.aarti-dock-btn { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.08); color: #fff; cursor: pointer; transition: transform 0.12s, background 0.2s; }
+.aarti-dock-btn:active { transform: scale(0.95); }
+.aarti-dock-btn.next { border-color: #ccb264; background: rgba(204,178,100,0.22); animation: aarti-pulse 1.8s ease-in-out infinite; }
+.aarti-dock-btn.done .aarti-dock-label::after { content: " ✓"; color: #e9c987; }
+.aarti-dock-icon { font-size: 26px; line-height: 1; }
+.aarti-dock-label { font-size: 12.5px; font-weight: 600; }
+@keyframes aarti-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(204,178,100,0.45); } 50% { box-shadow: 0 0 0 8px rgba(204,178,100,0); } }
+.aarti-coconut { position: absolute; left: 50%; bottom: 22%; width: 90px; height: 80px; transform: translateX(-50%); z-index: 3; pointer-events: none; }
+.aarti-coconut .half { position: absolute; top: 0; width: 45px; height: 80px; background: radial-gradient(circle at 70% 40%, #8b5a2b, #4a2c14); transition: transform 0.6s cubic-bezier(.2,.8,.3,1), opacity 1.2s ease 0.9s; }
+.aarti-coconut .left { left: 0; border-radius: 45px 0 0 45px; }
+.aarti-coconut .right { right: 0; border-radius: 0 45px 45px 0; }
+.aarti-coconut.whole { animation: aarti-drop 0.65s ease-in; }
+.aarti-coconut.broken .left { transform: translate(-26px, 18px) rotate(-28deg); background: radial-gradient(circle at 80% 50%, #f8f3e6 30%, #6b4220 32%); opacity: 0; }
+.aarti-coconut.broken .right { transform: translate(26px, 18px) rotate(28deg); background: radial-gradient(circle at 20% 50%, #f8f3e6 30%, #6b4220 32%); opacity: 0; }
+@keyframes aarti-drop { from { transform: translate(-50%, -160px) rotate(-20deg); } to { transform: translate(-50%, 0) rotate(0); } }
+.aarti-card { position: absolute; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 5; margin: 0 auto; max-width: 440px; padding: 22px 20px; border-radius: 22px; background: var(--paper); color: var(--ink); text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.45); animation: aarti-up 0.35s ease-out; }
+@keyframes aarti-up { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
+.aarti-card-om { margin: 0; font-size: 30px; }
+.aarti-card-title { margin: 4px 0 0; font-family: var(--font-display); font-weight: 400; font-size: 24px; }
+.aarti-card-prayer { margin: 6px 0 0; font-weight: 700; color: var(--sindoor); }
+.aarti-card-text { margin: 8px 0 14px; font-size: 15px; line-height: 1.55; color: var(--ink-2); }
+.aarti-card-share { display: flex; align-items: center; justify-content: center; height: 48px; border-radius: 999px; background: #1f8f4e; color: #fff; font-weight: 700; font-size: 15px; }
+.aarti-card-links { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
+.aarti-card-link { display: block; padding: 10px; border-radius: 12px; border: 1px solid var(--ink-line); font-size: 14px; font-weight: 600; color: var(--ink); }
+.aarti-card-stay { margin-top: 10px; border: 0; background: none; color: var(--ink-3); font-size: 14px; text-decoration: underline; cursor: pointer; }
+@media (min-width: 768px) {
+  .aarti-title { font-size: 34px; }
+  .aarti-dock { left: 50%; right: auto; width: 520px; transform: translateX(-50%); border-radius: 22px 22px 0 0; }
+}
+/* The floating Ask pill would sit on the aarti dock; the aarti screen is its own focused space. */
+body:has(.aarti-stage) .ph-ask-pill { display: none !important; }

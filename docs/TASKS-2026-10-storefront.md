@@ -84,3 +84,27 @@ Do: all P0 (D1–D5; D6 is a GA admin setting, ask first), with these specifics:
 - D11 browse page with need chips. D12 /calendar. Home top sellers from real orders (oil, ghee, Rahu-Ketu, Shirdi udi).
 - Speed: Indic fonts not preloaded, Clarity lazyOnload, AVIF/WebP + 30-day image cache, tap-to-load YouTube.
 Open: D6 GA bot filter (GA admin setting, ask owner); "test-product" and "sample-bundle-product" are public in the store.
+
+## E. Digital Aarti (started 19 Oct 2026) — LOCAL ONLY until owner approves
+
+Tech: HTML5 layers (sanctum bg + transparent deity murti, moved by phone tilt/mouse for depth) + one
+<canvas> (flame glow, embers, petals) + Web Audio (bell, conch, drone made in code: no recordings).
+No 3D engine. Pages 404 unless `NEXT_PUBLIC_AARTI_EXP=1` (set only in .env.local).
+Files: `src/lib/data/aarti.ts` (deities, IST aarti times, blessings, follow-up products),
+`src/modules/aarti/components/aarti-experience.tsx`, `src/modules/aarti/lib/sounds.ts`,
+`src/app/[countryCode]/(main)/aarti/{page,[slug]/page}.tsx`, art via `scripts/aarti-images.mjs` → `public/aarti/`.
+
+- [x] E1. Phase 1 build: Shirdi Sai Baba (4 daily aartis) + Friday Mahalakshmi. Begin darshan → ring bell,
+      offer flowers, wave aarti (3 circles, flame follows finger), break coconut → completion card (blessing,
+      WhatsApp share, real udi / coconut / Lakshmi homam). Next-aarti countdown in the visitor's time.
+- [ ] E2. Owner review on phone; then decide go-live (remove the flag, add to nav/footer, sitemap).
+- [ ] E3. Chant audio: our own recordings (priests) per deity → `chantSrc` in aarti.ts. No copyrighted recordings.
+
+Backlog (revisit next build):
+- Phase 2: "Bring the darshan home" AR (WebXR on Android, Quick Look/USDZ on iPhone).
+- Phase 3: step-by-step home pooja guides (Satyanarayana, Varalakshmi, Diwali Lakshmi pooja) with item lists.
+- Real "devotees with you now" counter (needs a tiny backend; never fake numbers).
+- Installable app (PWA) + reminder notifications before aarti times; daily streak.
+- More deities: Kashi evening aarti (Shiva), Hanuman Chalisa (Tue/Sat), Durga evening chanting (Navratri),
+  Krishna, Tirupati evening (not Suprabhatam). Never imply official temple affiliation.
+- Monetise later: real coconut / pooja bookings from the completion card (no ₹5 micro-payments).
