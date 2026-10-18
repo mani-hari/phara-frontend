@@ -55,3 +55,15 @@ Finding (18 Oct): the home page has **no** blog section, so scheduled posts are 
 ## Still open
 - A2: move bundle config from code to product metadata (needs Medusa unlock).
 - Core top sellers list is a guess (current 3 + Sudarshana); confirm from order data.
+
+## D. Conversion fixes from the 18 Oct site review (docs/SITE-REVIEW-2026-10-18.md)
+
+P0 (leaks):
+- [ ] D1. GA4 purchase tracking (+ add_to_cart, begin_checkout) with value/currency.
+- [ ] D2. Cart: don't require devotee name for prasadam-only carts; make it skippable for poojas.
+- [ ] D3. Show shipping upfront on prasadam pages and in the cart (or price as delivered / 2-bottle course).
+- [ ] D4. Mobile product page order: photo before booking card; hide sticky bar while card visible; button copy by product type.
+- [ ] D5. Bugs: /af/checkout country code; "Medusa catalog" copy; double "| PariharaOnline" title; cart thumbnail + "Default variant"; mobile header overflow; mobile add-to-cart confirmation.
+- [ ] D6. GA: exclude bot traffic (Singapore/China data-centre).
+P1 (trust/fit): D7 home first screen; D8 fertility hub; D9 real reviews; D10 "what happens after you book" timeline; D11 browse page redesign.
+P2 (repeat revenue): D12 festival calendar; D13 WhatsApp cart follow-up; D14 journey bundles; D15 language for trust lines.
