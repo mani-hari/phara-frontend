@@ -648,3 +648,13 @@
   .ph-browse-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .ph-browse-title { font-size: 15px; }
 }
+
+/* ── Festival calendar (/calendar) ── */
+.ph-cal-item { display: flex; gap: 16px; padding: 18px; border: 1px solid var(--ink-line); border-radius: 14px; background: #fff; }
+.ph-cal-date { flex-shrink: 0; width: 58px; height: 64px; border-radius: 12px; background: var(--sindoor-soft, #f7e9e4);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--sindoor); }
+.ph-cal-month { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; }
+.ph-cal-day { font-size: 24px; font-weight: 700; line-height: 1.1; }
+.ph-cal-link { display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border-radius: 999px;
+  border: 1px solid var(--ink-line); background: var(--paper); font-size: 14px; font-weight: 600; color: var(--ink); }
+.ph-cal-link:hover { border-color: var(--sindoor); color: var(--sindoor); }

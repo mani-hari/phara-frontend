@@ -20,6 +20,7 @@ const FOOTER_COLUMNS: FooterColumn[] = [
   {
     title: "Discover",
     links: [
+      { label: "Festival calendar", href: "/calendar" },
       { label: "Blog", href: "/blog" },
       { label: "Ask Parihara", href: "/ask-parihara" },
       { label: "About", href: "/about" },

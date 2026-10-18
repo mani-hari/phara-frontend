@@ -4,7 +4,7 @@ import { Popover, PopoverPanel, Transition } from "@headlessui/react"
 import { XMark } from "@medusajs/icons"
 import { Text } from "@medusajs/ui"
 import { Fragment } from "react"
-import {
+import { CalendarDays,
   Home,
   Flame,
   Info,
@@ -26,9 +26,10 @@ const SideMenuItems = [
   { name: "Astrology", href: "/astrology", icon: Sparkles },
   { name: "About", href: "/about", icon: Info },
   { name: "FAQ", href: "/faq", icon: HelpCircle },
+  { name: "Festival calendar", href: "/calendar", icon: CalendarDays },
   { name: "Blog", href: "/blog", icon: BookOpen },
   { name: "Contact", href: "/contact", icon: Phone },
-  { name: "Account", href: "/account", icon: User },
+  { name: "Sign in / Account", href: "/account", icon: User },
   { name: "Cart", href: "/cart", icon: ShoppingCart },
 ]
 
