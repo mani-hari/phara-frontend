@@ -1,6 +1,7 @@
 import { Dialog, Transition } from "@headlessui/react"
 import { Button, clx } from "@medusajs/ui"
-import React, { Fragment, useMemo } from "react"
+import React, { Fragment, useEffect, useMemo, useRef, useState } from "react"
+import Image from "next/image"
 
 import useToggleState from "@lib/hooks/use-toggle-state"
 import ChevronDown from "@modules/common/icons/chevron-down"
@@ -61,13 +62,29 @@ const MobileActions: React.FC<MobileActionsProps> = ({
 
   const isSimple = isSimpleProduct(product)
 
+  // Tapping the bar always opens a sheet (name, photo, price, options, quantity) with one Add button.
+  const [sheet, setSheet] = useState(false)
+  const wasAdding = useRef(false)
+  useEffect(() => {
+    if (wasAdding.current && !isAdding) setSheet(false) // close once the add has finished
+    wasAdding.current = !!isAdding
+  }, [isAdding])
+  useEffect(() => {
+    if (!sheet) return
+    const prev = document.body.style.overflow
+    document.body.style.overflow = "hidden"
+    return () => {
+      document.body.style.overflow = prev
+    }
+  }, [sheet])
+  void state; void open; void close; void isSimple
+
+  const image = product.thumbnail || product.images?.[0]?.url || null
+  const shortTitle = product.title.split(/\s[-–|/]\s|[(:]/)[0].trim()
+
   return (
     <>
-      <div
-        className={clx("lg:hidden inset-x-0 bottom-0 fixed z-50", {
-          "pointer-events-none": !show,
-        })}
-      >
+      <div className={clx("lg:hidden inset-x-0 bottom-0 fixed z-50", { "pointer-events-none": !show })}>
         <Transition
           as={Fragment}
           show={show}
@@ -78,115 +95,78 @@ const MobileActions: React.FC<MobileActionsProps> = ({
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div
-            className="ph-sticky-buy"
-            style={{
-              display: "flex", alignItems: "center", gap: 12, padding: "10px 16px calc(10px + env(safe-area-inset-bottom))",
-              background: "var(--paper)", borderTop: "1px solid var(--ink-line)", boxShadow: "0 -6px 20px rgba(0,0,0,0.06)",
-            }}
-            data-testid="mobile-actions"
-          >
-            {/* One slim row: what + price on the left, the action on the right (quantity lives in the card above). */}
+          <div className="ph-sticky-buy ph-buybar" data-testid="mobile-actions">
             <div style={{ flex: 1, minWidth: 0 }}>
-              <p data-testid="mobile-title" style={{ margin: 0, fontSize: 13, color: "var(--ink-3)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                {product.title}
-              </p>
-              {selectedPrice && (
-                <p style={{ margin: 0, fontSize: 17, fontWeight: 700, color: "var(--ink)" }}>
-                  {selectedPrice.calculated_price}
-                  {quantity > 1 ? <span style={{ fontSize: 13, fontWeight: 500, color: "var(--ink-4)" }}> × {quantity}</span> : null}
-                </p>
-              )}
+              <p data-testid="mobile-title" className="ph-buybar-title">{shortTitle}</p>
+              {selectedPrice && <p className="ph-buybar-price">{selectedPrice.calculated_price}</p>}
             </div>
-            {!isSimple && !variant && (
-              <button
-                type="button"
-                onClick={open}
-                data-testid="mobile-actions-button"
-                style={{ padding: "12px 14px", borderRadius: 999, border: "1px solid var(--ink-line)", background: "var(--paper)", fontWeight: 600, fontSize: 14, whiteSpace: "nowrap" }}
-              >
-                Choose option
-              </button>
-            )}
-            {(isSimple || variant) && (
-              <button
-                type="button"
-                onClick={handleAddToCart}
-                disabled={!inStock || !variant || isAdding}
-                data-testid="mobile-cart-button"
-                className="ph-btn ph-btn-sindoor"
-                style={{ whiteSpace: "nowrap", opacity: !inStock || !variant || isAdding ? 0.6 : 1 }}
-              >
-                {isAdding ? "Adding…" : !inStock ? "Out of stock" : buttonText || "Add to cart"}
-              </button>
-            )}
+            <button type="button" onClick={() => setSheet(true)} className="ph-buybar-btn" data-testid="mobile-cart-button">
+              {buttonText || "Add to cart"}
+            </button>
           </div>
         </Transition>
       </div>
-      <Transition appear show={state} as={Fragment}>
-        <Dialog as="div" className="relative z-[75]" onClose={close}>
-          <Transition.Child
-            as={Fragment}
-            enter="ease-out duration-300"
-            enterFrom="opacity-0"
-            enterTo="opacity-100"
-            leave="ease-in duration-200"
-            leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
-            <div className="fixed inset-0 bg-gray-700 bg-opacity-75 backdrop-blur-sm" />
-          </Transition.Child>
 
-          <div className="fixed bottom-0 inset-x-0">
-            <div className="flex min-h-full h-full items-center justify-center text-center">
-              <Transition.Child
-                as={Fragment}
-                enter="ease-out duration-300"
-                enterFrom="opacity-0"
-                enterTo="opacity-100"
-                leave="ease-in duration-200"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
+      {sheet && (
+        <div className="bundle-sheet-root lg:hidden" role="dialog" aria-modal="true" aria-label={shortTitle}>
+          <button type="button" className="bundle-sheet-backdrop" aria-label="Close" onClick={() => setSheet(false)} />
+          <div className="bundle-sheet" data-testid="mobile-actions-modal">
+            <div className="bundle-sheet-grip" aria-hidden />
+            <div style={{ display: "flex", gap: 12, alignItems: "flex-start", marginBottom: 16 }}>
+              {image && (
+                <div style={{ position: "relative", width: 64, height: 64, borderRadius: 10, overflow: "hidden", flexShrink: 0, background: "var(--paper-2)" }}>
+                  <Image src={image} alt="" fill sizes="64px" className="object-cover" />
+                </div>
+              )}
+              <div style={{ flex: 1, minWidth: 0 }}>
+                <p style={{ margin: 0, fontWeight: 700, fontSize: 15, lineHeight: 1.35, color: "var(--ink)" }}>{product.title}</p>
+                {selectedPrice && <p style={{ margin: "4px 0 0", fontWeight: 700, fontSize: 18, color: "var(--sindoor)" }}>{selectedPrice.calculated_price}</p>}
+              </div>
+              <button
+                type="button"
+                onClick={() => setSheet(false)}
+                aria-label="Close"
+                data-testid="close-modal-button"
+                style={{ width: 40, height: 40, borderRadius: 999, border: "1px solid var(--ink-line)", background: "var(--paper)", flexShrink: 0 }}
               >
-                <Dialog.Panel
-                  className="w-full h-full transform overflow-hidden text-left flex flex-col gap-y-3"
-                  data-testid="mobile-actions-modal"
-                >
-                  <div className="w-full flex justify-end pr-6">
-                    <button
-                      onClick={close}
-                      className="w-12 h-12 rounded-full flex justify-center items-center"
-                      style={{ background: "var(--paper)", color: "var(--ink)" }}
-                      data-testid="close-modal-button"
-                    >
-                      <X />
-                    </button>
-                  </div>
-                  <div className="px-6 py-12" style={{ background: "var(--paper)" }}>
-                    {(product.variants?.length ?? 0) > 1 && (
-                      <div className="flex flex-col gap-y-6">
-                        {(product.options || []).map((option) => {
-                          return (
-                            <div key={option.id}>
-                              <OptionSelect
-                                option={option}
-                                current={options[option.id]}
-                                updateOption={updateOptions}
-                                title={option.title ?? ""}
-                                disabled={optionsDisabled}
-                              />
-                            </div>
-                          )
-                        })}
-                      </div>
-                    )}
-                  </div>
-                </Dialog.Panel>
-              </Transition.Child>
+                ✕
+              </button>
             </div>
+
+            {(product.variants?.length ?? 0) > 1 && (
+              <div style={{ display: "flex", flexDirection: "column", gap: 14, marginBottom: 16 }}>
+                {(product.options || []).map((option) => (
+                  <OptionSelect
+                    key={option.id}
+                    option={option}
+                    current={options[option.id]}
+                    updateOption={updateOptions}
+                    title={option.title ?? ""}
+                    disabled={optionsDisabled}
+                  />
+                ))}
+              </div>
+            )}
+
+            {inStock && (
+              <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 16 }}>
+                <span className="ph-label">Quantity</span>
+                <QuantitySelector quantity={quantity} onChange={updateQuantity} max={maxQuantity} disabled={isAdding} data-testid="mobile-quantity-selector" />
+              </div>
+            )}
+
+            <button
+              type="button"
+              onClick={handleAddToCart}
+              disabled={!inStock || !variant || isAdding}
+              className="ph-btn ph-btn-sindoor ph-btn-lg ph-btn-block"
+              style={{ opacity: !inStock || !variant || isAdding ? 0.6 : 1 }}
+            >
+              {isAdding ? "Adding…" : !variant ? "Choose an option" : !inStock ? "Out of stock" : buttonText || "Add to cart"}
+            </button>
           </div>
-        </Dialog>
-      </Transition>
+        </div>
+      )}
     </>
   )
 }

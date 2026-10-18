@@ -701,3 +701,93 @@
   .pland { grid-template-columns: minmax(0, 1fr) 380px; grid-template-areas: "head card" "top card" "bottom card"; column-gap: 56px; row-gap: 28px; }
   .pland-card { align-self: start; position: sticky; top: 88px; }
 }
+
+/* ── Home first screen (home/components/home-hero): proof line, hero, intent tiles, Most ordered, Ask ── */
+.hx { padding: 28px 0 40px; background: var(--paper); }
+.hx-inner { max-width: 1100px; }
+.hx-proof { margin: 0 0 10px; font-size: 13px; font-weight: 600; color: var(--gold, #b88746); letter-spacing: 0.02em; }
+.hx-title { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 5vw, 50px); line-height: 1.12; color: var(--ink); }
+.hx-sub { margin: 10px 0 0; font-size: 16px; line-height: 1.55; color: var(--ink-3); }
+.hx-ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.hx-btn-ghost { border: 1px solid var(--ink-line); background: var(--paper); color: var(--ink); }
+.hx-h2 { margin: 28px 0 12px; font-family: var(--font-serif, var(--font-display)); font-weight: 400; font-size: 22px; color: var(--ink); }
+.hx-tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin: 0; padding: 0; list-style: none; }
+.hx-tile { display: block; border-radius: 14px; overflow: hidden; background: #fff; border: 1px solid var(--ink-line); height: 100%; }
+.hx-tile-img { position: relative; aspect-ratio: 16 / 10; background: var(--paper-2); }
+.hx-tile-body { display: flex; flex-direction: column; gap: 2px; padding: 9px 11px 11px; }
+.hx-tile-label { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.25; }
+.hx-tile-sub { font-size: 12.5px; color: var(--ink-4); line-height: 1.3; }
+/* Carousel bleeds to the screen edges but its first card lines up with the page padding (the heading). */
+.hx-top { display: flex; gap: 10px; overflow-x: auto; scrollbar-width: none; margin: 0 -14px; padding: 0 14px 4px; scroll-padding-left: 14px; list-style: none; scroll-snap-type: x mandatory; }
+.hx-top::-webkit-scrollbar { display: none; }
+.hx-top li { flex: 0 0 150px; scroll-snap-align: start; }
+.hx-top-card { display: flex; flex-direction: column; gap: 4px; }
+.hx-top-img { position: relative; aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; background: var(--paper-2); border: 1px solid var(--ink-line); }
+.hx-top-title { font-size: 13.5px; font-weight: 600; color: var(--ink); line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.hx-top-price { font-size: 14px; font-weight: 700; color: var(--sindoor); }
+.hx-ask { margin-top: 32px; padding: 20px; border-radius: 16px; background: var(--paper-2); border: 1px solid var(--ink-line); text-align: center; scroll-margin-top: 80px; }
+@media (min-width: 640px) and (max-width: 767px) {
+  .hx-top { margin: 0 -24px; padding: 0 24px 4px; scroll-padding-left: 24px; }
+}
+@media (min-width: 768px) {
+  .hx { padding: 48px 0 56px; }
+  .hx-tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .hx-top { overflow: visible; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .hx-top li { flex: none; }
+}
+
+/* ── Phones: tighter page margins, smaller product titles, slim language row, tick-mark trust line ── */
+@media (max-width: 639px) {
+  .content-container { padding-left: 14px; padding-right: 14px; }
+  .pspread-head .ph-h1, .pland-head .ph-h1 { font-size: 25px; line-height: 1.22; }
+  .ph-lang-switcher { background: transparent; padding: 0; gap: 0; font-size: 13px; flex-wrap: wrap; }
+  .ph-lang-pill { padding: 4px 0; border-radius: 0; color: var(--ink-4); }
+  .ph-lang-pill + .ph-lang-pill::before { content: "·"; margin: 0 8px; color: var(--ink-line-2, #cfc5b8); }
+  .ph-lang-pill[aria-pressed="true"] { background: transparent; box-shadow: none; color: var(--sindoor); font-weight: 700; }
+  .pspread-mgallery { margin-left: -14px; margin-right: -14px; }
+}
+/* Trust line: small ticks on one line (replaces pills) */
+.ph-landing-chips { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+.ph-landing-chips span { background: none; border: 0; padding: 0; border-radius: 0; font-size: 13px; font-weight: 600; color: var(--ink-3); }
+.ph-landing-chips span::before { content: "✓"; color: #2d6a4f; font-weight: 700; margin-right: 5px; }
+
+/* ── Phone buy bar: a dark brown layer with a gold button (product + bundle pages) ── */
+.ph-buybar {
+  display: flex; align-items: center; gap: 12px; padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
+  background: var(--sindoor); color: #fff; box-shadow: 0 -8px 24px rgba(26,20,16,0.25); border-radius: 18px 18px 0 0;
+}
+.ph-buybar-title { margin: 0; font-size: 13px; color: rgba(255,255,255,0.8); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ph-buybar-price { margin: 0; font-size: 17px; font-weight: 700; color: #fff; }
+.ph-buybar-btn {
+  flex-shrink: 0; height: 46px; padding: 0 20px; border-radius: 999px; border: 0; cursor: pointer;
+  background: #ccb264; color: #2a1a10; font-size: 15px; font-weight: 700; white-space: nowrap;
+}
+.bundle-mobile-bar { background: var(--sindoor) !important; color: #fff; border-top: 0 !important; border-radius: 18px 18px 0 0; box-shadow: 0 -8px 24px rgba(26,20,16,0.25) !important; }
+.bundle-mobile-bar p { color: #fff !important; }
+.bundle-mobile-bar a { color: #f3e2a8 !important; }
+.bundle-mobile-bar .ph-btn { background: #ccb264 !important; color: #2a1a10 !important; border-color: #ccb264 !important; }
+/* The bar is always on screen on phones: leave room so it never covers the end of the page. */
+@media (max-width: 1023px) {
+  body:has(.ph-sticky-buy), body:has(.bundle-mobile-bar) { padding-bottom: 78px; }
+}
+
+/* ── Home hero term explainer (home/components/term-tip): hover bubble on desktop, centred pop-up on touch ── */
+.term-tip { position: relative; cursor: help; text-decoration: underline dotted; text-decoration-thickness: 2px; text-underline-offset: 6px; text-decoration-color: var(--gold, #b88746); }
+.term-tip-bubble {
+  position: absolute; left: 0; top: calc(100% + 10px); z-index: 30; width: min(320px, 80vw);
+  padding: 12px 14px; border-radius: 12px; background: var(--ink, #1a1410); color: #fff;
+  font-family: var(--sans); font-size: 14px; font-weight: 400; line-height: 1.5; letter-spacing: 0; text-align: left;
+  box-shadow: 0 10px 28px rgba(0,0,0,0.2);
+}
+
+.term-tip-modal-root { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.term-tip-backdrop { position: absolute; inset: 0; background: rgba(26,20,16,0.5); }
+.term-tip-modal {
+  position: relative; display: flex; flex-direction: column; gap: 8px; width: min(420px, 100%);
+  padding: 22px 20px 20px; border-radius: 16px; background: var(--paper); color: var(--ink);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.25); text-align: left; font-family: var(--sans); letter-spacing: 0;
+}
+.term-tip-modal-title { font-family: var(--font-display); font-size: 22px; line-height: 1.2; padding-right: 40px; }
+.term-tip-modal-text { font-size: 15px; line-height: 1.6; color: var(--ink-2); }
+.term-tip-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border-radius: 999px;
+  border: 1px solid var(--ink-line); background: var(--paper); font-size: 16px; cursor: pointer; }

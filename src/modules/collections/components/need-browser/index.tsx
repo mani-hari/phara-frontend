@@ -1,7 +1,7 @@
 "use client"
 
 import Image from "next/image"
-import { useMemo, useState } from "react"
+import { useEffect, useMemo, useState } from "react"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 
 export type BrowseItem = { id: string; handle: string; title: string; price: string | null; image: string | null; needs: string[] }
@@ -10,6 +10,11 @@ export type Need = { key: string; label: string }
 /** Need chips + product grid. Chips only list needs that have products in this collection. */
 export default function NeedBrowser({ items, needs }: { items: BrowseItem[]; needs: Need[] }) {
   const [active, setActive] = useState<string>("all")
+  // Links like /collections/pujas-and-homams?need=health open with that chip selected.
+  useEffect(() => {
+    const need = new URLSearchParams(window.location.search).get("need")
+    if (need && needs.some((n) => n.key === need)) setActive(need)
+  }, [needs])
   const shown = useMemo(() => (active === "all" ? items : items.filter((i) => i.needs.includes(active))), [active, items])
   const chips = [{ key: "all", label: "All" }, ...needs]
 

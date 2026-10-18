@@ -2,15 +2,13 @@ import { HttpTypes } from "@medusajs/types"
 import Image from "next/image"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import {
-  CenterSigil,
-  Img,
   KolamCorner,
   SectionHeader,
   Stars,
 } from "@modules/common/components/brand"
 import { getProductPrice } from "@lib/util/get-product-price"
-import HeroChatInput from "@modules/home/components/hero-chat-input"
 import LiteYouTube from "@modules/common/components/lite-youtube"
+import HomeHero from "@modules/home/components/home-hero"
 import { todayIst } from "@lib/util/blog-publish"
 import { PRODUCT_BUNDLES } from "@lib/data/product-bundles"
 import Link from "next/link"
@@ -29,15 +27,8 @@ type HomeV3Props = {
    Design source: docs/design/Parihara-Final.html → HomeHiFi
    ===================================================================== */
 
-// Core top sellers (by orders, Jul–Oct 2026): always shown (up to 4), in this order.
-const FEATURED_HANDLES = [
-  "garbharakshambika-ghee",
-  "garbharakshambika-oil",
-  "rahu-ketu-dosha-parihara-pooja-sarpa-dosha-parihara-pooja-at-sri-kalahasti-temple",
-  "shirdi-sai-baba-udi-prasadham",
-] as const
 
-// Seasonal feature: shown above the top sellers only inside its date window (IST, inclusive).
+// Seasonal feature: the banner shown above "Most ordered" in the home hero, only inside its date window (IST).
 // Can also be switched on from Medusa admin without a deploy: give a product the metadata
 // `featured_until` = YYYY-MM-DD (and optionally `featured_label`, e.g. "Diwali").
 const SEASONAL_CALENDAR: { handle: string; label: string; from: string; until: string; note?: string }[] = [
@@ -50,70 +41,8 @@ const SEASONAL_CALENDAR: { handle: string; label: string; from: string; until: s
   },
 ]
 
-const FEATURED_OVERLAY: Record<
-  string,
-  { tag: string; deity: string; img: string; stars: number; reviews: number; sub: string }
-> = {
-  "garbharakshambika-ghee": {
-    tag: "For Conceiving",
-    deity: "Garbarakshambigai · Tirukkarukavur",
-    img: "GHEE · LAMP IN COPPER VESSEL",
-    stars: 4.9,
-    reviews: 281,
-    sub: "Temple-blessed prasadham · sealed glass jar",
-  },
-  "garbharakshambika-oil": {
-    tag: "For Safe Delivery",
-    deity: "Garbarakshambigai · Tirukkarukavur",
-    img: "OIL · BRONZE LAMP",
-    stars: 4.9,
-    reviews: 333,
-    sub: "For 3rd-trimester abhyangam",
-  },
-  "rahu-ketu-dosha-parihara-pooja-sarpa-dosha-parihara-pooja-at-sri-kalahasti-temple": {
-    tag: "For Sarpa Dosha",
-    deity: "Sri Kalahasti · Andhra Pradesh",
-    img: "KALAHASTI TEMPLE GOPURAM",
-    stars: 4.8,
-    reviews: 126,
-    sub: "Performed at Sri Kalahasti · 11 priests",
-  },
-}
 
-const INTENT_TILES: { title: string; sub: string; prompt: string }[] = [
-  {
-    title: "Health & healing",
-    sub: "Mrityunjaya · Dhanvantri · Ayushya",
-    prompt: "I'm looking for a pooja for health and healing",
-  },
-  {
-    title: "Family & children",
-    sub: "Garbarakshambigai · Putra Kameshti · Annaprasana",
-    prompt: "I want a pooja for family and children",
-  },
-  {
-    title: "Career & wealth",
-    sub: "Sudarshana · Lakshmi · Kubera",
-    prompt: "Which pooja helps with career and wealth?",
-  },
-  {
-    title: "Marriage",
-    sub: "Swayamvara Parvathi · Kanchi Kamakshi",
-    prompt: "A pooja to help with marriage",
-  },
-  {
-    title: "For ancestors",
-    sub: "Tila Homam · Tarpanam · Pitru Paksha",
-    prompt: "Poojas for my ancestors (pitru)",
-  },
-]
 
-const SUGGESTION_CHIPS = [
-  "For my father's recovery from a stroke",
-  "We've been trying to conceive",
-  "Saturn return remedies",
-  "My daughter's marriage is delayed",
-]
 
 // `title` is used only for the iframe's accessibility label; the visible title
 // is YouTube's own overlay. Add more entries here as more clips are published.
@@ -169,77 +98,61 @@ export default function HomeV3({ products, countryCode, posts = [] }: HomeV3Prop
       seasonal.push({ product: p, label: String(p.metadata?.featured_label || "Seasonal"), until })
   }
   const seasonalFeature = seasonal[0]
-  const featured = FEATURED_HANDLES.map((h) => byHandle.get(h)).filter(
-    (p): p is HttpTypes.StoreProduct => !!p && p.id !== seasonalFeature?.product.id
-  )
   const isNew = (d: string) => (Date.parse(today) - Date.parse(d)) / 86400000 <= 7
   const fmtUntil = (d: string) =>
     new Date(`${d}T00:00:00Z`).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" })
 
+
+  const seasonalBanner = seasonalFeature ? (
+            <LocalizedClientLink
+              href={`/products/${seasonalFeature.product.handle}`}
+              className="ph-card ph-lift home-seasonal"
+              style={{ marginBottom: 24, overflow: "hidden" }}
+            >
+              <div style={{ position: "relative", minHeight: 240, background: "var(--ink)" }}>
+                {seasonalFeature.product.thumbnail && (
+                  <Image
+                    src={seasonalFeature.product.thumbnail}
+                    alt={seasonalFeature.product.title ?? ""}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 560px"
+                  />
+                )}
+              </div>
+              <div style={{ padding: 28, display: "flex", flexDirection: "column", justifyContent: "center", gap: 10 }}>
+                <div>
+                  <span className="ph-chip ph-chip-sindoor">
+                    {seasonalFeature.label} · until {fmtUntil(seasonalFeature.until)}
+                  </span>
+                </div>
+                <h3 className="ph-h2" style={{ margin: 0 }}>
+                  {seasonalFeature.product.title}
+                </h3>
+                {(seasonalFeature.note || seasonalFeature.product.subtitle) && (
+                  <p className="ph-body" style={{ margin: 0, color: "var(--ink-2)" }}>
+                    {seasonalFeature.note || seasonalFeature.product.subtitle}
+                  </p>
+                )}
+                <div className="flex items-center justify-between" style={{ marginTop: 8 }}>
+                  <span className="ph-num ph-h4" style={{ fontFamily: "var(--font-inter), Inter, sans-serif", fontWeight: 600 }}>
+                    {/* Bundles are priced per pooja on their page; their own variants are not what customers buy. */}
+                    {!PRODUCT_BUNDLES[seasonalFeature.product.handle ?? ""] && formatPrice(seasonalFeature.product)
+                      ? `From ${formatPrice(seasonalFeature.product)}`
+                      : ""}
+                  </span>
+                  <span className="ph-body-sm" style={{ color: "var(--sindoor)", fontWeight: 600 }}>
+                    Choose your poojas →
+                  </span>
+                </div>
+              </div>
+            </LocalizedClientLink>
+          ) : null
+
   return (
     <div style={{ background: "var(--paper)" }}>
-      {/* HERO ----------------------------------------------------------- */}
-      <section
-        className="relative overflow-hidden"
-        style={{ padding: "64px 24px 56px", background: "var(--paper)" }}
-      >
-        <KolamCorner
-          size={80}
-          style={{ position: "absolute", top: 18, left: 18, opacity: 0.5 }}
-        />
-        <KolamCorner
-          size={80}
-          style={{
-            position: "absolute",
-            top: 18,
-            right: 18,
-            transform: "scaleX(-1)",
-            opacity: 0.5,
-          }}
-        />
-        <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
-          <div className="flex items-center justify-center gap-2 mb-4">
-            <CenterSigil size={14} />
-            <span className="ph-eyebrow ph-eyebrow-gold">
-              Welcome · Guided since 2009
-            </span>
-            <CenterSigil size={14} />
-          </div>
-          <h1
-            style={{
-              fontFamily: "var(--font-display)",
-              fontSize: "clamp(32px, 5vw, 52px)",
-              fontWeight: 400,
-              lineHeight: 1.15,
-              color: "var(--ink)",
-              marginBottom: 18,
-              letterSpacing: "-0.01em",
-            }}
-          >
-            What would you like a{" "}
-            <span style={{ color: "var(--sindoor)" }}>pooja</span> for?
-          </h1>
-          <p
-            style={{
-              fontFamily: "var(--sans)",
-              fontSize: "clamp(15px, 1.8vw, 17px)",
-              fontWeight: 400,
-              lineHeight: 1.6,
-              color: "var(--ink-3)",
-              maxWidth: 680,
-              margin: "0 auto 28px",
-            }}
-          >
-            Tell us what&apos;s on your mind — a worry, a wish, a moment in the family.
-            We&apos;ll suggest the right prayer or spiritual remedy that facilitates your wish.
-          </p>
-
-          {/* Interactive chat input */}
-          <HeroChatInput countryCode={countryCode} />
-        </div>
-        {/* Sentinel: overlay watches this to know when hero has scrolled out */}
-        <div id="ask-hero-sentinel" style={{ height: 0 }} aria-hidden />
-      </section>
+      {/* HERO: first screen (intent tiles, seasonal banner, most ordered, Ask Parihara) */}
+      <HomeHero products={products} countryCode={countryCode} seasonal={seasonalBanner} />
 
       {/* RECENT HOMAM VIDEOS ------------------------------------------- */}
       <section style={{ padding: "64px 24px", background: "var(--paper-3)" }}>
@@ -300,198 +213,6 @@ export default function HomeV3({ products, countryCode, posts = [] }: HomeV3Prop
         </div>
       </section>
 
-      {/* FEATURED PRODUCTS --------------------------------------------- */}
-      <section style={{ padding: "64px 24px", background: "var(--paper-2)" }}>
-        <div className="content-container" style={{ paddingInline: 0 }}>
-          <div className="mb-8">
-            <SectionHeader title="Most popular poojas" />
-          </div>
-          {seasonalFeature && (
-            <LocalizedClientLink
-              href={`/products/${seasonalFeature.product.handle}`}
-              className="ph-card ph-lift home-seasonal"
-              style={{ marginBottom: 24, overflow: "hidden" }}
-            >
-              <div style={{ position: "relative", minHeight: 240, background: "var(--ink)" }}>
-                {seasonalFeature.product.thumbnail && (
-                  <Image
-                    src={seasonalFeature.product.thumbnail}
-                    alt={seasonalFeature.product.title ?? ""}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 100vw, 560px"
-                  />
-                )}
-              </div>
-              <div style={{ padding: 28, display: "flex", flexDirection: "column", justifyContent: "center", gap: 10 }}>
-                <div>
-                  <span className="ph-chip ph-chip-sindoor">
-                    {seasonalFeature.label} · until {fmtUntil(seasonalFeature.until)}
-                  </span>
-                </div>
-                <h3 className="ph-h2" style={{ margin: 0 }}>
-                  {seasonalFeature.product.title}
-                </h3>
-                {(seasonalFeature.note || seasonalFeature.product.subtitle) && (
-                  <p className="ph-body" style={{ margin: 0, color: "var(--ink-2)" }}>
-                    {seasonalFeature.note || seasonalFeature.product.subtitle}
-                  </p>
-                )}
-                <div className="flex items-center justify-between" style={{ marginTop: 8 }}>
-                  <span className="ph-num ph-h4" style={{ fontFamily: "var(--font-inter), Inter, sans-serif", fontWeight: 600 }}>
-                    {/* Bundles are priced per pooja on their page; their own variants are not what customers buy. */}
-                    {!PRODUCT_BUNDLES[seasonalFeature.product.handle ?? ""] && formatPrice(seasonalFeature.product)
-                      ? `From ${formatPrice(seasonalFeature.product)}`
-                      : ""}
-                  </span>
-                  <span className="ph-body-sm" style={{ color: "var(--sindoor)", fontWeight: 600 }}>
-                    Choose your poojas →
-                  </span>
-                </div>
-              </div>
-            </LocalizedClientLink>
-          )}
-          <div
-            className="grid"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-              gap: 24,
-            }}
-          >
-            {featured.map((product) => {
-              const overlay = FEATURED_OVERLAY[product.handle ?? ""]
-              const price = formatPrice(product)
-              return (
-                <LocalizedClientLink
-                  key={product.id}
-                  href={`/products/${product.handle}`}
-                  className="ph-card ph-lift block"
-                >
-                  {product.thumbnail ? (
-                    <div
-                      style={{
-                        position: "relative",
-                        height: 220,
-                        overflow: "hidden",
-                        background: "var(--ink)",
-                      }}
-                    >
-                      <Image
-                        src={product.thumbnail}
-                        alt={product.title ?? ""}
-                        fill
-                        className="object-cover object-top"
-                        sizes="(max-width: 768px) 100vw, 400px"
-                      />
-                    </div>
-                  ) : (
-                    <Img style={{ height: 220 }} deep>
-                      {overlay?.img ?? product.title?.toUpperCase()}
-                    </Img>
-                  )}
-                  <div style={{ padding: 22 }}>
-                    <div className="flex items-center mb-2">
-                      {overlay && <span className="ph-chip ph-chip-sindoor">{overlay.tag}</span>}
-                    </div>
-                    <h3 className="ph-h3" style={{ marginBottom: 6 }}>
-                      {product.title}
-                    </h3>
-                    <div className="ph-body-sm">
-                      {overlay?.sub ?? product.subtitle ?? ""}
-                    </div>
-                    {overlay && (
-                      <div
-                        style={{
-                          fontFamily: "var(--serif)",
-                          fontSize: 13,
-                          color: "var(--ink-4)",
-                          marginTop: 12,
-                        }}
-                      >
-                        {overlay.deity}
-                      </div>
-                    )}
-                    <div className="flex items-center justify-between" style={{ marginTop: 16 }}>
-                      <span
-                        className="ph-num ph-h4"
-                        style={{ fontFamily: "var(--font-inter), Inter, sans-serif", fontWeight: 600 }}
-                      >
-                        {price ?? ""}
-                      </span>
-                      <span
-                        className="ph-body-sm"
-                        style={{ color: "var(--sindoor)", fontWeight: 600 }}
-                      >
-                        View details →
-                      </span>
-                    </div>
-                  </div>
-                </LocalizedClientLink>
-              )
-            })}
-          </div>
-          <div style={{ textAlign: "center", marginTop: 32 }}>
-            <LocalizedClientLink
-              href="/collections/pujas-and-homams"
-              className="ph-body-sm"
-              style={{ color: "var(--ink)", borderBottom: "1px solid var(--ink-line-2)", paddingBottom: 2 }}
-            >
-              Browse all poojas →
-            </LocalizedClientLink>
-          </div>
-        </div>
-      </section>
-
-      {/* BROWSE BY INTENT ---------------------------------------------- */}
-      <section style={{ padding: "64px 24px", background: "var(--paper)" }}>
-        <div className="content-container" style={{ paddingInline: 0 }}>
-          <SectionHeader
-            align="center"
-            eyebrow="Find a ritual that fits"
-            title="Browse by what you're seeking"
-            sub="Every prayer has a tradition. Tell us the question — we'll show you the answer."
-          />
-          <div
-            className="grid"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-              gap: 16,
-              marginTop: 40,
-            }}
-          >
-            {INTENT_TILES.map((tile) => (
-              <LocalizedClientLink
-                key={tile.title}
-                href={`/ask-parihara?q=${encodeURIComponent(tile.prompt)}`}
-                className="ph-card-flat ph-lift relative block"
-                style={{ padding: 24 }}
-              >
-                <div className="ph-h4" style={{ marginBottom: 6 }}>
-                  {tile.title}
-                </div>
-                <div
-                  style={{
-                    fontFamily: "var(--serif)",
-                    fontSize: 13,
-                    color: "var(--ink-3)",
-                    lineHeight: 1.5,
-                  }}
-                >
-                  {tile.sub}
-                </div>
-                <div
-                  className="flex items-center justify-end"
-                  style={{ marginTop: 16 }}
-                >
-                  <span style={{ color: "var(--sindoor)" }}>→</span>
-                </div>
-              </LocalizedClientLink>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ASTROLOGY + TESTIMONIAL --------------------------------------- */}
       <section

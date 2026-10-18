@@ -1,5 +1,6 @@
 import { ReactNode } from "react"
 import LanguageSwitcher from "@modules/common/components/language-switcher"
+import BackLink from "@modules/products/components/back-link"
 import SafeImage from "@modules/common/components/safe-image"
 import { MobileCollapse } from "@modules/products/components/spread-mobile"
 import type { LangCode } from "@lib/i18n/languages"
@@ -71,7 +72,7 @@ export default function LandingSpread({
   const extra = sections.filter((s) => s.heading && !shown.has(s))
 
   // Significance: lead with the first paragraph only; shipping lines in it are covered by the delivery block.
-  const sigParas = (significance?.blocks || []).filter((b) => b.kind === "para" && !/shipping|whatsapp/i.test(b.text))
+  const sigParas = (significance?.blocks || []).filter((b) => b.kind === "para" && !/\bshipping\b|\bwhatsapp\b/i.test(b.text))
   const sigLead = sigParas[0]
 
   const urls = gallery.map((g) => g.url)
@@ -91,7 +92,8 @@ export default function LandingSpread({
     <section className="content-container pland-wrap" style={{ paddingTop: 20, paddingBottom: 64 }} data-testid="product-container">
       {/* Phones: one column with the card after "How to use". Desktop: story left, card frozen on the right. */}
       <div className="pland">
-        <header className="pland-head" style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+        <header className="pland-head" style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <BackLink />
           <h1 className="ph-h1" style={{ margin: 0 }} data-testid="product-title" lang={langAttr}>
             {title}
           </h1>

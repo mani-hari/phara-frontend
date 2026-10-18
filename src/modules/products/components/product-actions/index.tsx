@@ -349,7 +349,7 @@ export default function ProductActions({
           inStock={inStock}
           handleAddToCart={handleAddToCart}
           isAdding={isAdding}
-          show={scrolledPast}
+          show // always on screen on phones, like an app's bottom bar
           optionsDisabled={!!disabled || isAdding}
           buttonText={buttonText}
           quantity={quantity}

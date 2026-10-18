@@ -121,7 +121,6 @@ export default async function RelatedProducts({
                     {p.collection?.title && (
                       <p
                         className="ph-body-sm"
-                        style={{ fontFamily: "var(--serif)", color: "var(--ink-4)" }}
                         style={{ fontSize: 13, marginBottom: 10, margin: "4px 0 10px" }}
                       >
                         {p.collection.title}
