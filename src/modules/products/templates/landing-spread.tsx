@@ -112,13 +112,6 @@ export default function LandingSpread({
           </section>
         )}
 
-        <section className="ph-landing-promise">
-          <p style={{ margin: 0, fontWeight: 700, color: "var(--ink)", fontSize: 16 }}>Can&apos;t travel to the temple?</p>
-          <p className="ph-body-sm" style={{ margin: "6px 0 0", color: "var(--ink-2)", lineHeight: 1.6 }}>
-            Our representative collects the prasadam at {config.place} and ships it to you in sealed, safe packaging.{" "}
-            {deliveryLine}
-          </p>
-        </section>
 
         {(pack || guide) && (
           <section style={{ display: "flex", flexDirection: "column", gap: 16 }}>
