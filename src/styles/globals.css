@@ -556,6 +556,17 @@
   .home-seasonal { grid-template-columns: 1.1fr 1fr; }
 }
 
+/* ── Home: slim Digital Aarti invitation in the videos section (components/aarti-strip) ── */
+.home-aarti-strip { display: flex; align-items: center; gap: 14px; margin-top: 20px; padding: 10px 16px 10px 10px; }
+.home-aarti-thumbs { display: flex; gap: 6px; flex-shrink: 0; }
+.home-aarti-thumb { position: relative; width: 44px; height: 58px; border-radius: 8px; overflow: hidden; background: #1a0f08; }
+.home-aarti-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+.home-aarti-new { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--sindoor); }
+.home-aarti-title { font-family: var(--font-display); font-size: 17px; line-height: 1.25; color: var(--ink); }
+.home-aarti-sub { font-size: 12.5px; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.home-aarti-go { color: var(--sindoor); font-weight: 600; flex-shrink: 0; }
+@media (min-width: 768px) { .home-aarti-thumb { width: 52px; height: 68px; } .home-aarti-title { font-size: 19px; } }
+
 /* ── "Added to cart" toast (product-actions/added-toast.tsx) ── */
 .ph-added-toast {
   position: fixed; left: 50%; transform: translateX(-50%); top: 76px; z-index: 70;
@@ -793,26 +804,15 @@
   border: 1px solid var(--ink-line); background: var(--paper); font-size: 16px; cursor: pointer; }
 
 /* ── Digital Aarti (modules/aarti/components/aarti-experience.tsx) ─────────────────────────────────
-   Graceful, slow, golden. Easing is always ease-in-out / long; nothing bounces. */
+   Graceful and slow; the paintings are shown as they are (see /aarti cover). Easing is always ease-in-out / long; nothing bounces. */
 body:has(.aarti-stage) .ph-ask-pill { display: none !important; } /* no Ask button on aarti pages */
 .aarti-stage { position: relative; height: calc(100dvh - 64px); min-height: 580px; overflow: hidden; background: #1a0f08; color: #fff; user-select: none; -webkit-user-select: none; isolation: isolate; }
-.aarti-layer, .aarti-canvas, .aarti-vignette, .aarti-rays, .aarti-golden { position: absolute; inset: 0; }
+.aarti-layer, .aarti-canvas, .aarti-vignette { position: absolute; inset: 0; }
 .aarti-bg { inset: -5%; will-change: transform; }
 .aarti-canvas { pointer-events: none; z-index: 3; }
-/* golden warmth over the original paintings (animated light, the art itself is untouched) */
-.aarti-golden { z-index: 1; pointer-events: none; mix-blend-mode: soft-light;
-  background: radial-gradient(ellipse at 50% 40%, rgba(255,214,140,0.85), rgba(255,190,110,0.35) 45%, rgba(255,170,90,0) 75%);
-  animation: aarti-breathe 9s ease-in-out infinite; }
-.aarti-rays { z-index: 1; pointer-events: none; mix-blend-mode: screen; opacity: 0.35;
-  background: repeating-conic-gradient(from 0deg at 50% 32%, rgba(255,224,160,0.20) 0deg 4deg, rgba(255,224,160,0) 4deg 18deg);
-  -webkit-mask-image: radial-gradient(circle at 50% 32%, #000 0%, rgba(0,0,0,0.6) 30%, transparent 62%); mask-image: radial-gradient(circle at 50% 32%, #000 0%, rgba(0,0,0,0.6) 30%, transparent 62%);
-  animation: aarti-rays 90s linear infinite; }
-.aarti-halo { position: absolute; z-index: 1; left: 50%; top: 30%; width: min(96vw, 620px); aspect-ratio: 1; transform: translate(-50%, -50%); pointer-events: none; animation: aarti-halo 7s ease-in-out infinite; }
 .aarti-deity { position: absolute; z-index: 2; left: 50%; bottom: 8%; width: min(92vw, 540px); height: 74%; transform: translateX(-50%); will-change: transform; }
-.aarti-vignette { z-index: 4; pointer-events: none; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(20,10,4,0.55) 100%), linear-gradient(to bottom, rgba(20,10,4,0.55), transparent 20%, transparent 72%, rgba(20,10,4,0.65)); }
+.aarti-vignette { z-index: 4; pointer-events: none; background: linear-gradient(to bottom, rgba(20,10,4,0.5), transparent 18%, transparent 76%, rgba(20,10,4,0.6)); }
 @keyframes aarti-breathe { 0%,100% { opacity: 0.55; } 50% { opacity: 0.9; } }
-@keyframes aarti-rays { to { transform: rotate(360deg); } }
-@keyframes aarti-halo { 0%,100% { opacity: 0.75; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 1; transform: translate(-50%, -50%) scale(1.04); } }
 
 /* title */
 .aarti-top { position: absolute; z-index: 6; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; gap: 12px; padding: 16px 16px 0; }
@@ -890,7 +890,7 @@ body:has(.aarti-stage) .ph-ask-pill { display: none !important; } /* no Ask butt
   .aarti-dock { left: 50%; right: auto; width: 560px; transform: translateX(-50%); border-radius: 22px 22px 0 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .aarti-rays, .aarti-golden, .aarti-halo, .aarti-diya-flame { animation: none; }
+  .aarti-diya-flame { animation: none; }
 }
 /* the title waits behind the veil and fades in once darshan begins */
 .aarti-top { opacity: 0; transition: opacity 1.6s ease 0.6s; }

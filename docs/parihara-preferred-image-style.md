@@ -33,3 +33,11 @@ Code: `scripts/lib/image-style.mjs` (STYLE_SUFFIX is appended to every prompt).
 pradosham-meaning, swayamvara-parvathi-story, holi-meaning-prahlad-holika,
 dussehra-ravana-story-meaning, satyanarayan-katha-meaning, six-abodes-of-murugan,
 karthigai-deepam-significance (all under `public/blog/`).
+
+## Deity and devotional art (owner decision, 18 Oct 2026)
+
+The reference for any image with a deity is the pair of paintings on the `/aarti` cover
+(`public/aarti/*-bg.webp` + `*-deity.webp`, prompts in `scripts/aarti-images.mjs`): an aged oil painting, warm and
+graceful, a calm deity in a softly lit sanctum, real lamps as the only light. Show it as it is. Do not add halos, rays
+or golden washes on top (tried in the aarti and rejected as overdone), and do not regenerate it "brighter" (rejected
+as fake). Compare every new deity image with the cover before using it.

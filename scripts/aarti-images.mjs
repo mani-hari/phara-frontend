@@ -14,8 +14,9 @@ const RAW = path.join(ROOT, ".scratch-aarti")
 
 // The house style avoids faces of people; a deity murti (idol) is the subject of darshan, so these
 // prompts keep the painterly twilight look but allow the murti's serene face.
-// Keep this v1 look. A brighter "luminous golden" v2 (19 Oct) was REJECTED by the owner as cheesy and fake;
-// golden warmth is added on the page with animated light (aarti-experience.tsx) instead.
+// Keep this v1 look: it is the owner's reference for deity art across the site (docs/parihara-preferred-image-style.md).
+// A brighter "luminous golden" v2 was REJECTED as cheesy and fake, and glows/halos/rays laid over the paintings on the
+// page were rejected as overdone (18 Oct). Show the painting as it is.
 const LOOK = "painterly oil on linen, twilight tonalism, warm golden lamplight, soft atmospheric haze, loose brushwork, devotional and serene, rich but not garish, no text, no letters, no logos, no watermark"
 
 const IMAGES = [
@@ -23,6 +24,8 @@ const IMAGES = [
   { file: "shirdi-sai-baba-deity", transparent: true, prompt: `Full-figure painted marble murti (idol) of Shirdi Sai Baba seated on a simple silver throne, right leg crossed over the left knee, white robe and white head cloth, a saffron shawl over the shoulders, a fresh rose and marigold garland, serene compassionate face, softly lit by warm lamplight from below. Isolated subject on a transparent background, no floor, no scenery. ${LOOK}` },
   { file: "mahalakshmi-bg", transparent: false, prompt: `Interior of a richly decorated South Indian home shrine at dusk: an empty raised pedestal in the centre framed by a carved golden arch (left empty for the idol), red silk drapes, banana leaves and mango-leaf torans, brass lamps and a silver kalasha glowing, a few gold coins on a red cloth, warm golden light, gentle haze. ${LOOK}` },
   { file: "mahalakshmi-deity", transparent: true, prompt: `Full-figure painted golden murti (idol) of Goddess Mahalakshmi seated on a large pink lotus, four arms: two holding pink lotuses, one hand in blessing pose, one hand gently pouring a stream of gold coins, red silk saree with gold border, gold jewellery and crown, serene benevolent face, warm lamplight. Isolated subject on a transparent background, no scenery. ${LOOK}` },
+  { file: "durga-bg", transparent: false, prompt: `Interior of a serene South Indian temple shrine during Navaratri at dusk: an empty raised stone pedestal in the centre under a carved golden arch (left empty for the idol), red and gold silk drapes, marigold and jasmine garlands, mango-leaf torans, and in the foreground many small earthen clay diyas lit in neat rows along the steps, their flames warm and steady, gentle haze. ${LOOK}` },
+  { file: "durga-deity", transparent: true, prompt: `Full-figure painted golden murti (idol) of Goddess Durga in her gentle, motherly form, seated calmly on a peaceful resting lion, eight arms: one hand raised in blessing (abhaya), one holding a pink lotus, the others resting softly with a conch, a discus, a small trident held upright, a bow and a bell, red silk saree with gold border, gold crown and jewellery, a soft kind smile, serene benevolent face, no demon, no blood, nothing fierce. Isolated subject on a transparent background, no scenery. ${LOOK}` },
 ]
 
 function key() {
@@ -65,4 +68,9 @@ async function gen({ file, prompt, transparent }) {
 
 await fs.mkdir(OUT, { recursive: true })
 await fs.mkdir(RAW, { recursive: true })
-await Promise.all(IMAGES.map((i) => gen(i).catch((e) => console.error("FAILED", e.message))))
+// Never touches art that is already in public/aarti (the approved paintings) unless named on the command line:
+//   node scripts/aarti-images.mjs              → only deities whose webp is missing
+//   node scripts/aarti-images.mjs durga-deity  → (re)builds just that file
+const only = process.argv.slice(2)
+const todo = only.length ? IMAGES.filter((i) => only.includes(i.file)) : IMAGES.filter((i) => !existsSync(path.join(OUT, `${i.file}.webp`)))
+await Promise.all(todo.map((i) => gen(i).catch((e) => console.error("FAILED", e.message))))

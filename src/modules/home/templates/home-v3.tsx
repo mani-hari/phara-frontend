@@ -9,6 +9,7 @@ import {
 import { getProductPrice } from "@lib/util/get-product-price"
 import LiteYouTube from "@modules/common/components/lite-youtube"
 import HomeHero from "@modules/home/components/home-hero"
+import AartiStrip from "@modules/home/components/aarti-strip"
 import { todayIst } from "@lib/util/blog-publish"
 import { PRODUCT_BUNDLES } from "@lib/data/product-bundles"
 import Link from "next/link"
@@ -210,6 +211,7 @@ export default function HomeV3({ products, countryCode, posts = [] }: HomeV3Prop
               </div>
             ))}
           </div>
+          <AartiStrip />
         </div>
       </section>
 

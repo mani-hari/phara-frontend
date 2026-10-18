@@ -8,10 +8,10 @@
 //   · offer a prayer: written on a paper chit that is placed at the deity's feet and stays there
 //   · send a blessing: a birthday/anniversary/exam/health wish as a card shared on WhatsApp; the link opens
 //     this darshan greeting the recipient by name (the viral loop)
-// The paintings are kept as the owner approved them (warm, painterly). Golden warmth is added with
-// animated light only: golden wash, breathing halo, slow rays, motes. Slow motion; nothing bounces.
+// The paintings are kept as the owner approved them (warm, painterly), with nothing painted over them: the owner wants the paintings exactly as on the /aarti cover (no halo, rays or
+// golden wash; tried and rejected 19 Oct). Only the aarti flame's own light. Slow motion; nothing bounces.
 //
-// Layers, back → front: sanctum (drift + tilt) · rays + golden wash · halo · deity (tilt) · canvas (flame,
+// Layers, back → front: sanctum (gentle tilt) · deity (tilt) · canvas (flame,
 // trail, glow, motes, petals, sparks, ripples, coconut) · prayer chits · veil and UI.
 // Prayers stay on the device (localStorage); nothing is sent to a server.
 
@@ -106,7 +106,7 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
       s.w = r.width
       s.h = r.height
       if (!s.motes.length)
-        for (let i = 0; i < 46; i++)
+        for (let i = 0; i < 18; i++)
           s.motes.push({ x: Math.random() * r.width, y: Math.random() * r.height, vy: 0.08 + Math.random() * 0.22, drift: Math.random() * TAU, size: 0.6 + Math.random() * 1.6, tw: Math.random() * TAU })
     }
     resize()
@@ -152,7 +152,7 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
         s.tiltX += (s.targetX - s.tiltX) * 0.05
         s.tiltY += (s.targetY - s.tiltY) * 0.05
         const drift = Math.sin(t / 9000) * 0.5
-        if (bgRef.current) bgRef.current.style.transform = `translate3d(${s.tiltX * -10 + drift * 6}px, ${s.tiltY * -7}px, 0) scale(${1.07 + Math.sin(t / 14000) * 0.015})`
+        if (bgRef.current) bgRef.current.style.transform = `translate3d(${s.tiltX * -10 + drift * 6}px, ${s.tiltY * -7}px, 0) scale(1.05)`
         if (deityRef.current) deityRef.current.style.transform = `translate3d(calc(-50% + ${s.tiltX * 12}px), ${s.tiltY * 6}px, 0) scale(${1 + Math.sin(t / 4200) * 0.004})`
       }
       ctx.clearRect(0, 0, w, h)
@@ -178,15 +178,16 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
         if (s.trail.length > 46) s.trail.shift()
       } else s.intensity *= 0.99
 
-      // golden light on the deity, stronger as the flame passes the face
+      // the passing flame warms the murti a little; nothing else glows (owner: the painting as it is)
       const near = s.performing ? 1 - Math.min(1, Math.hypot(s.flame.x - cx, s.flame.y - (cy - h * 0.12)) / (w * 0.45)) : 0
-      const breathe = 0.5 + 0.5 * Math.sin(t / 2400)
       ctx.globalCompositeOperation = "lighter"
-      const g = ctx.createRadialGradient(cx, cy - h * 0.1, 10, cx, cy - h * 0.1, Math.max(w, h) * 0.6)
-      g.addColorStop(0, `rgba(${halo},${0.08 + 0.05 * breathe + s.intensity * (0.08 + near * 0.14)})`)
-      g.addColorStop(1, `rgba(${halo},0)`)
-      ctx.fillStyle = g
-      ctx.fillRect(0, 0, w, h)
+      if (near > 0.01) {
+        const g = ctx.createRadialGradient(cx, cy - h * 0.1, 10, cx, cy - h * 0.1, Math.max(w, h) * 0.4)
+        g.addColorStop(0, `rgba(${halo},${s.intensity * near * 0.07})`)
+        g.addColorStop(1, `rgba(${halo},0)`)
+        ctx.fillStyle = g
+        ctx.fillRect(0, 0, w, h)
+      }
 
       // gold motes drifting upward
       ctx.fillStyle = "rgba(255,226,160,1)"
@@ -198,7 +199,7 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
           m.y = h + 4
           m.x = Math.random() * w
         }
-        ctx.globalAlpha = 0.25 + 0.35 * (0.5 + 0.5 * Math.sin(m.tw))
+        ctx.globalAlpha = 0.12 + 0.18 * (0.5 + 0.5 * Math.sin(m.tw))
         ctx.beginPath()
         ctx.arc(m.x, m.y, m.size, 0, TAU)
         ctx.fill()
@@ -506,15 +507,8 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
       style={{ touchAction: holding ? "none" : "auto" }}
     >
       <div ref={bgRef} className="aarti-layer aarti-bg">
-        <Image src={`/aarti/${deity.slug}-bg.webp`} alt="" fill priority sizes="100vw" className="object-cover" />
+        <Image src={`/aarti/${deity.slug}-bg.webp`} alt="" fill priority sizes="100vw" className="object-cover" style={deity.theme.bgPos ? { objectPosition: deity.theme.bgPos } : undefined} />
       </div>
-      <div className="aarti-rays" aria-hidden />
-      <div className="aarti-golden" aria-hidden />
-      <div
-        className="aarti-halo"
-        aria-hidden
-        style={{ background: `radial-gradient(circle, rgba(${deity.theme.halo},0.5) 0%, rgba(${deity.theme.halo},0.16) 40%, rgba(${deity.theme.halo},0) 70%)` }}
-      />
       <div ref={deityRef} className="aarti-deity">
         <Image src={`/aarti/${deity.slug}-deity.webp`} alt={deity.name} fill priority sizes="(max-width: 768px) 92vw, 540px" className="object-contain object-bottom" />
       </div>

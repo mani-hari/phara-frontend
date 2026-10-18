@@ -22,22 +22,6 @@ const loadImg = (src: string) =>
     img.src = src
   })
 
-function wrap(ctx: CanvasRenderingContext2D, text: string, x: number, y: number, maxW: number, lh: number) {
-  const words = text.split(/\s+/)
-  let line = ""
-  const lines: string[] = []
-  for (const w of words) {
-    const test = line ? `${line} ${w}` : w
-    if (ctx.measureText(test).width > maxW && line) {
-      lines.push(line)
-      line = w
-    } else line = test
-  }
-  if (line) lines.push(line)
-  lines.forEach((l, i) => ctx.fillText(l, x, y + i * lh))
-  return lines.length
-}
-
 export async function makeBlessingCard(opts: { deity: Deity; to: string; from: string; occasion: string; note?: string }) {
   const { deity, to, from, occasion, note } = opts
   const W = 1080
@@ -70,24 +54,45 @@ export async function makeBlessingCard(opts: { deity: Deity; to: string; from: s
   ctx.fillRect(0, H * 0.6, W, H * 0.4)
 
   ctx.textAlign = "center"
-  ctx.fillStyle = "#9a6a28"
-  ctx.font = "600 30px Georgia, 'DM Serif Display', serif"
-  ctx.fillText((deity.prayerLine || deity.name).toUpperCase(), W / 2, H * 0.755)
-  ctx.fillStyle = "#1a1410"
-  ctx.font = "56px Georgia, 'DM Serif Display', serif"
-  const n = wrap(ctx, occasionLine(occasion, to), W / 2, H * 0.825, W - 160, 66)
-  let y = H * 0.825 + n * 66
-  if (note?.trim()) {
-    ctx.fillStyle = "#4a3f36"
-    ctx.font = "italic 34px Georgia, serif"
-    y += wrap(ctx, `“${note.trim()}”`, W / 2, y + 10, W - 200, 44) * 44 + 10
+  // Measure the words first, then place the block so it always ends above the site name (no overlaps).
+  const lines = (text: string, font: string, maxW: number) => {
+    ctx.font = font
+    const out: string[] = []
+    let line = ""
+    for (const w of text.split(/\s+/)) {
+      const test = line ? `${line} ${w}` : w
+      if (ctx.measureText(test).width > maxW && line) {
+        out.push(line)
+        line = w
+      } else line = test
+    }
+    if (line) out.push(line)
+    return out
   }
-  ctx.fillStyle = "#6b5d52"
-  ctx.font = "32px Georgia, serif"
-  ctx.fillText(`With ${deity.name}'s blessings, from ${from}`, W / 2, Math.min(H - 70, y + 40))
+  const F_PRAYER = "600 30px Georgia, 'DM Serif Display', serif"
+  const F_WISH = "56px Georgia, 'DM Serif Display', serif"
+  const F_NOTE = "italic 34px Georgia, serif"
+  const F_FROM = "32px Georgia, serif"
+  const wish = lines(occasionLine(occasion, to), F_WISH, W - 160)
+  const noteLines = note?.trim() ? lines(`“${note.trim()}”`, F_NOTE, W - 200) : []
+  const blocks: { text: string; font: string; color: string; lh: number; gapBefore: number }[] = [
+    { text: (deity.prayerLine || deity.name).toUpperCase(), font: F_PRAYER, color: "#9a6a28", lh: 40, gapBefore: 0 },
+    ...wish.map((t, i) => ({ text: t, font: F_WISH, color: "#1a1410", lh: 66, gapBefore: i ? 0 : 34 })),
+    ...noteLines.map((t, i) => ({ text: t, font: F_NOTE, color: "#4a3f36", lh: 46, gapBefore: i ? 0 : 22 })),
+    { text: `With ${deity.name}'s blessings, from ${from}`, font: F_FROM, color: "#6b5d52", lh: 42, gapBefore: 26 },
+  ]
+  const total = blocks.reduce((a, b) => a + b.gapBefore + b.lh, 0)
+  let y = Math.min(H * 0.74, H - 84 - total) + 30
+  for (const b of blocks) {
+    y += b.gapBefore
+    ctx.font = b.font
+    ctx.fillStyle = b.color
+    ctx.fillText(b.text, W / 2, y)
+    y += b.lh
+  }
   ctx.fillStyle = "#b6442e"
   ctx.font = "600 24px Helvetica, Arial, sans-serif"
-  ctx.fillText("pariharaonline.com", W / 2, H - 28)
+  ctx.fillText("pariharaonline.com", W / 2, H - 34)
 
   return await new Promise<Blob>((res) => c.toBlob((b) => res(b!), "image/jpeg", 0.9))
 }

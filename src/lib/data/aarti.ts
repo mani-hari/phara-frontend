@@ -17,7 +17,7 @@ export type Deity = {
   // original recordings before promoting the feature. Without one, a code-made bell/manjira rhythm plays.
   chantSrc?: string
   // Look: halo/glow tint and the petals offered (CSS colours) — kept per deity for a fitting feel.
-  theme: { halo: string; petals: string[]; coins?: boolean }
+  theme: { halo: string; petals: string[]; coins?: boolean; bgPos?: string /* CSS object-position for the sanctum; default centre */ }
   // Real-world follow-ups shown after the aarti (product handles).
   offerings: { handle: string; label: string }[]
   accent: string // flame/glow tint
@@ -62,6 +62,24 @@ export const DEITIES: Deity[] = [
     accent: "#ffc861",
     chantSrc: "/aarti/audio/mahalakshmi.mp3",
     theme: { halo: "255,206,150", petals: ["#f4a6c0", "#f7c6d7", "#e56b8f", "#b5172e", "#f9c74f"], coins: true }, // lotus + rose + gold
+  },
+  {
+    // Draft for Navaratri / Vijayadashami. No recording yet: plays the temple bells and drone until the owner's
+    // own Durga aarti recording is added as chantSrc.
+    slug: "durga",
+    name: "Maa Durga",
+    title: "Navaratri Durga Aarti",
+    tagline: "Light a lamp for the Mother on the nights of Navaratri.",
+    place: "Navaratri evenings",
+    times: [{ name: "Sandhya Aarti", time: "19:00" }],
+    prayerLine: "Om Dum Durgayai Namah",
+    blessing: "May Maa Durga protect your family, give you courage, and bring victory to every good thing you begin.",
+    offerings: [
+      { handle: "navratri-poojas-online", label: "Book Navaratri poojas" },
+      { handle: "mantra-chanting-of-700-verses-of-durga-saptashati", label: "Durga Saptashati chanting in your name" },
+    ],
+    accent: "#ffc861",
+    theme: { halo: "255,200,140", petals: ["#c1121f", "#e63946", "#9d0208", "#f6a623", "#f9c74f"], bgPos: "50% 88%" }, // red hibiscus + marigold; keep the diyas in view
   },
 ]
 
