@@ -1,4 +1,5 @@
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { aartiEnabled } from "@lib/data/aarti"
 import { Logo } from "@modules/common/components/brand"
 
 type FooterColumn = {
@@ -20,6 +21,7 @@ const FOOTER_COLUMNS: FooterColumn[] = [
   {
     title: "Discover",
     links: [
+      ...(aartiEnabled() ? [{ label: "Digital Aarti", href: "/aarti" }] : []),
       { label: "Festival calendar", href: "/calendar" },
       { label: "Blog", href: "/blog" },
       { label: "Ask Parihara", href: "/ask-parihara" },

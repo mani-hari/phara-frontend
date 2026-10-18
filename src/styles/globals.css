@@ -556,16 +556,19 @@
   .home-seasonal { grid-template-columns: 1.1fr 1fr; }
 }
 
-/* ── Home: slim Digital Aarti invitation in the videos section (components/aarti-strip) ── */
-.home-aarti-strip { display: flex; align-items: center; gap: 14px; margin-top: 20px; padding: 10px 16px 10px 10px; }
-.home-aarti-thumbs { display: flex; gap: 6px; flex-shrink: 0; }
-.home-aarti-thumb { position: relative; width: 44px; height: 58px; border-radius: 8px; overflow: hidden; background: #1a0f08; }
-.home-aarti-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; flex: 1; }
+/* ── Home: Digital Aarti banner under the seasonal card (components/aarti-strip). The painting rises out of the top. ── */
+.home-aarti-banner { overflow: visible !important; position: relative; display: flex; align-items: center; gap: 14px; margin-top: 52px; padding: 14px 18px 14px 120px; min-height: 92px; background: var(--paper-2); }
+.home-aarti-pop { position: absolute; left: 14px; bottom: 12px; width: 92px; height: 124px; border-radius: 12px; overflow: hidden; background: #1a0f08; box-shadow: 0 10px 24px rgba(40,20,8,0.28); border: 2px solid #fff; }
+.home-aarti-text { display: flex; flex-direction: column; gap: 3px; min-width: 0; flex: 1; }
 .home-aarti-new { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; color: var(--sindoor); }
-.home-aarti-title { font-family: var(--font-display); font-size: 17px; line-height: 1.25; color: var(--ink); }
-.home-aarti-sub { font-size: 12.5px; color: var(--ink-3); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-.home-aarti-go { color: var(--sindoor); font-weight: 600; flex-shrink: 0; }
-@media (min-width: 768px) { .home-aarti-thumb { width: 52px; height: 68px; } .home-aarti-title { font-size: 19px; } }
+.home-aarti-title { font-family: var(--font-display); font-size: 18px; line-height: 1.25; color: var(--ink); }
+.home-aarti-sub { font-size: 12.5px; color: var(--ink-3); line-height: 1.35; }
+.home-aarti-go { color: var(--sindoor); font-weight: 600; flex-shrink: 0; font-size: 18px; }
+@media (min-width: 768px) {
+  .home-aarti-banner { padding: 18px 28px 18px 168px; min-height: 108px; }
+  .home-aarti-pop { left: 24px; bottom: 14px; width: 120px; height: 160px; }
+  .home-aarti-title { font-size: 22px; }
+}
 
 /* ── "Added to cart" toast (product-actions/added-toast.tsx) ── */
 .ph-added-toast {
@@ -716,7 +719,10 @@
 /* ── Home first screen (home/components/home-hero): proof line, hero, intent tiles, Most ordered, Ask ── */
 .hx { padding: 28px 0 40px; background: var(--paper); }
 .hx-inner { max-width: 1100px; }
-.hx-proof { margin: 0 0 10px; font-size: 13px; font-weight: 600; color: var(--gold, #b88746); letter-spacing: 0.02em; }
+/* Hero intro is centred and set apart from the tiles below (owner, 18 Oct: otherwise it feels like a catalogue). */
+.hx-intro { text-align: center; max-width: 880px; margin: 0 auto; padding: 8px 0 40px; }
+.hx-intro + .hx-h2 { margin-top: 8px; }
+.hx-proof { margin: 0 0 10px; font-size: 13px; font-weight: 600; color: var(--sindoor); letter-spacing: 0.02em; }
 .hx-title { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: clamp(30px, 5vw, 50px); line-height: 1.12; color: var(--ink); }
 .hx-sub { margin: 10px 0 0; font-size: 16px; line-height: 1.55; color: var(--ink-3); }
 .hx-ctas { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
@@ -816,12 +822,14 @@ body:has(.aarti-stage) .ph-ask-pill { display: none !important; } /* no Ask butt
 
 /* title */
 .aarti-top { position: absolute; z-index: 6; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; gap: 12px; padding: 16px 16px 0; }
+.aarti-back { display: inline-flex; align-items: center; min-height: 32px; margin: -6px 0 4px; font-size: 13px; font-weight: 600; color: rgba(255,244,225,0.85); pointer-events: auto; }
+.aarti-back:hover { color: #fff; }
 .aarti-eyebrow { margin: 0; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #ecd08f; font-weight: 600; }
 .aarti-title { margin: 4px 0 0; font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1.15; color: #fff; text-shadow: 0 2px 16px rgba(0,0,0,0.45); }
 .aarti-next { margin: 6px 0 0; font-size: 12.5px; color: rgba(255,244,225,0.82); }
 .aarti-top-actions { display: flex; gap: 8px; flex-shrink: 0; }
 .aarti-round { width: 42px; height: 42px; border-radius: 999px; border: 1px solid rgba(236,208,143,0.4); background: rgba(30,16,6,0.35); color: #f3dfae; display: inline-flex; align-items: center; justify-content: center; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); cursor: pointer; }
-.aarti-hint { position: absolute; z-index: 6; left: 50%; top: 30%; transform: translateX(-50%); width: min(340px, 88vw); padding: 10px 16px; border-radius: 14px; background: rgba(30,16,6,0.5); color: #fff7e6; font-size: 14px; line-height: 1.45; text-align: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(236,208,143,0.25); pointer-events: none; animation: aarti-fade 0.9s ease-out; }
+.aarti-hint { position: absolute; z-index: 6; left: 50%; bottom: calc(112px + env(safe-area-inset-bottom)); transform: translateX(-50%); width: min(340px, 88vw); padding: 10px 16px; border-radius: 14px; background: rgba(30,16,6,0.5); color: #fff7e6; font-size: 14px; line-height: 1.45; text-align: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(236,208,143,0.25); pointer-events: none; animation: aarti-fade 0.9s ease-out; }
 @keyframes aarti-fade { from { opacity: 0; transform: translate(-50%, 6px); } to { opacity: 1; transform: translate(-50%, 0); } }
 
 /* opening veil */
@@ -848,13 +856,13 @@ body:has(.aarti-stage) .ph-ask-pill { display: none !important; } /* no Ask butt
 .aarti-chit.placed .aarti-chit-text { opacity: 0; height: 10px; overflow: hidden; }
 
 /* offerings dock */
-.aarti-dock { position: absolute; z-index: 6; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; padding: 12px 10px calc(12px + env(safe-area-inset-bottom)); background: linear-gradient(to top, rgba(20,10,4,0.85), rgba(20,10,4,0.2)); animation: aarti-dock-in 1.2s ease 0.6s both; }
+.aarti-dock { position: absolute; z-index: 6; left: 0; right: 0; bottom: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 5px; padding: 12px 8px calc(12px + env(safe-area-inset-bottom)); background: linear-gradient(to top, rgba(20,10,4,0.85), rgba(20,10,4,0.2)); animation: aarti-dock-in 1.2s ease 0.6s both; }
 @keyframes aarti-dock-in { from { opacity: 0; } to { opacity: 1; } } /* opacity only: a transform here fought the desktop centring */
 .aarti-dock-btn { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 10px 2px 9px; border-radius: 16px; border: 1px solid rgba(236,208,143,0.28); background: rgba(255,240,210,0.07); color: #f3dfae; cursor: pointer; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: background 0.4s ease, border-color 0.4s ease, transform 0.25s ease; }
 .aarti-dock-btn:active { transform: scale(0.96); background: rgba(255,240,210,0.16); }
 .aarti-dock-btn.active { border-color: #e4c77a; background: rgba(228,199,122,0.22); }
 .aarti-dock-icon { display: inline-flex; }
-.aarti-dock-label { font-size: 11.5px; font-weight: 600; letter-spacing: 0.02em; color: #fff3da; }
+.aarti-dock-label { font-size: 10.5px; white-space: nowrap; font-weight: 600; letter-spacing: 0.02em; color: #fff3da; }
 
 /* sheets (prayer, blessing) */
 .aarti-sheet-root { position: absolute; inset: 0; z-index: 9; }
@@ -887,7 +895,8 @@ body:has(.aarti-stage) .ph-ask-pill { display: none !important; } /* no Ask butt
 .aarti-close-stay { margin-top: 10px; border: 0; background: none; color: var(--ink-3); font-size: 14px; text-decoration: underline; cursor: pointer; }
 @media (min-width: 768px) {
   .aarti-title { font-size: 34px; }
-  .aarti-dock { left: 50%; right: auto; width: 560px; transform: translateX(-50%); border-radius: 22px 22px 0 0; }
+  .aarti-dock-label { font-size: 11.5px; }
+  .aarti-dock { left: 50%; right: auto; width: 720px; transform: translateX(-50%); border-radius: 22px 22px 0 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .aarti-diya-flame { animation: none; }

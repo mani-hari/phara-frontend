@@ -2,11 +2,13 @@
 
 import { usePathname } from "next/navigation"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { aartiEnabled } from "@lib/data/aarti"
 
 const NAV_ITEMS: { label: string; href: string }[] = [
   { label: "Home", href: "/" },
   { label: "Ask Parihara", href: "/ask-parihara" },
   { label: "Poojas & Homams", href: "/collections/pujas-and-homams" },
+  ...(aartiEnabled() ? [{ label: "Digital Aarti", href: "/aarti" }] : []),
   { label: "Astrology", href: "/astrology" },
   { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },

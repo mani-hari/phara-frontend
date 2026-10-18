@@ -3,6 +3,7 @@
 // SEASONAL_CALENDAR / product metadata featured_until) → "Most ordered" top sellers → Ask Parihara chat.
 // Tiles link to real products, the browse page filtered by need (?need=), or the calendar.
 import Image from "next/image"
+import AartiStrip from "@modules/home/components/aarti-strip"
 import { HttpTypes } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import HeroChatInput from "@modules/home/components/hero-chat-input"
@@ -50,6 +51,7 @@ export default function HomeHero({
   return (
     <section className="hx">
       <div className="content-container hx-inner">
+        <div className="hx-intro">
         <p className="hx-proof">Since 2009 · 4,200+ families · 18 countries</p>
         {/* Hero line chosen by the owner (option 1 of 3). Alternatives considered: "Poojas at renowned temples.
             Vedic homams for every need." / "Sacred poojas and Vedic homams for every need in life". */}
@@ -61,6 +63,7 @@ export default function HomeHero({
           , performed in <span style={{ color: "var(--sindoor)" }}>your family&apos;s name</span>
         </h1>
         <p className="hx-sub">Prasadam delivered to your door, anywhere in the world.</p>
+        </div>
 
         <h2 className="hx-h2">What are you praying for?</h2>
         <ul className="hx-tiles">
@@ -80,6 +83,7 @@ export default function HomeHero({
         </ul>
 
         {seasonal && <div style={{ marginTop: 28 }}>{seasonal}</div>}
+        <AartiStrip />
 
         {top.length > 0 && (
           <>

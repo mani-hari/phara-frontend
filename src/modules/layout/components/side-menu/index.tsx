@@ -17,11 +17,13 @@ import { CalendarDays,
 } from "lucide-react"
 
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
+import { aartiEnabled } from "@lib/data/aarti"
 import { HttpTypes } from "@medusajs/types"
 
 const SideMenuItems = [
   { name: "Home", href: "/", icon: Home },
   { name: "Pujas", href: "/collections/pujas-and-homams", icon: Flame },
+  ...(aartiEnabled() ? [{ name: "Digital Aarti", href: "/aarti", icon: Sparkles }] : []),
   { name: "How It Works", href: "/how-it-works", icon: BookOpen },
   { name: "Astrology", href: "/astrology", icon: Sparkles },
   { name: "About", href: "/about", icon: Info },

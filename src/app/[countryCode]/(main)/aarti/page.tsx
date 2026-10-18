@@ -15,6 +15,9 @@ export default function AartiIndex() {
   if (!aartiEnabled()) notFound()
   return (
     <section className="content-container" style={{ paddingTop: 28, paddingBottom: 64, maxWidth: 960 }}>
+      <LocalizedClientLink href="/" style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 600, color: "var(--ink-3)", minHeight: 32, marginBottom: 10 }}>
+        ← Home
+      </LocalizedClientLink>
       <p className="ph-eyebrow ph-eyebrow-gold" style={{ margin: "0 0 8px" }}>
         Digital Aarti
       </p>

@@ -4,7 +4,8 @@
 //
 // Design intent (owner, 19 Oct 2026): graceful and divine, never tacky. The aarti PLAYS by itself (the
 // recording + an aarti flame circling the deity) and the devotee joins in on top of it:
-//   · ring the bell · offer flowers · take the aarti plate · break a coconut
+//   · ring the bell · offer flowers · light a diya (Durga) · take the aarti plate · break a coconut
+//   · all controls live together in the dock (owner: discoverability), incl. blessing and sound
 //   · offer a prayer: written on a paper chit that is placed at the deity's feet and stays there
 //   · send a blessing: a birthday/anniversary/exam/health wish as a card shared on WhatsApp; the link opens
 //     this darshan greeting the recipient by name (the viral loop)
@@ -27,6 +28,7 @@ type Petal = { x: number; y: number; vy: number; sway: number; phase: number; sp
 type Spark = { x: number; y: number; vx: number; vy: number; life: number; size: number }
 type Mote = { x: number; y: number; vy: number; drift: number; size: number; tw: number }
 type Ripple = { r: number; life: number }
+type Lamp = { x: number; y: number; t: number; scale: number; seed: number }
 type Chit = { id: number; text: string; placed: boolean }
 type Sheet = null | "prayer" | "blessing"
 
@@ -60,6 +62,7 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
     performing: false, intensity: 0,
     petals: [] as Petal[], sparks: [] as Spark[], motes: [] as Mote[], ripples: [] as Ripple[],
     coconut: null as null | { t: number },
+    lamps: [] as Lamp[], nextShower: 0,
   })
 
   // ── A blessing link opens the darshan greeting the recipient (…?for=Asha&from=Ravi&o=birthday) ──
@@ -294,6 +297,74 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
       }
       ctx.globalAlpha = 1
 
+      // while the aarti is performed, a few flowers fall now and then (owner: "flowers falling from time to time")
+      if (s.performing && !reduced) {
+        if (!s.nextShower) s.nextShower = now + 9000
+        else if (now > s.nextShower) {
+          s.nextShower = now + 22000 + Math.random() * 16000
+          const colors = deity.theme.petals
+          for (let i = 0; i < 12; i++)
+            s.petals.push({
+              x: w * (0.22 + Math.random() * 0.56), y: -20 - Math.random() * h * 0.5, vy: 0.4 + Math.random() * 0.35,
+              sway: Math.random() * TAU, phase: Math.random() * TAU, spin: 0.015 + Math.random() * 0.025, rot: Math.random() * TAU,
+              size: 4.5 + Math.random() * 4, color: colors[Math.floor(Math.random() * colors.length)], life: 2, landed: false,
+            })
+          for (let i = 0; i < 6; i++) s.sparks.push({ x: w * (0.3 + Math.random() * 0.4), y: -10 - Math.random() * h * 0.3, vx: (Math.random() - 0.5) * 0.2, vy: 0.5 + Math.random() * 0.4, life: 1.6, size: 1.3 })
+        }
+      }
+
+      // earthen diyas the devotee has lit at the deity's feet
+      for (const l of s.lamps) {
+        const k = (now - l.t) / 1000
+        const appear = Math.min(1, k / 0.7)
+        const lit = Math.min(1, Math.max(0, (k - 0.5) / 0.6))
+        const S = l.scale
+        ctx.globalCompositeOperation = "source-over"
+        ctx.globalAlpha = appear
+        const bowl = ctx.createLinearGradient(l.x, l.y - 6 * S, l.x, l.y + 9 * S)
+        bowl.addColorStop(0, "#9a5228")
+        bowl.addColorStop(1, "#3e1d0c")
+        ctx.fillStyle = bowl
+        ctx.beginPath()
+        ctx.moveTo(l.x - 15 * S, l.y - 3 * S)
+        ctx.quadraticCurveTo(l.x, l.y - 7 * S, l.x + 15 * S, l.y - 3 * S)
+        ctx.quadraticCurveTo(l.x + 18 * S, l.y - 2 * S, l.x + 21 * S, l.y - 6 * S) // spout
+        ctx.quadraticCurveTo(l.x + 16 * S, l.y + 9 * S, l.x, l.y + 9 * S)
+        ctx.quadraticCurveTo(l.x - 14 * S, l.y + 9 * S, l.x - 15 * S, l.y - 3 * S)
+        ctx.fill()
+        ctx.fillStyle = "rgba(255,190,110,0.35)"
+        ctx.beginPath()
+        ctx.ellipse(l.x, l.y - 3.5 * S, 12 * S, 2.4 * S, 0, 0, TAU)
+        ctx.fill()
+        if (lit > 0) {
+          const fx = l.x + 17 * S
+          const fy = l.y - 7 * S
+          const fl = (1 + 0.12 * Math.sin(t / 90 + l.seed) + 0.06 * Math.sin(t / 37 + l.seed * 2)) * lit
+          ctx.globalCompositeOperation = "lighter"
+          ctx.globalAlpha = 1
+          const halo = ctx.createRadialGradient(fx, fy - 9 * S, 1, fx, fy - 9 * S, 30 * S * fl)
+          halo.addColorStop(0, "rgba(255,190,110,0.3)")
+          halo.addColorStop(1, "rgba(255,150,60,0)")
+          ctx.fillStyle = halo
+          ctx.beginPath()
+          ctx.arc(fx, fy - 9 * S, 30 * S * fl, 0, TAU)
+          ctx.fill()
+          const fh = 15 * S * fl
+          const g2 = ctx.createRadialGradient(fx, fy - fh * 0.35, 0.5, fx, fy - fh * 0.35, fh * 0.7)
+          g2.addColorStop(0, "rgba(255,250,225,1)")
+          g2.addColorStop(0.5, "rgba(255,196,90,0.95)")
+          g2.addColorStop(1, "rgba(240,120,40,0)")
+          ctx.fillStyle = g2
+          ctx.beginPath()
+          ctx.moveTo(fx, fy - fh)
+          ctx.quadraticCurveTo(fx + 4.5 * S, fy - fh * 0.3, fx, fy)
+          ctx.quadraticCurveTo(fx - 4.5 * S, fy - fh * 0.3, fx, fy - fh)
+          ctx.fill()
+        }
+      }
+      ctx.globalAlpha = 1
+      ctx.globalCompositeOperation = "source-over"
+
       // coconut: a quiet split
       if (s.coconut) {
         const k = (now - s.coconut.t) / 1000
@@ -415,6 +486,30 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
     }, 360)
   }, [])
 
+  // ── Light an earthen diya at the deity's feet (Durga). Fills a soft arc, front row first. ──
+  const lightDiya = useCallback(() => {
+    const s = sim.current
+    const n = s.lamps.length
+    if (n >= 13) {
+      flash(`${n} diyas glow at ${deity.name}'s feet.`)
+      return
+    }
+    const row = n < 7 ? 0 : 1
+    const i = row ? n - 7 : n
+    const off = i === 0 ? 0 : Math.ceil(i / 2) * (i % 2 ? -1 : 1)
+    const S = Math.min(1.5, Math.max(1, s.w / 420)) * (row ? 0.82 : 1)
+    const gap = (row ? 40 : 48) * S
+    const x = s.w / 2 + (row ? gap / 2 : 0) + off * gap
+    const y = s.h * (row ? 0.79 : 0.83) + Math.abs(off) * -2
+    s.lamps.push({ x, y, t: performance.now(), scale: S, seed: Math.random() * 100 })
+    window.setTimeout(() => {
+      audioRef.current?.bell(1320)
+      for (let k = 0; k < 8; k++) s.sparks.push({ x: x + 17 * S, y: y - 12 * S, vx: (Math.random() - 0.5) * 0.6, vy: -0.4 - Math.random() * 0.7, life: 1, size: 1.1 })
+    }, 550)
+    if (n === 0) flash(`Your diya is lit at ${deity.name}'s feet.`)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [deity])
+
   const takeAarti = () => {
     if (!holding) flash("Move your finger in slow circles before the deity.")
     else sim.current.held = null
@@ -526,20 +621,13 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
 
       <header className="aarti-top">
         <div className="aarti-top-text">
+          <LocalizedClientLink href="/aarti" className="aarti-back">
+            ← All aartis
+          </LocalizedClientLink>
           <p className="aarti-eyebrow">{deity.place}</p>
           <h1 className="aarti-title">{deity.title}</h1>
           {nextLabel && <p className="aarti-next">{nextLabel}</p>}
         </div>
-        {entered && (
-          <div className="aarti-top-actions">
-            <button type="button" className="aarti-round" onClick={() => setSheet("blessing")} aria-label="Send a blessing">
-              <Icon name="gift" />
-            </button>
-            <button type="button" className="aarti-round" onClick={toggleMute} aria-label={muted ? "Unmute" : "Mute"}>
-              <Icon name={muted ? "mute" : "sound"} />
-            </button>
-          </div>
-        )}
       </header>
 
       {hint && (
@@ -584,9 +672,12 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
         <nav className="aarti-dock" aria-label="Offerings">
           <DockButton icon="bell" label="Bell" onClick={ringBell} />
           <DockButton icon="flower" label="Flowers" onClick={offerFlowers} />
+          {deity.diyas ? <DockButton icon="lamp" label="Diya" onClick={lightDiya} /> : null}
           <DockButton icon="prayer" label="Prayer" onClick={() => setSheet("prayer")} />
           <DockButton icon="diya" label={holding ? "Release" : "Aarti"} active={holding} onClick={takeAarti} />
-          <DockButton icon="coconut" label="Coconut" onClick={breakCoconut} />
+          {deity.diyas ? null : <DockButton icon="coconut" label="Coconut" onClick={breakCoconut} />}
+          <DockButton icon="gift" label="Bless" onClick={() => setSheet("blessing")} />
+          <DockButton icon={muted ? "mute" : "sound"} label={muted ? "Muted" : "Sound"} onClick={toggleMute} />
         </nav>
       )}
 
@@ -684,7 +775,7 @@ function DockButton({ icon, label, onClick, active }: { icon: IconName; label: s
   )
 }
 
-type IconName = "bell" | "flower" | "diya" | "coconut" | "prayer" | "gift" | "sound" | "mute"
+type IconName = "bell" | "flower" | "diya" | "lamp" | "coconut" | "prayer" | "gift" | "sound" | "mute"
 
 /** Thin gold-line icons, drawn for the dock (no emoji). */
 function Icon({ name }: { name: IconName }) {
@@ -713,6 +804,12 @@ function Icon({ name }: { name: IconName }) {
           <path d="M12 4.5c1.6 1.8 1.6 3.6 0 5-1.6-1.4-1.6-3.2 0-5Z" />
           <path d="M3.5 13h17c-1 3.5-4.5 5.5-8.5 5.5S4.5 16.5 3.5 13Z" />
           <path d="M9 20.5h6" />
+        </g>
+      )}
+      {name === "lamp" && (
+        <g {...p}>
+          <path d="M16.5 6.5c1.3 1.4 1.3 2.9 0 4-1.3-1.1-1.3-2.6 0-4Z" />
+          <path d="M3.5 13.5c2.5-1.2 6.5-1.5 10-.8l3-1.2c-.5 4.5-4 7-8 7-3 0-5-2-5-5Z" />
         </g>
       )}
       {name === "coconut" && (
