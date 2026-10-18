@@ -2,7 +2,8 @@ import { Metadata } from "next"
 
 import { listProducts } from "@lib/data/products"
 import { getRegion } from "@lib/data/regions"
-import HomeV3 from "@modules/home/templates/home-v3"
+import HomeV3, { type HomeBlogPost } from "@modules/home/templates/home-v3"
+import { getPublishedBlogPosts } from "@lib/data/blog"
 
 export const metadata: Metadata = {
   title: "PariharaOnline - Ancient Rituals, Modern Convenience",
@@ -32,6 +33,16 @@ export default async function Home(props: {
   ])
 
   const products = productsResponse?.response?.products ?? []
+  // Latest published blog posts (scheduled posts appear on their publish day).
+  const posts: HomeBlogPost[] = (await getPublishedBlogPosts(3).catch(() => [])).map((p) => ({
+    slug: p.slug,
+    title: p.title,
+    description: p.description,
+    publishedAt: p.publishedAt,
+    image: p.image,
+    imageAlt: p.imageAlt,
+    readingTime: p.readingTime,
+  }))
 
   const homepageJsonLd = {
     "@context": "https://schema.org",
@@ -48,7 +59,7 @@ export default async function Home(props: {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(homepageJsonLd) }}
       />
-      <HomeV3 countryCode={countryCode} products={products} region={region as any} />
+      <HomeV3 countryCode={countryCode} products={products} region={region as any} posts={posts} />
     </>
   )
 }

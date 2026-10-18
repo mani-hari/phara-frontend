@@ -549,3 +549,9 @@
     .bundle-mobile-bar { display: none; }
   }
 
+
+/* ── Home: seasonal feature card (home-v3.tsx) ── */
+.home-seasonal { display: grid; grid-template-columns: 1fr; }
+@media (min-width: 768px) {
+  .home-seasonal { grid-template-columns: 1.1fr 1fr; }
+}

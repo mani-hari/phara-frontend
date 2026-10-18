@@ -10,11 +10,17 @@ import {
 } from "@modules/common/components/brand"
 import { getProductPrice } from "@lib/util/get-product-price"
 import HeroChatInput from "@modules/home/components/hero-chat-input"
+import { todayIst } from "@lib/util/blog-publish"
+import { PRODUCT_BUNDLES } from "@lib/data/product-bundles"
+import Link from "next/link"
+
+export type HomeBlogPost = { slug: string; title: string; description: string; publishedAt: string; image?: string; imageAlt?: string; readingTime?: number }
 
 type HomeV3Props = {
   countryCode: string
   products: HttpTypes.StoreProduct[]
   region?: HttpTypes.StoreRegion
+  posts?: HomeBlogPost[]
 }
 
 /* =====================================================================
@@ -22,11 +28,26 @@ type HomeV3Props = {
    Design source: docs/design/Parihara-Final.html → HomeHiFi
    ===================================================================== */
 
+// Core top sellers: always shown (up to 4), in this order.
 const FEATURED_HANDLES = [
   "garbharakshambika-ghee",
   "garbharakshambika-oil",
   "rahu-ketu-dosha-parihara-pooja-sarpa-dosha-parihara-pooja-at-sri-kalahasti-temple",
+  "sudarsana-homam",
 ] as const
+
+// Seasonal feature: shown above the top sellers only inside its date window (IST, inclusive).
+// Can also be switched on from Medusa admin without a deploy: give a product the metadata
+// `featured_until` = YYYY-MM-DD (and optionally `featured_label`, e.g. "Diwali").
+const SEASONAL_CALENDAR: { handle: string; label: string; from: string; until: string; note?: string }[] = [
+  {
+    handle: "navratri-poojas-online",
+    label: "Navratri",
+    from: "2026-09-25",
+    until: "2026-10-20",
+    note: "Choose one or more poojas for the last days of Navratri: Durga Ashtami, Maha Navami and Vijayadashami.",
+  },
+]
 
 const FEATURED_OVERLAY: Record<
   string,
@@ -132,11 +153,27 @@ const formatPrice = (product: HttpTypes.StoreProduct) => {
   }
 }
 
-export default function HomeV3({ products, countryCode }: HomeV3Props) {
+export default function HomeV3({ products, countryCode, posts = [] }: HomeV3Props) {
   const byHandle = new Map(products.map((p) => [p.handle, p]))
+  const today = todayIst()
+  // Seasonal: calendar entries in their window, plus products flagged in Medusa via metadata.
+  const seasonal: { product: HttpTypes.StoreProduct; label: string; note?: string; until: string }[] = []
+  for (const e of SEASONAL_CALENDAR) {
+    const p = byHandle.get(e.handle)
+    if (p && e.from <= today && today <= e.until) seasonal.push({ product: p, label: e.label, note: e.note, until: e.until })
+  }
+  for (const p of products) {
+    const until = typeof p.metadata?.featured_until === "string" ? (p.metadata.featured_until as string) : ""
+    if (until && today <= until && !seasonal.some((x) => x.product.id === p.id))
+      seasonal.push({ product: p, label: String(p.metadata?.featured_label || "Seasonal"), until })
+  }
+  const seasonalFeature = seasonal[0]
   const featured = FEATURED_HANDLES.map((h) => byHandle.get(h)).filter(
-    (p): p is HttpTypes.StoreProduct => !!p
+    (p): p is HttpTypes.StoreProduct => !!p && p.id !== seasonalFeature?.product.id
   )
+  const isNew = (d: string) => (Date.parse(today) - Date.parse(d)) / 86400000 <= 7
+  const fmtUntil = (d: string) =>
+    new Date(`${d}T00:00:00Z`).toLocaleDateString("en-GB", { weekday: "short", day: "numeric", month: "short", timeZone: "UTC" })
 
   return (
     <div style={{ background: "var(--paper)" }}>
@@ -203,12 +240,122 @@ export default function HomeV3({ products, countryCode }: HomeV3Props) {
         <div id="ask-hero-sentinel" style={{ height: 0 }} aria-hidden />
       </section>
 
+      {/* RECENT HOMAM VIDEOS ------------------------------------------- */}
+      <section style={{ padding: "64px 24px", background: "var(--paper-3)" }}>
+        <div className="content-container" style={{ paddingInline: 0 }}>
+          <div className="mb-8">
+            <SectionHeader
+              eyebrow="From our yagasala"
+              title="Video snippets of your Homams / Yagnas"
+              sub="Every homam is performed by our priests in our own yagasala. The HD video clips are sent within 24 hours — proof, blessing and keepsake."
+            />
+          </div>
+          <div
+            className="grid"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))",
+              gap: 16,
+            }}
+          >
+            {RECENT_VIDEOS.map((v) => (
+              <div key={v.title} className="ph-card" style={{ overflow: "hidden" }}>
+                <div
+                  style={{
+                    position: "relative",
+                    width: "100%",
+                    aspectRatio: "16 / 9",
+                    background: "var(--ink)",
+                  }}
+                >
+                  {v.youtubeId ? (
+                    <iframe
+                      src={`https://www.youtube.com/embed/${v.youtubeId}`}
+                      title={v.title}
+                      loading="lazy"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowFullScreen
+                      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
+                    />
+                  ) : (
+                    <div
+                      style={{
+                        position: "absolute",
+                        inset: 0,
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "rgba(250,246,238,0.6)",
+                        fontSize: 13,
+                        fontFamily: "var(--sans)",
+                        textAlign: "center",
+                        padding: 16,
+                      }}
+                    >
+                      YouTube video coming soon
+                    </div>
+                  )}
+                </div>
+                <div style={{ padding: 16 }}>
+                  <div className="ph-h4">{v.title}</div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* FEATURED PRODUCTS --------------------------------------------- */}
       <section style={{ padding: "64px 24px", background: "var(--paper-2)" }}>
         <div className="content-container" style={{ paddingInline: 0 }}>
           <div className="mb-8">
             <SectionHeader title="Most popular poojas" />
           </div>
+          {seasonalFeature && (
+            <LocalizedClientLink
+              href={`/products/${seasonalFeature.product.handle}`}
+              className="ph-card ph-lift home-seasonal"
+              style={{ marginBottom: 24, overflow: "hidden" }}
+            >
+              <div style={{ position: "relative", minHeight: 240, background: "var(--ink)" }}>
+                {seasonalFeature.product.thumbnail && (
+                  <Image
+                    src={seasonalFeature.product.thumbnail}
+                    alt={seasonalFeature.product.title ?? ""}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 768px) 100vw, 560px"
+                  />
+                )}
+              </div>
+              <div style={{ padding: 28, display: "flex", flexDirection: "column", justifyContent: "center", gap: 10 }}>
+                <div>
+                  <span className="ph-chip ph-chip-sindoor">
+                    {seasonalFeature.label} · until {fmtUntil(seasonalFeature.until)}
+                  </span>
+                </div>
+                <h3 className="ph-h2" style={{ margin: 0 }}>
+                  {seasonalFeature.product.title}
+                </h3>
+                {(seasonalFeature.note || seasonalFeature.product.subtitle) && (
+                  <p className="ph-body" style={{ margin: 0, color: "var(--ink-2)" }}>
+                    {seasonalFeature.note || seasonalFeature.product.subtitle}
+                  </p>
+                )}
+                <div className="flex items-center justify-between" style={{ marginTop: 8 }}>
+                  <span className="ph-num ph-h4" style={{ fontFamily: "var(--font-inter), Inter, sans-serif", fontWeight: 600 }}>
+                    {/* Bundles are priced per pooja on their page; their own variants are not what customers buy. */}
+                    {!PRODUCT_BUNDLES[seasonalFeature.product.handle ?? ""] && formatPrice(seasonalFeature.product)
+                      ? `From ${formatPrice(seasonalFeature.product)}`
+                      : ""}
+                  </span>
+                  <span className="ph-body-sm" style={{ color: "var(--sindoor)", fontWeight: 600 }}>
+                    Choose your poojas →
+                  </span>
+                </div>
+              </div>
+            </LocalizedClientLink>
+          )}
           <div
             className="grid"
             style={{
@@ -351,71 +498,6 @@ export default function HomeV3({ products, countryCode }: HomeV3Props) {
         </div>
       </section>
 
-      {/* RECENT HOMAM VIDEOS ------------------------------------------- */}
-      <section style={{ padding: "64px 24px", background: "var(--paper-3)" }}>
-        <div className="content-container" style={{ paddingInline: 0 }}>
-          <div className="mb-8">
-            <SectionHeader
-              eyebrow="From our yagasala"
-              title="Video snippets of your Homams / Yagnas"
-              sub="Every homam is performed by our priests in our own yagasala. The HD video clips are sent within 24 hours — proof, blessing and keepsake."
-            />
-          </div>
-          <div
-            className="grid"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-              gap: 16,
-            }}
-          >
-            {RECENT_VIDEOS.map((v) => (
-              <div key={v.title} className="ph-card" style={{ overflow: "hidden" }}>
-                <div
-                  style={{
-                    position: "relative",
-                    width: "100%",
-                    aspectRatio: "16 / 9",
-                    background: "var(--ink)",
-                  }}
-                >
-                  {v.youtubeId ? (
-                    <iframe
-                      src={`https://www.youtube.com/embed/${v.youtubeId}`}
-                      title={v.title}
-                      loading="lazy"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
-                      style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
-                    />
-                  ) : (
-                    <div
-                      style={{
-                        position: "absolute",
-                        inset: 0,
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        color: "rgba(250,246,238,0.6)",
-                        fontSize: 13,
-                        fontFamily: "var(--sans)",
-                        textAlign: "center",
-                        padding: 16,
-                      }}
-                    >
-                      YouTube video coming soon
-                    </div>
-                  )}
-                </div>
-                <div style={{ padding: 16 }}>
-                  <div className="ph-h4">{v.title}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ASTROLOGY + TESTIMONIAL --------------------------------------- */}
       <section
         style={{
@@ -512,6 +594,52 @@ export default function HomeV3({ products, countryCode }: HomeV3Props) {
           </div>
         </div>
       </section>
+
+      {/* FROM THE BLOG ------------------------------------------------ */}
+      {posts.length > 0 && (
+        <section style={{ padding: "64px 24px", background: "var(--paper)" }}>
+          <div className="content-container" style={{ paddingInline: 0 }}>
+            <div className="mb-8">
+              <SectionHeader title="From the blog" />
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 24 }}>
+              {posts.map((post) => (
+                <Link key={post.slug} href={`/blog/${post.slug}`} className="ph-card ph-lift block" style={{ overflow: "hidden" }}>
+                  {post.image && (
+                    <div style={{ position: "relative", aspectRatio: "3 / 2", background: "var(--paper-2)" }}>
+                      <Image src={post.image} alt={post.imageAlt || post.title} fill className="object-cover" sizes="(max-width: 768px) 100vw, 400px" />
+                    </div>
+                  )}
+                  <div style={{ padding: 22, display: "flex", flexDirection: "column", gap: 8 }}>
+                    <div className="flex items-center" style={{ gap: 8 }}>
+                      {isNew(post.publishedAt) && <span className="ph-chip ph-chip-sindoor">New</span>}
+                      {post.readingTime ? (
+                        <span className="ph-body-sm" style={{ color: "var(--ink-4)" }}>
+                          {post.readingTime} min read
+                        </span>
+                      ) : null}
+                    </div>
+                    <h3 className="ph-h4" style={{ margin: 0 }}>
+                      {post.title}
+                    </h3>
+                    <p
+                      className="ph-body-sm"
+                      style={{ margin: 0, color: "var(--ink-3)", display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}
+                    >
+                      {post.description}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <div style={{ textAlign: "center", marginTop: 32 }}>
+              <Link href="/blog" className="ph-body-sm" style={{ color: "var(--ink)", borderBottom: "1px solid var(--ink-line-2)", paddingBottom: 2 }}>
+                Read all articles →
+              </Link>
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* FAQ ------------------------------------------------------------ */}
       <section style={{ padding: "64px 24px", background: "var(--paper-2)" }}>

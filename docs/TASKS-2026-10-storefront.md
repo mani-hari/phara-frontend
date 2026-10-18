@@ -33,17 +33,25 @@ code (`src/lib/data/product-bundles.ts`, keyed by handle `navratri-poojas-online
 
 ## B. Home page: videos and featured products (owner's item 1)
 
-- [ ] B1. Move "Recent videos" up to sit right after the Ask Parihara chat section.
-- [ ] B2. Replace the static featured grid with a curated rotation: a fixed core of 4–5 top
+- [x] B1. Move "Recent videos" up to sit right after the Ask Parihara chat section.
+- [x] B2. (done 18 Oct: seasonal feature card from SEASONAL_CALENDAR or product metadata featured_until/featured_label, + 4 core top sellers in FEATURED_HANDLES) Replace the static featured grid with a curated rotation: a fixed core of 4–5 top
       sellers plus a seasonal slot (e.g. Navratri bundle, a planetary transit) that is switched by
       date window or by Medusa collection/metadata, not code. Decide carousel vs grid in A1-style
       low-fi first.
-- [ ] B3. Test on mobile and desktop; owner pushes; verify live.
+- [x] B3. Test on mobile and desktop; owner pushes; verify live.
 
 ## C. Home page: new blog posts (owner's item 3)
 
 Finding (18 Oct): the home page has **no** blog section, so scheduled posts are not advertised there.
 
-- [ ] C1. "From the blog" section with the latest 3 published posts, a "New" tag on posts from the
+- [x] C1. "From the blog" section with the latest 3 published posts, a "New" tag on posts from the
       last 7 days, link to /blog. Only posts already live (respect the schedule).
-- [ ] C2. Ship together with B; verify live.
+- [x] C2. Ship together with B; verify live.
+
+## Also done 18 Oct
+- Favicon from the vector emblem (public/favicon.ico, src/app/icon.png, apple-icon.png).
+- Removed the 'brand-new website' launch banner.
+
+## Still open
+- A2: move bundle config from code to product metadata (needs Medusa unlock).
+- Core top sellers list is a guess (current 3 + Sudarshana); confirm from order data.
