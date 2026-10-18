@@ -5,6 +5,7 @@ import OnePageCheckout from "@modules/checkout/templates/one-page-checkout"
 import { Metadata } from "next"
 import { headers } from "next/headers"
 import { notFound } from "next/navigation"
+import { CONTACT, waLink } from "@lib/contact"
 
 export const metadata: Metadata = {
   title: "Checkout",
@@ -88,11 +89,22 @@ export default async function Checkout({
               fontSize: "clamp(30px, 4vw, 40px)",
               color: "var(--ink)",
               lineHeight: 1.1,
-              marginBottom: 24,
+              marginBottom: 8,
             }}
           >
             Quick Checkout
           </h1>
+          <p className="ph-body-sm" style={{ margin: "0 0 20px", color: "var(--ink-3)" }}>
+            Need help?{" "}
+            <a
+              href={waLink("Hi, I need help completing my order on PariharaOnline.")}
+              target="_blank"
+              rel="noreferrer"
+              style={{ color: "#1a7f45", fontWeight: 700 }}
+            >
+              WhatsApp us at {CONTACT.whatsappDisplay}
+            </a>
+          </p>
           <OnePageCheckout
             cart={cart}
             customer={customer}

@@ -60,7 +60,8 @@ export default function LandingSpread({
 }) {
   const langAttr = lang !== "en" ? lang : undefined
   const sections = toSections(parseDescription(description))
-  const significance = find(sections, /significance of this/i) || sections.find((s) => s.heading)
+  const significance =
+    find(sections, /significance/i) || find(sections, /^about /i) || sections.find((s) => s.heading === null) || sections.find((s) => s.heading)
   const howToUse = find(sections, /how to use/i)
   const whoFor = find(sections, /who is it for/i)
   const history = find(sections, /historical/i)
@@ -94,11 +95,13 @@ export default function LandingSpread({
           <h1 className="ph-h1" style={{ margin: 0 }} data-testid="product-title" lang={langAttr}>
             {title}
           </h1>
-          <div className="ph-landing-chips">
-            <span>Serving devotees since 2009</span>
-            <span>Ships worldwide</span>
-            <span>Usage guide with every order</span>
-          </div>
+          {config.chips?.length ? (
+            <div className="ph-landing-chips">
+              {config.chips.map((c) => (
+                <span key={c}>{c}</span>
+              ))}
+            </div>
+          ) : null}
           <LanguageSwitcher hintedLang={hintedLang} />
         </header>
 
@@ -115,9 +118,9 @@ export default function LandingSpread({
         )}
 
 
-        {(pack || guide) && (
+        {(pack || guide || config.receive.length > 0) && (
           <section style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            <H2>What you receive</H2>
+            <H2>{config.receiveHeading || "What you receive"}</H2>
             <ul style={{ margin: 0, padding: 0, listStyle: "none", display: "flex", flexDirection: "column", gap: 8 }}>
               {config.receive.map((r) => (
                 <li key={r} className="ph-body" style={{ display: "flex", gap: 10, color: "var(--ink-2)" }}>
@@ -141,7 +144,7 @@ export default function LandingSpread({
         </div>
 
         <aside id="book" className="pland-card" style={{ scrollMarginTop: 80 }}>
-          <BookingCard heading="Order this prasadam" note={deliveryLine}>
+          <BookingCard heading={config.kind === "pooja" ? "Book this pooja" : "Order this prasadam"} note={config.kind === "pooja" ? "Names and star can be added in the cart or sent later on WhatsApp." : deliveryLine}>
             {config.quantityTip && (
               <p className="ph-body-sm" style={{ margin: "0 0 12px", color: "var(--ink-2)", background: "var(--paper-2)", borderRadius: 8, padding: "8px 10px" }}>
                 💡 {config.quantityTip}

@@ -125,7 +125,7 @@ export default function ProductTemplate({
                 region={region}
                 showPujaDetails={false}
                 showPrice={true}
-                buttonText="Add to cart"
+                buttonText={landing.kind === "pooja" ? "Book this pooja" : "Add to cart"}
                 buttonClassName="ph-btn ph-btn-sindoor ph-btn-lg ph-btn-block"
                 stickyWhen="away"
               />

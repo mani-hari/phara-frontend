@@ -8,12 +8,29 @@ export type DescSection = { heading: string | null; blocks: DescBlock[] }
 
 export function parseDescription(description: string | null | undefined): DescBlock[] {
   const lines = (description ?? "").split(/\r?\n/).map((s) => s.trim()).filter(Boolean)
+  // Some imported descriptions put the bullet dash on its own line and the text on the next one.
+  let nextIsBullet = false
   return lines.reduce<DescBlock[]>((out, line) => {
+    if (/^[-–•*]$/.test(line)) {
+      nextIsBullet = true
+      return out
+    }
+    if (nextIsBullet) {
+      nextIsBullet = false
+      out.push({ kind: "bullet", text: line.replace(/^[-–•*]\s*/, "") })
+      return out
+    }
     if (line.startsWith("## ")) out.push({ kind: "heading", text: line.slice(3).trim() })
     // Older descriptions mark sections with a short line ending in ":" or "?" ("Who is it for?",
     // "Benefits of the Homam:"); treat those as headings too.
     else if (line.length <= 60 && /[:?]$/.test(line) && !/^[-–•*>]/.test(line))
       out.push({ kind: "heading", text: line.replace(/:$/, "").trim() })
+    // ...or put the section name inline: "Significance of this pooja: The Rahu Ketu ...".
+    else if (/^[A-Z][A-Za-z0-9 '&/,()-]{2,45}:\s+\S/.test(line) && !/^(note|nb|ps|tip)\b/i.test(line)) {
+      const i = line.indexOf(":")
+      out.push({ kind: "heading", text: line.slice(0, i).trim() })
+      out.push({ kind: "para", text: line.slice(i + 1).trim() })
+    }
     else if (line.startsWith(">")) {
       const text = line.replace(/^>\s*/, "")
       const last = out[out.length - 1]
@@ -32,5 +49,6 @@ export function toSections(blocks: DescBlock[]): DescSection[] {
     if (b.kind === "heading") out.push({ heading: b.text, blocks: [] })
     else out[out.length - 1].blocks.push(b)
   }
-  return out.filter((s, i) => i > 0 || s.blocks.length)
+  // "Keywords: ..." blocks are SEO leftovers from the old shop; never show them to visitors.
+  return out.filter((s, i) => (i > 0 || s.blocks.length) && !/^keywords?$/i.test(s.heading || ""))
 }

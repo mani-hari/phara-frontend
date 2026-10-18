@@ -17,6 +17,7 @@ import {
   createRazorpayOrder,
 } from "@lib/payments/razorpay"
 import { convertToLocale } from "@lib/util/money"
+import { CONTACT, waLink } from "@lib/contact"
 import { logCheckoutError, logCheckoutEvent } from "@lib/util/checkout-log"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import ProvinceField from "@modules/common/components/province-field"
@@ -115,6 +116,13 @@ function MobileOrderSummary({
         </span>
       </button>
 
+      {!expanded && (
+        <p className="ph-body-sm ph-num" style={{ margin: 0, padding: "0 16px 12px", color: "var(--ink-3)" }}>
+          Items {convertToLocale({ amount: subtotal, currency_code: currency })}
+          {" + delivery "}
+          {!hasShipping ? "(choose below)" : shipping === 0 ? "free" : convertToLocale({ amount: shipping, currency_code: currency })}
+        </p>
+      )}
       {expanded && (
         <div style={{ padding: "12px 16px 14px", borderTop: "1px solid var(--ink-line)" }}>
           {(cart.items || []).map((item: any) => {
@@ -207,10 +215,17 @@ function CountryAutosuggest({
         style={{ width: "100%" }}
         value={query}
         placeholder="Start typing your country…"
-        autoComplete="off"
+        autoComplete="country-name"
         data-testid={testId}
         onFocus={() => { setOpen(true); setHi(0) }}
-        onChange={(e) => { setQuery(e.target.value); setOpen(true); setHi(0) }}
+        onChange={(e) => {
+          const text = e.target.value
+          setQuery(text)
+          // Browser/phone autofill puts the full country name in at once: pick it straight away.
+          const exact = countries.find((c) => c.name.toLowerCase() === text.trim().toLowerCase())
+          if (exact) { pick(exact); return }
+          setOpen(true); setHi(0)
+        }}
         onBlur={() => setTimeout(() => setOpen(false), 150)}
         onKeyDown={(e) => {
           if (!open) return
@@ -247,6 +262,13 @@ function CountryAutosuggest({
     </div>
   )
 }
+
+// Postcode wording and keypad by country: digits-only keypad only where postcodes are digits.
+const postcodeLabel = (cc: string) => {
+  const c = (cc || "").toLowerCase()
+  return c === "us" ? "ZIP code" : c === "in" ? "PIN code" : "Postcode"
+}
+const numericPostcode = (cc: string) => ["us", "in", "au", "de", "fr", "it", "es", "sg", "my", "ae", "ch", "at"].includes((cc || "").toLowerCase())
 
 // ─── address form ─────────────────────────────────────────────────────────────
 
@@ -326,8 +348,8 @@ function AddressForm({
         </FieldWrap>
       </div>
 
-      <FieldWrap label="Postcode (also known as zipcode / postal code)" style={{ marginBottom: 0 }}>
-        <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="postal-code" inputMode="numeric" value={form.postalCode} onChange={f("postalCode")} />
+      <FieldWrap label={postcodeLabel(form.countryCode)} style={{ marginBottom: 0 }}>
+        <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="postal-code" inputMode={numericPostcode(form.countryCode) ? "numeric" : "text"} value={form.postalCode} onChange={f("postalCode")} />
       </FieldWrap>
     </div>
   )
@@ -415,8 +437,8 @@ function BillingForm({
           />
         </FieldWrap>
       </div>
-      <FieldWrap label="Postcode (also known as zipcode / postal code)" style={{ marginBottom: 0 }}>
-        <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing postal-code" inputMode="numeric" value={form.postalCode} onChange={f("postalCode")} />
+      <FieldWrap label={postcodeLabel(form.countryCode)} style={{ marginBottom: 0 }}>
+        <input className="ph-input co-input" style={{ width: "100%" }} autoComplete="billing postal-code" inputMode={numericPostcode(form.countryCode) ? "numeric" : "text"} value={form.postalCode} onChange={f("postalCode")} />
       </FieldWrap>
     </div>
   )
@@ -1596,6 +1618,17 @@ function PaymentSection({
         </button>
         <p className="ph-body-sm" style={{ color: "var(--ink-4)", marginTop: 10, display: "flex", alignItems: "center", gap: 5 }}>
           <span>🔒</span> Encrypted and secure
+        </p>
+        <p className="ph-body-sm" style={{ color: "var(--ink-3)", marginTop: 6 }}>
+          Stuck or have a question?{" "}
+          <a
+            href={waLink("Hi, I need help completing my order on PariharaOnline.")}
+            target="_blank"
+            rel="noreferrer"
+            style={{ color: "#1a7f45", fontWeight: 700 }}
+          >
+            WhatsApp {CONTACT.whatsappDisplay}
+          </a>
         </p>
       </div>
     </div>
