@@ -5,7 +5,6 @@ import { DM_Serif_Display, DM_Serif_Text, Inter, Noto_Sans_Tamil, Noto_Sans_Telu
 import "@styles/globals.css"
 import { cookies } from "next/headers"
 import AdminBar from "@/components/admin/admin-bar"
-import TopBanner from "@/components/top-banner"
 import { retrieveCustomer } from "@lib/data/customer"
 import { GA4_ID, CLARITY_ID } from "@lib/analytics"
 
@@ -193,7 +192,6 @@ export default async function RootLayout({
         className={`${inter.variable} ${dmDisplay.variable} ${dmText.variable} ${notoTamil.variable} ${notoTelugu.variable} ${notoDevanagari.variable} font-sans`}
         style={{ background: "var(--paper)", color: "var(--ink-2)" }}
       >
-        <TopBanner />
         <main className="relative">{children}</main>
         <AdminBar admin={admin} />
       </body>
