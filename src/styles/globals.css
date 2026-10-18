@@ -688,3 +688,16 @@
   .hero-chips { display: none; }
   .hero-chips.open { display: flex; }
 }
+
+/* ── Landing product template layout: phones one column, desktop story + frozen order card ── */
+.pland-wrap { max-width: 720px; }
+.pland { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-areas: "head" "top" "card" "bottom"; gap: 28px; }
+.pland-head { grid-area: head; min-width: 0; }
+.pland-top { grid-area: top; display: flex; flex-direction: column; gap: 28px; min-width: 0; }
+.pland-card { grid-area: card; min-width: 0; }
+.pland-bottom { grid-area: bottom; display: flex; flex-direction: column; gap: 28px; min-width: 0; }
+@media (min-width: 1024px) {
+  .pland-wrap { max-width: 1200px; }
+  .pland { grid-template-columns: minmax(0, 1fr) 380px; grid-template-areas: "head card" "top card" "bottom card"; column-gap: 56px; row-gap: 28px; }
+  .pland-card { align-self: start; position: sticky; top: 88px; }
+}

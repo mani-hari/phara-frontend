@@ -87,9 +87,10 @@ export default function LandingSpread({
     : "Free delivery anywhere in India, with tracking."
 
   return (
-    <section className="content-container" style={{ paddingTop: 20, paddingBottom: 64, maxWidth: 720 }} data-testid="product-container">
-      <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-        <header style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+    <section className="content-container pland-wrap" style={{ paddingTop: 20, paddingBottom: 64 }} data-testid="product-container">
+      {/* Phones: one column with the card after "How to use". Desktop: story left, card frozen on the right. */}
+      <div className="pland">
+        <header className="pland-head" style={{ display: "flex", flexDirection: "column", gap: 12 }}>
           <h1 className="ph-h1" style={{ margin: 0 }} data-testid="product-title" lang={langAttr}>
             {title}
           </h1>
@@ -101,6 +102,7 @@ export default function LandingSpread({
           <LanguageSwitcher hintedLang={hintedLang} />
         </header>
 
+        <div className="pland-top">
         {hero && <Photo e={hero} priority />}
 
         {sigLead && (
@@ -136,7 +138,9 @@ export default function LandingSpread({
           </section>
         )}
 
-        <div id="book" style={{ scrollMarginTop: 80 }}>
+        </div>
+
+        <aside id="book" className="pland-card" style={{ scrollMarginTop: 80 }}>
           <BookingCard heading="Order this prasadam" note={deliveryLine}>
             {config.quantityTip && (
               <p className="ph-body-sm" style={{ margin: "0 0 12px", color: "var(--ink-2)", background: "var(--paper-2)", borderRadius: 8, padding: "8px 10px" }}>
@@ -145,8 +149,9 @@ export default function LandingSpread({
             )}
             {actions}
           </BookingCard>
-        </div>
+        </aside>
 
+        <div className="pland-bottom">
         {rest.map((e) => (
           <Photo key={e.url} e={e} />
         ))}
@@ -166,6 +171,7 @@ export default function LandingSpread({
             </div>
           </MobileCollapse>
         )}
+        </div>
       </div>
     </section>
   )
