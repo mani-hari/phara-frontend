@@ -248,7 +248,6 @@ export default function HomeV3({ products, countryCode, posts = [] }: HomeV3Prop
             <SectionHeader
               eyebrow="From our yagasala"
               title="Video snippets of your Homams / Yagnas"
-              sub="Every homam is performed by our priests in our own yagasala. The HD video clips are sent within 24 hours — proof, blessing and keepsake."
             />
           </div>
           <div
