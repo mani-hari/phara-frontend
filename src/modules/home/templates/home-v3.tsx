@@ -28,12 +28,12 @@ type HomeV3Props = {
    Design source: docs/design/Parihara-Final.html → HomeHiFi
    ===================================================================== */
 
-// Core top sellers: always shown (up to 4), in this order.
+// Core top sellers (by orders, Jul–Oct 2026): always shown (up to 4), in this order.
 const FEATURED_HANDLES = [
   "garbharakshambika-ghee",
   "garbharakshambika-oil",
   "rahu-ketu-dosha-parihara-pooja-sarpa-dosha-parihara-pooja-at-sri-kalahasti-temple",
-  "sudarsana-homam",
+  "shirdi-sai-baba-udi-prasadham",
 ] as const
 
 // Seasonal feature: shown above the top sellers only inside its date window (IST, inclusive).

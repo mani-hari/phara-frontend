@@ -14,3 +14,27 @@
 
 export const GA4_ID = process.env.NEXT_PUBLIC_GA4_ID ?? "G-78BCF56K29"
 export const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID ?? "xiyhxkfax5"
+
+type GaItem = { item_id: string; item_name: string; price?: number; quantity?: number; item_variant?: string }
+
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void
+  }
+}
+
+export function track(event: string, params: Record<string, unknown>) {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return
+  try {
+    window.gtag("event", event, params)
+  } catch {
+    // never let analytics break the page
+  }
+}
+
+export function trackEcommerce(
+  event: "add_to_cart" | "begin_checkout" | "purchase" | "view_item",
+  data: { currency: string; value: number; items: GaItem[]; transaction_id?: string; shipping?: number }
+) {
+  track(event, { ...data, currency: data.currency.toUpperCase() })
+}

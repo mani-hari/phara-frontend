@@ -4,6 +4,7 @@ import { convertToLocale } from "@lib/util/money"
 import { retrieveCustomer } from "@lib/data/customer"
 import { CONTACT, waLink } from "@lib/contact"
 import { addressLines, deliveryAddressFor } from "@lib/util/order-address"
+import GaPurchase from "@modules/order/components/ga-purchase"
 
 type Props = { order: HttpTypes.StoreOrder }
 
@@ -107,6 +108,45 @@ export default async function OrderCompletedTemplate({ order }: Props) {
               {order.email}
             </span>
           </div>
+        </div>
+
+        <GaPurchase
+          orderId={order.id}
+          currency={currency}
+          value={total}
+          shipping={shippingTotal}
+          items={(order.items ?? []).map((i: HttpTypes.StoreOrderLineItem) => ({
+            id: i.product_id || i.variant_id || i.id,
+            name: i.product_title || i.title,
+            price: i.unit_price ?? 0,
+            quantity: i.quantity ?? 1,
+            variant: i.variant_title || undefined,
+          }))}
+        />
+
+        {/* Sankalpam details: easiest moment to share names and star is right after booking */}
+        <div
+          className="ph-card"
+          style={{ border: "1px solid var(--ink-line)", background: "var(--paper-2)", padding: "18px 22px", marginBottom: 24 }}
+        >
+          <p className="ph-h4" style={{ margin: "0 0 6px" }}>
+            Share names and star for the sankalpam
+          </p>
+          <p className="ph-body-sm" style={{ margin: "0 0 14px", color: "var(--ink-3)" }}>
+            Send us the names, star (nakshatra) and gothram of everyone the pooja is for. If you don&apos;t know the
+            star, the date, time and place of birth is enough.
+          </p>
+          <a
+            href={waLink(
+              `Sankalpam details for order #${order.display_id}:\nNames: \nStar (nakshatra): \nGothram: \n(or date, time and place of birth)`
+            )}
+            target="_blank"
+            rel="noreferrer"
+            className="ph-btn ph-btn-sindoor"
+            style={{ display: "inline-flex" }}
+          >
+            Send on WhatsApp
+          </a>
         </div>
 
         {/* Items */}

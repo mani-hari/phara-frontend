@@ -67,3 +67,11 @@ P0 (leaks):
 - [ ] D6. GA: exclude bot traffic (Singapore/China data-centre).
 P1 (trust/fit): D7 home first screen; D8 fertility hub; D9 real reviews; D10 "what happens after you book" timeline; D11 browse page redesign.
 P2 (repeat revenue): D12 festival calendar; D13 WhatsApp cart follow-up; D14 journey bundles; D15 language for trust lines.
+
+### Owner's scope for D (18 Oct)
+Do: all P0 (D1–D5; D6 is a GA admin setting, ask first), with these specifics:
+- D2: name skippable; star stays visible as optional in cart; order-confirmed page gets a "send names/star on WhatsApp" button with the order number.
+- D3: show the estimated $32 international prasadam shipping only to non-India (USD) visitors, before checkout.
+- M. Mobile-first polish: world-class mobile UX (Nike-level): show-more truncation for long text, images grouped
+  into a swipe gallery on mobile, compact header, clear sticky CTA, big tap targets.
+- P1: ONLY D11 (lighter browse page with need filters). P2: ONLY D12 (festival calendar). Skip the rest for now.
