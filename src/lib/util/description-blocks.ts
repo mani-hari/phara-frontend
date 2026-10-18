@@ -10,6 +10,10 @@ export function parseDescription(description: string | null | undefined): DescBl
   const lines = (description ?? "").split(/\r?\n/).map((s) => s.trim()).filter(Boolean)
   return lines.reduce<DescBlock[]>((out, line) => {
     if (line.startsWith("## ")) out.push({ kind: "heading", text: line.slice(3).trim() })
+    // Older descriptions mark sections with a short line ending in ":" or "?" ("Who is it for?",
+    // "Benefits of the Homam:"); treat those as headings too.
+    else if (line.length <= 60 && /[:?]$/.test(line) && !/^[-–•*>]/.test(line))
+      out.push({ kind: "heading", text: line.replace(/:$/, "").trim() })
     else if (line.startsWith(">")) {
       const text = line.replace(/^>\s*/, "")
       const last = out[out.length - 1]

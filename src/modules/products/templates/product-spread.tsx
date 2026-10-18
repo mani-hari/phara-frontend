@@ -1,0 +1,273 @@
+import { ReactNode } from "react"
+import { HttpTypes } from "@medusajs/types"
+import LanguageSwitcher from "@modules/common/components/language-switcher"
+import SafeImage from "@modules/common/components/safe-image"
+import type { LangCode } from "@lib/i18n/languages"
+import { parseDescription, toSections, type DescBlock, type DescSection } from "@lib/util/description-blocks"
+import {
+  BundleCard,
+  BundleItemToggle,
+  BundleMobileBar,
+  BundleProvider,
+  type PricedBundleItem,
+} from "@modules/products/components/bundle-checklist"
+
+// "Product page spread": the story on the left (title, language switcher, description sections with the
+// gallery photos spread through them), the booking card fixed on the right while you read. On mobile the
+// card sits under the title. Pooja Bundles add one section per bundled pooja with its own Add button and a
+// bottom bar on mobile. Reads only standard product fields (title, description, images) plus bundle config.
+
+type GalleryEntry = { url: string; alt: string }
+
+function Blocks({ blocks, lang }: { blocks: DescBlock[]; lang?: string }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 12 }} lang={lang}>
+      {blocks.map((b, i) => {
+        if (b.kind === "sloka")
+          return (
+            <blockquote
+              key={i}
+              style={{ margin: "4px 0", padding: "14px 18px", borderLeft: "3px solid var(--sindoor)", background: "var(--paper-2)", borderRadius: 8 }}
+            >
+              {b.lines.map((l, k) => (
+                <p key={k} className="ph-body" style={{ margin: 0, lineHeight: 1.7, color: "var(--ink-2)", fontStyle: l.startsWith("(") ? "normal" : "italic" }}>
+                  {l}
+                </p>
+              ))}
+            </blockquote>
+          )
+        if (b.kind === "bullet")
+          return (
+            <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
+              <span style={{ color: "var(--sindoor)", marginTop: 9, flexShrink: 0, fontSize: 9 }}>●</span>
+              <p className="ph-body" style={{ margin: 0, lineHeight: 1.75, color: "var(--ink-2)" }}>
+                {b.text}
+              </p>
+            </div>
+          )
+        return (
+          <p key={i} className="ph-body" style={{ margin: 0, lineHeight: 1.75, color: "var(--ink-2)" }}>
+            {b.text}
+          </p>
+        )
+      })}
+    </div>
+  )
+}
+
+function Section({ section, lang }: { section: DescSection; lang?: string }) {
+  return (
+    <section style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+      {section.heading && (
+        <h2 className="ph-h3" style={{ margin: 0 }} lang={lang}>
+          {section.heading}
+        </h2>
+      )}
+      <Blocks blocks={section.blocks} lang={lang} />
+    </section>
+  )
+}
+
+function ItemSection({ item, section, lang }: { item: PricedBundleItem; section?: DescSection; lang?: string }) {
+  return (
+    <article
+      id={`pooja-${item.handle}`}
+      style={{ border: "1px solid var(--ink-line)", borderRadius: 16, overflow: "hidden", background: "#fff", scrollMarginTop: 90 }}
+    >
+      {item.image && <SafeImage src={item.image} alt={item.label} radius={0} />}
+      <div style={{ padding: "22px 24px 24px", display: "flex", flexDirection: "column", gap: 14 }}>
+        <h3 className="ph-h3" style={{ margin: 0 }} lang={lang}>
+          {section?.heading || item.label}
+        </h3>
+        {section && <Blocks blocks={section.blocks} lang={lang} />}
+        <div>
+          <BundleItemToggle variantId={item.variantId} />
+        </div>
+      </div>
+    </article>
+  )
+}
+
+function VideoEmbed({ video }: { video: { youtubeId: string; title: string } }) {
+  return (
+    <div style={{ position: "relative", width: "100%", aspectRatio: "16 / 9", borderRadius: 12, overflow: "hidden", background: "var(--ink)" }}>
+      <iframe
+        src={`https://www.youtube.com/embed/${video.youtubeId}`}
+        title={video.title}
+        loading="lazy"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerPolicy="strict-origin-when-cross-origin"
+        allowFullScreen
+        style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
+      />
+    </div>
+  )
+}
+
+function Review({ review }: { review: { text: string; author: string } }) {
+  return (
+    <div className="ph-card" style={{ padding: 20, background: "var(--paper-2)" }}>
+      <p className="ph-label" style={{ margin: "0 0 8px", color: "var(--ink-4)" }}>
+        Devotee review
+      </p>
+      <div style={{ color: "var(--gold)", letterSpacing: 2 }}>★★★★★</div>
+      <p className="ph-body-sm" style={{ marginTop: 10, marginBottom: 0, lineHeight: 1.65, fontSize: 14 }}>
+        {review.text}
+      </p>
+      <p className="ph-label" style={{ marginTop: 10, marginBottom: 0, color: "var(--ink-3)" }}>
+        — {review.author}
+      </p>
+    </div>
+  )
+}
+
+function BookingCard({ heading, children, note }: { heading: string; children: ReactNode; note: string }) {
+  return (
+    <div style={{ border: "1px solid var(--ink-line)", borderRadius: 14, overflow: "hidden", background: "var(--paper)", boxShadow: "0 2px 20px rgba(26,20,16,0.07)" }}>
+      <div style={{ padding: "14px 20px", background: "rgba(182,68,46,0.04)", borderBottom: "1px solid var(--ink-line)", display: "flex", alignItems: "center", gap: 8 }}>
+        <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--sindoor)", flexShrink: 0 }} />
+        <p style={{ fontSize: 12, fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", color: "var(--ink-3)", margin: 0 }}>{heading}</p>
+      </div>
+      <div style={{ padding: 20 }}>
+        {children}
+        <p className="ph-body-sm" style={{ color: "var(--ink-4)", textAlign: "center", marginTop: 12, marginBottom: 0 }}>
+          {note}
+        </p>
+      </div>
+    </div>
+  )
+}
+
+export default function ProductSpread({
+  product,
+  title,
+  lang = "en",
+  hintedLang,
+  description,
+  gallery,
+  actions,
+  bundleItems,
+  review,
+  video,
+}: {
+  product: HttpTypes.StoreProduct
+  title: string
+  lang?: LangCode
+  hintedLang?: LangCode | null
+  description: string | null | undefined
+  gallery: GalleryEntry[]
+  /** Booking controls for a normal product (variant picker, price, add to cart). */
+  actions?: ReactNode
+  /** Present for a Pooja Bundle: the priced items, shown as story sections plus the checklist card. */
+  bundleItems?: PricedBundleItem[]
+  review?: { text: string; author: string }
+  video?: { youtubeId: string; title: string } | null
+}) {
+  const langAttr = lang !== "en" ? lang : undefined
+  const isBundle = !!bundleItems
+  const items = bundleItems || []
+  const sections = toSections(parseDescription(description))
+  const intro = sections.find((s) => s.heading === null)
+  const named = sections.filter((s) => s.heading !== null)
+  const itemHeadings = new Set(items.map((i) => i.section).filter(Boolean) as string[])
+  const isItem = (s: DescSection) => itemHeadings.has(s.heading as string)
+  const firstItemIdx = named.findIndex(isItem)
+  const before = named.filter((s, i) => !isItem(s) && (firstItemIdx < 0 || i < firstItemIdx))
+  const after = named.filter((s, i) => !isItem(s) && firstItemIdx >= 0 && i > firstItemIdx)
+  const sectionFor = (item: PricedBundleItem) => named.find((s) => s.heading === item.section)
+
+  // Photos spread through the story: hero first, then one after each section; any left over at the end.
+  const [hero, ...rest] = gallery
+  let p = 0
+  const nextPhoto = () => (p < rest.length ? rest[p++] : null)
+  const photo = (e: GalleryEntry | null) => (e ? <SafeImage src={e.url} alt={e.alt} /> : null)
+
+  const card = isBundle ? (
+    <BookingCard heading="Book this bundle" note="Devotee details (name, nakshatra, gothram) are added in the cart">
+      <BundleCard />
+    </BookingCard>
+  ) : (
+    <BookingCard heading="Book this ritual" note="Devotee details (name, nakshatra, gothram) added in cart">
+      {actions}
+    </BookingCard>
+  )
+
+  const body = (
+    <section className="content-container" style={{ paddingTop: 24, paddingBottom: isBundle ? 96 : 64 }} data-testid="product-container">
+
+      <div className={`pspread${isBundle ? " pspread-bundle" : ""}`}>
+        <header className="pspread-head">
+          <h1 className="ph-h1" style={{ margin: 0 }} data-testid="product-title" lang={langAttr}>
+            {title}
+          </h1>
+          <LanguageSwitcher hintedLang={hintedLang} />
+          {intro && <Blocks blocks={intro.blocks} lang={langAttr} />}
+        </header>
+
+        <aside className="pspread-card">{card}</aside>
+
+        <div className="pspread-story" id="about-ritual">
+          {hero && <SafeImage src={hero.url} alt={hero.alt} priority />}
+
+          {before.map((s, i) => (
+            <div key={`b${i}`} style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+              <Section section={s} lang={langAttr} />
+              {i === 0 && video && <VideoEmbed video={video} />}
+              {photo(nextPhoto())}
+            </div>
+          ))}
+          {before.length === 0 && video && <VideoEmbed video={video} />}
+
+          {isBundle && items.length > 0 && (
+            <div style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+              <div>
+                <p className="ph-eyebrow ph-eyebrow-gold" style={{ margin: "0 0 6px" }}>
+                  Choose your poojas
+                </p>
+                <h2 className="ph-h2" style={{ margin: 0 }}>
+                  Read about each, then add the ones you want
+                </h2>
+              </div>
+              {items.map((item, i) => (
+                <div key={item.variantId} style={{ display: "flex", flexDirection: "column", gap: 24 }}>
+                  <ItemSection item={item} section={sectionFor(item)} lang={langAttr} />
+                  {i % 2 === 1 && i < items.length - 1 ? photo(nextPhoto()) : null}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {after.map((s, i) => (
+            <div key={`a${i}`} style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+              <Section section={s} lang={langAttr} />
+              {photo(nextPhoto())}
+            </div>
+          ))}
+
+          {p < rest.length && (
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+              {rest.slice(p).map((e, i) => (
+                <SafeImage key={`${e.url}-${i}`} src={e.url} alt={e.alt} radius={10} sizes="380px" />
+              ))}
+            </div>
+          )}
+
+          {review && <Review review={review} />}
+        </div>
+      </div>
+      {isBundle && <BundleMobileBar />}
+    </section>
+  )
+
+  return isBundle ? <BundleProvider items={items}>{body}</BundleProvider> : body
+}
+
+/** Server loader for a Pooja Bundle: prices its items for the region, then renders the spread. */
+export async function BundleProductSpread(
+  props: Omit<Parameters<typeof ProductSpread>[0], "bundleItems" | "actions"> & { region: HttpTypes.StoreRegion }
+) {
+  const { getPricedBundle } = await import("@modules/products/components/bundle-checklist/wrapper")
+  const { region, ...rest } = props
+  const bundleItems = await getPricedBundle(props.product.handle || "", region)
+  return <ProductSpread {...rest} bundleItems={bundleItems} />
+}

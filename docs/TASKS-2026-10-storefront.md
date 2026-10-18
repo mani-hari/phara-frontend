@@ -23,10 +23,12 @@ code (`src/lib/data/product-bundles.ts`, keyed by handle `navratri-poojas-online
 - [ ] A2. Name and config: call it a "Pooja Bundle" in the UI/code; move the item list from code
       to product metadata (`metadata.bundle_items` = ordered variant IDs + labels) so bundles can be
       made in Medusa admin without a deploy. No change to Medusa's own data model.
-- [ ] A3. Build the chosen layout as a bundle template (only for products with bundle metadata).
+- [x] A3. Built: one shared layout `templates/product-spread.tsx` (bundle mode + normal mode).
 - [ ] A4. Test: desktop + mobile, INR (/in) and USD, add 1 and several items, cart lines, checkout
       reaches payment. Owner pushes to main; verify live.
-- [ ] A5. If owner likes it: "product page spread" layout for every product page (sticky add-to-cart
+- [x] A5. (18 Oct, owner approved and asked to push) Applied to ALL product pages, language switcher +
+      translations kept, 3:2 no-crop SafeImage, plain descriptions' "Who is it for?"-style lines become sections.
+      Was: If owner likes it: "product page spread" layout for every product page (sticky add-to-cart
       card, description sections with gallery photos spread through). Storefront-only; reads standard fields.
 
 ## B. Home page: videos and featured products (owner's item 1)

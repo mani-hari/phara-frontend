@@ -1,4 +1,3 @@
-import SafeImage from "@modules/common/components/safe-image"
 import Link from "next/link"
 import { Suspense } from "react"
 
@@ -11,11 +10,10 @@ import {
   howItWorksSteps,
 } from "@lib/mock-storefront"
 import { ProductFaqEntry } from "@lib/data/product-faq-content"
-import LanguageSwitcher from "@modules/common/components/language-switcher"
 import type { LangCode } from "@lib/i18n/languages"
 
 import ProductActionsWrapper from "./product-actions-wrapper"
-import { BundleSpreadSection } from "./bundle-spread"
+import ProductSpread, { BundleProductSpread } from "./product-spread"
 import { PRODUCT_BUNDLES } from "@lib/data/product-bundles"
 import RelatedProducts from "../components/related-products"
 
@@ -68,39 +66,6 @@ export default function ProductTemplate({
   const altFor = (src: string | null, fallback: string) =>
     displayEntries.find((e) => e.url === src)?.alt || fallback
 
-  // Real Medusa description → non-empty lines (bullets detected in About).
-  // Uses displayDescription (pre-translated line-by-line in page.tsx when
-  // lang !== "en", so bullet/paragraph structure survives translation
-  // intact) rather than product.description directly — this is the full
-  // "About This Ritual" content, not just the clamped preview above.
-  const descriptionLines = (displayDescription ?? "")
-    .split(/\r?\n/)
-    .map((s) => s.trim())
-    .filter(Boolean)
-  const hasDescription = descriptionLines.length > 0
-  // Light markup in descriptions: "## " starts a section heading, "> " is a sloka/mantra line,
-  // "- " a bullet. The short snippet shows only the opening text, before the first heading.
-  const firstHeading = descriptionLines.findIndex((l) => l.startsWith("## "))
-  const snippetText = (firstHeading > 0 ? descriptionLines.slice(0, firstHeading) : descriptionLines)
-    .map((l) => l.replace(/^(##|>|[-–•*])\s*/, ""))
-    .join(" ")
-  type DescBlock = { kind: "heading" | "para" | "bullet"; text: string } | { kind: "sloka"; lines: string[] }
-  const descriptionBlocks = descriptionLines.reduce<DescBlock[]>((out, line) => {
-    if (line.startsWith("## ")) out.push({ kind: "heading", text: line.slice(3).trim() })
-    else if (line.startsWith(">")) {
-      const text = line.replace(/^>\s*/, "")
-      const last = out[out.length - 1]
-      if (last && last.kind === "sloka") last.lines.push(text)
-      else out.push({ kind: "sloka", lines: [text] })
-    } else if (/^[-–•*]\s*/.test(line)) out.push({ kind: "bullet", text: line.replace(/^[-–•*]\s*/, "") })
-    else out.push({ kind: "para", text: line })
-    return out
-  }, [])
-
-  const primaryImg = displayGallery[0] ?? null
-  const secondImg = displayGallery[1] ?? null
-  const gridImgs = displayGallery.slice(2)
-
   return (
     <div style={{ background: "var(--paper)" }}>
       <div style={{ borderTop: "1px solid var(--ink-line)" }} />
@@ -132,363 +97,42 @@ export default function ProductTemplate({
         </nav>
       </div>
 
-      {/* ── Pooja Bundle: "spread" layout (sticky booking card, story on the left) ── */}
+      {/* ── Product page spread: story + gallery on the left, booking card fixed on the right ── */}
       {product.handle && PRODUCT_BUNDLES[product.handle] ? (
-        <BundleSpreadSection product={product} region={region} description={displayDescription} gallery={displayGallery} />
+        <BundleProductSpread
+          product={product}
+          region={region}
+          title={displayTitle}
+          lang={lang}
+          hintedLang={hintedLang}
+          description={displayDescription}
+          gallery={displayEntries}
+          review={content.review}
+          video={product.handle ? PRODUCT_VIDEOS[product.handle] : null}
+        />
       ) : (
-      <>
-      {/* ── Main 2-col section ─────────────────────────────────── */}
-      <section
-        className="content-container"
-        style={{ paddingTop: 24, paddingBottom: 64 }}
-        data-testid="product-container"
-      >
-        <style>{`
-          @media (min-width: 1024px) {
-            .product-main-grid { grid-template-columns: 1.15fr 1fr !important; gap: 56px !important; }
+        <ProductSpread
+          product={product}
+          title={displayTitle}
+          lang={lang}
+          hintedLang={hintedLang}
+          description={displayDescription}
+          gallery={displayEntries}
+          review={content.review}
+          video={product.handle ? PRODUCT_VIDEOS[product.handle] : null}
+          actions={
+            <Suspense fallback={<div style={{ height: 52, borderRadius: 10, background: "var(--sindoor)", opacity: 0.7 }} />}>
+              <ProductActionsWrapper
+                id={product.id}
+                region={region}
+                showPujaDetails={false}
+                showPrice={true}
+                buttonText="Add Pooja to Cart"
+                buttonClassName="ph-btn ph-btn-sindoor ph-btn-lg ph-btn-block"
+              />
+            </Suspense>
           }
-        `}</style>
-        <div
-          className="product-main-grid"
-          style={{ display: "grid", gridTemplateColumns: "1fr", gap: 40 }}
-        >
-          {/* ── LEFT: image gallery ───────────────────────────── */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-            {primaryImg ? (
-              <>
-                {/* First image — full width, 3:2, never cropped */}
-                <SafeImage src={primaryImg} alt={product.title} sizes="(max-width: 1024px) 100vw, 640px" priority />
-
-                {/* Second image — 3:2, never cropped */}
-                {secondImg && (
-                  <SafeImage
-                    src={secondImg}
-                    alt={altFor(secondImg, `${product.title} — image 2`)}
-                    sizes="(max-width: 1024px) 100vw, 640px"
-                  />
-                )}
-
-                {/* Remaining images — 2-col grid */}
-                {gridImgs.length > 0 && (
-                  <div
-                    style={{
-                      display: "grid",
-                      gridTemplateColumns: "1fr 1fr",
-                      gap: 10,
-                    }}
-                  >
-                    {gridImgs.map((src, i) => (
-                      <SafeImage
-                        key={`${src}-${i}`}
-                        src={src}
-                        alt={altFor(src, `${product.title} — image ${i + 3}`)}
-                        radius={10}
-                        sizes="320px"
-                      />
-                    ))}
-                  </div>
-                )}
-              </>
-            ) : (
-              /* Fallback placeholder */
-              <div
-                style={{
-                  height: 480,
-                  borderRadius: 14,
-                  background:
-                    "radial-gradient(circle at 30% 30%, rgba(184,135,70,0.18), transparent 60%), radial-gradient(circle at 70% 70%, rgba(182,68,46,0.12), transparent 60%), var(--paper-2)",
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  flexDirection: "column",
-                  gap: 12,
-                  textAlign: "center",
-                  padding: 32,
-                }}
-              >
-                <p
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    fontSize: 32,
-                    color: "var(--ink)",
-                    fontWeight: 400,
-                    lineHeight: 1.2,
-                    margin: 0,
-                  }}
-                >
-                  {product.title}
-                </p>
-                <p className="ph-body-sm" style={{ color: "var(--ink-4)" }}>
-                  Imagery available in the temple management portal
-                </p>
-              </div>
-            )}
-          </div>
-
-          {/* ── RIGHT: product info ───────────────────────────── */}
-          <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
-
-            {/* Title */}
-            <h1 className="ph-h1" style={{ margin: 0 }} data-testid="product-title" lang={lang !== "en" ? lang : undefined}>
-              {displayTitle}
-            </h1>
-
-            <LanguageSwitcher hintedLang={hintedLang} />
-
-            {hasDescription && (
-              <>
-                <div style={{ height: 1, background: "var(--ink-line)" }} />
-
-                {/* Short description snippet (real product.description) + read more */}
-                <div>
-                  <p
-                    className="ph-body"
-                    style={{
-                      margin: 0,
-                      lineHeight: 1.7,
-                      color: "var(--ink-2)",
-                      display: "-webkit-box",
-                      WebkitLineClamp: 5,
-                      WebkitBoxOrient: "vertical",
-                      overflow: "hidden",
-                    }}
-                    lang={lang !== "en" ? lang : undefined}
-                  >
-                    {snippetText}
-                  </p>
-                  <a
-                    href="#about-ritual"
-                    className="ph-body-sm"
-                    style={{
-                      display: "inline-block",
-                      marginTop: 10,
-                      color: "var(--sindoor)",
-                      fontWeight: 600,
-                      textDecoration: "none",
-                    }}
-                  >
-                    Read more ↓
-                  </a>
-                </div>
-              </>
-            )}
-
-            <div style={{ height: 1, background: "var(--ink-line)" }} />
-
-            {/* ── Booking card ─────────────────────────────────── */}
-            <div
-              style={{
-                border: "1px solid var(--ink-line)",
-                borderRadius: 14,
-                overflow: "hidden",
-                background: "var(--paper)",
-                boxShadow: "0 2px 20px rgba(26,20,16,0.07)",
-              }}
-            >
-              {/* Card header */}
-              <div
-                style={{
-                  padding: "16px 20px",
-                  background: "rgba(182,68,46,0.04)",
-                  borderBottom: "1px solid var(--ink-line)",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 8,
-                }}
-              >
-                <span
-                  style={{
-                    width: 6,
-                    height: 6,
-                    borderRadius: "50%",
-                    background: "var(--sindoor)",
-                    flexShrink: 0,
-                  }}
-                />
-                <p
-                  style={{
-                    fontFamily: "var(--sans)",
-                    fontSize: 12,
-                    fontWeight: 700,
-                    textTransform: "uppercase",
-                    letterSpacing: "0.1em",
-                    color: "var(--ink-3)",
-                    margin: 0,
-                  }}
-                >
-                  Book This Ritual
-                </p>
-              </div>
-
-              {/* Card body — variant selector + price + button */}
-              <div style={{ padding: 20 }}>
-                <Suspense
-                  fallback={
-                    <div
-                      style={{
-                        height: 52,
-                        borderRadius: 10,
-                        background: "var(--sindoor)",
-                        opacity: 0.7,
-                      }}
-                    />
-                  }
-                >
-                  <ProductActionsWrapper
-                      id={product.id}
-                      region={region}
-                      showPujaDetails={false}
-                      showPrice={true}
-                      buttonText="Add Pooja to Cart"
-                      buttonClassName="ph-btn ph-btn-sindoor ph-btn-lg ph-btn-block"
-                    />
-                </Suspense>
-
-                <p
-                  className="ph-body-sm"
-                  style={{
-                    color: "var(--ink-4)",
-                    textAlign: "center",
-                    marginTop: 12,
-                    marginBottom: 0,
-                  }}
-                >
-                  Devotee details (name, nakshatra, gothram) added in cart
-                </p>
-              </div>
-            </div>
-
-            <div style={{ height: 1, background: "var(--ink-line)" }} />
-
-            {/* Devotee review */}
-            <div>
-              <p
-                style={{
-                  fontFamily: "var(--sans)",
-                  fontSize: 11,
-                  fontWeight: 700,
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  color: "var(--ink-4)",
-                  marginBottom: 12,
-                  margin: "0 0 12px",
-                }}
-              >
-                Devotee Review
-              </p>
-              <div
-                className="ph-card"
-                style={{ padding: 20, background: "var(--paper-2)" }}
-              >
-                <div style={{ color: "var(--gold)", letterSpacing: 2 }}>★★★★★</div>
-                <p
-                  className="ph-body-sm"
-                  style={{ marginTop: 10, marginBottom: 0, lineHeight: 1.65, fontSize: 14 }}
-                >
-                  {content.review.text}
-                </p>
-                <p
-                  className="ph-label"
-                  style={{ marginTop: 10, color: "var(--ink-3)" }}
-                >
-                  — {content.review.author}
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* ── About this ritual — full width, real product.description ── */}
-        {hasDescription && (
-          <div
-            id="about-ritual"
-            style={{
-              marginTop: 56,
-              paddingTop: 40,
-              borderTop: "1px solid var(--ink-line)",
-              scrollMarginTop: 80,
-            }}
-          >
-            <h2 className="ph-h3" style={{ marginBottom: 20 }}>
-              About This Ritual
-            </h2>
-            <div
-              style={{ display: "flex", flexDirection: "column", gap: 12, maxWidth: 820 }}
-            >
-              {descriptionBlocks.map((b, i) => {
-                if (b.kind === "heading")
-                  return (
-                    <h3 key={i} className="ph-h4" style={{ margin: i === 0 ? "0 0 2px" : "20px 0 2px", color: "var(--ink)" }}>
-                      {b.text}
-                    </h3>
-                  )
-                if (b.kind === "sloka")
-                  return (
-                    <blockquote
-                      key={i}
-                      style={{
-                        margin: "4px 0",
-                        padding: "14px 18px",
-                        borderLeft: "3px solid var(--sindoor)",
-                        background: "var(--paper-2)",
-                        borderRadius: 8,
-                      }}
-                    >
-                      {b.lines.map((l, k) => (
-                        <p
-                          key={k}
-                          className="ph-body"
-                          style={{ margin: 0, lineHeight: 1.7, fontStyle: k === b.lines.length - 1 && b.lines.length > 1 && l.startsWith("(") ? "normal" : "italic", color: "var(--ink-2)" }}
-                        >
-                          {l}
-                        </p>
-                      ))}
-                    </blockquote>
-                  )
-                return b.kind === "bullet" ? (
-                  <div key={i} style={{ display: "flex", gap: 10, alignItems: "flex-start" }}>
-                    <span style={{ color: "var(--sindoor)", marginTop: 9, flexShrink: 0, fontSize: 9 }}>
-                      ●
-                    </span>
-                    <p className="ph-body" style={{ margin: 0, lineHeight: 1.75, color: "var(--ink-2)" }}>
-                      {b.text}
-                    </p>
-                  </div>
-                ) : (
-                  <p key={i} className="ph-body" style={{ margin: 0, lineHeight: 1.75, color: "var(--ink-2)" }}>
-                    {b.text}
-                  </p>
-                )
-              })}
-            </div>
-            {product.handle && PRODUCT_VIDEOS[product.handle] && (
-              <div style={{ marginTop: 32, maxWidth: 820 }}>
-                <div
-                  style={{
-                    position: "relative",
-                    width: "100%",
-                    aspectRatio: "16 / 9",
-                    borderRadius: 12,
-                    overflow: "hidden",
-                    background: "var(--ink)",
-                  }}
-                >
-                  <iframe
-                    src={`https://www.youtube.com/embed/${PRODUCT_VIDEOS[product.handle].youtubeId}`}
-                    title={PRODUCT_VIDEOS[product.handle].title}
-                    loading="lazy"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    referrerPolicy="strict-origin-when-cross-origin"
-                    allowFullScreen
-                    style={{ position: "absolute", inset: 0, width: "100%", height: "100%", border: 0 }}
-                  />
-                </div>
-              </div>
-            )}
-          </div>
-        )}
-      </section>
-      </>
+        />
       )}
 
       {/* ── How It Works — dark section ──────────────────────── */}
