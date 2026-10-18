@@ -22,7 +22,7 @@ export default async function Nav() {
       }}
     >
       <header className="mx-auto">
-        <nav className="content-container flex items-center" style={{ height: 64, gap: 32 }}>
+        <nav className="content-container flex items-center justify-between" style={{ height: 64, gap: 16 }}>
           {/* Left: side menu (mobile) + brand */}
           <div className="flex items-center" style={{ gap: 12 }}>
             <div className="small:hidden">
@@ -41,29 +41,27 @@ export default async function Nav() {
           {/* Center: nav links with active state (client component) */}
           <NavLinks />
 
-          {/* Right: search + cart + sign-in */}
-          <div className="flex items-center" style={{ gap: 10 }}>
+          {/* Right: search + cart + sign-in (sign-in lives in the side menu on phones) */}
+          <div className="ph-hdr-actions">
             <NavSearch />
             <Suspense
               fallback={
-                <LocalizedClientLink
-                  className="inline-flex items-center"
-                  href="/cart"
-                  data-testid="nav-cart-link"
-                  style={{ color: "var(--ink)", fontSize: 13 }}
-                >
-                  Cart (0)
+                <LocalizedClientLink className="ph-hdr-btn ph-hdr-cart" href="/cart" data-testid="nav-cart-link" aria-label="Cart">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                    <path d="M6 7h12l-1 13H7L6 7z" />
+                    <path d="M9 7a3 3 0 0 1 6 0" />
+                  </svg>
+                  <span className="ph-hdr-label">Cart</span>
                 </LocalizedClientLink>
               }
             >
               <CartButton />
             </Suspense>
-            <LocalizedClientLink
-              className="inline-flex items-center"
-              href="/account/signin"
-              data-testid="nav-account-link"
-              style={{ color: "var(--ink)", fontSize: 13 }}
-            >
+            <LocalizedClientLink className="ph-hdr-btn ph-hdr-signin" href="/account/signin" data-testid="nav-account-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 21c1.5-4 4.5-6 8-6s6.5 2 8 6" />
+              </svg>
               Sign in
             </LocalizedClientLink>
           </div>

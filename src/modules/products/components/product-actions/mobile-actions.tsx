@@ -79,79 +79,47 @@ const MobileActions: React.FC<MobileActionsProps> = ({
           leaveTo="opacity-0"
         >
           <div
-            className="flex flex-col gap-y-3 justify-center items-center text-large-regular p-4 h-full w-full border-t"
-            style={{ background: "var(--paper)", borderColor: "var(--ink-line)" }}
+            className="ph-sticky-buy"
+            style={{
+              display: "flex", alignItems: "center", gap: 12, padding: "10px 16px calc(10px + env(safe-area-inset-bottom))",
+              background: "var(--paper)", borderTop: "1px solid var(--ink-line)", boxShadow: "0 -6px 20px rgba(0,0,0,0.06)",
+            }}
             data-testid="mobile-actions"
           >
-            <div className="flex items-center gap-x-2">
-              <span data-testid="mobile-title">{product.title}</span>
-              <span>—</span>
-              {selectedPrice ? (
-                <div className="flex items-end gap-x-2 text-ui-fg-base">
-                  {selectedPrice.price_type === "sale" && (
-                    <p>
-                      <span className="line-through text-small-regular">
-                        {selectedPrice.original_price}
-                      </span>
-                    </p>
-                  )}
-                  <span
-                    className={clx({
-                      "text-ui-fg-interactive":
-                        selectedPrice.price_type === "sale",
-                    })}
-                  >
-                    {selectedPrice.calculated_price}
-                  </span>
-                </div>
-              ) : (
-                <div></div>
+            {/* One slim row: what + price on the left, the action on the right (quantity lives in the card above). */}
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <p data-testid="mobile-title" style={{ margin: 0, fontSize: 13, color: "var(--ink-3)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                {product.title}
+              </p>
+              {selectedPrice && (
+                <p style={{ margin: 0, fontSize: 17, fontWeight: 700, color: "var(--ink)" }}>
+                  {selectedPrice.calculated_price}
+                  {quantity > 1 ? <span style={{ fontSize: 13, fontWeight: 500, color: "var(--ink-4)" }}> × {quantity}</span> : null}
+                </p>
               )}
             </div>
-            {inStock && (
-              <div className="flex items-center justify-center gap-x-3 w-full">
-                <span className="ph-label">Qty</span>
-                <QuantitySelector
-                  quantity={quantity}
-                  onChange={updateQuantity}
-                  max={maxQuantity}
-                  disabled={isAdding}
-                  data-testid="mobile-quantity-selector"
-                />
-              </div>
-            )}
-            <div className={clx("grid grid-cols-2 w-full gap-x-4", {
-              "!grid-cols-1": isSimple
-            })}>
-              {!isSimple && <Button
+            {!isSimple && !variant && (
+              <button
+                type="button"
                 onClick={open}
-                variant="secondary"
-                className="w-full"
                 data-testid="mobile-actions-button"
+                style={{ padding: "12px 14px", borderRadius: 999, border: "1px solid var(--ink-line)", background: "var(--paper)", fontWeight: 600, fontSize: 14, whiteSpace: "nowrap" }}
               >
-                <div className="flex items-center justify-between w-full">
-                  <span>
-                    {variant
-                      ? Object.values(options).join(" / ")
-                      : "Select Options"}
-                  </span>
-                  <ChevronDown />
-                </div>
-              </Button>}
-              <Button
+                Choose option
+              </button>
+            )}
+            {(isSimple || variant) && (
+              <button
+                type="button"
                 onClick={handleAddToCart}
-                disabled={!inStock || !variant}
-                className="w-full"
-                isLoading={isAdding}
+                disabled={!inStock || !variant || isAdding}
                 data-testid="mobile-cart-button"
+                className="ph-btn ph-btn-sindoor"
+                style={{ whiteSpace: "nowrap", opacity: !inStock || !variant || isAdding ? 0.6 : 1 }}
               >
-                {!variant
-                  ? "Select variant"
-                  : !inStock
-                  ? "Out of stock"
-                  : buttonText || "Add to cart"}
-              </Button>
-            </div>
+                {isAdding ? "Adding…" : !inStock ? "Out of stock" : buttonText || "Add to cart"}
+              </button>
+            )}
           </div>
         </Transition>
       </div>

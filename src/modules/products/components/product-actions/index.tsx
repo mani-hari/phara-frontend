@@ -1,7 +1,8 @@
 "use client"
 
 import { addToCart } from "@lib/data/cart"
-import { useIntersection } from "@lib/hooks/use-in-view"
+import { trackEcommerce } from "@lib/analytics"
+import AddedToast from "./added-toast"
 import { HttpTypes } from "@medusajs/types"
 import { Button } from "@medusajs/ui"
 import Divider from "@modules/common/components/divider"
@@ -157,7 +158,16 @@ export default function ProductActions({
   }, [selectedVariant?.id])
 
   const actionsRef = useRef<HTMLDivElement>(null)
-  const inView = useIntersection(actionsRef, "0px")
+  // Sticky mobile bar: only once the visitor has scrolled past the booking controls (never alongside them).
+  const [scrolledPast, setScrolledPast] = useState(false)
+  useEffect(() => {
+    const el = actionsRef.current
+    if (!el) return
+    const io = new IntersectionObserver(([e]) => setScrolledPast(!e.isIntersecting && e.boundingClientRect.top < 0))
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+  const [justAdded, setJustAdded] = useState(false)
 
   // Check if puja details are valid (at least first devotee name required)
   const isPujaDetailsValid =
@@ -225,6 +235,13 @@ export default function ProductActions({
     if (typeof window !== "undefined") {
       window.dispatchEvent(new Event("cart:updated"))
     }
+    trackEcommerce("add_to_cart", {
+      currency: selectedVariant.calculated_price?.currency_code || "usd",
+      value: (selectedVariant.calculated_price?.calculated_amount || 0) * quantity,
+      items: [{ item_id: product.id, item_name: product.title, item_variant: selectedVariant.title || undefined, quantity, price: selectedVariant.calculated_price?.calculated_amount || 0 }],
+    })
+    setJustAdded(true)
+    setTimeout(() => setJustAdded(false), 5000)
 
     // Reset form after adding to cart
     setPujaDetails({ ...initialPujaDetails, devotees: [{ ...emptyDevotee }] })
@@ -324,7 +341,7 @@ export default function ProductActions({
           inStock={inStock}
           handleAddToCart={handleAddToCart}
           isAdding={isAdding}
-          show={!inView}
+          show={scrolledPast}
           optionsDisabled={!!disabled || isAdding}
           buttonText={buttonText}
           quantity={quantity}
@@ -332,6 +349,7 @@ export default function ProductActions({
           maxQuantity={maxQuantity}
         />
       </div>
+      <AddedToast show={justAdded} />
     </>
   )
 }

@@ -97,7 +97,7 @@ export default function NavSearch({ countryCode: countryCodeProp = "in" }: { cou
       <div
         style={{
           overflow: "hidden",
-          width: expanded ? 200 : 0,
+          width: expanded ? "min(200px, 46vw)" : 0,
           transition: "width 0.22s cubic-bezier(0.4,0,0.2,1)",
           opacity: expanded ? 1 : 0,
         }}
@@ -118,8 +118,8 @@ export default function NavSearch({ countryCode: countryCodeProp = "in" }: { cou
           }}
           placeholder="Search poojas, remedies…"
           style={{
-            width: 200,
-            height: 32,
+            width: "100%",
+            height: 36,
             padding: "0 10px",
             background: "rgba(26,20,16,0.06)",
             border: "1px solid var(--ink-line)",
@@ -202,25 +202,11 @@ export default function NavSearch({ countryCode: countryCodeProp = "in" }: { cou
         type="button"
         onClick={expanded ? submit : open}
         aria-label={expanded ? "Search" : "Open search"}
-        style={{
-          background: "none",
-          border: "none",
-          cursor: "pointer",
-          padding: "6px",
-          display: "inline-flex",
-          alignItems: "center",
-          justifyContent: "center",
-          color: "var(--ink)",
-          opacity: 0.7,
-          borderRadius: 6,
-          transition: "opacity 0.15s",
-          flexShrink: 0,
-          marginLeft: expanded ? 4 : 0,
-        }}
-        onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
-        onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.7")}
+        className="ph-hdr-btn"
+        style={{ marginLeft: expanded ? 4 : 0 }}
       >
         <SearchIcon />
+        {!expanded && <span className="ph-hdr-label">Search</span>}
       </button>
     </div>
   )

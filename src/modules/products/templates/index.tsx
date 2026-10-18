@@ -66,6 +66,10 @@ export default function ProductTemplate({
   const altFor = (src: string | null, fallback: string) =>
     displayEntries.find((e) => e.url === src)?.alt || fallback
 
+  // Prasadam is a physical item, not a ritual: different card wording and button.
+  const isPrasad = /prasad/i.test(`${product.collection?.handle ?? ""} ${product.collection?.title ?? ""} ${product.title ?? ""}`)
+  const currency = region.currency_code
+
   return (
     <div style={{ background: "var(--paper)" }}>
       <div style={{ borderTop: "1px solid var(--ink-line)" }} />
@@ -109,6 +113,7 @@ export default function ProductTemplate({
           gallery={displayEntries}
           review={content.review}
           video={product.handle ? PRODUCT_VIDEOS[product.handle] : null}
+          currency={currency}
         />
       ) : (
         <ProductSpread
@@ -120,6 +125,8 @@ export default function ProductTemplate({
           gallery={displayEntries}
           review={content.review}
           video={product.handle ? PRODUCT_VIDEOS[product.handle] : null}
+          currency={currency}
+          isPrasad={isPrasad}
           actions={
             <Suspense fallback={<div style={{ height: 52, borderRadius: 10, background: "var(--sindoor)", opacity: 0.7 }} />}>
               <ProductActionsWrapper
@@ -127,7 +134,7 @@ export default function ProductTemplate({
                 region={region}
                 showPujaDetails={false}
                 showPrice={true}
-                buttonText="Add Pooja to Cart"
+                buttonText={isPrasad ? "Add to cart" : "Book this pooja"}
                 buttonClassName="ph-btn ph-btn-sindoor ph-btn-lg ph-btn-block"
               />
             </Suspense>

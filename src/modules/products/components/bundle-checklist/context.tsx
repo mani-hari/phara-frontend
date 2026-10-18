@@ -1,6 +1,7 @@
 "use client"
 
 import { addManyToCart } from "@lib/data/cart"
+import { trackEcommerce } from "@lib/analytics"
 import type { BundleItem } from "@lib/data/product-bundles"
 import { convertToLocale } from "@lib/util/money"
 import { useParams } from "next/navigation"
@@ -62,6 +63,11 @@ export function BundleProvider({ items, children }: { items: PricedBundleItem[];
         // One line per ticked item, in list order, added in a single server call.
         await addManyToCart({ variantIds: selected.map((i) => i.variantId), countryCode })
         if (typeof window !== "undefined") window.dispatchEvent(new Event("cart:updated"))
+        trackEcommerce("add_to_cart", {
+          currency,
+          value: total,
+          items: selected.map((i) => ({ item_id: i.productId, item_name: i.label, price: i.amount, quantity: 1 })),
+        })
         setChecked({})
         setAdded(true)
       } catch (e) {

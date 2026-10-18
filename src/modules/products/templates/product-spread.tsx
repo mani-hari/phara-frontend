@@ -2,6 +2,8 @@ import { ReactNode } from "react"
 import { HttpTypes } from "@medusajs/types"
 import LanguageSwitcher from "@modules/common/components/language-switcher"
 import SafeImage from "@modules/common/components/safe-image"
+import { MobileCollapse, MobileGallery } from "@modules/products/components/spread-mobile"
+import { INTL_PRASAD_SHIPPING_USD, showsIntlShipping } from "@lib/shipping-estimate"
 import type { LangCode } from "@lib/i18n/languages"
 import { parseDescription, toSections, type DescBlock, type DescSection } from "@lib/util/description-blocks"
 import {
@@ -149,8 +151,14 @@ export default function ProductSpread({
   bundleItems,
   review,
   video,
+  currency,
+  isPrasad = false,
 }: {
   product: HttpTypes.StoreProduct
+  /** Visitor's region currency: decides the delivery note (free in India, estimate elsewhere). */
+  currency?: string
+  /** Prasadam (a physical item) rather than a pooja: changes the card wording. */
+  isPrasad?: boolean
   title: string
   lang?: LangCode
   hintedLang?: LangCode | null
@@ -180,14 +188,27 @@ export default function ProductSpread({
   const [hero, ...rest] = gallery
   let p = 0
   const nextPhoto = () => (p < rest.length ? rest[p++] : null)
-  const photo = (e: GalleryEntry | null) => (e ? <SafeImage src={e.url} alt={e.alt} /> : null)
+  const photo = (e: GalleryEntry | null) =>
+    e ? (
+      <div className="pspread-photo-desktop">
+        <SafeImage src={e.url} alt={e.alt} />
+      </div>
+    ) : null
+  const deliveryNote = showsIntlShipping(currency)
+    ? `Prasadam delivery outside India: about $${INTL_PRASAD_SHIPPING_USD}, added at checkout (free if donated at the temple).`
+    : currency
+      ? "Free prasadam delivery within India."
+      : ""
 
   const card = isBundle ? (
-    <BookingCard heading="Book this bundle" note="Devotee details (name, nakshatra, gothram) are added in the cart">
+    <BookingCard heading="Book this bundle" note={[deliveryNote, "Names and star can be added in the cart or sent later on WhatsApp."].filter(Boolean).join(" ")}>
       <BundleCard />
     </BookingCard>
   ) : (
-    <BookingCard heading="Book this ritual" note="Devotee details (name, nakshatra, gothram) added in cart">
+    <BookingCard
+      heading={isPrasad ? "Order this prasadam" : "Book this ritual"}
+      note={[deliveryNote, isPrasad ? "" : "Names and star can be added in the cart or sent later on WhatsApp."].filter(Boolean).join(" ")}
+    >
       {actions}
     </BookingCard>
   )
@@ -204,18 +225,32 @@ export default function ProductSpread({
           {intro && <Blocks blocks={intro.blocks} lang={langAttr} />}
         </header>
 
+        <div className="pspread-hero">
+          <MobileGallery photos={gallery} />
+          {hero && (
+            <div className="pspread-hero-desktop">
+              <SafeImage src={hero.url} alt={hero.alt} priority />
+            </div>
+          )}
+        </div>
+
         <aside className="pspread-card">{card}</aside>
 
         <div className="pspread-story" id="about-ritual">
-          {hero && <SafeImage src={hero.url} alt={hero.alt} priority />}
 
-          {before.map((s, i) => (
-            <div key={`b${i}`} style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-              <Section section={s} lang={langAttr} />
-              {i === 0 && video && <VideoEmbed video={video} />}
-              {photo(nextPhoto())}
-            </div>
-          ))}
+          {before.length > 0 && (
+            <MobileCollapse>
+              <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+                {before.map((s, i) => (
+                  <div key={`b${i}`} style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+                    <Section section={s} lang={langAttr} />
+                    {i === 0 && video && <VideoEmbed video={video} />}
+                    {photo(nextPhoto())}
+                  </div>
+                ))}
+              </div>
+            </MobileCollapse>
+          )}
           {before.length === 0 && video && <VideoEmbed video={video} />}
 
           {isBundle && items.length > 0 && (
@@ -237,18 +272,26 @@ export default function ProductSpread({
             </div>
           )}
 
-          {after.map((s, i) => (
-            <div key={`a${i}`} style={{ display: "flex", flexDirection: "column", gap: 28 }}>
-              <Section section={s} lang={langAttr} />
-              {photo(nextPhoto())}
-            </div>
-          ))}
+          {after.length > 0 && (
+            <MobileCollapse>
+              <div style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+                {after.map((s, i) => (
+                  <div key={`a${i}`} style={{ display: "flex", flexDirection: "column", gap: 28 }}>
+                    <Section section={s} lang={langAttr} />
+                    {photo(nextPhoto())}
+                  </div>
+                ))}
+              </div>
+            </MobileCollapse>
+          )}
 
           {p < rest.length && (
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+            <div className="pspread-photo-desktop" style={{ display: undefined }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
               {rest.slice(p).map((e, i) => (
                 <SafeImage key={`${e.url}-${i}`} src={e.url} alt={e.alt} radius={10} sizes="380px" />
               ))}
+              </div>
             </div>
           )}
 
