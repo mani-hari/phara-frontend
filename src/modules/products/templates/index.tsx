@@ -1,4 +1,4 @@
-import Image from "next/image"
+import SafeImage from "@modules/common/components/safe-image"
 import Link from "next/link"
 import { Suspense } from "react"
 
@@ -156,45 +156,16 @@ export default function ProductTemplate({
           <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
             {primaryImg ? (
               <>
-                {/* First image — full width */}
-                <div
-                  style={{
-                    position: "relative",
-                    height: 480,
-                    borderRadius: 14,
-                    overflow: "hidden",
-                    background: "var(--paper-2)",
-                  }}
-                >
-                  <Image
-                    src={primaryImg}
-                    alt={product.title}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 1024px) 100vw, 640px"
-                    priority
-                  />
-                </div>
+                {/* First image — full width, 3:2, never cropped */}
+                <SafeImage src={primaryImg} alt={product.title} sizes="(max-width: 1024px) 100vw, 640px" priority />
 
-                {/* Second image — same height as primary */}
+                {/* Second image — 3:2, never cropped */}
                 {secondImg && (
-                  <div
-                    style={{
-                      position: "relative",
-                      height: 480,
-                      borderRadius: 14,
-                      overflow: "hidden",
-                      background: "var(--paper-2)",
-                    }}
-                  >
-                    <Image
-                      src={secondImg}
-                      alt={altFor(secondImg, `${product.title} — image 2`)}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 640px"
-                    />
-                  </div>
+                  <SafeImage
+                    src={secondImg}
+                    alt={altFor(secondImg, `${product.title} — image 2`)}
+                    sizes="(max-width: 1024px) 100vw, 640px"
+                  />
                 )}
 
                 {/* Remaining images — 2-col grid */}
@@ -207,24 +178,13 @@ export default function ProductTemplate({
                     }}
                   >
                     {gridImgs.map((src, i) => (
-                      <div
+                      <SafeImage
                         key={`${src}-${i}`}
-                        style={{
-                          position: "relative",
-                          height: 240,
-                          borderRadius: 10,
-                          overflow: "hidden",
-                          background: "var(--paper-2)",
-                        }}
-                      >
-                        <Image
-                          src={src}
-                          alt={altFor(src, `${product.title} — image ${i + 3}`)}
-                          fill
-                          className="object-cover"
-                          sizes="320px"
-                        />
-                      </div>
+                        src={src}
+                        alt={altFor(src, `${product.title} — image ${i + 3}`)}
+                        radius={10}
+                        sizes="320px"
+                      />
                     ))}
                   </div>
                 )}

@@ -1,4 +1,4 @@
-import Image from "next/image"
+import SafeImage from "@modules/common/components/safe-image"
 import { HttpTypes } from "@medusajs/types"
 import { parseDescription, toSections, type DescBlock, type DescSection } from "@lib/util/description-blocks"
 import {
@@ -49,12 +49,8 @@ function Blocks({ blocks }: { blocks: DescBlock[] }) {
   )
 }
 
-function Photo({ src, alt, height = 420, priority = false }: { src: string; alt: string; height?: number; priority?: boolean }) {
-  return (
-    <div style={{ position: "relative", height, borderRadius: 14, overflow: "hidden", background: "var(--paper-2)" }}>
-      <Image src={src} alt={alt} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 760px" priority={priority} />
-    </div>
-  )
+function Photo({ src, alt, priority = false }: { src: string; alt: string; height?: number; priority?: boolean }) {
+  return <SafeImage src={src} alt={alt} priority={priority} />
 }
 
 function GeneralSection({ section }: { section: DescSection }) {
@@ -76,11 +72,7 @@ function ItemSection({ item, section }: { item: PricedBundleItem; section?: Desc
       id={`pooja-${item.handle}`}
       style={{ border: "1px solid var(--ink-line)", borderRadius: 16, overflow: "hidden", background: "#fff", scrollMarginTop: 90 }}
     >
-      {item.image && (
-        <div style={{ position: "relative", height: 300, background: "var(--paper-2)" }}>
-          <Image src={item.image} alt={item.label} fill className="object-cover" sizes="(max-width: 1024px) 100vw, 760px" />
-        </div>
-      )}
+      {item.image && <SafeImage src={item.image} alt={item.label} radius={0} />}
       <div style={{ padding: "22px 24px 24px", display: "flex", flexDirection: "column", gap: 14 }}>
         <h3 className="ph-h3" style={{ margin: 0 }}>
           {section?.heading || item.label}
