@@ -1,43 +1,32 @@
 "use client"
 
-import { addManyToCart } from "@lib/data/cart"
-import type { BundleItem } from "@lib/data/product-bundles"
-import { convertToLocale } from "@lib/util/money"
+import Link from "next/link"
 import { useParams } from "next/navigation"
-import { useState } from "react"
+import { useBundle } from "./context"
 
-export type PricedBundleItem = BundleItem & { handle: string; amount: number; currency: string }
+export { BundleProvider } from "./context"
+export type { PricedBundleItem } from "./context"
 
-export default function BundleChecklist({ items, buttonClassName }: { items: PricedBundleItem[]; buttonClassName?: string }) {
+const btn = "ph-btn ph-btn-sindoor ph-btn-lg ph-btn-block"
+
+function AddedNote() {
+  const { added } = useBundle()
   const countryCode = useParams().countryCode as string
-  const [checked, setChecked] = useState<Record<string, boolean>>({})
-  const [adding, setAdding] = useState(false)
-  const [error, setError] = useState("")
+  if (!added) return null
+  return (
+    <p className="ph-body-sm" style={{ margin: 0, color: "var(--ink-2)" }}>
+      ✓ Added to your cart.{" "}
+      <Link href={`/${countryCode}/cart`} style={{ color: "var(--sindoor)", fontWeight: 600 }}>
+        Go to cart →
+      </Link>
+    </p>
+  )
+}
 
-  const selected = items.filter((i) => checked[i.variantId])
-  const currency = items[0]?.currency || "usd"
-  const total = selected.reduce((sum, i) => sum + i.amount, 0)
-  const money = (amount: number) => convertToLocale({ amount, currency_code: currency })
-
+/** The booking card: checklist, total and Add button. Sticky on desktop (see the spread template). */
+export function BundleCard() {
+  const { items, isOn, toggle, selected, total, money, adding, error, addSelected } = useBundle()
   if (!items.length) return null
-
-  const handleAdd = async () => {
-    if (!selected.length) return
-    setAdding(true)
-    setError("")
-    try {
-      // One line per ticked item, in list order, added in a single server call.
-      await addManyToCart({ variantIds: selected.map((i) => i.variantId), countryCode })
-      if (typeof window !== "undefined") window.dispatchEvent(new Event("cart:updated"))
-      setChecked({})
-    } catch (e) {
-      console.error("bundle add to cart failed", e)
-      setError("Sorry, something went wrong adding to your cart. Please try again or WhatsApp us.")
-    } finally {
-      setAdding(false)
-    }
-  }
-
   return (
     <div className="flex flex-col gap-y-3" data-testid="bundle-checklist">
       <p className="ph-label" style={{ margin: 0 }}>
@@ -45,7 +34,7 @@ export default function BundleChecklist({ items, buttonClassName }: { items: Pri
       </p>
       <div className="flex flex-col gap-y-2">
         {items.map((item) => {
-          const on = !!checked[item.variantId]
+          const on = isOn(item.variantId)
           return (
             <label
               key={item.variantId}
@@ -53,7 +42,7 @@ export default function BundleChecklist({ items, buttonClassName }: { items: Pri
                 display: "flex",
                 alignItems: "flex-start",
                 gap: 12,
-                padding: "12px 14px",
+                padding: "11px 13px",
                 borderRadius: 10,
                 border: `1.5px solid ${on ? "var(--sindoor)" : "var(--ink-line)"}`,
                 background: on ? "var(--paper-2)" : "transparent",
@@ -64,7 +53,7 @@ export default function BundleChecklist({ items, buttonClassName }: { items: Pri
                 type="checkbox"
                 checked={on}
                 disabled={adding}
-                onChange={(e) => setChecked((c) => ({ ...c, [item.variantId]: e.target.checked }))}
+                onChange={(e) => toggle(item.variantId, e.target.checked)}
                 style={{ marginTop: 3, width: 18, height: 18, accentColor: "var(--sindoor)", flexShrink: 0 }}
               />
               <span className="ph-body-sm" style={{ flex: 1, lineHeight: 1.45, color: "var(--ink)" }}>
@@ -77,19 +66,17 @@ export default function BundleChecklist({ items, buttonClassName }: { items: Pri
           )
         })}
       </div>
-
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginTop: 4 }}>
         <span className="ph-label">Total</span>
         <span className="ph-h3" style={{ margin: 0 }}>
           {selected.length ? money(total) : "—"}
         </span>
       </div>
-
       <button
         type="button"
-        onClick={handleAdd}
+        onClick={addSelected}
         disabled={!selected.length || adding}
-        className={buttonClassName || "ph-btn ph-btn-sindoor ph-btn-lg ph-btn-block"}
+        className={btn}
         style={{ opacity: !selected.length || adding ? 0.6 : 1 }}
         data-testid="bundle-add-button"
       >
@@ -100,11 +87,66 @@ export default function BundleChecklist({ items, buttonClassName }: { items: Pri
           Tick at least one pooja or homam.
         </p>
       )}
+      <AddedNote />
       {error && (
         <p className="ph-body-sm" style={{ margin: 0, color: "var(--sindoor)" }}>
           {error}
         </p>
       )}
+    </div>
+  )
+}
+
+/** "Add to my bundle" button inside an item's story section; mirrors the card's checkbox. */
+export function BundleItemToggle({ variantId }: { variantId: string }) {
+  const { items, isOn, toggle, money, adding } = useBundle()
+  const item = items.find((i) => i.variantId === variantId)
+  if (!item) return null
+  const on = isOn(variantId)
+  return (
+    <button
+      type="button"
+      disabled={adding}
+      onClick={() => toggle(variantId)}
+      aria-pressed={on}
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 8,
+        padding: "10px 16px",
+        borderRadius: 999,
+        border: "1.5px solid var(--sindoor)",
+        background: on ? "var(--sindoor)" : "transparent",
+        color: on ? "#fff" : "var(--sindoor)",
+        fontWeight: 700,
+        fontSize: 14,
+        cursor: "pointer",
+      }}
+    >
+      {on ? "✓ Added to your selection" : `+ Add to my selection · ${money(item.amount)}`}
+    </button>
+  )
+}
+
+/** Mobile only: a bar fixed to the bottom with the running total and the Add button. */
+export function BundleMobileBar() {
+  const { selected, total, money, adding, addSelected, added } = useBundle()
+  return (
+    <div className="bundle-mobile-bar">
+      <div style={{ flex: 1, minWidth: 0 }}>
+        <p className="ph-body-sm" style={{ margin: 0, fontWeight: 700, color: "var(--ink)" }}>
+          {selected.length ? `${selected.length} selected · ${money(total)}` : added ? "✓ Added to cart" : "Tick the poojas you want"}
+        </p>
+      </div>
+      <button
+        type="button"
+        onClick={addSelected}
+        disabled={!selected.length || adding}
+        className="ph-btn ph-btn-sindoor"
+        style={{ opacity: !selected.length || adding ? 0.6 : 1, whiteSpace: "nowrap" }}
+      >
+        {adding ? "Adding…" : "Add to cart"}
+      </button>
     </div>
   )
 }

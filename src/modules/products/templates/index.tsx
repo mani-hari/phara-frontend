@@ -15,7 +15,7 @@ import LanguageSwitcher from "@modules/common/components/language-switcher"
 import type { LangCode } from "@lib/i18n/languages"
 
 import ProductActionsWrapper from "./product-actions-wrapper"
-import BundleChecklistWrapper from "../components/bundle-checklist/wrapper"
+import { BundleSpreadSection } from "./bundle-spread"
 import { PRODUCT_BUNDLES } from "@lib/data/product-bundles"
 import RelatedProducts from "../components/related-products"
 
@@ -132,6 +132,11 @@ export default function ProductTemplate({
         </nav>
       </div>
 
+      {/* ── Pooja Bundle: "spread" layout (sticky booking card, story on the left) ── */}
+      {product.handle && PRODUCT_BUNDLES[product.handle] ? (
+        <BundleSpreadSection product={product} region={region} description={displayDescription} gallery={displayGallery} />
+      ) : (
+      <>
       {/* ── Main 2-col section ─────────────────────────────────── */}
       <section
         className="content-container"
@@ -369,14 +374,7 @@ export default function ProductTemplate({
                     />
                   }
                 >
-                  {product.handle && PRODUCT_BUNDLES[product.handle] ? (
-                    <BundleChecklistWrapper
-                      handle={product.handle}
-                      region={region}
-                      buttonClassName="ph-btn ph-btn-sindoor ph-btn-lg ph-btn-block"
-                    />
-                  ) : (
-                    <ProductActionsWrapper
+                  <ProductActionsWrapper
                       id={product.id}
                       region={region}
                       showPujaDetails={false}
@@ -384,7 +382,6 @@ export default function ProductTemplate({
                       buttonText="Add Pooja to Cart"
                       buttonClassName="ph-btn ph-btn-sindoor ph-btn-lg ph-btn-block"
                     />
-                  )}
                 </Suspense>
 
                 <p
@@ -531,6 +528,8 @@ export default function ProductTemplate({
           </div>
         )}
       </section>
+      </>
+      )}
 
       {/* ── How It Works — dark section ──────────────────────── */}
       <section style={{ background: "var(--ink)", padding: "64px 0" }}>

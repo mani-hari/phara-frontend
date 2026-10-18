@@ -14,15 +14,20 @@ code (`src/lib/data/product-bundles.ts`, keyed by handle `navratri-poojas-online
 
 - [x] A0. Checkbox bundle on the Navratri page, live (commit f7122e6); description sections and
       slokas (e883412, 0cf81ac).
-- [ ] A1. Low-fidelity layouts to discuss: sticky booking card on the right, rich content on the
+- [x] A1. Low-fidelity layouts to discuss: sticky booking card on the right, rich content on the
       left, one section per bundled pooja, photos spread through the scroll, mobile bottom bar.
-      Owner picks a direction.
+      Owner picked Option 1 (18 Oct).
+- [x] A1b. Clickable version on localhost: `templates/bundle-spread.tsx` (sticky card, story sections per
+      pooja with synced "Add to my selection", photos spread, mobile bottom bar). Committed, NOT pushed.
+      Waiting for owner's review. If approved, generalise as "product page spread" for all products (A5).
 - [ ] A2. Name and config: call it a "Pooja Bundle" in the UI/code; move the item list from code
       to product metadata (`metadata.bundle_items` = ordered variant IDs + labels) so bundles can be
       made in Medusa admin without a deploy. No change to Medusa's own data model.
 - [ ] A3. Build the chosen layout as a bundle template (only for products with bundle metadata).
 - [ ] A4. Test: desktop + mobile, INR (/in) and USD, add 1 and several items, cart lines, checkout
       reaches payment. Owner pushes to main; verify live.
+- [ ] A5. If owner likes it: "product page spread" layout for every product page (sticky add-to-cart
+      card, description sections with gallery photos spread through). Storefront-only; reads standard fields.
 
 ## B. Home page: videos and featured products (owner's item 1)
 
