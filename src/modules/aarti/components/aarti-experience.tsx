@@ -155,8 +155,8 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
         s.tiltX += (s.targetX - s.tiltX) * 0.05
         s.tiltY += (s.targetY - s.tiltY) * 0.05
         const drift = Math.sin(t / 9000) * 0.5
-        if (bgRef.current) bgRef.current.style.transform = `translate3d(${s.tiltX * -10 + drift * 6}px, ${s.tiltY * -7}px, 0) scale(1.05)`
-        if (deityRef.current) deityRef.current.style.transform = `translate3d(calc(-50% + ${s.tiltX * 12}px), ${s.tiltY * 6}px, 0) scale(${1 + Math.sin(t / 4200) * 0.004})`
+        if (bgRef.current) bgRef.current.style.transform = `translate3d(${s.tiltX * -8 + drift * 4}px, ${s.tiltY * -5}px, 0) scale(1.04)`
+        if (deityRef.current) deityRef.current.style.transform = `translate3d(${s.tiltX * 10}px, ${s.tiltY * 5}px, 0) scale(${1 + Math.sin(t / 4200) * 0.004})`
       }
       ctx.clearRect(0, 0, w, h)
 
@@ -601,11 +601,28 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
       onPointerCancel={onPointerUp}
       style={{ touchAction: holding ? "none" : "auto" }}
     >
-      <div ref={bgRef} className="aarti-layer aarti-bg">
-        <Image src={`/aarti/${deity.slug}-bg.webp`} alt="" fill priority sizes="100vw" className="object-cover" style={deity.theme.bgPos ? { objectPosition: deity.theme.bgPos } : undefined} />
+      {/* The painting keeps its own composition at every screen size (owner, 18 Oct): a portrait scene of the
+          height of the stage, centred. On wide screens the sides are filled by a soft, dim extension of the
+          same sanctum, never by zooming the painting. */}
+      <div className="aarti-layer aarti-fill" aria-hidden>
+        <div className="aarti-fill-blur">
+          <Image src={`/aarti/${deity.slug}-bg.webp`} alt="" fill sizes="60vw" className="object-cover" />
+        </div>
+        {[-1, 1].map((k) => (
+          <div key={k} className={`aarti-fill-tile ${k < 0 ? "left" : "right"}`}>
+            <div className="aarti-fill-mirror">
+              <Image src={`/aarti/${deity.slug}-bg.webp`} alt="" fill sizes="40vw" className="object-cover" />
+            </div>
+          </div>
+        ))}
       </div>
-      <div ref={deityRef} className="aarti-deity">
-        <Image src={`/aarti/${deity.slug}-deity.webp`} alt={deity.name} fill priority sizes="(max-width: 768px) 92vw, 540px" className="object-contain object-bottom" />
+      <div className="aarti-scene">
+        <div ref={bgRef} className="aarti-scene-bg">
+          <Image src={`/aarti/${deity.slug}-bg.webp`} alt="" fill priority sizes="(max-width: 768px) 130vw, 720px" className="object-cover" />
+        </div>
+        <div ref={deityRef} className="aarti-deity">
+          <Image src={`/aarti/${deity.slug}-deity.webp`} alt={deity.name} fill priority sizes="(max-width: 768px) 110vw, 600px" className="object-contain object-bottom" />
+        </div>
       </div>
       <canvas ref={canvasRef} className="aarti-canvas" aria-hidden />
 

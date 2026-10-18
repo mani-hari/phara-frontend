@@ -814,9 +814,22 @@
 body:has(.aarti-stage) .ph-ask-pill { display: none !important; } /* no Ask button on aarti pages */
 .aarti-stage { position: relative; height: calc(100dvh - 64px); min-height: 580px; overflow: hidden; background: #1a0f08; color: #fff; user-select: none; -webkit-user-select: none; isolation: isolate; }
 .aarti-layer, .aarti-canvas, .aarti-vignette { position: absolute; inset: 0; }
-.aarti-bg { inset: -5%; will-change: transform; }
+.aarti-fill { overflow: hidden; }
+/* Wide screens: the painting's own edges (drapes, pillars, lamps) continue as a mirrored reflection either side,
+   fading into a soft warm blur before the reflection's empty centre would show. */
+.aarti-fill-blur { position: absolute; inset: 0; }
+.aarti-fill-blur img { filter: blur(28px) brightness(0.48) saturate(0.85); transform: scale(1.2); }
+.aarti-fill-tile { position: absolute; top: 0; bottom: 0; aspect-ratio: 2 / 3; height: 100%; left: 50%; filter: brightness(0.6) saturate(0.9) blur(1.5px); }
+.aarti-fill-tile.left { transform: translateX(-150%); -webkit-mask-image: linear-gradient(to left, #000 0%, #000 22%, transparent 58%); mask-image: linear-gradient(to left, #000 0%, #000 22%, transparent 58%); }
+.aarti-fill-tile.right { transform: translateX(50%); -webkit-mask-image: linear-gradient(to right, #000 0%, #000 22%, transparent 58%); mask-image: linear-gradient(to right, #000 0%, #000 22%, transparent 58%); }
+.aarti-fill-mirror { position: absolute; inset: 0; transform: scaleX(-1); }
+.aarti-fill::after { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 60% 120% at 50% 50%, transparent 40%, rgba(20,10,4,0.55) 100%); }
+/* the painting: portrait (2:3, the art's own shape) at full stage height; deity placed as on the /aarti cover */
+.aarti-scene { position: absolute; z-index: 1; top: 0; bottom: 0; left: 50%; aspect-ratio: 2 / 3; height: 100%; transform: translateX(-50%); overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent); }
+.aarti-scene-bg { position: absolute; inset: -4%; will-change: transform; }
 .aarti-canvas { pointer-events: none; z-index: 3; }
-.aarti-deity { position: absolute; z-index: 2; left: 50%; bottom: 8%; width: min(92vw, 540px); height: 74%; transform: translateX(-50%); will-change: transform; }
+.aarti-deity { position: absolute; z-index: 2; left: 8%; right: 8%; top: 18%; bottom: 10%; will-change: transform; }
 .aarti-vignette { z-index: 4; pointer-events: none; background: linear-gradient(to bottom, rgba(20,10,4,0.5), transparent 18%, transparent 76%, rgba(20,10,4,0.6)); }
 @keyframes aarti-breathe { 0%,100% { opacity: 0.55; } 50% { opacity: 0.9; } }
 
