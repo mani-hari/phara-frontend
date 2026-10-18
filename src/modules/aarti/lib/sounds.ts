@@ -109,11 +109,56 @@ export class TempleAudio {
     o.stop(t + 0.35)
   }
 
+  /** Aarti recording, routed through the master gain so mute/volume apply. Fades in gently. */
+  track: HTMLAudioElement | null = null
+  playTrack(src: string, onEnded?: () => void) {
+    const el = new Audio(src)
+    el.crossOrigin = "anonymous"
+    el.preload = "auto"
+    const node = this.ctx.createMediaElementSource(el)
+    const g = this.ctx.createGain()
+    g.gain.setValueAtTime(0, this.ctx.currentTime)
+    g.gain.linearRampToValueAtTime(0.85, this.ctx.currentTime + 4)
+    node.connect(g).connect(this.master)
+    el.addEventListener("ended", () => onEnded?.())
+    el.play().catch(() => {})
+    this.track = el
+    return el
+  }
+
+  /** No recording available: a gentle manjira + bell rhythm over the drone so the aarti still "plays". */
+  private rhythmTimer: ReturnType<typeof setInterval> | null = null
+  startRhythm(bpm = 76) {
+    if (this.rhythmTimer) return
+    let beat = 0
+    const manjira = () => {
+      const t = this.ctx.currentTime
+      ;[3200, 4700, 6100].forEach((f, i) => {
+        const o = this.ctx.createOscillator()
+        const g = this.ctx.createGain()
+        o.type = "sine"
+        o.frequency.value = f
+        g.gain.setValueAtTime(0.05 / (i + 1), t)
+        g.gain.exponentialRampToValueAtTime(0.0001, t + 0.9)
+        o.connect(g).connect(this.master)
+        o.start(t)
+        o.stop(t + 1)
+      })
+    }
+    this.rhythmTimer = setInterval(() => {
+      if (beat % 2 === 0) manjira()
+      if (beat % 8 === 0) this.bell(820)
+      beat++
+    }, 60000 / bpm)
+  }
+
   setMuted(m: boolean) {
     this.master.gain.setTargetAtTime(m ? 0 : 0.9, this.ctx.currentTime, 0.05)
   }
 
   close() {
+    if (this.rhythmTimer) clearInterval(this.rhythmTimer)
+    this.track?.pause()
     this.ctx.close().catch(() => {})
   }
 }

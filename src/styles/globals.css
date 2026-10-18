@@ -792,52 +792,106 @@
 .term-tip-close { position: absolute; top: 12px; right: 12px; width: 36px; height: 36px; border-radius: 999px;
   border: 1px solid var(--ink-line); background: var(--paper); font-size: 16px; cursor: pointer; }
 
-/* ── Digital Aarti (modules/aarti): full-height stage, layered art, canvas light, dock ── */
-.aarti-stage { position: relative; height: calc(100dvh - 64px); min-height: 560px; overflow: hidden; background: #1a0f08; color: #fff; user-select: none; -webkit-user-select: none; }
-.aarti-layer, .aarti-canvas, .aarti-vignette { position: absolute; inset: 0; }
-.aarti-bg { inset: -4%; will-change: transform; }
-.aarti-deity { position: absolute; left: 50%; bottom: 7%; width: min(92vw, 520px); height: 74%; transform: translateX(-50%); will-change: transform; }
-.aarti-canvas { pointer-events: none; }
-.aarti-vignette { pointer-events: none; background: radial-gradient(ellipse at 50% 55%, transparent 45%, rgba(10,5,2,0.65) 100%), linear-gradient(to bottom, rgba(10,5,2,0.55), transparent 22%, transparent 70%, rgba(10,5,2,0.7)); }
-.aarti-top { position: absolute; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; gap: 12px; padding: 16px 16px 0; z-index: 3; }
-.aarti-eyebrow { margin: 0; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: #e9c987; font-weight: 600; }
-.aarti-title { margin: 4px 0 0; font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1.15; color: #fff; text-shadow: 0 2px 12px rgba(0,0,0,0.5); }
-.aarti-next { margin: 6px 0 0; font-size: 13px; color: rgba(255,255,255,0.85); }
-.aarti-icon-btn { width: 42px; height: 42px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.25); background: rgba(0,0,0,0.3); color: #fff; font-size: 18px; flex-shrink: 0; }
-.aarti-intro { position: absolute; left: 0; right: 0; bottom: 0; z-index: 4; display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 28px 20px calc(30px + env(safe-area-inset-bottom)); background: linear-gradient(to top, rgba(10,5,2,0.85), transparent); text-align: center; }
-.aarti-intro-line { margin: 0; font-size: 17px; color: rgba(255,255,255,0.9); }
-.aarti-begin { height: 54px; padding: 0 34px; border-radius: 999px; border: 0; background: #ccb264; color: #2a1a10; font-size: 17px; font-weight: 700; box-shadow: 0 8px 28px rgba(204,178,100,0.35); cursor: pointer; }
-.aarti-intro-small { margin: 0; font-size: 12.5px; color: rgba(255,255,255,0.6); }
-.aarti-hint { position: absolute; left: 50%; top: 42%; transform: translateX(-50%); z-index: 3; width: min(320px, 86vw); padding: 10px 14px; border-radius: 12px; background: rgba(0,0,0,0.45); color: #fff; font-size: 14px; text-align: center; pointer-events: none; }
-.aarti-dock { position: absolute; left: 0; right: 0; bottom: 0; z-index: 4; display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; padding: 14px 12px calc(14px + env(safe-area-inset-bottom)); background: linear-gradient(to top, rgba(10,5,2,0.9), rgba(10,5,2,0.3)); }
-.aarti-dock-btn { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 4px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.14); background: rgba(255,255,255,0.08); color: #fff; cursor: pointer; transition: transform 0.12s, background 0.2s; }
-.aarti-dock-btn:active { transform: scale(0.95); }
-.aarti-dock-btn.next { border-color: #ccb264; background: rgba(204,178,100,0.22); animation: aarti-pulse 1.8s ease-in-out infinite; }
-.aarti-dock-btn.done .aarti-dock-label::after { content: " ✓"; color: #e9c987; }
-.aarti-dock-icon { font-size: 26px; line-height: 1; }
-.aarti-dock-label { font-size: 12.5px; font-weight: 600; }
-@keyframes aarti-pulse { 0%,100% { box-shadow: 0 0 0 0 rgba(204,178,100,0.45); } 50% { box-shadow: 0 0 0 8px rgba(204,178,100,0); } }
-.aarti-coconut { position: absolute; left: 50%; bottom: 22%; width: 90px; height: 80px; transform: translateX(-50%); z-index: 3; pointer-events: none; }
-.aarti-coconut .half { position: absolute; top: 0; width: 45px; height: 80px; background: radial-gradient(circle at 70% 40%, #8b5a2b, #4a2c14); transition: transform 0.6s cubic-bezier(.2,.8,.3,1), opacity 1.2s ease 0.9s; }
-.aarti-coconut .left { left: 0; border-radius: 45px 0 0 45px; }
-.aarti-coconut .right { right: 0; border-radius: 0 45px 45px 0; }
-.aarti-coconut.whole { animation: aarti-drop 0.65s ease-in; }
-.aarti-coconut.broken .left { transform: translate(-26px, 18px) rotate(-28deg); background: radial-gradient(circle at 80% 50%, #f8f3e6 30%, #6b4220 32%); opacity: 0; }
-.aarti-coconut.broken .right { transform: translate(26px, 18px) rotate(28deg); background: radial-gradient(circle at 20% 50%, #f8f3e6 30%, #6b4220 32%); opacity: 0; }
-@keyframes aarti-drop { from { transform: translate(-50%, -160px) rotate(-20deg); } to { transform: translate(-50%, 0) rotate(0); } }
-.aarti-card { position: absolute; left: 12px; right: 12px; bottom: calc(12px + env(safe-area-inset-bottom)); z-index: 5; margin: 0 auto; max-width: 440px; padding: 22px 20px; border-radius: 22px; background: var(--paper); color: var(--ink); text-align: center; box-shadow: 0 20px 50px rgba(0,0,0,0.45); animation: aarti-up 0.35s ease-out; }
-@keyframes aarti-up { from { transform: translateY(40px); opacity: 0; } to { transform: none; opacity: 1; } }
-.aarti-card-om { margin: 0; font-size: 30px; }
-.aarti-card-title { margin: 4px 0 0; font-family: var(--font-display); font-weight: 400; font-size: 24px; }
-.aarti-card-prayer { margin: 6px 0 0; font-weight: 700; color: var(--sindoor); }
-.aarti-card-text { margin: 8px 0 14px; font-size: 15px; line-height: 1.55; color: var(--ink-2); }
-.aarti-card-share { display: flex; align-items: center; justify-content: center; height: 48px; border-radius: 999px; background: #1f8f4e; color: #fff; font-weight: 700; font-size: 15px; }
-.aarti-card-links { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
-.aarti-card-link { display: block; padding: 10px; border-radius: 12px; border: 1px solid var(--ink-line); font-size: 14px; font-weight: 600; color: var(--ink); }
-.aarti-card-stay { margin-top: 10px; border: 0; background: none; color: var(--ink-3); font-size: 14px; text-decoration: underline; cursor: pointer; }
+/* ── Digital Aarti (modules/aarti/components/aarti-experience.tsx) ─────────────────────────────────
+   Graceful, slow, golden. Easing is always ease-in-out / long; nothing bounces. */
+body:has(.aarti-stage) .ph-ask-pill { display: none !important; } /* no Ask button on aarti pages */
+.aarti-stage { position: relative; height: calc(100dvh - 64px); min-height: 580px; overflow: hidden; background: #1a0f08; color: #fff; user-select: none; -webkit-user-select: none; isolation: isolate; }
+.aarti-layer, .aarti-canvas, .aarti-vignette, .aarti-rays, .aarti-golden { position: absolute; inset: 0; }
+.aarti-bg { inset: -5%; will-change: transform; }
+.aarti-canvas { pointer-events: none; z-index: 3; }
+/* golden warmth over the original paintings (animated light, the art itself is untouched) */
+.aarti-golden { z-index: 1; pointer-events: none; mix-blend-mode: soft-light;
+  background: radial-gradient(ellipse at 50% 40%, rgba(255,214,140,0.85), rgba(255,190,110,0.35) 45%, rgba(255,170,90,0) 75%);
+  animation: aarti-breathe 9s ease-in-out infinite; }
+.aarti-rays { z-index: 1; pointer-events: none; mix-blend-mode: screen; opacity: 0.35;
+  background: repeating-conic-gradient(from 0deg at 50% 32%, rgba(255,224,160,0.20) 0deg 4deg, rgba(255,224,160,0) 4deg 18deg);
+  -webkit-mask-image: radial-gradient(circle at 50% 32%, #000 0%, rgba(0,0,0,0.6) 30%, transparent 62%); mask-image: radial-gradient(circle at 50% 32%, #000 0%, rgba(0,0,0,0.6) 30%, transparent 62%);
+  animation: aarti-rays 90s linear infinite; }
+.aarti-halo { position: absolute; z-index: 1; left: 50%; top: 30%; width: min(96vw, 620px); aspect-ratio: 1; transform: translate(-50%, -50%); pointer-events: none; animation: aarti-halo 7s ease-in-out infinite; }
+.aarti-deity { position: absolute; z-index: 2; left: 50%; bottom: 8%; width: min(92vw, 540px); height: 74%; transform: translateX(-50%); will-change: transform; }
+.aarti-vignette { z-index: 4; pointer-events: none; background: radial-gradient(ellipse at 50% 50%, transparent 52%, rgba(20,10,4,0.55) 100%), linear-gradient(to bottom, rgba(20,10,4,0.55), transparent 20%, transparent 72%, rgba(20,10,4,0.65)); }
+@keyframes aarti-breathe { 0%,100% { opacity: 0.55; } 50% { opacity: 0.9; } }
+@keyframes aarti-rays { to { transform: rotate(360deg); } }
+@keyframes aarti-halo { 0%,100% { opacity: 0.75; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 1; transform: translate(-50%, -50%) scale(1.04); } }
+
+/* title */
+.aarti-top { position: absolute; z-index: 6; top: 0; left: 0; right: 0; display: flex; justify-content: space-between; gap: 12px; padding: 16px 16px 0; }
+.aarti-eyebrow { margin: 0; font-size: 11.5px; letter-spacing: 0.16em; text-transform: uppercase; color: #ecd08f; font-weight: 600; }
+.aarti-title { margin: 4px 0 0; font-family: var(--font-display); font-weight: 400; font-size: 26px; line-height: 1.15; color: #fff; text-shadow: 0 2px 16px rgba(0,0,0,0.45); }
+.aarti-next { margin: 6px 0 0; font-size: 12.5px; color: rgba(255,244,225,0.82); }
+.aarti-top-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.aarti-round { width: 42px; height: 42px; border-radius: 999px; border: 1px solid rgba(236,208,143,0.4); background: rgba(30,16,6,0.35); color: #f3dfae; display: inline-flex; align-items: center; justify-content: center; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); cursor: pointer; }
+.aarti-hint { position: absolute; z-index: 6; left: 50%; top: 30%; transform: translateX(-50%); width: min(340px, 88vw); padding: 10px 16px; border-radius: 14px; background: rgba(30,16,6,0.5); color: #fff7e6; font-size: 14px; line-height: 1.45; text-align: center; backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border: 1px solid rgba(236,208,143,0.25); pointer-events: none; animation: aarti-fade 0.9s ease-out; }
+@keyframes aarti-fade { from { opacity: 0; transform: translate(-50%, 6px); } to { opacity: 1; transform: translate(-50%, 0); } }
+
+/* opening veil */
+.aarti-veil { position: absolute; inset: 0; z-index: 8; display: flex; align-items: flex-end; justify-content: center; padding: 24px 22px calc(36px + env(safe-area-inset-bottom));
+  background: radial-gradient(ellipse at 50% 35%, rgba(255,226,170,0.25), rgba(40,20,8,0.55) 55%, rgba(25,12,4,0.88)); transition: opacity 1.4s ease, backdrop-filter 1.4s ease; backdrop-filter: blur(2px); }
+.aarti-veil.lifting { opacity: 0; backdrop-filter: blur(0); pointer-events: none; }
+.aarti-veil-inner { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; max-width: 420px; }
+.aarti-veil-eyebrow { margin: 0; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; color: #ecd08f; font-weight: 600; }
+.aarti-veil-title { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 32px; line-height: 1.15; color: #fff; }
+.aarti-veil-line { margin: 0 0 8px; font-size: 16px; line-height: 1.5; color: rgba(255,244,225,0.9); }
+.aarti-enter { height: 54px; padding: 0 34px; border-radius: 999px; border: 1px solid rgba(255,236,190,0.6); background: linear-gradient(180deg, #e4c77a, #c9a24f); color: #2a1a10; font-size: 17px; font-weight: 700; letter-spacing: 0.01em; box-shadow: 0 10px 36px rgba(228,199,122,0.35); cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+.aarti-enter:active { transform: scale(0.98); }
+.aarti-veil-small { margin: 2px 0 0; font-size: 12.5px; color: rgba(255,244,225,0.6); }
+.aarti-diya { position: relative; width: 40px; height: 46px; margin-bottom: 6px; }
+.aarti-diya-flame { position: absolute; left: 50%; top: 0; width: 12px; height: 22px; transform: translateX(-50%); border-radius: 50% 50% 50% 50% / 62% 62% 38% 38%; background: radial-gradient(ellipse at 50% 70%, #fffbe6 0%, #ffd27a 45%, rgba(255,140,40,0) 75%); box-shadow: 0 0 22px 6px rgba(255,200,110,0.55); animation: aarti-flicker 2.6s ease-in-out infinite; }
+.aarti-diya-base { position: absolute; left: 50%; bottom: 0; width: 40px; height: 16px; transform: translateX(-50%); border-radius: 0 0 22px 22px; background: linear-gradient(180deg, #d9b36a, #8f6423); }
+@keyframes aarti-flicker { 0%,100% { transform: translateX(-50%) scaleY(1); } 40% { transform: translateX(-52%) scaleY(1.08); } 70% { transform: translateX(-48%) scaleY(0.95); } }
+
+/* prayer chits */
+.aarti-chits { position: absolute; z-index: 3; left: 0; right: 0; bottom: 0; height: 100%; pointer-events: none; }
+.aarti-chit { position: absolute; left: 50%; top: 40%; width: 220px; padding: 14px 16px; border-radius: 4px; background: linear-gradient(170deg, #fbf3df, #efe0bd); color: #4a3a24; font-family: Georgia, serif; font-size: 15px; line-height: 1.45; box-shadow: 0 10px 30px rgba(0,0,0,0.3); transform: translate(-50%, -50%) rotate(-2deg); transition: transform 2.2s cubic-bezier(.45,.05,.25,1), width 2.2s cubic-bezier(.45,.05,.25,1), padding 2.2s ease, opacity 2.2s ease, top 2.2s cubic-bezier(.45,.05,.25,1); }
+.aarti-chit-text { display: block; transition: opacity 0.8s ease; }
+.aarti-chit.placed { top: 84%; width: 46px; padding: 9px 6px; transform: translate(calc(-50% + (var(--i) - 1) * 26px), -50%) rotate(calc(-8deg + var(--i) * 7deg)); box-shadow: 0 4px 12px rgba(0,0,0,0.35), 0 0 18px rgba(255,214,140,0.45); }
+.aarti-chit.placed .aarti-chit-text { opacity: 0; height: 10px; overflow: hidden; }
+
+/* offerings dock */
+.aarti-dock { position: absolute; z-index: 6; left: 0; right: 0; bottom: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; padding: 12px 10px calc(12px + env(safe-area-inset-bottom)); background: linear-gradient(to top, rgba(20,10,4,0.85), rgba(20,10,4,0.2)); animation: aarti-dock-in 1.2s ease 0.6s both; }
+@keyframes aarti-dock-in { from { opacity: 0; } to { opacity: 1; } } /* opacity only: a transform here fought the desktop centring */
+.aarti-dock-btn { display: flex; flex-direction: column; align-items: center; gap: 5px; padding: 10px 2px 9px; border-radius: 16px; border: 1px solid rgba(236,208,143,0.28); background: rgba(255,240,210,0.07); color: #f3dfae; cursor: pointer; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); transition: background 0.4s ease, border-color 0.4s ease, transform 0.25s ease; }
+.aarti-dock-btn:active { transform: scale(0.96); background: rgba(255,240,210,0.16); }
+.aarti-dock-btn.active { border-color: #e4c77a; background: rgba(228,199,122,0.22); }
+.aarti-dock-icon { display: inline-flex; }
+.aarti-dock-label { font-size: 11.5px; font-weight: 600; letter-spacing: 0.02em; color: #fff3da; }
+
+/* sheets (prayer, blessing) */
+.aarti-sheet-root { position: absolute; inset: 0; z-index: 9; }
+.aarti-sheet-backdrop { position: absolute; inset: 0; width: 100%; border: 0; background: rgba(20,10,4,0.45); animation: aarti-fade-in 0.4s ease; }
+.aarti-sheet { position: absolute; left: 0; right: 0; bottom: 0; max-width: 560px; margin: 0 auto; max-height: 86%; overflow-y: auto; padding: 10px 18px calc(18px + env(safe-area-inset-bottom)); border-radius: 22px 22px 0 0; background: #fbf5e8; color: var(--ink); box-shadow: 0 -12px 40px rgba(0,0,0,0.3); animation: aarti-sheet-up 0.55s cubic-bezier(.2,.8,.2,1); }
+@keyframes aarti-sheet-up { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes aarti-fade-in { from { opacity: 0; } to { opacity: 1; } }
+.aarti-sheet-grip { width: 40px; height: 4px; border-radius: 2px; background: #d9cdb6; margin: 0 auto 12px; }
+.aarti-sheet-title { margin: 0; font-family: var(--font-display); font-weight: 400; font-size: 24px; }
+.aarti-sheet-sub { margin: 6px 0 14px; font-size: 14px; line-height: 1.5; color: var(--ink-3); }
+.aarti-paper { width: 100%; padding: 14px 16px; border-radius: 6px; border: 1px solid #e3d5b4; background: repeating-linear-gradient(#fdf8ec, #fdf8ec 29px, #efe3c6 30px); font-family: Georgia, serif; font-size: 17px; line-height: 30px; color: #3c2f1d; resize: none; outline: none; }
+.aarti-field { width: 100%; height: 48px; margin-bottom: 10px; padding: 0 14px; border-radius: 12px; border: 1px solid #e3d5b4; background: #fffdf7; font-size: 16px; color: var(--ink); outline: none; }
+.aarti-occasions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+.aarti-occasion { height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid #e3d5b4; background: #fffdf7; font-size: 13.5px; font-weight: 600; color: var(--ink-2); cursor: pointer; }
+.aarti-occasion.on { background: #3b2416; border-color: #3b2416; color: #f6e7c2; }
+.aarti-primary { width: 100%; height: 52px; margin-top: 12px; border: 0; border-radius: 999px; background: linear-gradient(180deg, #c9573b, var(--sindoor)); color: #fff; font-size: 16px; font-weight: 700; cursor: pointer; }
+.aarti-primary:disabled { opacity: 0.5; cursor: default; }
+
+/* closing blessing */
+.aarti-close { position: absolute; inset: 0; z-index: 9; display: flex; align-items: flex-end; justify-content: center; padding: 16px 12px calc(16px + env(safe-area-inset-bottom)); background: linear-gradient(to top, rgba(20,10,4,0.65), transparent 60%); animation: aarti-fade-in 1.2s ease; }
+.aarti-close-card { width: 100%; max-width: 440px; padding: 22px 20px 18px; border-radius: 24px; background: rgba(251,245,232,0.97); color: var(--ink); text-align: center; box-shadow: 0 24px 60px rgba(0,0,0,0.4); animation: aarti-sheet-up 0.8s cubic-bezier(.2,.8,.2,1); }
+.aarti-close-om { margin: 0; font-size: 34px; color: #b8873a; line-height: 1; }
+.aarti-close-prayer { margin: 8px 0 0; font-weight: 700; color: var(--sindoor); }
+.aarti-close-text { margin: 8px 0 14px; font-size: 15px; line-height: 1.6; color: var(--ink-2); }
+.aarti-close-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.aarti-close-share { height: 46px; border: 0; border-radius: 999px; background: #1f8f4e; color: #fff; font-weight: 700; font-size: 14px; cursor: pointer; }
+.aarti-close-gift { height: 46px; border: 1px solid #d9c49a; border-radius: 999px; background: #fffaf0; color: var(--ink); font-weight: 700; font-size: 14px; cursor: pointer; }
+.aarti-close-links { display: flex; flex-direction: column; gap: 6px; margin-top: 12px; }
+.aarti-close-link { display: block; padding: 10px; border-radius: 12px; border: 1px solid var(--ink-line); font-size: 14px; font-weight: 600; color: var(--ink); }
+.aarti-close-stay { margin-top: 10px; border: 0; background: none; color: var(--ink-3); font-size: 14px; text-decoration: underline; cursor: pointer; }
 @media (min-width: 768px) {
   .aarti-title { font-size: 34px; }
-  .aarti-dock { left: 50%; right: auto; width: 520px; transform: translateX(-50%); border-radius: 22px 22px 0 0; }
+  .aarti-dock { left: 50%; right: auto; width: 560px; transform: translateX(-50%); border-radius: 22px 22px 0 0; }
 }
-/* The floating Ask pill would sit on the aarti dock; the aarti screen is its own focused space. */
-body:has(.aarti-stage) .ph-ask-pill { display: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  .aarti-rays, .aarti-golden, .aarti-halo, .aarti-diya-flame { animation: none; }
+}
+/* the title waits behind the veil and fades in once darshan begins */
+.aarti-top { opacity: 0; transition: opacity 1.6s ease 0.6s; }
+.aarti-stage.entered .aarti-top { opacity: 1; }

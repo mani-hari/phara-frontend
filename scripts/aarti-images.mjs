@@ -14,6 +14,8 @@ const RAW = path.join(ROOT, ".scratch-aarti")
 
 // The house style avoids faces of people; a deity murti (idol) is the subject of darshan, so these
 // prompts keep the painterly twilight look but allow the murti's serene face.
+// Keep this v1 look. A brighter "luminous golden" v2 (19 Oct) was REJECTED by the owner as cheesy and fake;
+// golden warmth is added on the page with animated light (aarti-experience.tsx) instead.
 const LOOK = "painterly oil on linen, twilight tonalism, warm golden lamplight, soft atmospheric haze, loose brushwork, devotional and serene, rich but not garish, no text, no letters, no logos, no watermark"
 
 const IMAGES = [

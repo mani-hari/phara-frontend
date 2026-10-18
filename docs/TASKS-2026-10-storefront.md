@@ -97,6 +97,13 @@ Files: `src/lib/data/aarti.ts` (deities, IST aarti times, blessings, follow-up p
 - [x] E1. Phase 1 build: Shirdi Sai Baba (4 daily aartis) + Friday Mahalakshmi. Begin darshan → ring bell,
       offer flowers, wave aarti (3 circles, flame follows finger), break coconut → completion card (blessing,
       WhatsApp share, real udi / coconut / Lakshmi homam). Next-aarti countdown in the visitor's time.
+- [x] E1b. (19 Oct, owner away, full autonomy) Immersive rebuild: aarti performs by itself (recording + flame
+      circling the deity with a light trail), devotee joins on top (bell ripples, 3D-tumbling marigold/rose/lotus
+      petals with gold glints, take the aarti plate, coconut). "Offer your prayer" paper chit placed at the feet
+      (kept on the device). "Send a blessing" (birthday/anniversary/exams/new beginning/health): canvas card +
+      WhatsApp share; the link opens the darshan greeting the recipient by name (?for=&from=&o=). Original
+      paintings kept (owner rejected a brighter regenerated set); golden warmth via animated light layers.
+      Test recordings committed in public/aarti/audio/ (owner will replace with original recordings).
 - [ ] E2. Owner review on phone; then decide go-live (remove the flag, add to nav/footer, sitemap).
 - [ ] E3. Chant audio: our own recordings (priests) per deity → `chantSrc` in aarti.ts. No copyrighted recordings.
 

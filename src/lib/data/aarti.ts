@@ -13,8 +13,11 @@ export type Deity = {
   // Short prayer shown at the end. Original wording or public-domain verses only.
   blessing: string
   prayerLine?: string
-  // Optional chant recording (our own recording only; leave empty until one exists).
+  // Aarti recording played during darshan (public/aarti/audio/). Owner will replace the test tracks with
+  // original recordings before promoting the feature. Without one, a code-made bell/manjira rhythm plays.
   chantSrc?: string
+  // Look: halo/glow tint and the petals offered (CSS colours) — kept per deity for a fitting feel.
+  theme: { halo: string; petals: string[]; coins?: boolean }
   // Real-world follow-ups shown after the aarti (product handles).
   offerings: { handle: string; label: string }[]
   accent: string // flame/glow tint
@@ -40,6 +43,8 @@ export const DEITIES: Deity[] = [
       { handle: "temple-coconut-breaking-online", label: "Offer a real coconut at the temple" },
     ],
     accent: "#ffb54a",
+    chantSrc: "/aarti/audio/shirdi-sai-baba.mp3",
+    theme: { halo: "255,214,140", petals: ["#f6a623", "#f9c74f", "#e8590c", "#b5172e", "#d62839"] }, // marigold + red rose
   },
   {
     slug: "mahalakshmi",
@@ -55,6 +60,8 @@ export const DEITIES: Deity[] = [
       { handle: "temple-coconut-breaking-online", label: "Offer a real coconut at the temple" },
     ],
     accent: "#ffc861",
+    chantSrc: "/aarti/audio/mahalakshmi.mp3",
+    theme: { halo: "255,206,150", petals: ["#f4a6c0", "#f7c6d7", "#e56b8f", "#b5172e", "#f9c74f"], coins: true }, // lotus + rose + gold
   },
 ]
 
