@@ -48,8 +48,9 @@ export default async function Nav() {
               fallback={
                 <LocalizedClientLink className="ph-hdr-btn ph-hdr-cart" href="/cart" data-testid="nav-cart-link" aria-label="Cart">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
-                    <path d="M6 7h12l-1 13H7L6 7z" />
-                    <path d="M9 7a3 3 0 0 1 6 0" />
+                    <circle cx="9" cy="20" r="1.4" />
+              <circle cx="18" cy="20" r="1.4" />
+              <path d="M2 3h3l2.4 11.2a1.6 1.6 0 0 0 1.6 1.3h8.6a1.6 1.6 0 0 0 1.6-1.2L21 7H6" />
                   </svg>
                   <span className="ph-hdr-label">Cart</span>
                 </LocalizedClientLink>

@@ -26,7 +26,7 @@ function AddedNote() {
 
 /** The booking card: checklist, total and Add button. Sticky on desktop (see the spread template). */
 export function BundleCard() {
-  const { items, isOn, toggle, selected, total, money, adding, error, addSelected } = useBundle()
+  const { items, isOn, toggle, selected, total, money, adding, error, addSelected, inCart } = useBundle()
   if (!items.length) return null
   return (
     <div className="flex flex-col gap-y-3" data-testid="bundle-checklist">
@@ -59,6 +59,11 @@ export function BundleCard() {
               />
               <span className="ph-body-sm" style={{ flex: 1, lineHeight: 1.45, color: "var(--ink)" }}>
                 {item.label}
+                {inCart.includes(item.variantId) && (
+                  <span style={{ display: "inline-block", marginLeft: 8, padding: "1px 8px", borderRadius: 999, background: "var(--paper-2)", border: "1px solid var(--ink-line)", fontSize: 12, fontWeight: 600, color: "var(--ink-3)" }}>
+                    ✓ In cart
+                  </span>
+                )}
               </span>
               <span className="ph-body-sm" style={{ fontWeight: 700, whiteSpace: "nowrap", color: "var(--ink)" }}>
                 {money(item.amount)}
@@ -132,7 +137,7 @@ export function BundleItemToggle({ variantId }: { variantId: string }) {
 /** Mobile only: a bar fixed to the bottom with the selection count and a "Select poojas" button that opens
  *  a bottom sheet with the checklist (the page itself has no checkboxes on phones). */
 export function BundleMobileBar() {
-  const { selected, total, money, added } = useBundle()
+  const { selected, total, money, added, inCart } = useBundle()
   const countryCode = useParams().countryCode as string
   const [open, setOpen] = useState(false)
 
@@ -150,23 +155,24 @@ export function BundleMobileBar() {
   }, [open])
 
   const count = selected.length
+  const cartCount = inCart.length
   return (
     <>
       <div className="bundle-mobile-bar">
         <div style={{ flex: 1, minWidth: 0 }}>
           <p className="ph-body-sm" style={{ margin: 0, fontWeight: 700, color: "var(--ink)" }}>
-            {added && !count ? "✓ Added to cart" : count ? `${count} selected · ${money(total)}` : "0 poojas selected"}
+            {count ? `${count} selected · ${money(total)}` : cartCount ? `✓ ${cartCount} in cart` : "0 poojas selected"}
           </p>
+          {cartCount > 0 && (
+            <Link href={`/${countryCode}/cart`} className="ph-body-sm" style={{ color: "var(--sindoor)", fontWeight: 600 }}>
+              View cart →
+            </Link>
+          )}
         </div>
-        {added && !count ? (
-          <Link href={`/${countryCode}/cart`} className="ph-btn ph-btn-sindoor" style={{ whiteSpace: "nowrap" }}>
-            View cart
-          </Link>
-        ) : (
-          <button type="button" onClick={() => setOpen(true)} className="ph-btn ph-btn-sindoor" style={{ whiteSpace: "nowrap" }}>
-            {count ? "Review & add" : "Select poojas"}
-          </button>
-        )}
+        {/* Always the same button, so the drawer can be reopened to add more or change the choice. */}
+        <button type="button" onClick={() => setOpen(true)} className="ph-btn ph-btn-sindoor" style={{ whiteSpace: "nowrap" }}>
+          Select poojas
+        </button>
       </div>
 
       {open && (

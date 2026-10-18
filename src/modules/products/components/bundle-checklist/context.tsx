@@ -19,6 +19,8 @@ type BundleState = {
   adding: boolean
   error: string
   added: boolean
+  /** Variant ids added to the cart from this page during this visit. */
+  inCart: string[]
   addSelected: () => Promise<void>
 }
 
@@ -37,6 +39,7 @@ export function BundleProvider({ items, children }: { items: PricedBundleItem[];
   const [adding, setAdding] = useState(false)
   const [error, setError] = useState("")
   const [added, setAdded] = useState(false)
+  const [inCart, setInCart] = useState<string[]>([])
 
   const selected = items.filter((i) => checked[i.variantId])
   const currency = items[0]?.currency || "usd"
@@ -55,6 +58,7 @@ export function BundleProvider({ items, children }: { items: PricedBundleItem[];
     adding,
     error,
     added,
+    inCart,
     addSelected: async () => {
       if (!selected.length) return
       setAdding(true)
@@ -68,6 +72,7 @@ export function BundleProvider({ items, children }: { items: PricedBundleItem[];
           value: total,
           items: selected.map((i) => ({ item_id: i.productId, item_name: i.label, price: i.amount, quantity: 1 })),
         })
+        setInCart((prev) => Array.from(new Set([...prev, ...selected.map((i) => i.variantId)])))
         setChecked({})
         setAdded(true)
       } catch (e) {
