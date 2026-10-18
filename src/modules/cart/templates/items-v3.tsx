@@ -1,5 +1,7 @@
 "use client"
 
+import Image from "next/image"
+
 import { updateLineItem, deleteLineItem } from "@lib/data/cart"
 import { HttpTypes } from "@medusajs/types"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
@@ -84,11 +86,13 @@ function CartItemRow({
             background: "var(--sindoor-soft)",
           }}
         >
-          <Thumbnail
-            thumbnail={thumbnailUrl}
-            images={item.variant?.product?.images}
-            size="square"
-          />
+          {thumbnailUrl ? (
+            <div style={{ position: "relative", width: "100%", height: "100%" }}>
+              <Image src={thumbnailUrl} alt={productTitle} fill sizes="72px" className="object-cover" />
+            </div>
+          ) : (
+            <Thumbnail thumbnail={null} images={item.variant?.product?.images} size="square" />
+          )}
         </div>
       </LocalizedClientLink>
 
@@ -104,7 +108,7 @@ function CartItemRow({
           </p>
         </LocalizedClientLink>
 
-        {item.variant?.title && item.variant.title !== "Default Variant" && (
+        {item.variant?.title && !/^default variant$/i.test(item.variant.title) && (
           <p className="ph-body-sm" style={{ color: "var(--ink-4)", marginBottom: 6 }}>
             {item.variant.title}
           </p>

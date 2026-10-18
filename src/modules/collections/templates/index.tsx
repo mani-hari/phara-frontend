@@ -13,14 +13,14 @@ const collectionPageCopy: Record<
     eyebrow: "Sacred Rituals",
     title: "Pujas & Homams for Specific Life Needs",
     description:
-      "Choose from our real Medusa catalog of pujas and homams for prosperity, protection, family wellbeing, education, and planetary relief.",
+      "Poojas and homams performed in your family's name, for prosperity, protection, family wellbeing, education and planetary relief.",
     popularLabel: "Popular Pujas",
   },
   "astrology-services": {
     eyebrow: "Jyotish Guidance",
     title: "Astrology Services Backed by Traditional Practice",
     description:
-      "Consultation reports and focused astrology services with region-aware pricing pulled directly from Medusa.",
+      "Consultations and reports from experienced astrologers, rooted in traditional practice.",
     popularLabel: "Popular Readings",
   },
 }

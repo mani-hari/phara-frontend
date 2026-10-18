@@ -3,6 +3,8 @@ import CartItemsV3 from "./items-v3"
 import CartCheckoutSection from "../components/checkout-section"
 import EmptyCartMessage from "../components/empty-cart-message"
 import { convertToLocale } from "@lib/util/money"
+import { ShippingNote } from "../components/checkout-section"
+import { showsIntlShipping } from "@lib/shipping-estimate"
 
 function formatPrice(amount: number, currency: string) {
   return new Intl.NumberFormat(currency.toUpperCase() === "INR" ? "en-IN" : "en-US", {
@@ -119,6 +121,7 @@ const CartTemplate = ({
                       {formatPrice(total, currency)}
                     </span>
                   </div>
+                  {showsIntlShipping(currency) && <ShippingNote currency={currency.toUpperCase()} />}
                 </div>
 
                 {/* Trust + payment logos */}
@@ -134,7 +137,7 @@ const CartTemplate = ({
                     ))}
                   </div>
                   <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-                    {["🔒 SSL", "↩ Refund", "🎥 Video"].map((t) => (
+                    {["🔒 SSL", "↩ Refund"].map((t) => (
                       <span key={t} className="ph-label" style={{ fontSize: 10, color: "var(--ink-4)" }}>{t}</span>
                     ))}
                   </div>

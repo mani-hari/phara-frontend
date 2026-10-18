@@ -1,9 +1,11 @@
 "use client"
 
 import { useState, useTransition } from "react"
-import { useRouter } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 import { updateCartPujaDetails } from "@lib/data/cart"
 import { localizeHref } from "@lib/util/localize-href"
+import { INTL_PRASAD_SHIPPING_USD, showsIntlShipping } from "@lib/shipping-estimate"
+import { trackEcommerce } from "@lib/analytics"
 
 const NAKSHATRAMS = [
   "Ashwini","Bharani","Krittika","Rohini","Mrigashira","Ardra","Punarvasu",
@@ -27,7 +29,7 @@ type Devotee = {
   starOpen: boolean
 }
 
-const EMPTY: Devotee = { prayer: "", name: "", nakshatram: "", rasi: "", gothram: "", starOpen: false }
+const EMPTY: Devotee = { prayer: "", name: "", nakshatram: "", rasi: "", gothram: "", starOpen: true }
 
 type Props = {
   countryCode: string
@@ -43,7 +45,10 @@ function formatPrice(amount: number, currency: string) {
   }).format(amount)
 }
 
-export default function CartCheckoutSection({ countryCode, subtotal, currency }: Props) {
+export default function CartCheckoutSection({ countryCode: regionFallback, subtotal, currency }: Props) {
+  // The visitor's own country from the URL. (The region's first country is "af" for the international
+  // region, which used to send everyone to /af/checkout.)
+  const countryCode = ((useParams()?.countryCode as string) || regionFallback || "in").toLowerCase()
   const [devotees, setDevotees] = useState<Devotee[]>([{ ...EMPTY }])
   const [error, setError] = useState<string | null>(null)
   const [isPending, startTransition] = useTransition()
@@ -59,12 +64,14 @@ export default function CartCheckoutSection({ countryCode, subtotal, currency }:
   const removePerson = (i: number) => setDevotees((p) => p.filter((_, idx) => idx !== i))
 
   const handleProceed = () => {
-    const valid = devotees.some((d) => d.name.trim())
-    if (!valid) {
-      setError("Please enter at least one name before proceeding.")
+    // Names and star are optional here: prasadam orders don't need them, and pooja customers can also
+    // send them on WhatsApp after booking (prompt on the order-confirmed page).
+    setError(null)
+    trackEcommerce("begin_checkout", { currency, value: subtotal, items: [] })
+    if (!devotees.some((d) => d.name.trim())) {
+      startTransition(() => router.push(localizeHref(countryCode, "/checkout")))
       return
     }
-    setError(null)
 
     const sankalpam_notes = devotees
       .filter((d) => d.name.trim() && d.prayer.trim())
@@ -98,11 +105,11 @@ export default function CartCheckoutSection({ countryCode, subtotal, currency }:
         <h2 style={{ margin: 0, marginBottom: 4, fontFamily: "var(--sans)", fontSize: 22, fontWeight: 700, color: "var(--ink)", lineHeight: 1.2 }}>
           Who is it for?{" "}
           <span className="ph-body" style={{ color: "var(--ink-4)", fontFamily: "var(--sans)", fontSize: 14, fontWeight: 400 }}>
-            (sankalpam)
+            (sankalpam, optional)
           </span>
         </h2>
         <p className="ph-body-sm" style={{ color: "var(--ink-4)", margin: 0 }}>
-          Tell us who this pooja is being performed for.
+          Optional. Add names and star now, or send them on WhatsApp after booking.
         </p>
       </div>
 
@@ -191,8 +198,8 @@ export default function CartCheckoutSection({ countryCode, subtotal, currency }:
                   {d.starOpen ? "−" : "+"}
                 </span>
                 <span className="ph-body-sm">
-                  <span style={{ fontWeight: 500, color: "var(--ink-3)" }}>Optional:</span>{" "}
-                  Add star details
+                  Star (nakshatra), rasi and gothram{" "}
+                  <span style={{ color: "var(--ink-4)" }}>(optional)</span>
                 </span>
               </button>
 
@@ -264,6 +271,7 @@ export default function CartCheckoutSection({ countryCode, subtotal, currency }:
               {formatPrice(subtotal, currency)}
             </span>
           </div>
+          {showsIntlShipping(currency) && <ShippingNote currency={currency} />}
         </div>
         <ProceedButton isPending={isPending} error={error} onClick={handleProceed} />
       </div>
@@ -316,5 +324,15 @@ function ProceedButton({ isPending, error, onClick }: { isPending: boolean; erro
         ← Continue browsing
       </p>
     </>
+  )
+}
+
+/** Non-India carts: the prasadam delivery estimate, so checkout holds no surprise. */
+export function ShippingNote({ currency }: { currency: string }) {
+  return (
+    <p className="ph-body-sm" style={{ margin: "8px 0 0", color: "var(--ink-3)", lineHeight: 1.5 }}>
+      + Prasadam delivery outside India: about {formatPrice(INTL_PRASAD_SHIPPING_USD, currency)} (Speedpost/FedEx, with
+      tracking), chosen at checkout. Free if you choose to have the prasadam donated at the temple.
+    </p>
   )
 }

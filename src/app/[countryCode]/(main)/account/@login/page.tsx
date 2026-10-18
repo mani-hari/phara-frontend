@@ -5,7 +5,7 @@ import AccountLayout from "@modules/account/templates/account-layout"
 
 export const metadata: Metadata = {
   title: "Sign in",
-  description: "Sign in to your Medusa Store account.",
+  description: "Sign in to your PariharaOnline account.",
 }
 
 export default function Login() {
