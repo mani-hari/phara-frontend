@@ -86,6 +86,14 @@ Each item ships with a title, description, hashtags and a tagged link to the mat
 - Everything public is queued for your approval in the first month; after that, approved-calendar organic posts can
   go out on schedule.
 
+## Tools: use established ones, don't rebuild (owner, 19 Oct)
+- **Marketing plugin (Anthropic)**: content creation, campaign plans, brand-voice review, performance reports.
+- **Windsor.ai plugin (partner)**: one connector to read and manage Google Ads, Meta Ads, Instagram, Facebook organic,
+  YouTube and GA4; budgets, campaign pause/enable, reporting. Paid third-party service; check its plan before relying on it.
+- Meta's own Business Suite / Graph API for scheduling Facebook and Instagram posts if Windsor's posting is limited;
+  YouTube Studio / YouTube Data API for uploads; Homam Video Studio for the films. Custom code only where nothing exists
+  (the daily metrics snapshot and idea cards).
+
 ## What only you can do (one sitting, about 2 hours; I will guide you live)
 I cannot create accounts, sign in with your passwords, accept terms for you or enter payment details. Everything
 else I set up.
