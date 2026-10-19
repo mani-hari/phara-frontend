@@ -9,6 +9,7 @@ import React, {
   Fragment,
 } from "react"
 import { useChat, Message } from "ai/react"
+import { track } from "@lib/analytics"
 import { useParams } from "next/navigation"
 import ChatProductCards from "./product-card"
 import BookingFormCard, { type BookingFormData } from "./booking-form-card"
@@ -112,6 +113,13 @@ export default function ChatInterface({
         inputRef.current?.focus()
       },
     })
+
+  // GA: Ask Parihara usage (first question = chat_start, then chat_message with a running count)
+  const userCount = messages.filter((m) => m.role === "user").length
+  useEffect(() => {
+    if (!userCount) return
+    track(userCount === 1 ? "chat_start" : "chat_message", { message_number: userCount, page: typeof window !== "undefined" ? window.location.pathname : "" })
+  }, [userCount])
 
   // Auto-send pre-filled message from URL param (runs once on mount)
   useEffect(() => {

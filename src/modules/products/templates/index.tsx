@@ -18,6 +18,8 @@ import LandingSpread from "./landing-spread"
 import { LANDING_PRODUCTS } from "@lib/data/landing-products"
 import { PRODUCT_BUNDLES } from "@lib/data/product-bundles"
 import RelatedProducts from "../components/related-products"
+import TrackOnMount from "@/components/analytics/track-on-mount"
+import { getProductPrice } from "@lib/util/get-product-price"
 
 // Videos shown once, under "About This Ritual", for specific products (keyed by handle).
 const PRODUCT_VIDEOS: Record<string, { youtubeId: string; title: string }> = {
@@ -73,8 +75,17 @@ export default function ProductTemplate({
   const currency = region.currency_code
   const landing = product.handle ? LANDING_PRODUCTS[product.handle] : undefined
 
+  let viewPrice = 0
+  try {
+    viewPrice = getProductPrice({ product }).cheapestPrice?.calculated_price_number ?? 0
+  } catch {}
+
   return (
     <div style={{ background: "var(--paper)" }}>
+      <TrackOnMount
+        event="view_item"
+        params={{ currency: currency.toUpperCase(), value: viewPrice, items: [{ item_id: product.id, item_name: product.title, price: viewPrice, item_category: product.collection?.title ?? undefined }] }}
+      />
       <div style={{ borderTop: "1px solid var(--ink-line)" }} />
 
       {/* Breadcrumb (not on special landing pages: it wraps to several lines on phones) */}

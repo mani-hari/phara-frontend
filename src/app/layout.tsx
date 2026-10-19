@@ -7,6 +7,7 @@ import { cookies } from "next/headers"
 import AdminBar from "@/components/admin/admin-bar"
 import { retrieveCustomer } from "@lib/data/customer"
 import { GA4_ID, CLARITY_ID } from "@lib/analytics"
+import SiteTracking from "@/components/analytics/site-tracking"
 
 const ADMIN_EMAILS = (
   process.env.ADMIN_EMAILS ||
@@ -119,7 +120,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const ga4Id = GA4_ID
+  // GA only on the live site: Vercel preview deployments (team testing) must not count as customers.
+  const ga4Id = process.env.VERCEL_ENV && process.env.VERCEL_ENV !== "production" ? "" : GA4_ID
   const clarityId = CLARITY_ID
 
   // Admin toolbar visibility: only fetch the customer when a session cookie is
@@ -150,7 +152,7 @@ export default async function RootLayout({
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('config', '${ga4Id}');
+                gtag('config', '${ga4Id}'${admin ? ", { traffic_type: 'internal' }" : ""});
               `}
             </Script>
           </>
@@ -195,6 +197,7 @@ export default async function RootLayout({
         className={`${inter.variable} ${dmDisplay.variable} ${dmText.variable} ${notoTamil.variable} ${notoTelugu.variable} ${notoDevanagari.variable} font-sans`}
         style={{ background: "var(--paper)", color: "var(--ink-2)" }}
       >
+        {ga4Id && <SiteTracking />}
         <main className="relative">{children}</main>
         <AdminBar admin={admin} />
       </body>

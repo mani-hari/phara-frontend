@@ -21,6 +21,7 @@ import { useCallback, useEffect, useRef, useState } from "react"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import type { Deity } from "@lib/data/aarti"
 import { nextAarti } from "@lib/data/aarti"
+import { track, withShareUtm } from "@lib/analytics"
 import { TempleAudio } from "../lib/sounds"
 import { OCCASIONS, makeBlessingCard, occasionLine } from "../lib/blessing-card"
 
@@ -424,6 +425,9 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
 
   useEffect(() => () => audioRef.current?.close(), [])
 
+  // GA: one event per thing a devotee does, so we can see what people actually use (aarti_action.action)
+  const act = (action: string, extra: Record<string, unknown> = {}) => track("aarti_action", { action, deity: deity.slug, ...extra })
+
   const flash = (msg: string, ms = 3600) => {
     setHint(msg)
     window.setTimeout(() => setHint((m) => (m === msg ? "" : m)), ms)
@@ -438,13 +442,18 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
       const a = new TempleAudio()
       audioRef.current = a
       a.bell(800)
-      if (deity.chantSrc) a.playTrack(deity.chantSrc, () => setClosing(true))
+      if (deity.chantSrc)
+        a.playTrack(deity.chantSrc, () => {
+          setClosing(true)
+          track("aarti_complete", { deity: deity.slug })
+        })
       else {
         a.startDrone()
         a.startRhythm()
       }
     } catch {}
     setEntered(true)
+    track("aarti_enter", { deity: deity.slug, from_blessing: gift ? 1 : 0 })
     const s = sim.current
     s.flame = { x: s.w / 2, y: s.h * 0.5 - Math.min(s.h * 0.17, 150) }
     window.setTimeout(() => (sim.current.performing = true), 900)
@@ -456,12 +465,14 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
   }
 
   const ringBell = useCallback(() => {
+    act("bell")
     audioRef.current?.bell(790 + Math.random() * 60)
     if ("vibrate" in navigator) navigator.vibrate?.(18)
     sim.current.ripples.push({ r: 30, life: 1 }, { r: 10, life: 0.8 })
   }, [])
 
   const offerFlowers = useCallback(() => {
+    act("flowers")
     const s = sim.current
     const colors = deity.theme.petals
     for (let i = 0; i < 34; i++)
@@ -477,6 +488,7 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
   }, [deity])
 
   const breakCoconut = useCallback(() => {
+    act("coconut")
     sim.current.coconut = { t: performance.now() }
     window.setTimeout(() => {
       audioRef.current?.coconut()
@@ -506,11 +518,13 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
       audioRef.current?.bell(1320)
       for (let k = 0; k < 8; k++) s.sparks.push({ x: x + 17 * S, y: y - 12 * S, vx: (Math.random() - 0.5) * 0.6, vy: -0.4 - Math.random() * 0.7, life: 1, size: 1.1 })
     }, 550)
+    act("diya", { count: n + 1 })
     if (n === 0) flash(`Your diya is lit at ${deity.name}'s feet.`)
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deity])
 
   const takeAarti = () => {
+    if (!holding) act("take_aarti")
     if (!holding) flash("Move your finger in slow circles before the deity.")
     else sim.current.held = null
     setHolding((v) => !v)
@@ -520,6 +534,7 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
   const placePrayer = () => {
     const text = prayerText.trim()
     if (!text) return
+    act("prayer")
     const id = Date.now()
     setChits((c) => [...c.slice(-2), { id, text, placed: false }])
     setPrayerText("")
@@ -542,7 +557,7 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
     if (!bl.to.trim() || !bl.from.trim()) return
     setBlBusy(true)
     const base = window.location.href.split("?")[0]
-    const link = `${base}?for=${encodeURIComponent(bl.to.trim())}&from=${encodeURIComponent(bl.from.trim())}&o=${bl.occasion}`
+    const link = withShareUtm(`${base}?for=${encodeURIComponent(bl.to.trim())}&from=${encodeURIComponent(bl.from.trim())}&o=${bl.occasion}`, "aarti-blessing")
     const text = `🙏 ${occasionLine(bl.occasion, bl.to.trim())}. ${bl.from.trim()} has offered ${deity.name}'s blessings for you.${bl.note.trim() ? `\n“${bl.note.trim()}”` : ""}\nReceive your darshan: ${link}`
     try {
       const blob = await makeBlessingCard({ deity, to: bl.to.trim(), from: bl.from.trim(), occasion: bl.occasion, note: bl.note })
@@ -550,6 +565,7 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
       const nav = navigator as Navigator & { canShare?: (d: any) => boolean }
       if (nav.canShare?.({ files: [file] })) {
         await nav.share({ files: [file], text })
+        act("blessing_sent", { occasion: bl.occasion, method: "share_sheet" })
       } else {
         // Desktop / no file sharing: save the card, then open WhatsApp with the message and link.
         const a = document.createElement("a")
@@ -557,6 +573,7 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
         a.download = file.name
         a.click()
         window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank", "noopener")
+        act("blessing_sent", { occasion: bl.occasion, method: "whatsapp_web" })
       }
       setSheet(null)
       flash(`Blessings on their way to ${bl.to.trim()}.`)
@@ -580,12 +597,14 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
 
   const toggleMute = () => {
     const m = !muted
+    act(m ? "mute" : "unmute")
     setMuted(m)
     audioRef.current?.setMuted(m)
   }
 
   const shareDarshan = () => {
-    const url = window.location.href.split("?")[0]
+    const url = withShareUtm(window.location.href.split("?")[0], "aarti-darshan-share")
+    act("share_darshan")
     window.open(`https://wa.me/?text=${encodeURIComponent(`🙏 I joined the ${deity.title} today. ${deity.prayerLine ?? ""}\n${url}`)}`, "_blank", "noopener")
   }
 
@@ -690,10 +709,10 @@ export default function AartiExperience({ deity }: { deity: Deity }) {
           <DockButton icon="bell" label="Bell" onClick={ringBell} />
           <DockButton icon="flower" label="Flowers" onClick={offerFlowers} />
           {deity.diyas ? <DockButton icon="lamp" label="Diya" onClick={lightDiya} /> : null}
-          <DockButton icon="prayer" label="Prayer" onClick={() => setSheet("prayer")} />
+          <DockButton icon="prayer" label="Prayer" onClick={() => { act("prayer_open"); setSheet("prayer") }} />
           <DockButton icon="diya" label={holding ? "Release" : "Aarti"} active={holding} onClick={takeAarti} />
           {deity.diyas ? null : <DockButton icon="coconut" label="Coconut" onClick={breakCoconut} />}
-          <DockButton icon="gift" label="Bless" onClick={() => setSheet("blessing")} />
+          <DockButton icon="gift" label="Bless" onClick={() => { act("blessing_open"); setSheet("blessing") }} />
           <DockButton icon={muted ? "mute" : "sound"} label={muted ? "Muted" : "Sound"} onClick={toggleMute} />
         </nav>
       )}

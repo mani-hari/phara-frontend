@@ -33,8 +33,40 @@ export function track(event: string, params: Record<string, unknown>) {
 }
 
 export function trackEcommerce(
-  event: "add_to_cart" | "begin_checkout" | "purchase" | "view_item",
+  event: "add_to_cart" | "begin_checkout" | "purchase" | "view_item" | "add_shipping_info" | "add_payment_info",
   data: { currency: string; value: number; items: GaItem[]; transaction_id?: string; shipping?: number }
 ) {
   track(event, { ...data, currency: data.currency.toUpperCase() })
+}
+
+/** The visitor's GA client and session ids (for the server-side purchase backup: stored on the cart, sent by
+ *  Medusa when the order is placed, so a sale still counts if the buyer never reaches the confirmation page). */
+export function gaIds(): Promise<{ client_id?: string; session_id?: string }> {
+  return new Promise((resolve) => {
+    if (typeof window === "undefined" || typeof window.gtag !== "function" || !GA4_ID) return resolve({})
+    const out: { client_id?: string; session_id?: string } = {}
+    let left = 2
+    const done = () => --left === 0 && resolve(out)
+    try {
+      window.gtag("get", GA4_ID, "client_id", (v: string) => ((out.client_id = v), done()))
+      window.gtag("get", GA4_ID, "session_id", (v: string) => ((out.session_id = String(v)), done()))
+    } catch {
+      resolve(out)
+    }
+    setTimeout(() => resolve(out), 1500)
+  })
+}
+
+/** Adds share tracking to a link we ask people to forward (WhatsApp blessings, darshan shares), so the visits it
+ *  brings show up in GA as shares instead of "direct". */
+export function withShareUtm(url: string, campaign: string, source = "whatsapp") {
+  try {
+    const u = new URL(url)
+    u.searchParams.set("utm_source", source)
+    u.searchParams.set("utm_medium", "share")
+    u.searchParams.set("utm_campaign", campaign)
+    return u.toString()
+  } catch {
+    return url
+  }
 }

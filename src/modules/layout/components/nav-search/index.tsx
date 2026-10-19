@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useRef, useEffect, KeyboardEvent } from "react"
+import { track } from "@lib/analytics"
 import { useParams, useRouter } from "next/navigation"
 import { localizeHref } from "@lib/util/localize-href"
 
@@ -58,11 +59,13 @@ export default function NavSearch({ countryCode: countryCodeProp = "in" }: { cou
   const submit = () => {
     const q = value.trim()
     if (!q) { close(); return }
+    track("search", { search_term: q })
     router.push(localizeHref(countryCode, `/search?q=${encodeURIComponent(q)}`))
     close()
   }
 
   const openProduct = (s: Suggestion) => {
+    track("search_suggestion_click", { item_handle: s.handle, search_term: value.trim() })
     router.push(localizeHref(countryCode, `/products/${s.handle}`))
     close()
   }

@@ -67,7 +67,7 @@ export default function CartCheckoutSection({ countryCode: regionFallback, subto
     // Names and star are optional here: prasadam orders don't need them, and pooja customers can also
     // send them on WhatsApp after booking (prompt on the order-confirmed page).
     setError(null)
-    trackEcommerce("begin_checkout", { currency, value: subtotal, items: [] })
+    trackEcommerce("begin_checkout", { currency, value: subtotal, items: [] }) // items are sent at add_shipping_info / purchase
     if (!devotees.some((d) => d.name.trim())) {
       startTransition(() => router.push(localizeHref(countryCode, "/checkout")))
       return

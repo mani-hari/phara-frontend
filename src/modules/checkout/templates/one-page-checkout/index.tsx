@@ -19,6 +19,8 @@ import {
 import { convertToLocale } from "@lib/util/money"
 import { CONTACT, waLink } from "@lib/contact"
 import { logCheckoutError, logCheckoutEvent } from "@lib/util/checkout-log"
+import { gaIds, track, trackEcommerce } from "@lib/analytics"
+import { updateCart } from "@lib/data/cart"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import ProvinceField from "@modules/common/components/province-field"
 import {
@@ -611,6 +613,24 @@ export default function OnePageCheckout({
 }: Props) {
   const currency = cart.currency_code || "inr"
 
+  // ── Analytics ──
+  // GA ids on the cart → copied onto the order → Medusa can send a server-side "purchase" even when the buyer
+  // never reaches the confirmation page (closed tab, PayPal return failure, late webhook). Best-effort.
+  useEffect(() => {
+    gaIds().then((ids) => {
+      if (ids.client_id) updateCart({ metadata: { ga_client_id: ids.client_id, ga_session_id: ids.session_id } }).catch(() => {})
+    })
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cart.id])
+  const gaItems = (cart.items || []).map((i: any) => ({ item_id: i.product_id || i.id, item_name: i.product_title || i.title, item_variant: i.variant_title || undefined, price: i.unit_price, quantity: i.quantity }))
+  const gaStep = (payment_type: string) => {
+    const value = Number(cart.total ?? cart.subtotal ?? 0)
+    trackEcommerce("add_shipping_info", { currency, value, items: gaItems })
+    trackEcommerce("add_payment_info", { currency, value, items: gaItems, ...({ payment_type } as object) } as any)
+    // festival-reminder opt-in at checkout = a newsletter lead
+    if (marketingOptIn) track("generate_lead", { lead_source: "checkout_reminders" })
+  }
+
   // Countries in the cart's OWN region (INR: India; USD: ~243 intl countries).
   // Used to decide whether a chosen delivery country is native or out-of-region.
   const regionCountries = (cart.region?.countries || []).map((c: any) => ({
@@ -967,6 +987,7 @@ export default function OnePageCheckout({
   const handleRazorpay = () => {
     if (razorpayInFlight.current) return
     if (!validate()) return
+    gaStep("razorpay")
     setError(null)
 
     const RAZORPAY_KEY_ID = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID || ""
@@ -1103,6 +1124,7 @@ export default function OnePageCheckout({
 
   const handlePaypal = () => {
     if (!validate()) return
+    gaStep("paypal")
     setError(null)
 
     startTransition(async () => {

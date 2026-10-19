@@ -179,7 +179,8 @@ export async function middleware(request: NextRequest) {
         effectiveCC === DEFAULT_COUNTRY
           ? ghostTarget
           : `/${effectiveCC}${ghostTarget}`
-      return NextResponse.redirect(new URL(target, request.url), 301)
+      // keep the query string (utm_* tags from emails/ads) through the redirect
+      return NextResponse.redirect(new URL(target + search, request.url), 301)
     }
 
     // ── Static asset pass-through ──────────────────────────────────────────
