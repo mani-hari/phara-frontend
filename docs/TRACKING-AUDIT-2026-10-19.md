@@ -35,12 +35,12 @@ Before this audit the site sent only four events (add_to_cart ×2, begin_checkou
 | B | Internal traffic filter (logged-in admins, `traffic_type=internal`) | Active |
 | B2 | New: hostname filter "Exclude Vercel preview builds" (hostname contains `vercel.app`); GA had detected ~10 preview hosts sending data | Active |
 | C | Key events `contact_click`, `generate_lead` (purchase already is, locked on) | Pending: GA must receive each event once; the 19 Oct 9 AM task stars them |
-| D | Measurement Protocol API secret (for the Medusa server-side purchase) | **Owner must accept Google's Measurement Protocol terms** (Admin → Data streams → web → Measurement Protocol API secrets → Review terms); then I create the secret |
+| D | Measurement Protocol API secret `medusa-purchase` (owner accepted terms 19 Oct); stored in phara-backend-medusa/.env (git-ignored). Backend subscriber `src/subscribers/order-placed-ga4.ts` committed (184f90c), payload validated with GA's debug endpoint | Done; **to go live: set GA4_MEASUREMENT_ID + GA4_API_SECRET in Medusa Cloud and push the backend** |
 | E | Bot traffic: GA cannot exclude by country; handled in reporting ("real visitors" excludes unengaged Singapore/China sessions). Nothing blocked on the site; AI agents (GPTBot, ClaudeBot, PerplexityBot, ChatGPT-User...) verified to get full pages and are welcomed in robots.txt | Done (reporting rule) |
 | F | New: event data retention 2 → **14 months** (default 2 months limited explorations) | Done |
 | G | New: 8 custom dimensions so event details show in reports: Aarti action, Deity, Contact method, Link location, Lead source, Blessing occasion, Payment type, From blessing link | Done |
 | H | New: tag diagnostics: preview-domain suggestions dismissed; monitored domain = www.pariharaonline.com | Done |
-| I | Search Console link | Blocked: pariharaonline.com is not verified in the owner's Search Console. Verify (DNS TXT or the `GOOGLE_SITE_VERIFICATION` env var already supported in layout.tsx), then link |
+| I | Search Console link (pariharaonline.com, Domain property) | Done (owner verified and linked 19 Oct) |
 | J | Add a second GA administrator (Google recommends it to avoid lock-out) | Owner decision (e.g. hello@pariharaonline.com) |
 
 ## Still not tracked (low priority)
