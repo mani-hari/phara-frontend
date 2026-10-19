@@ -41,7 +41,7 @@ Before this audit the site sent only four events (add_to_cart ×2, begin_checkou
 | G | New: 8 custom dimensions so event details show in reports: Aarti action, Deity, Contact method, Link location, Lead source, Blessing occasion, Payment type, From blessing link | Done |
 | H | New: tag diagnostics: preview-domain suggestions dismissed; monitored domain = www.pariharaonline.com | Done |
 | I | Search Console link (pariharaonline.com, Domain property) | Done (owner verified and linked 19 Oct) |
-| J | Add a second GA administrator (Google recommends it to avoid lock-out) | Owner decision (e.g. hello@pariharaonline.com) |
+| J | Second GA administrator (Google recommends it to avoid lock-out) | Done (owner added a second business account as admin, 19 Oct) |
 
 ## Still not tracked (low priority)
 - Sign-up / sign-in success (sign-in loops are a known issue; worth adding with the account rework).
