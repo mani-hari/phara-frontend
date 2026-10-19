@@ -1,3 +1,4 @@
+import { og } from "@lib/util/og"
 import { Metadata } from "next"
 import Link from "next/link"
 
@@ -44,13 +45,13 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
       canonical,
       types: { "application/rss+xml": "/blog/feed.xml" },
     },
-    openGraph: {
+    openGraph: og({
       type: "website",
       siteName: "PariharaOnline",
       title: BLOG_TITLE,
       description: BLOG_DESCRIPTION,
       url: canonical,
-    },
+    }),
     twitter: { card: "summary_large_image", title: BLOG_TITLE, description: BLOG_DESCRIPTION },
   }
 }

@@ -1,3 +1,4 @@
+import { og } from "@lib/util/og"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { listProducts } from "@lib/data/products"
@@ -114,7 +115,8 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
       title: `${product.title} | PariharaOnline`,
       description: descriptionIntro(product.description) || `${product.title} - Book authentic temple services at PariharaOnline`,
       url: `/products/${handle}`,
-      images: product.thumbnail ? [product.thumbnail] : [],
+      // JPEG via /api/og-image: WhatsApp does not reliably show the WebP thumbnails Medusa stores
+      images: product.thumbnail ? [{ url: `/api/og-image?src=${encodeURIComponent(product.thumbnail)}`, width: 1200, height: 630, alt: product.title }] : og().images,
     },
   }
 }

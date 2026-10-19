@@ -1,3 +1,4 @@
+import { og } from "@lib/util/og"
 import { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
@@ -38,7 +39,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     title: page > 1 ? `${title} (page ${page})` : title,
     description,
     alternates: { canonical },
-    openGraph: { type: "website", siteName: "PariharaOnline", title, description, url: canonical },
+    openGraph: og({ type: "website", siteName: "PariharaOnline", title, description, url: canonical }),
     twitter: { card: "summary_large_image", title, description },
   }
 }

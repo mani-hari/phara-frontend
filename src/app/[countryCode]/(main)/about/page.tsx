@@ -1,3 +1,4 @@
+import { og } from "@lib/util/og"
 import { Metadata } from "next"
 import { Clock, Globe, Flame, CheckCircle2, Phone, Mail } from "lucide-react"
 
@@ -6,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Learn about PariharaOnline - connecting devotees worldwide with authentic Hindu temple services since 2009. Operated by Harkarma Enterprises LLP.",
   alternates: { canonical: "/about" },
-  openGraph: { url: "/about" },
+  openGraph: og({ url: "/about" }),
 }
 
 const VEDIC_SCHOLARS = [

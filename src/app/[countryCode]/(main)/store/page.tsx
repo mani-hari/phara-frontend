@@ -1,3 +1,4 @@
+import { og } from "@lib/util/og"
 import { Metadata } from "next"
 
 import { SortOptions } from "@modules/store/components/refinement-list/sort-products"
@@ -7,7 +8,7 @@ export const metadata: Metadata = {
   title: "All Services",
   description: "Explore the full PariharaOnline catalog.",
   alternates: { canonical: "/store" },
-  openGraph: { url: "/store" },
+  openGraph: og({ url: "/store" }),
 }
 
 type Params = {

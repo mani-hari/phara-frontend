@@ -1,3 +1,4 @@
+import { og } from "@lib/util/og"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
@@ -64,7 +65,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
       alternates: {
         canonical: `/categories/${params.category.join("/")}`,
       },
-      openGraph: { url: `/categories/${params.category.join("/")}` },
+      openGraph: og({ url: `/categories/${params.category.join("/")}` }),
     }
   } catch (error) {
     notFound()

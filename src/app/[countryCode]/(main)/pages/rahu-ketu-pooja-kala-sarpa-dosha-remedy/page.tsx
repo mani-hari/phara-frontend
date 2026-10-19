@@ -1,3 +1,4 @@
+import { og } from "@lib/util/og"
 import { Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
   description:
     "Rahu Ketu Dosha Parihara Pooja (Sarpa Dosha Parihara / Kala Sarpa Dosha remedy) performed on your behalf at Sri Kalahasti Temple — for marriage delays, fertility struggles, and difficult planetary influences. Book online, no travel required.",
   alternates: { canonical: PAGE_PATH },
-  openGraph: { url: PAGE_PATH },
+  openGraph: og({ url: PAGE_PATH }),
 }
 
 // Real Q&A grounded in the live Medusa product description for this handle

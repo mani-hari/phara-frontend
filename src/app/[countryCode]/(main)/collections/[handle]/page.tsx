@@ -1,3 +1,4 @@
+import { og } from "@lib/util/og"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 
@@ -70,7 +71,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     title: collection.title, // the root layout template adds " | PariharaOnline"
     description: `${collection.title} available to book through PariharaOnline`,
     alternates: { canonical: `/collections/${params.handle}` },
-    openGraph: { url: `/collections/${params.handle}` },
+    openGraph: og({ url: `/collections/${params.handle}` }),
   } as Metadata
 
   return metadata

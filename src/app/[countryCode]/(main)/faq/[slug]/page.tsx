@@ -1,3 +1,4 @@
+import { og } from "@lib/util/og"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
@@ -49,7 +50,7 @@ export async function generateMetadata(props: {
     title: `${category.title} - FAQ`,
     description: category.description,
     alternates: { canonical: `/faq/${slug}` },
-    openGraph: { url: `/faq/${slug}` },
+    openGraph: og({ url: `/faq/${slug}` }),
   }
 }
 

@@ -1,3 +1,4 @@
+import { og } from "@lib/util/og"
 import { Metadata } from "next"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { FAQ_CATEGORIES } from "@lib/data/faq-data"
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
   description:
     "Find answers to common questions about Hindu pujas, homams, Vedic astrology, nakshatram, temple services, prasad delivery, and more at PariharaOnline.",
   alternates: { canonical: "/faq" },
-  openGraph: { url: "/faq" },
+  openGraph: og({ url: "/faq" }),
 }
 
 export default async function FAQIndexPage(props: {

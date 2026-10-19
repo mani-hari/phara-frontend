@@ -1,3 +1,4 @@
+import { og } from "@lib/util/og"
 import { Metadata } from "next"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { listCollections } from "@lib/data/collections"
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
   description:
     "Get personalized Vedic astrology consultations from experienced Kerala-Salem tradition astrologers. Career, health, marriage, and life guidance. Reports delivered within 48 hours.",
   alternates: { canonical: "/astrology" },
-  openGraph: { url: "/astrology" },
+  openGraph: og({ url: "/astrology" }),
 }
 
 const TESTIMONIALS = [

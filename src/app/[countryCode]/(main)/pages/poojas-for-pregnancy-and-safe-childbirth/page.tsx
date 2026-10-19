@@ -1,3 +1,4 @@
+import { og } from "@lib/util/og"
 import { Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
   description:
     "Blessed ghee prasadam (for conceiving) and oil prasadam (for safe childbirth) from the Garbarakshambigai Temple, Thirukkarugavur — sent to you in air-sealed, no-spill packaging with detailed instructions.",
   alternates: { canonical: "/pages/poojas-for-pregnancy-and-safe-childbirth" },
-  openGraph: { url: "/pages/poojas-for-pregnancy-and-safe-childbirth" },
+  openGraph: og({ url: "/pages/poojas-for-pregnancy-and-safe-childbirth" }),
 }
 
 type Props = { params: Promise<{ countryCode: string }> }

@@ -4,11 +4,18 @@ import { notFound } from "next/navigation"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import { DEITIES, aartiEnabled } from "@lib/data/aarti"
 
-// Digital Aarti index. LOCAL-ONLY until approved: 404 unless NEXT_PUBLIC_AARTI_EXP=1.
+// Digital Aarti index. Live since 18 Oct 2026; hidden again if NEXT_PUBLIC_AARTI_EXP is unset.
 export const metadata: Metadata = {
   title: "Digital Aarti: join the aarti from wherever you are",
   description: "Ring the bell, offer flowers and wave the aarti for Shirdi Sai Baba and Mahalakshmi.",
   robots: { index: false },
+  openGraph: {
+    title: "Digital Aarti · PariharaOnline",
+    description: "Join the aarti from wherever you are: Maa Durga, Shirdi Sai Baba and Mahalakshmi. Light a diya, offer flowers, place your prayer.",
+    url: "/aarti",
+    images: [{ url: "/aarti/og-index.jpg", width: 1200, height: 630, alt: "Digital Aarti" }],
+  },
+  twitter: { card: "summary_large_image", title: "Digital Aarti · PariharaOnline", images: ["/aarti/og-index.jpg"] },
 }
 
 export default function AartiIndex() {

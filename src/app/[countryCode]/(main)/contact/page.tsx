@@ -1,3 +1,4 @@
+import { og } from "@lib/util/og"
 import { Metadata } from "next"
 import { Phone, Mail, MessageCircle, Clock } from "lucide-react"
 
@@ -6,7 +7,7 @@ export const metadata: Metadata = {
   description:
     "Contact PariharaOnline for temple services, puja bookings, and spiritual guidance. WhatsApp, phone, and email support available.",
   alternates: { canonical: "/contact" },
-  openGraph: { url: "/contact" },
+  openGraph: og({ url: "/contact" }),
 }
 
 export default function ContactPage() {

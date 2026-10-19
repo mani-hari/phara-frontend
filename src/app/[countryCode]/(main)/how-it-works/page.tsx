@@ -1,3 +1,4 @@
+import { og } from "@lib/util/og"
 import { Metadata } from "next"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
 import {
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
   description:
     "Learn how to book authentic Hindu temple pujas and homams online at PariharaOnline. Simple 4-step process from selection to prasad delivery.",
   alternates: { canonical: "/how-it-works" },
-  openGraph: { url: "/how-it-works" },
+  openGraph: og({ url: "/how-it-works" }),
 }
 
 export default function HowItWorksPage() {

@@ -1,10 +1,11 @@
+import { og } from "@lib/util/og"
 import { Metadata } from "next"
 
 export const metadata: Metadata = {
   title: "Terms of Service",
   description: "Terms of Service for PariharaOnline temple services and puja bookings.",
   alternates: { canonical: "/terms" },
-  openGraph: { url: "/terms" },
+  openGraph: og({ url: "/terms" }),
 }
 
 export default function TermsPage() {

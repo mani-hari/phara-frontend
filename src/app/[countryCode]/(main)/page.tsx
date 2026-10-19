@@ -1,3 +1,4 @@
+import { og } from "@lib/util/og"
 import { Metadata } from "next"
 
 import { listProducts } from "@lib/data/products"
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
   description:
     "Book authentic Hindu temple pujas, homams, and astrology services online. Sacred prasad delivered worldwide from renowned temples across India.",
   alternates: { canonical: "/" },
-  openGraph: { url: "/" },
+  openGraph: og({ url: "/" }),
 }
 
 // Render at request time so the build doesn't depend on Medusa being
