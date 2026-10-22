@@ -28,6 +28,37 @@ const GHOST_REDIRECTS: Record<string, string> = {
   "/products/navratri-special-package": "/products/navratri-poojas-online",
   "/products/diwali-lakshmi-homam": "/products/diwali-puja",
   "/products/jupiter-transit-guru-peyarchi": "/products/guru-jupiter-transit",
+  // Old Shopify URLs Google still crawls (Search Console 404 report, 22 Oct 2026)
+  "/products/shirdi-saibaba-udi": "/products/shirdi-sai-baba-udi-prasadham",
+  "/pages/about": "/about",
+  "/pages/about-us": "/about",
+  "/pages/who-we-are-detailed": "/about",
+  "/pages/demise-of-founder": "/about",
+  "/pages/contact-us": "/contact",
+  "/pages/ask-a-question": "/ask-parihara",
+  "/pages/faq": "/faq",
+  "/pages/refund-policy": "/refund",
+  "/pages/navratri-pujas": "/products/navratri-poojas-online",
+  "/pages/poojas-for-rahu-ketu-dosha-nivarana": "/pages/rahu-ketu-pooja-kala-sarpa-dosha-remedy",
+  "/pages/poojas-for-health-and-healing": "/collections/pujas-and-homams?need=health",
+  "/pages/knowledge-video-series": "/blog",
+  "/pages/avada-sitemap": "/sitemap.xml",
+  "/pages/avada-sitemap-articles": "/sitemap.xml",
+  "/pages/avada-sitemap-products": "/sitemap.xml",
+  "/pages/avada-sitemap-pages": "/sitemap.xml",
+  "/blogs/news": "/blog",
+  "/blogs/news/strengthen-mars": "/blog",
+  "/blogs/practical-spirituality/navratri-fasting-for-busy-professionals": "/blog/navratri-fasting-rules",
+  "/blogs/practical-spirituality/working-professionals-guide-to-navratri": "/blog/celebrate-navratri-in-the-usa",
+  // Old Shopify collections/products served as soft "not found" pages (Search Console noindex report, 22 Oct 2026)
+  "/collections/all": "/collections/pujas-and-homams",
+  "/collections/all-pujas": "/collections/pujas-and-homams",
+  "/collections/homams": "/collections/pujas-and-homams",
+  "/collections/poojas-featured": "/collections/pujas-and-homams",
+  "/collections/homams-for-homepage": "/collections/pujas-and-homams",
+  "/products/guru-peyarchi-2026": "/products/guru-jupiter-transit",
+  "/products/garbharakshambika": "/products/garbharakshambika-ghee",
+  "/products/copy-of-garbharakshambika-temple-oil-prasadam-pariharam-for-pregnancy-and-childbirth": "/products/garbharakshambika-oil",
 }
 
 const BACKEND_URL =
@@ -175,12 +206,14 @@ export async function middleware(request: NextRequest) {
     const effectiveCC = hasPrefix ? firstSegment : DEFAULT_COUNTRY
     const ghostTarget = GHOST_REDIRECTS[cleanPath]
     if (ghostTarget) {
+      // files (e.g. /sitemap.xml) are never country-prefixed
       const target =
-        effectiveCC === DEFAULT_COUNTRY
+        effectiveCC === DEFAULT_COUNTRY || ghostTarget.includes(".")
           ? ghostTarget
           : `/${effectiveCC}${ghostTarget}`
-      // keep the query string (utm_* tags from emails/ads) through the redirect
-      return NextResponse.redirect(new URL(target + search, request.url), 301)
+      // keep the query string (utm_* tags from emails/ads) through the redirect; join if the target has its own
+      const query = search ? (target.includes("?") ? `&${search.slice(1)}` : search) : ""
+      return NextResponse.redirect(new URL(target + query, request.url), 301)
     }
 
     // ── Static asset pass-through ──────────────────────────────────────────
