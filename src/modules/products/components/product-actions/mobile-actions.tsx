@@ -1,5 +1,4 @@
 import { Dialog, Transition } from "@headlessui/react"
-import { PRODUCT_HEADINGS } from "@lib/data/seo-overrides"
 import { Button, clx } from "@medusajs/ui"
 import React, { Fragment, useEffect, useMemo, useRef, useState } from "react"
 import Image from "next/image"
@@ -81,8 +80,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
   void state; void open; void close; void isSimple
 
   const image = product.thumbnail || product.images?.[0]?.url || null
-  const publicName = PRODUCT_HEADINGS[product.handle ?? ""] ?? product.title
-  const shortTitle = publicName.split(/\s[-–|/]\s|[(:]/)[0].trim()
+  const shortTitle = product.title.split(/\s[-–|/]\s|[(:]/)[0].trim()
 
   return (
     <>
@@ -121,7 +119,7 @@ const MobileActions: React.FC<MobileActionsProps> = ({
                 </div>
               )}
               <div style={{ flex: 1, minWidth: 0 }}>
-                <p style={{ margin: 0, fontWeight: 700, fontSize: 15, lineHeight: 1.35, color: "var(--ink)" }}>{publicName}</p>
+                <p style={{ margin: 0, fontWeight: 700, fontSize: 15, lineHeight: 1.35, color: "var(--ink)" }}>{product.title}</p>
                 {selectedPrice && <p style={{ margin: "4px 0 0", fontWeight: 700, fontSize: 18, color: "var(--sindoor)" }}>{selectedPrice.calculated_price}</p>}
               </div>
               <button
