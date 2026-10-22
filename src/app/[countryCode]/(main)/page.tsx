@@ -1,4 +1,5 @@
 import { og } from "@lib/util/og"
+import { seoFor } from "@lib/data/seo-overrides"
 import { Metadata } from "next"
 
 import { listProducts } from "@lib/data/products"
@@ -6,12 +7,12 @@ import { getRegion } from "@lib/data/regions"
 import HomeV3, { type HomeBlogPost } from "@modules/home/templates/home-v3"
 import { getPublishedBlogPosts } from "@lib/data/blog"
 
+const SEO_HOME = seoFor("/")!
 export const metadata: Metadata = {
-  title: "PariharaOnline - Ancient Rituals, Modern Convenience",
-  description:
-    "Book authentic Hindu temple pujas, homams, and astrology services online. Sacred prasad delivered worldwide from renowned temples across India.",
+  title: { absolute: SEO_HOME.title },
+  description: SEO_HOME.description,
   alternates: { canonical: "/" },
-  openGraph: og({ url: "/" }),
+  openGraph: og({ url: "/", title: SEO_HOME.title, description: SEO_HOME.description }),
 }
 
 // Render at request time so the build doesn't depend on Medusa being

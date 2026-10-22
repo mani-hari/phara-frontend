@@ -1,10 +1,11 @@
 import { og } from "@lib/util/og"
+import { seoFor } from "@lib/data/seo-overrides"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { listProducts } from "@lib/data/products"
 import { getRegion, listRegions } from "@lib/data/regions"
 import { getProductPrice } from "@lib/util/get-product-price"
-import { descriptionIntro, descriptionPlain } from "@lib/util/description-text"
+import { metaDescription, descriptionIntro, descriptionPlain } from "@lib/util/description-text"
 import {
   buildBreadcrumbJsonLd,
   buildFaqJsonLd,
@@ -105,15 +106,23 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     notFound()
   }
 
+  // Tuned search title/description for top pages (src/lib/data/seo-overrides.ts), with the live price;
+  // otherwise the product title and a search-length cut of the intro (never the whole description).
+  let price: string | null = null
+  try {
+    price = getProductPrice({ product }).cheapestPrice?.calculated_price ?? null
+  } catch {}
+  const seo = seoFor(`/products/${handle}`, price)
+  const description = seo?.description ?? (metaDescription(descriptionIntro(product.description)) || `${product.title}: book online at PariharaOnline`)
   return {
-    title: product.title,
-    description: descriptionIntro(product.description) || `${product.title} - Book authentic temple services at PariharaOnline`,
+    title: seo ? { absolute: seo.title } : product.title,
+    description,
     // Canonical is the prefix-free URL so regional variants (/us, /fr, …)
     // all consolidate to https://www.pariharaonline.com/products/<handle>.
     alternates: { canonical: `/products/${handle}` },
     openGraph: {
-      title: `${product.title} | PariharaOnline`,
-      description: descriptionIntro(product.description) || `${product.title} - Book authentic temple services at PariharaOnline`,
+      title: seo?.title ?? `${product.title} | PariharaOnline`,
+      description,
       url: `/products/${handle}`,
       // JPEG via /api/og-image: WhatsApp does not reliably show the WebP thumbnails Medusa stores
       images: product.thumbnail ? [{ url: `/api/og-image?src=${encodeURIComponent(product.thumbnail)}`, width: 1200, height: 630, alt: product.title }] : og().images,

@@ -165,6 +165,13 @@ async function getRegionMap(cacheId: string) {
  * Returns true if the given URL segment is a recognised country code.
  * Falls back to KNOWN_COUNTRY_CODES when Medusa is unreachable.
  */
+// Search engines, AI agents and link-preview bots always get the clean (default-region) URL, never a geo
+// redirect. Googlebot crawls mostly from the US: it used to be 307'd from every clean URL to /us/…, whose
+// canonical points back to the clean URL — a redirect/canonical loop that kept pages out of the index
+// (Search Console, 22 Oct 2026). They receive exactly what a visitor in India receives, so this is not cloaking.
+const CRAWLER_UA =
+  /googlebot|google-inspectiontool|storebot-google|adsbot-google|mediapartners-google|googleother|bingbot|bingpreview|duckduckbot|yandex|baiduspider|applebot|gptbot|oai-searchbot|chatgpt-user|claudebot|claude-user|claude-searchbot|anthropic-ai|perplexitybot|perplexity-user|amazonbot|ccbot|facebookexternalhit|meta-externalagent|twitterbot|linkedinbot|whatsapp|slackbot|telegrambot|discordbot|pinterestbot/i
+
 function isCountryCode(
   segment: string | undefined,
   regionMap: Map<string, HttpTypes.StoreRegion>
@@ -250,8 +257,11 @@ export async function middleware(request: NextRequest) {
       ?.value?.toLowerCase()
 
     let targetCountry = DEFAULT_COUNTRY
+    const isCrawler = CRAWLER_UA.test(request.headers.get("user-agent") || "")
 
-    if (adminOverride && isAuthed && isCountryCode(adminOverride, regionMap)) {
+    if (isCrawler) {
+      // keep DEFAULT_COUNTRY: clean URL, no redirect
+    } else if (adminOverride && isAuthed && isCountryCode(adminOverride, regionMap)) {
       targetCountry = adminOverride
     } else {
       const vercelCC = request.headers

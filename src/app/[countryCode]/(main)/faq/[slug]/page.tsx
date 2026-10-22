@@ -1,4 +1,5 @@
 import { og } from "@lib/util/og"
+import { seoFor } from "@lib/data/seo-overrides"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
@@ -46,9 +47,10 @@ export async function generateMetadata(props: {
   const category = FAQ_CATEGORIES.find((c) => c.slug === slug)
   if (!category) return {}
 
+  const seo = seoFor(`/faq/${slug}`)
   return {
-    title: `${category.title} - FAQ`,
-    description: category.description,
+    title: seo ? { absolute: seo.title } : `${category.title} - FAQ`,
+    description: seo?.description ?? category.description,
     alternates: { canonical: `/faq/${slug}` },
     openGraph: og({ url: `/faq/${slug}` }),
   }

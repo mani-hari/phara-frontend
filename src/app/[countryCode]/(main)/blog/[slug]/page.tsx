@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import { seoFor } from "@lib/data/seo-overrides"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
@@ -66,10 +67,11 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
     ? [{ url: post.image, width: 1200, height: 630, alt: post.imageAlt }]
     : undefined
 
+  const seo = seoFor(url)
   return {
-    // Root layout template appends " | PariharaOnline".
-    title: post.title,
-    description: post.description,
+    // Root layout template appends " | PariharaOnline" (top pages use a tuned absolute title instead).
+    title: seo ? { absolute: seo.title } : post.title,
+    description: seo?.description ?? post.description,
     keywords: [post.primaryKeyword, ...post.secondaryKeywords].filter(
       (k): k is string => !!k
     ),

@@ -1,4 +1,5 @@
 import { Metadata } from "next"
+import { seoFor } from "@lib/data/seo-overrides"
 import Image from "next/image"
 import { notFound } from "next/navigation"
 import LocalizedClientLink from "@modules/common/components/localized-client-link"
@@ -6,8 +7,8 @@ import { DEITIES, aartiEnabled } from "@lib/data/aarti"
 
 // Digital Aarti index. Live since 18 Oct 2026; hidden again if NEXT_PUBLIC_AARTI_EXP is unset.
 export const metadata: Metadata = {
-  title: "Digital Aarti: join the aarti from wherever you are",
-  description: "Ring the bell, offer flowers and wave the aarti for Shirdi Sai Baba and Mahalakshmi.",
+  title: { absolute: seoFor("/aarti")!.title },
+  description: seoFor("/aarti")!.description,
   alternates: { canonical: "/aarti" },
   openGraph: {
     title: "Digital Aarti · PariharaOnline",

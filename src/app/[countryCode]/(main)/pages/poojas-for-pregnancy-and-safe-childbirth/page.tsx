@@ -1,4 +1,5 @@
 import { og } from "@lib/util/og"
+import { seoFor } from "@lib/data/seo-overrides"
 import { Metadata } from "next"
 import Image from "next/image"
 import { notFound } from "next/navigation"
@@ -13,10 +14,10 @@ import BuyButtons from "./buy-buttons"
 //   /pages/poojas-for-pregnancy-and-safe-childbirth
 export const dynamic = "force-dynamic"
 
+const SEO_PAGE = seoFor("/pages/poojas-for-pregnancy-and-safe-childbirth")!
 export const metadata: Metadata = {
-  title: "Prasadam for Pregnancy & Safe Childbirth — Garbarakshambigai",
-  description:
-    "Blessed ghee prasadam (for conceiving) and oil prasadam (for safe childbirth) from the Garbarakshambigai Temple, Thirukkarugavur — sent to you in air-sealed, no-spill packaging with detailed instructions.",
+  title: { absolute: SEO_PAGE.title },
+  description: SEO_PAGE.description,
   alternates: { canonical: "/pages/poojas-for-pregnancy-and-safe-childbirth" },
   openGraph: og({ url: "/pages/poojas-for-pregnancy-and-safe-childbirth" }),
 }
