@@ -1,5 +1,5 @@
 import { og } from "@lib/util/og"
-import { seoFor } from "@lib/data/seo-overrides"
+import { PRODUCT_HEADINGS, seoFor } from "@lib/data/seo-overrides"
 import { Metadata } from "next"
 import { notFound } from "next/navigation"
 import { listProducts } from "@lib/data/products"
@@ -125,7 +125,7 @@ export async function generateMetadata(props: Props): Promise<Metadata> {
       description,
       url: `/products/${handle}`,
       // JPEG via /api/og-image: WhatsApp does not reliably show the WebP thumbnails Medusa stores
-      images: product.thumbnail ? [{ url: `/api/og-image?src=${encodeURIComponent(product.thumbnail)}`, width: 1200, height: 630, alt: product.title }] : og().images,
+      images: product.thumbnail ? [{ url: `/api/og-image?src=${encodeURIComponent(product.thumbnail)}`, width: 1200, height: 630, alt: PRODUCT_HEADINGS[handle] ?? product.title }] : og().images,
     },
   }
 }
@@ -158,10 +158,13 @@ export default async function ProductPage(props: Props) {
 
   const productPath = `/products/${params.handle}`
 
+  // Softened public name for ghee/oil etc. (src/lib/data/seo-overrides.ts); Medusa title otherwise
+  const displayName = PRODUCT_HEADINGS[pricedProduct.handle ?? ""] ?? pricedProduct.title
   const productJsonLd = {
     "@context": "https://schema.org",
     "@type": "Product",
-    name: pricedProduct.title,
+    // same softened name as the visible heading (src/lib/data/seo-overrides.ts)
+    name: displayName,
     description: descriptionPlain(pricedProduct.description) || pricedProduct.title,
     image: pricedProduct.thumbnail || undefined,
     sku: pricedProduct.id,
@@ -200,16 +203,20 @@ export default async function ProductPage(props: Props) {
           url: `/collections/${pricedProduct.collection.handle}`,
         }
       : { name: "Store", url: "/store" },
-    { name: pricedProduct.title, url: productPath },
+    { name: displayName, url: productPath },
   ])
 
   // HowTo — parsed from the real "How the homam/pooja is performed" section
   // of the product description, when present. Never fabricated.
-  const howToJsonLd = extractHowToFromDescription({
-    title: pricedProduct.title,
-    description: pricedProduct.description,
-    url: productPath,
-  })
+  // Not for prasadam: nothing is "performed" (it is a blessed item that is sent).
+  const isPrasadam = /prasad/i.test(`${pricedProduct.collection?.handle ?? ""} ${pricedProduct.collection?.title ?? ""} ${pricedProduct.title ?? ""}`)
+  const howToJsonLd = isPrasadam
+    ? null
+    : extractHowToFromDescription({
+        title: displayName,
+        description: pricedProduct.description,
+        url: productPath,
+      })
 
   // FAQPage — only for the hand-curated hero product pages (real Q&A).
   // JSON-LD always uses the ORIGINAL English entries — translation is
@@ -242,7 +249,7 @@ export default async function ProductPage(props: Props) {
   let translatedFaqEntries: ProductFaqEntry[] | undefined = faqEntries
   if (lang !== "en") {
     const toTranslate = [
-      pricedProduct.title,
+      displayName,
       ...descLineTexts,
       ...(faqEntries || []).flatMap((f) => [f.question, f.answer]),
     ]

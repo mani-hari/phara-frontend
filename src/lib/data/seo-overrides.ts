@@ -121,3 +121,12 @@ export function seoFor(path: string, price?: string | null): SeoOverride | null 
   const description = p ? o.description.replace("{price}", `From ${p}`) : o.description.replace(/\s*\{price\}\.?/, "")
   return { title: o.title, description }
 }
+
+// Visible page heading (H1) on product pages, when it should differ from the Medusa product title.
+// The Medusa title still shows in cart, checkout and order emails until it is changed in Medusa too.
+// Ghee/oil (owner, 22 Oct 2026): no "(For Conceiving)" / "(For Safe Childbirth)" labels; devotional context
+// stays in the page text. Headings lead with the words people search ("Garbarakshambigai temple ghee").
+export const PRODUCT_HEADINGS: Record<string, string> = {
+  "garbharakshambika-ghee": "Garbarakshambigai Temple Ghee Prasadam, Thirukkarugavur",
+  "garbharakshambika-oil": "Garbarakshambigai Temple Oil Prasadam, Thirukkarugavur",
+}

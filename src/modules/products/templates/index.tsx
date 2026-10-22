@@ -19,6 +19,7 @@ import { LANDING_PRODUCTS } from "@lib/data/landing-products"
 import { PRODUCT_BUNDLES } from "@lib/data/product-bundles"
 import RelatedProducts from "../components/related-products"
 import TrackOnMount from "@/components/analytics/track-on-mount"
+import { PRODUCT_HEADINGS } from "@lib/data/seo-overrides"
 import { getProductPrice } from "@lib/util/get-product-price"
 
 // Videos shown once, under "About This Ritual", for specific products (keyed by handle).
@@ -55,17 +56,20 @@ export default function ProductTemplate({
   translatedTitle,
   translatedDescription,
 }: ProductTemplateProps) {
-  const displayTitle = lang !== "en" && translatedTitle ? translatedTitle : product.title
+  const headingName = PRODUCT_HEADINGS[product.handle ?? ""] ?? product.title
+  const displayTitle =
+    lang !== "en" && translatedTitle ? translatedTitle : PRODUCT_HEADINGS[product.handle ?? ""] ?? product.title
   const displayDescription =
     lang !== "en" && translatedDescription !== undefined ? translatedDescription : product.description
   const content = getMockProductDetailContent(product)
-  const galleryEntries = getProductGalleryEntries(product)
+  // photo descriptions use the softened public name too
+  const galleryEntries = getProductGalleryEntries(product).map((e) => ({ ...e, alt: e.alt?.split(product.title ?? "").join(headingName) }))
   const displayEntries = galleryEntries.length
     ? galleryEntries
     : images
         .slice(0, 6)
         .filter((img) => !!img.url)
-        .map((img, i) => ({ url: img.url as string, alt: i === 0 ? product.title : `${product.title} — image ${i + 1}` }))
+        .map((img, i) => ({ url: img.url as string, alt: i === 0 ? headingName : `${headingName} — image ${i + 1}` }))
   const displayGallery = displayEntries.map((e) => e.url)
   const altFor = (src: string | null, fallback: string) =>
     displayEntries.find((e) => e.url === src)?.alt || fallback
@@ -257,7 +261,7 @@ export default function ProductTemplate({
               <p className="ph-eyebrow ph-eyebrow-gold" style={{ marginBottom: 10 }}>
                 Frequently asked
               </p>
-              <h2 className="ph-h2">About {product.title}.</h2>
+              <h2 className="ph-h2">About {headingName}.</h2>
             </div>
 
             <div>
