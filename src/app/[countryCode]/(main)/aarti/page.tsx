@@ -8,7 +8,7 @@ import { DEITIES, aartiEnabled } from "@lib/data/aarti"
 export const metadata: Metadata = {
   title: "Digital Aarti: join the aarti from wherever you are",
   description: "Ring the bell, offer flowers and wave the aarti for Shirdi Sai Baba and Mahalakshmi.",
-  robots: { index: false },
+  alternates: { canonical: "/aarti" },
   openGraph: {
     title: "Digital Aarti · PariharaOnline",
     description: "Join the aarti from wherever you are: Maa Durga, Shirdi Sai Baba and Mahalakshmi. Light a diya, offer flowers, place your prayer.",

@@ -23,6 +23,11 @@ const STATIC_PATHS: { path: string; priority: number }[] = [
   { path: "/about", priority: 0.5 },
   { path: "/contact", priority: 0.5 },
   { path: "/pages/poojas-for-pregnancy-and-safe-childbirth", priority: 0.7 },
+  // Digital Aarti (live since 18 Oct 2026)
+  { path: "/aarti", priority: 0.7 },
+  { path: "/aarti/durga", priority: 0.6 },
+  { path: "/aarti/shirdi-sai-baba", priority: 0.6 },
+  { path: "/aarti/mahalakshmi", priority: 0.6 },
   { path: "/terms", priority: 0.3 },
   { path: "/privacy", priority: 0.3 },
   { path: "/refund", priority: 0.3 },

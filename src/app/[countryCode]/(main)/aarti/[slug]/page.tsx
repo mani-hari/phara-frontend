@@ -13,7 +13,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   return {
     title: `${d.title}: join the aarti online`,
     description: d.tagline,
-    robots: { index: false },
+    alternates: { canonical: `/aarti/${d.slug}` },
     openGraph: { title: `${d.title} · Digital Aarti`, description: `${d.tagline} Light a diya, offer flowers and place your prayer.`, url: `/aarti/${d.slug}`, images: [image] },
     twitter: { card: "summary_large_image", title: `${d.title} · Digital Aarti`, description: d.tagline, images: [image.url] },
   }
