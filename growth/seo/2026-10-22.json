@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-22",
+  "source": "Search Console UI (sc-domain:pariharaonline.com) + GA4 453712866, read by Claude",
+  "search": {
+    "last7":  {"clicks": 174, "impressions": 3350, "ctr": 5.2, "position": 6.4},
+    "prev7":  {"clicks": 212, "impressions": 3620, "ctr": 5.9, "position": 6.4},
+    "last28": {"clicks": 923, "impressions": 14000, "ctr": 6.6, "position": 6.4},
+    "prev28": {"clicks": 1080, "impressions": 14100, "ctr": 7.7, "position": 6.6},
+    "last3months_clicks": 3917,
+    "top_queries_7d": [["garbarakshambigai temple ghee online booking", 22, 37], ["parihara online", 9, 4], ["thirukarukavur temple oil online booking", 9, 3]]
+  },
+  "indexing": {
+    "indexed": 87, "not_indexed": 137,
+    "reasons": {"alternate_with_canonical": 55, "not_found_404": 27, "noindex": 19, "crawled_not_indexed": 14, "duplicate_no_canonical": 9, "redirect": 9, "blocked_robots": 4},
+    "indexed_though_blocked": 1
+  },
+  "sitemap": {"url": "https://www.pariharaonline.com/sitemap.xml", "submitted": "2026-10-22", "status": "Success", "discovered": 276},
+  "actions_today": [
+    "First-ever sitemap submission (276 URLs)",
+    "Indexing requested: /aarti, /aarti/durga",
+    "Aarti pages opened to search (noindex removed, canonicals, sitemap)",
+    "29 old Shopify URLs redirected (21 x 404, 8 soft-404 noindex); Ask Parihara canonical; account pages noindex"
+  ]
+}
