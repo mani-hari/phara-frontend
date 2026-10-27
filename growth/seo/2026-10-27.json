@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-27",
+  "source": "Live curl checks by Claude; Search Console and GA4 NOT read this run (see source_failures)",
+  "source_failures": [
+    "Built-in browser pane: Search Console redirected to accounts.google.com sign-in (not signed in to Google)",
+    "Claude in Chrome extension: 'not connected' on every attempt",
+    "No Search Console / GA4 API credentials in the repo"
+  ],
+  "search": null,
+  "indexing": null,
+  "ga4": null,
+  "sitemap": {"url": "https://www.pariharaonline.com/sitemap.xml", "submitted": "2026-10-22", "status": null, "discovered": null, "live_url_count": 315, "live_url_count_prev": 276},
+  "live": {
+    "robots_txt": 200,
+    "robots_allows_ai_agents": true,
+    "sitemap_status": 200,
+    "sitemap_urls": 315,
+    "sitemap_breakdown": {"blog": 263, "products": 34, "aarti": 4, "pages": 1, "other": 13},
+    "ai_agents_home_200": {"GPTBot": 200, "ClaudeBot": 200, "PerplexityBot": 200, "ChatGPT-User": 200, "Googlebot": 200},
+    "indexnow_key_file": 200,
+    "samples_googlebot": {
+      "/": "200, canonical ok, no noindex, title/desc/og ok",
+      "/products/navagraha-homam": "200, canonical ok, no noindex, title/desc/og ok",
+      "/products/garbharakshambika-ghee": "200, canonical ok, no noindex, title/desc/og ok",
+      "/blog/swati-nakshatra": "200, canonical ok, no noindex, title/desc/og ok",
+      "/blog/why-is-diwali-celebrated": "200, canonical ok, no noindex, title/desc/og ok",
+      "/aarti": "200, canonical ok, no noindex, title/desc/og ok",
+      "/pages/poojas-for-pregnancy-and-safe-childbirth": "200, canonical ok, no noindex, title/desc/og ok",
+      "/calendar": "200, canonical ok, no noindex, title/desc/og ok; NOT in sitemap"
+    },
+    "random_sitemap_sample": {"checked": 25, "non_200": 0},
+    "ghost_redirects": {"count": 48, "status_301": 48, "single_hop_to_200": 48}
+  },
+  "issues": [
+    "/products/test-product and /products/sample-bundle-product are in the sitemap, 200 and indexable (internal test pages; one description is 'dfgdf')",
+    "/calendar is live and indexable but missing from the sitemap"
+  ],
+  "actions_today": [
+    "No site changes; partial run (Google data not reachable)"
+  ]
+}
