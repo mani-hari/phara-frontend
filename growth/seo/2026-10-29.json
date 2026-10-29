@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-29",
+  "source": "Live curl checks by Claude; Search Console and GA4 NOT read this run (see source_failures)",
+  "source_failures": [
+    "Built-in browser pane: Search Console and GA4 both redirected to accounts.google.com sign-in (not signed in to Google)",
+    "Claude in Chrome extension: 'not connected'; no connected browsers listed",
+    "No Search Console / GA4 API credentials in the repo"
+  ],
+  "consecutive_runs_without_google_data": 2,
+  "search": null,
+  "indexing": null,
+  "ga4": null,
+  "sitemap": {"url": "https://www.pariharaonline.com/sitemap.xml", "submitted": "2026-10-22", "status": null, "discovered": null, "live_url_count": 320, "live_url_count_prev": 315},
+  "live": {
+    "robots_txt": 200,
+    "robots_allows_ai_agents": true,
+    "sitemap_status": 200,
+    "sitemap_urls": 320,
+    "sitemap_breakdown": {"blog": 268, "products": 34, "aarti": 4, "pages": 1, "other": 13},
+    "ai_agents_home_200": {"GPTBot": 200, "ClaudeBot": 200, "PerplexityBot": 200, "ChatGPT-User": 200, "Googlebot": 200},
+    "indexnow_key_file": 200,
+    "samples_googlebot": {
+      "/": "200, canonical ok, no noindex, title/desc/og ok",
+      "/products/navagraha-homam": "200, canonical ok, no noindex, title/desc/og ok",
+      "/products/garbharakshambika-ghee": "200, canonical ok, no noindex, title/desc/og ok",
+      "/blog/swati-nakshatra": "200, canonical ok, no noindex, title/desc/og ok",
+      "/blog/why-is-diwali-celebrated": "200, canonical ok, no noindex, title/desc/og ok",
+      "/aarti": "200, canonical ok, no noindex, title/desc/og ok",
+      "/pages/poojas-for-pregnancy-and-safe-childbirth": "200, canonical ok, no noindex, title/desc/og ok",
+      "/calendar": "200, canonical ok, no noindex, title/desc/og ok; still NOT in sitemap"
+    },
+    "full_sitemap_sweep": {"checked": 320, "status_200": 318, "status_404": 2, "non_200_urls": ["/collections", "/categories"]},
+    "ghost_redirects": {"count": 50, "status_301": 50, "single_hop_to_200": 50}
+  },
+  "issues": [
+    "/collections and /categories are in the sitemap but return 404 (only /collections/<handle> and /categories/<...> pages exist; listed in src/app/sitemap.ts STATIC_PATHS since July). Not new, first seen this run because the full sitemap was swept instead of a 25-URL sample",
+    "/products/test-product and /products/sample-bundle-product still in the sitemap, 200 and indexable (one description is 'dfgdf')",
+    "/calendar is live and indexable but still missing from the sitemap"
+  ],
+  "proposal": "Sitemap cleanup in src/app/sitemap.ts: drop /collections and /categories, exclude the two test products, add /calendar",
+  "actions_today": [
+    "No site changes; partial run (Google data not reachable)"
+  ]
+}
