@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-03",
+  "source": "Live curl checks by Claude; Search Console and GA4 NOT read this run (see source_failures)",
+  "source_failures": [
+    "Built-in browser pane: Search Console redirected to accounts.google.com sign-in (not signed in to Google)",
+    "Claude in Chrome extension: no connected browsers",
+    "No Search Console / GA4 API credentials in the repo"
+  ],
+  "consecutive_runs_without_google_data": 3,
+  "search": null,
+  "indexing": null,
+  "ga4": null,
+  "sitemap": {"url": "https://www.pariharaonline.com/sitemap.xml", "submitted": "2026-10-22", "status": null, "discovered": null, "live_url_count": 347, "live_url_count_prev": 320},
+  "live": {
+    "robots_txt": 200,
+    "robots_allows_ai_agents": true,
+    "sitemap_status": 200,
+    "sitemap_urls": 347,
+    "sitemap_breakdown": {"blog": 295, "products": 34, "aarti": 4, "pages": 1, "other": 13},
+    "ai_agents_home_200": {"GPTBot": 200, "ClaudeBot": 200, "PerplexityBot": 200, "ChatGPT-User": 200},
+    "samples_googlebot": "8 of 8 sample URLs: 200, canonical self/clean, no robots meta (indexable), title, description and og:image present",
+    "full_sitemap_sweep": {"checked": 347, "status_404": 2, "non_200_urls": ["/collections", "/categories"]}
+  },
+  "issues": [
+    "/collections and /categories still in sitemap but 404 (unchanged since 29 Oct)",
+    "/products/test-product and /products/sample-bundle-product still in the sitemap",
+    "Google sign-in missing for 3 runs in a row: no Search Console / GA4 numbers since 22 Oct"
+  ],
+  "improvements": ["/calendar is now in the sitemap"],
+  "proposal": "Sitemap cleanup in src/app/sitemap.ts (drop /collections, /categories, 2 test products); sign Google into the built-in browser pane once so reports get real numbers",
+  "actions_today": ["No site changes; partial run"]
+}
