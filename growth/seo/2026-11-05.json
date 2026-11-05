@@ -1,0 +1,31 @@
+{
+  "date": "2026-11-05",
+  "source": "Live curl checks by Claude; Search Console and GA4 NOT read this run (see source_failures)",
+  "source_failures": [
+    "Built-in browser pane: Search Console redirected to accounts.google.com sign-in (not signed in to Google)",
+    "Claude in Chrome extension: list_connected_browsers returned no browsers",
+    "No Search Console / GA4 API credentials in the repo"
+  ],
+  "consecutive_runs_without_google_data": 4,
+  "search": null,
+  "indexing": null,
+  "ga4": null,
+  "sitemap": {"url": "https://www.pariharaonline.com/sitemap.xml", "submitted": "2026-10-22", "status": null, "discovered": null, "live_url_count": 355, "live_url_count_prev": 347},
+  "live": {
+    "robots_txt": 200,
+    "robots_allows_ai_agents": true,
+    "sitemap_status": 200,
+    "sitemap_urls": 355,
+    "sitemap_breakdown": {"blog": 303, "products": 34, "aarti": 4, "pages": 1, "other": 13},
+    "ai_agents_home_200": {"GPTBot": 200, "ClaudeBot": 200, "PerplexityBot": 200, "ChatGPT-User": 200},
+    "samples_googlebot": "8 of 8 sample URLs: 200 (after the /us/ locale redirect), canonical clean, no robots meta, title, description and og:image present",
+    "full_sitemap_sweep": {"checked": 355, "status_404": 2, "non_200_urls": ["/collections", "/categories"]}
+  },
+  "issues": [
+    "/collections and /categories still in sitemap but 404 (unchanged since 29 Oct)",
+    "Google sign-in missing for 4 runs in a row: no Search Console / GA4 numbers since 22 Oct"
+  ],
+  "improvements": ["8 more blog posts in sitemap (303, up from 295)"],
+  "proposal": "Sitemap cleanup in src/app/sitemap.ts (drop /collections, /categories); sign Google into the built-in browser pane once so reports get real numbers",
+  "actions_today": ["No site changes; partial run"]
+}
