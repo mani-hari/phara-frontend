@@ -19,6 +19,7 @@ const STATIC_PATHS: { path: string; priority: number }[] = [
   { path: "/how-it-works", priority: 0.6 },
   { path: "/faq", priority: 0.6 },
   { path: "/blog", priority: 0.6 },
+  { path: "/calendar", priority: 0.7 },
   { path: "/about", priority: 0.5 },
   { path: "/contact", priority: 0.5 },
   { path: "/pages/poojas-for-pregnancy-and-safe-childbirth", priority: 0.7 },
