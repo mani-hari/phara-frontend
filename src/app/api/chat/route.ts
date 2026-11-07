@@ -280,6 +280,26 @@ export async function POST(req: NextRequest) {
           // Without this the reply ends at the first tool call: visitors got product
           // cards with no words and no follow-up chips (half of sessions, Oct–Nov 2026).
           maxSteps: 3,
+          // The model tends to say its whole reply again after each tool step (seen live with
+          // gpt-4.1, 7 Nov 2026). Keep only the first step that has words; later steps may still
+          // call tools (e.g. suggestFollowUps) but their text is dropped.
+          experimental_transform: () => {
+            let spoke = false
+            let stepHasText = false
+            return new TransformStream({
+              transform(chunk, controller) {
+                if (chunk.type === "text-delta") {
+                  if (spoke) return
+                  if (chunk.textDelta.trim()) stepHasText = true
+                }
+                if (chunk.type === "step-finish") {
+                  if (stepHasText) spoke = true
+                  stepHasText = false
+                }
+                controller.enqueue(chunk)
+              },
+            })
+          },
           tools: {
             recommendProducts: tool({
               description:
@@ -473,12 +493,9 @@ export async function POST(req: NextRequest) {
             }),
           },
           onFinish: ({ steps }) => {
-            // Text from every step (a tool call can come first), minus leaked tool-call text
+            // The first step with words (a tool call can come first), minus leaked tool-call text
             const text = stripLeakedToolCalls(
-              steps
-                .map((s) => s.text)
-                .filter(Boolean)
-                .join("\n\n")
+              steps.map((s) => s.text).find((t) => t && t.trim()) ?? ""
             )
             if (sessionId && text) {
               saveMessage(sessionId, "assistant", text).catch(() => {})
