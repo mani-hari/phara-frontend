@@ -16,6 +16,7 @@ import BookingFormCard, { type BookingFormData } from "./booking-form-card"
 import CheckoutSummaryCard, { type ChatCheckoutStatus } from "./checkout-summary-card"
 import OrderStatusCard from "./order-status-card"
 import { CONTACT, waLink } from "@lib/contact"
+import { stripLeakedToolCalls } from "@lib/chat/clean-text"
 
 type PageContext = {
   currentUrl: string
@@ -573,7 +574,7 @@ function MessageBubble({
           width: isUser ? undefined : "100%",
         }}
       >
-        {m.content && (
+        {(isUser ? m.content : stripLeakedToolCalls(m.content)) && (
           <div
             style={{
               padding: "10px 14px",
@@ -586,7 +587,7 @@ function MessageBubble({
               alignSelf: isUser ? "flex-end" : undefined,
             }}
           >
-            {isUser ? m.content : <SimpleMarkdown text={m.content} />}
+            {isUser ? m.content : <SimpleMarkdown text={stripLeakedToolCalls(m.content)} />}
           </div>
         )}
 

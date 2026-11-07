@@ -24,6 +24,7 @@ import {
   ESCALATION_REPLY,
 } from "@lib/chat/guardrail"
 import { sendChatIncident, type IncidentStage } from "@lib/chat/incident"
+import { stripLeakedToolCalls } from "@lib/chat/clean-text"
 import {
   getCatalog,
   findProduct,
@@ -202,6 +203,15 @@ export async function POST(req: NextRequest) {
     const catalog = await getCatalog()
     let systemWithContext = buildSystemPrompt(formatCatalogForPrompt(catalog))
 
+    // Today's date (IST) so seasonal advice is current (e.g. no Navratri package in November)
+    systemWithContext += `\n\nTODAY: ${new Date().toLocaleDateString("en-IN", {
+      timeZone: "Asia/Kolkata",
+      weekday: "long",
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    })} (India time)`
+
     // Page context injection
     if (pageContext) {
       const lines: string[] = ["\n\nCURRENT CONTEXT (use naturally, don't recite it)"]
@@ -267,6 +277,9 @@ export async function POST(req: NextRequest) {
           system: systemWithContext,
           messages: modelMessages as any,
           maxTokens: 800,
+          // Without this the reply ends at the first tool call: visitors got product
+          // cards with no words and no follow-up chips (half of sessions, Oct–Nov 2026).
+          maxSteps: 3,
           tools: {
             recommendProducts: tool({
               description:
@@ -459,7 +472,14 @@ export async function POST(req: NextRequest) {
               execute: async ({ reason }) => ({ reason, isLoggedIn: !!userEmail }),
             }),
           },
-          onFinish: ({ text }) => {
+          onFinish: ({ steps }) => {
+            // Text from every step (a tool call can come first), minus leaked tool-call text
+            const text = stripLeakedToolCalls(
+              steps
+                .map((s) => s.text)
+                .filter(Boolean)
+                .join("\n\n")
+            )
             if (sessionId && text) {
               saveMessage(sessionId, "assistant", text).catch(() => {})
 
