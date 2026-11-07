@@ -1,7 +1,7 @@
 {
   "date": "2026-11-07",
   "source": "Live checks, Neon chat logs and web search by Claude; Search Console and GA4 NOT read (Google not signed in to the browser pane; no Chrome extension connected)",
-  "consecutive_runs_without_google_data": 5,
+  "consecutive_runs_without_google_data": 6,
   "search": null,
   "indexing": null,
   "ga4": null,
@@ -20,12 +20,24 @@
     "robots_txt": 200,
     "samples_googlebot": "/, /aarti, /faq, /blog, /products/navagraha-homam: 200, 0.2-0.8 s",
     "web_search_presence": {
-      "aarti_pages_indexed": ["/aarti/durga", "/aarti/shirdi-sai-baba"],
+      "aarti_pages_indexed": [
+        "/aarti/durga",
+        "/aarti/shirdi-sai-baba"
+      ],
       "garbarakshambigai ghee online": "pariharaonline.com product page is result #1"
     }
   },
   "chat": {
-    "sessions_per_week": {"2026-09-14": 70, "2026-09-21": 55, "2026-09-28": 36, "2026-10-05": 56, "2026-10-12": 37, "2026-10-19": 15, "2026-10-26": 11, "2026-11-02": 10},
+    "sessions_per_week": {
+      "2026-09-14": 70,
+      "2026-09-21": 55,
+      "2026-09-28": 36,
+      "2026-10-05": 56,
+      "2026-10-12": 37,
+      "2026-10-19": 15,
+      "2026-10-26": 11,
+      "2026-11-02": 10
+    },
     "sessions_since_19_oct": 35,
     "entry_from_google_srsltid": 6,
     "entry_via_ask_parihara_q_links": 11,
@@ -47,5 +59,48 @@
   "actions_today": [
     "Ask Parihara fixes deployed (commits 29854a2, c31cf57, 4ac397f)",
     "Sitemap cleanup deployed (c31cf57)"
-  ]
+  ],
+  "run_2": {
+    "time": "2026-11-07 09:30 EST",
+    "source": "Scheduled 2-day run. Live curl checks only. Search Console and GA4 NOT read: built-in browser pane redirected to accounts.google.com sign-in; Claude in Chrome list_connected_browsers returned no browsers",
+    "search": null,
+    "indexing": null,
+    "ga4": null,
+    "sitemap": {
+      "status": 200,
+      "live_url_count": 374,
+      "live_url_count_prev": 367,
+      "breakdown": {
+        "blog": 315,
+        "products": 32,
+        "faq": 11,
+        "aarti": 4,
+        "pages": 2,
+        "other": 10
+      },
+      "missing_indexable_pages": [
+        "/calendar (200, canonical /calendar, indexable, not listed)"
+      ]
+    },
+    "live": {
+      "robots_txt": 200,
+      "robots_allows_ai_agents": true,
+      "indexnow_key_file": 200,
+      "ai_agents_home_200": {
+        "GPTBot": 200,
+        "ClaudeBot": 200,
+        "PerplexityBot": 200,
+        "ChatGPT-User": 200
+      },
+      "samples_googlebot": "8 of 8 pass (/, navagraha-homam, mrityunjaya-homam, 2 blog posts, /aarti, /pages/rahu-ketu..., /calendar): 200 no redirect, no robots meta, canonical clean, title, description, og:image present",
+      "full_sitemap_sweep": {
+        "checked": 374,
+        "status_200": 374
+      },
+      "transient": "/products/mrityunjaya-homam hung >2 min once; retries 0.2-0.3 s"
+    },
+    "actions": [
+      "Added /calendar to sitemap STATIC_PATHS (branch v4_july2026)"
+    ]
+  }
 }
