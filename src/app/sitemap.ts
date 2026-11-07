@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next"
 import { listProducts } from "@lib/data/products"
 import { getBlogTags, getPublishedBlogPosts } from "@lib/data/blog"
 import { getAllBlogAuthors } from "@lib/data/blog-authors"
+import { FAQ_CATEGORIES } from "@lib/data/faq-data"
 
 // Regenerated at most hourly so drip-published blog posts appear on their day.
 export const revalidate = 3600
@@ -13,8 +14,6 @@ const SITE = (process.env.NEXT_PUBLIC_SITE_URL || "https://www.pariharaonline.co
 const STATIC_PATHS: { path: string; priority: number }[] = [
   { path: "", priority: 1 },
   { path: "/store", priority: 0.9 },
-  { path: "/collections", priority: 0.7 },
-  { path: "/categories", priority: 0.6 },
   { path: "/astrology", priority: 0.8 },
   { path: "/ask-parihara", priority: 0.7 },
   { path: "/how-it-works", priority: 0.6 },
@@ -23,6 +22,9 @@ const STATIC_PATHS: { path: string; priority: number }[] = [
   { path: "/about", priority: 0.5 },
   { path: "/contact", priority: 0.5 },
   { path: "/pages/poojas-for-pregnancy-and-safe-childbirth", priority: 0.7 },
+  { path: "/pages/rahu-ketu-pooja-kala-sarpa-dosha-remedy", priority: 0.7 },
+  // FAQ topic pages: the answers search engines and AI assistants quote
+  ...FAQ_CATEGORIES.map((c) => ({ path: `/faq/${c.slug}`, priority: 0.6 })),
   // Digital Aarti (live since 18 Oct 2026)
   { path: "/aarti", priority: 0.7 },
   { path: "/aarti/durga", priority: 0.6 },
@@ -32,6 +34,9 @@ const STATIC_PATHS: { path: string; priority: number }[] = [
   { path: "/privacy", priority: 0.3 },
   { path: "/refund", priority: 0.3 },
 ]
+
+// Placeholder products that are published in Medusa but must not be indexed
+const EXCLUDED_PRODUCTS = new Set(["test-product", "sample-bundle-product"])
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date()
@@ -83,7 +88,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       queryParams: { limit: 500, fields: "handle,updated_at" } as any,
     })
     for (const product of response.products || []) {
-      if (!product.handle) continue
+      if (!product.handle || EXCLUDED_PRODUCTS.has(product.handle)) continue
       entries.push({
         url: `${SITE}/products/${product.handle}`,
         lastModified: (product as any).updated_at ? new Date((product as any).updated_at) : now,
