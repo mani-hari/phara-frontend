@@ -5,7 +5,9 @@ import type { LanguageModel } from "ai"
 export type ChatProvider = "anthropic" | "openai"
 
 const ANTHROPIC_MODEL = "claude-haiku-4-5-20251001"
-const OPENAI_DEFAULT_MODEL = "gpt-4.1-mini"
+// gpt-4.1 (not -mini): mini kept writing tool calls into its replies as text
+// ("functions.suggestFollowUps(...)"), Oct–Nov 2026. ~15 chats/week, so cost is small.
+const OPENAI_DEFAULT_MODEL = "gpt-4.1"
 
 /**
  * Which provider powers Ask Parihara. CHAT_PROVIDER forces one ("openai" or
