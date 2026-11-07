@@ -30,6 +30,12 @@
     "entry_from_google_srsltid": 6,
     "entry_via_ask_parihara_q_links": 11,
     "faq_page_entry": 1,
+    "notes_for_next_run": [
+      "Exclude QA sessions: id starts with 'claude-qa-' (about 15 created 7 Nov while testing)",
+      "Exclude signed-in owner tests (user_id not null) when comparing weeks",
+      "chat_sessions.country is hard-coded 'in' by upsertSession, so it is not a real country",
+      "Chat order tracking never worked: MEDUSA_ADMIN_JWT is not set in production (owner decision, security model keeps admin keys out of the app)"
+    ],
     "fixed_today": "reply ended at first tool call; tool calls leaked as text; booking loop; nakshatra calculation; wrong deity matches; out-of-season festival packages; model gpt-4.1-mini -> gpt-4.1"
   },
   "issues": [
