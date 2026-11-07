@@ -39,6 +39,13 @@ const SEASONAL_CALENDAR: { handle: string; label: string; from: string; until: s
     until: "2026-10-20",
     note: "Choose one or more poojas for the last days of Navratri: Durga Ashtami, Maha Navami and Vijayadashami.",
   },
+  {
+    handle: "palani",
+    label: "Kanda Sashti",
+    from: "2026-11-07",
+    until: "2026-11-15",
+    note: "Six days of devotion to Lord Murugan, 10–15 Nov, ending with Soorasamharam. A pooja at Palani in your family's name.",
+  },
 ]
 
 
