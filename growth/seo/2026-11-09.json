@@ -1,0 +1,69 @@
+{
+  "date": "2026-11-09",
+  "source": "Scheduled 2-day run. Live curl checks by Claude; Search Console and GA4 NOT read this run (see source_failures)",
+  "source_failures": [
+    "Built-in browser pane: Search Console redirected to accounts.google.com sign-in (not signed in to Google)",
+    "Claude in Chrome extension: list_connected_browsers returned no browsers",
+    "No Search Console / GA4 API credentials in the repo"
+  ],
+  "consecutive_runs_without_google_data": 7,
+  "search": null,
+  "indexing": null,
+  "ga4": null,
+  "sitemap": {
+    "url": "https://www.pariharaonline.com/sitemap.xml",
+    "submitted": "2026-10-22",
+    "status": null,
+    "discovered": null,
+    "live_url_count": 385,
+    "live_url_count_prev": 374,
+    "breakdown": {
+      "blog_posts_and_author_pages": 145,
+      "blog_tag_pages": 180,
+      "products": 32,
+      "faq": 11,
+      "aarti": 4,
+      "pages": 2,
+      "other": 11
+    },
+    "missing_indexable_pages": [
+      "/calendar (200, canonical /calendar, indexable, not listed: fix d1e764d is committed on v4_july2026 but not yet on main)"
+    ]
+  },
+  "live": {
+    "robots_txt": 200,
+    "robots_allows_ai_agents": true,
+    "indexnow_key_file": 200,
+    "sitemap_status": 200,
+    "ai_agents_home_200": {
+      "GPTBot": 200,
+      "ClaudeBot": 200,
+      "PerplexityBot": 200,
+      "ChatGPT-User": 200
+    },
+    "samples_googlebot": "8 of 8 pass (/, /products/navagraha-homam, /products/maha-ganapathy-homam, /blog/rahu-kalam-explained, /blog/tag/workplace, /aarti, /pages/rahu-ketu-pooja-kala-sarpa-dosha-remedy, /calendar): 200 no redirect, no robots meta, canonical clean, title, description, og:image present, 0.23-0.38 s",
+    "full_sitemap_sweep": {
+      "checked": 385,
+      "status_200": 385
+    },
+    "blog_tag_pages_posts_per_tag": {
+      "1": 100,
+      "2": 18,
+      "3": 20,
+      "4": 14,
+      "5_or_more": 28
+    }
+  },
+  "issues": [
+    "Google sign-in missing for 7 runs: no Search Console / GA4 numbers since 22 Oct",
+    "/calendar still not in the live sitemap: the fix is on branch v4_july2026 (3 commits ahead of main), not deployed",
+    "100 of 180 blog tag pages in the sitemap list only 1 post each (thin pages; likely to land in 'Crawled, not indexed')"
+  ],
+  "improvements": [
+    "11 more URLs in the sitemap (385, up from 374), all 200"
+  ],
+  "proposal": "Leave blog tag pages with fewer than 3 posts out of the sitemap and mark them noindex,follow (in src/app/sitemap.ts and the tag page metadata); 138 thin pages, keeps 42 real hub pages",
+  "actions_today": [
+    "No site changes; partial run"
+  ]
+}
