@@ -1,0 +1,63 @@
+{
+  "date": "2026-11-11",
+  "source": "Scheduled 2-day run. Live curl checks by Claude; Search Console and GA4 NOT read this run (see source_failures)",
+  "source_failures": [
+    "Built-in browser pane: Search Console and GA4 both redirected to accounts.google.com sign-in (not signed in to Google)",
+    "Claude in Chrome extension: list_connected_browsers returned no browsers",
+    "No Search Console / GA4 API credentials in the repo"
+  ],
+  "consecutive_runs_without_google_data": 8,
+  "search": null,
+  "indexing": null,
+  "ga4": null,
+  "sitemap": {
+    "url": "https://www.pariharaonline.com/sitemap.xml",
+    "submitted": "2026-10-22",
+    "status": null,
+    "discovered": null,
+    "live_url_count": 391,
+    "live_url_count_prev": 385,
+    "breakdown": {
+      "blog_posts": 147,
+      "blog_author_pages": 5,
+      "blog_tag_pages": 180,
+      "products": 32,
+      "faq": 11,
+      "aarti": 4,
+      "pages": 2,
+      "other": 10
+    },
+    "missing_indexable_pages": [
+      "/calendar (200, canonical /calendar, indexable, not listed: fix d1e764d still only on v4_july2026, 2 commits ahead of main)"
+    ]
+  },
+  "live": {
+    "robots_txt": 200,
+    "robots_allows_ai_agents": true,
+    "indexnow_key_file": 200,
+    "sitemap_status": 200,
+    "ai_agents_home_200": {
+      "GPTBot": 200,
+      "ClaudeBot": 200,
+      "PerplexityBot": 200,
+      "ChatGPT-User": 200
+    },
+    "samples_googlebot": "8 of 8 pass (/, /products/navagraha-homam, /products/swayamvara-parvathi-homam, /blog/booking-a-puja-for-parents, /blog/when-to-book-an-astrology-consultation-before-a-puja, /aarti, /pages/poojas-for-pregnancy-and-safe-childbirth, /calendar): 200 no redirect, no robots meta, canonical clean, title, description, og:image present, 0.18-0.57 s",
+    "full_sitemap_sweep": {
+      "checked": 391,
+      "status_200": 391
+    }
+  },
+  "issues": [
+    "Google sign-in missing for 8 runs: no Search Console / GA4 numbers since 22 Oct (20 days)",
+    "/calendar still not in the live sitemap: fix d1e764d on v4_july2026 not yet pushed to main",
+    "Thin blog tag pages unchanged: 180 tag pages in sitemap, about 100 list only 1 post (counted 9 Nov)"
+  ],
+  "improvements": [
+    "6 more URLs in the sitemap (391, up from 385): blog posts and author pages 145 -> 152, other static pages 11 -> 10; all 391 return 200"
+  ],
+  "proposal": "Sign Google (the analytics account) into the Claude desktop browser pane once, so these reports carry real Search Console and GA4 numbers again",
+  "actions_today": [
+    "No site changes; partial run"
+  ]
+}
